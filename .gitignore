@@ -1,0 +1,10 @@
+node_modules
+dist
+.vercel
+.DS_Store
+*.local
+*.log
+yi-path-export-*.json
+.codex-dev-server*.log
+mobile-*.png
+desktop-library*.png

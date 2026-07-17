@@ -1,0 +1,2694 @@
+{
+  "contentVersion": "2026.07.17-draft.1",
+  "generatedFrom": "content/final",
+  "cards": [
+    {
+      "id": 33,
+      "chinese": "遯",
+      "pinyin": "Dùn",
+      "symbol": "䷠",
+      "trigrams": {
+        "upper": "heaven",
+        "lower": "mountain"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-33-retreat.md"
+      },
+      "classical": {
+        "judgment": "遯：亨，小利貞。",
+        "lines": [
+          "初六：遯尾，厲，勿用有攸往。",
+          "六二：執之用黃牛之革，莫之勝說。",
+          "九三：係遯，有疾厲，畜臣妾吉。",
+          "九四：好遯君子吉，小人否。",
+          "九五：嘉遯，貞吉。",
+          "上九：肥遯，無不利。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Dùn — Retreat",
+          "coreThread": "Stepping back can preserve what matters. Dùn is not defeat or disappearance; it is a timely withdrawal from conditions that would waste your energy or compromise your integrity. Keep the long view, and leave without bitterness.",
+          "whenItAppears": "Reduce exposure, protect what is essential, and make a clean boundary. Retreat is strongest when it is deliberate and gracious, not an angry reaction. A smaller, correct stand still has value.",
+          "reflectionQuestions": [
+            "What is no longer worth confronting directly?",
+            "What needs protection as I step back?",
+            "How can I withdraw without resentment or drama?"
+          ],
+          "lineReflections": {
+            "1": "When retreat lags at the tail, danger increases. Do not press forward from the most exposed position.",
+            "2": "A firm tie, like yellow ox-hide, cannot simply be undone. Recognise which commitments must be honoured even while you withdraw.",
+            "3": "A tied retreat is painful and risky. Keep close responsibilities manageable, but do not let dependents become a reason to stay in a harmful struggle.",
+            "4": "A noble person can make a gracious retreat; a small-minded person may experience it as loss. Leave in a way that preserves dignity.",
+            "5": "A beautiful retreat is principled, clear, and well timed.",
+            "6": "A full, unburdened retreat leaves no disadvantage. Go far enough to regain freedom of action."
+          }
+        },
+        "bg": {
+          "title": "Дун — Оттегляне",
+          "coreThread": "Отстъпването може да запази важното. Дун не е поражение или изчезване; то е навременно отдръпване от условия, които биха изхабили енергията ви или компрометирали почтеността ви. Пазете дългия поглед и си тръгнете без горчивина.",
+          "whenItAppears": "Намалете излагането, пазете същественото и поставете ясна граница. Оттеглянето е най-силно, когато е съзнателно и достойно, а не гневна реакция. По-малката, правилна позиция все още има стойност.",
+          "reflectionQuestions": [
+            "С кое вече не си струва да се сблъсквам пряко?",
+            "Какво трябва да бъде защитено, докато се отдръпвам?",
+            "Как мога да се оттегля без обида или драма?"
+          ],
+          "lineReflections": {
+            "1": "Когато оттеглянето изостава в края, опасността нараства. Не натискайте напред от най-изложената позиция.",
+            "2": "Здравата връзка, като жълта волска кожа, не може просто да се развърже. Разпознайте кои ангажименти трябва да бъдат почетени, дори докато се оттегляте.",
+            "3": "Обвързаното оттегляне е болезнено и рисково. Поддържайте близките отговорности управляеми, но не позволявайте зависимостите да ви държат в вредна борба.",
+            "4": "Благородният човек може да направи достойно оттегляне; дребнавият може да го преживее като загуба. Напуснете по начин, който пази достойнството.",
+            "5": "Красивото оттегляне е принципно, ясно и навременно.",
+            "6": "Пълното, необременено оттегляне не носи неблагополучие. Отдалечете се достатъчно, за да възвърнете свободата на действие."
+          }
+        },
+        "ru": {
+          "title": "Дунь — Отступление",
+          "coreThread": "Отступление может сохранить важное. Дунь — не поражение и не исчезновение; это своевременный уход из условий, которые истощили бы вашу энергию или скомпрометировали целостность. Держите долгую перспективу и уходите без горечи.",
+          "whenItAppears": "Уменьшайте подверженность, защищайте существенное и ставьте ясную границу. Отступление сильнее всего, когда оно сознательно и достойно, а не является гневной реакцией. Меньшая, но верная позиция всё ещё ценна.",
+          "reflectionQuestions": [
+            "С чем больше не стоит сталкиваться напрямую?",
+            "Что нужно защитить, пока я отступаю?",
+            "Как уйти без обиды и драмы?"
+          ],
+          "lineReflections": {
+            "1": "Когда отступление отстаёт в хвосте, опасность растёт. Не давите вперёд из самой уязвимой позиции.",
+            "2": "Прочная связь, как жёлтая бычья кожа, не может быть просто развязана. Признайте обязательства, которые надо чтить даже во время отступления.",
+            "3": "Связанное отступление болезненно и рискованно. Держите близкие обязанности управляемыми, но не позволяйте зависимостям удерживать вас в вредной борьбе.",
+            "4": "Благородный человек способен на достойное отступление; мелочный переживает его как потерю. Уходите так, чтобы сохранить достоинство.",
+            "5": "Прекрасное отступление принципно, ясно и своевременно.",
+            "6": "Полное, необременённое отступление не несёт неблагополучия. Уйдите достаточно далеко, чтобы вернуть свободу действия."
+          }
+        }
+      }
+    },
+    {
+      "id": 34,
+      "chinese": "大壯",
+      "pinyin": "Dà Zhuàng",
+      "symbol": "䷡",
+      "trigrams": {
+        "upper": "thunder",
+        "lower": "heaven"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-34-great-power.md"
+      },
+      "classical": {
+        "judgment": "大壯：利貞。",
+        "lines": [
+          "初九：壯于趾，征凶，有孚。",
+          "九二：貞吉。",
+          "九三：小人用壯，君子用罔，貞厲。羝羊觸藩，羸其角。",
+          "九四：貞吉悔亡，藩決不羸，壯于大輿之輹。",
+          "六五：喪羊于易，無悔。",
+          "上六：羝羊觸藩，不能退，不能遂，無攸利，艱則吉。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Dà Zhuàng — Great power",
+          "coreThread": "Power needs a right direction. Dà Zhuàng brings force, confidence, and momentum, but the strength is only favourable when guided by integrity. Pushing past the proper boundary weakens the very position you are trying to assert.",
+          "whenItAppears": "Use strength openly and ethically. Let power move through a worthy structure, not through aggression, pride, or the urge to win every contest. Real force makes room for movement; it does not get its horns caught in the fence.",
+          "reflectionQuestions": [
+            "What is the right use of my strength here?",
+            "Which boundary must I respect?",
+            "Am I moving from integrity or from the need to prove power?"
+          ],
+          "lineReflections": {
+            "1": "Power in the toes rushes ahead before the whole body is ready. Sincere intention does not make premature advance safe.",
+            "2": "Hold to what is right. This simple steadiness is fortunate.",
+            "3": "The small-minded person uses raw force; the noble person sees the trap. Like a ram hitting a fence, pride can leave you stuck by your own strength.",
+            "4": "The fence breaks and the horns are free. Strength now has a sound vehicle; use it for movement rather than collision.",
+            "5": "Losing the ram in open ground brings no regret. Release the identity that needs to keep proving its force.",
+            "6": "The ram is trapped: it cannot retreat or advance. When power has created a deadlock, patience with difficulty is better than more pushing."
+          }
+        },
+        "bg": {
+          "title": "Да Джуан — Голяма сила",
+          "coreThread": "Силата има нужда от правилна посока. Да Джуан носи мощ, увереност и устрем, но силата е благоприятна само когато се води от почтеност. Преминаването на правилната граница отслабва самата позиция, която се опитвате да отстоявате.",
+          "whenItAppears": "Използвайте силата открито и етично. Нека тя се движи през достойна структура, а не през агресия, гордост или нуждата да спечелите всеки сблъсък. Истинската сила прави място за движение; тя не заклещва рогата си в оградата.",
+          "reflectionQuestions": [
+            "Коя е правилната употреба на силата ми тук?",
+            "Коя граница трябва да уважавам?",
+            "Движа ли се от почтеност или от нуждата да докажа сила?"
+          ],
+          "lineReflections": {
+            "1": "Силата в пръстите на краката се втурва напред, преди цялото тяло да е готово. Искреното намерение не прави преждевременното напредване безопасно.",
+            "2": "Дръжте се за правилното. Тази проста устойчивост е благоприятна.",
+            "3": "Дребнавият човек използва сурова сила; благородният вижда капана. Като овен, който удря ограда, гордостта може да ви остави заклещени от собствената ви сила.",
+            "4": "Оградата се разрушава и рогата са свободни. Силата вече има здрава опора; използвайте я за движение, а не за сблъсък.",
+            "5": "Загубването на овена в откритото не носи съжаление. Освободете самоличността, която трябва непрекъснато да доказва силата си.",
+            "6": "Овенът е в капан: не може нито да се върне, нито да продължи. Когато силата е създала безизходица, търпението към трудността е по-добро от още натиск."
+          }
+        },
+        "ru": {
+          "title": "Да Чжуан — Великая сила",
+          "coreThread": "Силе нужно верное направление. Да Чжуан приносит мощь, уверенность и импульс, но сила благоприятна лишь тогда, когда ею руководит честность. Переход надлежащей границы ослабляет саму позицию, которую вы пытаетесь утвердить.",
+          "whenItAppears": "Используйте силу открыто и этично. Пусть она движется через достойную структуру, а не через агрессию, гордость или потребность выиграть каждое столкновение. Настоящая сила создаёт пространство для движения; она не застревает рогами в изгороди.",
+          "reflectionQuestions": [
+            "Каково верное применение моей силы здесь?",
+            "Какую границу я должен уважать?",
+            "Я двигаюсь из честности или из потребности доказать силу?"
+          ],
+          "lineReflections": {
+            "1": "Сила в пальцах ног рвётся вперёд до готовности всего тела. Искреннее намерение не делает преждевременное продвижение безопасным.",
+            "2": "Держитесь правильного. Эта простая устойчивость благоприятна.",
+            "3": "Мелочный человек применяет грубую силу; благородный видит ловушку. Как баран, бьющийся в изгородь, гордость может оставить вас застрявшим в собственной силе.",
+            "4": "Изгородь сломана, и рога свободны. У силы теперь есть надёжное средство; используйте её для движения, а не для столкновения.",
+            "5": "Потерять барана на открытом месте — без сожаления. Отпустите образ себя, которому постоянно нужно доказывать свою силу.",
+            "6": "Баран в ловушке: он не может ни отступить, ни двинуться дальше. Когда сила создала тупик, терпение к трудности лучше нового нажима."
+          }
+        }
+      }
+    },
+    {
+      "id": 35,
+      "chinese": "晉",
+      "pinyin": "Jìn",
+      "symbol": "䷢",
+      "trigrams": {
+        "upper": "fire",
+        "lower": "earth"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-35-progress.md"
+      },
+      "classical": {
+        "judgment": "晉：康侯用錫馬蕃庶，晝日三接。",
+        "lines": [
+          "初六：晉如，摧如，貞吉。罔孚，裕無咎。",
+          "六二：晉如，愁如，貞吉。受茲介福，于其王母。",
+          "六三：眾允，悔亡。",
+          "九四：晉如鼫鼠，貞厲。",
+          "六五：悔亡，失得勿恤，往吉無不利。",
+          "上九：晉其角，維用伐邑，厲吉無咎，貞吝。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Jìn — Progress",
+          "coreThread": "Visibility is increasing. Jìn asks you to bring your best work forward, accept recognition calmly, and keep improving rather than performing. Advancement is strongest when it benefits the whole field, not only the person being seen.",
+          "whenItAppears": "Let your contribution become visible without forcing trust or applause. Meet delays with generosity, accept support from elders or allies, and remember that progress without character soon becomes display.",
+          "reflectionQuestions": [
+            "What work is ready to be seen?",
+            "Where should I advance with patience rather than force?",
+            "How can recognition serve the work, not my image?"
+          ],
+          "lineReflections": {
+            "1": "You may advance and then be checked. Hold to what is right; when trust is absent, remain generous and do not take the resistance personally.",
+            "2": "Progress may come with sorrow or doubt. Keep integrity, and accept the protective blessing offered through a wise elder or caring ally.",
+            "3": "When the group recognises your contribution, regret dissolves. Let shared trust, not self-promotion, carry the advance.",
+            "4": "Progress like a grasping squirrel is risky. Do not become opportunistic or frantic merely because visibility is available.",
+            "5": "Do not worry excessively about gain or loss. Move forward with a clear purpose; the path is favourable.",
+            "6": "Using your horns to attack may be justified only to correct a close, contained disorder. Even then, the risk is real; do not turn progress into conquest."
+          }
+        },
+        "bg": {
+          "title": "Дзин — Напредък",
+          "coreThread": "Видимостта се увеличава. Дзин ви приканва да изнесете най-добрата си работа напред, да приемете признанието спокойно и да продължавате да подобрявате, вместо да играете роля. Напредъкът е най-силен, когато е полезен за цялото поле, не само за човека, който се вижда.",
+          "whenItAppears": "Нека приносът ви стане видим, без да насилвате доверие или аплодисменти. Посрещайте забавянията с щедрост, приемайте подкрепа от по-мъдри хора или съюзници и помнете, че напредъкът без характер скоро става показност.",
+          "reflectionQuestions": [
+            "Коя работа е готова да бъде видяна?",
+            "Къде трябва да напредвам с търпение, а не с натиск?",
+            "Как признанието може да служи на работата, а не на образа ми?"
+          ],
+          "lineReflections": {
+            "1": "Може да напреднете и после да бъдете спрени. Дръжте се за правилното; когато няма доверие, останете щедри и не приемайте съпротивата лично.",
+            "2": "Напредъкът може да дойде със скръб или съмнение. Пазете почтеността си и приемете защитната благословия на мъдър старейшина или грижовен съюзник.",
+            "3": "Когато групата разпознае приноса ви, съжалението се разсейва. Нека общото доверие, а не саморекламата, носи напредването.",
+            "4": "Напредък като на алчна катерица е рисков. Не ставайте користни или трескави само защото има възможност за видимост.",
+            "5": "Не се тревожете прекомерно за печалба или загуба. Продължете с ясна цел; пътят е благоприятен.",
+            "6": "Употребата на рогата за атака може да е оправдана само за поправяне на близък, ограничен безпорядък. И тогава рискът е реален; не превръщайте напредъка в завоевание."
+          }
+        },
+        "ru": {
+          "title": "Цзинь — Продвижение",
+          "coreThread": "Видимость растёт. Цзинь предлагает вывести лучшую работу вперёд, спокойно принять признание и продолжать улучшать, а не играть роль. Продвижение сильнее всего, когда оно приносит пользу всему полю, а не только человеку, которого заметили.",
+          "whenItAppears": "Позвольте вкладу стать видимым, не принуждая доверие или аплодисменты. Встречайте задержки щедро, принимайте поддержку мудрых старших или союзников и помните: продвижение без характера быстро становится показностью.",
+          "reflectionQuestions": [
+            "Какая работа готова быть увиденной?",
+            "Где мне стоит продвигаться терпеливо, а не силой?",
+            "Как признание может служить работе, а не моему образу?"
+          ],
+          "lineReflections": {
+            "1": "Вы можете продвинуться, а затем столкнуться с препятствием. Держитесь правильного; когда доверия нет, оставайтесь щедрыми и не принимайте сопротивление на свой счёт.",
+            "2": "Продвижение может прийти с печалью или сомнением. Храните честность и принимайте защитное благословение мудрого старшего или заботливого союзника.",
+            "3": "Когда группа признаёт ваш вклад, сожаление исчезает. Пусть продвижение несёт общее доверие, а не самореклама.",
+            "4": "Продвижение, подобное жадной белке, рискованно. Не становитесь корыстными или суетливыми лишь потому, что появилась видимость.",
+            "5": "Не тревожьтесь чрезмерно о приобретении или потере. Идите вперёд с ясной целью; путь благоприятен.",
+            "6": "Использовать рога для атаки можно лишь ради исправления близкого и ограниченного беспорядка. И тогда риск реален; не превращайте продвижение в завоевание."
+          }
+        }
+      }
+    },
+    {
+      "id": 36,
+      "chinese": "明夷",
+      "pinyin": "Míng Yí",
+      "symbol": "䷣",
+      "trigrams": {
+        "upper": "earth",
+        "lower": "fire"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-36-darkening-of-the-light.md"
+      },
+      "classical": {
+        "judgment": "明夷：利艱貞。",
+        "lines": [
+          "初九：明夷于飛，垂其翼。君子于行，三日不食，有攸往，主人有言。",
+          "六二：明夷，夷于左股，用拯馬壯，吉。",
+          "九三：明夷于南狩，得其大首，不可疾貞。",
+          "六四：入于左腹，獲明夷之心，于出門庭。",
+          "六五：箕子之明夷，利貞。",
+          "上六：不明晦，初登于天，後入于地。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Míng Yí — Darkening of the light",
+          "coreThread": "Protect your inner clarity in a difficult environment. Míng Yí is not asking you to abandon the light, but to guard it from conditions that would injure or exploit it. Be careful about exposure and keep the flame alive without announcing it.",
+          "whenItAppears": "Choose survival, discretion, and principled endurance over dramatic visibility. Know when to leave, when to accept help, and when to keep your deepest values private until a safer time arrives.",
+          "reflectionQuestions": [
+            "What part of my clarity needs protection now?",
+            "Where is discretion wiser than confrontation?",
+            "What support would help me leave or endure safely?"
+          ],
+          "lineReflections": {
+            "1": "The bird lowers its wings and travels without comfort. Leave what harms you even if the departure is lean and misunderstood.",
+            "2": "The light is injured, yet a strong rescue is possible. Accept practical help and use it to regain movement.",
+            "3": "You can confront the central harm, but do not rush to make the victory permanent. Change needs patient consolidation.",
+            "4": "Having seen the heart of the darkening, leave the inner chamber. Insight should guide a real exit, not only private knowledge.",
+            "5": "Preserve integrity quietly, like the wise person who conceals the light in a corrupt court. Endurance can be an active moral choice.",
+            "6": "One who rejects light may first rise high and then fall to the ground. Do not follow arrogance into darkness."
+          }
+        },
+        "bg": {
+          "title": "Мин И — Помрачаване на светлината",
+          "coreThread": "Пазете вътрешната си яснота в трудна среда. Мин И не ви казва да изоставите светлината, а да я защитите от условия, които биха я наранили или използвали. Бъдете внимателни с откритостта и поддържайте пламъка, без да го обявявате.",
+          "whenItAppears": "Изберете оцеляването, дискретността и принципната издържливост пред драматичната видимост. Знайте кога да си тръгнете, кога да приемете помощ и кога да пазите най-дълбоките си ценности насаме до по-сигурно време.",
+          "reflectionQuestions": [
+            "Коя част от яснотата ми има нужда от защита сега?",
+            "Къде дискретността е по-мъдра от сблъсъка?",
+            "Коя подкрепа би ми помогнала да си тръгна или да издържа безопасно?"
+          ],
+          "lineReflections": {
+            "1": "Птицата спуска крилете си и пътува без удобство. Напуснете онова, което ви вреди, дори ако тръгването е оскъдно и неразбрано.",
+            "2": "Светлината е наранена, но е възможно силно спасение. Приемете практична помощ и я използвайте, за да си върнете движението.",
+            "3": "Можете да се изправите срещу централната вреда, но не бързайте да правите победата постоянна. Промяната има нужда от търпеливо укрепване.",
+            "4": "След като сте видели сърцевината на помрачаването, напуснете вътрешната стая. Прозрението трябва да води към истински изход, не само към лично знание.",
+            "5": "Пазете почтеността тихо, като мъдрия човек, който скрива светлината в покварен двор. Издържливостта може да е активен морален избор.",
+            "6": "Този, който отхвърля светлината, може първо да се издигне високо, а после да падне на земята. Не следвайте гордостта в мрака."
+          }
+        },
+        "ru": {
+          "title": "Мин И — Помрачение света",
+          "coreThread": "Берегите внутреннюю ясность в трудной среде. Мин И не предлагает отказаться от света, а защитить его от условий, которые могут ранить или использовать его. Будьте осторожны с открытостью и поддерживайте огонь, не выставляя его напоказ.",
+          "whenItAppears": "Выбирайте выживание, осмотрительность и принципиальную стойкость вместо драматической видимости. Знайте, когда уйти, когда принять помощь и когда хранить самые глубокие ценности втайне до более безопасного времени.",
+          "reflectionQuestions": [
+            "Какая часть моей ясности нуждается в защите сейчас?",
+            "Где осмотрительность мудрее конфронтации?",
+            "Какая поддержка поможет мне уйти или безопасно выстоять?"
+          ],
+          "lineReflections": {
+            "1": "Птица опускает крылья и путешествует без удобства. Уходите от того, что вредит, даже если уход скуден и непонятен другим.",
+            "2": "Свет ранен, но возможно сильное спасение. Примите практическую помощь и используйте её, чтобы вернуть движение.",
+            "3": "Вы можете столкнуться с центральным вредом, но не спешите делать победу окончательной. Перемене нужно терпеливое укрепление.",
+            "4": "Увидев сердце помрачения, покиньте внутренние покои. Прозрение должно вести к реальному выходу, а не оставаться только личным знанием.",
+            "5": "Тихо храните целостность, как мудрый человек, скрывающий свет при порочном дворе. Выдержка может быть активным нравственным выбором.",
+            "6": "Тот, кто отвергает свет, может сперва подняться высоко, а затем упасть на землю. Не следуйте за гордыней во тьму."
+          }
+        }
+      }
+    },
+    {
+      "id": 37,
+      "chinese": "家人",
+      "pinyin": "Jiā Rén",
+      "symbol": "䷤",
+      "trigrams": {
+        "upper": "wind",
+        "lower": "fire"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-37-the-family.md"
+      },
+      "classical": {
+        "judgment": "家人：利女貞。",
+        "lines": [
+          "初九：閑有家，悔亡。",
+          "六二：無攸遂，在中饋，貞吉。",
+          "九三：家人嗃嗃，悔厲吉；婦子嘻嘻，終吝。",
+          "六四：富家，大吉。",
+          "九五：王假有家，勿恤吉。",
+          "上九：有孚威如，終吉。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Jiā Rén — The family",
+          "coreThread": "Order begins in close relationships. Jiā Rén uses the household as its image: clarify responsibilities, keep promises, and let care be expressed through dependable daily conduct. The historical wording reflects its era; the enduring principle is reciprocal responsibility, not a fixed hierarchy of gender.",
+          "whenItAppears": "Create clear agreements in the group closest to you — family, team, household, or partnership. Care needs structure, but structure without warmth becomes fear. Let roles support one another and let trust be visible in ordinary routines.",
+          "reflectionQuestions": [
+            "What agreement would bring more order and care to this close group?",
+            "Are responsibilities clear and reciprocal?",
+            "Where is firmer consistency needed, and where is more warmth needed?"
+          ],
+          "lineReflections": {
+            "1": "Establish boundaries at the beginning of shared life. Clear limits prevent later regret.",
+            "2": "Attend to the essential work that keeps the household or group fed and functioning. Quiet reliability is fortunate.",
+            "3": "Excessive harshness creates danger, but careless joking and permissiveness create lasting disorder. Find a firm, humane middle.",
+            "4": "Enrich the household in the broad sense: resources, trust, skills, and mutual support. This is greatly fortunate.",
+            "5": "A responsible presence can bring a household together. Do not worry excessively; lead through attention and steadiness.",
+            "6": "Trust joined to dignified authority brings a good end. Let your firmness be credible because it is faithful, not frightening."
+          }
+        },
+        "bg": {
+          "title": "Дзя Жън — Семейството",
+          "coreThread": "Редът започва в близките отношения. Дзя Жън използва дома като образ: изяснете отговорностите, спазвайте обещанията и изразявайте грижата чрез надеждно ежедневно поведение. Историческият език отразява своето време; трайният принцип е взаимна отговорност, а не неподвижна йерархия на пола.",
+          "whenItAppears": "Създайте ясни договорки в групата, която е най-близо до вас — семейство, екип, домакинство или партньорство. Грижата има нужда от структура, но структурата без топлота става страх. Нека ролите се подкрепят взаимно и доверието да се вижда в обичайните действия.",
+          "reflectionQuestions": [
+            "Коя договорка би донесла повече ред и грижа на тази близка група?",
+            "Ясни и взаимни ли са отговорностите?",
+            "Къде е нужна по-твърда постоянност и къде повече топлота?"
+          ],
+          "lineReflections": {
+            "1": "Установете граници в началото на споделения живот. Ясните предели предотвратяват по-късно съжаление.",
+            "2": "Погрижете се за съществената работа, която поддържа дома или групата нахранени и работещи. Тихата надеждност е благоприятна.",
+            "3": "Прекалената суровост създава опасност, но небрежната шега и всепозволеността създават траен безпорядък. Намерете твърд, човечен среден път.",
+            "4": "Обогатете дома в широкия смисъл: ресурси, доверие, умения и взаимна подкрепа. Това е много благоприятно.",
+            "5": "Отговорното присъствие може да събере дома. Не се тревожете прекомерно; водете чрез внимание и устойчивост.",
+            "6": "Доверието, съчетано с достойна власт, носи добър край. Нека твърдостта ви е убедителна, защото е вярна, а не защото плаши."
+          }
+        },
+        "ru": {
+          "title": "Цзя Жэнь — Семья",
+          "coreThread": "Порядок начинается в близких отношениях. Цзя Жэнь использует дом как образ: проясняйте ответственность, держите обещания и выражайте заботу через надёжное ежедневное поведение. Исторический язык отражает свою эпоху; устойчивый принцип — взаимная ответственность, а не неподвижная гендерная иерархия.",
+          "whenItAppears": "Создавайте ясные договорённости в ближайшей группе — семье, команде, доме или партнёрстве. Заботе нужна структура, но структура без тепла становится страхом. Пусть роли поддерживают друг друга, а доверие проявляется в обычных делах.",
+          "reflectionQuestions": [
+            "Какая договорённость принесёт больше порядка и заботы этой близкой группе?",
+            "Ясны ли и взаимны ли обязанности?",
+            "Где нужна большая последовательность, а где больше тепла?"
+          ],
+          "lineReflections": {
+            "1": "Установите границы в начале общей жизни. Ясные пределы предотвращают позднее сожаление.",
+            "2": "Позаботьтесь о необходимой работе, поддерживающей дом или группу накормленными и действующими. Тихая надёжность благоприятна.",
+            "3": "Чрезмерная суровость создаёт опасность, но небрежная шутливость и вседозволенность создают долгий беспорядок. Найдите твёрдую и человечную середину.",
+            "4": "Обогащайте дом в широком смысле: ресурсами, доверием, навыками и взаимной поддержкой. Это очень благоприятно.",
+            "5": "Ответственное присутствие способно собрать дом. Не тревожьтесь чрезмерно; ведите через внимание и устойчивость.",
+            "6": "Доверие, соединённое с достойным авторитетом, приносит хороший итог. Пусть ваша твёрдость убедительна, потому что верна, а не потому что пугает."
+          }
+        }
+      }
+    },
+    {
+      "id": 38,
+      "chinese": "睽",
+      "pinyin": "Kuí",
+      "symbol": "䷥",
+      "trigrams": {
+        "upper": "fire",
+        "lower": "lake"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-38-opposition.md"
+      },
+      "classical": {
+        "judgment": "睽：小事吉。",
+        "lines": [
+          "初九：悔亡，喪馬勿逐，自復；見惡人無咎。",
+          "九二：遇主于巷，無咎。",
+          "六三：見輿曳，其牛掣，其人天且劓，無初有終。",
+          "九四：睽孤，遇元夫，交孚，厲無咎。",
+          "六五：悔亡，厥宗噬膚，往何咎。",
+          "上九：睽孤，見豕負塗，載鬼一車，先張之弧，後說之弧，匪寇婚媾，往遇雨則吉。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Kuí — Opposition",
+          "coreThread": "Difference does not need to become hostility. Kuí describes people moving in different directions, so it favours small, workable matters rather than forced grand unity. Seek the point of contact, respect divergence, and do not require identical views to cooperate.",
+          "whenItAppears": "Reduce the scale of the disagreement. Clarify one practical thing, meet privately if needed, and leave room for a surprising reconciliation. Opposition becomes dangerous when imagination turns the other person into an enemy.",
+          "reflectionQuestions": [
+            "What small agreement is possible despite the larger difference?",
+            "Where have I made an enemy in my imagination?",
+            "What direct contact would replace assumption with reality?"
+          ],
+          "lineReflections": {
+            "1": "Do not chase what has gone missing; like the lost horse, it may return by itself. Meeting an unpleasant person need not create blame.",
+            "2": "Meet the responsible person in the alley, outside ceremony and display. A direct private conversation can resolve what formal distance cannot.",
+            "3": "Misunderstanding can make everyone appear dragged, restrained, or humiliated. The beginning is difficult, but patience allows an ending to form.",
+            "4": "In loneliness, meet a person of real worth and exchange trust. The connection carries risk, but it is not wrong.",
+            "5": "Regret ends when kinship or partnership makes direct contact, like biting through a thin obstacle. Go forward; there is no blame in honest approach.",
+            "6": "Fear can turn a muddy pig into a ghostly cart and a guest into an attacker. Lower the bow, look again, and allow the meeting to become union rather than conflict."
+          }
+        },
+        "bg": {
+          "title": "Куй — Противопоставяне",
+          "coreThread": "Различието не трябва да става враждебност. Куй описва хора, които се движат в различни посоки, затова благоприятства малките, изпълними въпроси, а не насиленото голямо единство. Потърсете допирната точка, уважавайте различието и не изисквайте еднакви възгледи, за да си сътрудничите.",
+          "whenItAppears": "Намалете мащаба на несъгласието. Изяснете едно практично нещо, срещнете се насаме, ако е нужно, и оставете място за неочаквано помирение. Противопоставянето става опасно, когато въображението превърне другия във враг.",
+          "reflectionQuestions": [
+            "Коя малка договорка е възможна въпреки по-голямото различие?",
+            "Къде съм превърнал другия във враг във въображението си?",
+            "Кой пряк контакт би заменил предположението с реалност?"
+          ],
+          "lineReflections": {
+            "1": "Не преследвайте онова, което е изчезнало; като изгубения кон, то може да се върне само. Срещата с неприятен човек не е задължително вина.",
+            "2": "Срещнете отговорния човек в уличката, извън церемония и показност. Прекият личен разговор може да разреши онова, което формалната дистанция не може.",
+            "3": "Неразбирателството може да накара всички да изглеждат влачени, ограничени или унижени. Началото е трудно, но търпението позволява да се оформи край.",
+            "4": "В самота срещнете човек с истинска стойност и обменете доверие. Връзката носи риск, но не е погрешна.",
+            "5": "Съжалението приключва, когато роднинство или партньорство установи пряк контакт, като прегризване на тънка пречка. Продължете; в честното приближаване няма вина.",
+            "6": "Страхът може да превърне кално прасе в призрачна кола, а госта в нападател. Свалете лъка, погледнете отново и позволете на срещата да стане съюз вместо конфликт."
+          }
+        },
+        "ru": {
+          "title": "Куй — Противостояние",
+          "coreThread": "Различие не обязано становиться враждой. Куй описывает людей, движущихся в разных направлениях, поэтому благоприятствует малым, выполнимым делам, а не принуждённому большому единству. Ищите точку соприкосновения, уважайте расхождение и не требуйте одинаковых взглядов для сотрудничества.",
+          "whenItAppears": "Уменьшите масштаб разногласия. Проясните одно практическое дело, при необходимости встретитесь наедине и оставьте место для неожиданного примирения. Противостояние становится опасным, когда воображение превращает другого в врага.",
+          "reflectionQuestions": [
+            "Какая малая договорённость возможна несмотря на большее различие?",
+            "Где я сделал другого врагом в своём воображении?",
+            "Какой прямой контакт заменит предположение реальностью?"
+          ],
+          "lineReflections": {
+            "1": "Не гонитесь за тем, что пропало: как потерянная лошадь, оно может вернуться само. Встреча с неприятным человеком не обязательно несёт вину.",
+            "2": "Встретьтесь с ответственным человеком в переулке, вне церемонии и показности. Прямой личный разговор может решить то, чего не решает формальная дистанция.",
+            "3": "Недопонимание может заставить всех выглядеть тащимыми, скованными или униженными. Начало трудно, но терпение позволяет сложиться завершению.",
+            "4": "В одиночестве встретите человека настоящей ценности и обменяйтесь доверием. Связь рискованна, но не ошибочна.",
+            "5": "Сожаление заканчивается, когда родство или партнёрство устанавливает прямой контакт, словно прогрызая тонкое препятствие. Идите вперёд: в честном приближении нет вины.",
+            "6": "Страх способен превратить грязную свинью в призрачную повозку, а гостя — в нападающего. Опустите лук, посмотрите снова и позвольте встрече стать союзом, а не конфликтом."
+          }
+        }
+      }
+    },
+    {
+      "id": 39,
+      "chinese": "蹇",
+      "pinyin": "Jiǎn",
+      "symbol": "䷦",
+      "trigrams": {
+        "upper": "water",
+        "lower": "mountain"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-39-obstruction.md"
+      },
+      "classical": {
+        "judgment": "蹇：利西南，不利東北；利見大人，貞吉。",
+        "lines": [
+          "初六：往蹇，來譽。",
+          "六二：王臣蹇蹇，匪躬之故。",
+          "九三：往蹇來反。",
+          "六四：往蹇來連。",
+          "九五：大蹇朋來。",
+          "上六：往蹇來碩，吉；利見大人。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Jiǎn — Obstruction",
+          "coreThread": "The direct route is blocked. Jiǎn advises a change of angle, wise preparation, and help from capable people. The traditional directions express a practical truth: move toward the terrain that gives support, not toward the terrain that compounds difficulty.",
+          "whenItAppears": "Do not confuse persistence with pushing into a wall. Return, consult, connect with allies, and seek someone who sees the wider situation. The obstruction can become a teacher of strategy and relationship.",
+          "reflectionQuestions": [
+            "Which route gives support rather than resistance?",
+            "Who is the “great person” or wise adviser I should consult?",
+            "What becomes possible if I return and regroup?"
+          ],
+          "lineReflections": {
+            "1": "Going forward meets obstruction; returning brings recognition. Retreat to prepare is the wiser move.",
+            "2": "You may be carrying difficulty for a cause larger than yourself. Do not take every burden as a personal failure.",
+            "3": "Going meets obstruction; returning restores you. Reverse course before the blockage becomes exhaustion.",
+            "4": "Return to connection. The way through difficulty may be found with others, not alone.",
+            "5": "In a great obstruction, friends arrive. Let support reach you; this is not the time to prove self-sufficiency.",
+            "6": "Returning from obstruction can bring a larger good. Meet the wise guide and allow the next step to be shaped by counsel."
+          }
+        },
+        "bg": {
+          "title": "Дзиен — Препятствие",
+          "coreThread": "Прекият път е блокиран. Дзиен съветва да смените ъгъла, да се подготвите разумно и да потърсите помощ от способни хора. Традиционните посоки изразяват практична истина: движете се към терена, който дава подкрепа, а не към този, който усилва трудността.",
+          "whenItAppears": "Не бъркайте постоянството с блъскане в стена. Върнете се, посъветвайте се, свържете се със съюзници и потърсете човек, който вижда по-широката ситуация. Препятствието може да стане учител по стратегия и отношения.",
+          "reflectionQuestions": [
+            "Кой път дава подкрепа, вместо съпротива?",
+            "Кой е мъдрият съветник, с когото трябва да се срещна?",
+            "Какво става възможно, ако се върна и прегрупирам?"
+          ],
+          "lineReflections": {
+            "1": "Напредването среща препятствие; завръщането носи признание. Отстъпете, за да се подготвите — това е по-мъдрият ход.",
+            "2": "Може да носите трудност за кауза, по-голяма от вас. Не приемайте всяка тежест като личен провал.",
+            "3": "Напредването среща препятствие; завръщането ви възстановява. Обърнете посоката, преди блокадата да стане изтощение.",
+            "4": "Върнете се към връзката. Пътят през трудността може да бъде намерен с други хора, не сам.",
+            "5": "При голямо препятствие приятелите идват. Позволете на подкрепата да достигне до вас; това не е време да доказвате самодостатъчност.",
+            "6": "Завръщането от препятствието може да донесе по-голямо добро. Срещнете мъдрия водач и позволете следващата стъпка да бъде оформена от съвета."
+          }
+        },
+        "ru": {
+          "title": "Цзянь — Препятствие",
+          "coreThread": "Прямой путь закрыт. Цзянь советует сменить угол, разумно подготовиться и попросить помощи у способных людей. Традиционные направления выражают практическую истину: идите к местности, дающей поддержку, а не к той, что умножает трудность.",
+          "whenItAppears": "Не путайте настойчивость с попыткой пробить стену. Вернитесь, посоветуйтесь, свяжитесь с союзниками и найдите человека, который видит широкую ситуацию. Препятствие может стать учителем стратегии и отношений.",
+          "reflectionQuestions": [
+            "Какой путь даёт поддержку, а не сопротивление?",
+            "Кто тот мудрый советник, с которым мне стоит встретиться?",
+            "Что станет возможным, если я вернусь и перегруппируюсь?"
+          ],
+          "lineReflections": {
+            "1": "Продвижение встречает препятствие; возвращение приносит признание. Отступите для подготовки — это мудрее.",
+            "2": "Возможно, вы несёте трудность ради дела больше вас самих. Не принимайте каждую тяжесть за личную неудачу.",
+            "3": "Продвижение встречает препятствие; возвращение восстанавливает вас. Измените направление до того, как блокировка станет истощением.",
+            "4": "Вернитесь к связи. Путь через трудность можно найти с другими, а не в одиночку.",
+            "5": "При великом препятствии приходят друзья. Позвольте поддержке достичь вас; сейчас не время доказывать самодостаточность.",
+            "6": "Возвращение от препятствия может принести большее благо. Встретьтесь с мудрым проводником и дайте совету сформировать следующий шаг."
+          }
+        }
+      }
+    },
+    {
+      "id": 40,
+      "chinese": "解",
+      "pinyin": "Xiè",
+      "symbol": "䷧",
+      "trigrams": {
+        "upper": "thunder",
+        "lower": "water"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-40-release.md"
+      },
+      "classical": {
+        "judgment": "解：利西南，無所往，其來復吉。有攸往，夙吉。",
+        "lines": [
+          "初六：無咎。",
+          "九二：田獲三狐，得黃矢，貞吉。",
+          "六三：負且乘，致寇至，貞吝。",
+          "九四：解而拇，朋至斯孚。",
+          "六五：君子維有解，吉；有孚于小人。",
+          "上六：公用射隼，于高墉之上，獲之，無不利。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Xiè — Release",
+          "coreThread": "Tension can now be loosened. Xiè invites you to solve the immediate problem, forgive what can be released, and return to simple movement. If there is nothing urgent to pursue, recovery is good; if action is needed, timely action is better than delay.",
+          "whenItAppears": "Untie what is bound and clear what is concealed. Do not carry a burden while pretending to be above it, and do not keep an old conflict alive after its purpose has ended. Release is practical, not vague.",
+          "reflectionQuestions": [
+            "What immediate tension can be resolved now?",
+            "What burden or resentment is ready to be released?",
+            "What concealed obstacle needs to be named directly?"
+          ],
+          "lineReflections": {
+            "1": "The release begins simply. There is no blame in allowing the tension to ease.",
+            "2": "Find the hidden foxes and the golden arrow: remove concealed problems and recover the clear evidence needed for a fair decision.",
+            "3": "Carrying a burden while riding in display invites trouble. Align your status, resources, and responsibility rather than sending mixed signals.",
+            "4": "Release the binding at the smallest point, like the thumb, and trustworthy friends can return. Small untanglings restore confidence.",
+            "5": "When a person of principle releases what is bound, even those of lesser understanding can recognise the sincerity.",
+            "6": "Bring down the high, predatory obstacle with precision. A direct action that removes the real threat leaves no disadvantage."
+          }
+        },
+        "bg": {
+          "title": "Сие — Освобождаване",
+          "coreThread": "Напрежението вече може да се отпусне. Сие ви приканва да решите непосредствения проблем, да простите онова, което може да бъде освободено, и да се върнете към простото движение. Ако няма спешна цел за преследване, възстановяването е добро; ако е нужно действие, навременното действие е по-добро от забавянето.",
+          "whenItAppears": "Развържете онова, което е вързано, и изчистете скритото. Не носете товар, докато се преструвате, че сте над него, и не поддържайте стар конфликт жив, след като целта му е приключила. Освобождаването е практично, не неясно.",
+          "reflectionQuestions": [
+            "Кое непосредствено напрежение може да бъде разрешено сега?",
+            "Коя тежест или обида е готова да бъде освободена?",
+            "Коя скрита пречка трябва да бъде назована пряко?"
+          ],
+          "lineReflections": {
+            "1": "Освобождаването започва просто. Няма вина да позволите на напрежението да се отпусне.",
+            "2": "Открийте скритите лисици и златната стрела: премахнете прикритите проблеми и върнете ясното доказателство, нужно за справедливо решение.",
+            "3": "Носенето на товар, докато яздите в показност, кани неприятности. Съгласувайте статуса, ресурсите и отговорността си, вместо да изпращате смесени сигнали.",
+            "4": "Освободете връзката в най-малката точка, като палеца, и надеждните приятели могат да се върнат. Малките разплитания възстановяват доверието.",
+            "5": "Когато принципен човек освободи свързаното, дори хората с по-малко разбиране могат да разпознаят искреността.",
+            "6": "Свалете високата, хищна пречка с точност. Прякото действие, което премахва истинската заплаха, не носи неблагополучие."
+          }
+        },
+        "ru": {
+          "title": "Се — Освобождение",
+          "coreThread": "Напряжение теперь можно ослабить. Се предлагает решить ближайшую проблему, простить то, что можно отпустить, и вернуться к простому движению. Если нет срочной цели для преследования, восстановление хорошо; если действие нужно, своевременность лучше промедления.",
+          "whenItAppears": "Развяжите связанное и проясните скрытое. Не несите бремя, притворяясь, что вы выше него, и не поддерживайте старый конфликт после того, как его задача закончилась. Освобождение практично, а не расплывчато.",
+          "reflectionQuestions": [
+            "Какое ближайшее напряжение можно разрешить сейчас?",
+            "Какая тяжесть или обида готова быть отпущенной?",
+            "Какое скрытое препятствие нужно назвать прямо?"
+          ],
+          "lineReflections": {
+            "1": "Освобождение начинается просто. Нет вины в том, чтобы позволить напряжению ослабнуть.",
+            "2": "Найдите скрытых лис и золотую стрелу: устраните скрытые проблемы и верните ясное доказательство для справедливого решения.",
+            "3": "Нести груз, восседая напоказ, значит приглашать беду. Согласуйте статус, ресурсы и ответственность, а не посылайте смешанные сигналы.",
+            "4": "Освободите связь в наименьшей точке, словно в большом пальце, и надёжные друзья смогут вернуться. Малые распутывания восстанавливают доверие.",
+            "5": "Когда принципный человек освобождает связанное, даже люди с меньшим пониманием могут распознать искренность.",
+            "6": "Точно устраните высокое хищное препятствие. Прямое действие, убирающее настоящую угрозу, не несёт неблагополучия."
+          }
+        }
+      }
+    },
+    {
+      "id": 41,
+      "chinese": "損",
+      "pinyin": "Sǔn",
+      "symbol": "䷨",
+      "trigrams": {
+        "upper": "mountain",
+        "lower": "lake"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-41-decrease.md"
+      },
+      "classical": {
+        "judgment": "損：有孚，元吉，無咎，可貞，利有攸往？曷之用，二簋可用享。",
+        "lines": [
+          "初九：已事遄往，無咎，酌損之。",
+          "九二：利貞，征凶，弗損益之。",
+          "六三：三人行，則損一人；一人行，則得其友。",
+          "六四：損其疾，使遄有喜，無咎。",
+          "六五：或益之，十朋之龜弗克違，元吉。",
+          "上九：弗損益之，無咎，貞吉，利有攸往，得臣無家。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Sǔn — Decrease",
+          "coreThread": "A conscious reduction can restore balance. Sǔn asks you to give up what drains the whole, simplify what has become excessive, and make room for what matters. Its offering of two small bowls says that sincerity is more valuable than display.",
+          "whenItAppears": "Reduce with discernment, not self-punishment. Give where the gift helps, remove what is sick or burdensome, and do not sacrifice the very resource that allows you to serve. Simplicity can be an active form of care.",
+          "reflectionQuestions": [
+            "What reduction would restore balance?",
+            "What can become simpler without becoming poorer in spirit?",
+            "Where would giving more actually damage the source of support?"
+          ],
+          "lineReflections": {
+            "1": "Finish your own task, then go quickly to help. Give in a measured way; there is no blame in proportion.",
+            "2": "Stay steady, but do not advance into needless sacrifice. In this case, not reducing yourself becomes an increase for another.",
+            "3": "Three travelling together may need to become two; one travelling may find the true companion. Simplification can reveal the right relationship.",
+            "4": "Reduce what is diseased or draining, and joy can come quickly. Removing the real burden is not a loss.",
+            "5": "An unexpected increase may arrive with the certainty of a trusted oracle. Receive it as a great gift, not as something you forced.",
+            "6": "Do not reduce where increase is needed. A generous outward movement can gather support beyond the narrow boundaries of home."
+          }
+        },
+        "bg": {
+          "title": "Сун — Намаляване",
+          "coreThread": "Съзнателното намаляване може да върне равновесието. Сун ви приканва да се откажете от онова, което изтощава цялото, да опростите прекаленото и да отворите място за важното. Неговото приношение от две малки купи казва, че искреността е по-ценна от показността.",
+          "whenItAppears": "Намалявайте с разсъдливост, а не чрез самонаказание. Давайте там, където дарът помага, премахвайте болното или тежкото и не жертвайте самия ресурс, който ви позволява да служите. Простотата може да е активна форма на грижа.",
+          "reflectionQuestions": [
+            "Кое намаляване би върнало равновесието?",
+            "Какво може да стане по-просто, без да обеднее духовно?",
+            "Къде даването на повече всъщност би увредило източника на подкрепа?"
+          ],
+          "lineReflections": {
+            "1": "Завършете собствената си задача, после отидете бързо да помогнете. Давайте премерено; в съразмерността няма вина.",
+            "2": "Останете постоянни, но не напредвайте към ненужна жертва. Тук това да не намалите себе си става увеличение за друг.",
+            "3": "Трима, които пътуват заедно, може да трябва да станат двама; един пътуващ може да намери истинския спътник. Опростяването може да разкрие правилната връзка.",
+            "4": "Намалете болното или изтощаващото и радостта може да дойде бързо. Премахването на истинската тежест не е загуба.",
+            "5": "Неочаквано увеличение може да дойде със сигурността на доверен знак. Приемете го като голям дар, а не като нещо, което сте насилили.",
+            "6": "Не намалявайте там, където е нужно увеличение. Щедрото движение навън може да събере подкрепа отвъд тесните граници на дома."
+          }
+        },
+        "ru": {
+          "title": "Сунь — Уменьшение",
+          "coreThread": "Осознанное уменьшение может вернуть равновесие. Сунь предлагает отказаться от того, что истощает целое, упростить чрезмерное и освободить место для важного. Его подношение из двух небольших чаш говорит, что искренность ценнее показности.",
+          "whenItAppears": "Уменьшайте с различением, а не через самонаказание. Отдавайте там, где дар помогает, убирайте больное или обременительное и не жертвуйте самим ресурсом, позволяющим вам служить. Простота может быть деятельной формой заботы.",
+          "reflectionQuestions": [
+            "Какое уменьшение вернёт равновесие?",
+            "Что может стать проще, не обеднев духовно?",
+            "Где отдавать больше означало бы повредить источник поддержки?"
+          ],
+          "lineReflections": {
+            "1": "Завершите собственную задачу, затем быстро идите помогать. Отдавайте соразмерно; в мере нет вины.",
+            "2": "Оставайтесь стойкими, но не двигайтесь к ненужной жертве. Здесь не уменьшать себя означает увеличить другого.",
+            "3": "Троим, идущим вместе, возможно, нужно стать двумя; один идущий может обрести настоящего спутника. Упрощение способно открыть верную связь.",
+            "4": "Уменьшите больное или истощающее — и радость может прийти быстро. Удаление настоящего бремени не является потерей.",
+            "5": "Неожиданное увеличение может прийти с уверенностью надёжного знака. Примите его как большой дар, а не как нечто вынужденное вами.",
+            "6": "Не уменьшайте там, где необходимо увеличение. Щедрое движение вовне может собрать поддержку за узкими границами дома."
+          }
+        }
+      }
+    },
+    {
+      "id": 42,
+      "chinese": "益",
+      "pinyin": "Yì",
+      "symbol": "䷩",
+      "trigrams": {
+        "upper": "wind",
+        "lower": "thunder"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-42-increase.md"
+      },
+      "classical": {
+        "judgment": "益：利有攸往，利涉大川。",
+        "lines": [
+          "初九：利用為大作，元吉，無咎。",
+          "六二：或益之，十朋之龜弗克違，永貞吉。王用享于帝，吉。",
+          "六三：益之用凶事，無咎。有孚中行，告公用圭。",
+          "六四：中行，告公從。利用為依遷國。",
+          "九五：有孚惠心，勿問元吉。有孚惠我德。",
+          "上九：莫益之，或擊之，立心勿恆，凶。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Yì — Increase",
+          "coreThread": "Support placed in the right direction multiplies. Yì is an opening for investment, generosity, and a meaningful crossing. The increase is not merely personal gain: it asks whether resources flow toward work that serves more than yourself.",
+          "whenItAppears": "Act before the opening passes. Put energy into the larger task, strengthen the foundations that allow others to thrive, and let goodwill be visible in decisions. Increase becomes unstable when it is hoarded or pursued without a steady purpose.",
+          "reflectionQuestions": [
+            "Where will support create the widest good?",
+            "What larger work is ready to begin?",
+            "How can I make generosity structurally useful, not merely sentimental?"
+          ],
+          "lineReflections": {
+            "1": "Use the opening for a great work. A real contribution can begin now without blame.",
+            "2": "A reliable increase may come from beyond your control. Receive it with lasting integrity and gratitude.",
+            "3": "Help may arrive through a difficult or even unfortunate event. Keep faith in the centre and report honestly to those responsible.",
+            "4": "A balanced proposal can gain support from authority. Use the backing to create a dependable base for necessary change.",
+            "5": "A heart of sincere kindness needs no further proof. When goodwill is real, people trust the virtue behind it.",
+            "6": "If no one supports the increase, or it draws attack, examine the intention. An unstable heart turns gain into misfortune."
+          }
+        },
+        "bg": {
+          "title": "И — Увеличение",
+          "coreThread": "Подкрепата в правилната посока се умножава. И е отваряне за вложение, щедрост и смислено преминаване. Увеличението не е само лична печалба: то пита дали ресурсите текат към работа, която служи на повече от вас самите.",
+          "whenItAppears": "Действайте, преди възможността да отмине. Вложете енергия в по-голямата задача, укрепете основите, които позволяват на другите да процъфтяват, и нека добрата воля се вижда в решенията. Увеличението става нестабилно, когато се трупа или се преследва без постоянна цел.",
+          "reflectionQuestions": [
+            "Къде подкрепата ще създаде най-широко добро?",
+            "Коя по-голяма работа е готова да започне?",
+            "Как мога да направя щедростта структурно полезна, а не само сантиментална?"
+          ],
+          "lineReflections": {
+            "1": "Използвайте отварянето за голямо дело. Истински принос може да започне сега без вина.",
+            "2": "Надеждно увеличение може да дойде отвъд вашия контрол. Приемете го с трайна почтеност и благодарност.",
+            "3": "Помощта може да дойде чрез труден или дори неблагоприятен случай. Пазете вярата в центъра и докладвайте честно на отговорните хора.",
+            "4": "Уравновесеното предложение може да спечели подкрепа от властта. Използвайте тази опора, за да създадете надеждна основа за необходимата промяна.",
+            "5": "Сърцето на искрената доброта не се нуждае от допълнително доказателство. Когато добрата воля е истинска, хората се доверяват на добродетелта зад нея.",
+            "6": "Ако никой не подкрепя увеличението или то привлича атака, прегледайте намерението. Нестабилното сърце превръща печалбата в неблагополучие."
+          }
+        },
+        "ru": {
+          "title": "И — Увеличение",
+          "coreThread": "Поддержка, направленная верно, умножается. И — это открытие для вложения, щедрости и значимой переправы. Увеличение не только личная выгода: оно спрашивает, текут ли ресурсы к делу, служащему большему, чем вы сами.",
+          "whenItAppears": "Действуйте до того, как окно закроется. Вкладывайте энергию в большую задачу, укрепляйте основы, позволяющие другим процветать, и делайте добрую волю видимой в решениях. Увеличение становится неустойчивым, когда его копят или преследуют без устойчивой цели.",
+          "reflectionQuestions": [
+            "Где поддержка создаст наибольшее благо?",
+            "Какое большое дело готово начаться?",
+            "Как сделать щедрость структурно полезной, а не только сентиментальной?"
+          ],
+          "lineReflections": {
+            "1": "Используйте открытие для большого дела. Настоящий вклад может начаться сейчас без вины.",
+            "2": "Надёжное увеличение может прийти вне вашего контроля. Примите его с устойчивой честностью и благодарностью.",
+            "3": "Помощь может прийти через трудное или даже неблагоприятное событие. Храните веру в центре и честно сообщайте ответственным людям.",
+            "4": "Уравновешенное предложение может получить поддержку власти. Используйте её, чтобы создать надёжную основу для необходимой перемены.",
+            "5": "Сердцу искренней доброты не требуется дополнительное доказательство. Когда добрая воля настоящая, люди доверяют стоящей за ней добродетели.",
+            "6": "Если никто не поддерживает увеличение или оно привлекает нападение, пересмотрите намерение. Неустойчивое сердце превращает приобретение в беду."
+          }
+        }
+      }
+    },
+    {
+      "id": 43,
+      "chinese": "夬",
+      "pinyin": "Guài",
+      "symbol": "䷪",
+      "trigrams": {
+        "upper": "lake",
+        "lower": "heaven"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-43-breakthrough.md"
+      },
+      "classical": {
+        "judgment": "夬：揚于王庭，孚號，有厲，告自邑，不利即戎，利有攸往。",
+        "lines": [
+          "初九：壯于前趾，往不勝為吝。",
+          "九二：惕號，莫夜有戎，勿恤。",
+          "九三：壯于頄，有凶。君子夬夬，獨行遇雨，若濡有慍，無咎。",
+          "九四：臀無膚，其行次且。牽羊悔亡，聞言不信。",
+          "九五：莧陸夬夬，中行無咎。",
+          "上六：無號，終有凶。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Guài — Breakthrough",
+          "coreThread": "A truth needs to be stated clearly. Guài calls for a visible boundary and a decisive break with what is harmful, but it explicitly warns against turning conviction into armed aggression. Speak honestly, name the risk, and move forward without cruelty.",
+          "whenItAppears": "Bring the issue into the open. Start with your own community, make the case in good faith, and act rather than merely complain. The breakthrough is ethical only when the means remain proportionate to the problem.",
+          "reflectionQuestions": [
+            "What truth must be stated publicly and clearly?",
+            "What boundary is needed without escalating into aggression?",
+            "Where must I act rather than only voice outrage?"
+          ],
+          "lineReflections": {
+            "1": "Power in the front toes rushes ahead and cannot prevail. Do not mistake urgency for readiness.",
+            "2": "Stay alert: conflict may arrive at night. Prepared watchfulness is enough; do not become consumed by worry.",
+            "3": "Visible anger is dangerous. The principled person may walk alone through discomfort and misunderstanding, yet can remain without blame.",
+            "4": "When movement is painful and hesitant, follow the workable guidance even if you do not fully trust it at first. Stubborn resistance prolongs regret.",
+            "5": "Cut through the stubborn weed at the centre, but stay on the middle path. Decisiveness without excess is blameless.",
+            "6": "If the warning is never voiced, the harmful pattern continues to its bad end. Silence is not always peace."
+          }
+        },
+        "bg": {
+          "title": "Гуай — Пробив",
+          "coreThread": "Една истина трябва да бъде казана ясно. Гуай призовава към видима граница и решително прекъсване с вредното, но изрично предупреждава да не превръщате убеждението във въоръжена агресия. Говорете честно, назовете риска и продължете без жестокост.",
+          "whenItAppears": "Изнесете въпроса на открито. Започнете от собствената си общност, изложете случая добросъвестно и действайте, вместо само да се оплаквате. Пробивът е етичен само когато средствата остават съразмерни на проблема.",
+          "reflectionQuestions": [
+            "Коя истина трябва да бъде изказана публично и ясно?",
+            "Коя граница е нужна, без да се стига до агресия?",
+            "Къде трябва да действам, вместо само да изразявам възмущение?"
+          ],
+          "lineReflections": {
+            "1": "Силата в предните пръсти се втурва напред и не може да надделее. Не бъркайте спешността с готовност.",
+            "2": "Останете бдителни: конфликтът може да дойде през нощта. Подготвената наблюдателност е достатъчна; не позволявайте на тревогата да ви погълне.",
+            "3": "Видимият гняв е опасен. Принципният човек може да върви сам през неудобство и неразбиране, но да остане без вина.",
+            "4": "Когато движението е болезнено и колебливо, следвайте работещата насока, дори ако в началото не ѝ вярвате напълно. Упоритата съпротива удължава съжалението.",
+            "5": "Прережете упорития плевел в центъра, но останете по средния път. Решителността без прекаляване не носи вина.",
+            "6": "Ако предупреждението никога не бъде изказано, вредният модел стига до лошия си край. Мълчанието не винаги е мир."
+          }
+        },
+        "ru": {
+          "title": "Гуай — Прорыв",
+          "coreThread": "Истину нужно сказать ясно. Гуай призывает к видимой границе и решительному разрыву с вредным, но прямо предостерегает от превращения убеждённости в вооружённую агрессию. Говорите честно, называйте риск и двигайтесь без жестокости.",
+          "whenItAppears": "Вынесите вопрос на открытое место. Начните со своего сообщества, изложите дело добросовестно и действуйте, а не только жалуйтесь. Прорыв этичен лишь тогда, когда средства остаются соразмерными проблеме.",
+          "reflectionQuestions": [
+            "Какую истину нужно сказать публично и ясно?",
+            "Какая граница нужна без эскалации в агрессию?",
+            "Где мне нужно действовать, а не только выражать возмущение?"
+          ],
+          "lineReflections": {
+            "1": "Сила в передних пальцах рвётся вперёд и не может победить. Не путайте срочность с готовностью.",
+            "2": "Оставайтесь настороже: конфликт может прийти ночью. Подготовленной бдительности достаточно; не позволяйте тревоге поглотить вас.",
+            "3": "Видимый гнев опасен. Принципный человек может идти один через неудобство и непонимание, но остаться без вины.",
+            "4": "Когда движение болезненно и нерешительно, следуйте работающему совету, даже если сначала не вполне ему доверяете. Упрямое сопротивление продлевает сожаление.",
+            "5": "Срежьте упрямый сорняк в центре, но оставайтесь на среднем пути. Решительность без чрезмерности не несёт вины.",
+            "6": "Если предупреждение так и не высказано, вредный паттерн дойдёт до плохого конца. Молчание не всегда означает мир."
+          }
+        }
+      }
+    },
+    {
+      "id": 44,
+      "chinese": "姤",
+      "pinyin": "Gòu",
+      "symbol": "䷫",
+      "trigrams": {
+        "upper": "heaven",
+        "lower": "wind"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-44-encounter.md"
+      },
+      "classical": {
+        "judgment": "姤：女壯，勿用取女。",
+        "lines": [
+          "初六：繫于金柅，貞吉，有攸往，見凶，羸豕孚蹢躅。",
+          "九二：包有魚，無咎，不利賓。",
+          "九三：臀無膚，其行次且，厲，無大咎。",
+          "九四：包無魚，起凶。",
+          "九五：以杞包瓜，含章，有隕自天。",
+          "上九：姤其角，吝，無咎。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Gòu — Encounter",
+          "coreThread": "A powerful influence arrives unexpectedly. Gòu asks you to notice it early, keep your judgment, and not hand over direction too quickly. The ancient marriage image belongs to its historical setting; the usable principle is caution around an intense new force or attachment.",
+          "whenItAppears": "Set the boundary at the first contact. Curiosity can be healthy, but not every compelling opportunity should be admitted into the centre of your life or work. Containment protects choice.",
+          "reflectionQuestions": [
+            "What strong influence has just entered the situation?",
+            "Where do I need an early boundary?",
+            "What should remain contained rather than offered outward?"
+          ],
+          "lineReflections": {
+            "1": "Fasten the brake early. Moving forward without restraint exposes danger, even if the impulse is restless and persuasive.",
+            "2": "Keep the fish in the pouch: hold a valuable or sensitive matter close. It is not yet for visitors or public display.",
+            "3": "Hesitation hurts, yet it can prevent a greater error. Move carefully through the discomfort.",
+            "4": "An empty pouch means an opportunity was not held when it was present. Do not blame others for what you failed to safeguard.",
+            "5": "Keep the melon wrapped and the brilliance contained. A gift may arrive unexpectedly when you protect what is growing.",
+            "6": "Meeting with the horns brings friction and embarrassment, but not necessarily blame. Accept the limit and do not force contact."
+          }
+        },
+        "bg": {
+          "title": "Гоу — Среща",
+          "coreThread": "Мощно влияние идва неочаквано. Гоу ви приканва да го забележите рано, да запазите преценката си и да не предавате посоката твърде бързо. Древният брачен образ принадлежи на историческата си среда; полезният принцип е предпазливост при нова силна сила или привързаност.",
+          "whenItAppears": "Поставете границата при първия контакт. Любопитството може да е здравословно, но не всяка завладяваща възможност трябва да бъде допусната в центъра на живота или работата ви. Ограничаването пази избора.",
+          "reflectionQuestions": [
+            "Кое силно влияние току-що е влязло в ситуацията?",
+            "Къде имам нужда от ранна граница?",
+            "Какво трябва да остане задържано, вместо да бъде предложено навън?"
+          ],
+          "lineReflections": {
+            "1": "Затегнете спирачката рано. Продължаването без ограничение излага на опасност, дори когато импулсът е неспокоен и убедителен.",
+            "2": "Дръжте рибата в торбата: запазете ценния или чувствителен въпрос близо. Още не е за гости или публично показване.",
+            "3": "Колебанието боли, но може да предотврати по-голяма грешка. Минете внимателно през неудобството.",
+            "4": "Празната торба означава, че възможността не е била задържана, когато е била налице. Не обвинявайте другите за онова, което не сте опазили.",
+            "5": "Дръжте пъпеша увит и блясъка скрит. Дар може да дойде неочаквано, когато пазите онова, което расте.",
+            "6": "Срещата с рогата носи триене и неудобство, но не непременно вина. Приемете границата и не насилвайте контакта."
+          }
+        },
+        "ru": {
+          "title": "Гоу — Встреча",
+          "coreThread": "Сильное влияние приходит неожиданно. Гоу предлагает заметить его рано, сохранить суждение и не отдавать направление слишком быстро. Древний брачный образ принадлежит своей эпохе; применимый принцип — осторожность перед новой сильной силой или привязанностью.",
+          "whenItAppears": "Поставьте границу при первом контакте. Любопытство может быть здоровым, но не всякую захватывающую возможность следует впускать в центр жизни или работы. Сдерживание защищает выбор.",
+          "reflectionQuestions": [
+            "Какое сильное влияние только что вошло в ситуацию?",
+            "Где мне нужна ранняя граница?",
+            "Что должно оставаться удержанным, а не предлагаться вовне?"
+          ],
+          "lineReflections": {
+            "1": "Закрепите тормоз рано. Движение без сдерживания открывает опасность, даже если импульс беспокоен и убедителен.",
+            "2": "Держите рыбу в мешке: сохраните ценное или чувствительное дело близко. Оно ещё не для гостей или публичного показа.",
+            "3": "Колебание причиняет боль, но может предотвратить большую ошибку. Осторожно пройдите через неудобство.",
+            "4": "Пустой мешок означает, что возможность не удержали, когда она была рядом. Не вините других за то, что не сумели сохранить.",
+            "5": "Держите дыню завёрнутой, а блеск — скрытым. Дар может прийти неожиданно, когда вы бережёте то, что растёт.",
+            "6": "Встреча рогами приносит трение и неловкость, но не обязательно вину. Примите предел и не принуждайте контакт."
+          }
+        }
+      }
+    },
+    {
+      "id": 45,
+      "chinese": "萃",
+      "pinyin": "Cuì",
+      "symbol": "䷬",
+      "trigrams": {
+        "upper": "lake",
+        "lower": "earth"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-45-gathering-together.md"
+      },
+      "classical": {
+        "judgment": "萃：亨。王假有廟，利見大人，亨，利貞。用大牲吉，利有攸往。",
+        "lines": [
+          "初六：有孚不終，乃亂乃萃，若號一握為笑，勿恤，往無咎。",
+          "六二：引吉，無咎，孚乃利用禴。",
+          "六三：萃如，嗟如，無攸利，往無咎，小吝。",
+          "九四：大吉，無咎。",
+          "九五：萃有位，無咎。匪孚，元永貞，悔亡。",
+          "上六：齎咨涕洟，無咎。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Cuì — Gathering together",
+          "coreThread": "Bring people and resources together around a shared centre. Cuì needs preparation, honesty, and a meaningful container; gathering without a purpose becomes noise or pressure. The temple image reminds us that a group needs a place, ritual, or practice that holds its common intention.",
+          "whenItAppears": "Call people together for something real. Make the purpose clear, prepare enough support, and invite trustworthy leadership. Strong gathering can support a major undertaking when no one is treated as merely part of the crowd.",
+          "reflectionQuestions": [
+            "What is the true centre of this gathering?",
+            "What container or agreement will make it safe and meaningful?",
+            "Who needs to be invited, heard, or supported?"
+          ],
+          "lineReflections": {
+            "1": "Trust may scatter and then regroup. A cry answered by one handclasp can turn confusion into laughter; do not despair too soon.",
+            "2": "Being drawn into a sincere gathering is good. A small, simple offering is enough when it carries real faith.",
+            "3": "You may long to gather and still feel excluded. Go anyway; the discomfort is small beside the possibility of connection.",
+            "4": "A great, well-held gathering brings no blame.",
+            "5": "A person in a central position may gather others without immediate trust. Let long-term integrity, not status alone, remove the doubt.",
+            "6": "Tears and sighs at the edge of the group are not blameworthy. Make room for grief as well as celebration."
+          }
+        },
+        "bg": {
+          "title": "Цуй — Събиране заедно",
+          "coreThread": "Съберете хора и ресурси около общ център. Цуй има нужда от подготовка, честност и смислена рамка; събирането без цел става шум или натиск. Образът на храма напомня, че групата има нужда от място, ритуал или практика, която държи общото ѝ намерение.",
+          "whenItAppears": "Съберете хората за нещо истинско. Направете целта ясна, подгответе достатъчна подкрепа и поканете надеждно ръководство. Силното събиране може да подкрепи голямо начинание, когато никой не е третиран само като част от тълпата.",
+          "reflectionQuestions": [
+            "Кой е истинският център на това събиране?",
+            "Коя рамка или договорка ще го направи безопасно и смислено?",
+            "Кой има нужда да бъде поканен, чут или подкрепен?"
+          ],
+          "lineReflections": {
+            "1": "Доверието може да се разпръсне и после да се събере отново. Вик, посрещнат с едно ръкостискане, може да превърне объркването в смях; не се отчайвайте твърде рано.",
+            "2": "Да бъдете привлечени в искрено събиране е добро. Малко, просто приношение е достатъчно, когато носи истинска вяра.",
+            "3": "Може да копнеете да се съберете и все пак да се чувствате изключени. Отидете все пак; неудобството е малко пред възможността за връзка.",
+            "4": "Голямото, добре удържано събиране не носи вина.",
+            "5": "Човек на централно място може да събере други без незабавно доверие. Нека дългата почтеност, а не само статутът, премахне съмнението.",
+            "6": "Сълзите и въздишките в края на групата не са вина. Оставете място за скръбта, както и за празнуването."
+          }
+        },
+        "ru": {
+          "title": "Цуй — Собирание вместе",
+          "coreThread": "Соберите людей и ресурсы вокруг общего центра. Цуй требует подготовки, честности и содержательной рамки; объединение без цели становится шумом или давлением. Образ храма напоминает, что группе нужно место, ритуал или практика, удерживающие общее намерение.",
+          "whenItAppears": "Соберите людей ради чего-то настоящего. Проясните цель, подготовьте достаточную поддержку и пригласите надёжное руководство. Сильное объединение способно поддержать большое дело, если никто не рассматривается лишь как часть толпы.",
+          "reflectionQuestions": [
+            "Каков настоящий центр этого объединения?",
+            "Какая рамка или договорённость сделает его безопасным и содержательным?",
+            "Кого нужно пригласить, услышать или поддержать?"
+          ],
+          "lineReflections": {
+            "1": "Доверие может рассеяться, а затем собраться снова. Крик, встреченный одним рукопожатием, способен превратить смятение в смех; не отчаивайтесь слишком рано.",
+            "2": "Быть привлечённым в искреннее собрание хорошо. Небольшого простого подношения достаточно, если в нём настоящая вера.",
+            "3": "Можно хотеть собраться и всё же чувствовать себя исключённым. Всё равно идите: неудобство мало по сравнению с возможностью связи.",
+            "4": "Великое, хорошо удержанное собрание не несёт вины.",
+            "5": "Человек в центральном положении может собрать других без немедленного доверия. Пусть долгосрочная честность, а не один статус, снимет сомнение.",
+            "6": "Слёзы и вздохи на краю группы не заслуживают вины. Оставьте место для скорби так же, как для празднования."
+          }
+        }
+      }
+    },
+    {
+      "id": 46,
+      "chinese": "升",
+      "pinyin": "Shēng",
+      "symbol": "䷭",
+      "trigrams": {
+        "upper": "earth",
+        "lower": "wind"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-46-pushing-upward.md"
+      },
+      "classical": {
+        "judgment": "升：元亨，用見大人，勿恤，南征吉。",
+        "lines": [
+          "初六：允升，大吉。",
+          "九二：孚乃利用禴，無咎。",
+          "九三：升虛邑。",
+          "六四：王用亨于岐山，吉無咎。",
+          "六五：貞吉，升階。",
+          "上六：冥升，利于不息之貞。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Shēng — Pushing upward",
+          "coreThread": "Growth comes through steady effort and humility. Shēng is an ascent from below: learn from those ahead, use the support that is offered, and climb step by step rather than demanding immediate elevation.",
+          "whenItAppears": "Seek capable guidance and make the next clear advance. Progress is favourable when it is rooted in sincerity and service. Do not let ambition make you blind to the pace, conditions, or people that make upward movement possible.",
+          "reflectionQuestions": [
+            "What is the next step, rather than the whole ascent?",
+            "Whose guidance would help me grow well?",
+            "How can I advance without losing humility?"
+          ],
+          "lineReflections": {
+            "1": "A shared, trusted ascent is greatly fortunate. Accept the lift offered by people who believe in the work.",
+            "2": "Sincere intention makes even a small offering sufficient. You do not need grand display to earn a rightful place.",
+            "3": "The way rises through an empty city: an opening appears where resistance was expected. Proceed without wasting it.",
+            "4": "Honour the larger purpose as you rise. A meaningful rite or acknowledgement keeps advancement connected to gratitude.",
+            "5": "Climb the stairs one at a time. Steady progress is fortunate.",
+            "6": "Do not keep rising blindly into darkness. Unceasing perseverance is useful only when it remains conscious and aligned."
+          }
+        },
+        "bg": {
+          "title": "Шън — Изкачване нагоре",
+          "coreThread": "Растежът идва чрез постоянство и скромност. Шън е изкачване отдолу: учете се от напредналите, използвайте предлаганата подкрепа и вървете стъпка по стъпка, вместо да изисквате незабавно издигане.",
+          "whenItAppears": "Търсете способно ръководство и направете следващото ясно напредване. Напредъкът е благоприятен, когато е вкоренен в искреност и служене. Не позволявайте на амбицията да ви заслепи за темпото, условията или хората, които правят възхода възможен.",
+          "reflectionQuestions": [
+            "Коя е следващата стъпка, а не цялото изкачване?",
+            "Чия насока би ми помогнала да израсна добре?",
+            "Как мога да напредна, без да изгубя скромността?"
+          ],
+          "lineReflections": {
+            "1": "Общото, доверено изкачване е много благоприятно. Приемете повдигането, предложено от хора, които вярват в работата.",
+            "2": "Искреното намерение прави достатъчно дори малкото приношение. Не ви е нужна голяма показност, за да заслужите правилно място.",
+            "3": "Пътят се издига през празен град: появява се отваряне там, където сте очаквали съпротива. Продължете, без да го пропилеете.",
+            "4": "Почитайте по-голямата цел, докато се изкачвате. Смисленият ритуал или признание държи напредването свързано с благодарността.",
+            "5": "Изкачвайте стълбите една по една. Постоянният напредък е благоприятен.",
+            "6": "Не продължавайте да се изкачвате сляпо в тъмното. Непрестанното постоянство е полезно само когато остава осъзнато и съгласувано."
+          }
+        },
+        "ru": {
+          "title": "Шэн — Подъём вверх",
+          "coreThread": "Рост приходит через постоянство и скромность. Шэн — подъём снизу: учитесь у идущих впереди, принимайте предложенную поддержку и поднимайтесь шаг за шагом, а не требуйте немедленного возвышения.",
+          "whenItAppears": "Ищите способное руководство и делайте следующий ясный шаг вперёд. Продвижение благоприятно, когда укоренено в искренности и служении. Не позволяйте амбиции ослепить вас к темпу, условиям или людям, делающим подъём возможным.",
+          "reflectionQuestions": [
+            "Каков следующий шаг, а не весь подъём?",
+            "Чьё руководство поможет мне хорошо вырасти?",
+            "Как продвигаться, не теряя скромности?"
+          ],
+          "lineReflections": {
+            "1": "Совместный подъём, основанный на доверии, очень благоприятен. Примите поддержку людей, верящих в работу.",
+            "2": "Искреннее намерение делает достаточным даже малое подношение. Вам не нужна большая показность, чтобы заслужить достойное место.",
+            "3": "Путь поднимается через пустой город: открытие появляется там, где ожидалось сопротивление. Двигайтесь, не растрачивая его.",
+            "4": "Почитайте большую цель по мере подъёма. Осмысленный ритуал или признание сохраняют связь продвижения с благодарностью.",
+            "5": "Поднимайтесь по ступеням по одной. Устойчивое продвижение благоприятно.",
+            "6": "Не продолжайте подниматься вслепую во тьму. Непрестанная настойчивость полезна лишь тогда, когда остаётся осознанной и согласованной."
+          }
+        }
+      }
+    },
+    {
+      "id": 47,
+      "chinese": "困",
+      "pinyin": "Kùn",
+      "symbol": "䷮",
+      "trigrams": {
+        "upper": "lake",
+        "lower": "water"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-47-oppression.md"
+      },
+      "classical": {
+        "judgment": "困：亨，貞，大人吉，無咎，有言不信。",
+        "lines": [
+          "初六：臀困于株木，入于幽谷，三歲不覿。",
+          "九二：困于酒食，朱紱方來，利用亨祀，征凶，無咎。",
+          "六三：困于石，據于蒺藜，入于其宮，不見其妻，凶。",
+          "九四：來徐徐，困于金車，吝，有終。",
+          "九五：劓刖，困于赤紱，乃徐有說，利用祭祀。",
+          "上六：困于葛藟，于臲卼，曰動悔。有悔，征吉。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Kùn — Oppression",
+          "coreThread": "Resources may feel constrained, but your inner stance remains available. Kùn asks for truthful speech, conservation of strength, and loyalty to meaning when external conditions do not respond. Words may not be believed immediately; integrity still matters.",
+          "whenItAppears": "Do not waste scarce energy proving yourself to every listener. Find the small supports that remain, accept help slowly, and move only after the situation is understood. Confinement is real, but it does not define the whole person.",
+          "reflectionQuestions": [
+            "What strength must I conserve right now?",
+            "Which small support is still available?",
+            "What truth must I keep, even if it is not yet believed?"
+          ],
+          "lineReflections": {
+            "1": "Stuck on a stump and entering a dark valley, you may feel unseen for a long time. Name the isolation and seek one real point of contact.",
+            "2": "Even amid food, status, or outward abundance, one can be constrained. Use simple ritual and sincere support; do not push forward into danger.",
+            "3": "Leaning on stone and thorns leads to a home where comfort cannot be found. Change the painful support you are relying on.",
+            "4": "Help arrives slowly, yet it is burdened by a golden carriage — status or resources may complicate it. Receive it carefully; there can still be an end to the trouble.",
+            "5": "Humiliation and restriction may ease only gradually. Keep faith with the deeper purpose and use patient forms of renewal.",
+            "6": "Entangled in vines on unstable ground, movement seems regrettable. Once you recognise the regret, a careful advance becomes favourable."
+          }
+        },
+        "bg": {
+          "title": "Кун — Потиснатост",
+          "coreThread": "Ресурсите може да изглеждат ограничени, но вътрешната ви позиция остава достъпна. Кун иска истинна реч, съхраняване на сили и вярност към смисъла, когато външните условия не откликват. Думите ви може да не бъдат повярвани веднага; почтеността все пак има значение.",
+          "whenItAppears": "Не хабете оскъдната енергия да се доказвате на всеки слушател. Намерете малките опори, които остават, приемайте помощта постепенно и се движете едва след като ситуацията е разбрана. Ограничението е реално, но не определя целия човек.",
+          "reflectionQuestions": [
+            "Коя сила трябва да съхраня сега?",
+            "Коя малка опора все още е налична?",
+            "Коя истина трябва да пазя, дори още да не ѝ вярват?"
+          ],
+          "lineReflections": {
+            "1": "Заклещени на пън и влизащи в тъмна долина, може дълго да се чувствате невидими. Назовете изолацията и потърсете една истинска точка на контакт.",
+            "2": "Дори сред храна, статус или външно изобилие човек може да е ограничен. Използвайте прост ритуал и искрена подкрепа; не натискайте напред към опасност.",
+            "3": "Опирането на камък и тръни води до дом, където утеха не се намира. Променете болезнената опора, на която разчитате.",
+            "4": "Помощта идва бавно, но е обременена от златна кола — статутът или ресурсите може да я усложняват. Приемете я внимателно; трудността все пак може да свърши.",
+            "5": "Унижението и ограничението може да отслабнат само постепенно. Пазете вярата в по-дълбоката цел и използвайте търпеливи форми на обновление.",
+            "6": "Оплетени във лози на нестабилна земя, движението изглежда носи съжаление. Щом разпознаете съжалението, внимателното напредване става благоприятно."
+          }
+        },
+        "ru": {
+          "title": "Кунь — Стеснение",
+          "coreThread": "Ресурсы могут казаться ограниченными, но внутренняя позиция остаётся доступной. Кунь требует правдивой речи, бережного отношения к силам и верности смыслу, когда внешние условия не отвечают. Словам могут не поверить сразу; честность всё равно важна.",
+          "whenItAppears": "Не тратьте скудную энергию, доказывая себя каждому слушателю. Найдите малые опоры, которые остаются, медленно принимайте помощь и двигайтесь лишь после понимания ситуации. Стеснение реально, но оно не определяет всего человека.",
+          "reflectionQuestions": [
+            "Какую силу мне нужно сохранять сейчас?",
+            "Какая малая опора всё ещё доступна?",
+            "Какую истину нужно хранить, даже если ей пока не верят?"
+          ],
+          "lineReflections": {
+            "1": "Застряв на пне и войдя в тёмную долину, можно долго чувствовать себя невидимым. Назовите изоляцию и ищите одну настоящую точку контакта.",
+            "2": "Даже среди еды, статуса или внешнего изобилия человек может быть стеснён. Используйте простой ритуал и искреннюю поддержку; не давите вперёд в опасность.",
+            "3": "Опора на камень и колючки ведёт к дому, где не найти утешения. Измените болезненную опору, на которую вы полагаетесь.",
+            "4": "Помощь приходит медленно, но обременена золотой повозкой: статус или ресурсы могут её усложнить. Принимайте осторожно; у трудности всё же может быть конец.",
+            "5": "Унижение и ограничение могут ослабнуть лишь постепенно. Сохраняйте веру в более глубокую цель и используйте терпеливые формы обновления.",
+            "6": "Запутавшись в лианах на неустойчивой почве, движение кажется поводом для сожаления. Как только вы это признаёте, осторожное продвижение становится благоприятным."
+          }
+        }
+      }
+    },
+    {
+      "id": 48,
+      "chinese": "井",
+      "pinyin": "Jǐng",
+      "symbol": "䷯",
+      "trigrams": {
+        "upper": "water",
+        "lower": "wind"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-48-the-well.md"
+      },
+      "classical": {
+        "judgment": "井：改邑不改井，無喪無得，往來井井。汔至，亦未繘井，羸其瓶，凶。",
+        "lines": [
+          "初六：井泥不食，舊井無禽。",
+          "九二：井谷射鮒，甕敝漏。",
+          "九三：井渫不食，為我民惻，可用汲，王明，並受其福。",
+          "六四：井甃，無咎。",
+          "九五：井冽，寒泉食。",
+          "上六：井收勿幕，有孚無吉。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Jǐng — The well",
+          "coreThread": "Return to the shared source. A town may move, but the well remains: the enduring resource needs access, maintenance, and fair use. Do not confuse a good source with its worn container, and do not fail at the last step by dropping the vessel.",
+          "whenItAppears": "Repair access to what serves everyone — knowledge, care, infrastructure, trust, or a practical resource. The value may already be there, but it must be cleaned, drawn, and shared. Maintenance is meaningful work.",
+          "reflectionQuestions": [
+            "What common source needs care or better access?",
+            "Is the resource itself weak, or only the container and process?",
+            "What would let others draw from it responsibly?"
+          ],
+          "lineReflections": {
+            "1": "A muddy, abandoned well cannot nourish anyone. Do not expect life from a source left neglected.",
+            "2": "Water is wasted on small fish while the jar leaks. Repair the vessel and redirect attention toward real use.",
+            "3": "The well is clean but not drawn from; this is a loss to the community. Make the resource available, and all can share its benefit.",
+            "4": "Line the well with stone. Good maintenance creates no blame.",
+            "5": "Clear, cold spring water is ready to drink. Trust the restored source and use it simply.",
+            "6": "The well is open and usable; do not cover it. Sincere, shared access is the greatest good."
+          }
+        },
+        "bg": {
+          "title": "Дзин — Кладенецът",
+          "coreThread": "Върнете се към общия източник. Градът може да се премести, но кладенецът остава: трайният ресурс има нужда от достъп, поддръжка и справедливо ползване. Не бъркайте добрия източник с износения му съд и не се проваляйте в последната стъпка, като изпуснете съда.",
+          "whenItAppears": "Поправете достъпа до онова, което служи на всички — знание, грижа, инфраструктура, доверие или практичен ресурс. Стойността може вече да е там, но трябва да бъде почистена, извадена и споделена. Поддръжката е смислена работа.",
+          "reflectionQuestions": [
+            "Кой общ източник има нужда от грижа или по-добър достъп?",
+            "Слаб ли е самият ресурс, или само съдът и процесът?",
+            "Какво би позволило на другите да черпят от него отговорно?"
+          ],
+          "lineReflections": {
+            "1": "Мътният, изоставен кладенец не може да подхрани никого. Не очаквайте живот от източник, оставен без грижа.",
+            "2": "Водата се хаби за малки риби, докато съдът тече. Поправете съда и насочете вниманието към истинската употреба.",
+            "3": "Кладенецът е чист, но от него не се черпи; това е загуба за общността. Направете ресурса достъпен и всички могат да споделят ползата му.",
+            "4": "Облицовайте кладенеца с камък. Добрата поддръжка не носи вина.",
+            "5": "Чиста, студена изворна вода е готова за пиене. Доверете се на възстановения източник и го използвайте просто.",
+            "6": "Кладенецът е отворен и годен за ползване; не го покривайте. Искреният, споделен достъп е най-голямото добро."
+          }
+        },
+        "ru": {
+          "title": "Цзин — Колодец",
+          "coreThread": "Вернитесь к общему источнику. Город может переехать, но колодец остаётся: устойчивому ресурсу нужны доступ, обслуживание и справедливое использование. Не путайте хороший источник с изношенным сосудом и не теряйте всё на последнем шаге, разбив кувшин.",
+          "whenItAppears": "Восстановите доступ к тому, что служит всем: знанию, заботе, инфраструктуре, доверию или практическому ресурсу. Ценность уже может быть там, но её нужно очистить, зачерпнуть и разделить. Обслуживание — содержательная работа.",
+          "reflectionQuestions": [
+            "Какой общий источник нуждается в заботе или лучшем доступе?",
+            "Слаб ли сам ресурс или только сосуд и процесс?",
+            "Что позволит другим ответственно черпать из него?"
+          ],
+          "lineReflections": {
+            "1": "Мутный заброшенный колодец не может питать никого. Не ждите жизни от источника, оставленного без ухода.",
+            "2": "Вода тратится на мелкую рыбу, пока сосуд протекает. Почините сосуд и направьте внимание на настоящее применение.",
+            "3": "Колодец чист, но из него не черпают; это потеря для сообщества. Сделайте ресурс доступным, и все смогут разделить его пользу.",
+            "4": "Обложите колодец камнем. Хорошее обслуживание не несёт вины.",
+            "5": "Чистая холодная родниковая вода готова к питью. Доверьтесь восстановленному источнику и пользуйтесь им просто.",
+            "6": "Колодец открыт и пригоден к использованию; не закрывайте его. Искренний общий доступ — величайшее благо."
+          }
+        }
+      }
+    },
+    {
+      "id": 49,
+      "chinese": "革",
+      "pinyin": "Gé",
+      "symbol": "䷰",
+      "trigrams": {
+        "upper": "lake",
+        "lower": "fire"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-49-revolution.md"
+      },
+      "classical": {
+        "judgment": "革：己日乃孚，元亨利貞，悔亡。",
+        "lines": [
+          "初九：鞏用黃牛之革。",
+          "六二：己日乃革之，征吉，無咎。",
+          "九三：征凶，貞厲，革言三就，有孚。",
+          "九四：悔亡，有孚改命，吉。",
+          "九五：大人虎變，未占有孚。",
+          "上六：君子豹變，小人革面，征凶，居貞吉。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Gé — Revolution",
+          "coreThread": "Change becomes legitimate when the old form has truly expired. Gé asks for preparation, clear communication, and right timing: only when the reason for transformation is understood can trust replace regret.",
+          "whenItAppears": "Do not change merely because novelty is attractive. Hold the old form firmly until the time is ripe, explain the need more than once, and make the transformation visible in conduct. A real mandate is earned through trust.",
+          "reflectionQuestions": [
+            "What old form has genuinely reached its end?",
+            "What must be prepared or explained before change begins?",
+            "How will people know this transformation is trustworthy?"
+          ],
+          "lineReflections": {
+            "1": "Bind the old form securely for now. Premature revolution weakens the change it wants to make.",
+            "2": "When the proper day has arrived, change decisively. Action then is fortunate and without blame.",
+            "3": "Pushing ahead too early is dangerous. State the reasons repeatedly until confidence is genuinely established.",
+            "4": "Trust makes a change of mandate possible. When people understand the necessity, regret falls away.",
+            "5": "A great person changes like a tiger: the transformation is unmistakable before any divination or explanation. Let your actions show the new form.",
+            "6": "The mature person’s change is refined; others may change only their face. Do not keep pressing after the transformation — remain steady in the new order."
+          }
+        },
+        "bg": {
+          "title": "Гъ — Преобразяване",
+          "coreThread": "Промяната става оправдана, когато старата форма наистина е изчерпана. Гъ иска подготовка, ясно общуване и правилен момент: само когато причината за преобразяването е разбрана, доверието може да замени съжалението.",
+          "whenItAppears": "Не променяйте само защото новото е привлекателно. Задръжте старата форма здраво, докато времето узрее, обяснете нуждата повече от веднъж и направете преобразяването видимо в поведението. Истинският мандат се печели чрез доверие.",
+          "reflectionQuestions": [
+            "Коя стара форма наистина е достигнала края си?",
+            "Какво трябва да бъде подготвено или обяснено, преди да започне промяната?",
+            "Как хората ще разберат, че това преобразяване е надеждно?"
+          ],
+          "lineReflections": {
+            "1": "Задръжте старата форма здраво засега. Преждевременната революция отслабва промяната, която иска да направи.",
+            "2": "Когато правилният ден е дошъл, променете решително. Тогава действието е благоприятно и без вина.",
+            "3": "Твърде ранното напредване е опасно. Изказвайте причините многократно, докато доверието бъде наистина установено.",
+            "4": "Доверието прави възможна промяната на мандата. Когато хората разберат необходимостта, съжалението отпада.",
+            "5": "Великият човек се променя като тигър: преобразяването е безпогрешно още преди предсказание или обяснение. Нека действията ви покажат новата форма.",
+            "6": "Промяната на зрелия човек е изтънчена; други може да променят само лицето си. Не продължавайте да натискате след преобразяването — останете устойчиви в новия ред."
+          }
+        },
+        "ru": {
+          "title": "Гэ — Преобразование",
+          "coreThread": "Перемена становится законной, когда старая форма действительно исчерпана. Гэ требует подготовки, ясного общения и верного времени: лишь когда причина преобразования понята, доверие может заменить сожаление.",
+          "whenItAppears": "Не меняйте лишь потому, что новое привлекательно. Удерживайте старую форму, пока время не созрело, объясняйте необходимость не один раз и делайте преобразование видимым в поступках. Настоящий мандат заслуживается доверием.",
+          "reflectionQuestions": [
+            "Какая старая форма действительно дошла до конца?",
+            "Что нужно подготовить или объяснить до начала перемены?",
+            "Как люди поймут, что этому преобразованию можно доверять?"
+          ],
+          "lineReflections": {
+            "1": "Пока крепко удерживайте старую форму. Преждевременная революция ослабляет перемену, которую хочет совершить.",
+            "2": "Когда правильный день пришёл, меняйте решительно. Тогда действие благоприятно и без вины.",
+            "3": "Слишком раннее продвижение опасно. Повторяйте причины, пока доверие не установится по-настоящему.",
+            "4": "Доверие делает возможной смену мандата. Когда люди понимают необходимость, сожаление исчезает.",
+            "5": "Великий человек меняется как тигр: преобразование несомненно ещё до гадания или объяснения. Пусть поступки покажут новую форму.",
+            "6": "Перемена зрелого человека утончённа; другие могут поменять лишь лицо. Не продолжайте давить после преобразования — оставайтесь устойчивыми в новом порядке."
+          }
+        }
+      }
+    },
+    {
+      "id": 50,
+      "chinese": "鼎",
+      "pinyin": "Dǐng",
+      "symbol": "䷱",
+      "trigrams": {
+        "upper": "fire",
+        "lower": "wind"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-50-the-cauldron.md"
+      },
+      "classical": {
+        "judgment": "鼎：元吉，亨。",
+        "lines": [
+          "初六：鼎顛趾，利出否，得妾以其子，無咎。",
+          "九二：鼎有實，我仇有疾，不我能即，吉。",
+          "九三：鼎耳革，其行塞，雉膏不食，方雨虧悔，終吉。",
+          "九四：鼎折足，覆公餗，其形渥，凶。",
+          "六五：鼎黃耳金鉉，利貞。",
+          "上九：鼎玉鉉，大吉，無不利。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Dǐng — The cauldron",
+          "coreThread": "Refine raw material into something nourishing. Dǐng is the vessel of transformation: skill, culture, attention, and care turn what is unformed into sustenance for others. The quality of the vessel matters as much as the ingredients.",
+          "whenItAppears": "Prepare your work carefully and think about who it will feed. Remove what has spoiled, protect the process from interference, and strengthen the parts that carry the responsibility. This is a time for craft with purpose.",
+          "reflectionQuestions": [
+            "What raw material am I being asked to refine?",
+            "What must be removed before the new work can nourish?",
+            "Which part of the process needs more skill or support?"
+          ],
+          "lineReflections": {
+            "1": "Turn the cauldron over to empty what is stale. Clearing the spoiled makes room for new life and work.",
+            "2": "The cauldron is full, while a rival cannot approach. Protect the good work from interference without becoming defensive.",
+            "3": "The handle has changed and the vessel cannot move; fine food goes unused. Wait for the conditions that reconnect skill to use — regret can pass.",
+            "4": "A cauldron with broken legs overturns what it was meant to serve. Do not accept a responsibility your structure cannot yet carry.",
+            "5": "Yellow ears and a golden handle join balance with strength. Keep the centre steady and the means dependable.",
+            "6": "A jade handle marks the mature vessel. When craft and character are joined, there is great good."
+          }
+        },
+        "bg": {
+          "title": "Дин — Казанът",
+          "coreThread": "Превърнете суровото в нещо подхранващо. Дин е съдът на преобразяването: умение, култура, внимание и грижа превръщат неоформеното в храна за другите. Качеството на съда е толкова важно, колкото и съставките.",
+          "whenItAppears": "Подгответе работата си внимателно и помислете кого ще подхрани. Премахнете разваленото, пазете процеса от намеса и укрепете частите, които носят отговорността. Това е време за майсторство с цел.",
+          "reflectionQuestions": [
+            "Кой суров материал трябва да усъвършенствам?",
+            "Какво трябва да бъде премахнато, преди новата работа да подхрани?",
+            "Коя част от процеса има нужда от повече умение или подкрепа?"
+          ],
+          "lineReflections": {
+            "1": "Обърнете казана, за да изсипете застоялото. Изчистването на разваленото отваря място за нов живот и работа.",
+            "2": "Казанът е пълен, а съперникът не може да се приближи. Пазете добрата работа от намеса, без да ставате отбранителни.",
+            "3": "Дръжката е променена и съдът не може да се движи; хубавата храна остава неизползвана. Изчакайте условията, които отново свързват умението с употребата — съжалението може да отмине.",
+            "4": "Казанът със счупени крака разлива онова, което е трябвало да поднесе. Не приемайте отговорност, която структурата ви още не може да носи.",
+            "5": "Жълтите уши и златната дръжка съчетават равновесие и сила. Пазете центъра устойчив и средствата надеждни.",
+            "6": "Нефритената дръжка бележи зрелия съд. Когато майсторство и характер са съединени, има голямо добро."
+          }
+        },
+        "ru": {
+          "title": "Дин — Котёл",
+          "coreThread": "Превратите сырое в питающее. Дин — сосуд преобразования: мастерство, культура, внимание и забота превращают неоформленное в пищу для других. Качество сосуда так же важно, как и ингредиенты.",
+          "whenItAppears": "Тщательно готовьте свою работу и думайте, кого она будет питать. Уберите испорченное, защитите процесс от вмешательства и укрепите части, несущие ответственность. Это время мастерства с целью.",
+          "reflectionQuestions": [
+            "Какой сырой материал мне предлагают преобразить?",
+            "Что нужно убрать, прежде чем новая работа начнёт питать?",
+            "Какая часть процесса нуждается в большем мастерстве или поддержке?"
+          ],
+          "lineReflections": {
+            "1": "Переверните котёл, чтобы вылить застоявшееся. Очищение от испорченного создаёт место для новой жизни и работы.",
+            "2": "Котёл полон, а соперник не может приблизиться. Защищайте хорошую работу от вмешательства, не становясь оборонительными.",
+            "3": "Ручка изменилась, и сосуд не может двигаться; хорошая пища остаётся неиспользованной. Ждите условий, которые снова соединят мастерство с применением — сожаление может пройти.",
+            "4": "Котёл со сломанными ножками опрокидывает то, что должен был подать. Не принимайте ответственность, которую структура ещё не может нести.",
+            "5": "Жёлтые ушки и золотая ручка соединяют равновесие и силу. Сохраняйте центр устойчивым, а средства надёжными.",
+            "6": "Нефритовая ручка отмечает зрелый сосуд. Когда мастерство и характер соединены, есть великое благо."
+          }
+        }
+      }
+    },
+    {
+      "id": 51,
+      "chinese": "震",
+      "pinyin": "Zhèn",
+      "symbol": "䷲",
+      "trigrams": {
+        "upper": "thunder",
+        "lower": "thunder"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-51-the-arousing-shock.md"
+      },
+      "classical": {
+        "judgment": "震：亨。震來虩虩，笑言啞啞。震驚百里，不喪匕鬯。",
+        "lines": [
+          "初九：震來虩虩，後笑言啞啞，吉。",
+          "六二：震來厲，億喪貝，躋于九陵，勿逐，七日得。",
+          "六三：震蘇蘇，震行無眚。",
+          "九四：震遂泥。",
+          "六五：震往來厲，億無喪，有事。",
+          "上六：震索索，視矍矍，征凶。震不于其躬，于其鄰，無咎。婚媾有言。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Zhèn — The arousing shock",
+          "coreThread": "A shock can wake you up. Zhèn does not deny the first alarm; it shows fear arriving, then laughter and speech returning. Preserve what is essential, regain presence, and learn what the disturbance reveals.",
+          "whenItAppears": "Let the first wave pass before deciding what it means. Secure your basics, avoid chasing every apparent loss, and move when the body and mind have recovered enough to act. Shock becomes useful when it restores attention.",
+          "reflectionQuestions": [
+            "What has this disturbance made impossible to ignore?",
+            "What essential thing must I preserve?",
+            "What apparent loss should I stop chasing for now?"
+          ],
+          "lineReflections": {
+            "1": "Fear comes first, then laughter returns. Let the nervous system complete its cycle; recovery is fortunate.",
+            "2": "A shock may seem to take your valuables. Climb to safer ground, do not chase the loss, and what is truly yours may return in time.",
+            "3": "Trembling can remain, yet action after the shock need not bring error. Move gently, not frozen.",
+            "4": "The shock sinks into mud. Progress is slowed; stabilise the ground before trying to accelerate.",
+            "5": "Shocks may come and go, but the essential need not be lost. Attend to the work that remains.",
+            "6": "Panic spreads through watchful eyes and harms any advance. If the disturbance is in the neighbour rather than yourself, stay composed; tension may still affect close relationships."
+          }
+        },
+        "bg": {
+          "title": "Джън — Разтърсващият шок",
+          "coreThread": "Разтърсването може да ви събуди. Джън не отрича първата тревога; той показва как страхът пристига, а после смехът и речта се връщат. Запазете същественото, върнете присъствието си и вижте какво разкрива смущението.",
+          "whenItAppears": "Оставете първата вълна да премине, преди да решите какво означава. Подсигурете основното, не преследвайте всяка привидна загуба и действайте, когато тялото и умът са се възстановили достатъчно. Шокът става полезен, когато връща вниманието.",
+          "reflectionQuestions": [
+            "Какво това смущение направи невъзможно да пренебрегна?",
+            "Кое съществено нещо трябва да запазя?",
+            "Коя привидна загуба трябва да спра да преследвам засега?"
+          ],
+          "lineReflections": {
+            "1": "Страхът идва първи, после смехът се връща. Позволете на нервната система да завърши своя цикъл; възстановяването е благоприятно.",
+            "2": "Шокът може да изглежда, че отнема ценностите ви. Изкачете се на по-сигурно място, не преследвайте загубата и онова, което наистина е ваше, може да се върне навреме.",
+            "3": "Треперенето може да остане, но действието след шока не е нужно да носи грешка. Движете се нежно, не замръзвайте.",
+            "4": "Шокът потъва в калта. Напредъкът се забавя; стабилизирайте почвата, преди да се опитате да ускорите.",
+            "5": "Шоковете може да идват и да си отиват, но същественото не е нужно да бъде изгубено. Погрижете се за работата, която остава.",
+            "6": "Паниката се разпространява чрез тревожни очи и вреди на всяко напредване. Ако смущението е у съседа, а не у вас, останете спокойни; напрежението все пак може да засегне близките отношения."
+          }
+        },
+        "ru": {
+          "title": "Чжэнь — Пробуждающее потрясение",
+          "coreThread": "Потрясение может разбудить вас. Чжэнь не отрицает первой тревоги: он показывает, как приходит страх, а затем возвращаются смех и речь. Сохраните существенное, верните присутствие и увидьте, что раскрывает потрясение.",
+          "whenItAppears": "Дайте первой волне пройти, прежде чем решать, что она означает. Обеспечьте основы, не гонитесь за каждой кажущейся потерей и действуйте, когда тело и ум достаточно восстановились. Потрясение становится полезным, когда возвращает внимание.",
+          "reflectionQuestions": [
+            "Что это потрясение сделало невозможным игнорировать?",
+            "Что существенное я должен сохранить?",
+            "Какую кажущуюся потерю стоит пока перестать преследовать?"
+          ],
+          "lineReflections": {
+            "1": "Сначала приходит страх, затем возвращается смех. Позвольте нервной системе завершить цикл; восстановление благоприятно.",
+            "2": "Потрясение может казаться потерей ценностей. Поднимитесь на более безопасное место, не гонитесь за потерей, и то, что действительно ваше, может вернуться со временем.",
+            "3": "Дрожь может остаться, но действие после потрясения не обязано нести ошибку. Двигайтесь мягко, не замирайте.",
+            "4": "Потрясение вязнет в грязи. Продвижение замедлено; стабилизируйте почву до попытки ускориться.",
+            "5": "Потрясения могут приходить и уходить, но существенное не обязано быть потеряно. Займитесь работой, которая остаётся.",
+            "6": "Паника распространяется через тревожные глаза и вредит любому продвижению. Если потрясение происходит у соседа, а не у вас, сохраняйте спокойствие; напряжение всё же может затронуть близкие связи."
+          }
+        }
+      }
+    },
+    {
+      "id": 52,
+      "chinese": "艮",
+      "pinyin": "Gèn",
+      "symbol": "䷳",
+      "trigrams": {
+        "upper": "mountain",
+        "lower": "mountain"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-52-keeping-still.md"
+      },
+      "classical": {
+        "judgment": "艮：艮其背，不獲其身，行其庭，不見其人，無咎。",
+        "lines": [
+          "初六：艮其趾，無咎，利永貞。",
+          "六二：艮其腓，不拯其隨，其心不快。",
+          "九三：艮其限，列其夤，厲薰心。",
+          "六四：艮其身，無咎。",
+          "六五：艮其輔，言有序，悔亡。",
+          "上九：敦艮，吉。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Gèn — Keeping still",
+          "coreThread": "Stillness is an active boundary. Gèn asks you to stop where stopping is right, release the urge to chase, and return attention to the present. Like a mountain, it is not absence of life but a stable limit that lets things settle.",
+          "whenItAppears": "Pause the motion that is carrying you away from yourself. Still the relevant part of the situation rather than freezing the whole life. Good stopping creates space for clear speech, right timing, and calm action later.",
+          "reflectionQuestions": [
+            "What needs to stop now?",
+            "Which part of me is already ready to rest, and which is still reacting?",
+            "What would a clear, ordered response sound like?"
+          ],
+          "lineReflections": {
+            "1": "Still the toes before the first step. Long-term steadiness begins with not moving too soon.",
+            "2": "The calves are still but cannot rescue the one they follow, and the heart is unhappy. Accept the limit of what you can control.",
+            "3": "Stopping at the waist can create painful inner division. Do not use rigidity to cut yourself off from feeling or breath.",
+            "4": "Still the body. A full pause, held without drama, carries no blame.",
+            "5": "Still the jaw and let words become ordered. Careful speech removes regret.",
+            "6": "Deep, generous stillness is fortunate. Let the pause become grounded presence rather than withdrawal."
+          }
+        },
+        "bg": {
+          "title": "Гън — Запазване на неподвижност",
+          "coreThread": "Неподвижността е активна граница. Гън ви приканва да спрете там, където е правилно да спрете, да освободите нуждата да преследвате и да върнете вниманието в настоящето. Като планина тя не е липса на живот, а устойчива граница, която позволява на нещата да се утаят.",
+          "whenItAppears": "Поставете пауза на движението, което ви отнася далеч от вас самите. Успокойте съответната част от ситуацията, вместо да замразявате целия живот. Доброто спиране създава място за ясна реч, правилен момент и спокойно действие по-късно.",
+          "reflectionQuestions": [
+            "Какво трябва да спре сега?",
+            "Коя част от мен вече е готова за покой и коя още реагира?",
+            "Как би звучал ясен, подреден отговор?"
+          ],
+          "lineReflections": {
+            "1": "Спрете пръстите на краката преди първата стъпка. Дългата устойчивост започва с това да не се движите твърде рано.",
+            "2": "Прасците са неподвижни, но не могат да спасят онзи, когото следват, и сърцето е недоволно. Приемете границата на онова, което можете да контролирате.",
+            "3": "Спирането в кръста може да създаде болезнено вътрешно разделение. Не използвайте твърдостта, за да се откъснете от чувството или дъха.",
+            "4": "Успокойте тялото. Пълната пауза, държана без драма, не носи вина.",
+            "5": "Успокойте челюстта и нека думите станат подредени. Внимателната реч премахва съжалението.",
+            "6": "Дълбоката, щедра неподвижност е благоприятна. Нека паузата стане заземено присъствие, а не отдръпване."
+          }
+        },
+        "ru": {
+          "title": "Гэнь — Сохранение неподвижности",
+          "coreThread": "Неподвижность — активная граница. Гэнь предлагает остановиться там, где правильно остановиться, отпустить стремление преследовать и вернуть внимание в настоящее. Как гора, это не отсутствие жизни, а устойчивый предел, позволяющий всему улечься.",
+          "whenItAppears": "Поставьте на паузу движение, уносящее вас от себя. Успокойте нужную часть ситуации, а не замораживайте всю жизнь. Хорошая остановка создаёт место для ясной речи, верного времени и спокойного действия позднее.",
+          "reflectionQuestions": [
+            "Что должно остановиться сейчас?",
+            "Какая часть меня уже готова к покою, а какая всё ещё реагирует?",
+            "Как прозвучал бы ясный, упорядоченный ответ?"
+          ],
+          "lineReflections": {
+            "1": "Остановите пальцы ног до первого шага. Долгая устойчивость начинается с того, чтобы не двигаться слишком рано.",
+            "2": "Икры неподвижны, но не могут спасти того, за кем следуют, и сердцу неприятно. Примите предел того, что вы можете контролировать.",
+            "3": "Остановка в поясе может создать болезненное внутреннее разделение. Не используйте жёсткость, чтобы отрезать себя от чувства или дыхания.",
+            "4": "Успокойте тело. Полная пауза, удерживаемая без драмы, не несёт вины.",
+            "5": "Успокойте челюсть, и пусть слова станут упорядоченными. Осторожная речь снимает сожаление.",
+            "6": "Глубокая, щедрая неподвижность благоприятна. Пусть пауза станет заземлённым присутствием, а не уходом."
+          }
+        }
+      }
+    },
+    {
+      "id": 53,
+      "chinese": "漸",
+      "pinyin": "Jiàn",
+      "symbol": "䷴",
+      "trigrams": {
+        "upper": "wind",
+        "lower": "mountain"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-53-gradual-development.md"
+      },
+      "classical": {
+        "judgment": "漸：女歸吉，利貞。",
+        "lines": [
+          "初六：鴻漸于干，小子厲，有言，無咎。",
+          "六二：鴻漸于磐，飲食衎衎，吉。",
+          "九三：鴻漸于陸，夫征不復，婦孕不育，凶；利御寇。",
+          "六四：鴻漸于木，或得其桷，無咎。",
+          "九五：鴻漸于陵，婦三歲不孕，終莫之勝，吉。",
+          "上九：鴻漸于逵，其羽可用為儀，吉。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Jiàn — Gradual development",
+          "coreThread": "A lasting change grows in sequence. Jiàn follows the wild goose from shore to rock, land, tree, hill, and open path: each stage asks for a different kind of footing. Respect the stages, make commitments that can mature, and let trust develop naturally.",
+          "whenItAppears": "Choose the pace that allows relationship, skill, or work to root. Do not demand a mature result from an early stage. Progress is real when it can be repeated and shared, not merely announced.",
+          "reflectionQuestions": [
+            "What stage am I actually in?",
+            "What stable footing is needed before the next move?",
+            "Where would patience protect a long-term commitment?"
+          ],
+          "lineReflections": {
+            "1": "At the shore, the beginning feels exposed and attracts comment. Small risks are natural; do not let noise make you abandon the path.",
+            "2": "On the rock, nourishment and companionship are available. Rest in the stable stage and let trust grow through ordinary enjoyment.",
+            "3": "On open land, an advance can leave a partnership unprotected and a hoped-for future unrealised. Guard the boundary before you expand.",
+            "4": "In the tree, the goose finds a suitable branch. Adapt to an imperfect but workable support rather than waiting for ideal conditions.",
+            "5": "On the hill, a desired outcome is delayed, yet opposition does not win forever. Stay faithful to the process without forcing its timing.",
+            "6": "On the open path, the feathers become part of a ceremony. Mature development can become a graceful example for others."
+          }
+        },
+        "bg": {
+          "title": "Дзиен — Постепенно развитие",
+          "coreThread": "Трайната промяна расте последователно. Дзиен следва дивата гъска от брега към скалата, сушата, дървото, хълма и открития път: всеки етап иска различна опора. Уважавайте етапите, поемайте ангажименти, които могат да узреят, и оставете доверието да расте естествено.",
+          "whenItAppears": "Изберете темпото, което позволява на връзката, умението или работата да пуснат корен. Не изисквайте зрял резултат от ранен етап. Напредъкът е истински, когато може да бъде повторен и споделен, а не само обявен.",
+          "reflectionQuestions": [
+            "В кой етап всъщност се намирам?",
+            "Коя стабилна опора е нужна преди следващия ход?",
+            "Къде търпението би защитило дългосрочен ангажимент?"
+          ],
+          "lineReflections": {
+            "1": "На брега началото е изложено и привлича коментари. Малките рискове са естествени; не позволявайте на шума да ви откаже от пътя.",
+            "2": "На скалата има подхранване и компания. Починете в устойчивия етап и оставете доверието да расте чрез обикновена радост.",
+            "3": "На открита земя напредването може да остави партньорство незащитено и желаното бъдеще неосъществено. Пазете границата, преди да се разширите.",
+            "4": "В дървото гъската намира подходящ клон. Приспособете се към несъвършената, но работеща опора, вместо да чакате идеални условия.",
+            "5": "На хълма желаният изход се забавя, но противопоставянето не печели завинаги. Останете верни на процеса, без да насилвате времето му.",
+            "6": "На открития път перата стават част от церемония. Зрялото развитие може да стане изящен пример за другите."
+          }
+        },
+        "ru": {
+          "title": "Цзянь — Постепенное развитие",
+          "coreThread": "Долгая перемена растёт последовательно. Цзянь следует за диким гусем от берега к скале, земле, дереву, холму и открытому пути: каждой стадии нужна своя опора. Уважайте этапы, берите обязательства, которые могут созреть, и позвольте доверию расти естественно.",
+          "whenItAppears": "Выбирайте темп, позволяющий связи, навыку или делу пустить корни. Не требуйте зрелого результата от ранней стадии. Продвижение реально, когда его можно повторить и разделить, а не только объявить.",
+          "reflectionQuestions": [
+            "На какой стадии я в действительности нахожусь?",
+            "Какая устойчивая опора нужна до следующего шага?",
+            "Где терпение защитит долгосрочное обязательство?"
+          ],
+          "lineReflections": {
+            "1": "На берегу начало открыто и вызывает комментарии. Малые риски естественны; не позволяйте шуму увести вас с пути.",
+            "2": "На скале есть питание и товарищество. Отдохните в устойчивой стадии и позвольте доверию расти через простую радость.",
+            "3": "На открытой земле продвижение может оставить партнёрство без защиты, а желанное будущее — неосуществлённым. Охраняйте границу до расширения.",
+            "4": "На дереве гусь находит подходящую ветвь. Приспособьтесь к несовершенной, но работающей опоре вместо ожидания идеальных условий.",
+            "5": "На холме желаемый итог задерживается, но противодействие не побеждает навсегда. Храните верность процессу, не принуждая его время.",
+            "6": "На открытом пути перья становятся частью церемонии. Зрелое развитие способно стать изящным примером для других."
+          }
+        }
+      }
+    },
+    {
+      "id": 54,
+      "chinese": "歸妹",
+      "pinyin": "Guī Mèi",
+      "symbol": "䷵",
+      "trigrams": {
+        "upper": "thunder",
+        "lower": "lake"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-54-the-marrying-maiden.md"
+      },
+      "classical": {
+        "judgment": "歸妹：征凶，無攸利。",
+        "lines": [
+          "初九：歸妹以娣，跛能履，征吉。",
+          "九二：眇能視，利幽人之貞。",
+          "六三：歸妹以須，反歸以娣。",
+          "九四：歸妹愆期，遲歸有時。",
+          "六五：帝乙歸妹，其君之袂，不如其娣之袂良，月幾望，吉。",
+          "上六：女承筐無實，士刲羊無血，無攸利。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Guī Mèi — The marrying maiden",
+          "coreThread": "An unequal or incomplete arrangement needs clear eyes. Guī Mèi uses the marriage customs of its era to show a relationship or agreement formed out of order: attraction and movement are present, but the conditions do not yet support a full advance. Protect dignity and do not build on wishful assumptions.",
+          "whenItAppears": "Know the actual terms of the arrangement. Accept a limited role only if it is conscious and workable, not because you hope it will silently become something else. Timing and mutual reality matter more than appearances.",
+          "reflectionQuestions": [
+            "What is unequal or incomplete in this arrangement?",
+            "What can I honestly accept, and what must not be assumed?",
+            "Is waiting the more dignified and realistic action?"
+          ],
+          "lineReflections": {
+            "1": "Even with a limitation, a person can walk. Proceed only within the role and capacity that are truly available.",
+            "2": "Partial sight can still recognise what is right. Keep the integrity of the inward, independent person rather than seeking outer approval.",
+            "3": "Waiting for a higher place and then returning to a lesser one shows the cost of wishful positioning. Do not bargain away dignity for status.",
+            "4": "A delayed union may have its proper time later. Waiting is not failure when the conditions are not yet right.",
+            "5": "Plain outer appearance can hold more real worth than ornate display. Near fullness, harmony and timing matter more than comparison.",
+            "6": "An empty basket and bloodless sacrifice are form without substance. Do not continue an agreement that contains no real offering from either side."
+          }
+        },
+        "bg": {
+          "title": "Гуей Мей — Омъжващата се девойка",
+          "coreThread": "Неравна или непълна договореност изисква ясни очи. Гуей Мей използва брачните обичаи на своето време, за да покаже връзка или договорка, създадена извън реда: има привличане и движение, но условията още не поддържат пълно напредване. Пазете достойнството си и не градете върху пожелателни предположения.",
+          "whenItAppears": "Познайте действителните условия на договореността. Приемайте ограничена роля само ако е осъзната и работеща, а не защото се надявате мълчаливо да се превърне в нещо друго. Времето и взаимната реалност са по-важни от външния вид.",
+          "reflectionQuestions": [
+            "Какво е неравно или непълно в тази договореност?",
+            "Какво мога честно да приема и какво не трябва да предполагам?",
+            "По-достойното и реалистично действие ли е изчакването?"
+          ],
+          "lineReflections": {
+            "1": "Дори с ограничение човек може да върви. Продължете само в рамките на ролята и способността, които наистина са налични.",
+            "2": "Частичното виждане все пак може да разпознае правилното. Пазете почтеността на вътрешния, независим човек, вместо да търсите външно одобрение.",
+            "3": "Чакането на по-високо място и после връщането към по-ниско показва цената на пожелателното позициониране. Не разменяйте достойнството за статус.",
+            "4": "Забавеният съюз може да има правилното си време по-късно. Чакането не е провал, когато условията още не са подходящи.",
+            "5": "Обикновеният външен вид може да носи повече истинска стойност от изящната показност. Близо до пълнотата хармонията и времето са по-важни от сравнението.",
+            "6": "Празната кошница и безкръвната жертва са форма без същност. Не продължавайте договорка, която не съдържа истинско приношение от нито една страна."
+          }
+        },
+        "ru": {
+          "title": "Гуй Мэй — Выходящая замуж девушка",
+          "coreThread": "Неравное или неполное соглашение требует ясного взгляда. Гуй Мэй использует брачные обычаи своей эпохи, чтобы показать связь или договорённость, созданную вне порядка: притяжение и движение есть, но условия ещё не поддерживают полное продвижение. Берегите достоинство и не стройте на желаемых предположениях.",
+          "whenItAppears": "Знайте действительные условия соглашения. Принимайте ограниченную роль лишь если она осознана и работоспособна, а не потому, что молча надеетесь превратить её во что-то другое. Время и взаимная реальность важнее внешнего вида.",
+          "reflectionQuestions": [
+            "Что неравно или неполно в этом соглашении?",
+            "Что я могу честно принять и чего не должен предполагать?",
+            "Является ли ожидание более достойным и реалистичным действием?"
+          ],
+          "lineReflections": {
+            "1": "Даже с ограничением человек способен идти. Продвигайтесь только в пределах действительно доступных роли и способности.",
+            "2": "Частичное зрение всё же может распознать правильное. Храните честность внутреннего независимого человека, а не ищите внешнего одобрения.",
+            "3": "Ожидание более высокого места, а затем возврат к меньшему показывает цену желаемого позиционирования. Не обменивайте достоинство на статус.",
+            "4": "У задержанного союза может быть своё верное время позже. Ожидание не поражение, когда условия ещё не подходят.",
+            "5": "Простой внешний вид может нести больше настоящей ценности, чем нарядная показность. Близко к полноте гармония и время важнее сравнения.",
+            "6": "Пустая корзина и бескровная жертва — форма без сущности. Не продолжайте соглашение, в котором ни одна сторона не приносит настоящего дара."
+          }
+        }
+      }
+    },
+    {
+      "id": 55,
+      "chinese": "豐",
+      "pinyin": "Fēng",
+      "symbol": "䷶",
+      "trigrams": {
+        "upper": "thunder",
+        "lower": "fire"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-55-abundance.md"
+      },
+      "classical": {
+        "judgment": "豐：亨，王假之，勿憂，宜日中。",
+        "lines": [
+          "初九：遇其配主，雖旬無咎，往有尚。",
+          "六二：豐其蔀，日中見斗，往得疑疾，有孚發若，吉。",
+          "九三：豐其沛，日中見沫，折其右肱，無咎。",
+          "九四：豐其蔀，日中見斗，遇其夷主，吉。",
+          "六五：來章，有慶譽，吉。",
+          "上六：豐其屋，蔀其家，窺其戶，闃其無人，三歲不覿，凶。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Fēng — Abundance",
+          "coreThread": "The moment is full and bright, but it will not remain unchanged. Fēng asks you to be present at the height of visibility, use the opportunity well, and share the light. Do not worry that noon must last forever; make the most of it while it is here.",
+          "whenItAppears": "Meet the counterpart who can match the moment, communicate clearly through any obscurity, and let recognition circulate. Abundance becomes lonely when it turns inward and shuts the house against others.",
+          "reflectionQuestions": [
+            "What is at its fullest expression now?",
+            "Who is the right counterpart or collaborator for this moment?",
+            "How can I share the light rather than isolate inside it?"
+          ],
+          "lineReflections": {
+            "1": "Meeting the matching counterpart is honoured. Even if the timing is unusual, a good collaboration can carry the work forward.",
+            "2": "A canopy hides the sun so that stars appear at noon; confusion and suspicion follow. Send a sincere, clear signal and the way opens.",
+            "3": "Greater obscurity may limit your ability to act, like a broken right arm. Work with what remains rather than blaming yourself for the limitation.",
+            "4": "In the same obscurity, meeting an equal counterpart brings good fortune. Shared understanding restores light.",
+            "5": "Bring what is distinct and excellent. It will receive celebration and recognition.",
+            "6": "A large house with a covered family becomes empty and unseen. Do not let abundance become isolation; open the door before loneliness takes root."
+          }
+        },
+        "bg": {
+          "title": "Фън — Изобилие",
+          "coreThread": "Моментът е пълен и ярък, но няма да остане непроменен. Фън ви приканва да присъствате в разгара на видимостта, да използвате възможността добре и да споделите светлината. Не се тревожете, че пладнето трябва да трае вечно; използвайте го, докато е тук.",
+          "whenItAppears": "Срещнете партньора, който може да съответства на момента, общувайте ясно през всяка неяснота и нека признанието се разпространява. Изобилието става самотно, когато се обърне навътре и затвори дома за другите.",
+          "reflectionQuestions": [
+            "Какво сега е в най-пълния си израз?",
+            "Кой е подходящият партньор или сътрудник за този момент?",
+            "Как мога да споделя светлината, вместо да се изолирам в нея?"
+          ],
+          "lineReflections": {
+            "1": "Срещата с подходящия партньор е почетена. Дори времето да е необичайно, доброто сътрудничество може да придвижи работата напред.",
+            "2": "Навес скрива слънцето, така че звездите се виждат на обяд; следват объркване и подозрение. Изпратете искрен, ясен знак и пътят се отваря.",
+            "3": "По-голямата неяснота може да ограничи способността ви да действате, като счупена дясна ръка. Работете с онова, което остава, вместо да се обвинявате за ограничението.",
+            "4": "В същата неяснота срещата с равен партньор носи благополучие. Споделеното разбиране връща светлината.",
+            "5": "Донесете онова, което е отличително и добро. То ще получи празнуване и признание.",
+            "6": "Голям дом със затворено семейство става празен и невидим. Не позволявайте изобилието да стане изолация; отворете вратата, преди самотата да пусне корен."
+          }
+        },
+        "ru": {
+          "title": "Фэн — Изобилие",
+          "coreThread": "Момент полон и ярок, но не останется неизменным. Фэн предлагает быть в нём на вершине видимости, хорошо использовать возможность и делиться светом. Не тревожьтесь, что полдень должен длиться вечно; используйте его, пока он здесь.",
+          "whenItAppears": "Встретьте партнёра, способного соответствовать моменту, ясно общайтесь сквозь любую неясность и позволяйте признанию распространяться. Изобилие становится одиноким, когда обращается внутрь и закрывает дом для других.",
+          "reflectionQuestions": [
+            "Что сейчас находится в наиболее полном выражении?",
+            "Кто является подходящим партнёром или сотрудником для этого момента?",
+            "Как разделить свет вместо изоляции в нём?"
+          ],
+          "lineReflections": {
+            "1": "Встреча с подходящим партнёром почётна. Даже при необычном времени хорошее сотрудничество может продвинуть работу.",
+            "2": "Навес скрывает солнце, и звёзды видны в полдень; следуют смятение и подозрение. Пошлите искренний ясный знак, и путь откроется.",
+            "3": "Большая неясность может ограничить способность действовать, как сломанная правая рука. Работайте с тем, что остаётся, вместо самообвинения за ограничение.",
+            "4": "В той же неясности встреча с равным партнёром приносит удачу. Общее понимание возвращает свет.",
+            "5": "Принесите то, что отличается и хорошо. Оно получит празднование и признание.",
+            "6": "Большой дом с закрытой семьёй становится пустым и невидимым. Не позволяйте изобилию стать изоляцией; откройте дверь, пока одиночество не пустило корни."
+          }
+        }
+      }
+    },
+    {
+      "id": 56,
+      "chinese": "旅",
+      "pinyin": "Lǚ",
+      "symbol": "䷷",
+      "trigrams": {
+        "upper": "fire",
+        "lower": "mountain"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-56-the-wanderer.md"
+      },
+      "classical": {
+        "judgment": "旅：小亨，旅貞吉。",
+        "lines": [
+          "初六：旅瑣瑣，斯其所取災。",
+          "六二：旅即次，懷其資，得童僕貞。",
+          "九三：旅焚其次，喪其童僕，貞厲。",
+          "九四：旅于處，得其資斧，我心不快。",
+          "六五：射雉一矢亡，終以譽命。",
+          "上九：鳥焚其巢，旅人先笑後號咷。喪牛于易，凶。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Lǚ — The wanderer",
+          "coreThread": "You are away from familiar ground. Lǚ asks you to travel lightly, observe local conditions, and let courtesy protect you where roots are shallow. Small success is possible when you remain alert and do not act as though you own the place.",
+          "whenItAppears": "Secure a modest base, keep your resources close, and build reliable support one relationship at a time. Do not make small inconveniences into drama, but take loss of shelter or trust seriously.",
+          "reflectionQuestions": [
+            "What is my temporary base of safety?",
+            "Which local conditions do I need to respect?",
+            "What can I carry lightly, and what must I protect closely?"
+          ],
+          "lineReflections": {
+            "1": "Petty fussing while travelling invites trouble. Keep attention on what is essential.",
+            "2": "Find a proper lodging, hold your resources, and value the loyalty of a helpful companion. This is stable travelling.",
+            "3": "A burned lodging and lost helper leave the traveller exposed. Do not gamble with shelter, trust, or the people who support you.",
+            "4": "You may find a place and the tools to defend it, yet remain uneasy. Listen to that unease; the location may not be a true home.",
+            "5": "One arrow is spent to obtain the pheasant, but the end brings recognition. A measured cost can earn a worthy result.",
+            "6": "When the bird’s nest burns, laughter turns to grief. Do not sacrifice your base for a momentary triumph or easy gain."
+          }
+        },
+        "bg": {
+          "title": "Люй — Пътникът",
+          "coreThread": "Далеч сте от позната почва. Люй ви приканва да пътувате леко, да наблюдавате местните условия и да оставите учтивостта да ви пази там, където корените са плитки. Малък успех е възможен, когато останете бдителни и не се държите, сякаш притежавате мястото.",
+          "whenItAppears": "Осигурете скромна основа, дръжте ресурсите си близо и изграждайте надеждна подкрепа една връзка след друга. Не превръщайте малките неудобства в драма, но приемайте загубата на подслон или доверие сериозно.",
+          "reflectionQuestions": [
+            "Коя е временната ми основа за безопасност?",
+            "Кои местни условия трябва да уважавам?",
+            "Какво мога да нося леко и какво трябва да пазя отблизо?"
+          ],
+          "lineReflections": {
+            "1": "Дребнавото суетене по време на път кани неприятности. Дръжте вниманието върху същественото.",
+            "2": "Намерете подходящ подслон, пазете ресурсите си и ценете лоялността на полезния спътник. Това е устойчивото пътуване.",
+            "3": "Изгорелият подслон и изгубеният помощник оставят пътника изложен. Не рискувайте с убежището, доверието или хората, които ви подкрепят.",
+            "4": "Може да намерите място и средства да го защитите, но да останете неспокойни. Чуйте това неспокойствие; мястото може да не е истински дом.",
+            "5": "Една стрела е изразходвана, за да се улови фазанът, но краят носи признание. Премерената цена може да донесе достоен резултат.",
+            "6": "Когато птичето гнездо изгори, смехът става скръб. Не жертвайте основата си за моментен триумф или лесна печалба."
+          }
+        },
+        "ru": {
+          "title": "Люй — Странник",
+          "coreThread": "Вы вдали от привычной почвы. Люй предлагает путешествовать легко, наблюдать местные условия и позволить вежливости беречь вас там, где корни неглубоки. Малый успех возможен, когда вы остаётесь внимательны и не ведёте себя как хозяин места.",
+          "whenItAppears": "Обеспечьте скромную основу, держите ресурсы близко и стройте надёжную поддержку через одну связь за другой. Не превращайте малые неудобства в драму, но серьёзно относитесь к потере убежища или доверия.",
+          "reflectionQuestions": [
+            "Какова моя временная основа безопасности?",
+            "Какие местные условия мне нужно уважать?",
+            "Что я могу нести легко, а что должен беречь особенно?"
+          ],
+          "lineReflections": {
+            "1": "Мелочная суета в пути приглашает неприятности. Держите внимание на главном.",
+            "2": "Найдите подходящее жильё, держите ресурсы при себе и цените верность полезного спутника. Таково устойчивое странствие.",
+            "3": "Сгоревшее жильё и потерянный помощник оставляют странника без защиты. Не рискуйте убежищем, доверием или людьми, которые вас поддерживают.",
+            "4": "Можно найти место и средства его защитить, но остаться неспокойным. Прислушайтесь к этому беспокойству: место может не быть настоящим домом.",
+            "5": "Одна стрела потрачена, чтобы добыть фазана, но итог приносит признание. Соразмерная цена может дать достойный результат.",
+            "6": "Когда птичье гнездо горит, смех превращается в горе. Не жертвуйте основой ради мгновенного триумфа или лёгкой выгоды."
+          }
+        }
+      }
+    },
+    {
+      "id": 57,
+      "chinese": "巽",
+      "pinyin": "Xùn",
+      "symbol": "䷸",
+      "trigrams": {
+        "upper": "wind",
+        "lower": "wind"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-57-gentle-penetration.md"
+      },
+      "classical": {
+        "judgment": "巽：小亨，利攸往，利見大人。",
+        "lines": [
+          "初六：進退，利武人之貞。",
+          "九二：巽在床下，用史巫紛若，吉無咎。",
+          "九三：頻巽，吝。",
+          "六四：悔亡，田獲三品。",
+          "九五：貞吉悔亡，無不利。無初有終，先庚三日，後庚三日，吉。",
+          "上九：巽在床下，喪其資斧，貞凶。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Xùn — Gentle penetration",
+          "coreThread": "Gentle influence works through repetition and clear entry points. Xùn is wind: it reaches places force cannot, but it needs direction. Be persistent without pressure, make your message easy to receive, and seek guidance from someone who sees the larger pattern.",
+          "whenItAppears": "Enter gradually, listen deeply, and revise with care. Gentleness is not loss of agency; if you become so yielding that you lose your tools and resources, the influence has become unhealthy.",
+          "reflectionQuestions": [
+            "What small, repeated action will carry the message?",
+            "Where should I enter gently rather than force a door?",
+            "Am I being adaptable, or am I giving away agency?"
+          ],
+          "lineReflections": {
+            "1": "Moving forward and back needs disciplined courage. Be flexible in method, firm in principle.",
+            "2": "Go beneath the surface and use every honest means of inquiry. Careful investigation of hidden matters brings good.",
+            "3": "Repeated submission becomes regretful. Do not apologise for existing or keep yielding after the point of wisdom.",
+            "4": "Regret disappears when the search finds several kinds of real value. Gentle effort can produce a rich harvest.",
+            "5": "A revision cycle has no clean beginning, yet it can have a good end. Prepare before the change and review after it.",
+            "6": "Yielding beneath the bed until you lose your tools is dangerous. Reclaim your resources and boundary."
+          }
+        },
+        "bg": {
+          "title": "Сюн — Меко проникване",
+          "coreThread": "Мекото влияние действа чрез повторение и ясни входове. Сюн е вятър: достига места, до които силата не може, но има нужда от посока. Бъдете постоянни без натиск, направете посланието си лесно за приемане и потърсете насока от човек, който вижда по-големия модел.",
+          "whenItAppears": "Влизайте постепенно, слушайте дълбоко и преработвайте внимателно. Мекотата не е загуба на собствена сила; ако станете толкова отстъпчиви, че изгубите инструментите и ресурсите си, влиянието е станало нездраво.",
+          "reflectionQuestions": [
+            "Кое малко, повтарящо се действие ще пренесе посланието?",
+            "Къде трябва да вляза меко, вместо да насилвам врата?",
+            "Приспособявам ли се, или отдавам собствената си сила?"
+          ],
+          "lineReflections": {
+            "1": "Движението напред и назад има нужда от дисциплинирана смелост. Бъдете гъвкави в метода, твърди в принципа.",
+            "2": "Слезте под повърхността и използвайте всяко честно средство за проучване. Внимателното изследване на скритото носи добро.",
+            "3": "Повтарящата се покорност става съжалителна. Не се извинявайте, че съществувате, и не отстъпвайте след границата на мъдростта.",
+            "4": "Съжалението изчезва, когато търсенето намира няколко вида истинска стойност. Мекото усилие може да донесе богата реколта.",
+            "5": "Цикълът на преработване няма чисто начало, но може да има добър край. Подгответе се преди промяната и прегледайте след нея.",
+            "6": "Отстъпването под леглото, докато изгубите инструментите си, е опасно. Върнете си ресурсите и границата."
+          }
+        },
+        "ru": {
+          "title": "Сюнь — Мягкое проникновение",
+          "coreThread": "Мягкое влияние действует через повторение и ясные точки входа. Сюнь — ветер: он достигает мест, куда не добирается сила, но ему нужно направление. Будьте настойчивы без давления, сделайте послание лёгким для принятия и ищите руководство у того, кто видит широкий паттерн.",
+          "whenItAppears": "Входите постепенно, глубоко слушайте и осторожно пересматривайте. Мягкость не потеря собственной силы; если вы становитесь настолько уступчивы, что теряете инструменты и ресурсы, влияние стало нездоровым.",
+          "reflectionQuestions": [
+            "Какое малое повторяемое действие донесёт послание?",
+            "Где стоит войти мягко, а не ломать дверь?",
+            "Я приспосабливаюсь или отдаю свою силу?"
+          ],
+          "lineReflections": {
+            "1": "Движению вперёд и назад нужна дисциплинированная смелость. Будьте гибки в методе и твёрды в принципе.",
+            "2": "Спуститесь под поверхность и используйте все честные средства исследования. Внимательное изучение скрытого приносит благо.",
+            "3": "Повторяющаяся покорность становится сожалением. Не извиняйтесь за своё существование и не уступайте после границы мудрости.",
+            "4": "Сожаление исчезает, когда поиск находит несколько видов настоящей ценности. Мягкое усилие может дать богатый урожай.",
+            "5": "Цикл пересмотра не имеет чистого начала, но может иметь хороший конец. Подготовьтесь до перемены и проверьте после неё.",
+            "6": "Уступать под кроватью до потери инструментов опасно. Верните свои ресурсы и границу."
+          }
+        }
+      }
+    },
+    {
+      "id": 58,
+      "chinese": "兌",
+      "pinyin": "Duì",
+      "symbol": "䷹",
+      "trigrams": {
+        "upper": "lake",
+        "lower": "lake"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-58-joyous-exchange.md"
+      },
+      "classical": {
+        "judgment": "兌：亨，利貞。",
+        "lines": [
+          "初九：和兌，吉。",
+          "九二：孚兌，吉，悔亡。",
+          "六三：來兌，凶。",
+          "九四：商兌，未寧，介疾有喜。",
+          "九五：孚于剝，有厲。",
+          "上六：引兌。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Duì — Joyous exchange",
+          "coreThread": "Joy grows through honest exchange. Duì asks you to speak openly, listen well, and let pleasure remain connected to substance. Shared delight can strengthen a group, but flattery, seduction, or avoidance can hollow it out.",
+          "whenItAppears": "Make room for true conversation. Let warmth be reciprocal and principled, and notice whether a pleasant offer is inviting genuine connection or merely pulling you away from yourself.",
+          "reflectionQuestions": [
+            "What joy can be shared honestly here?",
+            "Is this exchange reciprocal and trustworthy?",
+            "Where might pleasure be masking a harmful influence?"
+          ],
+          "lineReflections": {
+            "1": "Harmonious joy is fortunate. Let the exchange begin in simplicity and mutual ease.",
+            "2": "Joy founded on trust removes regret. Speak from what is true, not from what wins approval.",
+            "3": "Joy that comes looking for you can be dangerous. Do not let an enticing offer choose for you.",
+            "4": "You may be weighing different kinds of pleasure and feel unsettled. Separate yourself from what is unhealthy, and relief follows.",
+            "5": "Trust placed in a stripping or corrupting influence is perilous. Examine what the pleasant surface is taking away.",
+            "6": "Being led by pleasure is not the same as sharing joy. Keep your own direction."
+          }
+        },
+        "bg": {
+          "title": "Дуй — Радостен обмен",
+          "coreThread": "Радостта расте чрез честен обмен. Дуй ви приканва да говорите открито, да слушате добре и да държите удоволствието свързано със същността. Споделената радост може да укрепи групата, но ласкателството, съблазняването или избягването могат да я изпразнят.",
+          "whenItAppears": "Направете място за истински разговор. Нека топлотата бъде взаимна и принципна и забележете дали приятното предложение кани към истинска връзка, или само ви отвежда далеч от вас самите.",
+          "reflectionQuestions": [
+            "Коя радост може да бъде споделена честно тук?",
+            "Взаимен и надежден ли е този обмен?",
+            "Къде удоволствието може да прикрива вредно влияние?"
+          ],
+          "lineReflections": {
+            "1": "Хармоничната радост е благоприятна. Нека обменът започне с простота и взаимна лекота.",
+            "2": "Радостта, основана на доверие, премахва съжалението. Говорете от истината, а не от онова, което печели одобрение.",
+            "3": "Радостта, която идва да ви търси, може да е опасна. Не позволявайте на примамливо предложение да избира вместо вас.",
+            "4": "Може да претегляте различни видове удоволствие и да сте неспокойни. Отделете се от нездравото и следва облекчение.",
+            "5": "Доверието, поставено в оголващо или покваряващо влияние, е опасно. Изследвайте какво приятната повърхност ви отнема.",
+            "6": "Да бъдете водени от удоволствие не е същото като да споделяте радост. Пазете собствената си посока."
+          }
+        },
+        "ru": {
+          "title": "Дуй — Радостный обмен",
+          "coreThread": "Радость растёт через честный обмен. Дуй предлагает говорить открыто, хорошо слушать и сохранять удовольствие связанным с сущностью. Общая радость может укрепить группу, но лесть, соблазнение или избегание способны её опустошить.",
+          "whenItAppears": "Создайте место для настоящего разговора. Пусть теплота будет взаимной и принципной, и замечайте, приглашает ли приятное предложение к подлинной связи или лишь уводит вас от себя.",
+          "reflectionQuestions": [
+            "Какую радость здесь можно честно разделить?",
+            "Взаимен ли и надёжен ли этот обмен?",
+            "Где удовольствие может маскировать вредное влияние?"
+          ],
+          "lineReflections": {
+            "1": "Гармоничная радость благоприятна. Пусть обмен начнётся в простоте и взаимной лёгкости.",
+            "2": "Радость, основанная на доверии, снимает сожаление. Говорите из истины, а не из того, что получает одобрение.",
+            "3": "Радость, приходящая искать вас, может быть опасна. Не позволяйте соблазнительному предложению выбирать за вас.",
+            "4": "Вы можете взвешивать разные виды удовольствия и чувствовать беспокойство. Отделитесь от нездорового — и придёт облегчение.",
+            "5": "Доверие, отданное оголяющему или развращающему влиянию, опасно. Исследуйте, что приятная поверхность у вас отнимает.",
+            "6": "Быть ведомым удовольствием — не то же самое, что делиться радостью. Сохраняйте собственное направление."
+          }
+        }
+      }
+    },
+    {
+      "id": 59,
+      "chinese": "渙",
+      "pinyin": "Huàn",
+      "symbol": "䷺",
+      "trigrams": {
+        "upper": "wind",
+        "lower": "water"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-59-dispersion.md"
+      },
+      "classical": {
+        "judgment": "渙：亨。王假有廟，利涉大川，利貞。",
+        "lines": [
+          "初六：用拯馬壯，吉。",
+          "九二：渙奔其機，悔亡。",
+          "六三：渙其躬，無悔。",
+          "六四：渙其群，元吉。渙有丘，匪夷所思。",
+          "九五：渙汗其大號，渙王居，無咎。",
+          "上九：渙其血，去逖出，無咎。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Huàn — Dispersion",
+          "coreThread": "What is frozen or divided can be loosened. Huàn dissolves a blockage with sincere connection, then gathers people around a renewed centre. The movement is not aimless scattering: release what has become rigid so a truer unity can form.",
+          "whenItAppears": "Move quickly to help when the moment calls for it, loosen ego and faction, and communicate widely enough for the shared purpose to be understood. The river can be crossed when people are no longer trapped in separate islands.",
+          "reflectionQuestions": [
+            "What rigidity or division needs to dissolve?",
+            "What renewed centre could gather people again?",
+            "What clear message needs to travel farther?"
+          ],
+          "lineReflections": {
+            "1": "Use a strong horse to bring rescue quickly. Timely help is fortunate when a situation begins to break apart.",
+            "2": "Run back to the central support. Returning to a reliable base dissolves regret.",
+            "3": "Disperse the self-centred claim. Releasing ego from the situation brings no regret.",
+            "4": "Dissolve the closed group, and a new gathering can form — like a hill arising from scattered ground. This is greater than ordinary expectation.",
+            "5": "Let the major message spread like sweat, and decentralise what has been held too tightly at the centre. Clear distribution brings no blame.",
+            "6": "Disperse the bloodshed and move far away from danger. Leaving the violent field is without blame."
+          }
+        },
+        "bg": {
+          "title": "Хуан — Разпръсване",
+          "coreThread": "Замръзналото или разделеното може да се раздвижи. Хуан разтваря пречката чрез искрена връзка, после събира хората около обновен център. Движението не е безцелно разпиляване: освободете онова, което е станало твърдо, за да се оформи по-истинско единство.",
+          "whenItAppears": "Движете се бързо да помогнете, когато моментът го изисква, разхлабете егото и фракциите и общувайте достатъчно широко, за да бъде разбрана общата цел. Реката може да се премине, когато хората вече не са затворени на отделни острови.",
+          "reflectionQuestions": [
+            "Коя твърдост или разделение трябва да се разтвори?",
+            "Кой обновен център може да събере хората отново?",
+            "Кое ясно послание трябва да стигне по-далеч?"
+          ],
+          "lineReflections": {
+            "1": "Използвайте силен кон, за да донесете спасение бързо. Навременната помощ е благоприятна, когато ситуацията започва да се разпада.",
+            "2": "Върнете се бързо към централната опора. Завръщането към надеждна основа разтваря съжалението.",
+            "3": "Разпръснете егоцентричната претенция. Освобождаването на егото от ситуацията не носи съжаление.",
+            "4": "Разтворете затворената група и може да се образува ново събиране — като хълм, възникнал от разпръсната земя. Това е повече от обичайното очакване.",
+            "5": "Нека голямото послание се разпростре като пот и разпределете онова, което е било държано твърде стегнато в центъра. Ясното разпределение не носи вина.",
+            "6": "Разпръснете кръвопролитието и се отдалечете от опасността. Напускането на полето на насилие не носи вина."
+          }
+        },
+        "ru": {
+          "title": "Хуань — Рассеивание",
+          "coreThread": "Замёрзшее или разделённое можно разрыхлить. Хуань растворяет преграду искренней связью, затем собирает людей вокруг обновлённого центра. Это не бесцельное рассеивание: отпустите то, что стало жёстким, чтобы возникло более подлинное единство.",
+          "whenItAppears": "Быстро двигайтесь на помощь, когда момент этого требует, ослабляйте эго и фракции и сообщайте достаточно широко, чтобы общая цель была понята. Реку можно перейти, когда люди больше не заперты на отдельных островах.",
+          "reflectionQuestions": [
+            "Какая жёсткость или разделение должны раствориться?",
+            "Какой обновлённый центр может снова собрать людей?",
+            "Какое ясное сообщение должно дойти дальше?"
+          ],
+          "lineReflections": {
+            "1": "Используйте сильного коня, чтобы быстро принести спасение. Своевременная помощь благоприятна, когда ситуация начинает распадаться.",
+            "2": "Бегите обратно к центральной опоре. Возвращение к надёжной основе растворяет сожаление.",
+            "3": "Рассеьте эгоцентричное притязание. Освобождение эго из ситуации не несёт сожаления.",
+            "4": "Растворите закрытую группу, и может возникнуть новое собрание — как холм из рассеянной земли. Это больше обычного ожидания.",
+            "5": "Пусть большое сообщение распространится, как пот, и распределите то, что слишком крепко удерживалось в центре. Ясное распределение не несёт вины.",
+            "6": "Рассеьте кровопролитие и уйдите далеко от опасности. Покинуть поле насилия — без вины."
+          }
+        }
+      }
+    },
+    {
+      "id": 60,
+      "chinese": "節",
+      "pinyin": "Jié",
+      "symbol": "䷻",
+      "trigrams": {
+        "upper": "water",
+        "lower": "lake"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-60-limitation.md"
+      },
+      "classical": {
+        "judgment": "節：亨。苦節不可貞。",
+        "lines": [
+          "初九：不出戶庭，無咎。",
+          "九二：不出門庭，凶。",
+          "六三：不節若，則嗟若，無咎。",
+          "六四：安節，亨。",
+          "九五：甘節，吉；往有尚。",
+          "上六：苦節，貞凶，悔亡。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Jié — Limitation",
+          "coreThread": "A good limit makes freedom usable. Jié asks for clear, humane boundaries that protect energy, resources, and trust without turning life into punishment. Bitter limitation cannot be maintained as a virtue.",
+          "whenItAppears": "Set the rule that fits the actual situation. Stay in when staying in protects the work; go out when the moment requires engagement. The measure is not severity but whether the boundary makes life and relationship more sustainable.",
+          "reflectionQuestions": [
+            "What limit would protect what matters?",
+            "Where is restraint timely, and where has it become avoidance?",
+            "Is this rule humane enough to sustain?"
+          ],
+          "lineReflections": {
+            "1": "Not leaving the inner courtyard is without blame when the time calls for early restraint.",
+            "2": "Not leaving the outer gate becomes misfortune when the time calls for participation. Do not turn caution into confinement.",
+            "3": "Without limits, lament eventually follows. Learning from excess removes blame.",
+            "4": "Peaceful, settled limits bring success. A boundary that is willingly held can support life.",
+            "5": "A sweet limit is fortunate and worthy of carrying forward. Let discipline feel like care, not punishment.",
+            "6": "Bitter limitation may end regret by stopping excess, but making it permanent brings misfortune. Soften the rule once the crisis has passed."
+          }
+        },
+        "bg": {
+          "title": "Дзие — Ограничение",
+          "coreThread": "Добрата граница прави свободата използваема. Дзие иска ясни, човечни ограничения, които пазят енергията, ресурсите и доверието, без да превръщат живота в наказание. Горчивото ограничение не може да бъде поддържано като добродетел.",
+          "whenItAppears": "Поставете правилото, което отговаря на действителната ситуация. Останете вътре, когато това пази работата; излезте, когато моментът изисква участие. Мярката не е строгостта, а дали границата прави живота и отношенията по-устойчиви.",
+          "reflectionQuestions": [
+            "Коя граница би защитила важното?",
+            "Къде сдържането е навременно и къде е станало избягване?",
+            "Достатъчно човечно ли е това правило, за да се поддържа?"
+          ],
+          "lineReflections": {
+            "1": "Да не излезете от вътрешния двор не носи вина, когато времето изисква ранно сдържане.",
+            "2": "Да не излезете от външната порта става неблагополучие, когато времето изисква участие. Не превръщайте предпазливостта в затвор.",
+            "3": "Без граници накрая следва въздишка. Ученето от прекаляването премахва вината.",
+            "4": "Спокойните, установени граници носят успех. Границата, която се държи доброволно, може да подкрепя живота.",
+            "5": "Сладката граница е благоприятна и достойна да бъде продължена. Нека дисциплината се усеща като грижа, а не като наказание.",
+            "6": "Горчивото ограничение може да прекрати съжалението, като спре прекаляването, но превръщането му в постоянно носи неблагополучие. Смекчете правилото, след като кризата премине."
+          }
+        },
+        "ru": {
+          "title": "Цзе — Ограничение",
+          "coreThread": "Хорошее ограничение делает свободу применимой. Цзе предлагает ясные, человечные границы, защищающие энергию, ресурсы и доверие, не превращая жизнь в наказание. Горькое ограничение нельзя поддерживать как добродетель.",
+          "whenItAppears": "Установите правило, соответствующее реальной ситуации. Оставайтесь внутри, когда это защищает работу; выходите, когда момент требует участия. Мера не в строгости, а в том, делает ли граница жизнь и отношения устойчивее.",
+          "reflectionQuestions": [
+            "Какое ограничение защитит важное?",
+            "Где сдерживание своевременно, а где стало избеганием?",
+            "Достаточно ли человечно это правило, чтобы его поддерживать?"
+          ],
+          "lineReflections": {
+            "1": "Не выходить из внутреннего двора — без вины, когда время требует раннего сдерживания.",
+            "2": "Не выходить за внешние ворота становится бедой, когда время требует участия. Не превращайте осторожность в заключение.",
+            "3": "Без границ в конце приходит вздох. Учиться на чрезмерности — значит снять вину.",
+            "4": "Спокойные устойчивые границы приносят успех. Граница, удерживаемая добровольно, может поддерживать жизнь.",
+            "5": "Сладкое ограничение благоприятно и достойно продолжения. Пусть дисциплина ощущается как забота, а не наказание.",
+            "6": "Горькое ограничение может прекратить сожаление, остановив чрезмерность, но сделать его постоянным — к беде. Смягчите правило после окончания кризиса."
+          }
+        }
+      }
+    },
+    {
+      "id": 61,
+      "chinese": "中孚",
+      "pinyin": "Zhōng Fú",
+      "symbol": "䷼",
+      "trigrams": {
+        "upper": "wind",
+        "lower": "lake"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-61-inner-truth.md"
+      },
+      "classical": {
+        "judgment": "中孚：豚魚，吉，利涉大川，利貞。",
+        "lines": [
+          "初九：虞吉，有他不燕。",
+          "九二：鳴鶴在陰，其子和之，我有好爵，吾與爾靡之。",
+          "六三：得敵，或鼓或罷，或泣或歌。",
+          "六四：月幾望，馬匹亡，無咎。",
+          "九五：有孚攣如，無咎。",
+          "上九：翰音登于天，貞凶。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Zhōng Fú — Inner truth",
+          "coreThread": "Trust begins with inner sincerity. Zhōng Fú asks you to align what you say, intend, and do; even a delicate connection can respond to that coherence. The image of pigs and fish points to trust reaching what is simple and hard to impress.",
+          "whenItAppears": "Prepare carefully, communicate from the heart, and let resonance rather than pressure create the bond. Inner truth supports a difficult crossing, but it does not mean broadcasting lofty claims without grounded action.",
+          "reflectionQuestions": [
+            "Do my words, intention, and conduct agree?",
+            "What sincere signal could another person genuinely receive?",
+            "Where is a shared bond stronger than persuasion?"
+          ],
+          "lineReflections": {
+            "1": "Prepared trust is fortunate. When you keep turning toward distractions, peace is lost.",
+            "2": "A crane calls from the shade and its young answer; sincere expression creates a natural response. Share the good you hold.",
+            "3": "Encountering an opponent can make the heart alternate between drumming, stopping, tears, and song. Let the emotion move without letting it govern your integrity.",
+            "4": "Near the full moon, a paired horse is lost. Release an attachment that cannot accompany the next stage; there is no blame.",
+            "5": "Trust can bind people like a close knot. This faithful connection carries no blame.",
+            "6": "A rooster’s cry may seem to reach heaven, yet it cannot sustain flight. Do not confuse lofty sound with grounded truth."
+          }
+        },
+        "bg": {
+          "title": "Джун Фу — Вътрешна искреност",
+          "coreThread": "Доверието започва с вътрешна искреност. Джун Фу ви приканва да съгласувате думите, намерението и действията си; дори крехката връзка може да откликне на тази цялост. Образът на прасета и риби сочи доверие, което достига простото и трудно впечатляемото.",
+          "whenItAppears": "Подгответе се внимателно, общувайте от сърце и нека съзвучността, а не натискът, създаде връзката. Вътрешната искреност подкрепя трудно преминаване, но не означава да разпространявате възвишени твърдения без заземено действие.",
+          "reflectionQuestions": [
+            "Съгласувани ли са думите, намерението и поведението ми?",
+            "Кой искрен знак би могъл истински да бъде получен от другия?",
+            "Къде споделената връзка е по-силна от убеждаването?"
+          ],
+          "lineReflections": {
+            "1": "Подготвеното доверие е благоприятно. Когато непрекъснато се обръщате към разсейванията, мирът се губи.",
+            "2": "Жеравът вика от сянката и малкото му отговаря; искреният израз създава естествен отклик. Споделете доброто, което държите.",
+            "3": "Срещата с противник може да накара сърцето да се редува между барабан, спиране, сълзи и песен. Оставете емоцията да се движи, без да управлява почтеността ви.",
+            "4": "Близо до пълната луна се губи кон от впряга. Освободете привързаност, която не може да придружи следващия етап; няма вина.",
+            "5": "Доверието може да свърже хората като близък възел. Тази вярна връзка не носи вина.",
+            "6": "Викът на петела може да изглежда, че стига до небето, но не може да поддържа полет. Не бъркайте възвишения звук със заземената истина."
+          }
+        },
+        "ru": {
+          "title": "Чжун Фу — Внутренняя искренность",
+          "coreThread": "Доверие начинается с внутренней искренности. Чжун Фу предлагает согласовать слова, намерение и поступки; даже хрупкая связь может откликнуться на такую цельность. Образ свиней и рыб указывает на доверие, доходящее до простого и трудно впечатляемого.",
+          "whenItAppears": "Тщательно подготовьтесь, говорите от сердца и позвольте созвучию, а не давлению, создать связь. Внутренняя искренность поддерживает трудную переправу, но не означает разбрасываться возвышенными заявлениями без заземлённого действия.",
+          "reflectionQuestions": [
+            "Согласованы ли мои слова, намерение и поступки?",
+            "Какой искренний сигнал другой человек действительно сможет принять?",
+            "Где общая связь сильнее убеждения?"
+          ],
+          "lineReflections": {
+            "1": "Подготовленное доверие благоприятно. Когда вы постоянно обращаетесь к отвлечениям, мир теряется.",
+            "2": "Журавль кричит из тени, и его птенец отвечает; искреннее выражение создаёт естественный отклик. Разделите добро, которым владеете.",
+            "3": "Встреча с противником может заставить сердце чередовать барабан, остановку, слёзы и песню. Позвольте эмоции двигаться, не отдавая ей управление вашей целостностью.",
+            "4": "Близ полной луны теряется конь из упряжи. Отпустите привязанность, которая не может сопровождать следующий этап; в этом нет вины.",
+            "5": "Доверие может связывать людей, как близкий узел. Такая верная связь не несёт вины.",
+            "6": "Крик петуха может казаться достигающим небес, но он не способен поддержать полёт. Не путайте возвышенный звук с заземлённой истиной."
+          }
+        }
+      }
+    },
+    {
+      "id": 62,
+      "chinese": "小過",
+      "pinyin": "Xiǎo Guò",
+      "symbol": "䷽",
+      "trigrams": {
+        "upper": "thunder",
+        "lower": "mountain"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-62-small-exceeding.md"
+      },
+      "classical": {
+        "judgment": "小過：亨，利貞，可小事，不可大事。飛鳥遺之音，不宜上宜下，大吉。",
+        "lines": [
+          "初六：飛鳥以凶。",
+          "六二：過其祖，遇其妣；不及其君，遇其臣；無咎。",
+          "九三：弗過防之，從或戕之，凶。",
+          "九四：無咎，弗過遇之。往厲必戒，勿用永貞。",
+          "六五：密雲不雨，自我西郊，公弋取彼在穴。",
+          "上六：弗遇過之，飛鳥離之，凶，是謂災眚。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Xiǎo Guò — Small exceeding",
+          "coreThread": "Attend to the small and near. Xiǎo Guò is not a time for grand gestures: careful detail, modest action, and a lower flight carry the day. The bird’s call says that it is better to come down than to rise too high.",
+          "whenItAppears": "Make the small repair, use the close relationship, and keep the ambition proportionate. A little extra care can be correct; large overreach is not. Let the scale of the response match the scale of the situation.",
+          "reflectionQuestions": [
+            "What small detail needs my care now?",
+            "Where would a modest action work better than a grand move?",
+            "What does “coming down” mean in this situation?"
+          ],
+          "lineReflections": {
+            "1": "The bird flies too high and meets misfortune. Do not rise above what the moment can support.",
+            "2": "Meet the nearer relative or intermediary instead of forcing access to the highest authority. The close, available connection is enough.",
+            "3": "If you do not take the small precaution, harm may follow from behind. Guard the detail before it becomes a larger threat.",
+            "4": "Do not exceed; meet what is directly before you. Going further brings risk, and making this restraint permanent is not the answer either.",
+            "5": "Dense clouds hold rain but do not release it. Seek the small, hidden resource close to the ground rather than demanding a dramatic result from above.",
+            "6": "Missing the encounter and flying beyond it brings disaster. Do not let abstraction carry you past the real human situation."
+          }
+        },
+        "bg": {
+          "title": "Сяо Гуо — Малко превишаване",
+          "coreThread": "Обърнете внимание на малкото и близкото. Сяо Гуо не е време за големи жестове: внимателният детайл, скромното действие и по-ниският полет носят деня. Птицата казва, че е по-добре да слезете, отколкото да се издигате твърде високо.",
+          "whenItAppears": "Направете малката поправка, използвайте близката връзка и пазете амбицията съразмерна. Малко допълнителна грижа може да е правилна; голямото прекаляване не е. Нека мащабът на отговора съответства на мащаба на ситуацията.",
+          "reflectionQuestions": [
+            "Кой малък детайл сега има нужда от грижата ми?",
+            "Къде скромното действие би работило по-добре от голям ход?",
+            "Какво означава „да сляза“ в тази ситуация?"
+          ],
+          "lineReflections": {
+            "1": "Птицата лети твърде високо и среща неблагополучие. Не се издигайте над онова, което моментът може да понесе.",
+            "2": "Срещнете по-близкия роднина или посредник, вместо да насилвате достъп до най-висшата власт. Близката, налична връзка е достатъчна.",
+            "3": "Ако не вземете малката предпазна мярка, вредата може да дойде отзад. Пазете детайла, преди да стане по-голяма заплаха.",
+            "4": "Не превишавайте; посрещнете онова, което е точно пред вас. По-нататъшното движение носи риск, но и превръщането на това сдържане в постоянно не е отговорът.",
+            "5": "Гъстите облаци държат дъжда, но не го пускат. Потърсете малкия, скрит ресурс близо до земята, вместо да изисквате драматичен резултат отгоре.",
+            "6": "Пропускането на срещата и полетът отвъд нея носи бедствие. Не позволявайте на абстракцията да ви пренесе покрай истинската човешка ситуация."
+          }
+        },
+        "ru": {
+          "title": "Сяо Го — Малое превышение",
+          "coreThread": "Уделите внимание малому и близкому. Сяо Го — не время для больших жестов: внимательная деталь, скромное действие и более низкий полёт несут день. Птица говорит, что лучше спуститься, чем подниматься слишком высоко.",
+          "whenItAppears": "Сделайте малое исправление, используйте близкую связь и сохраняйте амбицию соразмерной. Небольшая дополнительная забота может быть верной; большое превышение — нет. Пусть масштаб ответа соответствует масштабу ситуации.",
+          "reflectionQuestions": [
+            "Какая малая деталь сейчас нуждается в моей заботе?",
+            "Где скромное действие сработает лучше большого шага?",
+            "Что значит «спуститься» в этой ситуации?"
+          ],
+          "lineReflections": {
+            "1": "Птица летит слишком высоко и встречает беду. Не поднимайтесь выше того, что способен выдержать момент.",
+            "2": "Встретьте более близкого родственника или посредника вместо принуждения доступа к высшей власти. Близкой доступной связи достаточно.",
+            "3": "Если не принять малую предосторожность, вред может прийти сзади. Защитите деталь до того, как она станет большей угрозой.",
+            "4": "Не превышайте; встретьте то, что прямо перед вами. Дальнейшее движение рискованно, но и делать это сдерживание постоянным — не ответ.",
+            "5": "Плотные облака держат дождь, но не выпускают его. Ищите малый скрытый ресурс близко к земле, а не требуйте драматического результата свыше.",
+            "6": "Пропустить встречу и пролететь дальше — к бедствию. Не позволяйте абстракции унести вас мимо реальной человеческой ситуации."
+          }
+        }
+      }
+    },
+    {
+      "id": 63,
+      "chinese": "既濟",
+      "pinyin": "Jì Jì",
+      "symbol": "䷾",
+      "trigrams": {
+        "upper": "water",
+        "lower": "fire"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-63-already-complete.md"
+      },
+      "classical": {
+        "judgment": "既濟：亨，小利貞，初吉終亂。",
+        "lines": [
+          "初九：曳其輪，濡其尾，無咎。",
+          "六二：婦喪其茀，勿逐，七日得。",
+          "九三：高宗伐鬼方，三年克之，小人勿用。",
+          "六四：繻有衣袽，終日戒。",
+          "九五：東鄰殺牛，不如西鄰之禴祭，實受其福。",
+          "上六：濡其首，厲。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Jì Jì — Already complete",
+          "coreThread": "A task may be complete, but completion needs maintenance. Jì Jì begins well and can end in disorder if attention relaxes. Keep order, tend the details, and do not assume the work will run itself because the crossing has been made.",
+          "whenItAppears": "Stabilise rather than expand. Make small adjustments, protect against leaks, and value sincere maintenance over impressive display. The final stage is often where care matters most.",
+          "reflectionQuestions": [
+            "What needs maintenance now that the main task is done?",
+            "Where could small disorder enter?",
+            "What simple act of care is more valuable than a grand gesture?"
+          ],
+          "lineReflections": {
+            "1": "Pull the wheels and let the tail get wet if needed. A small inconvenience is acceptable when it prevents a larger disturbance.",
+            "2": "What is lost may return in its own time. Do not chase a missing ornament or sign of status; wait through the cycle.",
+            "3": "A major struggle can be won, but only through sustained effort. Do not place delicate work in the hands of people who will treat it carelessly.",
+            "4": "Fine cloth may hide rags beneath it. Watch all day for small leaks in the finished system.",
+            "5": "A simple, sincere offering brings more blessing than an impressive sacrifice without heart. Maintenance needs authenticity, not spectacle.",
+            "6": "When the head is wet, danger is close. Do not over-immerse yourself in a completed situation that still needs a careful boundary."
+          }
+        },
+        "bg": {
+          "title": "Дзи Дзи — Вече завършено",
+          "coreThread": "Задачата може да е завършена, но завършеното иска поддръжка. Дзи Дзи започва добре и може да завърши в безпорядък, ако вниманието се отпусне. Пазете реда, грижете се за детайлите и не приемайте, че всичко ще върви само, защото преминаването е направено.",
+          "whenItAppears": "Стабилизирайте, вместо да се разширявате. Правете малки корекции, пазете се от течове и ценете искрената поддръжка пред впечатляващата показност. Последният етап често е мястото, където грижата е най-важна.",
+          "reflectionQuestions": [
+            "Какво има нужда от поддръжка сега, когато основната задача е готова?",
+            "Откъде може да влезе малък безпорядък?",
+            "Кой прост акт на грижа е по-ценен от голям жест?"
+          ],
+          "lineReflections": {
+            "1": "Задръжте колелата и позволете на опашката да се намокри, ако е нужно. Малкото неудобство е приемливо, когато предотвратява по-голямо смущение.",
+            "2": "Изгубеното може да се върне в своето време. Не преследвайте липсваща украса или знак за статут; изчакайте цикъла.",
+            "3": "Голямата борба може да бъде спечелена, но само чрез трайно усилие. Не поверявайте деликатна работа на хора, които ще я третират небрежно.",
+            "4": "Фината тъкан може да скрива дрипи отдолу. Пазете се цял ден за малки течове в завършената система.",
+            "5": "Простото, искрено приношение носи повече благословия от впечатляваща жертва без сърце. Поддръжката има нужда от истинност, не от спектакъл.",
+            "6": "Когато главата е мокра, опасността е близо. Не се потапяйте прекомерно в завършена ситуация, която все още има нужда от внимателна граница."
+          }
+        },
+        "ru": {
+          "title": "Цзи Цзи — Уже завершено",
+          "coreThread": "Дело может быть завершено, но завершённое требует поддержания. Цзи Цзи хорошо начинается и может закончиться беспорядком, если внимание ослабнет. Берегите порядок, заботьтесь о деталях и не думайте, что всё будет идти само, потому что переправа совершена.",
+          "whenItAppears": "Стабилизируйте, а не расширяйтесь. Делайте малые корректировки, берегитесь утечек и цените искреннее поддержание выше впечатляющей показности. Последняя стадия часто там, где забота важнее всего.",
+          "reflectionQuestions": [
+            "Что нуждается в поддержании теперь, когда главная задача завершена?",
+            "Откуда может войти малый беспорядок?",
+            "Какой простой акт заботы ценнее большого жеста?"
+          ],
+          "lineReflections": {
+            "1": "Притормозите колёса и позвольте хвосту намокнуть, если нужно. Малое неудобство приемлемо, когда предотвращает большую тревогу.",
+            "2": "Потерянное может вернуться в своё время. Не гонитесь за пропавшим украшением или знаком статуса; дождитесь цикла.",
+            "3": "Большую борьбу можно выиграть, но лишь устойчивым усилием. Не поручайте деликатную работу людям, которые отнесутся к ней небрежно.",
+            "4": "Тонкая ткань может скрывать ветошь под ней. Весь день следите за малыми утечками в завершённой системе.",
+            "5": "Простое искреннее подношение приносит больше благословения, чем впечатляющая жертва без сердца. Поддержанию нужна подлинность, а не зрелище.",
+            "6": "Когда голова мокра, опасность близка. Не погружайтесь чрезмерно в завершённую ситуацию, которой всё ещё нужна осторожная граница."
+          }
+        }
+      }
+    },
+    {
+      "id": 64,
+      "chinese": "未濟",
+      "pinyin": "Wèi Jì",
+      "symbol": "䷿",
+      "trigrams": {
+        "upper": "fire",
+        "lower": "water"
+      },
+      "provenance": {
+        "status": "detailed trilingual draft — editorial review required before public release",
+        "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "contentType": "AI-assisted interpretation based on the classical Chinese source",
+        "sourceFile": "hexagram-64-before-completion.md"
+      },
+      "classical": {
+        "judgment": "未濟：亨，小狐汔濟，濡其尾，無攸利。",
+        "lines": [
+          "初六：濡其尾，吝。",
+          "九二：曳其輪，貞吉。",
+          "六三：未濟，征凶，利涉大川。",
+          "九四：貞吉，悔亡，震用伐鬼方，三年有賞于大國。",
+          "六五：貞吉，無悔，君子之光，有孚，吉。",
+          "上九：有孚于飲酒，無咎，濡其首，有孚失是。"
+        ]
+      },
+      "locales": {
+        "en": {
+          "title": "Wèi Jì — Before completion",
+          "coreThread": "You are close, but not finished. Wèi Jì is the small fox nearly across the water whose tail gets wet: the last details still matter. Stay alert, avoid premature celebration, and cross carefully.",
+          "whenItAppears": "Prepare the transition rather than declaring victory. Restrain the part that wants to rush, make the larger crossing only when it is truly prepared, and let sustained effort carry the final distance.",
+          "reflectionQuestions": [
+            "What final detail could still undo the crossing?",
+            "Where do I need restraint before the next move?",
+            "What preparation would make the larger transition safe?"
+          ],
+          "lineReflections": {
+            "1": "A wet tail at the start brings embarrassment. Do not enter the crossing before you are ready.",
+            "2": "Pull the wheels and hold steady. Restraint at the right moment is fortunate.",
+            "3": "Before completion, a direct advance is dangerous; a major crossing may still be favourable when fully prepared. Distinguish impulse from readiness.",
+            "4": "A long campaign of correction can earn its reward after years of steady work. Keep faith with the task rather than demanding immediate proof.",
+            "5": "The light of the mature person shines through trustworthy conduct. Integrity makes the near-completion safe.",
+            "6": "Trust at a celebration can be harmless, but drinking until your head is wet loses the right measure. Do not let relief become carelessness."
+          }
+        },
+        "bg": {
+          "title": "Уей Дзи — Преди завършването",
+          "coreThread": "Близо сте, но не сте приключили. Уей Дзи е малката лисица, която почти е прекосила водата, но намокря опашката си: последните детайли все още имат значение. Останете внимателни, не празнувайте преждевременно и преминете внимателно.",
+          "whenItAppears": "Подгответе прехода, вместо да обявявате победа. Сдържайте частта, която иска да бърза, направете голямото преминаване само когато наистина е подготвено и нека трайното усилие пренесе последната дистанция.",
+          "reflectionQuestions": [
+            "Кой последен детайл все още може да провали преминаването?",
+            "Къде ми е нужно сдържане преди следващия ход?",
+            "Коя подготовка би направила големия преход безопасен?"
+          ],
+          "lineReflections": {
+            "1": "Мократа опашка в началото носи неудобство. Не влизайте в преминаването, преди да сте готови.",
+            "2": "Задръжте колелата и останете устойчиви. Сдържането в правилния момент е благоприятно.",
+            "3": "Преди завършването прякото напредване е опасно; голямото преминаване все пак може да е благоприятно, когато е напълно подготвено. Различавайте импулса от готовността.",
+            "4": "Дългият поход на поправка може да заслужи награда след години постоянно усилие. Останете верни на задачата, вместо да изисквате незабавно доказателство.",
+            "5": "Светлината на зрелия човек сияе чрез надеждно поведение. Почтеността прави близкото завършване безопасно.",
+            "6": "Доверието на празнуване може да е безвредно, но пиенето, докато главата се намокри, губи правилната мярка. Не позволявайте на облекчението да стане небрежност."
+          }
+        },
+        "ru": {
+          "title": "Вэй Цзи — До завершения",
+          "coreThread": "Вы близко, но ещё не закончили. Вэй Цзи — маленькая лиса, почти перешедшая воду, но намочившая хвост: последние детали всё ещё важны. Будьте внимательны, не празднуйте преждевременно и переходите осторожно.",
+          "whenItAppears": "Подготовьте переход, а не объявляйте победу. Сдерживайте часть, которая хочет спешить, совершайте большую переправу лишь когда она действительно подготовлена, и позвольте устойчивому усилию пройти последнюю дистанцию.",
+          "reflectionQuestions": [
+            "Какая последняя деталь всё ещё может сорвать переправу?",
+            "Где мне нужно сдерживание перед следующим шагом?",
+            "Какая подготовка сделает большой переход безопасным?"
+          ],
+          "lineReflections": {
+            "1": "Мокрый хвост в начале приносит неловкость. Не входите в переправу до готовности.",
+            "2": "Притормозите колёса и сохраняйте устойчивость. Сдерживание в верный момент благоприятно.",
+            "3": "До завершения прямое продвижение опасно; большая переправа всё же может быть благоприятна, когда полностью подготовлена. Различайте импульс и готовность.",
+            "4": "Долгая кампания исправления может заслужить награду после лет устойчивого труда. Храните верность задаче, а не требуйте немедленного доказательства.",
+            "5": "Свет зрелого человека сияет через достойное доверия поведение. Честность делает близкое завершение безопасным.",
+            "6": "Доверие на праздновании может быть безвредно, но пить до мокрой головы — значит потерять верную меру. Не позволяйте облегчению стать небрежностью."
+          }
+        }
+      }
+    }
+  ]
+}
