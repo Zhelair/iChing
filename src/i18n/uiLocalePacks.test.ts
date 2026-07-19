@@ -17,7 +17,7 @@ const featureGroups = [
 ] as const
 
 const featureKeys = {
-  history: ['eyebrow', 'title', 'body', 'contents', 'replay', 'sound', 'oracleSource', 'yarrowSource', 'chapters'],
+  history: ['eyebrow', 'title', 'contents', 'replay', 'sound', 'oracleSource', 'yarrowSource', 'chapters'],
   methodYarrow: ['title', 'body'],
   castYarrow: ['eyebrow', 'title', 'body', 'begin', 'next', 'nextLine', 'complete', 'divided', 'removed', 'remain', 'source'],
   journal: ['yarrow', 'eyebrow', 'title', 'body', 'search', 'all', 'digital', 'physical', 'direct', 'readings', 'recurring', 'seen', 'empty', 'emptyBody', 'begin', 'noResults', 'question', 'untitled', 'note', 'noteHint', 'tags', 'tagsHint', 'save', 'saved', 'review', 'remove', 'removeTitle', 'removeBody', 'removeCancel', 'removeConfirm', 'undo', 'undoAction', 'backups', 'settings', 'contents', 'changed', 'stable', 'thisMonth'],

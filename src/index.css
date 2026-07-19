@@ -251,8 +251,8 @@ button:disabled { cursor: not-allowed; opacity: .48; transform: none !important;
 .route-loading > span { display: block; width: 1.6rem; height: .22rem; border-radius: 999px; background: var(--jade); opacity: .38; }
 
 /* Home oracle object */
-.home-title { font-size: clamp(3.15rem, 7.4vw, 6.25rem); }
-.app-frame:not([data-locale="en"]) .home-title { font-size: clamp(3rem, 6.35vw, 5.45rem); letter-spacing: -.045em; }
+.home-title { font-size: clamp(3rem, 6.15vw, 5.25rem); }
+.app-frame:not([data-locale="en"]) .home-title { font-size: clamp(2.9rem, 5.55vw, 4.8rem); letter-spacing: -.045em; }
 .home-object { --card-rx: 0deg; --card-ry: 0deg; --card-light-x: 50%; --card-light-y: 28%; --shadow-x: 0px; --shadow-y: 12px; position: relative; isolation: isolate; perspective: 1200px; }
 .home-object::before { position: absolute; inset: .8rem -1.15rem -.8rem 1.15rem; z-index: -1; border: 1px solid rgba(154, 110, 47, .22); border-radius: 2.2rem; background: rgba(239, 229, 208, .2); content: ""; transform: rotate(2.1deg); }
 .home-object__shadow { position: absolute; left: 9%; right: 9%; bottom: -1.3rem; height: 3.5rem; z-index: -2; border-radius: 50%; background: radial-gradient(ellipse, rgba(52,43,29,.18), transparent 70%); filter: blur(9px); transform: translate3d(var(--shadow-x), var(--shadow-y), 0); transition: transform 260ms ease; }
@@ -308,6 +308,8 @@ button:disabled { cursor: not-allowed; opacity: .48; transform: none !important;
 .preparation-step { min-height: 6.4rem; border: 1px solid var(--line); border-radius: 1.2rem; background: rgba(255,255,255,.36); padding: .9rem; }
 .preparation-step > span { display: grid; width: 1.6rem; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--jade-light); color: var(--jade); font-size: .7rem; font-weight: 850; }
 .preparation-step p { margin: .75rem 0 0; font-size: .78rem; font-weight: 700; line-height: 1.45; }
+.physical-coin-note { display: flex; align-items: flex-start; gap: .75rem; border: 1px solid color-mix(in srgb,var(--brass) 42%,var(--line)); border-radius: 1rem; background: color-mix(in srgb,var(--brass) 9%,transparent); padding: .9rem 1rem; color: var(--ink-soft); font-size: .82rem; line-height: 1.6; }
+.physical-coin-note svg { margin-top: .12rem; flex: none; color: var(--brass); }
 .question-vessel { border-left: 3px solid var(--jade); border-radius: .2rem 1.2rem 1.2rem .2rem; background: rgba(49,95,80,.07); padding: 1rem 1.2rem; }
 .question-vessel > span { color: var(--jade); font-size: .64rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .question-vessel p { margin: .45rem 0 0; font-family: "Lora Variable", serif; font-size: 1.1rem; line-height: 1.65; }
@@ -318,6 +320,10 @@ button:disabled { cursor: not-allowed; opacity: .48; transform: none !important;
 .ritual-cue__progress span { display: block; width: .48rem; aspect-ratio: 1; border: 1px solid rgba(49,95,80,.35); border-radius: 50%; }
 .ritual-cue__progress .is-complete { border-color: var(--jade); background: var(--jade); }
 .ritual-cue__progress .is-current { border-color: var(--brass); box-shadow: 0 0 0 4px rgba(154,110,47,.12); }
+.ritual-cue--third { position: relative; grid-template-columns: auto minmax(0,1fr) auto; border-color: color-mix(in srgb,var(--brass) 58%,var(--line)); background: linear-gradient(120deg,color-mix(in srgb,var(--brass) 14%,var(--white)),color-mix(in srgb,var(--jade-light) 74%,var(--white))); box-shadow: 0 16px 42px color-mix(in srgb,var(--brass) 13%,transparent); overflow: hidden; }
+.ritual-cue--third::after { position: absolute; width: 8rem; aspect-ratio: 1; right: -3rem; top: -3rem; border: 1px solid color-mix(in srgb,var(--brass) 35%,transparent); border-radius: 50%; content: ""; box-shadow: 0 0 0 1.5rem color-mix(in srgb,var(--brass) 5%,transparent),0 0 0 3rem color-mix(in srgb,var(--jade) 4%,transparent); animation: third-line-breathe 2.8s ease-in-out infinite; pointer-events: none; }
+.third-line-focus { position: relative; z-index: 1; display: flex; max-width: 14rem; align-items: center; gap: .55rem; border-radius: 999px; background: color-mix(in srgb,var(--brass) 16%,transparent); padding: .65rem .8rem; color: color-mix(in srgb,var(--brass) 82%,var(--ink)); font-size: .7rem; font-weight: 850; line-height: 1.35; }
+@keyframes third-line-breathe { 50% { transform: scale(1.1); opacity: .5; } }
 .cast-progress { display: flex; min-height: 17rem; flex-direction: column; justify-content: center; gap: .72rem; border: 1px solid rgba(0,0,0,.08); border-radius: 1.6rem; background: rgba(255,255,255,.35); padding: 1.25rem 1.5rem; }
 .cast-progress__row { display: flex; min-height: 1rem; align-items: center; gap: .75rem; }
 .cast-progress__position { width: 1rem; color: var(--ink-soft); font-size: .65rem; font-weight: 800; text-align: right; }
@@ -384,6 +390,8 @@ button:disabled { cursor: not-allowed; opacity: .48; transform: none !important;
   .preparation-step p { margin: 0; }
   .line-key-grid { grid-template-columns: 1fr; }
   .ritual-cue { align-items: start; }
+  .ritual-cue--third { grid-template-columns: auto minmax(0,1fr); }
+  .third-line-focus { grid-column: 1 / -1; max-width: none; }
   .coin-flight { width: 2.8rem; }
 }
 
@@ -572,8 +580,9 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
 .print-journal-note { display: none; }
 
 /* A compact welcome cue makes personalisation discoverable without competing with the reading CTA. */
-.home-preferences { display: grid; max-width: 42rem; grid-template-columns: 2.75rem minmax(0,1fr); gap: .85rem; border: 1px solid var(--line); border-radius: 1.2rem; background: color-mix(in srgb,var(--white) 38%,transparent); padding: .9rem; backdrop-filter: blur(8px); }
-.home-preferences__icon { display: grid; width: 2.75rem; aspect-ratio: 1; place-items: center; align-self: start; border-radius: .9rem; background: var(--jade-light); color: var(--jade); }
+.home-preferences { display: grid; max-width: 42rem; grid-template-columns: 3.15rem minmax(0,1fr); gap: 1rem; border: 1px solid var(--line); border-radius: 1.35rem; background: color-mix(in srgb,var(--white) 42%,transparent); padding: 1.2rem; backdrop-filter: blur(8px); }
+.home-preferences__icon { display: grid; width: 3.15rem; aspect-ratio: 1; place-items: center; align-self: start; border-radius: 1rem; background: var(--jade-light); color: var(--jade); }
+.home-preferences #home-preferences-title { font-size: 1.08rem; }
 .home-preferences__links { display: flex; flex-wrap: wrap; gap: .55rem; }
 .home-preferences__links a { display: inline-flex; min-height: 3.1rem; align-items: center; gap: .5rem; border: 1px solid color-mix(in srgb,var(--jade) 20%,var(--line)); border-radius: .9rem; background: color-mix(in srgb,var(--jade-light) 62%,transparent); padding: .65rem .9rem; color: var(--jade); font-size: .86rem; font-weight: 800; text-decoration: none; transition: background-color 180ms ease,border-color 180ms ease,transform 180ms ease; }
 @media (hover: hover) and (pointer: fine) {

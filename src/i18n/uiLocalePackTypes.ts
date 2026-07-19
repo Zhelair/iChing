@@ -105,7 +105,6 @@ export type UiLocalePack = {
     history: {
       eyebrow: string
       title: string
-      body: string
       contents: string
       replay: string
       sound: string

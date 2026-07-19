@@ -1,4 +1,4 @@
-import { ArrowLeft, Check, CircleDot, RotateCcw, Wind } from 'lucide-react'
+import { ArrowLeft, Check, CircleDot, RotateCcw, Sparkles, Wind } from 'lucide-react'
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
 import { useSound } from '../audio/SoundContext'
@@ -106,7 +106,7 @@ function YarrowWorkshop({ procedure, step, lineNumber, onAdvance, copy: c }: { p
   </div>
 }
 
-function Preparation({ question, t, onReady }: { question: string; t: Translator; onReady: () => void }) {
+function Preparation({ method, question, t, onReady }: { method: ReadingMethod; question: string; t: Translator; onReady: () => void }) {
   return (
     <section className="surface preparation-card mt-8 overflow-hidden p-6 sm:p-9" aria-labelledby="preparation-title">
       <div className="preparation-card__breath" aria-hidden="true"><span /><Wind size={24} /></div>
@@ -121,6 +121,8 @@ function Preparation({ question, t, onReady }: { question: string; t: Translator
           ))}
         </div>
 
+        {method === 'physical' ? <aside className="physical-coin-note mt-7"><CircleDot size={20} aria-hidden="true" /><p>{t('cast.physical.setAside')}</p></aside> : null}
+
         <blockquote className="question-vessel mt-7">
           <span>{t('cast.prepare.question')}</span>
           <p>“{question || t('cast.prepare.empty')}”</p>
@@ -132,17 +134,19 @@ function Preparation({ question, t, onReady }: { question: string; t: Translator
   )
 }
 
-function RitualCue({ question, lineCount, t }: { question: string; lineCount: number; t: Translator }) {
+function RitualCue({ emphasizeThird, question, lineCount, t }: { emphasizeThird: boolean; question: string; lineCount: number; t: Translator }) {
+  const isThirdLine = emphasizeThird && lineCount === 2
   return (
-    <section className="ritual-cue" aria-labelledby="ritual-question">
+    <section className={`ritual-cue ${isThirdLine ? 'ritual-cue--third' : ''}`} aria-labelledby="ritual-question">
       <div className="ritual-cue__progress" aria-hidden="true">
         {[0, 1, 2, 3, 4, 5].map((position) => <span key={position} className={position < lineCount ? 'is-complete' : position === lineCount ? 'is-current' : ''} />)}
       </div>
       <div className="ritual-cue__copy">
-        <p className="eyebrow">{lineCount === 0 ? t('cast.cue.first') : t('cast.cue.next')}</p>
+        <p className="eyebrow">{isThirdLine ? t('cast.cue.third') : lineCount === 0 ? t('cast.cue.first') : t('cast.cue.next')}</p>
         <p id="ritual-question" className="mt-2 font-editorial text-xl italic">“{question || t('cast.prepare.empty')}”</p>
         <span className="mt-2 block text-xs text-[var(--ink-soft)]">{t('cast.cue.question')}</span>
       </div>
+      {isThirdLine ? <div className="third-line-focus" role="status"><Sparkles size={18} aria-hidden="true" /><span>{t('cast.cue.thirdFocus')}</span></div> : null}
     </section>
   )
 }
@@ -248,11 +252,11 @@ function CastFlow({ method }: { method: ReadingMethod }) {
         <h1 className="mt-3 text-4xl font-medium leading-tight tracking-[-.03em]">{titles[method][0]}</h1>
         <p className="mt-3 max-w-2xl leading-7 text-[var(--ink-soft)]">{titles[method][1]}</p>
 
-        {!prepared ? <Preparation question={question} t={t} onReady={() => setPrepared(true)} /> : null}
+        {!prepared ? <Preparation method={method} question={question} t={t} onReady={() => setPrepared(true)} /> : null}
 
         {prepared && method !== 'direct' ? (
           <>
-            {lines.length < 6 ? <RitualCue question={question} lineCount={lines.length} t={t} /> : null}
+            {lines.length < 6 ? <RitualCue emphasizeThird={method === 'digital' || method === 'physical'} question={question} lineCount={lines.length} t={t} /> : null}
             <div className="mt-5 grid gap-4 sm:grid-cols-[1fr_1fr] sm:items-stretch sm:gap-5">
               <CastProgress lines={lines} t={t} />
               <div className={`surface ritual-card ${pending ? 'is-casting' : ''}`} aria-busy={Boolean(pending)}>
