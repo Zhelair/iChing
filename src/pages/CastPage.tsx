@@ -100,13 +100,21 @@ type YarrowCopy = {
 
 type YarrowPhase = 'idle' | 'mixing' | 'dividing' | 'counting'
 
-function YarrowWorkshop({ procedure, step, animatingStep, phase, lineNumber, onAdvance, copy: c }: { procedure: YarrowProcedure | null; step: number; animatingStep: number | null; phase: YarrowPhase; lineNumber: number; onAdvance: () => void; copy: YarrowCopy }) {
+function yarrowPhaseTimings(copy: YarrowCopy, reduceMotion: boolean): [number, number, number] {
+  if (reduceMotion) return [20, 40, 70]
+  const mixing = Math.min(2100, Math.max(1600, 900 + copy.mixing.length * 36))
+  const dividing = Math.min(2600, Math.max(1900, 1050 + copy.dividing.length * 38))
+  const counting = Math.min(2500, Math.max(1800, 1000 + copy.counting.length * 38))
+  return [mixing, mixing + dividing, mixing + dividing + counting]
+}
+
+function YarrowWorkshop({ procedure, step, animatingStep, phase, ritualDuration, lineNumber, onAdvance, copy: c }: { procedure: YarrowProcedure | null; step: number; animatingStep: number | null; phase: YarrowPhase; ritualDuration: number; lineNumber: number; onAdvance: () => void; copy: YarrowCopy }) {
   const remaining = procedure && step > 0 ? procedure.changes[Math.min(step, 3) - 1].remaining : 49
   const ritualChange = procedure && animatingStep ? procedure.changes[animatingStep - 1] : null
   const phaseLabel = phase === 'mixing' ? c.mixing : phase === 'dividing' ? c.dividing : phase === 'counting' ? c.counting : ''
 
   return <div className={`yarrow-workshop ${phase !== 'idle' ? 'is-ritual-active' : ''}`} aria-busy={phase !== 'idle'}>
-    <div className={`yarrow-stalk-field ${ritualChange ? 'is-ritual' : ''}`} aria-hidden="true">{Array.from({ length: 49 }, (_, index) => {
+    <div className={`yarrow-stalk-field ${ritualChange ? 'is-ritual' : ''}`} style={{ '--yarrow-duration': `${Math.max(70, ritualDuration - 100)}ms` } as CSSProperties} aria-hidden="true">{Array.from({ length: 49 }, (_, index) => {
       const wasAlreadyRemoved = ritualChange ? index >= ritualChange.before : index >= remaining
       const willBeRemoved = ritualChange ? index >= ritualChange.remaining && index < ritualChange.before : false
       const side = ritualChange && index < ritualChange.left ? 'is-left' : 'is-right'
@@ -249,7 +257,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
     }
     if (!activeProcedure) return
 
-    const phaseTimes = preferences.reduceMotion ? [20, 40, 70] : [650, 1320, 2200]
+    const phaseTimes = yarrowPhaseTimings(yarrow, preferences.reduceMotion)
     setYarrowAnimatingStep(targetStep)
     setYarrowPhase('mixing')
     yarrowTimersRef.current = [
@@ -273,6 +281,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
   }
 
   const knownLines = linesFromKnownHexagram(knownId, movingPositions)
+  const yarrowTimings = yarrowPhaseTimings(yarrow, preferences.reduceMotion)
   const displayedLine = pending ?? lines.at(-1)
   const lastSettledLine = pending ? null : lines.at(-1)
   const coinSummary = lastSettledLine?.coins?.map((side) => t(side === 'heads' ? 'cast.heads' : 'cast.tails')).join(', ')
@@ -318,7 +327,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
                     ) : null}
                   </>
                 ) : method === 'yarrow' ? (
-                  <YarrowWorkshop procedure={yarrowProcedure} step={yarrowStep} animatingStep={yarrowAnimatingStep} phase={yarrowPhase} lineNumber={Math.max(1, lines.length + (yarrowStep === 3 ? 0 : 1))} onAdvance={advanceYarrow} copy={yarrow} />
+                  <YarrowWorkshop procedure={yarrowProcedure} step={yarrowStep} animatingStep={yarrowAnimatingStep} phase={yarrowPhase} ritualDuration={yarrowTimings[2]} lineNumber={Math.max(1, lines.length + (yarrowStep === 3 ? 0 : 1))} onAdvance={advanceYarrow} copy={yarrow} />
                 ) : (
                   <fieldset className="w-full">
                     <legend className="mb-4 text-sm font-semibold">{t('cast.chooseTotal')} {lines.length + 1}</legend>
