@@ -14,17 +14,17 @@ const copy = {
   en: {
     yarrow: 'Yarrow',
     eyebrow: 'Private practice · local journal', title: 'A record of encounters with change.', body: 'Return to questions, refine your notes, and notice recurring images without turning reflection into a score.',
-    search: 'Search questions, notes, tags, or hexagrams', all: 'All methods', digital: 'Digital', physical: 'Physical', direct: 'Entered', readings: 'readings', recurring: 'Recurring images', seen: 'seen', empty: 'Your journal is quiet for now.', emptyBody: 'Complete a reading and it will appear here automatically.', begin: 'Begin a reading', noResults: 'No entries match these filters.', question: 'Question', untitled: 'Untitled reflection', note: 'Reflection', noteHint: 'What became clearer with time?', tags: 'Tags', tagsHint: 'work, family, timing', save: 'Save changes', saved: 'Saved locally', review: 'Review reading', remove: 'Remove entry', undo: 'Entry removed.', undoAction: 'Undo', backups: 'JSON backup and restore stay in Settings.', settings: 'Open Settings', contents: 'Journal filters', changed: 'changing lines', stable: 'stable reading', thisMonth: 'This month',
+    search: 'Search questions, notes, tags, or hexagrams', all: 'All methods', digital: 'Digital', physical: 'Physical', direct: 'Entered', readings: 'readings', recurring: 'Recurring images', seen: 'seen', empty: 'Your journal is quiet for now.', emptyBody: 'Complete a reading and it will appear here automatically.', begin: 'Begin a reading', noResults: 'No entries match these filters.', question: 'Question', untitled: 'Untitled reflection', note: 'Reflection', noteHint: 'What became clearer with time?', tags: 'Tags', tagsHint: 'work, family, timing', save: 'Save changes', saved: 'Saved locally', review: 'Review reading', remove: 'Remove entry', removeTitle: 'Remove this entry?', removeBody: 'It will disappear from this browser. You can still undo for a few seconds.', removeCancel: 'Keep entry', removeConfirm: 'Yes, remove it', undo: 'Entry removed.', undoAction: 'Undo', backups: 'JSON backup and restore stay in Settings.', settings: 'Open Settings', contents: 'Journal filters', changed: 'changing lines', stable: 'stable reading', thisMonth: 'This month',
   },
   bg: {
     yarrow: 'Равнец',
     eyebrow: 'Лична практика · локален дневник', title: 'Запис на срещите с промяната.', body: 'Връщайте се към въпросите, допълвайте бележките и забелязвайте повтарящи се образи, без да превръщате размисъла в резултат.',
-    search: 'Търсете във въпроси, бележки, етикети или хексаграми', all: 'Всички методи', digital: 'Дигитални', physical: 'Физически', direct: 'Въведени', readings: 'прочита', recurring: 'Повтарящи се образи', seen: 'срещана', empty: 'Дневникът ви засега е тих.', emptyBody: 'Завършете прочит и той автоматично ще се появи тук.', begin: 'Започнете прочит', noResults: 'Няма записи с тези филтри.', question: 'Въпрос', untitled: 'Размисъл без заглавие', note: 'Размисъл', noteHint: 'Какво стана по-ясно с времето?', tags: 'Етикети', tagsHint: 'работа, семейство, време', save: 'Запази промените', saved: 'Запазено локално', review: 'Преглед на прочита', remove: 'Премахни записа', undo: 'Записът е премахнат.', undoAction: 'Отмени', backups: 'JSON архивът и възстановяването са в Настройки.', settings: 'Отвори Настройки', contents: 'Филтри на дневника', changed: 'променящи се линии', stable: 'стабилен прочит', thisMonth: 'Този месец',
+    search: 'Търсете във въпроси, бележки, етикети или хексаграми', all: 'Всички методи', digital: 'Дигитални', physical: 'Физически', direct: 'Въведени', readings: 'прочита', recurring: 'Повтарящи се образи', seen: 'срещана', empty: 'Дневникът ви засега е тих.', emptyBody: 'Завършете прочит и той автоматично ще се появи тук.', begin: 'Започнете прочит', noResults: 'Няма записи с тези филтри.', question: 'Въпрос', untitled: 'Размисъл без заглавие', note: 'Размисъл', noteHint: 'Какво стана по-ясно с времето?', tags: 'Етикети', tagsHint: 'работа, семейство, време', save: 'Запази промените', saved: 'Запазено локално', review: 'Преглед на прочита', remove: 'Премахни записа', removeTitle: 'Да премахнем ли този запис?', removeBody: 'Ще изчезне от този браузър. Все още можете да го върнете за няколко секунди.', removeCancel: 'Запази записа', removeConfirm: 'Да, премахни го', undo: 'Записът е премахнат.', undoAction: 'Отмени', backups: 'JSON архивът и възстановяването са в Настройки.', settings: 'Отвори Настройки', contents: 'Филтри на дневника', changed: 'променящи се линии', stable: 'стабилен прочит', thisMonth: 'Този месец',
   },
   ru: {
     yarrow: 'Тысячелистник',
     eyebrow: 'Личная практика · локальный дневник', title: 'История встреч с переменами.', body: 'Возвращайтесь к вопросам, дополняйте заметки и замечайте повторяющиеся образы, не превращая размышление в оценку.',
-    search: 'Поиск по вопросам, заметкам, тегам и гексаграммам', all: 'Все методы', digital: 'Цифровые', physical: 'Настоящие', direct: 'Введённые', readings: 'чтений', recurring: 'Повторяющиеся образы', seen: 'встречалась', empty: 'Ваш дневник пока тих.', emptyBody: 'Завершите чтение, и оно автоматически появится здесь.', begin: 'Начать чтение', noResults: 'Нет записей с такими фильтрами.', question: 'Вопрос', untitled: 'Размышление без заголовка', note: 'Размышление', noteHint: 'Что со временем стало яснее?', tags: 'Теги', tagsHint: 'работа, семья, время', save: 'Сохранить изменения', saved: 'Сохранено локально', review: 'Открыть чтение', remove: 'Удалить запись', undo: 'Запись удалена.', undoAction: 'Отменить', backups: 'JSON-копия и восстановление находятся в Настройках.', settings: 'Открыть Настройки', contents: 'Фильтры дневника', changed: 'изменяющихся линий', stable: 'стабильное чтение', thisMonth: 'Этот месяц',
+    search: 'Поиск по вопросам, заметкам, тегам и гексаграммам', all: 'Все методы', digital: 'Цифровые', physical: 'Настоящие', direct: 'Введённые', readings: 'чтений', recurring: 'Повторяющиеся образы', seen: 'встречалась', empty: 'Ваш дневник пока тих.', emptyBody: 'Завершите чтение, и оно автоматически появится здесь.', begin: 'Начать чтение', noResults: 'Нет записей с такими фильтрами.', question: 'Вопрос', untitled: 'Размышление без заголовка', note: 'Размышление', noteHint: 'Что со временем стало яснее?', tags: 'Теги', tagsHint: 'работа, семья, время', save: 'Сохранить изменения', saved: 'Сохранено локально', review: 'Открыть чтение', remove: 'Удалить запись', removeTitle: 'Удалить эту запись?', removeBody: 'Она исчезнет из этого браузера. В течение нескольких секунд её ещё можно будет вернуть.', removeCancel: 'Оставить запись', removeConfirm: 'Да, удалить', undo: 'Запись удалена.', undoAction: 'Отменить', backups: 'JSON-копия и восстановление находятся в Настройках.', settings: 'Открыть Настройки', contents: 'Фильтры дневника', changed: 'изменяющихся линий', stable: 'стабильное чтение', thisMonth: 'Этот месяц',
   },
 } as const
 
@@ -43,12 +43,22 @@ export function JournalPage() {
   const [tags, setTags] = useState('')
   const [saved, setSaved] = useState(false)
   const [deleted, setDeleted] = useState<Reading | null>(null)
+  const [confirmingDelete, setConfirmingDelete] = useState(false)
   const undoTimer = useRef<number | null>(null)
+  const keepEntryRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     void getAllReadings().then((items) => { setReadings(items); setLoaded(true) })
     return () => { if (undoTimer.current) window.clearTimeout(undoTimer.current) }
   }, [])
+
+  useEffect(() => {
+    if (!confirmingDelete) return
+    keepEntryRef.current?.focus()
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === 'Escape') setConfirmingDelete(false) }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [confirmingDelete])
 
   const counts = useMemo(() => readings.reduce<Record<number, number>>((acc, reading) => {
     acc[reading.primaryHexagramId] = (acc[reading.primaryHexagramId] ?? 0) + 1
@@ -90,6 +100,7 @@ export function JournalPage() {
     await deleteReading(selected.id)
     setReadings((items) => items.filter(({ id }) => id !== selected.id))
     setDeleted(selected); setSelectedId(null)
+    setConfirmingDelete(false)
     undoTimer.current = window.setTimeout(() => setDeleted(null), 6000)
   }
   async function undoDelete() {
@@ -130,7 +141,7 @@ export function JournalPage() {
                   {selectedId === reading.id ? <div className="journal-editor">
                     <div><label htmlFor={`note-${reading.id}`}>{c.note}</label><textarea id={`note-${reading.id}`} className="field mt-2 min-h-32" value={note} onChange={(event) => { setNote(event.target.value); setSaved(false) }} placeholder={c.noteHint} /></div>
                     <div><label htmlFor={`tags-${reading.id}`}><Tag size={15} /> {c.tags}</label><input id={`tags-${reading.id}`} className="field mt-2" value={tags} onChange={(event) => { setTags(event.target.value); setSaved(false) }} placeholder={c.tagsHint} /></div>
-                    <div className="flex flex-wrap gap-3"><button className="button-primary" type="button" onClick={saveEdits}>{saved ? c.saved : c.save}</button><button className="button-secondary" type="button" onClick={() => review(reading)}>{c.review}</button><ReadingExportActions reading={reading} compact /><button className="button-text danger-action" type="button" onClick={removeSelected}><Trash2 size={16} /> {c.remove}</button></div>
+                    <div className="flex flex-wrap gap-3"><button className="button-primary" type="button" onClick={saveEdits}>{saved ? c.saved : c.save}</button><button className="button-secondary" type="button" onClick={() => review(reading)}>{c.review}</button><ReadingExportActions reading={reading} compact /><button className="button-text danger-action" type="button" onClick={() => setConfirmingDelete(true)}><Trash2 size={16} /> {c.remove}</button></div>
                   </div> : null}
                 </article>
               })}</div>
@@ -138,6 +149,17 @@ export function JournalPage() {
           ))}
         </section>
       </div>
+      {confirmingDelete && selected ? <div className="fixed inset-0 z-50 grid place-items-center bg-black/50 p-4" role="presentation" onMouseDown={(event) => { if (event.currentTarget === event.target) setConfirmingDelete(false) }}>
+        <div className="surface w-full max-w-md bg-[var(--paper)] p-6 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="remove-entry-title" aria-describedby="remove-entry-body">
+          <span className="grid size-11 place-items-center rounded-2xl bg-red-950/10 text-red-900"><Trash2 size={22} aria-hidden="true" /></span>
+          <h2 id="remove-entry-title" className="mt-5 text-3xl">{c.removeTitle}</h2>
+          <p id="remove-entry-body" className="mt-3 leading-7 text-[var(--ink-soft)]">{c.removeBody}</p>
+          <div className="mt-7 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+            <button ref={keepEntryRef} type="button" className="button-secondary" onClick={() => setConfirmingDelete(false)}>{c.removeCancel}</button>
+            <button type="button" className="button-primary !border-red-950 !bg-red-950" onClick={() => void removeSelected()}>{c.removeConfirm}</button>
+          </div>
+        </div>
+      </div> : null}
       {deleted ? <div className="undo-toast" role="status">{c.undo}<button type="button" onClick={undoDelete}><RotateCcw size={15} />{c.undoAction}</button></div> : null}
     </div>
   )

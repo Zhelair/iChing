@@ -12,7 +12,7 @@ export type MeditationGraph = {
 }
 
 function volumeTarget(volume: 0.5 | 1) {
-  return volume === 1 ? .16 : .082
+  return volume === 1 ? .192 : .0984
 }
 
 function holdAtCurrentValue(parameter: AudioParam, time: number) {

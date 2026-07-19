@@ -8,10 +8,10 @@ import { localeNames, useI18n } from '../i18n/I18nContext'
 import { clearReadings, importReadings } from '../storage/db'
 import { createExport, downloadExport, MAX_EXPORT_FILE_BYTES, parseExport } from '../storage/export'
 
-function Toggle({ checked, onChange, label, body }: { checked: boolean; onChange: (value: boolean) => void; label: string; body: string }) {
+function Toggle({ checked, onChange, label, body }: { checked: boolean; onChange: (value: boolean) => void; label: string; body?: string }) {
   return (
     <label className="flex min-h-20 cursor-pointer items-center justify-between gap-5 border-b border-[var(--line)] py-4 last:border-0">
-      <span><span className="block font-bold">{label}</span><span className="mt-1 block text-xs leading-5 text-[var(--ink-soft)]">{body}</span></span>
+      <span><span className="block font-bold">{label}</span>{body ? <span className="mt-1 block text-xs leading-5 text-[var(--ink-soft)]">{body}</span> : null}</span>
       <span className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${checked ? 'bg-[var(--jade)]' : 'bg-[#c8c0b1]'}`}>
         <input type="checkbox" className="peer sr-only" checked={checked} onChange={(event) => onChange(event.target.checked)} />
         <span className={`absolute top-1 size-5 rounded-full bg-white shadow transition-transform ${checked ? 'translate-x-6' : 'translate-x-1'}`} />
@@ -109,7 +109,7 @@ export function SettingsPage() {
     await clearReadings()
     sessionStorage.removeItem('yi-path:current-reading:v1')
     sessionStorage.removeItem('yi-path:question:v1')
-    setPreferences({ locale: 'en', theme: 'daylight', sound: false, music: false, ambientVolume: 0, reduceMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches })
+    setPreferences({ locale: 'en', theme: 'bamboo-mist', sound: true, music: true, ambientVolume: 1, reduceMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches })
     setMessage(t('settings.cleared'))
     setClearOpen(false)
   }
@@ -149,7 +149,7 @@ export function SettingsPage() {
             const available = await previewCoinSound()
             updatePreference('sound', available)
             setAudioMessage(available ? '' : t('settings.audioUnavailable'))
-          }} label={t('settings.sound')} body={t('settings.soundBody')} />
+          }} label={t('settings.sound')} />
           <AmbientVolumeControl value={preferences.ambientVolume} onChange={async (volume) => {
             const available = await setAmbientVolume(volume)
             const nextVolume = available ? volume : 0
