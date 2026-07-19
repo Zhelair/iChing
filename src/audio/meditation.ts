@@ -12,7 +12,7 @@ export type MeditationGraph = {
 }
 
 function volumeTarget(volume: 0.5 | 1) {
-  return volume === 1 ? .072 : .038
+  return volume === 1 ? .094 : .049
 }
 
 function holdAtCurrentValue(parameter: AudioParam, time: number) {
@@ -182,11 +182,11 @@ export function createMeditationGraph(context: AudioContext, volume: 0.5 | 1 = 0
   const filterDepth = context.createGain()
 
   master.gain.value = .0001
-  compressor.threshold.value = -30
+  compressor.threshold.value = -8
   compressor.knee.value = 6
-  compressor.ratio.value = 10
-  compressor.attack.value = .006
-  compressor.release.value = .28
+  compressor.ratio.value = 12
+  compressor.attack.value = .003
+  compressor.release.value = .25
   filter.type = 'lowpass'
   filter.frequency.value = 920
   filter.Q.value = .35

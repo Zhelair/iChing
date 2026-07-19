@@ -43,8 +43,18 @@ export function ResultPage() {
 
   useEffect(() => {
     if (!reading || searchParams.get('print') !== '1') return
-    const timer = window.setTimeout(() => window.print(), 500)
-    return () => window.clearTimeout(timer)
+    let cancelled = false
+    let timer: number | undefined
+    const openPrintDialog = async () => {
+      await document.fonts?.ready
+      if (cancelled) return
+      timer = window.setTimeout(() => window.print(), 150)
+    }
+    void openPrintDialog()
+    return () => {
+      cancelled = true
+      if (timer !== undefined) window.clearTimeout(timer)
+    }
   }, [reading, searchParams])
 
   if (!reading) {
@@ -132,10 +142,11 @@ export function ResultPage() {
           <Link to={`/hexagrams/${primary.id}`} className="button-secondary mt-7"><BookOpen size={17} aria-hidden="true" /> {t('result.explore')}</Link>
         </section>
 
-        <section className="surface p-6 sm:p-8">
+        <section className={`result-journal surface p-6 sm:p-8 ${note.trim() ? 'has-note' : 'is-empty'}`}>
           <p className="eyebrow">{t('result.journal')}</p>
           <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">{t('result.journalBody')}</p>
           <textarea className="field mt-5 !min-h-36 resize-y" value={note} onChange={(event) => setNote(event.target.value)} placeholder={t('result.notePlaceholder')} maxLength={4000} />
+          <p className="print-journal-note mt-4 leading-7 text-[var(--ink-soft)]">{note}</p>
           <button type="button" onClick={saveNote} className="button-primary mt-4">{saved ? <Check size={17} aria-hidden="true" /> : null}{saved ? t('common.saved') : t('result.saveNote')}</button>
         </section>
 
