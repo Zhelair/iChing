@@ -1,7 +1,7 @@
-import { Check, Coffee, Copy, HeartHandshake, Mail, MessageSquareText } from 'lucide-react'
-import { useState, type FormEvent } from 'react'
+import { Check, Coffee, Copy, HeartHandshake, LoaderCircle, MessageSquareText, Send } from 'lucide-react'
+import { useEffect, useState, type FormEvent } from 'react'
 import { PageIntro } from '../components/PageIntro'
-import { BMAC_URL, FEEDBACK_EMAIL } from '../config/contact'
+import { BMAC_URL } from '../config/contact'
 import type { Locale } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 
@@ -17,8 +17,11 @@ const copy: Record<Locale, {
   placeholder: string
   copyFeedback: string
   copied: string
-  openEmail: string
-  emailComing: string
+  sendFeedback: string
+  sending: string
+  sent: string
+  sendFailed: string
+  tryLater: string
   writeFirst: string
   copyFailed: string
   supportTitle: string
@@ -31,15 +34,18 @@ const copy: Record<Locale, {
     title: 'Feedback & support',
     intro: 'Yi Path is free and local-first. Share what worked, report a rough edge, or support its continued care. None of these choices changes what the app unlocks.',
     feedbackTitle: 'Share feedback',
-    feedbackBody: 'Your message stays in this browser until you choose an action. Yi Path does not send it to a server.',
+    feedbackBody: 'When you press Send feedback, your message and optional contact details are sent securely through Resend to the Yi Path developer.',
     name: 'Name (optional)',
-    email: 'Your email (optional)',
+    email: 'Your email for a reply (optional)',
     message: 'What would you like to share?',
     placeholder: 'A thought, bug, confusing moment, or idea…',
     copyFeedback: 'Copy feedback',
     copied: 'Copied',
-    openEmail: 'Open email',
-    emailComing: 'Feedback email coming soon',
+    sendFeedback: 'Send feedback',
+    sending: 'Sending…',
+    sent: 'Thank you—your feedback was sent.',
+    sendFailed: 'Feedback could not be sent. Please try again or copy it instead.',
+    tryLater: 'Please wait a moment before sending another message.',
     writeFirst: 'Write a message to enable the feedback actions.',
     copyFailed: 'The browser could not copy this message. Please select and copy it manually.',
     supportTitle: 'Support Yi Path',
@@ -52,15 +58,18 @@ const copy: Record<Locale, {
     title: 'Обратна връзка и подкрепа',
     intro: 'Yi Path е безплатно и пази данните локално. Споделете какво ви е било полезно, сигнализирайте за проблем или подкрепете грижата за проекта. Нито един избор не отключва допълнителни функции.',
     feedbackTitle: 'Споделете обратна връзка',
-    feedbackBody: 'Съобщението остава в този браузър, докато не изберете действие. Yi Path не го изпраща към сървър.',
+    feedbackBody: 'Когато натиснете „Изпрати обратна връзка“, съобщението и незадължителните данни за контакт се изпращат защитено чрез Resend до разработчика на Yi Path.',
     name: 'Име (по желание)',
-    email: 'Вашият имейл (по желание)',
+    email: 'Вашият имейл за отговор (по желание)',
     message: 'Какво искате да споделите?',
     placeholder: 'Мисъл, грешка, неясен момент или идея…',
     copyFeedback: 'Копирай обратната връзка',
     copied: 'Копирано',
-    openEmail: 'Отвори имейл',
-    emailComing: 'Имейлът за обратна връзка идва скоро',
+    sendFeedback: 'Изпрати обратна връзка',
+    sending: 'Изпращане…',
+    sent: 'Благодаря — обратната ви връзка беше изпратена.',
+    sendFailed: 'Обратната връзка не беше изпратена. Опитайте отново или я копирайте.',
+    tryLater: 'Изчакайте малко, преди да изпратите друго съобщение.',
     writeFirst: 'Напишете съобщение, за да активирате действията.',
     copyFailed: 'Браузърът не успя да копира съобщението. Маркирайте го и го копирайте ръчно.',
     supportTitle: 'Подкрепете Yi Path',
@@ -73,15 +82,18 @@ const copy: Record<Locale, {
     title: 'Обратная связь и поддержка',
     intro: 'Yi Path — бесплатное локальное приложение. Расскажите, что оказалось полезным, сообщите о проблеме или поддержите дальнейшую работу. Ни один из этих вариантов не открывает дополнительные функции.',
     feedbackTitle: 'Поделиться отзывом',
-    feedbackBody: 'Сообщение остаётся в этом браузере, пока вы сами не выберете действие. Yi Path не отправляет его на сервер.',
+    feedbackBody: 'Когда вы нажимаете «Отправить отзыв», сообщение и необязательные контактные данные безопасно отправляются через Resend разработчику Yi Path.',
     name: 'Имя (необязательно)',
-    email: 'Ваш email (необязательно)',
+    email: 'Ваш email для ответа (необязательно)',
     message: 'Чем вы хотите поделиться?',
     placeholder: 'Мыслью, ошибкой, непонятным моментом или идеей…',
     copyFeedback: 'Скопировать отзыв',
     copied: 'Скопировано',
-    openEmail: 'Открыть почту',
-    emailComing: 'Email для отзывов скоро появится',
+    sendFeedback: 'Отправить отзыв',
+    sending: 'Отправка…',
+    sent: 'Спасибо — ваш отзыв отправлен.',
+    sendFailed: 'Не удалось отправить отзыв. Попробуйте снова или скопируйте его.',
+    tryLater: 'Подождите немного перед отправкой следующего сообщения.',
     writeFirst: 'Напишите сообщение, чтобы активировать действия.',
     copyFailed: 'Браузеру не удалось скопировать сообщение. Выделите и скопируйте его вручную.',
     supportTitle: 'Поддержать Yi Path',
@@ -107,27 +119,71 @@ export function SupportPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
-  const [status, setStatus] = useState<'idle' | 'copied' | 'error'>('idle')
+  const [website, setWebsite] = useState('')
+  const [startedAt, setStartedAt] = useState(() => Date.now())
+  const [cooldownUntil, setCooldownUntil] = useState(0)
+  const [status, setStatus] = useState<'idle' | 'copied' | 'sending' | 'sent' | 'copyError' | 'sendError' | 'rateLimited'>('idle')
   const canSend = Boolean(message.trim())
+  const coolingDown = cooldownUntil > Date.now()
 
-  async function copyMessage(event: FormEvent) {
-    event.preventDefault()
+  useEffect(() => {
+    if (!cooldownUntil) return
+    const timeout = window.setTimeout(() => setCooldownUntil(0), Math.max(0, cooldownUntil - Date.now()))
+    return () => window.clearTimeout(timeout)
+  }, [cooldownUntil])
+
+  async function copyMessage() {
     if (!canSend) return
     try {
       await navigator.clipboard.writeText(buildFeedback(name, email, message))
       setStatus('copied')
-      window.setTimeout(() => setStatus('idle'), 2400)
+      window.setTimeout(() => setStatus((current) => current === 'copied' ? 'idle' : current), 2400)
     } catch {
-      setStatus('error')
+      setStatus('copyError')
     }
   }
 
-  function openEmail() {
-    if (!FEEDBACK_EMAIL || !canSend) return
-    const subject = encodeURIComponent('Yi Path feedback')
-    const body = encodeURIComponent(buildFeedback(name, email, message))
-    window.location.href = `mailto:${FEEDBACK_EMAIL}?subject=${subject}&body=${body}`
+  async function sendFeedback(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    if (!canSend || coolingDown || status === 'sending') return
+
+    setStatus('sending')
+    const controller = new AbortController()
+    const timeout = window.setTimeout(() => controller.abort(), 12_000)
+    try {
+      const result = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message, locale: preferences.locale, website, startedAt }),
+        signal: controller.signal,
+      })
+
+      if (!result.ok) {
+        setStatus(result.status === 429 ? 'rateLimited' : 'sendError')
+        return
+      }
+
+      setName('')
+      setEmail('')
+      setMessage('')
+      setWebsite('')
+      setStartedAt(Date.now())
+      setCooldownUntil(Date.now() + 60_000)
+      setStatus('sent')
+    } catch {
+      setStatus('sendError')
+    } finally {
+      window.clearTimeout(timeout)
+    }
   }
+
+  const statusIsError = status === 'copyError' || status === 'sendError' || status === 'rateLimited'
+  const statusText = status === 'sent' ? c.sent
+    : status === 'copied' ? c.copied
+      : status === 'copyError' ? c.copyFailed
+        : status === 'sendError' ? c.sendFailed
+          : status === 'rateLimited' || coolingDown ? c.tryLater
+            : !canSend ? c.writeFirst : ''
 
   return (
     <div className="page-shell py-10 sm:py-16">
@@ -140,22 +196,24 @@ export function SupportPage() {
             <div><h2 id="feedback-title" className="text-2xl">{c.feedbackTitle}</h2><p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">{c.feedbackBody}</p></div>
           </div>
 
-          <form className="mt-6 grid gap-5" onSubmit={copyMessage}>
+          <form className="mt-6 grid gap-5" onSubmit={sendFeedback} aria-busy={status === 'sending'}>
+            <label className="feedback-honeypot" aria-hidden="true">Website<input tabIndex={-1} autoComplete="off" value={website} onChange={(event) => setWebsite(event.target.value)} /></label>
             <div className="grid gap-5 sm:grid-cols-2">
-              <label className="grid gap-2 text-sm font-bold">{c.name}<input className="field" autoComplete="name" maxLength={80} value={name} onChange={(event) => setName(event.target.value)} /></label>
-              <label className="grid gap-2 text-sm font-bold">{c.email}<input className="field" type="email" autoComplete="email" maxLength={120} value={email} onChange={(event) => setEmail(event.target.value)} /></label>
+              <label className="grid gap-2 text-sm font-bold">{c.name}<input className="field" autoComplete="name" maxLength={80} disabled={status === 'sending'} value={name} onChange={(event) => { setName(event.target.value); setStatus('idle') }} /></label>
+              <label className="grid gap-2 text-sm font-bold">{c.email}<input className="field" type="email" autoComplete="email" maxLength={120} disabled={status === 'sending'} value={email} onChange={(event) => { setEmail(event.target.value); setStatus('idle') }} /></label>
             </div>
-            <label className="grid gap-2 text-sm font-bold">{c.message}<textarea className="field min-h-40 resize-y" maxLength={4000} required placeholder={c.placeholder} value={message} onChange={(event) => { setMessage(event.target.value); setStatus('idle') }} /></label>
+            <label className="grid gap-2 text-sm font-bold">{c.message}<textarea className="field min-h-40 resize-y" maxLength={4000} required disabled={status === 'sending'} placeholder={c.placeholder} value={message} onChange={(event) => { setMessage(event.target.value); setStatus('idle') }} /></label>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <button className="button-primary" type="submit" disabled={!canSend}>
+              <button className="button-primary" type="submit" disabled={!canSend || coolingDown || status === 'sending'}>
+                {status === 'sending' ? <LoaderCircle className="animate-spin" size={18} aria-hidden="true" /> : status === 'sent' ? <Check size={18} aria-hidden="true" /> : <Send size={18} aria-hidden="true" />}
+                {status === 'sending' ? c.sending : c.sendFeedback}
+              </button>
+              <button className="button-secondary" type="button" disabled={!canSend || status === 'sending'} onClick={() => void copyMessage()}>
                 {status === 'copied' ? <Check size={18} aria-hidden="true" /> : <Copy size={18} aria-hidden="true" />}
                 {status === 'copied' ? c.copied : c.copyFeedback}
               </button>
-              <button className="button-secondary" type="button" disabled={!FEEDBACK_EMAIL || !canSend} onClick={openEmail}>
-                <Mail size={18} aria-hidden="true" /> {FEEDBACK_EMAIL ? c.openEmail : c.emailComing}
-              </button>
             </div>
-            <p className={`text-xs leading-5 ${status === 'error' ? 'font-semibold text-red-800' : 'text-[var(--ink-soft)]'}`} role="status" aria-live="polite">{status === 'error' ? c.copyFailed : !canSend ? c.writeFirst : status === 'copied' ? c.copied : ''}</p>
+            <p className={`text-xs leading-5 ${statusIsError ? 'font-semibold text-red-800' : status === 'sent' ? 'font-semibold text-[var(--jade)]' : 'text-[var(--ink-soft)]'}`} role="status" aria-live="polite">{statusText}</p>
           </form>
         </section>
 

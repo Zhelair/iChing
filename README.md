@@ -10,7 +10,8 @@ The current MVP is a local-first Vite + React + TypeScript application with:
 - A complete 64-hexagram study library and changing-line reflections.
 - An optional locally generated meditation soundscape and coin feedback.
 - IndexedDB readings and journal notes, plus JSON import/export.
-- No account, backend, analytics, payment system, or browser-side AI key.
+- No account, analytics, payment system, or browser-side API key.
+- An optional, explicit feedback form relayed by a small Vercel Function through Resend; readings and journal data are never included.
 
 ## Local development
 
@@ -46,7 +47,19 @@ Classical source text, translations, editorial reflections, and any future AI ou
 
 ## Deploying to Vercel
 
-Import this repository into Vercel with the Vite framework preset. The expected build command is `npm run build` and the output directory is `dist`. No environment variables are required for this local-first MVP.
+Import this repository into Vercel with the Vite framework preset. The expected build command is `npm run build` and the output directory is `dist`.
+
+The optional feedback function uses these server-only environment variables:
+
+```text
+RESEND_API_KEY
+FEEDBACK_TO_EMAIL
+FEEDBACK_FROM_EMAIL
+```
+
+For Resend test mode, set `FEEDBACK_FROM_EMAIL` to `Yi Path <onboarding@resend.dev>` and use the email associated with the Resend account as `FEEDBACK_TO_EMAIL`. For production sending, replace the sender with an address on a verified domain or subdomain. Never prefix these values with `VITE_`, because Vite-prefixed variables are exposed to the browser bundle.
+
+Use `vercel dev` rather than the plain Vite server when testing `/api/feedback` locally. The committed `.env.example` lists the required names without real secrets.
 
 `vercel.json` routes direct visits such as `/library` and `/hexagrams/24` back through the React application.
 

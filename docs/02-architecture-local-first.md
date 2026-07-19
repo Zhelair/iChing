@@ -15,6 +15,10 @@
 
 Implement JSON export/import and `Clear all data` in Phase 0. Export must include an app/schema version, content version and casting record so it can be migrated later.
 
+### Explicit feedback exception
+
+The optional feedback form is the only Phase 0 server interaction. It sends only the name, reply email, message, and interface language that a visitor deliberately submits. It never reads or includes questions, readings, journal notes, preferences, or exports. A Vercel Function validates and rate-limits the request, then calls Resend with a server-only key. Copying the feedback locally remains available as a fallback.
+
 ### Casting engine requirements
 
 - `heads = 3`, `tails = 2`; sum each three-coin toss.
@@ -68,4 +72,3 @@ synced_readings(id, user_id, encrypted_payload, schema_version, content_version,
 ```
 
 Keep the `Yi Canon` content itself in versioned repository files at first. It is finite, reviewable and deployable without a database. Move it to a CMS/database only if non-developers need a publishing workflow.
-
