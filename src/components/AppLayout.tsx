@@ -93,18 +93,18 @@ export function AppLayout() {
   }, [preferences.reduceMotion])
 
   return (
-    <div ref={frameRef} className={`app-frame relative isolate min-h-screen overflow-x-clip lg:pb-0 ${ritualMode ? 'pb-6' : 'pb-24'}`} data-scene={scene} data-locale={preferences.locale}>
+    <div ref={frameRef} className={`app-frame relative isolate min-h-screen overflow-x-clip ${ritualMode ? 'pb-6' : 'app-frame--with-mobile-nav'}`} data-scene={scene} data-locale={preferences.locale}>
       <Atmosphere />
       <a href="#main" className="skip-link fixed left-3 top-3 z-50 -translate-y-24 rounded-full bg-[var(--obsidian)] px-4 py-3 text-white focus:translate-y-0">{t('common.skip')}</a>
       <header className="site-header page-shell relative z-20 flex h-20 items-center justify-between border-b border-black/8">
-        <NavLink to="/" className="group flex items-center gap-3" aria-label="Yi Path home">
+        <NavLink to="/" className="group flex items-center gap-3" aria-label={t('nav.homeLabel')}>
           <span className="brand-mark grid size-10 place-items-center rounded-full border border-[var(--brass)]/45 bg-white/45 font-editorial text-xl text-[var(--jade)]">易</span>
           <span>
             <span className="block font-editorial text-lg font-semibold leading-none">Yi Path</span>
             <span className="mt-1 hidden text-[.65rem] text-[var(--ink-soft)] sm:block">{t('brand.tagline')}</span>
           </span>
         </NavLink>
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary navigation">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label={t('nav.primaryLabel')}>
           {navItems.map(({ to, key, end }) => (
             <NavLink key={to} to={to} end={end} className={({ isActive }) => `min-h-11 rounded-full px-4 py-3 text-sm font-semibold transition-colors ${isActive ? 'bg-[var(--jade-light)] text-[var(--jade)]' : 'text-[var(--ink-soft)] hover:bg-white/55 hover:text-[var(--ink)]'}`}>
               {t(key)}
@@ -119,11 +119,11 @@ export function AppLayout() {
         </Suspense>
       </main>
 
-      {!ritualMode ? <nav className="mobile-navigation fixed inset-x-3 bottom-3 z-40 grid grid-cols-5 rounded-[1.35rem] border border-white/20 bg-[var(--obsidian)] p-1.5 text-white shadow-2xl lg:hidden" aria-label="Primary navigation">
+      {!ritualMode ? <nav className="mobile-navigation fixed inset-x-3 bottom-3 z-40 grid grid-cols-5 rounded-[1.35rem] border border-white/20 bg-[var(--obsidian)] p-1.5 text-white shadow-2xl lg:hidden" aria-label={t('nav.primaryLabel')}>
         {navItems.filter(({ desktopOnly }) => !desktopOnly).map(({ to, key, icon: Icon, end }) => (
-          <NavLink key={to} to={to} end={end} className={({ isActive }) => `flex min-h-14 flex-col items-center justify-center gap-1 rounded-2xl px-1 text-[.65rem] font-semibold ${isActive ? 'bg-white/13 text-[#f4dfaa]' : 'text-white/68'}`}>
+          <NavLink key={to} to={to} end={end} className={({ isActive }) => `flex min-h-16 min-w-0 flex-col items-center justify-center gap-1 rounded-2xl px-1 text-[.65rem] font-semibold ${isActive ? 'bg-white/13 text-[#f4dfaa]' : 'text-white/68'}`}>
             <Icon aria-hidden="true" size={19} strokeWidth={1.8} />
-            {t(key)}
+            <span className="mobile-navigation__label" lang={preferences.locale}>{t(key)}</span>
           </NavLink>
         ))}
       </nav> : null}

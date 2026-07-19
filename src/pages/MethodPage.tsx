@@ -2,7 +2,9 @@ import { Binary, ChevronRight, Coins, HandCoins, Sprout } from 'lucide-react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PageIntro } from '../components/PageIntro'
+import { isBuiltInContentLocale } from '../domain/locales'
 import { useI18n } from '../i18n/I18nContext'
+import { getUiLocalePack } from '../i18n/uiLocalePacks'
 import { getDraftQuestion, setDraftQuestion } from '../storage/session'
 
 const methods = [
@@ -20,6 +22,9 @@ const yarrowCopy = {
 
 export function MethodPage() {
   const { preferences, t } = useI18n()
+  const yarrow = isBuiltInContentLocale(preferences.locale)
+    ? yarrowCopy[preferences.locale]
+    : getUiLocalePack(preferences.locale).features.methodYarrow
   const navigate = useNavigate()
   const [question, setQuestion] = useState(getDraftQuestion)
 
@@ -47,8 +52,8 @@ export function MethodPage() {
             <button key={id} type="button" onClick={() => choose(id)} className="group surface depth-card flex min-h-28 w-full items-center gap-4 p-5 text-left sm:p-6">
               <span className="grid size-12 shrink-0 place-items-center rounded-full bg-[var(--jade-light)] text-[var(--jade)]"><Icon size={22} aria-hidden="true" /></span>
               <span className="min-w-0 flex-1">
-                <span className="block font-editorial text-xl font-semibold">{id === 'yarrow' ? yarrowCopy[preferences.locale].title : t(title)}</span>
-                <span className="mt-1 block text-sm leading-6 text-[var(--ink-soft)]">{id === 'yarrow' ? yarrowCopy[preferences.locale].body : t(body)}</span>
+                <span className="block font-editorial text-xl font-semibold">{id === 'yarrow' ? yarrow.title : t(title)}</span>
+                <span className="mt-1 block text-sm leading-6 text-[var(--ink-soft)]">{id === 'yarrow' ? yarrow.body : t(body)}</span>
               </span>
               <ChevronRight className="shrink-0 text-[var(--brass)] transition-transform group-hover:translate-x-1" size={21} aria-hidden="true" />
             </button>

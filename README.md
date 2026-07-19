@@ -4,7 +4,7 @@ Yi Path is a private, multilingual I Ching / Yijing reflection and learning web 
 
 The current MVP is a local-first Vite + React + TypeScript application with:
 
-- English, Bulgarian, and Russian interface copy.
+- English, Bulgarian, Russian, German, Italian, French, Spanish, European Portuguese, and Polish interface copy.
 - Digital coin casting, physical-coin entry, and direct hexagram entry.
 - Clear treatment of 6 and 9 as changing lines, while 7 and 8 remain stable.
 - A complete 64-hexagram study library and changing-line reflections.
@@ -45,6 +45,8 @@ npm test
 
 Classical source text, translations, editorial reflections, and any future AI output must remain visibly separate. The current editorial material is reflective guidance, not professional advice or certain prediction.
 
+The received text and casting mechanics were cross-checked in July 2026. See the [canonical review](docs/05-canonical-review-2026-07-19.md) for sources, corrections, methodology, and the remaining native/editorial review boundary.
+
 ## Deploying to Vercel
 
 Import this repository into Vercel with the Vite framework preset. The expected build command is `npm run build` and the output directory is `dist`.
@@ -70,10 +72,11 @@ Use `vercel dev` rather than the plain Vite server when testing `/api/feedback` 
 - [Local-first architecture](docs/02-architecture-local-first.md)
 - [Hexagram and content contract](docs/03-content-contract.md)
 - [Original coding-chat handoff](docs/04-coding-chat-handoff.md)
+- [Canonical review and methodology](docs/05-canonical-review-2026-07-19.md)
 
 ## Product guardrails
 
-1. EN, BG, and RU are first-class languages; classical passages are never silently machine-translated at runtime.
+1. All nine interface languages are first-class; classical passages are never silently machine-translated at runtime.
 2. A visitor can cast, read, journal, export, and erase data without an account.
 3. Virtual and physical casting produce the same transparent six-line record.
 4. The app uses reflection language, not promises, diagnoses, or financial, legal, or medical advice.

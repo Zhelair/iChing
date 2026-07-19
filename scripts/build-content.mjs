@@ -9,12 +9,18 @@ const outputDir = join(projectDir, 'src', 'data')
 const outputFile = join(outputDir, 'hexagrams.v1.json')
 const firstShardFile = join(outputDir, 'hexagrams.v1.01-32.json')
 const secondShardFile = join(outputDir, 'hexagrams.v1.33-64.json')
-const contentVersion = '2026.07.17-draft.1'
+const contentVersion = '2026.07.19-draft.3'
 
 const localeHeadings = {
   en: /^## English(?:\s|—|$)/m,
   bg: /^## Български(?:\s|—|$)/m,
   ru: /^## Русский(?:\s|—|$)/m,
+}
+
+const allChangingLineLabels = {
+  en: new Set(['All lines changing']),
+  bg: new Set(['Всички линии се променят']),
+  ru: new Set(['Все линии меняются', 'Все линии изменяются']),
 }
 
 function tableValue(markdown, field) {
@@ -62,10 +68,12 @@ function parseLocale(markdown, locale) {
 
   const questions = [...blocks[2].body.matchAll(/^- (.+)$/gm)].map((match) => match[1].trim())
   const lineReflections = Object.fromEntries(
-    [...blocks[3].body.matchAll(/^\|\s*(1|2|3|4|5|6|All lines changing|Всички линии се променят|Все линии изменяются)\s*\|\s*(.+?)\s*\|$/gm)]
-      .map((match) => {
-        const key = /^\d$/.test(match[1]) ? match[1] : 'all'
-        return [key, match[2].trim()]
+    [...blocks[3].body.matchAll(/^\|\s*([^|]+?)\s*\|\s*(.+?)\s*\|$/gm)]
+      .flatMap((match) => {
+        const label = match[1].trim()
+        if (/^[1-6]$/.test(label)) return [[label, match[2].trim()]]
+        if (allChangingLineLabels[locale].has(label)) return [['all', match[2].trim()]]
+        return []
       }),
   )
 
@@ -132,6 +140,15 @@ cards.sort((a, b) => a.id - b.id)
 
 if (cards.length !== 64 || cards.some((card, index) => card.id !== index + 1)) {
   throw new Error('Expected one complete card for each King Wen number 1–64.')
+}
+
+for (const id of [1, 2]) {
+  const card = cards[id - 1]
+  for (const locale of Object.keys(localeHeadings)) {
+    if (!card.locales[locale].lineReflections.all) {
+      throw new Error(`Hexagram ${id} is missing the ${locale} all-lines-changing reflection.`)
+    }
+  }
 }
 
 const artifact = (artifactCards) => ({

@@ -4,7 +4,7 @@
 
 > Take a quiet moment. Ask an honest question. Receive the symbols faithfully. Make your own meaning.
 
-Yi Path is a web-based I Ching / Yijing reflection and learning companion. The initial languages are English, Bulgarian and Russian. The product is designed for any device, with mobile as the primary experience.
+Yi Path is a web-based I Ching / Yijing reflection and learning companion. It supports English, Bulgarian, Russian, German, Italian, French, Spanish, European Portuguese, and Polish. The product is designed for any device, with mobile as the primary experience.
 
 ## V1: local-first consultation
 

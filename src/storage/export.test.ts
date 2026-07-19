@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { findHexagramByPattern } from '../data/hexagrams'
 import { patternFromLines } from '../domain/casting'
+import { EXTENDED_LOCALES } from '../domain/locales'
 import { linesFromKnownHexagram } from '../domain/reading'
 import type { YiPathExport } from '../domain/types'
 import { MAX_EXPORT_FILE_BYTES, parseExport } from './export'
@@ -41,6 +42,13 @@ describe('Yi Path backup validation', () => {
   it('accepts a complete, internally consistent backup', () => {
     expect(parseExport(validBackup()).readings).toHaveLength(1)
     expect(MAX_EXPORT_FILE_BYTES).toBe(5 * 1024 * 1024)
+  })
+
+  it.each(EXTENDED_LOCALES)('accepts readings and preferences stored in %s', (locale) => {
+    const backup = copyBackup()
+    backup.preferences.locale = locale
+    backup.readings[0].locale = locale
+    expect(parseExport(backup).preferences.locale).toBe(locale)
   })
 
   it('rejects lines whose order or derived polarity was altered', () => {

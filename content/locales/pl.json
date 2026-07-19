@@ -1,0 +1,1233 @@
+{
+  "locale": "pl",
+  "variant": "pl-PL",
+  "status": "ai-assisted-editorial-draft-needs-native-review",
+  "sourceLocale": "en",
+  "cards": [
+    {
+      "id": 1,
+      "title": "Qián — Siła twórcza",
+      "coreThread": "Dysponujesz potężną energią twórczą. Najlepszym jej wyrazem nie jest siła sama w sobie, lecz zdyscyplinowane działanie, uczciwość i poszanowanie odpowiedniego momentu.",
+      "whenItAppears": "Być może stoisz u progu czegoś ważnego lub otrzymujesz zadanie przewodzenia. Rozwijaj zdolności potrzebne do tego, co chcesz stworzyć. Niech pewność siebie przełoży się na konsekwentną pracę, a nie na presję wywieraną na siebie lub innych.",
+      "reflectionQuestions": [
+        "Co naprawdę chce się tu pojawić na świecie?",
+        "W jakich obszarach moja pewność siebie wymaga więcej cierpliwości lub dyscypliny?",
+        "Na jakim etapie się znajduję: przygotowaniach, początkach, działaniu czy przesadzie?"
+      ],
+      "lineReflections": {
+        "1": "Zachowaj siły w rezerwie. Przygotuj się; nie wymuszaj przedwczesnego początku.",
+        "2": "Twoje umiejętności stają się widoczne. Szukaj lub przyjmuj mądre wsparcie i szczerą współpracę.",
+        "3": "Pracuj dalej ostrożnie. Konsekwentny wysiłek i czujność pomogą ci uniknąć kłopotów, których można się wystrzec.",
+        "4": "Znajdujesz się na progu. Rozważny krok może być właściwy; nie ma potrzeby skakać na oślep.",
+        "5": "Wkrocz w pełni w rolę odpowiedzialnego przywódcy. Wykorzystaj swój wpływ w służbie czegoś większego niż ego.",
+        "6": "Uważaj na nadmierne ambicje. To, co wzbiło się zbyt wysoko, wymaga pokory, odpoczynku lub zmiany podejścia.",
+        "all": "Siła jest dzielona, a nie pozostaje w rękach jednej dominującej postaci. Pozwól zdolnym ludziom działać bez potrzeby posiadania jednego bohatera."
+      }
+    },
+    {
+      "id": 2,
+      "title": "Kūn — Przyjmujący grunt",
+      "coreThread": "Oto siła otwartości: tworzenie przestrzeni, pozostawanie mocno osadzonym na ziemi i zapewnianie wartościowym rzeczom warunków do rozwoju. Nie jest to bierność. Jest to cierpliwa, praktyczna współpraca z tym, co rzeczywiste.",
+      "whenItAppears": "Być może nie musisz na siłę podejmować kolejnego kroku. Zwróć uwagę na to, co wymaga troski, struktury i niezawodnej konsekwencji. Wspieraj dobry kierunek, ucz się z sytuacji i pozwól, by stałość stała się twoją siłą. Obraz Ziemi sugeruje, że prawdziwy postęp może przebiegać w ciszy.",
+      "reflectionQuestions": [
+        "Co wymaga raczej cierpliwego wsparcia niż nacisku z mojej strony?",
+        "Gdzie konsekwencja sprawdzi się lepiej niż kontrola?",
+        "Czyje wskazówki lub partnerstwo mogę przyjąć, nie rezygnując z własnego osądu?"
+      ],
+      "lineReflections": {
+        "1": "Małe oznaki mają znaczenie. Zajmij się pojawiającą się trudnością wcześnie, zanim utrwali się ona w coś trudniejszego do rozwiązania.",
+        "2": "Działaj, opierając się na swoich naturalnych mocnych stronach, z prostotą i uczciwością. Właściwy wkład nie wymaga niepotrzebnego popisywania się.",
+        "3": "Nie afiszuj się ze swoimi umiejętnościami. Służ sprawie, nie domagając się uznania; ukończenie zadania może być ważniejsze niż przypisywanie sobie zasług.",
+        "4": "Być może nadszedł czas, by raczej powstrzymać się od wyjaśnień. Ostrożna powściągliwość chroni to, co wciąż się kształtuje.",
+        "5": "Wystarczy cicha godność. Wybieraj to, co jest stosowne i szczere, zamiast tego, co krzykliwe.",
+        "6": "Współpraca przerodziła się w konflikt. Nie pozwól, by chęć zwycięstwa sprawiła, że sytuacja stanie się trudniejsza, niż to konieczne.",
+        "all": "Pozostań wierny swojej ścieżce na dłuższą metę. Otwartość staje się potężna, gdy łączy się z trwałymi zasadami."
+      }
+    },
+    {
+      "id": 3,
+      "title": "Zhūn — Trudność na początku",
+      "coreThread": "Coś próbuje się rozpocząć, ale jego początkowy kształt jest splątany. Trudności nie są dowodem na to, że kierunek jest zły; to naturalne tarcie nowego życia spotykającego się z niepewnym światem. Działaj ostrożnie, buduj wsparcie i pozwól, by struktura się ukształtowała, zanim zaczniesz oczekiwać szybkości.",
+      "whenItAppears": "Nie wymagaj gotowego planu od niedokończonego początku. Wybierz jeden stabilny kolejny krok, znajdź sojuszników, którzy pomogą tej pracy się zakorzenić, i unikaj forsowania dramatycznego przełomu. Jasność rośnie poprzez kontakt z rzeczywistością.",
+      "reflectionQuestions": [
+        "Co tak naprawdę się tu zaczyna, nawet jeśli nadal wygląda to na chaotyczne?",
+        "Jakie proste wsparcie lub ramy sprawiłyby, że kolejny krok byłby bezpieczniejszy?",
+        "Czy mylę początkowe trudności z sygnałem, że powinienem zrezygnować z całej drogi?"
+      ],
+      "lineReflections": {
+        "1": "Pierwszy krok jest powolny. Nie ustępuj, trzymaj się swoich zasad i zapewnij sobie praktyczne wsparcie, zanim pójdziesz dalej.",
+        "2": "Opóźnienia i niepewność mogą sprawić, że pomoc będzie wyglądać jak zagrożenie. Nie wymuszaj zaangażowania, zanim zaufanie i odpowiedni moment nie staną się rzeczywistością.",
+        "3": "Nie wkraczaj w zagmatwaną sytuację bez przewodnika. Zatrzymaj się, poszukaj jasnego przewodnika lub zrezygnuj z dążenia, które nie ma drogi.",
+        "4": "Przerwa może przerodzić się w szczere połączenie. Podejdź do sprawy uczciwie; współpraca lub zaangażowanie mogą być teraz możliwe.",
+        "5": "Zasoby są ograniczone. Chroń to, co małe, ale niezbędne; nie składaj wielkich obietnic, których obecne warunki nie są w stanie spełnić.",
+        "6": "Przedłużająca się walka może przerodzić się w smutek. Uświadom sobie napięcie, poproś o pomoc i nie traktuj cierpienia jako dowodu poświęcenia."
+      }
+    },
+    {
+      "id": 4,
+      "title": "Méng — Nauka w nieznanym",
+      "coreThread": "Znajdujesz się na początku drogi do zrozumienia czegoś. Ciekawość jest mile widziana, ale wymaga szczerości, uwagi i chęci uczenia się od prawdziwego przewodnika lub poprzez prawdziwe doświadczenie. Nie myl ciągłego zadawania pytań z głębszym uczeniem się.",
+      "whenItAppears": "Wróć do podstaw. Zadaj jedno jasne pytanie, zaakceptuj otrzymaną odpowiedź i przećwicz ją, zanim zaczniesz szukać kolejnej. To zaproszenie do rozwijania rozeznania, a nie do zawstydzania się tym, że jesteś początkujący.",
+      "reflectionQuestions": [
+        "Czego naprawdę jeszcze nie rozumiem?",
+        "Jakie jedno pytanie pomogłoby mi zrobić kolejny szczery krok?",
+        "Gdzie potrzebuję praktyki, a nie kolejnego wyjaśnienia?"
+      ],
+      "lineReflections": {
+        "1": "Rozpocznij naukę od wyznaczenia jasnych granic. Uwolnij się od tego, co cię krępuje, ale nie zamieniaj jednego zamieszania na beztroską swobodę.",
+        "2": "Zrób miejsce dla niedoświadczonych – w sobie lub w innych. Cierpliwa odpowiedzialność może zamienić niepewność w kompetencję.",
+        "3": "Nie oddawaj swojej sprawczości w zamian za blask, status czy kuszącą obietnicę. Wybór, który sprawia, że porzucasz siebie, nie jest dobrym nauczycielem.",
+        "4": "Zamęt staje się bolesny, gdy trzeba znosić go w samotności. Przyznaj, że sytuacja cię przerasta, i poszukaj godnego zaufania źródła wskazówek.",
+        "5": "Otwartość początkującego jest zaletą, o ile pozostaje szczera. Zachowaj gotowość do nauki, nie popadając w zależność.",
+        "6": "Konieczna może być stanowcza korekta, ale upokorzenie lub odwet nie przyniosą pożytku. Broń swoich granic, nie stając się agresorem."
+      }
+    },
+    {
+      "id": 5,
+      "title": "Xū — Czekanie z ufnością",
+      "coreThread": "Nie można wymusić czegoś ważnego, co nie jest jeszcze gotowe. Czekanie w tym przypadku nie jest bezcelową zwłoką: to dyscyplina przygotowań, zachowania spokoju i zaufania do odpowiedniego momentu, bez utraty kontaktu z rzeczywistością. Woda przed nami sugeruje prawdziwe przejście, więc zgromadź siły, zanim je podejmiesz.",
+      "whenItAppears": "Wykorzystaj teraźniejszość. Zajmij się praktycznymi potrzebami, oszczędzaj energię i poczekaj na informacje, zanim podejmiesz większe działania. Nie musisz udowadniać gotowości poprzez przedwczesne działanie. Spokojna, dobrze przygotowana reakcja zaprowadzi cię dalej niż popęd wynikający z niepokoju.",
+      "reflectionQuestions": [
+        "Co próbuję wymusić, zanim warunki będą sprzyjające?",
+        "Jak wyglądałoby prawdziwe przygotowanie w tym okresie oczekiwania?",
+        "Jakich zasobów, relacji lub faktów potrzebuję, zanim przekroczę kolejny próg?"
+      ],
+      "lineReflections": {
+        "1": "Czekaj na bezpiecznym gruncie, a nie na skraju niebezpieczeństwa. Utrzymuj pewny rytm i nie wywołuj kryzysu, opuszczając swoją stabilną podstawę zbyt wcześnie.",
+        "2": "Znajdujesz się na tyle blisko niepewności, że mogą pojawić się drobne nieporozumienia lub krytyka. Nie wyolbrzymiaj ich; cierpliwość pomoże przetrwać tę sytuację.",
+        "3": "Przejście z piasku w błoto pokazuje, że sytuacja staje się coraz bardziej zawiła. Zatrzymaj się, zanim narazisz się na większe ryzyko, konflikt lub przyciągniesz osoby czerpiące korzyści z chaosu.",
+        "4": "Trudny moment stał się widoczny i osobisty. Jeśli to możliwe, opuść miejsce, w którym doszło do krzywdy; przetrwanie i powrót do zdrowia są ważniejsze niż utrzymywanie pozycji.",
+        "5": "Pozostań w centrum swoich zasobów. Przyjmuj pożywienie, gościnność i wsparcie bez poczucia winy; spokojne oczekiwanie jest teraz właściwym działaniem.",
+        "6": "Przewidywany okres oczekiwania wykroczył poza plan. Pojawiają się nieoczekiwane osoby lub żądania; przyjmij je z szacunkiem, oceń je spokojnie i unikaj paniki."
+      }
+    },
+    {
+      "id": 6,
+      "title": "Sòng — Konflikt i granica sporu",
+      "coreThread": "Istnieje prawdziwy spór i możesz być przekonany, że twoje stanowisko jest uzasadnione. Ten heksagram nie wymaga od ciebie zaprzeczania istnieniu problemu. Ostrzega jednak, że doprowadzenie sporu do gorzkiego końca może zaszkodzić wszystkim zaangażowanym. Bądź czujny, trzymaj się faktów i poszukaj sprawiedliwej perspektywy wykraczającej poza stanowiska obu stron.",
+      "whenItAppears": "Wyjaśnij, co należy chronić, a co nie musi stać się przedmiotem walki. Mów wprost, dokumentuj to, co istotne, i poszukaj zaufanego mediatora, doradcy lub neutralnego mechanizmu, gdy sprawa wykracza poza ramy prywatnej rozmowy. Nie podejmuj radykalnych kroków, dopóki sytuacja pozostaje sporna.",
+      "reflectionQuestions": [
+        "Jaka jest rzeczywista przyczyna sporu?",
+        "Jakie granice należy jasno wyznaczyć i z jakiej dumy mogę zrezygnować?",
+        "Kto mógłby pomóc spojrzeć na tę sytuację z bardziej sprawiedliwej perspektywy?"
+      ],
+      "lineReflections": {
+        "1": "Nie przedłużaj sporu. Mogą paść ostre słowa lub dojść do niewielkiej utraty twarzy, ale szybkie zakończenie sprawy chroni to, co jeszcze da się uratować.",
+        "2": "Być może nie uda ci się wygrać na tych warunkach. Wycofaj się na mniejszą, bezpieczniejszą pozycję, zamiast poświęcać swój spokój na walkę, która ci nie służy.",
+        "3": "Polegaj na tym, co już udało ci się osiągnąć: na swoim charakterze, umiejętnościach i wytrwałej pracy. Być może przyczynisz się do realizacji większego zadania, nie otrzymując za to widocznego uznania; niech wystarczy ci uczciwość.",
+        "4": "Bezpośrednie zwycięstwo nie wchodzi w grę. Powróć do właściwego porozumienia lub zasady, zmień swoje stanowisko i pozwól, by pokojowa korekta zastąpiła walkę.",
+        "5": "Sprawiedliwe rozwiązanie jest możliwe, gdy proces jest rzeczywiście uczciwy. Wyciągnij sprawę na światło dzienne, zaakceptuj odpowiedzialny osąd i nie manipuluj wynikiem.",
+        "6": "Wygrana w sporze może przynieść nagrodę, która szybko zostanie odebrana. Nie buduj swojej tożsamości, statusu ani poczucia bezpieczeństwa na triumfie nad inną osobą."
+      }
+    },
+    {
+      "id": 7,
+      "title": "Shī — Zdyscyplinowany wspólny wysiłek",
+      "coreThread": "Ta sytuacja wymaga skoordynowanego wysiłku, jasno określonych ról i stanowczych zasad. Shī nie wymaga agresji ani kontroli. Wskazuje na zdyscyplinowane wykorzystanie wspólnej siły: reaguj na rzeczywistą potrzebę, zaprowadź porządek przed podjęciem działania i pozwól, by odpowiedzialność przejęła osoba doświadczona i godna zaufania.",
+      "whenItAppears": "Przywróć jasny cel w sytuacji, w której panuje chaos. Określ zadanie, ustal, kto za co odpowiada, i stosuj zasady chroniące całą grupę. Unikaj eskalacji, walk o status i pozornej pilności. Wyważona reakcja — a nawet strategiczna przerwa — może okazać się rozsądniejsza niż użycie siły.",
+      "reflectionQuestions": [
+        "Co naprawdę wymaga tutaj skoordynowanego wysiłku?",
+        "Kto ma doświadczenie i charakter, by wziąć na siebie odpowiedzialność?",
+        "Jaka zasada, granica lub procedura chroniłaby grupę przed zamieszaniem?",
+        "W jakich sytuacjach mniejsza, zdyscyplinowana reakcja byłaby lepsza niż eskalacja?"
+      ],
+      "lineReflections": {
+        "1": "Zacznij od dyscypliny. Przed rozpoczęciem pracy wprowadź rozsądne zasady i wspólną metodę działania; w przeciwnym razie chaos może zniweczyć wartościowy cel.",
+        "2": "Pozostań w centrum działań. Kompetencje mogą być doceniane i wiązać się z powierzeniem odpowiedzialności, ale wykorzystuj to zaufanie w służbie całości, a nie własnego statusu.",
+        "3": "Nieudana strategia może sprawić, że grupa poniesie konsekwencje. Nie powtarzaj szkodliwego podejścia z powodu dumy; ponownie oceń przywództwo, informacje i koordynację.",
+        "4": "Strategiczne wycofanie się lub wstrzymanie działań nie oznacza porażki. Cofnij się, zbierz siły i zachowaj to, co najważniejsze, dopóki sytuacja się nie wyjaśni.",
+        "5": "Działaj tylko w obliczu rzeczywistego i jasno zidentyfikowanego problemu. Pozwól, by kierowali doświadczeni; rozproszone lub niedojrzałe przywództwo może zamienić konieczną reakcję w stratę, której można było uniknąć.",
+        "6": "Gdy zadanie zostanie wykonane, rozdzielaj uprawnienia i nagradzaj ostrożnie. Nie powierzaj władzy osobom, którym brakuje charakteru, by z niej właściwie korzystać."
+      }
+    },
+    {
+      "id": 8,
+      "title": "Bǐ — Wspólnota",
+      "coreThread": "Więź jest korzystna, gdy opiera się na szczerości, wspólnych wartościach i godnym zaufania centrum. Bǐ nie pyta jedynie: „Kto stanie po mojej stronie?”, ale także: „Jakiego rodzaju poczucie przynależności tworzę?”. Nie przyłączaj się z obawy przed wykluczeniem i nie proś innych, by gromadzili się wokół czegoś niejasnego lub niestabilnego.",
+      "whenItAppears": "Starannie wybieraj sojuszników. Zdrowa grupa ma jasny cel, przestrzeń na dobrowolne uczestnictwo oraz przywództwo, które nie musi uciekać się do przymusu. Bądź otwarty na osoby, które naprawdę chcą dołączyć, ale nie zwlekaj z podjęciem decyzji tak długo, że minie moment na nawiązanie trwałej więzi.",
+      "reflectionQuestions": [
+        "Jaki wspólny cel sprawia, że warto budować tę więź?",
+        "Czy ta więź opiera się na zaufaniu, czy też na strachu i wygodzie?",
+        "Na czyim charakterze powinienem się skupić przed podjęciem decyzji?",
+        "Jak mogę zachęcić do współpracy, nie próbując nikogo kontrolować?"
+      ],
+      "lineReflections": {
+        "1": "Zacznij od szczerości. Prosta, szczera oferta zaufania może przerodzić się w wsparcie, którego się nie spodziewasz; nie komplikuj pierwszego kroku bardziej, niż to konieczne.",
+        "2": "Pozwól, by więź rozwijała się od wewnątrz. Bądź wierny temu, co jest prawdziwe w twoim sercu i w bliskich relacjach, zanim zaczniesz szukać potwierdzenia w szerszym kręgu.",
+        "3": "Nie wiąż się z ludźmi, których zachowanie lub wartości są szkodliwe. Przynależność nie jest dobra tylko dlatego, że kończy samotność.",
+        "4": "Solidna więź może powstać poza twoim zwykłym kręgiem. Dołącz do niej otwarcie, ale zachowaj swoje zasady nienaruszone.",
+        "5": "Przewodź w sposób, który pozostawia ludziom wolność. Podobnie jak podczas królewskiego polowania, które pozostawia jedną stronę otwartą, nie zastawiaj pułapek, nie wywieraj presji ani nie rekrutuj poprzez strach; ci, którzy rozpoznają cel, mogą dołączyć z własnej woli.",
+        "6": "Grupa bez wyraźnego centrum, początku lub odpowiedzialnego przywódcy może stać się niebezpieczna. Nie angażuj się, zanim nie dowiesz się, co spaja tę więź."
+      }
+    },
+    {
+      "id": 9,
+      "title": "Xiǎo Chù — Małe poskromienie",
+      "coreThread": "Mała, ale realna siła powstrzymuje bieg wydarzeń. Obrazem tego są gęste chmury, które jeszcze nie przerodziły się w deszcz: potencjał istnieje, ale warunki nie są jeszcze gotowe do decydującego wyzwolenia. Xiǎo Chù nie wymaga poddania się. Wymaga cierpliwego wywierania wpływu — dbania o to, o co można zadbać, gromadzenia sił i odmowy przekształcania opóźnienia w kryzys.",
+      "whenItAppears": "Dopracowuj, przygotowuj i wprowadzaj drobne poprawki. Buduj zaufanie poprzez skromne obietnice, które faktycznie można dotrzymać. Presja, by coś zakończyć lub udowodnić, może być silna, jednak sytuacji bardziej służy wyważone działanie niż dramatyczny nacisk. Gromadzące się chmury nie są porażką; są znakiem, że coś się kształtuje.",
+      "reflectionQuestions": [
+        "Co wymaga raczej stopniowego kształtowania niż użycia siły?",
+        "Gdzie traktuję opóźnienie tak, jakby było kryzysem?",
+        "Która drobna poprawka lub uzgodnienie stworzyłoby więcej przestrzeni na postęp?",
+        "Czy naprawdę nadszedł czas, by iść naprzód, czy też raczej chronić równowagę, która wciąż się kształtuje?"
+      ],
+      "lineReflections": {
+        "1": "Wróć na swój właściwy kurs. Wczesne skorygowanie swojego postępowania nie jest porażką i nie musi przeradzać się w dramat; to krok sprzyjający powodzeniu.",
+        "2": "Pozwól, by inni poprowadzili cię z powrotem na właściwą drogę. Wspólny powrót do tego, co słuszne, jest lepszy niż uparte działanie w izolacji.",
+        "3": "Wymuszanie postępu może zniweczyć współpracę, tak jak wóz, który traci szprychy w kole. Zwracaj uwagę na napięcia w związku lub w rodzinie, zanim presja skłóci sojuszników.",
+        "4": "Szczere zaufanie pozwala ustąpić niebezpieczeństwu i strachowi. Mów wprost, zachowaj wierność i nie przenoś dawnego niepokoju na kolejny etap, gdy już nie ma on tam miejsca.",
+        "5": "Zaufanie tworzy prawdziwą więź między ludźmi. Dziel się zasobami, zasługami i szczęściem z tymi, którzy są blisko pracy, zamiast trzymać wszystko mocno dla siebie.",
+        "6": "Deszcz spadł, a sprawa się wyjaśniła – nie naciskaj więc dalej. W momencie pełni upór może zakłócić równowagę, która dopiero co została osiągnięta; powściągliwość pozostaje mądrzejszą siłą."
+      }
+    },
+    {
+      "id": 10,
+      "title": "Lǚ — Ostrożny krok",
+      "coreThread": "Zbliżaj się do tego, co ma moc, z świadomością i szacunkiem. Lǚ przedstawia kogoś, kto stąpa po ogonie tygrysa, nie dając się ugryźć: niebezpieczeństwo jest realne, ale ostrożne postępowanie umożliwia przejście. Odwaga nie polega na pokazywaniu siły. Jest to umiejętność działania z opanowaniem, taktem i wyraźną uwagą skierowaną na sytuację.",
+      "whenItAppears": "Trzymaj się właściwej drogi, nawet gdy nikt nie patrzy. Zachowuj skromność w napiętej sytuacji, jasno określaj swoje granice i zwracaj uwagę na to, co mogłoby sprowokować silniejszą osobę, instytucję lub siłę. Możesz działać — ale nie lekkomyślnie. Uprzejmość nie oznacza tu uległości; to mądry szacunek dla konsekwencji każdego kroku.",
+      "reflectionQuestions": [
+        "Czy zbliżam się do czegoś potężnego lub wrażliwego?",
+        "Jak wygląda właściwe postępowanie w tej sytuacji, nawet jeśli nie jest ona zbyt dramatyczna?",
+        "Czy jasno dostrzegam swoje rzeczywiste możliwości, czy też udaję pewność siebie wykraczającą poza nie?",
+        "Co należy przeanalizować przed podjęciem kolejnego kroku?"
+      ],
+      "lineReflections": {
+        "1": "Zacznij prosto i bez udawania. Proste, szczere postępowanie wystarczy na pierwszy krok; nie ma nic złego w podążaniu tą drogą.",
+        "2": "Równa ścieżka sprzyja cichej uczciwości. Postępuj słusznie, nie oczekując publicznego uznania; wewnętrzna stabilność jest sama w sobie ochroną.",
+        "3": "Ograniczone widzenie lub chwiejny krok stają się niebezpieczne, gdy mylnie uznaje się je za pełną zdolność. Nie przyjmuj potężnej roli tylko po to, by udowodnić odwagę, zwłaszcza gdy sytuacja może naprawdę się zemścić.",
+        "4": "Znajdujesz się w pobliżu niebezpieczeństwa, więc zachowaj czujność i szacunek. Ta czujność nie jest oznaką słabości; jeśli będziesz postępować rozważnie, w końcu doprowadzi cię ona do bezpiecznego celu.",
+        "5": "Działaj zdecydowanie, ale nie zapominaj, że stanowcze działania wiążą się z ryzykiem. Uczciwość w sytuacjach o wysokiej stawce nadal wymaga pokory, konsultacji i szczerego spojrzenia na to, co może pójść nie tak.",
+        "6": "Przejrzyj przebyty szlak i przeanalizuj jego wyniki. Gdy dostrzeżesz zarówno konsekwencje, jak i wzorzec swojego postępowania, możliwe staje się dobre zakończenie i trwały pożytek."
+      }
+    },
+    {
+      "id": 11,
+      "title": "Tài — Przepływ",
+      "coreThread": "Wymiana może teraz przebiegać swobodnie: to, co małe, ustępuje, a to, co istotne, zbliża się. Tài opisuje okres, w którym komunikacja, wsparcie i pożyteczna praca mogą się spotkać. Wykorzystaj tę okazję, by budować zaufanie, dzielić się zasobami i angażować osoby, które w przeciwnym razie pozostałyby na uboczu.",
+      "whenItAppears": "Działaj, póki warunki są sprzyjające, ale nie myl łatwości z trwałością. Każdy równy teren w końcu się nachyla; każdy ruch na zewnątrz w końcu powraca. Mądre wykorzystanie dobrego okresu to nie samozadowolenie, lecz przygotowanie, hojność i realistyczny szacunek dla zmian.",
+      "reflectionQuestions": [
+        "Co może teraz swobodnie się poruszać, a wcześniej było zablokowane?",
+        "Kogo należy włączyć do grona, zamiast trzymać na dystans?",
+        "W jaki sposób obecne powodzenie może wzmocnić przyszłość?",
+        "Co pomogłoby mi bez strachu stawić czoła ewentualnemu odwróceniu losu?"
+      ],
+      "lineReflections": {
+        "1": "Wyciągnięcie jednego korzenia powoduje wyrwanie połączonych z nim korzeni wokół niego. Dobry pierwszy ruch może popchnąć do przodu całą grupę; lepiej posuwać się naprzód razem, niż próbować wznieść się samotnie.",
+        "2": "Przyjmuj to, co jest trudne lub niełatwe, przekraczaj rzekę, gdy zajdzie taka potrzeba, i nie zaniedbuj ludzi z daleka. Niech sprawiedliwość, a nie prywatna klika, kieruje sednem twojej pracy.",
+        "3": "Żadna równina nie pozostaje płaska na zawsze, a żadne odejście nie jest bez powrotu. Staw czoła zmianie cyklu z niezachwianą uczciwością; zaufanie i zwykłe wsparcie są nadal dostępne.",
+        "4": "Oferuj to, co masz, bez popisów i kalkulacji. Sąsiedzi mogą spotkać się w atmosferze zaufania, zanim padnie jakiekolwiek formalne zaproszenie.",
+        "5": "Godny związek przynosi głębokie błogosławieństwo, gdy podchodzi się do niego z pokorą i właściwą relacją, a nie statusem czy posiadłościami. Szanuj ludzi, z którymi łączysz swoją przyszłość.",
+        "6": "Kiedy mury miejskie zapadają się do fosy, nie odpowiadaj na upadek siłą. Wyznacz jasny kierunek działania na miejscu, chroń to, co pozostało, i nie broń uparcie pozycji, której czas już minął."
+      }
+    },
+    {
+      "id": 12,
+      "title": "Pǐ — Zastój",
+      "coreThread": "Komunikacja została przerwana, a naturalna wymiana między tym, co na górze, a tym, co na dole, jest zablokowana. Pǐ nie jest nakazem wymuszania harmonii. Wzywa cię do ochrony twoich wartości, rozpoznania rzeczywistych warunków oraz odmowy udziału w tym, co jest puste lub dehumanizujące.",
+      "whenItAppears": "Zachowaj swoją równowagę. Drobne kompromisy mogą wydawać się wygodne, gdy odsuwa się na bok solidne zasady, ale uczciwość nie wymaga głośnej walki. Zachowaj więzi z godnymi zaufania ludźmi, zaakceptuj to, co trzeba znosić, i czekaj na prawdziwą szansę, zamiast ją wymyślać.",
+      "reflectionQuestions": [
+        "Jaka wymiana rzeczywiście ustała i czego nie da się wymusić?",
+        "Która wartość wymaga ochrony, gdy sytuacja jest zamknięta?",
+        "Kim są osoby godne zaufania, z którymi powinienem pozostać w kontakcie?",
+        "Jaki wczesny znak wskazywałby, że stagnacja zaczyna ustępować?"
+      ],
+      "lineReflections": {
+        "1": "Korzenie wciąż są ze sobą powiązane. Trzymaj się tego, co słuszne, wraz ze swoimi towarzyszami; nawet w czasach stagnacji wspólna uczciwość ma przed sobą żywą przyszłość.",
+        "2": "Niektórzy potrafią dostosować się do kompromisowego porządku i nazywają to sukcesem. Nie myl przetrwania w ramach tego porządku z działaniem osoby, która musi bronić wyższej zasady.",
+        "3": "Nie ukrywaj wstydu w sobie ani za uprzejmą fasadą. Uznaj tę część sytuacji, która narusza twoje sumienie.",
+        "4": "Prawdziwe powołanie lub jasna odpowiedzialność mogą ponownie uruchomić ruch. Działaj bez wyrzutów sumienia, gdy nadejdzie odpowiedni moment, i pozwól, by błogosławieństwo objęło tych, którzy dzielą z tobą ten wysiłek.",
+        "5": "Stagnacja zaczyna ustępować, ale nie popadaj w beztroskę. Miej na uwadze możliwość straty i zabezpiecz korzenie tego, co ważne, tak jak przywiązuje się linę do mocnego drzewa morwy.",
+        "6": "Przeszkoda zostaje pokonana. Zmiana może nastąpić po długim, trudnym okresie, więc ciesz się ulgą — ale wyciągnij wnioski z okoliczności, które pozwoliły na narastanie blokady."
+      }
+    },
+    {
+      "id": 13,
+      "title": "Tóng Rén — Wspólnota na otwartej przestrzeni",
+      "coreThread": "Spotykaj się z ludźmi w otwartej przestrzeni, skupiając się na prawdziwym wspólnym celu. Tóng Rén jest silniejsze niż prywatna lojalność czy zażyłe grono bliskich: wymaga wspólnoty, która sprawdzi się w praktyce, będzie widoczna i wystarczająco szeroka, by uwzględnić różnorodność. Taki wspólny cel może pomóc w pokonaniu trudnej drogi.",
+      "whenItAppears": "Wskaż zadanie, które naprawdę można dzielić z innymi. Zrób miejsce dla ludzi spoza rodziny, plemienia czy osobistych korzyści, pozostając jednocześnie wiernym zasadom samym celom. Otwartość nie oznacza naiwności; oznacza odmowę pozwolenia, by strach i podziały wyznaczały cały horyzont.",
+      "reflectionQuestions": [
+        "Jaki wspólny cel jest ważniejszy od naszych prywatnych lojalności?",
+        "Kto został wykluczony przez przyzwyczajenie, strach lub zbytnią bliskość?",
+        "Gdzie podejrzliwość uniemożliwia szczerą współpracę?",
+        "Co byłoby potrzebne, aby otwarcie wyjść naprzeciw drugiej stronie?"
+      ],
+      "lineReflections": {
+        "1": "Rozpocznijcie wspólnotę już u progu: bądźcie otwarci i szczerzy już przy pierwszym kontakcie. Nie ma nic złego w relacji, która nie ukrywa swoich intencji.",
+        "2": "Wspólnota ograniczona do własnego klanu jest ograniczona. Lojalność wobec tego, co znane, może dawać poczucie bezpieczeństwa, ale staje się wąska, gdy nie potrafi dostrzec szerszego dobra wspólnego.",
+        "3": "Broń ukryta w trawie i straż na grzbiecie świadczą o głębokiej nieufności. Gdy obie strony przygotowują się do ataku, nie ma miejsca na prawdziwą inicjatywę; nie podsycaj konfliktu, który nie ma gdzie zmierzać.",
+        "4": "Możesz dotrzeć do muru z zamiarem ataku, by potem odkryć, że dalszy ruch nie jest możliwy. Niech ta chwila zawahania stanie się dobrą korektą kursu: wycofaj się z eskalacji, zanim dojdzie do szkód.",
+        "5": "Rozstanie może wywołać łzy, zanim ponowne spotkanie przyniesie śmiech. Przełamanie nieporozumień może wymagać znacznego wysiłku, ale szczerzy sojusznicy w końcu mogą się spotkać.",
+        "6": "Wspólnota na obrzeżach może być spokojniejsza i mniej intymna, ale nie niesie ze sobą żalu. Nie każda więź musi przerodzić się w bliski sojusz, by była pełna szacunku i wartościowa."
+      }
+    },
+    {
+      "id": 14,
+      "title": "Dà Yǒu — Wielkie posiadanie",
+      "coreThread": "Dostępne są wpływy, możliwości lub zasoby. Dà Yǒu wymaga raczej odpowiedzialnego zarządzania niż samego posiadania: niech obfitość przepływa poprzez wdzięczność, jasność i troskę. To, co masz, staje się wartościowym darem, gdy służy czemuś większemu niż własny wizerunek.",
+      "whenItAppears": "Wykorzystuj swoje możliwości w sposób widoczny, ale bez popisywania się. Bierz na siebie to, co trzeba, dziel się zasługami z tymi, którzy na to zasługują, i zachowaj wystarczającą godność, by wyznaczać kierunek. Obfitość jest najbezpieczniejsza, gdy hojność i granice współdziałają ze sobą.",
+      "reflectionQuestions": [
+        "Jakim zasobem lub wpływem mam teraz zarządzać?",
+        "Jak może to służyć innym, a nie tylko podsycać moją pychę?",
+        "Co należy nieść lub dzielić się z odpowiedzialnością?"
+      ],
+      "lineReflections": {
+        "1": "Unikaj uwikłania się w to, co szkodzi. Szczere radzenie sobie z trudnościami chroni cię przed winą.",
+        "2": "Masz wspaniały wóz na prawdziwy ładunek. Podejmij się godnego zadania; twoje możliwości są po to, by służyć czemuś pożytecznemu.",
+        "3": "Ofiaruj to, co posiadasz, na cel większy niż prywatna korzyść. Małostkowe podejście nie pozwala udźwignąć publicznej odpowiedzialności.",
+        "4": "Nie zamieniaj swojego dostatku w przepych. Odmowa przesadnego popisywania się chroni cię przed błędem.",
+        "5": "Niech zaufanie będzie serdeczne, jasne i połączone z cichym autorytetem. Życzliwość bez kierunku może przerodzić się w zamieszanie; autorytet bez zaufania staje się strachem.",
+        "6": "Pomoc nadejdzie, gdy użycie władzy będzie zgodne z tym, co słuszne. Przyjmuj wsparcie z wdzięcznością, a nie z poczuciem, że ci się to należy."
+      }
+    },
+    {
+      "id": 15,
+      "title": "Qiān — Skromność",
+      "coreThread": "Zachowaj trzeźwość umysłu, gdy masz coś prawdziwego do zaoferowania. Qiān nie oznacza samozapomnienia: prawdziwa skromność pozwala jasno dostrzegać własne możliwości i wykorzystywać je bez zadufania. Wyrównuje to, co stało się nadmierne, i daje przestrzeń temu, co zostało pominięte.",
+      "whenItAppears": "Niech wysiłek przemawia głośniej niż pozory. Bądź otwarty na naukę, doceniaj pomoc i działaj stanowczo, gdy potrzebna jest korekta. Skromność może być aktywna, a nawet decydująca; odrzuca ego, a nie odpowiedzialność.",
+      "reflectionQuestions": [
+        "Gdzie trzeźwa pewność siebie sprawdzi się lepiej niż popisywanie się?",
+        "Jakie nadmiary należy sprawiedliwie zrównoważyć?",
+        "Czy potrafię przyjąć wsparcie i nadal wykonywać swoją pracę?"
+      ],
+      "lineReflections": {
+        "1": "Pokora na początku dodaje odwagi do trudnej przeprawy. Nie musisz się wyolbrzymiać, by podjąć tę podróż.",
+        "2": "Niech skromność będzie widoczna w twoim postępowaniu. Reputacja cichej niezawodności sprzyja powodzeniu, gdy opiera się na prawdzie.",
+        "3": "Osoba, która ciężko pracuje, nie przypisując sobie całego wyniku, może doprowadzić dzieło do pomyślnego końca. Służ zadaniu.",
+        "4": "Nie ma żadnej wady w okazywaniu skromności na zewnątrz. Zrób miejsce, dziel się zaszczytami i zniż niepotrzebne bariery.",
+        "5": "Brak osobistego bogactwa nie musi oznaczać braku siły. W stosunkach z sąsiadami, w razie potrzeby należy bezpośrednio korygować nierównowagę, bez chciwości i poniżania.",
+        "6": "W skrajnych przypadkach skromność może wymagać zorganizowanych działań w celu przywrócenia lokalnego porządku. Siłę należy stosować wyłącznie w celu sprawiedliwej, ograniczonej korekty — nigdy dla własnej chwały."
+      }
+    },
+    {
+      "id": 16,
+      "title": "Yù — Entuzjazm",
+      "coreThread": "Prawdziwe uczucie może przerodzić się we wspólny ruch. Yù nadaje entuzjazmowi rytm, strukturę i cel, dla którego warto się angażować; samo podekscytowanie nie wystarczy. Gdy wewnętrzny sygnał jest prawdziwy, może zgromadzić ludzi i przygotować ich do wspólnego wysiłku.",
+      "whenItAppears": "Niech energia stanie się przygotowaniem, a nie hałasem. Stwórz jasno określoną rolę, praktyczny plan i godne zaufania centrum. Zwróć uwagę na różnicę między radością, która napędza działanie, a popisem, który domaga się podziwu.",
+      "reflectionQuestions": [
+        "Czym ta energia chce się stać w praktyce?",
+        "Jaka struktura pozwoliłaby jej służyć czemuś więcej niż tylko nastrojowi?",
+        "Gdzie entuzjazm przeradza się w popis, zależność lub opóźnienie?"
+      ],
+      "lineReflections": {
+        "1": "Głośne ogłaszanie podekscytowania, zanim nabierze ono treści, prowadzi do trudności. Niech praca dojrzeje, zanim zaczniemy ją świętować.",
+        "2": "Bądź twardy jak kamień w rozpoznawaniu odpowiedniego momentu. Jasna percepcja nie potrzebuje całego dnia, by uwolnić się od fałszywego podekscytowania.",
+        "3": "Szukanie entuzjazmu u innych przynosi żal; podobnie jak zbyt długie czekanie. Przekształć własną intuicję w działanie w odpowiednim momencie.",
+        "4": "Gdy entuzjazm pochodzi z godnego zaufania źródła, ludzie gromadzą się naturalnie. Nie wątp w wsparcie, jakie daje jasny, wspólny cel.",
+        "5": "Utrzymująca się słabość lub ciężar mogą pozostać, ale nie muszą oznaczać końca pracy. Zajmij się tym problemem, zamiast udawać, że go nie ma.",
+        "6": "Entuzjazm, który stał się mroczny, automatyczny lub odurzający, musi ulec zmianie. Rozpoznanie tego na czas usuwa poczucie winy i otwiera drogę do lepszego wykorzystania energii."
+      }
+    },
+    {
+      "id": 17,
+      "title": "Suí — Podążanie",
+      "coreThread": "Podążaj za tym, co słuszne, a nie tylko za tym, co popularne. Suí to aktywna responsywność: dostosowywanie się do zmieniających się okoliczności przy jednoczesnym utrzymywaniu kontaktu z głębszym kierunkiem. Właściwy wpływ ułatwia ruch; niewłaściwe przywiązanie sprawia, że człowiek staje się mniejszy.",
+      "whenItAppears": "Zwróć uwagę na to, kto i co wyznacza twój kurs. Bądź gotów zmienić rolę lub nawyk, spotykać się z ludźmi spoza swojego zwykłego kręgu i uczyć się od godnych naśladowania przewodników. Podążanie jest mądre tylko wtedy, gdy twoja integralność pozostaje czujna.",
+      "reflectionQuestions": [
+        "Za czym podążam i dlaczego?",
+        "Czy to dostosowanie prowadzi mnie do lepszych relacji, czy oddala od samego siebie?",
+        "Który wpływ zasługuje na zaufanie?"
+      ],
+      "lineReflections": {
+        "1": "Rola lub obowiązek ulegają zmianie. Pozostań wierny zasadom, a następnie wyjdź poza swój zwyczajowy krąg; nowe kontakty mogą okazać się owocne.",
+        "2": "Trzymanie się gorszej lub bardziej natychmiastowej opcji może sprawić, że stracisz bardziej dojrzałego przewodnika. Starannie wybieraj to, z czym się wiążesz.",
+        "3": "Wybór dojrzałego kierunku może oznaczać porzucenie mniejszego przywiązania. To, czego naprawdę szukasz, możesz znaleźć, jeśli po dokonaniu wyboru pozostaniesz niezachwiany.",
+        "4": "Korzyści płynące z podążania za kimś mogą stać się niebezpieczne, jeśli po prostu się je utrzymuje. Kieruj zaufaniem na właściwą ścieżkę i dbaj o przejrzystość swojego postępowania.",
+        "5": "Pokładaj zaufanie w tym, co jest prawdziwie dobre. Takie proste rozpoznanie sprzyja powodzeniu.",
+        "6": "Więź może stać się zbyt ciasna, jednak głębokie oddanie może również wynikać ze świętego celu. Zadaj sobie pytanie, czy ta więź jest przymusem, czy też dobrowolnym zobowiązaniem."
+      }
+    },
+    {
+      "id": 18,
+      "title": "Gǔ — Naprawa tego, co się zepsuło",
+      "coreThread": "Coś zaniedbanego uległo zniszczeniu i wymaga uczciwej naprawy. Gǔ wskazuje na odziedziczone nawyki, stare systemy lub wzorce rodzinne, których konsekwencje są teraz widoczne. Praca zaczyna się od przygotowań, przebiega poprzez bezpośrednią odpowiedzialność i wymaga podsumowania po naprawie — dni przed i po punkcie zwrotnym, o których mowa w tekście.",
+      "whenItAppears": "Spójrz na stary wzorzec bez zaprzeczania i obwiniania innych. Weź odpowiedzialność za swoją rolę, ale nie powtarzaj tej samej sztywności, która spowodowała problem. Naprawa może być wymagająca, a mimo to głęboko warta wysiłku.",
+      "reflectionQuestions": [
+        "Jaki zaniedbany wzorzec wymaga teraz naprawy?",
+        "Co należy zbadać przed podjęciem działania, a co przeanalizować po nim?",
+        "Gdzie potrzebna jest stanowczość, a gdzie jej zastosowanie powtórzyłoby dawne szkody?"
+      ],
+      "lineReflections": {
+        "1": "Z odwagą napraw dziedziczną wadę. Zadanie to jest trudne, ale podjęcie się go może uhonorować przeszłość poprzez położenie kresu wyrządzonym przez nią krzywdą.",
+        "2": "Gdy rana dotyczy strony matczynej lub opiekuńczej, nie należy stosować sztywnej siły. Troska i takt są częścią naprawy.",
+        "3": "Naprawa może wiązać się z pewnym zakłopotaniem lub krytyką, ale nie pociąga za sobą poważnego potępienia, jeśli praca jest wykonywana szczerze.",
+        "4": "Pobłażanie staremu rozkładowi pozwala mu się pogłębiać. Jeśli będziesz iść naprzód bez zmiany schematu, prawdopodobnie pojawi się żal.",
+        "5": "Odpowiedzialne naprawianie przynosi prawdziwy szacunek. Spraw, by poprawa była widoczna dzięki konsekwentnej trosce, a nie samozachwytowi.",
+        "6": "Niektórych skorumpowanych struktur nie da się służyć bez utraty integralności pracy. Odrzuć rolę wiążącą się z kompromisem i uszanuj wyższe zadanie."
+      }
+    },
+    {
+      "id": 19,
+      "title": "Lín — Zbliżenie",
+      "coreThread": "Zbliża się znaczące spotkanie, odpowiedzialność lub nowa szansa. Lín prosi, byś podszedł do tego z serdecznością i uwagą, zwłaszcza gdy ktoś potrzebuje wskazówek lub wsparcia. Ostrzeżenie o późniejszym zwrocie sytuacji przypomina nam, że sprzyjające warunki ulegają zmianie; dobrze wykorzystaj tę okazję, póki trwa.",
+      "whenItAppears": "Zbliż się do drugiej osoby w sposób, który pozwala jej się wysłuchać. Oferuj swoją obecność zamiast kontroli i wykorzystuj swoją pozycję jako formę służby. Szansa jest realna, ale powinna ona służyć budowaniu trwałej relacji, a nie uzależnieniu od chwilowego okresu pomyślności.",
+      "reflectionQuestions": [
+        "Co zasługuje teraz na moje uważne podejście?",
+        "Jak mogę zapewnić wsparcie, nie przejmując kontroli?",
+        "Co należy przygotować, póki warunki są sprzyjające?"
+      ],
+      "lineReflections": {
+        "1": "Podejście oparte na wzajemności jest korzystne, gdy opiera się na tym, co słuszne. Szczerze wykorzystaj tę szansę.",
+        "2": "Gdy podejście jest wzajemne, nie ma potrzeby powstrzymywania się od dobrych działań, które ono umożliwia.",
+        "3": "Słodkie, pochlebne podejście nie przynosi rzeczywistych korzyści. Jeśli zauważysz problem i zaczniesz się szczerze nim martwić, możesz skorygować kurs.",
+        "4": "Zbliż się jak najbardziej, gdy sytuacja wymaga twojej obecności. Bezpośrednia uwaga nie pociąga za sobą winy.",
+        "5": "Mądre podejście to właściwy sposób odpowiedzialnego przywództwa. Zadawaj dobre pytania i dostrzegaj zdolności u innych.",
+        "6": "Hojne, szczere podejście sprzyja powodzeniu. Niech troska będzie merytoryczna, a nie tylko grzecznościowa."
+      }
+    },
+    {
+      "id": 20,
+      "title": "Guān — Kontemplacja",
+      "coreThread": "Cofnij się na tyle, by dostrzec wzór. Guān zaczyna się od pełnej czci chwili ciszy przed złożeniem ofiary: zewnętrzny akt jeszcze nie nastąpił, ale szczera obecność już coś przekazuje. Twój sposób bycia jest widoczny; spraw, by budził zaufanie.",
+      "whenItAppears": "Obserwuj, zanim zaczniesz działać. Zobacz, jak twoje działania wpływają na innych, jak ułożona jest szersza sytuacja i co pozwala ci zrozumieć twoja pozycja. Kontemplacja nie jest biernością; przygotowuje ona do podjęcia bardziej odpowiedzialnego kolejnego kroku.",
+      "reflectionQuestions": [
+        "Co staje się widoczne, gdy przestaję próbować kontrolować sytuację?",
+        "Co już komunikuje mój sposób bycia?",
+        "Czy potrzebuję bliższego spojrzenia, szerszego spojrzenia, czy może obu?"
+      ],
+      "lineReflections": {
+        "1": "Dziecięce spojrzenie może być nieszkodliwe dla kogoś, kto ponosi niewielką odpowiedzialność, ale jest zbyt wąskie, gdy wymagana jest dojrzała ocena sytuacji.",
+        "2": "Spojrzenie z boku dostrzega jedynie część sytuacji. Może ono odpowiadać pozycji chronionej lub prywatnej, ale nie należy mylić go z całą prawdą.",
+        "3": "Obserwuj własne życie i pozwól, by ta obserwacja kierowała twoim posunięciem do przodu lub wycofaniem się. Samopoznanie sprawia, że wybór odpowiedniego momentu staje się jaśniejszy.",
+        "4": "Obserwuj szerszą rzeczywistość i jej światło. Ucz się z szerszego kontekstu, a następnie bądź gotów uczestniczyć w nim z szacunkiem, zamiast pozostawać odległym obserwatorem.",
+        "5": "Osoba odpowiedzialna musi analizować skutki własnego postępowania. Szczera samoobserwacja usuwa poczucie winy.",
+        "6": "Zwracaj uwagę również na życie i sytuację innych. Dojrzałe spojrzenie uwzględnia osoby, na które wpływają twoje wybory."
+      }
+    },
+    {
+      "id": 21,
+      "title": "Shì Kè — Przełamanie przeszkody",
+      "coreThread": "Prawdziwa przeszkoda wymaga jasnej reakcji. Shì Kè posługuje się obrazem przełamania tego, co blokuje usta: nazwij problem, wyznacz sprawiedliwą granicę i wykonaj trudną praktyczną pracę. Nie jest to okrucieństwo; jest to jasność, która pozwala przywrócić porządek i komunikację.",
+      "whenItAppears": "Nie bagatelizuj problemu, dopóki nie stanie się niemożliwy do opanowania. Zbierz fakty, ustal proporcjonalne konsekwencje i odróżnij stanowczą granicę od gniewu. Sądowy obraz zawarty w tekście wymaga rozeznania, a nie kary dla samej kary.",
+      "reflectionQuestions": [
+        "Co tak naprawdę blokuje tutaj ruch lub prawdę?",
+        "Jaka jasna granica jest sprawiedliwa i proporcjonalna?",
+        "Jakich dowodów potrzebuję przed podjęciem działania?"
+      ],
+      "lineReflections": {
+        "1": "Niewielkie ograniczenie na początku zapobiega większej krzywdzie. Zaakceptuj ten korygujący limit, zanim szkoda się powiększy.",
+        "2": "Zajmij się bezpośrednio tym, co leży na powierzchni. Praca ta może wydawać się dotkliwa, ale nie ma nic złego w usuwaniu widocznej przeszkody.",
+        "3": "Przeszkoda ta zawiera coś nieprzyjemnego lub toksycznego. Spodziewaj się niewielkich trudności, ale nie rezygnuj z niezbędnej pracy.",
+        "4": "Twardy węzeł dostarcza dowodu: metalowa strzała wskazuje na prawdę. Wytrwaj ostrożnie w tej trudnej sprawie, a wynik będzie dobry.",
+        "5": "Odnajdź cenne jądro w trudnym problemie. Trzymaj się zasad i bądź świadomy ryzyka; stanowczy osąd nie musi oznaczać surowości.",
+        "6": "Gdy ograniczenie staje się tak ciężkie, że sprawia, iż osoba staje się głucha na napomnienie, pojawiają się trudności. Granice muszą pozostawać powiązane ze zrozumieniem."
+      }
+    },
+    {
+      "id": 22,
+      "title": "Bì — Wdzięk",
+      "coreThread": "Piękno może ujawnić to, co już jest dobre, ale nie może zastąpić istoty rzeczy. Bì zachęca do wyrafinowania, proporcjonalności i dbałości o formę — zwłaszcza w drobnych przedsięwzięciach. Najtrwalszy wdzięk nie ukrywa rzeczywistości; sprawia, że to, co istotne, łatwiej rozpoznać.",
+      "whenItAppears": "Popraw wygląd, ale nie pozwól, by styl decydował za ciebie. Wybieraj to, co jest odpowiednie, a nie to, co robi wrażenie. Prosty gest, przejrzysty projekt lub szczery wygląd mogą nieść w sobie więcej znaczenia niż kosztowna dekoracja.",
+      "reflectionQuestions": [
+        "Jaka forma ujawniłaby tutaj prawdziwą wartość?",
+        "Gdzie dekoracja maskuje brak treści?",
+        "Jak wyglądałaby prostsza, bardziej odpowiednia forma wyrazu?"
+      ],
+      "lineReflections": {
+        "1": "Upiększaj sposób, w jaki idziesz, a nie pojazd, który cię wozi. Wybieraj prostszą ścieżkę, gdy pozwala ci ona pozostać blisko prawdziwej pracy.",
+        "2": "Broda podąża za twarzą: forma powinna podążać za tym, co ma treść. Niech wyraz wynika z samej rzeczy.",
+        "3": "Łaska, która z upływem czasu pozostaje świeża i szczera, sprzyja powodzeniu. Niech piękno pozostaje związane z trwałą uczciwością.",
+        "4": "To, co wydaje się niepokojące, może być mile widzianym podejściem, a nie atakiem. Szybko nadjeżdżający biały koń może sygnalizować zjednoczenie; spójrz jeszcze raz, zanim założysz, że grozi niebezpieczeństwo.",
+        "5": "Skromny prezent w cichym ogrodzie może wydawać się niewystarczający, ale jego szczerość może przynieść dobry finał. Nie oceniaj wartości wyłącznie na podstawie wyglądu czy ceny.",
+        "6": "Biała wdzięczność to prostota w najczystszej postaci. Niech prostota będzie ostateczną ozdobą; nie niesie ona żadnej winy."
+      }
+    },
+    {
+      "id": 23,
+      "title": "Bō — Odpadające warstwy",
+      "coreThread": "To, co straciło oparcie, może musieć odejść. Bō to czas erozji, a nie ambitnego posuwania się naprzód. Uprość, chroń żywy rdzeń i przestań tracić siły na struktury, które już się wyczerpały.",
+      "whenItAppears": "Wycofaj się z tego, czego nie da się uratować siłą. Zajmij się najpierw podstawowymi filarami — zdrowiem, domem, prawdą, zaufanymi relacjami — i pozwól odejść powierzchownym warstwom. To nie jest porażka; to oczyszczenie, które chroni zalążek odnowy.",
+      "reflectionQuestions": [
+        "Co naprawdę traci wsparcie?",
+        "Jakie istotne fundamenty wymagają teraz ochrony?",
+        "Gdzie próbuję posuwać się naprzód, skoro rozsądniej jest zachować to, co mamy?"
+      ],
+      "lineReflections": {
+        "1": "Oczyszczanie zaczyna się u stóp łóżka: zajmij się drobnymi stratami, zanim podkopią one cały fundament. Ignorowanie ich jest niebezpieczne.",
+        "2": "Uszkodzenia sięgają samej ramy. Nie udawaj, że osłabiona konstrukcja jest nadal bezpieczna; zachowaj to, co możesz, bez fałszywej pewności siebie.",
+        "3": "Odcięcie się od rozpadającego się schematu nie może być powodem do wyrzutów sumienia. Odsuń się od tego, co się rozpada, jeśli pozostanie przy tym uczyniłoby cię współwinnym.",
+        "4": "Erozja dotarła już do powierzchni ciała: zagrożenie jest bezpośrednie. Przestań to bagatelizować i zadbaj o swoje bezpieczeństwo.",
+        "5": "Porządek i troska wciąż mogą przepływać przez dom, niczym ryby nawleczone na żyłkę. Niech odpowiedzialna koordynacja chroni tych, którzy są bezbronni.",
+        "6": "Duży owoc nie zostaje zjedzony: pozostaje żywe nasiono. Szlachetna osoba zyskuje narzędzie odnowy, podczas gdy ten, kto niszczy schronienie, traci własny dom."
+      }
+    },
+    {
+      "id": 24,
+      "title": "Fù — Powrót",
+      "coreThread": "Niewielki powrót do tego, co prawdziwe, może zmienić kierunek całego cyklu. Fù wita pierwszy znak odnowy: ścieżka powraca, przyjaciele mogą wrócić, a ruch znów staje się możliwy. Nadaj temu początkowi stały rytm, zamiast domagać się natychmiastowej przemiany.",
+      "whenItAppears": "Powróć wcześnie i po prostu. Powróć do praktyki, relacji lub wartości, które zostały zaniedbane, a następnie chroń ten mały, nowy ruch. Ostrzeżenie dotyczy tego, by nie zagubić się w odwróceniu sytuacji i nie zamienić korekty w kampanię siłową.",
+      "reflectionQuestions": [
+        "Jaki mały, prawdziwy ruch powraca?",
+        "Gdzie mogę skorygować kurs, zanim narasta żal?",
+        "Jaki rytm ochroni odnowę?"
+      ],
+      "lineReflections": {
+        "1": "Wciąż jesteś blisko właściwej drogi. Wróć teraz, zanim żal się zakorzeni; taki krok bardzo sprzyja powodzeniu.",
+        "2": "Spokojny powrót jest czymś dobrym. Niech ten powrót będzie wspierany przez życzliwość i bezpieczne miejsce, w którym można zacząć od nowa.",
+        "3": "Ciągłe błąkanie się i powroty mogą wydawać się niebezpieczne, ale sytuacja ta nie jest beznadziejna. Naucz się wyczuwać rytm, zamiast potępiać siebie.",
+        "4": "Pośród tłumu możesz wracać w pojedynkę. Pozostań wiernie przy właściwym kierunku, nawet bez bezpośredniego towarzystwa.",
+        "5": "Prawdziwy powrót pochodzi z serca i nie pozostawia żalu. Nie traktuj go jako pozoru; spraw, by był prawdziwy.",
+        "6": "Zagubienie drogi powrotu może mieć poważne skutki. Nie traktuj straconej chwili jak wojennej bitwy ani nie upieraj się przy kierunku, którego czas już nie wspiera."
+      }
+    },
+    {
+      "id": 25,
+      "title": "Wú Wàng — Niewinność",
+      "coreThread": "Działaj bez ukrytych manipulacji. Wú Wàng to nie naiwność; to zgodność z tym, co proste i słuszne. Gdy intencja jest czysta, kolejny krok może być prosty. Gdy kierunek jest krzywy, wymuszanie wyniku przynosi kłopoty.",
+      "whenItAppears": "Rób to, co do ciebie należy, i porzuć pragnienie kontrolowania każdego wyniku. Pracuj, nie próbując zbierać plonów, których nie uprawiasz, i przyjmuj przypadkowe nieszczęścia bez natychmiastowego przypisywania sobie winy lub szukania spiskowych teorii. Szczerość wymaga realizmu.",
+      "reflectionQuestions": [
+        "Jakie jest tutaj proste i właściwe działanie?",
+        "Gdzie próbuję kontrolować wynik, który nie leży w mojej mocy?",
+        "Czy potrafię zareagować na niezasłużoną porażkę bez utraty uczciwości?"
+      ],
+      "lineReflections": {
+        "1": "Idź naprzód bez ukrytych motywów. Uczciwe działanie sprzyja powodzeniu.",
+        "2": "Wykonuj swoją pracę, nie sięgając po niezasłużone owoce. Kiedy nie kalkulujesz każdego zysku, twoje działania stają się swobodniejsze.",
+        "3": "Niewinna osoba może i tak ponieść stratę, tak jak przechodzień zyskuje uwiązaną krowę, podczas gdy mieszkańcy wsi ponoszą kłopoty. Nie zamieniaj niesprawiedliwego zbiegu okoliczności w fałszywe obwinianie siebie.",
+        "4": "Trzymaj się mocno tego, co słuszne. Nie potrzeba żadnych skomplikowanych interwencji.",
+        "5": "Niektóre choroby lub zaburzenia najlepiej ustępują, gdy nie są nadmiernie leczone. Zaufaj naturalnemu procesowi powrotu do zdrowia, pozostając jednocześnie czujnym.",
+        "6": "Nawet niewinność ma swoje granice: podjęcie działania w niewłaściwym momencie może sprowadzić kłopoty. Nie upieraj się przy działaniu tylko dlatego, że twoje intencje są czyste."
+      }
+    },
+    {
+      "id": 26,
+      "title": "Dà Chù — Wielkie poskromienie",
+      "coreThread": "Zanim się uwolnisz, rozwijaj swoje możliwości. Dà Chù gromadzi wiedzę, siłę i potężny impuls, aby mogły one służyć celowi większemu niż doraźne pragnienie. Powściągliwość nie oznacza tu tłumienia; jest to trening przygotowujący do znaczącego przejścia.",
+      "whenItAppears": "Ucz się, przygotowuj się i zaakceptuj dyscyplinę, która sprawi, że późniejsze działanie będzie godne zaufania. Szukaj inspiracji poza własnym domem — u nauczycieli, w instytucjach, w pracy publicznej lub na szerszym polu — a następnie ostrożnie kieruj zgromadzoną siłą.",
+      "reflectionQuestions": [
+        "Jakie możliwości należy rozwinąć, zanim zacznę działać?",
+        "Który impuls wymaga raczej treningu, a nie uwolnienia?",
+        "Jaki szerszy cel może dobrze wykorzystać tę siłę?"
+      ],
+      "lineReflections": {
+        "1": "Zbyt wczesne działanie niesie ze sobą niebezpieczeństwo. Zatrzymanie się teraz jest pożyteczne, a nie oznacza porażki.",
+        "2": "Wóz stracił szprychy w kołach: nie można jechać dalej. Wykorzystaj tę przerwę, by zrozumieć, co należy odbudować.",
+        "3": "Siła to gotowość, niczym dostojne konie w pościgu. Ćwicz codziennie swoje umiejętności i obronę, a wtedy celowe działanie przyniesie korzyści.",
+        "4": "Powstrzymaj młodego byka, zanim jego rogi staną się niebezpieczne. Wczesne ukierunkowanie zapobiega późniejszym szkodom.",
+        "5": "Kły dzika zostały unieszkodliwione u źródła. Zajmij się niszczycielską siłą, zanim trzeba będzie z nią walczyć w pełnej sile.",
+        "6": "Droga otwiera się niczym szlak przez niebiosa. Dobrze wyćwiczona siła może teraz swobodnie się poruszać i odnosić sukcesy."
+      }
+    },
+    {
+      "id": 27,
+      "title": "Yí — Odżywianie",
+      "coreThread": "Zwróć uwagę na to, co przyjmujesz i co dajesz. Pożywienie, słowa, uwaga, nawyki i troska podtrzymują całą sytuację. Yí prosi cię, byś obserwował to, co cię odżywia, i szukał tego, co naprawdę cię karmi, zamiast głodnym wzrokiem spoglądać na zasoby innej osoby.",
+      "whenItAppears": "Przejrzyj swoje źródła wsparcia i swoją odpowiedzialność wobec innych. Dobre odżywianie jest praktyczne, regularne i etycznie czyste. Zadaj sobie pytanie, czy dane pragnienie prowadzi cię do prawdziwego pożywienia, czy też uzależnia cię od czegoś, co nie jest w stanie cię nakarmić.",
+      "reflectionQuestions": [
+        "Co naprawdę mnie teraz odżywia?",
+        "Czym karmię innych swoimi słowami i uwagą?",
+        "Gdzie porzuciłem swoje własne wewnętrzne zasoby na rzecz zasobów kogoś innego?"
+      ],
+      "lineReflections": {
+        "1": "Nie porzucaj swojej wewnętrznej mądrości, wpatrując się w bogactwo innych. Zazdrość uniemożliwia czerpanie siły.",
+        "2": "Poszukiwanie wsparcia w niewłaściwym kierunku odwraca naturalny porządek rzeczy. Nie dąż do celu, opierając się na nieodpowiednim źródle.",
+        "3": "Sposób, w jaki się odżywiasz, jest sprzeczny z zasadami zdrowia. Zatrzymaj się; dalsze podążanie tą drogą nie przyniesie żadnych korzyści.",
+        "4": "Poszukiwanie pokarmu dla prawdziwej odpowiedzialności może być dobre. Bądź czujny jak tygrys, ale niech twoja gorliwość służy trosce, a nie chciwości.",
+        "5": "Pozostań na swoim miejscu, gdy normalna droga jest niedostępna. To nie jest czas na wielką przeprawę.",
+        "6": "Inni mogą czerpać pokarm dzięki tobie. Rola ta jest poważna, ale korzystna; przygotuj się starannie na większą przemianę, jakiej wymaga."
+      }
+    },
+    {
+      "id": 28,
+      "title": "Dà Guò — Wielka przewaga",
+      "coreThread": "Obciążenie jest zbyt duże dla starej konstrukcji: kalenicowy belka się ugina. Dà Guò wymaga niezwykłej odwagi, ponownego rozłożenia ciężaru i podjęcia decyzji o tym, co jest niezbędne. Nie jest to czas na zachowanie każdej części starego porządku.",
+      "whenItAppears": "Działaj, ale działaj precyzyjnie. Zapewnij wsparcie tam, gdzie naprawdę może ono pomóc, uwolnij się od obciążeń, których nie jesteś w stanie udźwignąć, i zaakceptuj fakt, że wyjątkowa sytuacja może wymagać wyjątkowego rozwiązania. Nie myl napięcia z powodem do paniki.",
+      "reflectionQuestions": [
+        "Która struktura dźwiga więcej, niż jest w stanie wytrzymać?",
+        "Jaki ciężar można rozłożyć lub zrzucić?",
+        "Które śmiałe działanie jest konieczne, a które wynika jedynie z paniki?"
+      ],
+      "lineReflections": {
+        "1": "Chroń początek prostą troską, niczym białą matę z trzciny. Ostrożność nie jest przesadą, gdy obciążenie jest delikatne.",
+        "2": "Odnowa może wynikać z nieoczekiwanego połączenia. Uschnięte drzewo może ponownie wypuścić pędy; nie odrzucaj życiodajnej możliwości tylko dlatego, że jest niekonwencjonalna.",
+        "3": "Kalenica się ugina: obciążenie ma teraz charakter konstrukcyjny. Zaprzeczanie tylko pogłębia niebezpieczeństwo.",
+        "4": "Podparcie zostało wzmocnione i sytuacja może się utrzymać. Nie komplikuj naprawy niepotrzebnym drugim mocowaniem.",
+        "5": "Późne kwitnienie może być nieszkodliwe, ale niekoniecznie przywróci pełną witalność. Przyjmij je, nie myląc krótkotrwałego rozkwitu z całkowitym rozwiązaniem.",
+        "6": "Przekraczanie granic może sprawić, że sytuacja cię przerosnie. Twoja próba może być zrozumiała, ale ryzyko jest realne; poproś o pomoc, zanim znajdziesz się pod wodą."
+      }
+    },
+    {
+      "id": 29,
+      "title": "Kǎn — Otchłań",
+      "coreThread": "Powtarzające się trudności wymagają opanowania, a nie paniki. Kǎn to woda płynąca przez wąwóz: ryzyko może się powtórzyć, ale szczerość w sercu pozwala na przejście. Zrób kolejny pewny krok, zamiast próbować pokonać całą trasę za jednym razem.",
+      "whenItAppears": "Radź sobie z rzeczywistym zagrożeniem. Ogranicz zadanie, składaj skromne i realistyczne obietnice oraz przyjmuj prostą pomoc. Odwaga w tym przypadku nie polega na dramatycznym zwycięstwie; polega na pozostawaniu obecnym, szczerym i ostrożnym, dopóki woda nie dotrze do równego terenu.",
+      "reflectionQuestions": [
+        "Jaki jest następny pewny krok, a nie całe rozwiązanie?",
+        "Gdzie potrzebuję praktycznej pomocy lub prostszego porozumienia?",
+        "Co powstrzymałoby mnie przed pogrążeniem się jeszcze bardziej w niebezpieczeństwie?"
+      ],
+      "lineReflections": {
+        "1": "Nie schodź dalej w otchłań. Rozpoznaj schemat zagrożenia już na samym początku i zatrzymaj spiralę.",
+        "2": "W obliczu niebezpieczeństwa dąż do niewielkiego zysku, a nie do całkowitego zwycięstwa. Skromna, bezpieczna oprawa ma znaczenie.",
+        "3": "Zarówno droga tam, jak i z powrotem wydają się niebezpieczne, a miejsce odpoczynku jest niebezpieczne. Nie próbuj na siłę wydostać się z najgłębszego punktu.",
+        "4": "Wystarczy prosta naczynie z winem i jedzeniem, podane przez okno. Niech pomoc przyniesie szczery, skromny kontakt; wyszukana forma nie jest konieczna.",
+        "5": "Woda nie wylała się; osiąga odpowiedni poziom. Nie przeładowuj sytuacji większym wysiłkiem, niż jest w stanie unieść.",
+        "6": "Liny i cierniste więzy symbolizują kryzys, który zbyt długo pozostawał bez rozwiązania. Potraktuj izolację poważnie i poszukaj wsparcia, zanim przerodzi się ona w długotrwałą niewolę."
+      }
+    },
+    {
+      "id": 30,
+      "title": "Lí — Lgnący płomień",
+      "coreThread": "Jasność zależy od tego, z czym się wiąże. Lí to ogień: oświetla i ogrzewa, gdy ma dobre paliwo i stabilne miejsce, ale płonie, gdy pojawia się bez opieki. Szukaj wsparcia, oświetlaj, zamiast trawić, i utrzymuj wizję w zgodzie z rzeczywistością.",
+      "whenItAppears": "Bądź jednocześnie jasny i otwarty. Niech łagodność, symbolizowana przez krowę, utrzymuje światło w stabilnym stanie. Nie myl intensywności z wnikliwością; błyskotliwy pomysł potrzebuje ugruntowania, relacji i odpowiedniego momentu.",
+      "reflectionQuestions": [
+        "Z czym wiąże się moja jasność?",
+        "Czy to światło oświeca, czy też wypala sytuację?",
+        "Jakie wsparcie pozwoliłoby tej wizji przetrwać?"
+      ],
+      "lineReflections": {
+        "1": "Pierwsze kroki są niepewne i chwiejne. Traktuj je z szacunkiem i troską; uważność zapobiega obwinianiu.",
+        "2": "Żółte światło jest zrównoważone i centralne. Wybieraj ciepłą, ugruntowaną jasność zamiast skrajności.",
+        "3": "O zachodzie słońca uświadom sobie, że jasność się zmienia. Twórz muzykę lub zaakceptuj upływ czasu; zaprzeczanie śmiertelności zamienia refleksję w rozpacz.",
+        "4": "Nagła intensywność może spalić, pochłonąć i pozostawić rzeczy odrzucone. Nie pozwól, by nadejście przerodziło się w niekontrolowany pożar.",
+        "5": "Łzy i smutek mogą być szczerą reakcją na to, co zostało ujawnione. Pełne odczucie straty może doprowadzić do dobrego wyniku.",
+        "6": "Podejmując zdecydowane działania, odróżnij źródło krzywdy od tych, którzy zostali nią dotknięci. Przetrzyj sobie drogę przez dominujący chaos bez bezkrytycznego niszczenia."
+      }
+    },
+    {
+      "id": 31,
+      "title": "Xián — Wzajemny wpływ",
+      "coreThread": "Działa tu subtelna więź. Xián dotyczy przyciągania, wrażliwości i sposobu, w jaki jedna osoba porusza drugą. Niech wpływ kierowany jest szacunkiem, zgodą i stabilnym centrum; autentyczna więź nie wymaga presji ani utraty siebie.",
+      "whenItAppears": "Zwróć uwagę na pierwsze poruszenie uczuć, ale nie pozwól, by każdy impuls decydował o działaniu. Dobry wpływ wynika z otwartości i szczerości. Przyciąganie staje się godne zaufania, gdy obie osoby zachowują swobodę w reagowaniu.",
+      "reflectionQuestions": [
+        "Jaki wpływ działa między nami?",
+        "Czy to przyciąganie opiera się na szacunku i jest wynikiem wolnego wyboru?",
+        "Gdzie muszę zachować spokój, zamiast podążać za impulsem?"
+      ],
+      "lineReflections": {
+        "1": "Wpływ zaczyna się w palcach stóp: pierwszy, niewielki impuls. Zwróć na niego uwagę, nie traktując go jako zobowiązania.",
+        "2": "Uczucie przemieszcza się w łydce i chce skłonić cię do działania, ale lepiej jest zachować spokój. Nie pozwól, by fizyczna potrzeba decydowała za ciebie.",
+        "3": "Impuls dociera do uda i próbuje uchwycić to, za czym podąża. Zbyt pochopne podążanie za inną osobą prowadzi do żalu.",
+        "4": "Niezachwiana integralność usuwa żal. Myśli i sygnały mogą się pojawiać i znikać, a przyjaciele mogą na nie reagować; zachowaj jasny wewnętrzny kierunek.",
+        "5": "Wpływ dociera do pleców, stabilnego centrum ciała. Można odczuć ugruntowaną więź bez niepokoju i żalu.",
+        "6": "Wpływ na policzki, szczękę i język może pozostać tylko słowami. Niech słowa odpowiadają czynom i prawdziwym uczuciom."
+      }
+    },
+    {
+      "id": 32,
+      "title": "Héng — Trwałość",
+      "coreThread": "To, co ma znaczenie, wymaga rytmu, który faktycznie jesteś w stanie utrzymać. Héng wspiera wierność zasadom, praktykom i relacjom, ale nie popiera sztywnego powtarzania. Wytrwałość sprawdza się, gdy jest żywa, proporcjonalna i dostosowana do sytuacji.",
+      "whenItAppears": "Wybierz stałą praktykę zamiast spektakularnych obietnic. Niech twoje wartości pozostają niezachwiane, a metody – elastyczne. Stałość nie polega na zagłębianiu się w ten sam nawyk tylko dlatego, że został już zapoczątkowany.",
+      "reflectionQuestions": [
+        "Jaki rytm jestem w stanie naprawdę utrzymać?",
+        "Która zasada powinna pozostać niezmienna, podczas gdy metoda ulega zmianie?",
+        "Gdzie wytrwałość przerodziła się w sztywność lub niepokój?"
+      ],
+      "lineReflections": {
+        "1": "Nie wymuszaj głębi na samym początku. Zbyt wczesne wymaganie trwałości nie przynosi żadnych korzyści.",
+        "2": "Żal znika, gdy powrócisz do zrównoważonego, stałego tempa.",
+        "3": "Bez stałości charakteru może pojawić się wstyd. Dotrzymuj słowa, zamiast upierać się przy ustalonej formie zewnętrznej.",
+        "4": "Polowanie bez zdobyczy wskazuje na wysiłek skierowany w niewłaściwym kierunku. Wytrwałość nie zrekompensuje złego celu.",
+        "5": "Stałość musi być dostosowana do danej relacji i pełnionej w niej roli. Wzajemna elastyczność jest zaletą; jednostronna sztywność może okazać się szkodliwa.",
+        "6": "Niespokojna, chwiejna „stałość” to sprzeczność. Nie nazywaj powtarzającego się niepokoju stabilnym zaangażowaniem."
+      }
+    },
+    {
+      "id": 33,
+      "title": "Dùn — Odwrót",
+      "coreThread": "Wycofanie się może pozwolić zachować to, co naprawdę ważne. Dùn nie oznacza porażki ani zniknięcia; jest to wycofanie się w odpowiednim momencie z sytuacji, które mogłyby marnować twoją energię lub naruszać twoją integralność. Patrz w daleką przyszłość i odejdź bez goryczy.",
+      "whenItAppears": "Ogranicz swoją ekspozycję, chroń to, co istotne, i wyznacz wyraźną granicę. Wycofanie się jest najskuteczniejsze, gdy jest przemyślane i pełne godności, a nie gniewną reakcją. Nawet mniejsze, ale właściwe stanowisko ma swoją wartość.",
+      "reflectionQuestions": [
+        "Z czym nie warto już bezpośrednio się konfrontować?",
+        "Co wymaga ochrony, gdy się wycofuję?",
+        "Jak mogę się wycofać bez urazy i dramatów?"
+      ],
+      "lineReflections": {
+        "1": "Gdy wycofywanie się pozostaje w tyle, niebezpieczeństwo rośnie. Nie naciskaj do przodu z najbardziej narażonej pozycji.",
+        "2": "Mocny węzeł, niczym żółta skóra wołowa, nie da się po prostu rozwiązać. Uświadom sobie, które zobowiązania musisz dotrzymać nawet podczas wycofywania się.",
+        "3": "Wycofywanie się z pewnych zobowiązań jest bolesne i ryzykowne. Dbaj o to, by najbliższe obowiązki były do opanowania, ale nie pozwól, by osoby pozostające na twoim utrzymaniu stały się powodem do pozostania w szkodliwej walce.",
+        "4": "Szlachetna osoba potrafi wycofać się z godnością; osoba o ograniczonych horyzontach może odebrać to jako stratę. Odejdź w sposób, który zachowuje godność.",
+        "5": "Piękne wycofanie się opiera się na zasadach, jest jasne i następuje w odpowiednim momencie.",
+        "6": "Pełne, nieskrępowane wycofanie się nie powoduje żadnych niekorzystnych skutków. Wycofaj się na tyle daleko, by odzyskać swobodę działania."
+      }
+    },
+    {
+      "id": 34,
+      "title": "Dà Zhuàng — Wielka moc",
+      "coreThread": "Moc wymaga właściwego kierunku. Dà Zhuàng wnosi siłę, pewność siebie i impet, ale siła ta jest korzystna tylko wtedy, gdy kieruje nią uczciwość. Przekraczanie właściwych granic osłabia tę samą pozycję, którą próbujesz umocnić.",
+      "whenItAppears": "Wykorzystuj siłę otwarcie i etycznie. Niech moc przepływa przez godną strukturę, a nie poprzez agresję, dumę czy chęć wygrania każdej rywalizacji. Prawdziwa siła stwarza przestrzeń dla ruchu; nie zapląta się rogami w ogrodzenie.",
+      "reflectionQuestions": [
+        "Jakie jest właściwe wykorzystanie mojej siły w tej sytuacji?",
+        "Jakiej granicy muszę przestrzegać?",
+        "Czy działam z uczciwości, czy z potrzeby udowodnienia swojej siły?"
+      ],
+      "lineReflections": {
+        "1": "Siła w palcach stóp pędzi naprzód, zanim całe ciało jest gotowe. Szczera intencja nie sprawia, że przedwczesny atak jest bezpieczny.",
+        "2": "Trzymaj się tego, co słuszne. Ta prosta niezachwianość sprzyja powodzeniu.",
+        "3": "Osoba o ograniczonym umyśle używa surowej siły; osoba szlachetna dostrzega pułapkę. Podobnie jak baran uderzający w ogrodzenie, duma może sprawić, że utkniesz w pułapce własnej siły.",
+        "4": "Ogrodzenie pęka, a rogi są wolne. Siła ma teraz odpowiedni nośnik; wykorzystaj ją do ruchu, a nie do zderzeń.",
+        "5": "Utrata barana na otwartym terenie nie budzi żalu. Uwolnij się od tożsamości, która musi nieustannie udowadniać swoją siłę.",
+        "6": "Baran jest uwięziony: nie może ani się wycofać, ani posunąć naprzód. Gdy siła doprowadziła do impasu, cierpliwość w obliczu trudności jest lepsza niż dalsze naciskanie."
+      }
+    },
+    {
+      "id": 35,
+      "title": "Jìn — Postęp",
+      "coreThread": "Widoczność rośnie. Jìn wzywa cię, byś zaprezentował swoje najlepsze osiągnięcia, spokojnie przyjął uznanie i skupił się na ciągłym doskonaleniu, a nie na popisywaniu się. Postęp jest najsilniejszy, gdy przynosi korzyść całej dziedzinie, a nie tylko osobie, która jest w centrum uwagi.",
+      "whenItAppears": "Niech twój wkład stanie się widoczny bez wymuszania zaufania czy oklasków. Z opóźnieniami radź sobie z wielkodusznością, przyjmuj wsparcie od starszych lub sojuszników i pamiętaj, że postęp bez charakteru szybko staje się tylko popisywaniem się.",
+      "reflectionQuestions": [
+        "Która praca jest gotowa do zaprezentowania?",
+        "W jakich obszarach powinienem posuwać się naprzód z cierpliwością, a nie siłą?",
+        "W jaki sposób uznanie może służyć pracy, a nie mojemu wizerunkowi?"
+      ],
+      "lineReflections": {
+        "1": "Być może osiągniesz postęp, a potem napotkasz przeszkody. Trzymaj się tego, co słuszne; gdy brakuje zaufania, pozostań hojny i nie traktuj oporu osobiście.",
+        "2": "Postęp może wiązać się ze smutkiem lub wątpliwościami. Zachowaj uczciwość i przyjmij ochronne błogosławieństwo ofiarowane przez mądrego starszego lub troskliwego sojusznika.",
+        "3": "Gdy grupa doceni twój wkład, żal zniknie. Niech to wspólne zaufanie, a nie autopromocja, napędza postęp.",
+        "4": "Postęp na wzór chciwej wiewiórki jest ryzykowny. Nie popadaj w oportunizm ani nie działaj w panice tylko dlatego, że masz szansę zaistnieć.",
+        "5": "Nie martw się nadmiernie o zyski czy straty. Idź naprzód z jasnym celem; droga jest sprzyjająca.",
+        "6": "Użycie rogów do ataku może być uzasadnione jedynie w celu naprawienia niewielkiego, ograniczonego chaosu. Nawet wtedy ryzyko jest realne; nie zamieniaj postępu w podbój."
+      }
+    },
+    {
+      "id": 36,
+      "title": "Míng Yí — Zaciemnienie światła",
+      "coreThread": "Chroń swoją wewnętrzną jasność w trudnym otoczeniu. Míng Yí nie wymaga od ciebie porzucenia światła, ale ochrony go przed okolicznościami, które mogłyby je zranić lub wykorzystać. Uważaj na nadmierną ekspozycję i podtrzymuj płomień, nie afiszując się z tym.",
+      "whenItAppears": "Wybierz przetrwanie, dyskrecję i wytrwałość opartą na zasadach zamiast spektakularnej widoczności. Wiedz, kiedy odejść, kiedy przyjąć pomoc i kiedy zachować swoje najgłębsze wartości w tajemnicy, aż nadejdzie bezpieczniejszy czas.",
+      "reflectionQuestions": [
+        "Która część mojej jasności wymaga teraz ochrony?",
+        "W jakich sytuacjach dyskrecja jest rozsądniejsza niż konfrontacja?",
+        "Jakie wsparcie pomogłoby mi bezpiecznie odejść lub przetrwać?"
+      ],
+      "lineReflections": {
+        "1": "Ptak opuszcza skrzydła i leci bez wygody. Porzuć to, co ci szkodzi, nawet jeśli odejście będzie skromne i niezrozumiane.",
+        "2": "Światło jest zranione, ale możliwa jest zdecydowana akcja ratunkowa. Przyjmij praktyczną pomoc i wykorzystaj ją, by odzyskać swobodę ruchu.",
+        "3": "Możesz stawić czoła głównemu złu, ale nie spiesz się, by uczynić zwycięstwo trwałym. Zmiana wymaga cierpliwego utrwalania.",
+        "4": "Widząc sedno ciemności, opuść wewnętrzną komnatę. Prawdziwe wyjście powinno kierować się wglądem, a nie tylko prywatną wiedzą.",
+        "5": "Zachowaj integralność w ciszy, niczym mądry człowiek, który ukrywa światło na skorumpowanym dworze. Wytrwałość może być aktywnym wyborem moralnym.",
+        "6": "Ten, kto odrzuca światło, może najpierw wznieść się wysoko, a potem upaść na ziemię. Nie podążaj za arogancją w ciemność."
+      }
+    },
+    {
+      "id": 37,
+      "title": "Jiā Rén — Rodzina",
+      "coreThread": "Porządek zaczyna się w bliskich relacjach. Jiā Rén posługuje się obrazem gospodarstwa domowego: należy jasno określić obowiązki, dotrzymywać obietnic i wyrażać troskę poprzez niezawodne codzienne postępowanie. Historyczne sformułowania odzwierciedlają swoją epokę; trwałą zasadą jest wzajemna odpowiedzialność, a nie sztywna hierarchia płci.",
+      "whenItAppears": "Stwórzcie jasne ustalenia w grupie najbliższej wam — rodzinie, zespole, gospodarstwie domowym lub związku partnerskim. Troska potrzebuje struktury, ale struktura bez ciepła przeradza się w strach. Niech role wzajemnie się uzupełniają, a zaufanie będzie widoczne w codziennych czynnościach.",
+      "reflectionQuestions": [
+        "Jakie porozumienie wniosłoby więcej porządku i troski do tej bliskiej grupy?",
+        "Czy obowiązki są jasno określone i wzajemne?",
+        "Gdzie potrzebna jest większa konsekwencja, a gdzie więcej ciepła?"
+      ],
+      "lineReflections": {
+        "1": "Ustal granice na początku wspólnego życia. Jasno określone granice zapobiegają późniejszym żalom.",
+        "2": "Zadbaj o niezbędne zadania, które zapewniają wyżywienie i sprawne funkcjonowanie gospodarstwa domowego lub grupy. Cicha niezawodność sprzyja powodzeniu.",
+        "3": "Nadmierna surowość stwarza zagrożenie, ale beztroskie żarty i pobłażliwość powodują trwały chaos. Znajdź stanowczy, humanitarny kompromis.",
+        "4": "Wzbogać rodzinę w szerokim znaczeniu: zasoby, zaufanie, umiejętności i wzajemne wsparcie. Bardzo sprzyja to powodzeniu.",
+        "5": "Odpowiedzialna postawa może zjednoczyć rodzinę. Nie martw się nadmiernie; kieruj innymi poprzez troskę i opanowanie.",
+        "6": "Zaufanie połączone z dostojnym autorytetem prowadzi do pomyślnego zakończenia. Niech twoja stanowczość budzi zaufanie, ponieważ wynika z wierności, a nie z zastraszania."
+      }
+    },
+    {
+      "id": 38,
+      "title": "Kuí — Opozycja",
+      "coreThread": "Różnica nie musi przeradzać się w wrogość. Kuí opisuje ludzi podążających w różnych kierunkach, dlatego sprzyja raczej drobnym, wykonalnym sprawom niż wymuszonej wielkiej jedności. Szukaj punktu styku, szanuj rozbieżności i nie wymagaj identycznych poglądów, by współpracować.",
+      "whenItAppears": "Zmniejsz skalę sporu. Wyjaśnij jedną praktyczną kwestię, spotkaj się prywatnie, jeśli to konieczne, i pozostaw miejsce na zaskakujące pojednanie. Sprzeciw staje się niebezpieczny, gdy wyobraźnia zamienia drugą osobę w wroga.",
+      "reflectionQuestions": [
+        "Jakie niewielkie porozumienie jest możliwe pomimo większej różnicy?",
+        "Gdzie w mojej wyobraźni stworzyłem sobie wroga?",
+        "Jaki bezpośredni kontakt zastąpiłby domysły rzeczywistością?"
+      ],
+      "lineReflections": {
+        "1": "Nie ścigaj tego, co zaginęło; podobnie jak zagubiony koń, może to wrócić samo z siebie. Spotkanie z nieprzyjemną osobą nie musi wiązać się z obwinianiem.",
+        "2": "Spotkaj się z osobą odpowiedzialną w zaułku, z dala od ceremonii i poz. Bezpośrednia, prywatna rozmowa może rozwiązać to, czego nie da się osiągnąć poprzez formalny dystans.",
+        "3": "Nieporozumienie może sprawić, że wszyscy będą wydawać się przygnębieni, skrępowani lub upokorzeni. Początek jest trudny, ale cierpliwość pozwala na osiągnięcie zakończenia.",
+        "4": "W samotności spotkaj osobę o prawdziwej wartości i nawiąż z nią relację opartą na zaufaniu. Ta więź wiąże się z ryzykiem, ale nie jest czymś złym.",
+        "5": "Żal ustaje, gdy więź rodzinna lub partnerstwo nawiązują bezpośredni kontakt, niczym przebicie się przez cienką przeszkodę. Idź naprzód; w szczerym podejściu nie ma nic złego.",
+        "6": "Strach może zamienić zabłoconą świnię w upiorny wóz, a gościa w napastnika. Opuść łuk, spójrz jeszcze raz i pozwól, by spotkanie stało się zjednoczeniem, a nie konfliktem."
+      }
+    },
+    {
+      "id": 39,
+      "title": "Jiǎn — Przeszkoda",
+      "coreThread": "Bezpośrednia droga jest zablokowana. Jiǎn radzi zmianę perspektywy, mądre przygotowanie i pomoc ze strony zdolnych ludzi. Tradycyjne wskazówki wyrażają praktyczną prawdę: kieruj się ku terenowi, który zapewnia wsparcie, a nie ku terenowi, który potęguje trudności.",
+      "whenItAppears": "Nie myl wytrwałości z uderzaniem głową w mur. Cofnij się, skonsultuj się, nawiąż kontakt z sojusznikami i poszukaj kogoś, kto dostrzega szerszy kontekst sytuacji. Przeszkoda może stać się nauczycielem strategii i relacji.",
+      "reflectionQuestions": [
+        "Która droga zapewnia wsparcie, a nie opór?",
+        "Kim jest ta „wielka osoba” lub mądry doradca, z którym powinienem się skonsultować?",
+        "Co stanie się możliwe, jeśli zawrócę i przegrupuję siły?"
+      ],
+      "lineReflections": {
+        "1": "Posuwanie się naprzód napotyka przeszkodę; powrót przynosi zrozumienie. Wycofanie się w celu przygotowania się jest mądrzejszym posunięciem.",
+        "2": "Być może borykasz się z trudnościami w imię sprawy większej od ciebie samego. Nie traktuj każdego ciężaru jako osobistej porażki.",
+        "3": "Posuwanie się naprzód napotyka przeszkodę; powrót przywraca ci siły. Zmień kierunek, zanim blokada przerodzi się w wyczerpanie.",
+        "4": "Powróć do więzi z innymi. Drogę przez trudności można znaleźć wraz z innymi, a nie w samotności.",
+        "5": "W obliczu wielkiej przeszkody pojawiają się przyjaciele. Pozwól, by dotarło do ciebie wsparcie; to nie jest czas na udowadnianie samowystarczalności.",
+        "6": "Powrót z przeszkody może przynieść większe dobro. Spotkaj się z mądrym przewodnikiem i pozwól, by następny krok został ukształtowany przez radę."
+      }
+    },
+    {
+      "id": 40,
+      "title": "Xiè — Uwolnienie",
+      "coreThread": "Teraz można rozluźnić napięcie. Xiè zachęca cię do rozwiązania najpilniejszego problemu, wybaczenia tego, co można odpuścić, i powrotu do prostego ruchu. Jeśli nie ma nic pilnego do załatwienia, dobrze jest odpocząć; jeśli konieczne jest podjęcie działania, lepiej działać w odpowiednim czasie niż zwlekać.",
+      "whenItAppears": "Rozwiąż to, co jest związane, i wyjaśnij to, co jest ukryte. Nie dźwigaj ciężaru, udając, że jesteś ponad nim, i nie podtrzymuj starego konfliktu, gdy jego cel już się wyczerpał. Uwolnienie jest praktyczne, a nie mgliste.",
+      "reflectionQuestions": [
+        "Jakie bezpośrednie napięcie można teraz rozwiązać?",
+        "Jakie brzemię lub uraza są gotowe do uwolnienia?",
+        "Jaką ukrytą przeszkodę należy bezpośrednio nazwać?"
+      ],
+      "lineReflections": {
+        "1": "Uwolnienie zaczyna się po prostu. Nie ma nic złego w pozwoleniu, by napięcie się złagodziło.",
+        "2": "Znajdź ukryte lisy i złotą strzałę: usuń ukryte problemy i odzyskaj jasne dowody potrzebne do podjęcia sprawiedliwej decyzji.",
+        "3": "Noszenie ciężaru, jednocześnie popisując się, przyciąga kłopoty. Zrównoważ swój status, zasoby i odpowiedzialność, zamiast wysyłać sprzeczne sygnały.",
+        "4": "Rozluźnij wiązanie w najcieńszym miejscu, na przykład przy kciuku, a zaufani przyjaciele powrócą. Drobne rozplątania przywracają zaufanie.",
+        "5": "Kiedy osoba kierująca się zasadami uwalnia to, co jest skrępowane, nawet ci o mniejszym zrozumieniu potrafią dostrzec jej szczerość.",
+        "6": "Z precyzją pokonaj wysoką, groźną przeszkodę. Bezpośrednie działanie, które eliminuje rzeczywiste zagrożenie, nie powoduje żadnych niekorzystnych skutków."
+      }
+    },
+    {
+      "id": 41,
+      "title": "Sǔn — Ubytek",
+      "coreThread": "Świadome ograniczenie może przywrócić równowagę. Sǔn wzywa cię do rezygnacji z tego, co osłabia całość, do uproszczenia tego, co stało się nadmierne, oraz do stworzenia miejsca na to, co naprawdę ma znaczenie. Dwie małe miseczki symbolizują, że szczerość jest cenniejsza niż pozory.",
+      "whenItAppears": "Ograniczaj z rozeznaniem, a nie w ramach samokarania. Ofiaruj tam, gdzie dar pomaga, usuwaj to, co chore lub uciążliwe, i nie poświęcaj tego, co pozwala ci służyć. Prostota może być aktywną formą troski.",
+      "reflectionQuestions": [
+        "Jakie ograniczenie przywróciłoby równowagę?",
+        "Co można uprościć, nie ubożejąc duchowo?",
+        "Gdzie dawanie więcej faktycznie zaszkodziłoby źródłu wsparcia?"
+      ],
+      "lineReflections": {
+        "1": "Wykonaj swoje zadanie, a potem szybko ruszaj z pomocą. Dawaj z umiarem; w proporcjonalności nie ma winy.",
+        "2": "Zachowaj równowagę, ale nie popadaj w niepotrzebne poświęcenie. W tym przypadku nieograniczanie się staje się zyskiem dla kogoś innego.",
+        "3": "Trzech podróżujących razem może musieć stać się dwójką; ten, kto podróżuje sam, może znaleźć prawdziwego towarzysza. Uproszczenie może ujawnić właściwą relację.",
+        "4": "Ogranicz to, co jest chore lub wyczerpujące, a radość może nadejść szybko. Usunięcie prawdziwego ciężaru nie jest stratą.",
+        "5": "Nieoczekiwany przyrost może nadejść z pewnością godną zaufanego wyroczni. Przyjmij go jako wielki dar, a nie jako coś, co udało ci się wymusić.",
+        "6": "Nie ograniczaj tego, co wymaga wzrostu. Hojny ruch na zewnątrz może zgromadzić poparcie wykraczające poza wąskie granice domu."
+      }
+    },
+    {
+      "id": 42,
+      "title": "Yì — Wzrost",
+      "coreThread": "Wsparcie skierowane we właściwym kierunku zwielokrotnia się. Yì otwiera możliwość inwestowania, hojności i znaczącego przejścia. Wzrost nie jest jedynie osobistą korzyścią: stawia pytanie, czy zasoby płyną ku pracy, która służy czemuś więcej niż osobistym interesom.",
+      "whenItAppears": "Działaj, zanim okazja przeminie. Wkładaj energię w większe zadanie, wzmacniaj fundamenty, które pozwalają innym się rozwijać, i spraw, by w decyzjach była widoczna dobra wola. Wzrost staje się niestabilny, gdy jest gromadzony albo gdy dąży się do niego bez stałego celu.",
+      "reflectionQuestions": [
+        "Gdzie wsparcie przyniesie największe dobro?",
+        "Jakie większe dzieło jest gotowe do rozpoczęcia?",
+        "Jak sprawić, by hojność była trwała i praktyczna, a nie jedynie sentymentalna?"
+      ],
+      "lineReflections": {
+        "1": "Wykorzystaj tę okazję do wielkiego dzieła. Prawdziwy wkład może się rozpocząć już teraz, bez poczucia winy.",
+        "2": "Wzrost może nadejść spoza twojej kontroli. Przyjmij go z niezmienną uczciwością i wdzięcznością.",
+        "3": "Pomoc może nadejść w wyniku trudnego, a nawet niefortunnego wydarzenia. Zachowaj wiarę w swoje przekonania i szczerze informuj osoby odpowiedzialne.",
+        "4": "Wyważona propozycja może zyskać poparcie władz. Wykorzystaj to poparcie, aby stworzyć solidną podstawę dla niezbędnych zmian.",
+        "5": "Serce przepełnione szczerą dobrocią nie potrzebuje dodatkowych dowodów. Gdy dobra wola jest prawdziwa, ludzie ufają cnocie, która za nią stoi.",
+        "6": "Jeśli nikt nie popiera tego wzrostu lub spotyka się on z atakiem, zbadaj intencje. Niestabilne serce obraca korzyść w trudność."
+      }
+    },
+    {
+      "id": 43,
+      "title": "Guài — Przełom",
+      "coreThread": "Prawda musi zostać jasno wyrażona. Guài wymaga wyznaczenia widocznej granicy i zdecydowanego zerwania z tym, co szkodliwe, ale wyraźnie ostrzega przed przekształcaniem przekonań w zbrojną agresję. Mów szczerze, nazwij ryzyko i idź naprzód bez okrucieństwa.",
+      "whenItAppears": "Wyciągnij sprawę na światło dzienne. Zacznij od własnej społeczności, przedstaw argumenty w dobrej wierze i działaj, zamiast tylko narzekać. Przełom jest etyczny tylko wtedy, gdy środki pozostają proporcjonalne do problemu.",
+      "reflectionQuestions": [
+        "Jaką prawdę należy ogłosić publicznie i jasno?",
+        "Jaka granica jest potrzebna, by nie doprowadzić do eskalacji agresji?",
+        "Gdzie powinienem podjąć działanie, zamiast tylko wyrażać oburzenie?"
+      ],
+      "lineReflections": {
+        "1": "Siła skupiona w przednich palcach stóp pędzi naprzód, ale nie może zwyciężyć. Nie myl pośpiechu z gotowością.",
+        "2": "Bądź czujny: konflikt może nadejść w nocy. Wystarczy przygotowana czujność; nie daj się pochłonąć zmartwieniom.",
+        "3": "Widoczny gniew jest niebezpieczny. Osoba kierująca się zasadami może samotnie zmagać się z dyskomfortem i niezrozumieniem, a mimo to pozostać bez winy.",
+        "4": "Gdy działanie jest bolesne i niepewne, kieruj się praktycznymi wskazówkami, nawet jeśli na początku nie ufasz im w pełni. Uparcie opieranie się przedłuża żal.",
+        "5": "Wycinaj uparte chwasty w samym środku, ale trzymaj się środkowej ścieżki. Stanowczość bez przesady jest bez zarzutu.",
+        "6": "Jeśli ostrzeżenie nigdy nie zostanie wypowiedziane, szkodliwy schemat będzie trwał aż do złego końca. Milczenie nie zawsze oznacza spokój."
+      }
+    },
+    {
+      "id": 44,
+      "title": "Gòu — Spotkanie",
+      "coreThread": "Nieoczekiwanie pojawia się potężny wpływ. Gòu wzywa cię, byś dostrzegł go wcześnie, zachował trzeźwość osądu i nie oddawał kierownictwa zbyt pochopnie. Starożytny obraz małżeństwa należy do jego historycznego kontekstu; zasadą, którą można zastosować, jest ostrożność w obliczu intensywnej nowej siły lub przywiązania.",
+      "whenItAppears": "Wyznacz granicę już przy pierwszym kontakcie. Ciekawość może być czymś pozytywnym, ale nie każda kusząca okazja powinna znaleźć się w centrum twojego życia lub pracy. Ograniczanie chroni możliwość wyboru.",
+      "reflectionQuestions": [
+        "Jaki silny wpływ właśnie pojawił się w tej sytuacji?",
+        "Gdzie potrzebuję wczesnej granicy?",
+        "Co powinno pozostać w granicach, a nie być oferowane na zewnątrz?"
+      ],
+      "lineReflections": {
+        "1": "Zaciągnij hamulec wcześnie. Posuwanie się naprzód bez ograniczeń naraża na niebezpieczeństwo, nawet jeśli impuls jest nieustanny i przekonujący.",
+        "2": "Trzymaj rybę w woreczku: zachowaj cenną lub delikatną sprawę dla siebie. Nie jest ona jeszcze przeznaczona dla gości ani do publicznego pokazania.",
+        "3": "Wahanie boli, ale może zapobiec większemu błędowi. Poruszaj się ostrożnie przez ten dyskomfort.",
+        "4": "Pusty woreczek oznacza, że nie wykorzystano okazji, gdy się pojawiła. Nie obwiniaj innych za to, czego nie udało ci się zabezpieczyć.",
+        "5": "Trzymaj melona owiniętego, a blask w zamknięciu. Gdy chronisz to, co się rozwija, może niespodziewanie nadejść dar.",
+        "6": "Spotkanie z rogami powoduje tarcia i zakłopotanie, ale niekoniecznie winię. Zaakceptuj ograniczenia i nie wymuszaj kontaktu."
+      }
+    },
+    {
+      "id": 45,
+      "title": "Cuì — Zgromadzenie",
+      "coreThread": "Zgromadź ludzi i zasoby wokół wspólnego centrum. Cuì wymaga przygotowania, szczerości i sensownej formy; zgromadzenie bez celu staje się hałasem lub presją. Obraz świątyni przypomina nam, że grupa potrzebuje miejsca, rytuału lub praktyki, które będą utrzymywać jej wspólny cel.",
+      "whenItAppears": "Zbierz ludzi w imię czegoś prawdziwego. Jasno określ cel, zapewnij wystarczające wsparcie i zaproś godnych zaufania liderów. Silne zgromadzenie może wesprzeć wielkie przedsięwzięcie, gdy nikt nie jest traktowany jedynie jako część tłumu.",
+      "reflectionQuestions": [
+        "Co stanowi prawdziwy punkt centralny tego zgromadzenia?",
+        "Jaka forma lub porozumienie sprawi, że będzie ono bezpieczne i znaczące?",
+        "Kogo należy zaprosić, wysłuchać lub wesprzeć?"
+      ],
+      "lineReflections": {
+        "1": "Zaufanie może się rozproszyć, a potem ponownie się zgrupować. Wołanie, na które odpowiada uścisk dłoni, może zamienić zamieszanie w śmiech; nie trać nadziei zbyt wcześnie.",
+        "2": "Dobrze jest dać się wciągnąć w szczere spotkanie. Wystarczy mała, prosta ofiara, jeśli niesie ze sobą prawdziwą wiarę.",
+        "3": "Być może pragniesz się zgromadzić, a mimo to czujesz się wykluczony. Idź mimo wszystko; dyskomfort jest niewielki w porównaniu z możliwością nawiązania więzi.",
+        "4": "Wielkie, dobrze zorganizowane spotkanie nie niesie ze sobą winy.",
+        "5": "Osoba zajmująca kluczową pozycję może skupiać wokół siebie innych, którzy nie darzą jej od razu zaufaniem. Niech to długotrwała uczciwość, a nie sama pozycja, rozwieje te wątpliwości.",
+        "6": "Łzy i westchnienia na obrzeżach grupy nie są godne potępienia. Zrób miejsce zarówno dla smutku, jak i dla radości."
+      }
+    },
+    {
+      "id": 46,
+      "title": "Shēng — Wznoszenie się",
+      "coreThread": "Rozwój wynika ze stałego wysiłku i pokory. Shēng to wspinaczka od dołu: ucz się od tych, którzy są przed tobą, korzystaj z oferowanego wsparcia i wspinaj się krok po kroku, zamiast domagać się natychmiastowego awansu.",
+      "whenItAppears": "Szukaj kompetentnego przewodnika i zrób kolejny wyraźny krok naprzód. Postęp jest korzystny, gdy opiera się na szczerości i służbie. Nie pozwól, by ambicja zaślepiła cię na tempo, warunki czy ludzi, którzy umożliwiają ruch w górę.",
+      "reflectionQuestions": [
+        "Jaki jest następny krok, a nie cała wspinaczka?",
+        "Czyje wskazówki pomogłyby mi dobrze się rozwijać?",
+        "Jak mogę iść naprzód, nie tracąc pokory?"
+      ],
+      "lineReflections": {
+        "1": "Wspólna, oparta na zaufaniu wspinaczka bardzo sprzyja powodzeniu. Przyjmij pomoc oferowaną przez ludzi, którzy wierzą w tę pracę.",
+        "2": "Szczera intencja sprawia, że nawet niewielka ofiara jest wystarczająca. Nie potrzebujesz wielkich popisów, by zasłużyć na należne ci miejsce.",
+        "3": "Droga wznosi się przez opustoszałe miasto: tam, gdzie spodziewano się oporu, pojawia się przejście. Idź dalej, nie marnując tej okazji.",
+        "4": "Podczas wspinaczki pamiętaj o wyższym celu. Znaczący rytuał lub wyraz uznania sprawia, że postęp pozostaje powiązany z wdzięcznością.",
+        "5": "Wchodź po schodach po jednym stopniu naraz. Stały postęp jest korzystny.",
+        "6": "Nie wspinaj się na ślepo w ciemność. Nieustanna wytrwałość jest przydatna tylko wtedy, gdy pozostaje świadoma i zgodna z celem."
+      }
+    },
+    {
+      "id": 47,
+      "title": "Kùn — Ucisk",
+      "coreThread": "Zasoby mogą wydawać się ograniczone, ale twoja wewnętrzna postawa pozostaje dostępna. Kùn wymaga szczerej mowy, oszczędzania sił i wierności sensowi, gdy warunki zewnętrzne nie reagują. Słowa mogą nie zostać od razu uwierzone; uczciwość nadal ma znaczenie.",
+      "whenItAppears": "Nie marnuj ograniczonej energii na udowadnianie swojej wartości każdemu słuchaczowi. Znajdź te niewielkie punkty oparcia, które pozostały, powoli przyjmuj pomoc i działaj dopiero po zrozumieniu sytuacji. Ograniczenie jest realne, ale nie definiuje całej osoby.",
+      "reflectionQuestions": [
+        "Jaką siłę muszę teraz oszczędzać?",
+        "Jakie niewielkie wsparcie jest nadal dostępne?",
+        "Jaką prawdę muszę zachować, nawet jeśli nie jest jeszcze uznawana?"
+      ],
+      "lineReflections": {
+        "1": "Utknąwszy na pniu i wkraczając w ciemną dolinę, możesz przez długi czas czuć się niewidzialny. Nazwij tę izolację i poszukaj jednego prawdziwego punktu kontaktu.",
+        "2": "Nawet pośród obfitości jedzenia, statusu czy zewnętrznego dostatku można czuć się ograniczonym. Skorzystaj z prostego rytuału i szczerego wsparcia; nie pchaj się naprzód w kierunku niebezpieczeństwa.",
+        "3": "Opieranie się na kamieniu i cierniach prowadzi do domu, w którym nie znajdziesz pociechy. Zmień to bolesne oparcie, na którym się opierasz.",
+        "4": "Pomoc nadchodzi powoli, ale jest obciążona złotą karetą — status lub zasoby mogą ją skomplikować. Przyjmij ją ostrożnie; kłopoty wciąż mogą się skończyć.",
+        "5": "Upokorzenie i ograniczenia mogą ustępować jedynie stopniowo. Trzymaj się głębszego celu i stosuj cierpliwe formy odnowy.",
+        "6": "Zaplątany w pnącza na niestabilnym gruncie, ruch wydaje się godny pożałowania. Gdy już rozpoznasz to żal, ostrożne posuwanie się naprzód stanie się korzystne."
+      }
+    },
+    {
+      "id": 48,
+      "title": "Jǐng — Studnia",
+      "coreThread": "Wróć do wspólnego źródła. Miasto może się przenieść, ale studnia pozostaje: ten trwały zasób wymaga dostępu, konserwacji i sprawiedliwego wykorzystania. Nie myl dobrego źródła z jego zużytym naczyniem i nie zawiedź na ostatnim etapie, upuszczając naczynie.",
+      "whenItAppears": "Przywróć dostęp do tego, co służy wszystkim — wiedzy, opieki, infrastruktury, zaufania lub praktycznych zasobów. Wartość ta może już istnieć, ale należy ją oczyścić, wydobyć i udostępnić. Utrzymanie tego w dobrym stanie to praca o wielkim znaczeniu.",
+      "reflectionQuestions": [
+        "Które wspólne źródło wymaga troski lub lepszego dostępu?",
+        "Czy to sam zasób jest słaby, czy tylko jego pojemnik i proces?",
+        "Co pozwoliłoby innym czerpać z niego w sposób odpowiedzialny?"
+      ],
+      "lineReflections": {
+        "1": "Zabrudzona, opuszczona studnia nie może nikogo nakarmić. Nie oczekuj życia od źródła pozostawionego bez opieki.",
+        "2": "Woda marnuje się na małe rybki, podczas gdy dzban przecieka. Napraw naczynie i skieruj uwagę na rzeczywiste wykorzystanie.",
+        "3": "Studnia jest czysta, ale nikt z niej nie czerpie wody; to strata dla społeczności. Udostępnij ten zasób, a wszyscy będą mogli czerpać z niego korzyści.",
+        "4": "Wyłóż studnię kamieniami. Dobre utrzymanie nie rodzi zarzutów.",
+        "5": "Czysta, zimna woda źródlana jest gotowa do picia. Zaufaj odnowionemu źródłu i korzystaj z niego bez zbędnych ceregieli.",
+        "6": "Studnia jest otwarta i gotowa do użytku; nie zakrywaj jej. Szczery, wspólny dostęp jest największym dobrem."
+      }
+    },
+    {
+      "id": 49,
+      "title": "Gé — Przemiana",
+      "coreThread": "Zmiana staje się uzasadniona, gdy stara forma rzeczywiście przestała funkcjonować. Gé wymaga przygotowania, jasnej komunikacji i odpowiedniego momentu: dopiero gdy zrozumie się powód przemiany, zaufanie może zastąpić żal.",
+      "whenItAppears": "Nie wprowadzaj zmian tylko dlatego, że nowość jest atrakcyjna. Trzymaj się mocno starej formy, dopóki nie nadejdzie odpowiedni moment, wyjaśnij potrzebę zmiany więcej niż raz i spraw, by transformacja była widoczna w postępowaniu. Prawdziwy mandat zdobywa się dzięki zaufaniu.",
+      "reflectionQuestions": [
+        "Która stara forma rzeczywiście dobiegła końca?",
+        "Co należy przygotować lub wyjaśnić przed rozpoczęciem zmiany?",
+        "Skąd ludzie będą wiedzieć, że ta transformacja jest godna zaufania?"
+      ],
+      "lineReflections": {
+        "1": "Na razie mocno utrzymaj starą formę. Przedwczesna rewolucja osłabia zmianę, którą chce wprowadzić.",
+        "2": "Gdy nadejdzie odpowiedni dzień, dokonaj zmiany zdecydowanie. Działanie wówczas sprzyja powodzeniu i nie naraża na zarzuty.",
+        "3": "Zbyt wczesne posuwanie się naprzód jest niebezpieczne. Powtarzaj powody, aż zaufanie zostanie prawdziwie ugruntowane.",
+        "4": "Zaufanie umożliwia zmianę mandatu. Gdy ludzie zrozumieją konieczność, żal znika.",
+        "5": "Wielka osoba zmienia się niczym tygrys: przemiana ta jest oczywista, zanim jeszcze pojawią się jakiekolwiek wróżby czy wyjaśnienia. Niech twoje czyny odzwierciedlają tę nową postać.",
+        "6": "Zmiana dojrzałej osoby jest subtelna; inni mogą zmienić jedynie swój wygląd zewnętrzny. Nie dąż dalej do przemiany — pozostań niezachwiany w nowym porządku."
+      }
+    },
+    {
+      "id": 50,
+      "title": "Dǐng — Kocioł",
+      "coreThread": "Przetwórz surowiec w coś odżywczego. Dǐng jest naczyniem przemiany: umiejętności, kultura, uwaga i troska zamieniają to, co nieukształtowane, w pożywienie dla innych. Jakość naczynia ma tak samo duże znaczenie jak składniki.",
+      "whenItAppears": "Starannie przygotuj swoją pracę i zastanów się, kogo ona nakarmi. Usuń to, co się zepsuło, chroń proces przed zakłóceniami i wzmocnij elementy, które ponoszą odpowiedzialność. To czas na rzemiosło z celem.",
+      "reflectionQuestions": [
+        "Jaki surowiec mam przetworzyć?",
+        "Co należy usunąć, aby nowe dzieło mogło odżywić?",
+        "Która część procesu wymaga większych umiejętności lub wsparcia?"
+      ],
+      "lineReflections": {
+        "1": "Odwróć kocioł, aby opróżnić go z tego, co nieświeże. Usunięcie zepsutych elementów tworzy miejsce dla nowego życia i pracy.",
+        "2": "Kocioł jest pełny, a rywal nie może się zbliżyć. Chroń swoje osiągnięcia przed ingerencją, nie przyjmując postawy obronnej.",
+        "3": "Uchwyt uległ zmianie i naczynie nie może się poruszyć; wyśmienite potrawy pozostają niewykorzystane. Poczekaj na warunki, które ponownie pozwolą wykorzystać umiejętności — żal może minąć.",
+        "4": "Kocioł z połamanymi nóżkami przewraca to, czemu miał służyć. Nie przyjmuj odpowiedzialności, której twoja struktura nie jest jeszcze w stanie unieść.",
+        "5": "Żółte uszy i złoty uchwyt łączą równowagę z siłą. Utrzymuj stabilność centrum i niezawodność środków.",
+        "6": "Jadeitowy uchwyt wyróżnia dojrzałe naczynie. Gdy rzemiosło łączy się z charakterem, rodzi się wielkie dobro."
+      }
+    },
+    {
+      "id": 51,
+      "title": "Zhèn — Wstrząs, który budzi",
+      "coreThread": "Wstrząs może cię obudzić. Zhèn nie zaprzecza pierwszemu alarmowi; pokazuje nadejście strachu, a następnie powrót śmiechu i mowy. Zachowaj to, co istotne, odzyskaj obecność i naucz się tego, co ujawnia to zakłócenie.",
+      "whenItAppears": "Pozwól, by pierwsza fala minęła, zanim zdecydujesz, co ona oznacza. Zabezpiecz podstawy, unikaj gonienia za każdą pozorną stratą i działaj, gdy ciało i umysł zregenerują się na tyle, by móc podjąć działanie. Wstrząs staje się użyteczny, gdy przywraca uwagę.",
+      "reflectionQuestions": [
+        "Czego nie da się już zignorować po tym wstrząsie?",
+        "Co najważniejszego muszę zachować?",
+        "Za jaką pozorną stratą nie powinienem na razie gonić?"
+      ],
+      "lineReflections": {
+        "1": "Najpierw pojawia się strach, potem wraca śmiech. Pozwól układowi nerwowemu zakończyć swój cykl; powrót do zdrowia sprzyja powodzeniu.",
+        "2": "Szok może sprawiać wrażenie, jakby odbierał ci to, co cenne. Wspinaj się na bezpieczniejszy grunt, nie gonić za stratą, a to, co naprawdę należy do ciebie, może z czasem powrócić.",
+        "3": "Drżenie może pozostać, ale działanie po szoku nie musi prowadzić do błędu. Poruszaj się delikatnie, nie zamieraj w bezruchu.",
+        "4": "Szok zapada się w błoto. Postęp ulega spowolnieniu; ustabilizuj grunt, zanim spróbujesz przyspieszyć.",
+        "5": "Wstrząsy mogą pojawiać się i znikać, ale to, co istotne, nie musi zostać utracone. Skup się na pracy, która pozostała do wykonania.",
+        "6": "Panika rozprzestrzenia się poprzez czujne spojrzenia i szkodzi wszelkim postępom. Jeśli niepokój dotyczy raczej sąsiada niż ciebie samego, zachowaj spokój; napięcie może nadal wpływać na bliskie relacje."
+      }
+    },
+    {
+      "id": 52,
+      "title": "Gèn — Bezruch",
+      "coreThread": "Bezruch jest aktywną granicą. Gèn prosi cię, byś zatrzymał się tam, gdzie należy, uwolnił się od pragnienia pogoni i skierował uwagę na teraźniejszość. Podobnie jak góra, nie jest to brak życia, lecz stabilna granica, która pozwala rzeczom się uspokoić.",
+      "whenItAppears": "Zatrzymaj ruch, który oddala cię od samego siebie. Uspokój tę konkretną część sytuacji, zamiast zamrażać całe życie. Dobrze wykonane zatrzymanie tworzy przestrzeń dla jasnej wypowiedzi, odpowiedniego wyczucia czasu i spokojnego działania w przyszłości.",
+      "reflectionQuestions": [
+        "Co należy teraz zatrzymać?",
+        "Która część mnie jest już gotowa na odpoczynek, a która wciąż reaguje?",
+        "Jak brzmiałaby jasna, uporządkowana odpowiedź?"
+      ],
+      "lineReflections": {
+        "1": "Uspokój palce stóp przed pierwszym krokiem. Długotrwała stabilność zaczyna się od tego, by nie ruszać się zbyt wcześnie.",
+        "2": "Łydki są nieruchome, ale nie mogą uratować tego, za kim podążają, a serce jest nieszczęśliwe. Zaakceptuj granice tego, nad czym masz kontrolę.",
+        "3": "Zatrzymanie się w talii może spowodować bolesny wewnętrzny rozdźwięk. Nie odcinaj się sztywnością od uczuć ani oddechu.",
+        "4": "Uspokój ciało. Pełna pauza, utrzymywana bez dramatyzmu, nie niesie ze sobą winy.",
+        "5": "Uspokój szczękę i pozwól, by słowa ułożyły się w porządek. Ostrożna mowa usuwa żal.",
+        "6": "Głęboki, hojny spokój sprzyja powodzeniu. Niech pauza stanie się ugruntowaną obecnością, a nie wycofaniem."
+      }
+    },
+    {
+      "id": 53,
+      "title": "Jiàn — Stopniowy rozwój",
+      "coreThread": "Trwała zmiana rozwija się stopniowo. Jiàn podąża za dziką gęsią od brzegu do skały, lądu, drzewa, wzgórza i otwartej ścieżki: każdy etap wymaga innego rodzaju oparcia. Szanuj poszczególne etapy, podejmuj zobowiązania, które mogą dojrzeć, i pozwól, by zaufanie rozwijało się naturalnie.",
+      "whenItAppears": "Wybierz tempo, które pozwoli zakorzenić się relacji, umiejętności lub pracy. Nie wymagaj dojrzałego rezultatu na wczesnym etapie. Postęp jest prawdziwy, gdy można go powtórzyć i podzielić się nim, a nie tylko ogłosić.",
+      "reflectionQuestions": [
+        "Na jakim etapie faktycznie się znajduję?",
+        "Jakie stabilne oparcie jest potrzebne przed kolejnym krokiem?",
+        "Gdzie cierpliwość chroniłaby długoterminowe zaangażowanie?"
+      ],
+      "lineReflections": {
+        "1": "Na brzegu początek wydaje się bezbronny i przyciąga komentarze. Niewielkie ryzyko jest naturalne; nie pozwól, by zgiełk skłonił cię do porzucenia ścieżki.",
+        "2": "Na skale dostępne jest pożywienie i towarzystwo. Odpocznij na stabilnym etapie i pozwól, by zaufanie rosło poprzez zwykłą radość.",
+        "3": "Na otwartym terenie posunięcie naprzód może pozostawić partnerstwo bez ochrony, a upragnioną przyszłość – niespełnioną. Strzeż granic, zanim zaczniesz się rozszerzać.",
+        "4": "Na drzewie gęś znajduje odpowiednią gałąź. Dostosuj się do niedoskonałego, ale sprawdzającego się oparcia, zamiast czekać na idealne warunki.",
+        "5": "Na wzgórzu upragniony rezultat się opóźnia, jednak przeciwnicy nie wygrywają na zawsze. Trzymaj się wytyczonej drogi, nie przyspieszając jej tempa.",
+        "6": "Na otwartej ścieżce pióra stają się częścią ceremonii. Dojrzały rozwój może stać się pełnym wdzięku przykładem dla innych."
+      }
+    },
+    {
+      "id": 54,
+      "title": "Guī Mèi — Panna młoda",
+      "coreThread": "Nierówne lub niekompletne porozumienie wymaga trzeźwego spojrzenia. Guī Mèi wykorzystuje ówczesne zwyczaje małżeńskie, by pokazać związek lub porozumienie zawarte w nieodpowiednim porządku: obecne są pociąg i ruch, ale warunki nie sprzyjają jeszcze pełnemu zbliżeniu. Chroń godność i nie opieraj się na pobożnych życzeniach.",
+      "whenItAppears": "Poznaj rzeczywiste warunki porozumienia. Zaakceptuj ograniczoną rolę tylko wtedy, gdy jest to świadomy i wykonalny wybór, a nie dlatego, że masz nadzieję, iż w milczeniu przekształci się ona w coś innego. Czas i wzajemna rzeczywistość mają większe znaczenie niż pozory.",
+      "reflectionQuestions": [
+        "Co w tym porozumieniu jest nierówne lub niekompletne?",
+        "Co mogę szczerze zaakceptować, a czego nie wolno zakładać?",
+        "Czy czekanie jest działaniem bardziej godnym i realistycznym?"
+      ],
+      "lineReflections": {
+        "1": "Nawet z ograniczeniami człowiek może iść naprzód. Działaj wyłącznie w ramach roli i możliwości, które są rzeczywiście dostępne.",
+        "2": "Nawet ograniczony wzrok pozwala dostrzec to, co słuszne. Zachowaj integralność swojej wewnętrznej, niezależnej osoby, zamiast szukać zewnętrznego uznania.",
+        "3": "Oczekiwanie na wyższą pozycję, a następnie powrót do niższej, pokazuje cenę płaconą za dążenie do pozycji opartej na pobożnych życzeniach. Nie zamieniaj godności na status.",
+        "4": "Opóźnione zjednoczenie może mieć swój właściwy czas później. Czekanie nie jest porażką, gdy warunki nie są jeszcze odpowiednie.",
+        "5": "Skromny wygląd zewnętrzny może mieć większą rzeczywistą wartość niż bogate pozory. Bliskość pełni, harmonia i odpowiedni moment mają większe znaczenie niż porównania.",
+        "6": "Pusty kosz i ofiara bez krwi to forma bez treści. Nie przedłużaj umowy, która nie zawiera prawdziwej ofiary ze strony żadnej ze stron."
+      }
+    },
+    {
+      "id": 55,
+      "title": "Fēng — Obfitość",
+      "coreThread": "Chwila jest pełna i jasna, ale nie pozostanie niezmienna. Fēng prosi cię, byś był obecny w szczytowym momencie widoczności, dobrze wykorzystał okazję i dzielił się światłem. Nie martw się, że południe musi trwać wiecznie; wykorzystaj je w pełni, póki trwa.",
+      "whenItAppears": "Spotkaj się z partnerem, który dorównuje tej chwili, komunikuj się jasno pomimo wszelkich niejasności i pozwól, by uznanie krążyło. Obfitość staje się samotna, gdy zwraca się do wewnątrz i zamyka dom przed innymi.",
+      "reflectionQuestions": [
+        "Co obecnie osiąga swój pełny wyraz?",
+        "Kto jest odpowiednim partnerem lub współpracownikiem w tej chwili?",
+        "Jak mogę dzielić się światłem, zamiast izolować się w nim?"
+      ],
+      "lineReflections": {
+        "1": "Spotkanie z odpowiednim partnerem jest zaszczytem. Nawet jeśli moment jest nietypowy, dobra współpraca może posunąć dzieło do przodu.",
+        "2": "Baldachim zasłania słońce, przez co w południe pojawiają się gwiazdy; następuje po tym zamieszanie i podejrzliwość. Wyślij szczery, jasny sygnał, a droga się otworzy.",
+        "3": "Większa niejasność może ograniczać twoją zdolność do działania, niczym złamana prawa ręka. Pracuj z tym, co pozostało, zamiast obwiniać się za to ograniczenie.",
+        "4": "W tej samej niejasności spotkanie z równym partnerem sprzyja powodzeniu. Wspólne zrozumienie przywraca światło.",
+        "5": "Pokaż to, co wyróżnia się i jest doskonałe. Spotka się to z uznaniem i pochwałą.",
+        "6": "Duży dom, w którym mieszka rodzina, staje się pusty i niewidoczny. Nie pozwól, by obfitość przerodziła się w izolację; otwórz drzwi, zanim samotność zapuści korzenie."
+      }
+    },
+    {
+      "id": 56,
+      "title": "Lǚ — Wędrowiec",
+      "coreThread": "Znajdujesz się z dala od znanego terenu. Lǚ radzi ci podróżować z niewielkim bagażem, obserwować lokalne warunki i pozwolić, by uprzejmość chroniła cię tam, gdzie twoje korzenie są płytkie. Możesz odnieść niewielki sukces, jeśli będziesz czujny i nie będziesz zachowywać się tak, jakby to miejsce należało do ciebie.",
+      "whenItAppears": "Zabezpiecz skromną bazę, trzymaj swoje zasoby pod ręką i buduj niezawodne wsparcie, nawiązując relacje jedną po drugiej. Nie zamieniaj drobnych niedogodności w dramat, ale poważnie traktuj utratę schronienia lub zaufania.",
+      "reflectionQuestions": [
+        "Jaka jest moja tymczasowa baza bezpieczeństwa?",
+        "Jakie lokalne warunki muszę szanować?",
+        "Co mogę zabrać ze sobą bez większego obciążenia, a co muszę pilnie chronić?"
+      ],
+      "lineReflections": {
+        "1": "Drobne zamartwianie się podczas podróży przyciąga kłopoty. Skup się na tym, co jest niezbędne.",
+        "2": "Znajdź odpowiednie zakwaterowanie, dbaj o swoje zasoby i doceniaj lojalność pomocnego towarzysza. To jest stabilna podróż.",
+        "3": "Spalone schronienie i utracony pomocnik narażają podróżnego na niebezpieczeństwo. Nie ryzykuj, jeśli chodzi o schronienie, zaufanie ani ludzi, którzy cię wspierają.",
+        "4": "Możesz znaleźć miejsce i środki do jego obrony, a mimo to czuć się nieswojo. Wsłuchaj się w ten niepokój; to miejsce może nie być twoim prawdziwym domem.",
+        "5": "Aby upolować bażanta, trzeba wystrzelić jedną strzałę, ale w końcu przynosi to uznanie. Rozsądny koszt może przynieść wartościowy rezultat.",
+        "6": "Gdy gniazdo ptaka spłonie, śmiech zamienia się w smutek. Nie poświęcaj swoich podstaw dla chwilowego triumfu lub łatwego zysku."
+      }
+    },
+    {
+      "id": 57,
+      "title": "Xùn — Łagodne przenikanie",
+      "coreThread": "Delikatny wpływ działa poprzez powtarzanie i jasne punkty wejścia. Xùn to wiatr: dociera do miejsc, do których siła nie ma dostępu, ale potrzebuje kierunku. Bądź wytrwały bez wywierania presji, spraw, by twój przekaz był łatwy do przyjęcia, i szukaj wskazówek u kogoś, kto dostrzega szerszy obraz sytuacji.",
+      "whenItAppears": "Wkraczaj stopniowo, słuchaj uważnie i wprowadzaj zmiany z rozwagą. Delikatność nie oznacza utraty sprawczości; jeśli staniesz się tak uległy, że stracisz swoje narzędzia i zasoby, wpływ ten stanie się niezdrowy.",
+      "reflectionQuestions": [
+        "Jakie drobne, powtarzające się działanie przekaże ten komunikat?",
+        "Gdzie powinienem wkroczyć delikatnie, zamiast wyważać drzwi?",
+        "Czy jestem elastyczny, czy też rezygnuję z własnej inicjatywy?"
+      ],
+      "lineReflections": {
+        "1": "Poruszanie się do przodu i do tyłu wymaga zdyscyplinowanej odwagi. Bądź elastyczny w metodach, stanowczy w zasadach.",
+        "2": "Zajrzyj pod powierzchnię i wykorzystaj wszelkie uczciwe sposoby dociekania. Dokładne zbadanie ukrytych spraw przynosi korzyści.",
+        "3": "Powtarzające się podporządkowywanie się staje się powodem do żalu. Nie przepraszaj za to, że istniejesz, i nie ustępuj ponad miarę mądrości.",
+        "4": "Żal znika, gdy poszukiwania przynoszą odkrycie wielu rodzajów prawdziwej wartości. Delikatny wysiłek może przynieść obfite żniwo.",
+        "5": "Cykl zmian nie ma wyraźnego początku, ale może mieć dobre zakończenie. Przygotuj się przed zmianą i podsumuj ją po jej zakończeniu.",
+        "6": "Poddawanie się pod łóżkiem, aż zgubisz swoje narzędzia, jest niebezpieczne. Odzyskaj swoje zasoby i granice."
+      }
+    },
+    {
+      "id": 58,
+      "title": "Duì — Radosna wymiana",
+      "coreThread": "Radość rośnie dzięki szczerej wymianie. Duì wymaga, byś mówił otwarcie, dobrze słuchał i dbał o to, by przyjemność pozostawała powiązana z treścią. Wspólna radość może wzmocnić grupę, ale pochlebstwa, uwodzenie lub unikanie mogą ją osłabić.",
+      "whenItAppears": "Stwórz przestrzeń dla prawdziwej rozmowy. Niech ciepło będzie wzajemne i oparte na zasadach, i zwróć uwagę, czy przyjemna propozycja zachęca do autentycznej więzi, czy tylko odciąga cię od samego siebie.",
+      "reflectionQuestions": [
+        "Jaką radość można tu szczerze dzielić?",
+        "Czy ta wymiana jest wzajemna i godna zaufania?",
+        "Gdzie przyjemność może maskować szkodliwy wpływ?"
+      ],
+      "lineReflections": {
+        "1": "Harmonijna radość sprzyja powodzeniu. Niech wymiana rozpocznie się w prostocie i wzajemnym swobodnym nastawieniu.",
+        "2": "Radość oparta na zaufaniu usuwa żal. Mów z tego, co jest prawdą, a nie z tego, co zyskuje aprobatę.",
+        "3": "Radość, która sama cię szuka, może być niebezpieczna. Nie pozwól, by kusząca oferta decydowała za ciebie.",
+        "4": "Być może rozważasz różne rodzaje przyjemności i odczuwasz niepokój. Oddziel się od tego, co jest niezdrowe, a nadejdzie ulga.",
+        "5": "Zaufanie pokładane w wpływie, który pozbawia lub deprawuje, jest niebezpieczne. Zastanów się, co zabiera ta przyjemna powłoka.",
+        "6": "Poddawanie się przyjemności to nie to samo, co dzielenie się radością. Trzymaj się własnego kierunku."
+      }
+    },
+    {
+      "id": 59,
+      "title": "Huàn — Rozproszenie",
+      "coreThread": "To, co jest zamrożone lub podzielone, można rozluźnić. Huàn usuwa blokadę poprzez szczere połączenie, a następnie gromadzi ludzi wokół odnowionego centrum. Ruch ten nie jest bezcelowym rozproszeniem: uwolnij to, co stało się sztywne, aby mogła powstać prawdziwsza jedność.",
+      "whenItAppears": "Działaj szybko, by nieść pomoc, gdy wymaga tego sytuacja, rozluźnij ego i podziały oraz komunikuj się na tyle szeroko, by wspólny cel został zrozumiany. Rzekę można przekroczyć, gdy ludzie nie są już uwięzieni na oddzielnych wyspach.",
+      "reflectionQuestions": [
+        "Jakie sztywności lub podziały należy rozpuścić?",
+        "Jakie odnowione centrum mogłoby ponownie zgromadzić ludzi?",
+        "Jakie jasne przesłanie musi dotrzeć dalej?"
+      ],
+      "lineReflections": {
+        "1": "Wykorzystaj silnego konia, by szybko nieść pomoc. Pomoc nadesłana w odpowiednim momencie jest szczególnie cenna, gdy sytuacja zaczyna się rozpadać.",
+        "2": "Wróć do centralnego punktu oparcia. Powrót do niezawodnej bazy rozwiewa żal.",
+        "3": "Odrzuć egocentryczne roszczenia. Uwolnienie ego od sytuacji nie rodzi żalu.",
+        "4": "Rozpuść zamkniętą grupę, a powstanie nowe zgromadzenie — niczym wzgórze wyłaniające się z rozrzuconej ziemi. To wykracza poza zwykłe oczekiwania.",
+        "5": "Niech główne przesłanie rozprzestrzenia się jak pot i zdecentralizuj to, co było zbyt mocno trzymane w centrum. Jasny podział nie pociąga za sobą winy.",
+        "6": "Rozprosz rozlew krwi i oddal się od niebezpieczeństwa. Opuszczenie pola przemocy nie pociąga za sobą winy."
+      }
+    },
+    {
+      "id": 60,
+      "title": "Jié — Ograniczenie",
+      "coreThread": "Dobre ograniczenie sprawia, że wolność staje się użyteczna. Jié wymaga jasnych, humanitarnych granic, które chronią energię, zasoby i zaufanie, nie zamieniając życia w karę. Gorzkie ograniczenie nie może być utrzymywane jako cnota.",
+      "whenItAppears": "Ustal zasadę, która pasuje do rzeczywistej sytuacji. Zostań, gdy pozostanie chroni pracę; wyjdź, gdy chwila wymaga zaangażowania. Miarą nie jest surowość, ale to, czy granica sprawia, że życie i relacje stają się bardziej zrównoważone.",
+      "reflectionQuestions": [
+        "Jaki limit chroniłby to, co ważne?",
+        "Gdzie powściągliwość jest na miejscu, a gdzie stała się unikanie?",
+        "Czy ta zasada jest wystarczająco humanitarna, by ją utrzymać?"
+      ],
+      "lineReflections": {
+        "1": "Nieopuszczanie wewnętrznego dziedzińca jest bez zarzutu, gdy sytuacja wymaga wczesnej powściągliwości.",
+        "2": "Nieopuszczanie zewnętrznej bramy staje się źródłem trudności, gdy sytuacja wymaga zaangażowania. Nie zamieniaj ostrożności w uwięzienie.",
+        "3": "Bez ograniczeń w końcu pojawia się żal. Wyciąganie wniosków z nadmiernych zachowań pozwala uniknąć winy.",
+        "4": "Spokojne, ustalone granice przynoszą sukces. Granica, której dobrowolnie się przestrzega, może wspierać życie.",
+        "5": "Łagodna granica jest korzystnym rozwiązaniem i warto ją podtrzymywać. Niech dyscyplina będzie odczuwana jako troska, a nie kara.",
+        "6": "Surowa granica może położyć kres żalowi, powstrzymując nadmierne zachowania, ale uczynienie jej stałą prowadzi do trudności. Złagodź zasady, gdy kryzys minie."
+      }
+    },
+    {
+      "id": 61,
+      "title": "Zhōng Fú — Wewnętrzna prawda",
+      "coreThread": "Zaufanie zaczyna się od wewnętrznej szczerości. Zhōng Fú prosi cię o zharmonizowanie tego, co mówisz, zamierzasz i robisz; nawet delikatna więź może odpowiedzieć na tę spójność. Obraz świń i ryb wskazuje, że zaufanie dociera do tego, co proste i trudne do wywarcia wrażenia.",
+      "whenItAppears": "Przygotuj się starannie, komunikuj się z serca i pozwól, by więź tworzyła raczej rezonans niż presja. Wewnętrzna prawda pomaga przetrwać trudne chwile, ale nie oznacza to głoszenia wzniosłych haseł bez konkretnych działań.",
+      "reflectionQuestions": [
+        "Czy moje słowa, intencje i postępowanie są ze sobą zgodne?",
+        "Jaki szczery sygnał mogłaby naprawdę odebrać druga osoba?",
+        "Gdzie wspólna więź jest silniejsza niż perswazja?"
+      ],
+      "lineReflections": {
+        "1": "Zaufanie oparte na przygotowaniu sprzyja powodzeniu. Kiedy ciągle zwracasz uwagę na rzeczy rozpraszające, tracisz spokój.",
+        "2": "Żuraw nawołuje z cienia, a jego młode odpowiadają; szczera ekspresja wywołuje naturalną reakcję. Dziel się tym, co masz dobrego.",
+        "3": "Spotkanie z przeciwnikiem może sprawić, że serce na przemian bije jak bęben, zatrzymuje się, płacze i śpiewa. Pozwól emocjom płynąć, nie pozwalając im jednak rządzić twoją integralnością.",
+        "4": "Tuż przed pełnią księżyca gubi się jeden z pary koni. Porzuć przywiązanie, które nie może towarzyszyć ci na kolejnym etapie; nie ma w tym winy.",
+        "5": "Zaufanie może łączyć ludzi niczym ciasny węzeł. Ta wierna więź nie niesie ze sobą winy.",
+        "6": "Piękny śpiew koguta może wydawać się sięgać nieba, ale nie jest w stanie utrzymać lotu. Nie myl wzniosłego dźwięku z przyziemną prawdą."
+      }
+    },
+    {
+      "id": 62,
+      "title": "Xiǎo Guò — Małe przekroczenie",
+      "coreThread": "Skup się na tym, co małe i bliskie. Xiǎo Guò to nie czas na wielkie gesty: zwycięstwo przynoszą dbałość o szczegóły, skromne działania i niski lot. Śpiew ptaka mówi, że lepiej jest zejść niż wzbić się zbyt wysoko.",
+      "whenItAppears": "Dokonaj drobnej naprawy, wykorzystaj bliskie relacje i zachowaj proporcjonalną ambicję. Odrobina dodatkowej troski może być właściwa; wielkie nadmierne ambicje – nie. Niech skala reakcji odpowiada skali sytuacji.",
+      "reflectionQuestions": [
+        "Jaki drobny szczegół wymaga teraz mojej uwagi?",
+        "Gdzie skromne działanie sprawdziłoby się lepiej niż wielki ruch?",
+        "Co oznacza „zejście w dół” w tej sytuacji?"
+      ],
+      "lineReflections": {
+        "1": "Ptak leci zbyt wysoko i napotyka trudności. Nie wznos się ponad to, co dana chwila jest w stanie unieść.",
+        "2": "Spotkaj się z bliższym krewnym lub pośrednikiem zamiast forsować dostęp do najwyższej władzy. Wystarczy bliski, dostępny kontakt.",
+        "3": "Jeśli nie podejmiesz drobnych środków ostrożności, krzywda może nadejść z zaskoczenia. Zadbaj o szczegóły, zanim staną się poważniejszym zagrożeniem.",
+        "4": "Nie wykraczaj poza granice; zajmuj się tym, co masz bezpośrednio przed sobą. Posuwanie się dalej niesie ze sobą ryzyko, a uczynienie tej powściągliwości stałą cechą również nie jest rozwiązaniem.",
+        "5": "Gęste chmury zatrzymują deszcz, ale go nie uwalniają. Szukaj niewielkiego, ukrytego źródła blisko ziemi, zamiast oczekiwać spektakularnego rezultatu z góry.",
+        "6": "Pominięcie spotkania i przejście obok niego może mieć poważne skutki. Nie pozwól, by abstrakcja odciągnęła cię od rzeczywistej ludzkiej sytuacji."
+      }
+    },
+    {
+      "id": 63,
+      "title": "Jì Jì — Już ukończone",
+      "coreThread": "Zadanie może być ukończone, lecz jego rezultat wymaga pielęgnowania. Jì Jì zaczyna się dobrze, ale może zakończyć się chaosem, jeśli osłabnie czujność. Utrzymuj porządek, dbaj o szczegóły i nie zakładaj, że praca będzie przebiegać sama tylko dlatego, że granica została już przekroczona.",
+      "whenItAppears": "Stabilizuj, zamiast się rozszerzać. Dokonuj drobnych korekt, zabezpieczaj przed wyciekami i przedkładaj szczerą dbałość nad imponujące pozory. Ostatni etap to często moment, w którym troska ma największe znaczenie.",
+      "reflectionQuestions": [
+        "Co wymaga dbałości teraz, gdy główne zadanie zostało wykonane?",
+        "Gdzie może wkradnąć się niewielki chaos?",
+        "Jaki prosty gest troski jest cenniejszy niż wielki gest?"
+      ],
+      "lineReflections": {
+        "1": "Powstrzymaj koła i w razie potrzeby pozwól, by ogon zmokł. Niewielka niedogodność jest do przyjęcia, jeśli zapobiega większym zakłóceniom.",
+        "2": "To, co utracono, może powrócić w odpowiednim czasie. Nie ścigaj zaginionej ozdoby ani znaku statusu; poczekaj, aż cykl się zakończy.",
+        "3": "Wielką walkę można wygrać, ale tylko dzięki wytrwałym wysiłkom. Nie powierzaj delikatnych zadań osobom, które potraktują je niedbale.",
+        "4": "Pod szlachetną tkaniną mogą kryć się szmaty. Cały dzień wypatruj drobnych nieszczelności w gotowym systemie.",
+        "5": "Prosta, szczera ofiara przynosi więcej błogosławieństwa niż imponująca ofiara bez serca. Utrzymanie wymaga autentyczności, a nie spektakularności.",
+        "6": "Gdy głowa jest mokra, niebezpieczeństwo jest blisko. Nie zanurzaj się zbyt głęboko w sytuacji, która choć wydaje się zakończona, wciąż wymaga ostrożnego wyznaczenia granic."
+      }
+    },
+    {
+      "id": 64,
+      "title": "Wèi Jì — Przed ukończeniem",
+      "coreThread": "Jesteś blisko, ale to jeszcze nie koniec. Wèi Jì przywołuje obraz małego lisa, który niemal przeszedł przez wodę, lecz zmoczył ogon: ostatnie szczegóły wciąż mają znaczenie. Zachowaj czujność, nie świętuj zbyt wcześnie i przechodź uważnie.",
+      "whenItAppears": "Przygotuj przejście, zamiast ogłaszać zwycięstwo. Powstrzymaj tę część siebie, która chce się spieszyć; podejmij większą przeprawę dopiero wtedy, gdy będzie naprawdę przygotowana, i pozwól, by wytrwały wysiłek poniósł cię przez ostatni odcinek.",
+      "reflectionQuestions": [
+        "Jaki ostatni szczegół mógłby jeszcze udaremnić przeprawę?",
+        "Gdzie potrzebuję powściągliwości przed następnym ruchem?",
+        "Jakie przygotowanie uczyniłoby większe przejście bezpiecznym?"
+      ],
+      "lineReflections": {
+        "1": "Mokry ogon na samym początku przynosi zakłopotanie. Nie rozpoczynaj przeprawy, dopóki wszystko nie będzie gotowe.",
+        "2": "Powstrzymaj koła i pozostań wytrwale na miejscu. Powściągliwość we właściwej chwili sprzyja powodzeniu.",
+        "3": "Przed ukończeniem bezpośrednie parcie naprzód jest niebezpieczne; wielka przeprawa może jednak sprzyjać, jeśli jest w pełni przygotowana. Odróżnij impuls od gotowości.",
+        "4": "Długotrwała kampania naprawcza może przynieść nagrodę po latach wytrwałej pracy. Zachowaj wiarę w zadanie, zamiast domagać się natychmiastowego dowodu.",
+        "5": "Blask dojrzałej osoby przejawia się w godnym zaufania postępowaniu. Uczciwość zapewnia bezpieczeństwo na finiszu.",
+        "6": "Zaufanie podczas uroczystości może być nieszkodliwe, ale picie do momentu, aż głowa będzie mokra, powoduje utratę właściwej miary. Nie pozwól, by ulga przerodziła się w niedbałość."
+      }
+    }
+  ]
+}

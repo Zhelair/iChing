@@ -2,7 +2,7 @@
 
 **Status:** detailed trilingual draft — editorial review required before public release  
 **Classical source:** `周易 / Zhouyi (Yijing)`, original Chinese text  
-**Text reference:** Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production  
+**Text reference:** Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.
 **Content type:** AI-assisted interpretation based on the classical Chinese source
 
 ## Canonical data
@@ -22,7 +22,7 @@
 屯：元，亨，利，貞，勿用，有攸往，利建侯。
 初九：磐桓；利居貞，利建侯。
 六二：屯如邅如，乘馬班如。匪寇婚媾，女子貞不字，十年乃字。
-六三：既鹿無虞，惟入于林中，君子幾不如舍，往吝。
+六三：即鹿無虞，惟入于林中，君子幾不如舍，往吝。
 六四：乘馬班如，求婚媾，往吉，無不利。
 九五：屯其膏，小貞吉，大貞凶。
 上六：乘馬班如，泣血漣如。

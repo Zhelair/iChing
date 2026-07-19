@@ -5,10 +5,12 @@ import { useSound } from '../audio/SoundContext'
 import { HexagramFigure } from '../components/HexagramFigure'
 import { HEXAGRAMS, getHexagram } from '../data/hexagrams'
 import { castCoins, castYarrowProcedure, createCastLine, type YarrowProcedure } from '../domain/casting'
+import { isBuiltInContentLocale } from '../domain/locales'
 import { createReading, linesFromKnownHexagram } from '../domain/reading'
 import type { CastLine, CoinSide, LineValue, ReadingMethod } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 import type { TranslationKey } from '../i18n/translations'
+import { getUiLocalePack } from '../i18n/uiLocalePacks'
 import { saveReading } from '../storage/db'
 import { getDraftQuestion, setCurrentReading } from '../storage/session'
 
@@ -20,9 +22,9 @@ const lineMeta: Record<LineValue, { nameKey: TranslationKey; effectKey: Translat
 }
 
 const yarrowCopy = {
-  en: { eyebrow: 'Yarrow-stalk workshop', title: 'Count one line through three changes', body: 'One of fifty stalks rests aside. Divide the active forty-nine, set one from the right aside, then count both heaps by fours. Repeat three times.', begin: 'Make the first change', next: 'Make the next change', nextLine: 'Begin the next line', complete: 'The line is complete', divided: 'Divided', removed: 'set aside', remain: 'remain', source: 'The Xici describes fifty stalks, of which forty-nine are used.' },
-  bg: { eyebrow: 'Работилница с бял равнец', title: 'Пребройте една линия през три промени', body: 'Едно от 50 стъбла остава настрана. Разделете активните 49, отделете едно отдясно и пребройте двете купчини по четири. Повторете три пъти.', begin: 'Направете първата промяна', next: 'Направете следващата промяна', nextLine: 'Започнете следващата линия', complete: 'Линията е завършена', divided: 'Разделени', removed: 'отделени', remain: 'остават', source: 'Сици описва 50 стъбла, от които се използват 49.' },
-  ru: { eyebrow: 'Мастерская тысячелистника', title: 'Получите линию через три изменения', body: 'Один из 50 стеблей остаётся в стороне. Разделите 49 активных, отложите один справа и считайте обе кучки по четыре. Повторите трижды.', begin: 'Сделать первое изменение', next: 'Сделать следующее изменение', nextLine: 'Начать следующую линию', complete: 'Линия завершена', divided: 'Разделено', removed: 'отложено', remain: 'осталось', source: 'Сицы описывает 50 стеблей, из которых используются 49.' },
+  en: { eyebrow: 'Yarrow-stalk workshop', title: 'Count one line through three changes', body: 'One of fifty stalks rests aside. Divide the active forty-nine, set one from the right aside, then count both heaps by fours. Repeat three times.', begin: 'Make the first change', next: 'Make the next change', nextLine: 'Begin the next line', complete: 'The line is complete', divided: 'Divided', removed: 'set aside', remain: 'remain', source: 'The Xici describes fifty stalks, of which forty-nine are used. This digital model preserves the standardized 1:5:7:3 line odds and displays a valid three-change path.' },
+  bg: { eyebrow: 'Работилница с бял равнец', title: 'Пребройте една линия през три промени', body: 'Едно от 50 стъбла остава настрана. Разделете активните 49, отделете едно отдясно и пребройте двете купчини по четири. Повторете три пъти.', begin: 'Направете първата промяна', next: 'Направете следващата промяна', nextLine: 'Започнете следващата линия', complete: 'Линията е завършена', divided: 'Разделени', removed: 'отделени', remain: 'остават', source: 'Сици описва 50 стъбла, от които се използват 49. Този дигитален модел запазва стандартизираните вероятности 1:5:7:3 и показва валиден път през три промени.' },
+  ru: { eyebrow: 'Мастерская тысячелистника', title: 'Получите линию через три изменения', body: 'Один из 50 стеблей остаётся в стороне. Разделите 49 активных, отложите один справа и считайте обе кучки по четыре. Повторите трижды.', begin: 'Сделать первое изменение', next: 'Сделать следующее изменение', nextLine: 'Начать следующую линию', complete: 'Линия завершена', divided: 'Разделено', removed: 'отложено', remain: 'осталось', source: 'Сицы описывает 50 стеблей, из которых используются 49. Эта цифровая модель сохраняет стандартизированные вероятности 1:5:7:3 и показывает допустимый путь трёх изменений.' },
 } as const
 
 type Translator = (key: TranslationKey) => string
@@ -79,8 +81,21 @@ function CoinReveal({ coins, linePosition, tossing }: { coins: [CoinSide, CoinSi
   )
 }
 
-function YarrowWorkshop({ procedure, step, lineNumber, onAdvance, locale }: { procedure: YarrowProcedure | null; step: number; lineNumber: number; onAdvance: () => void; locale: 'en' | 'bg' | 'ru' }) {
-  const c = yarrowCopy[locale]
+type YarrowCopy = {
+  eyebrow: string
+  title: string
+  body: string
+  begin: string
+  next: string
+  nextLine: string
+  complete: string
+  divided: string
+  removed: string
+  remain: string
+  source: string
+}
+
+function YarrowWorkshop({ procedure, step, lineNumber, onAdvance, copy: c }: { procedure: YarrowProcedure | null; step: number; lineNumber: number; onAdvance: () => void; copy: YarrowCopy }) {
   const remaining = procedure && step > 0 ? procedure.changes[Math.min(step, 3) - 1].remaining : 49
   return <div className="yarrow-workshop">
     <div className="yarrow-stalk-field" aria-hidden="true">{Array.from({ length: 49 }, (_, index) => <i key={index} className={index < remaining ? 'is-active' : 'is-removed'} style={{ '--stalk-index': index, '--stalk-wave': index % 7 } as CSSProperties} />)}<span className="yarrow-resting-stalk" /></div>
@@ -140,7 +155,10 @@ export function CastPage() {
 }
 
 function CastFlow({ method }: { method: ReadingMethod }) {
-  const { preferences, t } = useI18n()
+  const { editorialFor, preferences, t } = useI18n()
+  const yarrow = isBuiltInContentLocale(preferences.locale)
+    ? yarrowCopy[preferences.locale]
+    : getUiLocalePack(preferences.locale).features.castYarrow
   const { playCoinToss, playHistoryCue } = useSound()
   const navigate = useNavigate()
   const [question] = useState(getDraftQuestion)
@@ -162,7 +180,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
   const titles = {
     digital: [t('cast.digital.title'), t('cast.digitalBodyRitual')],
     physical: [t('cast.physical.title'), t('cast.physical.body')],
-    yarrow: [yarrowCopy[preferences.locale].title, yarrowCopy[preferences.locale].body],
+    yarrow: [yarrow.title, yarrow.body],
     direct: [t('cast.direct.title'), t('cast.direct.body')],
   } as const
 
@@ -226,7 +244,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
     <div className="page-shell py-8 sm:py-14">
       <div className="reading-column">
         <Link to="/reading" className="button-quiet -ml-3 mb-5"><ArrowLeft size={18} aria-hidden="true" /> {t('common.back')}</Link>
-        <p className="eyebrow">{method === 'digital' ? t('method.digital.title') : method === 'physical' ? t('method.physical.title') : method === 'yarrow' ? yarrowCopy[preferences.locale].eyebrow : t('method.direct.title')}</p>
+        <p className="eyebrow">{method === 'digital' ? t('method.digital.title') : method === 'physical' ? t('method.physical.title') : method === 'yarrow' ? yarrow.eyebrow : t('method.direct.title')}</p>
         <h1 className="mt-3 text-4xl font-medium leading-tight tracking-[-.03em]">{titles[method][0]}</h1>
         <p className="mt-3 max-w-2xl leading-7 text-[var(--ink-soft)]">{titles[method][1]}</p>
 
@@ -259,7 +277,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
                     ) : null}
                   </>
                 ) : method === 'yarrow' ? (
-                  <YarrowWorkshop procedure={yarrowProcedure} step={yarrowStep} lineNumber={Math.max(1, lines.length + (yarrowStep === 3 ? 0 : 1))} onAdvance={advanceYarrow} locale={preferences.locale} />
+                  <YarrowWorkshop procedure={yarrowProcedure} step={yarrowStep} lineNumber={Math.max(1, lines.length + (yarrowStep === 3 ? 0 : 1))} onAdvance={advanceYarrow} copy={yarrow} />
                 ) : (
                   <fieldset className="w-full">
                     <legend className="mb-4 text-sm font-semibold">{t('cast.chooseTotal')} {lines.length + 1}</legend>
@@ -283,11 +301,11 @@ function CastFlow({ method }: { method: ReadingMethod }) {
           <div className="surface mt-8 p-5 sm:p-7">
             <label htmlFor="known-hexagram" className="mb-2 block text-sm font-bold">{t('cast.selectHexagram')}</label>
             <select id="known-hexagram" className="field" value={knownId} onChange={(event) => setKnownId(Number(event.target.value))}>
-              {HEXAGRAMS.map((hexagram) => <option value={hexagram.id} key={hexagram.id}>{hexagram.id}. {hexagram.chinese} · {hexagram.editorial[preferences.locale].title}</option>)}
+              {HEXAGRAMS.map((hexagram) => <option value={hexagram.id} key={hexagram.id}>{hexagram.id}. {hexagram.chinese} · {editorialFor(hexagram).title}</option>)}
             </select>
             <div className="mt-7 grid gap-6 sm:grid-cols-[10rem_1fr] sm:items-center">
               <div className="rounded-3xl bg-[var(--paper-deep)] p-6">
-                <HexagramFigure linesBottomUp={knownHexagram.linesBottomUp} label={`Hexagram ${knownId}`} className="mx-auto text-[var(--obsidian)]" />
+                <HexagramFigure linesBottomUp={knownHexagram.linesBottomUp} label={`${t('common.hexagram')} ${knownId}`} className="mx-auto text-[var(--obsidian)]" />
               </div>
               <fieldset>
                 <legend className="mb-3 text-sm font-bold">{t('cast.changingLines')}</legend>

@@ -1,5 +1,6 @@
 import { CONTENT_VERSION, findHexagramByPattern } from '../data/hexagrams'
 import { patternFromLines } from '../domain/casting'
+import { isLocale } from '../domain/locales'
 import type { AmbientVolume, CastLine, LineValue, Polarity, Preferences, Reading, ReadingMethod, Theme, YiPathExport } from '../domain/types'
 import { getAllReadings } from './db'
 
@@ -85,7 +86,7 @@ function isReading(value: unknown): value is Reading {
     isDate(reading.createdAt) &&
     isDate(reading.updatedAt) &&
     isReadingMethod(reading.method) &&
-    (reading.locale === 'en' || reading.locale === 'bg' || reading.locale === 'ru') &&
+    isLocale(reading.locale) &&
     isBoundedString(reading.question, 500) &&
     isHexagramId(reading.primaryHexagramId) &&
     isHexagramId(reading.resultingHexagramId) &&
@@ -114,7 +115,7 @@ export function parseExport(value: unknown): YiPathExport {
     backup.readings.length > MAX_IMPORTED_READINGS ||
     !backup.readings.every(isReading) ||
     !backup.preferences ||
-    !['en', 'bg', 'ru'].includes(backup.preferences.locale) ||
+    !isLocale(backup.preferences.locale) ||
     typeof backup.preferences.sound !== 'boolean' ||
     typeof backup.preferences.music !== 'boolean' ||
     typeof backup.preferences.reduceMotion !== 'boolean'

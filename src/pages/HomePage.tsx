@@ -3,33 +3,10 @@ import { useMemo, useRef, type CSSProperties, type PointerEvent as ReactPointerE
 import { Link } from 'react-router-dom'
 import { HexagramFigure } from '../components/HexagramFigure'
 import { getDailyHomeHexagrams } from '../data/homeFeature'
-import type { Locale } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 
-const preferencesCopy: Record<Locale, { title: string; body: string; settings: string; support: string }> = {
-  en: {
-    title: 'Make the practice yours',
-    body: 'English · Български · Русский. Choose a visual atmosphere, motion, and optional sound in Settings. Support is always optional too.',
-    settings: 'Open Settings',
-    support: 'Feedback & support',
-  },
-  bg: {
-    title: 'Настройте практиката по свой начин',
-    body: 'English · Български · Русский. Изберете визуална атмосфера, движение и звук по желание в Настройки. Подкрепата също винаги е по желание.',
-    settings: 'Отвори Настройки',
-    support: 'Обратна връзка и подкрепа',
-  },
-  ru: {
-    title: 'Настройте практику под себя',
-    body: 'English · Български · Русский. Выберите визуальную атмосферу, движение и необязательный звук в Настройках. Поддержка тоже всегда добровольна.',
-    settings: 'Открыть Настройки',
-    support: 'Обратная связь и поддержка',
-  },
-}
-
 export function HomePage() {
-  const { preferences, t } = useI18n()
-  const welcome = preferencesCopy[preferences.locale]
+  const { editorialFor, preferences, t } = useI18n()
   const featured = useMemo(() => getDailyHomeHexagrams(), [])
   const [primary, ...companions] = featured
   const objectRef = useRef<HTMLDivElement>(null)
@@ -79,11 +56,11 @@ export function HomePage() {
           <aside className="home-preferences mt-5" aria-labelledby="home-preferences-title">
             <span className="home-preferences__icon"><Languages size={20} aria-hidden="true" /></span>
             <div>
-              <p id="home-preferences-title" className="font-bold text-[var(--ink)]">{welcome.title}</p>
-              <p className="mt-1 text-xs leading-5 text-[var(--ink-soft)]">{welcome.body}</p>
+              <p id="home-preferences-title" className="font-bold text-[var(--ink)]">{t('home.preferences.title')}</p>
+              <p className="mt-1 text-xs leading-5 text-[var(--ink-soft)]">{t('home.preferences.body')}</p>
               <div className="home-preferences__links mt-3">
-                <Link to="/settings"><Settings2 size={18} aria-hidden="true" /> {welcome.settings}</Link>
-                <Link to="/support"><HeartHandshake size={18} aria-hidden="true" /> {welcome.support}</Link>
+                <Link to="/settings"><Settings2 size={18} aria-hidden="true" /> {t('home.preferences.settings')}</Link>
+                <Link to="/support"><HeartHandshake size={18} aria-hidden="true" /> {t('home.preferences.support')}</Link>
               </div>
             </div>
           </aside>
@@ -96,16 +73,16 @@ export function HomePage() {
             <div className="home-object__meta flex w-full items-center justify-between text-xs font-bold uppercase tracking-[.16em] text-[var(--ink-soft)]">
               <span>{String(primary.id).padStart(2, '0')}</span><span>{primary.chinese}</span>
             </div>
-            <div className="home-object__hexagram"><HexagramFigure linesBottomUp={primary.linesBottomUp} label={primary.editorial[preferences.locale].title} className="text-[var(--obsidian)]" /></div>
+            <div className="home-object__hexagram"><HexagramFigure linesBottomUp={primary.linesBottomUp} label={editorialFor(primary).title} className="text-[var(--obsidian)]" /></div>
             <div className="home-object__copy">
-              <p className="font-editorial text-3xl">{primary.editorial[preferences.locale].title}</p>
+              <p className="font-editorial text-3xl">{editorialFor(primary).title}</p>
               <p className="mx-auto mt-4 max-w-xs text-sm leading-6 text-[var(--ink-soft)]">{t('home.promise')}</p>
             </div>
           </div>
-          <div className="home-companions" aria-label={preferences.locale === 'ru' ? 'Ещё два образа дня' : preferences.locale === 'bg' ? 'Още два образа за деня' : 'Two more images for today'}>
+          <div className="home-companions" aria-label={t('home.companions')}>
             {companions.map((hexagram, index) => (
-              <Link key={hexagram.id} to={`/hexagrams/${hexagram.id}`} aria-label={`${hexagram.id}. ${hexagram.editorial[preferences.locale].title}`} className="home-companion" style={{ '--companion-delay': `${160 + index * 90}ms` } as CSSProperties}>
-                <HexagramFigure linesBottomUp={hexagram.linesBottomUp} label={hexagram.editorial[preferences.locale].title} className="home-companion__figure text-[var(--obsidian)]" />
+              <Link key={hexagram.id} to={`/hexagrams/${hexagram.id}`} aria-label={`${hexagram.id}. ${editorialFor(hexagram).title}`} className="home-companion" style={{ '--companion-delay': `${160 + index * 90}ms` } as CSSProperties}>
+                <HexagramFigure linesBottomUp={hexagram.linesBottomUp} label={editorialFor(hexagram).title} className="home-companion__figure text-[var(--obsidian)]" />
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>
             ))}

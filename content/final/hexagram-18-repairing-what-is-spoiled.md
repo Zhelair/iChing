@@ -2,7 +2,7 @@
 
 **Status:** detailed trilingual draft — editorial review required before public release  
 **Classical source:** `周易 / Zhouyi (Yijing)`, original Chinese text  
-**Text reference:** Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production  
+**Text reference:** Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.
 **Content type:** AI-assisted interpretation based on the classical Chinese source
 
 ## Canonical data
@@ -22,7 +22,7 @@
 蠱：元亨，利涉大川。先甲三日，後甲三日。
 初六：幹父之蠱，有子，考無咎，厲終吉。
 九二：幹母之蠱，不可貞。
-九三：幹父小有晦，無大咎。
+九三：幹父之蠱，小有悔，無大咎。
 六四：裕父之蠱，往見吝。
 六五：幹父之蠱，用譽。
 上九：不事王侯，高尚其事。

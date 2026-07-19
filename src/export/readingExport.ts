@@ -1,13 +1,22 @@
 import { PDFDocument } from 'pdf-lib'
+import { resolveEditorial } from '../data/editorialPacks'
 import { getHexagram } from '../data/hexagrams'
+import { isBuiltInContentLocale } from '../domain/locales'
 import type { Locale, Polarity, Reading } from '../domain/types'
-import { translations } from '../i18n/translations'
+import { translationsFor } from '../i18n/translations'
+import { getUiLocalePack } from '../i18n/uiLocalePacks'
 
 const labels = {
-  en: { primary: 'Primary hexagram', resulting: 'Resulting hexagram', changing: 'Changing lines', reflection: 'First reflection', when: 'When it appears', question: 'Question', method: 'Method', line: 'Line', note: 'Journal note', stored: 'A reflective record · stored locally', methods: { digital: 'Digital coins', physical: 'Physical coins', yarrow: 'Yarrow stalks', direct: 'Direct entry' }, values: { 6: 'Old yin - becomes yang', 7: 'Young yang - remains yang', 8: 'Young yin - remains yin', 9: 'Old yang - becomes yin' } },
-  bg: { primary: 'Основна хексаграма', resulting: 'Резултатна хексаграма', changing: 'Променящи се линии', reflection: 'Първи размисъл', when: 'Когато се появява', question: 'Въпрос', method: 'Метод', line: 'Линия', note: 'Бележка в дневника', stored: 'Личен запис · съхранен локално', methods: { digital: 'Дигитални монети', physical: 'Физически монети', yarrow: 'Бял равнец', direct: 'Директно въвеждане' }, values: { 6: 'Стар ин - преминава в ян', 7: 'Млад ян - остава ян', 8: 'Млад ин - остава ин', 9: 'Стар ян - преминава в ин' } },
-  ru: { primary: 'Основная гексаграмма', resulting: 'Итоговая гексаграмма', changing: 'Изменяющиеся линии', reflection: 'Первое размышление', when: 'Когда она появляется', question: 'Вопрос', method: 'Метод', line: 'Линия', note: 'Заметка в дневнике', stored: 'Личная запись · хранится локально', methods: { digital: 'Цифровые монеты', physical: 'Физические монеты', yarrow: 'Тысячелистник', direct: 'Прямой ввод' }, values: { 6: 'Старый инь - становится ян', 7: 'Молодой ян - остаётся ян', 8: 'Молодой инь - остаётся инь', 9: 'Старый ян - становится инь' } },
+  en: { primary: 'Primary hexagram', resulting: 'Resulting hexagram', changing: 'Changing lines', reflection: 'First reflection', when: 'When it appears', question: 'Question', method: 'Method', line: 'Line', note: 'Journal note', stored: 'A reflective record · stored locally', subject: 'A private reflective reading generated locally', methods: { digital: 'Digital coins', physical: 'Physical coins', yarrow: 'Yarrow stalks', direct: 'Direct entry' }, values: { 6: 'Old yin - becomes yang', 7: 'Young yang - remains yang', 8: 'Young yin - remains yin', 9: 'Old yang - becomes yin' } },
+  bg: { primary: 'Основна хексаграма', resulting: 'Резултатна хексаграма', changing: 'Променящи се линии', reflection: 'Първи размисъл', when: 'Когато се появява', question: 'Въпрос', method: 'Метод', line: 'Линия', note: 'Бележка в дневника', stored: 'Личен запис · съхранен локално', subject: 'Личен размислов прочит, създаден локално', methods: { digital: 'Дигитални монети', physical: 'Физически монети', yarrow: 'Бял равнец', direct: 'Директно въвеждане' }, values: { 6: 'Стар ин - преминава в ян', 7: 'Млад ян - остава ян', 8: 'Млад ин - остава ин', 9: 'Стар ян - преминава в ин' } },
+  ru: { primary: 'Основная гексаграмма', resulting: 'Итоговая гексаграмма', changing: 'Изменяющиеся линии', reflection: 'Первое размышление', when: 'Когда она появляется', question: 'Вопрос', method: 'Метод', line: 'Линия', note: 'Заметка в дневнике', stored: 'Личная запись · хранится локально', subject: 'Личное чтение для размышления, созданное локально', methods: { digital: 'Цифровые монеты', physical: 'Физические монеты', yarrow: 'Тысячелистник', direct: 'Прямой ввод' }, values: { 6: 'Старый инь - становится ян', 7: 'Молодой ян - остаётся ян', 8: 'Молодой инь - остаётся инь', 9: 'Старый ян - становится инь' } },
 } as const
+
+function exportLabelsFor(locale: Locale) {
+  return isBuiltInContentLocale(locale)
+    ? labels[locale]
+    : getUiLocalePack(locale).features.exportDocument
+}
 
 function roundedRect(context: CanvasRenderingContext2D, x: number, y: number, width: number, height: number, radius: number) {
   context.beginPath()
@@ -45,10 +54,12 @@ async function createReadingCanvas(reading: Reading, locale: Locale, complete = 
   await document.fonts?.ready
   const primary = getHexagram(reading.primaryHexagramId)
   const resulting = getHexagram(reading.resultingHexagramId)
-  const editorial = primary.editorial[locale]
-  const resultingEditorial = resulting.editorial[locale]
-  const c = labels[locale]
-  const ui = translations[locale]
+  const [editorial, resultingEditorial] = await Promise.all([
+    resolveEditorial(locale, primary),
+    resolveEditorial(locale, resulting),
+  ])
+  const c = exportLabelsFor(locale)
+  const ui = translationsFor(locale)
   const moving = reading.lines.filter((line) => line.moving)
   const formattedDate = new Intl.DateTimeFormat(locale, { dateStyle: 'long', timeStyle: 'short' }).format(new Date(reading.createdAt))
 
@@ -104,7 +115,8 @@ async function createReadingCanvas(reading: Reading, locale: Locale, complete = 
       context.strokeStyle = 'rgba(80,99,82,.2)'; context.stroke()
       context.fillStyle = '#1d2420'; drawHexagram(context, pattern, x + 52, cardY + 68, 170)
       context.fillStyle = '#315f50'; context.font = '800 20px "Manrope Variable", sans-serif'; context.fillText(type === 'primary' ? c.primary : c.resulting, x + 270, cardY + 86)
-      context.fillStyle = '#211f1a'; context.font = '600 34px "Lora Variable", Georgia, serif'; drawWrappedText(context, `${hexagram.id}. ${hexagram.editorial[locale].title}`, x + 270, cardY + 145, cardWidth - 315, 44, 4)
+      const localizedEditorial = type === 'primary' ? editorial : resultingEditorial
+      context.fillStyle = '#211f1a'; context.font = '600 34px "Lora Variable", Georgia, serif'; drawWrappedText(context, `${hexagram.id}. ${localizedEditorial.title}`, x + 270, cardY + 145, cardWidth - 315, 44, 4)
     }
     drawCard(cardX, 'primary')
     if (moving.length) drawCard(730, 'resulting')
@@ -125,7 +137,21 @@ async function createReadingCanvas(reading: Reading, locale: Locale, complete = 
         context.fillStyle = '#211f1a'; context.font = '700 27px "Lora Variable", Georgia, serif'; context.fillText(`${c.line} ${line.position} · ${line.value}`, 100, cursor)
         context.fillStyle = '#9a6e2f'; context.font = '700 18px "Manrope Variable", Arial, sans-serif'; context.fillText(c.values[line.value], 390, cursor)
         cursor += 42
+        context.fillStyle = '#315f50'; context.font = '800 15px "Manrope Variable", Arial, sans-serif'; context.fillText(ui['result.receivedLine'].toUpperCase(), 100, cursor); cursor += 34
+        context.fillStyle = '#211f1a'; context.font = '500 25px "Noto Serif CJK SC", "Microsoft YaHei", serif'; cursor = drawWrappedText(context, primary.classical.lines[line.position - 1], 100, cursor, 1200, 40, 5) + 18
+        context.fillStyle = '#9a6e2f'; context.font = '800 15px "Manrope Variable", Arial, sans-serif'; context.fillText(ui['result.modernReflection'].toUpperCase(), 100, cursor); cursor += 34
         context.fillStyle = '#676154'; context.font = '400 24px "Manrope Variable", Arial, sans-serif'; cursor = drawWrappedText(context, editorial.lineReflections[String(line.position)], 100, cursor, 1200, 38, 6) + 20
+      }
+
+      const specialStatement = moving.length === 6 && (primary.id === 1 || primary.id === 2) ? primary.classical.lines[6] : undefined
+      if (specialStatement) {
+        context.strokeStyle = 'rgba(49,95,80,.18)'; context.beginPath(); context.moveTo(100, cursor); context.lineTo(1300, cursor); context.stroke(); cursor += 42
+        context.fillStyle = '#315f50'; context.font = '800 16px "Manrope Variable", Arial, sans-serif'; context.fillText(ui['result.specialStatement'].toUpperCase(), 100, cursor); cursor += 40
+        context.fillStyle = '#211f1a'; context.font = '500 26px "Noto Serif CJK SC", "Microsoft YaHei", serif'; cursor = drawWrappedText(context, specialStatement, 100, cursor, 1200, 42, 5) + 18
+        if (editorial.lineReflections.all) {
+          context.fillStyle = '#9a6e2f'; context.font = '800 15px "Manrope Variable", Arial, sans-serif'; context.fillText(ui['result.specialReflection'].toUpperCase(), 100, cursor); cursor += 34
+          context.fillStyle = '#676154'; context.font = '400 24px "Manrope Variable", Arial, sans-serif'; cursor = drawWrappedText(context, editorial.lineReflections.all, 100, cursor, 1200, 38, 7) + 20
+        }
       }
     }
 
@@ -152,6 +178,7 @@ async function createReadingCanvas(reading: Reading, locale: Locale, complete = 
 
     if (complete) {
       context.fillStyle = '#315f50'; context.font = '800 19px "Manrope Variable", sans-serif'; context.fillText(ui['result.source'].toUpperCase(), 100, cursor); cursor += 50
+      context.fillStyle = '#676154'; context.font = 'italic 22px "Manrope Variable", Arial, sans-serif'; cursor = drawWrappedText(context, ui['result.sourceScope'], 100, cursor, 1200, 36, 8) + 24
       context.fillStyle = '#211f1a'; context.font = '700 23px "Manrope Variable", Arial, sans-serif'; context.fillText(`${ui['result.classical']}:`, 100, cursor); cursor += 38
       context.fillStyle = '#676154'; context.font = '400 24px "Manrope Variable", Arial, sans-serif'; cursor = drawWrappedText(context, primary.classical.judgment, 100, cursor, 1200, 38, 15) + 28
       context.fillStyle = '#211f1a'; context.font = '700 23px "Manrope Variable", Arial, sans-serif'; context.fillText(`${ui['result.interpretation']}:`, 100, cursor)
@@ -203,9 +230,9 @@ export async function downloadReadingPdf(reading: Reading, locale: Locale) {
   const pageHeight = pageWidth * canvas.height / canvas.width
   const page = pdf.addPage([pageWidth, pageHeight])
   page.drawImage(image, { x: 0, y: 0, width: pageWidth, height: pageHeight })
-  pdf.setTitle(getHexagram(reading.primaryHexagramId).editorial[locale].title)
+  pdf.setTitle((await resolveEditorial(locale, getHexagram(reading.primaryHexagramId))).title)
   pdf.setAuthor('Yi Path')
-  pdf.setSubject('A private reflective reading generated locally')
+  pdf.setSubject(exportLabelsFor(locale).subject)
   pdf.setCreator('Yi Path')
   pdf.setCreationDate(new Date(reading.createdAt))
   const bytes = Uint8Array.from(await pdf.save())

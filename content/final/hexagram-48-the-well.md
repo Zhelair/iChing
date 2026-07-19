@@ -2,7 +2,7 @@
 
 **Status:** detailed trilingual draft — editorial review required before public release  
 **Classical source:** `周易 / Zhouyi (Yijing)`, original Chinese text  
-**Text reference:** Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production  
+**Text reference:** Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.
 **Content type:** AI-assisted interpretation based on the classical Chinese source
 
 ## Canonical data
@@ -22,10 +22,10 @@
 井：改邑不改井，無喪無得，往來井井。汔至，亦未繘井，羸其瓶，凶。
 初六：井泥不食，舊井無禽。
 九二：井谷射鮒，甕敝漏。
-九三：井渫不食，為我民惻，可用汲，王明，並受其福。
+九三：井渫不食，為我心惻，可用汲，王明，並受其福。
 六四：井甃，無咎。
 九五：井冽，寒泉食。
-上六：井收勿幕，有孚無吉。
+上六：井收勿幕，有孚元吉。
 ```
 
 ---

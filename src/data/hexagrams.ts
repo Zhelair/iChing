@@ -1,4 +1,5 @@
-import type { Locale, Polarity } from '../domain/types'
+import type { BuiltInContentLocale } from '../domain/locales'
+import type { Polarity } from '../domain/types'
 import firstContentShard from './hexagrams.v1.01-32.json'
 import secondContentShard from './hexagrams.v1.33-64.json'
 
@@ -45,7 +46,7 @@ export type Hexagram = {
     sourceFile: string
   }
   classical: { judgment: string; lines: string[] }
-  editorial: Record<Locale, LocalizedEditorial>
+  editorial: Record<BuiltInContentLocale, LocalizedEditorial>
 }
 
 export const TRIGRAMS: Record<TrigramId, { lines: Polarity[]; symbol: string }> = {
@@ -145,7 +146,7 @@ export const HEXAGRAMS: Hexagram[] = seeds.map(
         linesBottomUp: [...TRIGRAMS[lower].lines, ...TRIGRAMS[upper].lines],
         provenance: card.provenance,
         classical: card.classical,
-        editorial: card.locales as unknown as Record<Locale, LocalizedEditorial>,
+        editorial: card.locales as unknown as Record<BuiltInContentLocale, LocalizedEditorial>,
       }
     })(),
   }),

@@ -3,6 +3,18 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import { HexagramFigure } from '../components/HexagramFigure'
 import { getHexagram } from '../data/hexagrams'
 import { useI18n } from '../i18n/I18nContext'
+import type { TranslationKey } from '../i18n/translations'
+
+const trigramKeys: Record<string, TranslationKey> = {
+  heaven: 'trigram.heaven',
+  lake: 'trigram.lake',
+  fire: 'trigram.fire',
+  thunder: 'trigram.thunder',
+  wind: 'trigram.wind',
+  water: 'trigram.water',
+  mountain: 'trigram.mountain',
+  earth: 'trigram.earth',
+}
 
 export function HexagramPage() {
   const { number } = useParams()
@@ -13,9 +25,12 @@ export function HexagramPage() {
 }
 
 function HexagramStudy({ id }: { id: number }) {
-  const { preferences, t } = useI18n()
+  const { editorialFor, editorialMetaFor, t } = useI18n()
   const hexagram = getHexagram(id)
-  const editorial = hexagram.editorial[preferences.locale]
+  const editorial = editorialFor(hexagram)
+  const editorialMeta = editorialMetaFor(hexagram)
+  const receivedLines = hexagram.classical.lines.slice(0, 6)
+  const specialStatement = hexagram.classical.lines[6]
 
   return (
     <div className="page-shell py-8 sm:py-14">
@@ -29,12 +44,12 @@ function HexagramStudy({ id }: { id: number }) {
               <p className="mt-5 leading-8 text-[var(--ink-soft)]">{editorial.coreThread}</p>
             </div>
             <div className="grid min-h-52 place-items-center rounded-[1.7rem] bg-[var(--paper-deep)]">
-              <HexagramFigure linesBottomUp={hexagram.linesBottomUp} label={`Hexagram ${id}, ${editorial.title}`} className="text-[var(--obsidian)]" />
+              <HexagramFigure linesBottomUp={hexagram.linesBottomUp} label={`${t('common.hexagram')} ${id}, ${editorial.title}`} className="text-[var(--obsidian)]" />
             </div>
           </div>
           <div className="grid grid-cols-2 border-t border-[var(--line)] text-center text-xs font-bold uppercase tracking-[.12em] text-[var(--ink-soft)]">
-            <div className="border-r border-[var(--line)] px-3 py-4">↑ {hexagram.trigrams.upper}</div>
-            <div className="px-3 py-4">↓ {hexagram.trigrams.lower}</div>
+            <div className="border-r border-[var(--line)] px-3 py-4">↑ {t(trigramKeys[hexagram.trigrams.upper])}</div>
+            <div className="px-3 py-4">↓ {t(trigramKeys[hexagram.trigrams.lower])}</div>
           </div>
         </header>
 
@@ -56,24 +71,34 @@ function HexagramStudy({ id }: { id: number }) {
             {[1, 2, 3, 4, 5, 6].map((position) => (
               <article key={position} className="grid grid-cols-[2.8rem_1fr] gap-4 py-5 first:pt-0 last:pb-0">
                 <span className="grid size-10 place-items-center rounded-full bg-[var(--jade-light)] font-bold text-[var(--jade)]">{position}</span>
-                <p className="leading-7 text-[var(--ink-soft)]">{editorial.lineReflections[String(position)]}</p>
+                <div>
+                  <p className="text-xs font-extrabold uppercase tracking-[.12em] text-[var(--jade)]">{t('result.receivedLine')}</p>
+                  <p lang="zh-Hant" className="mt-2 font-editorial text-lg leading-8 text-[var(--ink)]">{receivedLines[position - 1]}</p>
+                  <p className="mt-4 text-xs font-extrabold uppercase tracking-[.12em] text-[var(--brass)]">{t('result.modernReflection')}</p>
+                  <p className="mt-2 leading-7 text-[var(--ink-soft)]">{editorial.lineReflections[String(position)]}</p>
+                </div>
               </article>
             ))}
           </div>
+          {specialStatement ? <div className="mt-6 rounded-3xl bg-[var(--paper-deep)] p-5"><p className="text-xs font-extrabold uppercase tracking-[.12em] text-[var(--jade)]">{t('result.specialStatement')}</p><p lang="zh-Hant" className="mt-3 font-editorial text-xl leading-8">{specialStatement}</p>{editorial.lineReflections.all ? <><p className="mt-5 text-xs font-extrabold uppercase tracking-[.12em] text-[var(--brass)]">{t('result.specialReflection')}</p><p className="mt-2 leading-7 text-[var(--ink-soft)]">{editorial.lineReflections.all}</p></> : null}</div> : null}
         </section>
 
         <details className="surface mt-5 p-6 sm:p-8">
           <summary className="cursor-pointer text-xl font-bold text-[var(--jade)]">{t('result.source')}</summary>
           <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">{t('detail.sourceNote')}</p>
+          <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">{t('result.sourceScope')}</p>
           <div className="mt-6 rounded-2xl bg-[var(--paper-deep)] p-5">
             <h3 className="text-lg">{t('result.classical')}</h3>
             <p className="mt-3 font-editorial text-lg leading-8">{hexagram.classical.judgment}</p>
             <ol className="mt-4 space-y-2 text-sm leading-6 text-[var(--ink-soft)]">
-              {hexagram.classical.lines.map((line, index) => <li key={line}><span className="mr-2 font-bold text-[var(--ink)]">{index + 1}.</span>{line}</li>)}
+              {receivedLines.map((line, index) => <li key={line} lang="zh-Hant"><span className="mr-2 font-bold text-[var(--ink)]">{index + 1}.</span>{line}</li>)}
             </ol>
+            {specialStatement ? <div className="mt-4 border-t border-[var(--line)] pt-4"><p className="text-xs font-bold uppercase tracking-[.12em] text-[var(--jade)]">{t('result.specialStatement')}</p><p lang="zh-Hant" className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">{specialStatement}</p></div> : null}
           </div>
           <dl className="mt-5 grid gap-3 text-sm leading-6 text-[var(--ink-soft)]">
             <div><dt className="inline font-bold text-[var(--ink)]">{t('detail.sourceLabel')}: </dt><dd className="inline">{hexagram.provenance.classicalSource}</dd></div>
+            <div><dt className="inline font-bold text-[var(--ink)]">{t('detail.reference')}: </dt><dd className="inline">{hexagram.provenance.textReference}</dd></div>
+            <div><dt className="inline font-bold text-[var(--ink)]">{t('detail.status')}: </dt><dd className="inline">{t('detail.draftStatus')} · {editorialMeta.variant}</dd></div>
           </dl>
         </details>
       </div>

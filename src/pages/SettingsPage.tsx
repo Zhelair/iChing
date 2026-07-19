@@ -1,19 +1,21 @@
-import { ArrowRight, Download, FileDown, HardDrive, HeartHandshake, ShieldCheck, Trash2, Upload, Volume2 } from 'lucide-react'
-import { useRef, useState, type ChangeEvent } from 'react'
+import { ArrowRight, Check, Download, FileDown, HardDrive, HeartHandshake, LoaderCircle, ShieldCheck, Trash2, Upload, Volume2 } from 'lucide-react'
+import { useEffect, useRef, useState, type ChangeEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { useSound } from '../audio/SoundContext'
 import { PageIntro } from '../components/PageIntro'
+import { isBuiltInContentLocale, LOCALE_NAMES, SUPPORTED_LOCALES } from '../domain/locales'
 import type { AmbientVolume, Locale, Theme } from '../domain/types'
-import { localeNames, useI18n } from '../i18n/I18nContext'
+import { useI18n } from '../i18n/I18nContext'
+import { getUiLocalePack } from '../i18n/uiLocalePacks'
 import { clearReadings, importReadings } from '../storage/db'
 import { createExport, downloadExport, MAX_EXPORT_FILE_BYTES, parseExport } from '../storage/export'
 
 function Toggle({ checked, onChange, label, body }: { checked: boolean; onChange: (value: boolean) => void; label: string; body?: string }) {
   return (
     <label className="flex min-h-20 cursor-pointer items-center justify-between gap-5 border-b border-[var(--line)] py-4 last:border-0">
-      <span><span className="block font-bold">{label}</span>{body ? <span className="mt-1 block text-xs leading-5 text-[var(--ink-soft)]">{body}</span> : null}</span>
-      <span className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${checked ? 'bg-[var(--jade)]' : 'bg-[#c8c0b1]'}`}>
-        <input type="checkbox" className="peer sr-only" checked={checked} onChange={(event) => onChange(event.target.checked)} />
+      <span className="min-w-0"><span className="block font-bold">{label}</span>{body ? <span className="mt-1 block text-xs leading-5 text-[var(--ink-soft)]">{body}</span> : null}</span>
+      <input type="checkbox" role="switch" className="toggle-input sr-only" checked={checked} onChange={(event) => onChange(event.target.checked)} />
+      <span className={`toggle-track relative h-7 w-12 shrink-0 rounded-full transition-colors ${checked ? 'bg-[var(--jade)]' : 'bg-[var(--line)]'}`} aria-hidden="true">
         <span className={`absolute top-1 size-5 rounded-full bg-white shadow transition-transform ${checked ? 'translate-x-6' : 'translate-x-1'}`} />
       </span>
     </label>
@@ -31,7 +33,9 @@ function AmbientVolumeControl({ value, onChange, label, levels }: { value: Ambie
   </div>
 }
 
-const privacyCopy: Record<Locale, { eyebrow: string; title: string; intro: string; local: string; access: string; exports: string; largeFile: string }> = {
+type PrivacyCopy = { eyebrow: string; title: string; intro: string; local: string; access: string; exports: string; largeFile: string }
+
+const privacyCopy: Partial<Record<Locale, PrivacyCopy>> = {
   en: {
     eyebrow: 'Local-first by design',
     title: 'Privacy & security',
@@ -61,25 +65,69 @@ const privacyCopy: Record<Locale, { eyebrow: string; title: string; intro: strin
   },
 }
 
-const supportCopy: Record<Locale, { title: string; body: string; action: string }> = {
+type SupportCopy = { title: string; body: string; action: string }
+
+const supportCopy: Partial<Record<Locale, SupportCopy>> = {
   en: { title: 'Feedback & support', body: 'Share a thought, report a problem, or find the optional support link.', action: 'Open' },
   bg: { title: 'Обратна връзка и подкрепа', body: 'Споделете мисъл, сигнализирайте за проблем или намерете линка за подкрепа по желание.', action: 'Отвори' },
   ru: { title: 'Обратная связь и поддержка', body: 'Поделитесь мыслью, сообщите о проблеме или найдите необязательную ссылку для поддержки.', action: 'Открыть' },
 }
 
 export function SettingsPage() {
-  const { preferences, setPreferences, updatePreference, t } = useI18n()
+  const { preferences, setPreferences, updatePreference, setLocale, pendingLocale, localeError, t } = useI18n()
   const { previewCoinSound, setAmbientVolume } = useSound()
   const [mode, setMode] = useState<'merge' | 'replace'>('merge')
   const [message, setMessage] = useState('')
   const [audioMessage, setAudioMessage] = useState('')
   const [clearOpen, setClearOpen] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const clearTriggerRef = useRef<HTMLButtonElement>(null)
+  const clearDialogRef = useRef<HTMLDivElement>(null)
+  const clearCancelRef = useRef<HTMLButtonElement>(null)
   const themes: { id: Theme; label: 'settings.theme.daylight' | 'settings.theme.night' | 'settings.theme.bamboo' }[] = [
     { id: 'daylight', label: 'settings.theme.daylight' },
     { id: 'ink-night', label: 'settings.theme.night' },
     { id: 'bamboo-mist', label: 'settings.theme.bamboo' },
   ]
+  const extendedFeatures = isBuiltInContentLocale(preferences.locale)
+    ? null
+    : getUiLocalePack(preferences.locale).features
+  const privacy = extendedFeatures?.settingsPrivacy ?? privacyCopy[preferences.locale] ?? privacyCopy.en!
+  const support = extendedFeatures?.settingsSupport ?? supportCopy[preferences.locale] ?? supportCopy.en!
+  const ambientLevels: [string, string, string] = extendedFeatures?.ambientLevels
+    ?? (preferences.locale === 'ru' ? ['Выкл.', '50%', '100%'] : preferences.locale === 'bg' ? ['Изкл.', '50%', '100%'] : ['Off', '50%', '100%'])
+
+  useEffect(() => {
+    if (!clearOpen) return
+    const previouslyFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null
+    clearCancelRef.current?.focus()
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        setClearOpen(false)
+        return
+      }
+      if (event.key !== 'Tab') return
+      const focusable = clearDialogRef.current?.querySelectorAll<HTMLElement>('button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')
+      if (!focusable?.length) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      window.setTimeout(() => (previouslyFocused ?? clearTriggerRef.current)?.focus(), 0)
+    }
+  }, [clearOpen])
 
   async function exportData() {
     downloadExport(await createExport(preferences))
@@ -89,7 +137,7 @@ export function SettingsPage() {
     const file = event.target.files?.[0]
     if (!file) return
     if (file.size > MAX_EXPORT_FILE_BYTES) {
-      setMessage(privacyCopy[preferences.locale].largeFile)
+      setMessage(privacy.largeFile)
       event.target.value = ''
       return
     }
@@ -120,10 +168,37 @@ export function SettingsPage() {
         <PageIntro eyebrow={t('settings.eyebrow')} title={t('settings.title')} />
 
         <section className="surface mt-8 p-5 sm:p-7">
-          <h2 className="text-2xl">{t('settings.language')}</h2>
-          <div className="mt-5 grid grid-cols-3 gap-2" role="group" aria-label={t('settings.language')}>
-            {(Object.keys(localeNames) as Locale[]).map((locale) => <button key={locale} type="button" onClick={() => updatePreference('locale', locale)} aria-pressed={preferences.locale === locale} className={`min-h-12 rounded-2xl border px-2 text-sm font-bold ${preferences.locale === locale ? 'border-[var(--jade)] bg-[var(--jade)] text-white' : 'border-[var(--line)] bg-white/45'}`}>{localeNames[locale]}</button>)}
-          </div>
+          <fieldset className="min-w-0" aria-busy={pendingLocale !== null}>
+            <legend className="font-editorial text-2xl">{t('settings.language')}</legend>
+            <div className="language-grid mt-5">
+              {SUPPORTED_LOCALES.map((locale) => {
+                const selected = preferences.locale === locale
+                const pending = pendingLocale === locale
+                return (
+                  <label key={locale} className={`language-choice ${pending ? 'is-pending' : ''}`}>
+                    <input
+                      type="radio"
+                      name="locale"
+                      value={locale}
+                      className="sr-only"
+                      checked={selected}
+                      disabled={pendingLocale !== null}
+                      onChange={() => { void setLocale(locale) }}
+                    />
+                    <span className="language-choice__surface" lang={locale}>
+                      <span className="language-choice__label">{LOCALE_NAMES[locale]}</span>
+                      {pending
+                        ? <LoaderCircle className="language-choice__status language-choice__spinner" size={15} aria-hidden="true" />
+                        : selected
+                          ? <Check className="language-choice__status" size={15} strokeWidth={2.5} aria-hidden="true" />
+                          : null}
+                    </span>
+                  </label>
+                )
+              })}
+            </div>
+            {localeError ? <p className="mt-4 text-sm font-semibold text-red-800" role="alert">{t('settings.languageError')}</p> : null}
+          </fieldset>
         </section>
 
         <section className="surface mt-5 p-5 sm:p-7">
@@ -155,7 +230,7 @@ export function SettingsPage() {
             const nextVolume = available ? volume : 0
             setPreferences({ ...preferences, ambientVolume: nextVolume, music: nextVolume > 0 })
             setAudioMessage(volume > 0 && !available ? t('settings.audioUnavailable') : '')
-          }} label={t('settings.ambient')} levels={preferences.locale === 'ru' ? ['Выкл.', '50%', '100%'] : preferences.locale === 'bg' ? ['Изкл.', '50%', '100%'] : ['Off', '50%', '100%']} />
+          }} label={t('settings.ambient')} levels={ambientLevels} />
           <Toggle checked={preferences.reduceMotion} onChange={(value) => updatePreference('reduceMotion', value)} label={t('settings.motion')} body={t('settings.motionBody')} />
           {audioMessage ? <p className="mb-4 rounded-2xl bg-[var(--jade-light)] px-4 py-3 text-sm font-semibold text-[var(--jade)]" role="status">{audioMessage}</p> : null}
         </section>
@@ -163,13 +238,13 @@ export function SettingsPage() {
         <section className="surface mt-5 p-5 sm:p-7" aria-labelledby="privacy-security-title">
           <div className="flex items-start gap-4">
             <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-[var(--jade-light)] text-[var(--jade)]"><ShieldCheck size={22} aria-hidden="true" /></span>
-            <div><p className="eyebrow">{privacyCopy[preferences.locale].eyebrow}</p><h2 id="privacy-security-title" className="mt-2 text-2xl">{privacyCopy[preferences.locale].title}</h2></div>
+            <div><p className="eyebrow">{privacy.eyebrow}</p><h2 id="privacy-security-title" className="mt-2 text-2xl">{privacy.title}</h2></div>
           </div>
-          <p className="mt-4 text-sm leading-6 text-[var(--ink-soft)]">{privacyCopy[preferences.locale].intro}</p>
+          <p className="mt-4 text-sm leading-6 text-[var(--ink-soft)]">{privacy.intro}</p>
           <div className="mt-5 grid gap-3">
-            <p className="flex gap-3 rounded-2xl bg-[var(--jade-light)]/60 p-4 text-sm leading-6"><HardDrive className="mt-0.5 shrink-0 text-[var(--jade)]" size={18} aria-hidden="true" /><span>{privacyCopy[preferences.locale].local}</span></p>
-            <p className="flex gap-3 px-4 text-sm leading-6 text-[var(--ink-soft)]"><ShieldCheck className="mt-0.5 shrink-0 text-[var(--jade)]" size={18} aria-hidden="true" /><span>{privacyCopy[preferences.locale].access}</span></p>
-            <p className="flex gap-3 rounded-2xl border border-[var(--brass)]/25 bg-[var(--brass)]/8 p-4 text-sm leading-6 text-[var(--ink-soft)]"><FileDown className="mt-0.5 shrink-0 text-[var(--brass)]" size={18} aria-hidden="true" /><span>{privacyCopy[preferences.locale].exports}</span></p>
+            <p className="flex gap-3 rounded-2xl bg-[var(--jade-light)]/60 p-4 text-sm leading-6"><HardDrive className="mt-0.5 shrink-0 text-[var(--jade)]" size={18} aria-hidden="true" /><span>{privacy.local}</span></p>
+            <p className="flex gap-3 px-4 text-sm leading-6 text-[var(--ink-soft)]"><ShieldCheck className="mt-0.5 shrink-0 text-[var(--jade)]" size={18} aria-hidden="true" /><span>{privacy.access}</span></p>
+            <p className="flex gap-3 rounded-2xl border border-[var(--brass)]/25 bg-[var(--brass)]/8 p-4 text-sm leading-6 text-[var(--ink-soft)]"><FileDown className="mt-0.5 shrink-0 text-[var(--brass)]" size={18} aria-hidden="true" /><span>{privacy.exports}</span></p>
           </div>
         </section>
 
@@ -192,24 +267,24 @@ export function SettingsPage() {
           {message ? <p className="mt-5 rounded-2xl bg-[var(--jade-light)] px-4 py-3 text-sm font-semibold text-[var(--jade)]" role="status">{message}</p> : null}
 
           <div className="mt-7 border-t border-[var(--line)] pt-6">
-            <button type="button" className="button-secondary border-red-900/25 text-red-900" onClick={() => setClearOpen(true)}><Trash2 size={17} aria-hidden="true" /> {t('settings.clear')}</button>
+            <button ref={clearTriggerRef} type="button" className="button-secondary border-red-900/25 text-red-900" onClick={() => setClearOpen(true)}><Trash2 size={17} aria-hidden="true" /> {t('settings.clear')}</button>
           </div>
         </section>
 
         <Link to="/support" className="surface group mt-5 flex min-h-24 items-center gap-4 p-5 sm:p-7">
           <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-[var(--jade-light)] text-[var(--jade)]"><HeartHandshake size={22} aria-hidden="true" /></span>
-          <span className="min-w-0 flex-1"><span className="block font-editorial text-xl text-[var(--ink)]">{supportCopy[preferences.locale].title}</span><span className="mt-1 block text-xs leading-5 text-[var(--ink-soft)]">{supportCopy[preferences.locale].body}</span></span>
-          <span className="hidden items-center gap-1 text-xs font-bold text-[var(--jade)] sm:flex">{supportCopy[preferences.locale].action} <ArrowRight className="transition-transform group-hover:translate-x-1" size={16} aria-hidden="true" /></span>
+          <span className="min-w-0 flex-1"><span className="block font-editorial text-xl text-[var(--ink)]">{support.title}</span><span className="mt-1 block text-xs leading-5 text-[var(--ink-soft)]">{support.body}</span></span>
+          <span className="hidden items-center gap-1 text-xs font-bold text-[var(--jade)] sm:flex">{support.action} <ArrowRight className="transition-transform group-hover:translate-x-1" size={16} aria-hidden="true" /></span>
         </Link>
       </div>
 
       {clearOpen ? (
         <div className="fixed inset-0 z-50 grid place-items-center bg-black/45 p-4" role="presentation" onMouseDown={(event) => { if (event.currentTarget === event.target) setClearOpen(false) }}>
-          <div className="surface max-w-md bg-[var(--paper)] p-6 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="clear-title">
+          <div ref={clearDialogRef} className="surface max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto bg-[var(--paper)] p-6 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="clear-title">
             <h2 id="clear-title" className="text-3xl">{t('settings.clearTitle')}</h2>
             <p className="mt-4 leading-7 text-[var(--ink-soft)]">{t('settings.clearBody')}</p>
             <div className="mt-7 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
-              <button type="button" className="button-secondary" onClick={() => setClearOpen(false)}>{t('common.cancel')}</button>
+              <button ref={clearCancelRef} type="button" className="button-secondary" onClick={() => setClearOpen(false)}>{t('common.cancel')}</button>
               <button type="button" className="button-primary !border-red-950 !bg-red-950" onClick={clearAll}>{t('settings.clearConfirm')}</button>
             </div>
           </div>
