@@ -25,10 +25,9 @@ export function HexagramPage() {
 }
 
 function HexagramStudy({ id }: { id: number }) {
-  const { editorialFor, editorialMetaFor, t } = useI18n()
+  const { editorialFor, t } = useI18n()
   const hexagram = getHexagram(id)
   const editorial = editorialFor(hexagram)
-  const editorialMeta = editorialMetaFor(hexagram)
   const receivedLines = hexagram.classical.lines.slice(0, 6)
   const specialStatement = hexagram.classical.lines[6]
 
@@ -97,8 +96,7 @@ function HexagramStudy({ id }: { id: number }) {
           </div>
           <dl className="mt-5 grid gap-3 text-sm leading-6 text-[var(--ink-soft)]">
             <div><dt className="inline font-bold text-[var(--ink)]">{t('detail.sourceLabel')}: </dt><dd className="inline">{hexagram.provenance.classicalSource}</dd></div>
-            <div><dt className="inline font-bold text-[var(--ink)]">{t('detail.reference')}: </dt><dd className="inline">{hexagram.provenance.textReference}</dd></div>
-            <div><dt className="inline font-bold text-[var(--ink)]">{t('detail.status')}: </dt><dd className="inline">{t('detail.draftStatus')} · {editorialMeta.variant}</dd></div>
+            <div><dt className="inline font-bold text-[var(--ink)]">{t('result.interpretation')}: </dt><dd className="inline">{t('detail.aiNote')}</dd></div>
           </dl>
         </details>
       </div>

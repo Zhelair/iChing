@@ -35,7 +35,7 @@ function ReadingHexagram({ reading, type }: { reading: Reading; type: 'primary' 
 }
 
 export function ResultPage() {
-  const { editorialFor, editorialMetaFor, t } = useI18n()
+  const { editorialFor, t } = useI18n()
   const [reading, setReading] = useState(getCurrentReading)
   const [note, setNote] = useState(reading?.note ?? '')
   const [saved, setSaved] = useState(false)
@@ -54,7 +54,6 @@ export function ResultPage() {
   const resulting = getHexagram(reading.resultingHexagramId)
   const primaryEditorial = editorialFor(primary)
   const resultingEditorial = editorialFor(resulting)
-  const primaryEditorialMeta = editorialMetaFor(primary)
   const movingLines = reading.lines.filter((line) => line.moving)
   const specialStatement = movingLines.length === 6 && (primary.id === 1 || primary.id === 2)
     ? primary.classical.lines[6]
@@ -159,9 +158,8 @@ export function ResultPage() {
           <div className="mt-5 space-y-4 leading-6 text-[var(--ink-soft)]">
             <p>{t('result.sourceScope')}</p>
             <div><strong className="text-[var(--ink)]">{t('result.classical')}:</strong> <span lang="zh-Hant">{primary.classical.judgment}</span></div>
-            <div><strong className="text-[var(--ink)]">{t('detail.sourceLabel')}:</strong> {primary.provenance.classicalSource} · {primary.provenance.textReference}</div>
-            <div><strong className="text-[var(--ink)]">{t('result.interpretation')}:</strong> {primary.provenance.contentType} · {reading.contentVersion}</div>
-            <div><strong className="text-[var(--ink)]">{t('detail.status')}:</strong> {t('detail.draftStatus')} · {primaryEditorialMeta.variant}</div>
+            <div><strong className="text-[var(--ink)]">{t('detail.sourceLabel')}:</strong> {primary.provenance.classicalSource}</div>
+            <div><strong className="text-[var(--ink)]">{t('result.interpretation')}:</strong> {t('detail.aiNote')}</div>
             <p>{t('result.disclaimer')}</p>
           </div>
         </details>

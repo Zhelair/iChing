@@ -57,8 +57,6 @@ export function LearnPage() {
         ))}
       </div>
 
-      <HistoryJourney />
-
       <section id="line-lab" className="surface change-explainer mt-16 scroll-mt-28 overflow-hidden p-6 sm:p-9" aria-labelledby="line-values-title">
         <div className="grid gap-7 lg:grid-cols-[.78fr_1.22fr] lg:items-end">
           <div>
@@ -116,6 +114,8 @@ export function LearnPage() {
       </section>
 
       <div className="mt-8"><Link to="/reading" className="button-primary">{t('learn.begin')} <ArrowRight size={17} aria-hidden="true" /></Link></div>
+
+      <HistoryJourney />
     </div>
   )
 }
