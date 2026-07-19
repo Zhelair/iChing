@@ -106,7 +106,7 @@ function YarrowWorkshop({ procedure, step, lineNumber, onAdvance, copy: c }: { p
   </div>
 }
 
-function Preparation({ method, question, t, onReady }: { method: ReadingMethod; question: string; t: Translator; onReady: () => void }) {
+function Preparation({ question, t, onReady }: { question: string; t: Translator; onReady: () => void }) {
   return (
     <section className="surface preparation-card mt-8 overflow-hidden p-6 sm:p-9" aria-labelledby="preparation-title">
       <div className="preparation-card__breath" aria-hidden="true"><span /><Wind size={24} /></div>
@@ -120,8 +120,6 @@ function Preparation({ method, question, t, onReady }: { method: ReadingMethod; 
             <div key={step} className="preparation-step"><span>{index + 1}</span><p>{step}</p></div>
           ))}
         </div>
-
-        {method === 'physical' ? <aside className="physical-coin-note mt-7"><CircleDot size={20} aria-hidden="true" /><p>{t('cast.physical.setAside')}</p></aside> : null}
 
         <blockquote className="question-vessel mt-7">
           <span>{t('cast.prepare.question')}</span>
@@ -251,8 +249,9 @@ function CastFlow({ method }: { method: ReadingMethod }) {
         <p className="eyebrow">{method === 'digital' ? t('method.digital.title') : method === 'physical' ? t('method.physical.title') : method === 'yarrow' ? yarrow.eyebrow : t('method.direct.title')}</p>
         <h1 className="mt-3 text-4xl font-medium leading-tight tracking-[-.03em]">{titles[method][0]}</h1>
         <p className="mt-3 max-w-2xl leading-7 text-[var(--ink-soft)]">{titles[method][1]}</p>
+        {method === 'physical' ? <aside className="physical-coin-note mt-5"><CircleDot size={20} aria-hidden="true" /><p>{t('cast.physical.setAside')}</p></aside> : null}
 
-        {!prepared ? <Preparation method={method} question={question} t={t} onReady={() => setPrepared(true)} /> : null}
+        {!prepared ? <Preparation question={question} t={t} onReady={() => setPrepared(true)} /> : null}
 
         {prepared && method !== 'direct' ? (
           <>
