@@ -50,7 +50,7 @@ export function LearnPage() {
 
       <div className="mt-10 grid gap-4 lg:grid-cols-3">
         {lessons.map(({ title, body, icon: Icon, index }) => (
-          <article key={index} className="surface lesson-card flex min-h-72 flex-col justify-between p-6 sm:p-7">
+          <article key={index} className="surface lesson-card flex min-h-72 flex-col p-6 sm:p-7">
             <div className="flex items-center justify-between"><span className="eyebrow">{index}</span><span className="grid size-12 place-items-center rounded-full bg-[var(--jade-light)] text-[var(--jade)]"><Icon size={22} aria-hidden="true" /></span></div>
             <div className="mt-10"><h2 className="text-2xl">{title}</h2><p className="mt-3 leading-7 text-[var(--ink-soft)]">{body}</p></div>
           </article>

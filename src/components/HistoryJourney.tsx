@@ -1,4 +1,3 @@
-import { Volume2 } from 'lucide-react'
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from 'react'
 import { useSound } from '../audio/SoundContext'
 import { isBuiltInContentLocale } from '../domain/locales'
@@ -8,9 +7,9 @@ import { getUiLocalePack } from '../i18n/uiLocalePacks'
 type Scene = 'bone' | 'scroll' | 'stalk' | 'numbers' | 'wings' | 'coins' | 'compass'
 type Chapter = { id: string; era: string; title: string; body: string; note?: string; scene: Scene }
 
-const content: Record<'en' | 'bg' | 'ru', { eyebrow: string; title: string; contents: string; replay: string; sound: string; oracleSource: string; yarrowSource: string; chapters: Chapter[] }> = {
+const content: Record<'en' | 'bg' | 'ru', { eyebrow: string; title: string; contents: string; replay: string; oracleSource: string; yarrowSource: string; chapters: Chapter[] }> = {
   en: {
-    eyebrow: 'A short illustrated history', title: 'From fire-marked bone to a living book.', contents: 'On this journey', replay: 'Replay illustration', sound: 'A quiet cue plays only when coin sounds are enabled.', oracleSource: 'Smarthistory / Smithsonian introduction ↗', yarrowSource: 'Stanford Encyclopedia of Philosophy ↗',
+    eyebrow: 'A short illustrated history', title: 'From fire-marked bone to a living book.', contents: 'On this journey', replay: 'Replay illustration', oracleSource: 'Smarthistory / Smithsonian introduction ↗', yarrowSource: 'Stanford Encyclopedia of Philosophy ↗',
     chapters: [
       { id: 'oracle-bones', era: 'Shang dynasty · before the Yijing', title: 'Questions met heat and bone.', body: 'Diviners inscribed questions on ox scapulae or tortoise plastrons, applied heat, and read the resulting cracks. This is crucial historical context—not an early coin method.', scene: 'bone' },
       { id: 'zhouyi', era: 'Western Zhou · a layered text emerges', title: 'Sixty-four figures become a book of change.', body: 'Hexagram figures, judgments, and line statements formed the early Zhouyi. The received text grew through transmission and editorial layers rather than appearing as one finished object.', scene: 'scroll' },
@@ -22,7 +21,7 @@ const content: Record<'en' | 'bg' | 'ru', { eyebrow: string; title: string; cont
     ],
   },
   bg: {
-    eyebrow: 'Кратка илюстрирана история', title: 'От белязаната с огън кост до жива книга.', contents: 'По този път', replay: 'Повтори илюстрацията', sound: 'Тих звук има само когато звуците на монети са включени.', oracleSource: 'Въведение от Smarthistory / Smithsonian ↗', yarrowSource: 'Станфордска енциклопедия по философия ↗',
+    eyebrow: 'Кратка илюстрирана история', title: 'От белязаната с огън кост до жива книга.', contents: 'По този път', replay: 'Повтори илюстрацията', oracleSource: 'Въведение от Smarthistory / Smithsonian ↗', yarrowSource: 'Станфордска енциклопедия по философия ↗',
     chapters: [
       { id: 'oracle-bones', era: 'Династия Шан · преди И Дзин', title: 'Въпросите срещали топлина и кост.', body: 'Гадатели изписвали въпроси върху волски лопатки или коруби от костенурка, нагрявали ги и разчитали пукнатините. Това е исторически контекст, а не ранен метод с монети.', scene: 'bone' },
       { id: 'zhouyi', era: 'Западна Джоу · възниква многопластов текст', title: 'Шестдесет и четири фигури стават книга на промяната.', body: 'Хексаграмите, съжденията и текстовете на линиите оформят ранния Джоу-и. Познатият текст расте чрез предаване и редакционни пластове.', scene: 'scroll' },
@@ -34,7 +33,7 @@ const content: Record<'en' | 'bg' | 'ru', { eyebrow: string; title: string; cont
     ],
   },
   ru: {
-    eyebrow: 'Краткая история в иллюстрациях', title: 'От отмеченной огнём кости до живой книги.', contents: 'На этом пути', replay: 'Повторить иллюстрацию', sound: 'Тихий звук играет только при включённых звуках монет.', oracleSource: 'Введение Smarthistory / Smithsonian ↗', yarrowSource: 'Стэнфордская философская энциклопедия ↗',
+    eyebrow: 'Краткая история в иллюстрациях', title: 'От отмеченной огнём кости до живой книги.', contents: 'На этом пути', replay: 'Повторить иллюстрацию', oracleSource: 'Введение Smarthistory / Smithsonian ↗', yarrowSource: 'Стэнфордская философская энциклопедия ↗',
     chapters: [
       { id: 'oracle-bones', era: 'Династия Шан · до Ицзина', title: 'Вопросы встречались с жаром и костью.', body: 'Прорицатели вырезали вопросы на лопатках быков и панцирях черепах, нагревали их и читали трещины. Это важный исторический контекст, а не ранний монетный метод.', scene: 'bone' },
       { id: 'zhouyi', era: 'Западная Чжоу · возникает многослойный текст', title: 'Шестьдесят четыре фигуры становятся книгой перемен.', body: 'Гексаграммы, суждения и тексты линий составили ранний Чжоу-и. Полученный текст рос благодаря передаче и редакционным слоям.', scene: 'scroll' },
@@ -103,7 +102,7 @@ export function HistoryJourney() {
   return <section ref={rootRef} className="history-journey mt-16" aria-labelledby="history-title">
     <div className="max-w-3xl"><p className="eyebrow">{c.eyebrow}</p><h2 id="history-title" className="mt-4 text-4xl sm:text-5xl">{c.title}</h2></div>
     <details className="surface history-mobile-toc mt-7 p-4 lg:hidden"><summary>{c.contents}</summary>{links}</details>
-    <div className="history-layout mt-9"><aside className="hidden lg:block"><div className="surface sticky top-28 p-5"><p className="eyebrow mb-3">{c.contents}</p>{links}<p className="mt-5 flex gap-2 text-xs leading-5 text-[var(--ink-soft)]"><Volume2 size={15} className="shrink-0" />{c.sound}</p></div></aside>
+    <div className="history-layout mt-9"><aside className="hidden lg:block"><div className="surface sticky top-28 p-4"><p className="eyebrow mb-3">{c.contents}</p>{links}</div></aside>
       <div className="history-chapters">{c.chapters.map((chapter, index) => <article key={chapter.id} id={chapter.id} className="surface history-chapter scroll-mt-28">
         <button type="button" className="history-visual" onClick={() => play(chapter)} onPointerMove={moveIllustration} onPointerLeave={resetIllustration} aria-label={`${c.replay}: ${chapter.title}`} title={c.replay}>
           <span className="history-visual__motion"><span key={replays[chapter.id] ?? 0} className="history-visual__animation"><Illustration scene={chapter.scene} /></span></span>
