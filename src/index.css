@@ -517,9 +517,15 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
 /* A compact welcome cue makes personalisation discoverable without competing with the reading CTA. */
 .home-preferences { display: grid; max-width: 42rem; grid-template-columns: 2.75rem minmax(0,1fr); gap: .85rem; border: 1px solid var(--line); border-radius: 1.2rem; background: color-mix(in srgb,var(--white) 38%,transparent); padding: .9rem; backdrop-filter: blur(8px); }
 .home-preferences__icon { display: grid; width: 2.75rem; aspect-ratio: 1; place-items: center; align-self: start; border-radius: .9rem; background: var(--jade-light); color: var(--jade); }
-.home-preferences__links { display: flex; flex-wrap: wrap; gap: .35rem 1rem; }
-.home-preferences__links a { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .35rem; color: var(--jade); font-size: .74rem; font-weight: 800; text-decoration: none; }
-.home-preferences__links a:hover { text-decoration: underline; text-underline-offset: .2rem; }
+.home-preferences__links { display: flex; flex-wrap: wrap; gap: .55rem; }
+.home-preferences__links a { display: inline-flex; min-height: 3.1rem; align-items: center; gap: .5rem; border: 1px solid color-mix(in srgb,var(--jade) 20%,var(--line)); border-radius: .9rem; background: color-mix(in srgb,var(--jade-light) 62%,transparent); padding: .65rem .9rem; color: var(--jade); font-size: .86rem; font-weight: 800; text-decoration: none; transition: background-color 180ms ease,border-color 180ms ease,transform 180ms ease; }
+.home-preferences__links a:hover { border-color: color-mix(in srgb,var(--jade) 42%,var(--line)); background: var(--jade-light); }
+.home-preferences__links a:active { transform: translateY(1px); }
+
+@media (max-width: 479px) {
+  .home-preferences__links { display: grid; grid-template-columns: 1fr; }
+  .home-preferences__links a { width: 100%; }
+}
 
 /* The yarrow workshop makes each of the three reductions visible. */
 .yarrow-workshop { position: relative; display: grid; gap: 1.1rem; }
