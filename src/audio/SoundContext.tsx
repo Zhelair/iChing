@@ -52,6 +52,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
         contextRef.current = context
       }
       if (context.state !== 'running') await context.resume()
+      if (context.state !== 'running') return null
       return context
     } catch {
       return null
@@ -114,18 +115,29 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       return
     }
 
-    const beginAfterPointer = () => void setAmbientVolume(ambientVolumeRef.current)
-    const beginAfterKey = (event: KeyboardEvent) => {
+    let starting = false
+    const usesPointerEvents = 'PointerEvent' in window
+    function removeUnlockListeners() {
+      if (usesPointerEvents) window.removeEventListener('pointerup', beginAfterInteraction)
+      else window.removeEventListener('touchend', beginAfterInteraction)
+      window.removeEventListener('keydown', beginAfterKey)
+    }
+    function beginAfterInteraction() {
+      if (starting) return
+      starting = true
+      void setAmbientVolume(ambientVolumeRef.current).then((available) => {
+        starting = false
+        if (available) removeUnlockListeners()
+      })
+    }
+    function beginAfterKey(event: KeyboardEvent) {
       if (event.key !== 'Enter' && event.key !== ' ') return
-      window.removeEventListener('keydown', beginAfterKey)
-      void setAmbientVolume(ambientVolumeRef.current)
+      beginAfterInteraction()
     }
-    window.addEventListener('pointerdown', beginAfterPointer, { once: true })
+    if (usesPointerEvents) window.addEventListener('pointerup', beginAfterInteraction)
+    else window.addEventListener('touchend', beginAfterInteraction, { passive: true })
     window.addEventListener('keydown', beginAfterKey)
-    return () => {
-      window.removeEventListener('pointerdown', beginAfterPointer)
-      window.removeEventListener('keydown', beginAfterKey)
-    }
+    return removeUnlockListeners
   }, [preferences.ambientVolume, setAmbientVolume, stopAmbient])
 
   useEffect(() => {
@@ -180,7 +192,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     whooshFilter.frequency.exponentialRampToValueAtTime(1800, now + .24)
     whooshFilter.Q.value = .7
     whooshGain.gain.setValueAtTime(.0001, now)
-    whooshGain.gain.exponentialRampToValueAtTime(.0456, now + .045)
+    whooshGain.gain.exponentialRampToValueAtTime(.09, now + .045)
     whooshGain.gain.exponentialRampToValueAtTime(.0001, now + .4)
     whoosh.connect(whooshFilter).connect(whooshGain).connect(context.destination)
     whoosh.onended = () => {
@@ -202,7 +214,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       oscillator.frequency.setValueAtTime(frequency + index * 34, impactAt)
       overtone.frequency.setValueAtTime(frequency * 1.72 + index * 40, impactAt)
       gain.gain.setValueAtTime(.0001, impactAt)
-      gain.gain.exponentialRampToValueAtTime(.066, impactAt + .008)
+      gain.gain.exponentialRampToValueAtTime(.12, impactAt + .008)
       gain.gain.exponentialRampToValueAtTime(.0001, impactAt + .32)
       oscillator.connect(gain)
       overtone.connect(gain)
@@ -234,7 +246,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
         oscillator.frequency.setValueAtTime(frequencies[kind], now)
         oscillator.frequency.exponentialRampToValueAtTime(frequencies[kind] * (kind === 'bone' ? .65 : 1.25), now + .32)
         gain.gain.setValueAtTime(.0001, now)
-        const peak = kind === 'coin' ? .054 : kind === 'stalk' ? .045 : .025
+        const peak = kind === 'coin' ? .11 : kind === 'stalk' ? .095 : .065
         gain.gain.exponentialRampToValueAtTime(peak, now + .02)
         gain.gain.exponentialRampToValueAtTime(.0001, now + .42)
         oscillator.connect(gain).connect(context.destination)

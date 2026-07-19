@@ -107,7 +107,6 @@ export type UiLocalePack = {
       title: string
       contents: string
       replay: string
-      sound: string
       oracleSource: string
       yarrowSource: string
       chapters: HistoryChapterCopy[]

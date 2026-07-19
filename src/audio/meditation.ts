@@ -12,7 +12,7 @@ export type MeditationGraph = {
 }
 
 function volumeTarget(volume: 0.5 | 1) {
-  return volume === 1 ? .42 : .22
+  return volume === 1 ? .92 : .5
 }
 
 function useLightweightAudioGraph() {
@@ -67,10 +67,10 @@ function playBowl(context: AudioContext, graph: MeditationGraph) {
   const now = context.currentTime + .02
   const base = Math.random() > .5 ? 174.61 : 220
   const ratios = [1, 1.51, 2.03, 2.76, 3.92]
-  const levels = [.032, .018, .012, .007, .004]
+  const levels = [.05, .03, .02, .012, .007]
   const decays = [9.5, 8.2, 6.8, 5.3, 4.2]
   const bowlBus = context.createGain()
-  bowlBus.gain.value = .58
+  bowlBus.gain.value = .82
   bowlBus.connect(graph.input)
   graph.nodes.add(bowlBus)
   let remaining = ratios.length
@@ -140,7 +140,7 @@ function playPentatonicMotif(context: AudioContext, graph: MeditationGraph) {
     filter.frequency.setValueAtTime(1800, at)
     filter.frequency.exponentialRampToValueAtTime(560, at + 2.1)
     gain.gain.setValueAtTime(.0001, at)
-    gain.gain.exponentialRampToValueAtTime(.026, at + .04)
+    gain.gain.exponentialRampToValueAtTime(.05, at + .04)
     gain.gain.exponentialRampToValueAtTime(.0001, at + 2.35)
     oscillator.connect(gain)
     overtone.connect(gain)
@@ -223,9 +223,9 @@ export function createMeditationGraph(context: AudioContext, volume: 0.5 | 1 = 0
   ])
   const sources = new Set<AudioScheduledSourceNode>([amplitudeLfo, filterLfo])
   const voices = [
-    { type: 'triangle' as OscillatorType, frequency: 146.83, detune: -2, gain: .029, pan: -.18 },
-    { type: 'triangle' as OscillatorType, frequency: 146.83, detune: 2, gain: .022, pan: .18 },
-    { type: 'sine' as OscillatorType, frequency: 220, detune: 1, gain: .016, pan: .08 },
+    { type: 'triangle' as OscillatorType, frequency: 146.83, detune: -2, gain: .048, pan: -.18 },
+    { type: 'triangle' as OscillatorType, frequency: 146.83, detune: 2, gain: .036, pan: .18 },
+    { type: 'sine' as OscillatorType, frequency: 220, detune: 1, gain: .027, pan: .08 },
   ]
 
   voices.forEach((voice) => {

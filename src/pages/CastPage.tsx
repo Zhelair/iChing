@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
 import { useSound } from '../audio/SoundContext'
 import { HexagramFigure } from '../components/HexagramFigure'
-import { HEXAGRAMS, getHexagram } from '../data/hexagrams'
+import { HEXAGRAMS } from '../data/hexagrams'
 import { castCoins, castYarrowProcedure, createCastLine, type YarrowProcedure } from '../domain/casting'
 import { isBuiltInContentLocale } from '../domain/locales'
 import { createReading, linesFromKnownHexagram } from '../domain/reading'
@@ -29,8 +29,8 @@ const yarrowCopy = {
 
 type Translator = (key: TranslationKey) => string
 
-function CastProgress({ lines, t }: { lines: CastLine[]; t: Translator }) {
-  const newestPosition = lines.at(-1)?.position
+function CastProgress({ lines, t, animateNewest = true }: { lines: CastLine[]; t: Translator; animateNewest?: boolean }) {
+  const newestPosition = animateNewest ? lines.at(-1)?.position : undefined
 
   return (
     <div className="cast-progress" aria-label={`${lines.length} / 6`}>
@@ -234,7 +234,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
     setMovingPositions((current) => current.includes(position) ? current.filter((item) => item !== position) : [...current, position])
   }
 
-  const knownHexagram = getHexagram(knownId)
+  const knownLines = linesFromKnownHexagram(knownId, movingPositions)
   const displayedLine = pending ?? lines.at(-1)
   const lastSettledLine = pending ? null : lines.at(-1)
   const coinSummary = lastSettledLine?.coins?.map((side) => t(side === 'heads' ? 'cast.heads' : 'cast.tails')).join(', ')
@@ -306,10 +306,8 @@ function CastFlow({ method }: { method: ReadingMethod }) {
             <select id="known-hexagram" className="field" value={knownId} onChange={(event) => setKnownId(Number(event.target.value))}>
               {HEXAGRAMS.map((hexagram) => <option value={hexagram.id} key={hexagram.id}>{hexagram.id}. {hexagram.chinese} · {editorialFor(hexagram).title}</option>)}
             </select>
-            <div className="mt-7 grid gap-6 sm:grid-cols-[10rem_1fr] sm:items-center">
-              <div className="rounded-3xl bg-[var(--paper-deep)] p-6">
-                <HexagramFigure linesBottomUp={knownHexagram.linesBottomUp} label={`${t('common.hexagram')} ${knownId}`} className="mx-auto text-[var(--obsidian)]" />
-              </div>
+            <div className="mt-7 grid gap-6 sm:grid-cols-[minmax(16rem,.9fr)_1.1fr] sm:items-center">
+              <CastProgress lines={knownLines} t={t} animateNewest={false} />
               <fieldset>
                 <legend className="mb-3 text-sm font-bold">{t('cast.changingLines')}</legend>
                 <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
