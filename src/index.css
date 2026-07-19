@@ -602,6 +602,21 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
 .yarrow-stalk-field { position: relative; display: flex; min-height: 12rem; align-items: flex-end; justify-content: center; gap: 2px; overflow: hidden; border: 1px solid color-mix(in srgb,var(--jade) 20%,var(--line)); border-radius: 1.35rem; background: linear-gradient(145deg,color-mix(in srgb,var(--jade-light) 70%,transparent),color-mix(in srgb,var(--white) 50%,transparent)); padding: 2.7rem 1rem 1.4rem; }
 .yarrow-stalk-field i { display: block; width: 3px; height: calc(6.4rem + var(--stalk-wave) * .22rem); flex: none; border-radius: 999px; background: var(--jade); transform: rotate(calc((var(--stalk-index) - 24) * .13deg)); transform-origin: bottom; transition: opacity 450ms ease, transform 620ms cubic-bezier(.2,.8,.2,1); }
 .yarrow-stalk-field i.is-removed { opacity: .09; transform: translateY(2.8rem) rotate(14deg); }
+.yarrow-stalk-field.is-ritual i.is-counted-kept { animation: yarrow-count-kept 2.1s cubic-bezier(.3,.7,.25,1) both; animation-delay: calc(var(--stalk-wave) * 12ms); }
+.yarrow-stalk-field.is-ritual i.is-counted-removed { animation: yarrow-count-removed 2.1s cubic-bezier(.3,.7,.25,1) both; animation-delay: calc(var(--stalk-wave) * 12ms); }
+@keyframes yarrow-count-kept {
+  0% { opacity: 1; transform: rotate(calc((var(--stalk-index) - 24) * .13deg)); }
+  15% { transform: translateY(-.45rem) rotate(calc((var(--stalk-index) - 24) * -.2deg)); }
+  36%,58% { transform: translateX(var(--stalk-shift)) translateY(-.2rem) rotate(calc((var(--stalk-index) - 24) * .08deg)); }
+  78% { transform: translateX(var(--stalk-shift)) translateY(.25rem) rotate(calc((var(--stalk-index) - 24) * .08deg)); }
+  100% { opacity: 1; transform: rotate(calc((var(--stalk-index) - 24) * .13deg)); }
+}
+@keyframes yarrow-count-removed {
+  0% { opacity: 1; transform: rotate(calc((var(--stalk-index) - 24) * .13deg)); }
+  15% { transform: translateY(-.45rem) rotate(calc((var(--stalk-index) - 24) * -.2deg)); }
+  36%,58% { opacity: 1; transform: translateX(var(--stalk-shift)) translateY(-.2rem) rotate(calc((var(--stalk-index) - 24) * .08deg)); }
+  78%,100% { opacity: .09; transform: translateY(2.8rem) rotate(14deg); }
+}
 .yarrow-resting-stalk { position: absolute; top: 1rem; left: 1.1rem; width: 4.6rem; height: 3px; border-radius: 999px; background: var(--brass); transform: rotate(-6deg); }
 .yarrow-count { position: absolute; top: 4.6rem; left: 50%; z-index: 1; display: grid; width: 4.2rem; aspect-ratio: 1; place-items: center; align-content: center; border: 1px solid var(--line); border-radius: 50%; background: color-mix(in srgb,var(--white) 86%,transparent); box-shadow: 0 12px 30px rgba(39,60,46,.12); pointer-events: none; transform: translateX(-50%); }
 .yarrow-count strong { color: var(--jade); font-family: "Lora Variable",serif; font-size: 1.55rem; line-height: 1; }
@@ -610,6 +625,11 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
 .yarrow-changes li { display: grid; min-height: 6.2rem; grid-template-columns: 1.45rem minmax(0,1fr); gap: .3rem; align-items: start; border: 1px solid var(--line); border-radius: 1rem; padding: .42rem; opacity: .72; }
 .yarrow-changes li.is-current { border-color: color-mix(in srgb,var(--jade) 55%,var(--line)); background: var(--jade-light); opacity: 1; }
 .yarrow-changes li > span { display: grid; width: 1.45rem; aspect-ratio: 1; place-items: center; border-radius: 50%; background: color-mix(in srgb,var(--white) 65%,transparent); color: var(--jade); font-size: .72rem; font-weight: 850; }.yarrow-change__copy { min-width: 0; padding-top: .06rem; font-variant-numeric: tabular-nums; }.yarrow-changes p,.yarrow-changes small { margin: 0; text-align: left; }.yarrow-changes p { font-size: .72rem; line-height: 1.35; }.yarrow-changes p > span,.yarrow-changes p strong { display: block; }.yarrow-changes p > span { color: var(--ink-soft); font-weight: 700; }.yarrow-changes p strong { color: var(--ink); font-weight: 850; white-space: nowrap; }.yarrow-changes small { display: block; margin-top: .25rem; color: var(--ink-soft); font-size: .61rem; font-weight: 600; line-height: 1.4; }
+.yarrow-ritual-status { display: flex; min-height: 4.25rem; align-items: center; gap: .85rem; overflow: hidden; border: 1px solid color-mix(in srgb,var(--brass) 38%,var(--line)); border-radius: 1rem; background: linear-gradient(105deg,color-mix(in srgb,var(--brass) 11%,transparent),color-mix(in srgb,var(--jade-light) 55%,transparent)); padding: .8rem 1rem; text-align: left; }
+.yarrow-ritual-status__pulse { width: .72rem; aspect-ratio: 1; flex: none; border: 2px solid var(--brass); border-radius: 50%; box-shadow: 0 0 0 0 color-mix(in srgb,var(--brass) 32%,transparent); animation: yarrow-ritual-pulse 1.05s ease-out infinite; }
+.yarrow-ritual-status p { margin: 0; color: var(--ink-soft); font-size: .72rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.yarrow-ritual-status strong { display: block; margin-top: .2rem; color: var(--jade); font-size: .82rem; font-variant-numeric: tabular-nums; }
+@keyframes yarrow-ritual-pulse { 70%,100% { box-shadow: 0 0 0 .7rem transparent; } }
 .yarrow-result { display: flex; align-items: center; justify-content: space-between; border-left: 3px solid var(--brass); border-radius: .2rem 1rem 1rem .2rem; background: color-mix(in srgb,var(--brass) 10%,transparent); padding: .8rem 1rem; color: var(--ink-soft); }
 .yarrow-result strong { color: var(--jade); font-family: "Lora Variable",serif; font-size: 2rem; }
 

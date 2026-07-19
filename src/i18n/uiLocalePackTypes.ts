@@ -123,6 +123,9 @@ export type UiLocalePack = {
       divided: string
       removed: string
       remain: string
+      mixing: string
+      dividing: string
+      counting: string
       source: string
     }
     journal: JournalCopy

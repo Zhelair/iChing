@@ -73,7 +73,7 @@
     "cast.complete": "Mostrar a leitura",
     "cast.physical.title": "Introduza os seus lançamentos reais",
     "cast.physical.body": "Cara = 3 e coroa = 2. Introduza primeiro a linha inferior.",
-    "cast.physical.setAside": "Prepare 18 moedas do mesmo valor — os cêntimos são adequados. Para cada linha, pegue nas três moedas seguintes, agite-as bem nas mãos e deixe-as cair sobre uma mesa. Repita com um novo grupo de três até completar as seis linhas. Reserve estas moedas apenas para a prática e, no fim, guarde-as juntas.",
+    "cast.physical.setAside": "Prepare 18 moedas do mesmo valor — os cêntimos são adequados. Para cada linha, pegue nas três moedas seguintes, agite-as bem nas mãos e deixe-as cair sobre uma mesa. Repita com um novo grupo de três até completar as seis linhas. Mantenha estas 18 moedas juntas e use-as apenas para esta prática. Guarde-as depois de cada leitura para que fiquem prontas para futuras consultas.",
     "cast.chooseTotal": "Escolha o total para a linha",
     "cast.undo": "Anular a última linha",
     "cast.direct.title": "Introduza um hexagrama conhecido",
@@ -283,6 +283,9 @@
       "divided": "Divididas",
       "removed": "postas de lado",
       "remain": "restam",
+      "mixing": "A misturar as varetas",
+      "dividing": "A dividir em dois montes",
+      "counting": "A contar de quatro em quatro",
       "source": "O Xici descreve cinquenta varetas, das quais são utilizadas quarenta e nove. Este modelo digital preserva as probabilidades normalizadas 1:5:7:3 das linhas e apresenta um percurso válido de três mudanças."
     },
     "journal": {

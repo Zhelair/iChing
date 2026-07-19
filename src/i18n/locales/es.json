@@ -73,7 +73,7 @@
     "cast.complete": "Mostrar la lectura",
     "cast.physical.title": "Introduzca sus lanzamientos reales",
     "cast.physical.body": "Cara = 3 y cruz = 2. Introduzca primero la línea inferior.",
-    "cast.physical.setAside": "Prepare 18 monedas del mismo valor; los céntimos sirven bien. Para cada línea, tome las tres monedas siguientes, agítelas bien entre las manos y déjelas caer sobre una mesa. Repita con un grupo nuevo de tres hasta completar las seis líneas. Reserve estas monedas únicamente para la práctica y guárdelas juntas al terminar.",
+    "cast.physical.setAside": "Prepare 18 monedas del mismo valor; los céntimos sirven bien. Para cada línea, tome las tres monedas siguientes, agítelas bien entre las manos y déjelas caer sobre una mesa. Repita con un grupo nuevo de tres hasta completar las seis líneas. Mantenga juntas estas 18 monedas y úselas solo para esta práctica. Guárdelas después de cada lectura para tenerlas listas para futuras consultas.",
     "cast.chooseTotal": "Elija el total para la línea",
     "cast.undo": "Deshacer la última línea",
     "cast.direct.title": "Introduzca un hexagrama conocido",
@@ -283,6 +283,9 @@
       "divided": "Divididos",
       "removed": "apartados",
       "remain": "quedan",
+      "mixing": "Mezclando los tallos",
+      "dividing": "Dividiendo en dos montones",
+      "counting": "Contando de cuatro en cuatro",
       "source": "El Xici describe cincuenta tallos, de los cuales se utilizan cuarenta y nueve. Este modelo digital conserva las probabilidades estandarizadas 1:5:7:3 de las líneas y muestra un recorrido válido de tres cambios."
     },
     "journal": {

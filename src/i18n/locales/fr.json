@@ -73,7 +73,7 @@
     "cast.complete": "Afficher la consultation",
     "cast.physical.title": "Saisissez vos lancers réels",
     "cast.physical.body": "Face = 3 et pile = 2. Saisissez d’abord la ligne inférieure.",
-    "cast.physical.setAside": "Préparez 18 pièces de même valeur — des centimes conviennent. Pour chaque ligne, prenez les trois pièces suivantes, secouez-les bien entre vos mains et laissez-les tomber sur une table. Répétez avec un nouveau groupe de trois jusqu’à terminer les six lignes. Réservez ces pièces uniquement à la pratique, puis rangez-les ensemble après la consultation.",
+    "cast.physical.setAside": "Préparez 18 pièces de même valeur — des centimes conviennent. Pour chaque ligne, prenez les trois pièces suivantes, secouez-les bien entre vos mains et laissez-les tomber sur une table. Répétez avec un nouveau groupe de trois jusqu’à terminer les six lignes. Gardez ces 18 pièces ensemble et utilisez-les uniquement pour cette pratique. Rangez-les après chaque lecture afin qu’elles soient prêtes pour de futures consultations.",
     "cast.chooseTotal": "Choisissez le total de la ligne",
     "cast.undo": "Annuler la dernière ligne",
     "cast.direct.title": "Saisissez un hexagramme connu",
@@ -283,6 +283,9 @@
       "divided": "Réparties",
       "removed": "mises de côté",
       "remain": "restent",
+      "mixing": "Mélange des tiges",
+      "dividing": "Division en deux tas",
+      "counting": "Comptage par groupes de quatre",
       "source": "Le Xici décrit cinquante tiges, dont quarante-neuf sont utilisées. Ce modèle numérique conserve les probabilités standardisées 1:5:7:3 des lignes et présente un parcours valide en trois changements."
     },
     "journal": {
