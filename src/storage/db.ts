@@ -36,6 +36,10 @@ export async function clearReadings() {
   return (await dbPromise).clear('readings')
 }
 
+export async function deleteReading(id: string) {
+  return (await dbPromise).delete('readings', id)
+}
+
 export async function importReadings(backup: YiPathExport, mode: 'merge' | 'replace') {
   const db = await dbPromise
   const transaction = db.transaction('readings', 'readwrite')

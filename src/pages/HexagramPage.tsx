@@ -73,7 +73,6 @@ function HexagramStudy({ id }: { id: number }) {
             </ol>
           </div>
           <dl className="mt-5 grid gap-3 text-sm leading-6 text-[var(--ink-soft)]">
-            <div><dt className="inline font-bold text-[var(--ink)]">{t('detail.status')}: </dt><dd className="inline">{hexagram.provenance.status}</dd></div>
             <div><dt className="inline font-bold text-[var(--ink)]">{t('detail.sourceLabel')}: </dt><dd className="inline">{hexagram.provenance.classicalSource}</dd></div>
           </dl>
         </details>

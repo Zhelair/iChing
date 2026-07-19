@@ -1,11 +1,12 @@
-import { BookOpen, Home, Library, Settings } from 'lucide-react'
+import { BookOpen, BookOpenText, Library, NotebookPen, Settings } from 'lucide-react'
 import { Suspense, useEffect, useRef } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useI18n } from '../i18n/I18nContext'
 import { Atmosphere } from './Atmosphere'
 
 const navItems = [
-  { to: '/', key: 'nav.home', icon: Home, end: true },
+  { to: '/reading', key: 'nav.read', icon: BookOpenText, end: false },
+  { to: '/journal', key: 'nav.journal', icon: NotebookPen, end: false },
   { to: '/library', key: 'nav.library', icon: Library, end: false },
   { to: '/learn', key: 'nav.learn', icon: BookOpen, end: false },
   { to: '/settings', key: 'nav.settings', icon: Settings, end: false },
@@ -20,7 +21,7 @@ export function AppLayout() {
     ? 'home'
     : pathname === '/reading' || ritualMode
       ? 'ritual'
-      : pathname === '/result'
+        : pathname === '/result' || pathname === '/journal'
         ? 'reflection'
         : pathname === '/learn' || pathname === '/start' || pathname === '/library' || pathname.startsWith('/hexagrams/')
           ? 'study'
@@ -113,11 +114,11 @@ export function AppLayout() {
 
       <main id="main" className="relative z-10">
         <Suspense fallback={<div className="page-shell py-16" role="status"><div className="route-loading"><span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" /> {t('common.loading')}</div></div>}>
-          <Outlet />
+          <div key={pathname} className="route-view"><Outlet /></div>
         </Suspense>
       </main>
 
-      {!ritualMode ? <nav className="mobile-navigation fixed inset-x-3 bottom-3 z-40 grid grid-cols-4 rounded-[1.35rem] border border-white/20 bg-[var(--obsidian)] p-1.5 text-white shadow-2xl md:hidden" aria-label="Primary navigation">
+      {!ritualMode ? <nav className="mobile-navigation fixed inset-x-3 bottom-3 z-40 grid grid-cols-5 rounded-[1.35rem] border border-white/20 bg-[var(--obsidian)] p-1.5 text-white shadow-2xl md:hidden" aria-label="Primary navigation">
         {navItems.map(({ to, key, icon: Icon, end }) => (
           <NavLink key={to} to={to} end={end} className={({ isActive }) => `flex min-h-14 flex-col items-center justify-center gap-1 rounded-2xl px-1 text-[.65rem] font-semibold ${isActive ? 'bg-white/13 text-[#f4dfaa]' : 'text-white/68'}`}>
             <Icon aria-hidden="true" size={19} strokeWidth={1.8} />

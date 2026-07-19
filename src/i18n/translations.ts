@@ -2,6 +2,8 @@ import type { Locale } from '../domain/types'
 
 const en = {
   'nav.home': 'Home',
+  'nav.read': 'Read',
+  'nav.journal': 'Journal',
   'nav.library': 'Library',
   'nav.learn': 'Learn',
   'nav.settings': 'Settings',
@@ -98,6 +100,11 @@ const en = {
   'settings.eyebrow': 'Your device, your choices',
   'settings.title': 'Settings & local data',
   'settings.language': 'Language',
+  'settings.appearance': 'Atmosphere',
+  'settings.appearanceBody': 'Choose a visual world. Every theme follows your motion preference.',
+  'settings.theme.daylight': 'Daylight',
+  'settings.theme.night': 'Ink Night',
+  'settings.theme.bamboo': 'Bamboo Mist',
   'settings.sound': 'Coin sounds',
   'settings.soundBody': 'Optional feedback during a digital cast. Off by default.',
   'settings.music': 'Meditation soundscape',
@@ -175,6 +182,8 @@ type TranslationKey = keyof typeof en
 
 const bg: Record<TranslationKey, string> = {
   'nav.home': 'Начало',
+  'nav.read': 'Прочит',
+  'nav.journal': 'Дневник',
   'nav.library': 'Библиотека',
   'nav.learn': 'Научи',
   'nav.settings': 'Настройки',
@@ -271,6 +280,11 @@ const bg: Record<TranslationKey, string> = {
   'settings.eyebrow': 'Вашето устройство, вашият избор',
   'settings.title': 'Настройки и локални данни',
   'settings.language': 'Език',
+  'settings.appearance': 'Атмосфера',
+  'settings.appearanceBody': 'Изберете визуален свят. Всяка тема следва настройката за движение.',
+  'settings.theme.daylight': 'Дневна светлина',
+  'settings.theme.night': 'Мастилена нощ',
+  'settings.theme.bamboo': 'Бамбукова мъгла',
   'settings.sound': 'Звук на монетите',
   'settings.soundBody': 'Незадължителна обратна връзка при дигитално хвърляне. Изключено по подразбиране.',
   'settings.music': 'Фонова музика',
@@ -345,7 +359,7 @@ const bg: Record<TranslationKey, string> = {
 }
 
 const ru: Record<TranslationKey, string> = {
-  'nav.home': 'Главная', 'nav.library': 'Библиотека', 'nav.learn': 'Обучение', 'nav.settings': 'Настройки',
+  'nav.home': 'Главная', 'nav.read': 'Чтение', 'nav.journal': 'Дневник', 'nav.library': 'Библиотека', 'nav.learn': 'Обучение', 'nav.settings': 'Настройки',
   'brand.tagline': 'Тихая практика встречи с переменами', 'common.back': 'Назад', 'common.cancel': 'Отмена', 'common.close': 'Закрыть', 'common.continue': 'Продолжить', 'common.save': 'Сохранить', 'common.saved': 'Сохранено', 'common.skip': 'Перейти к основному содержанию', 'common.line': 'Линия', 'common.of': 'из', 'common.loading': 'Загрузка…',
   'home.eyebrow': 'Приватно · локально · без аккаунта', 'home.title': 'Встречайте перемены с более спокойным умом.', 'home.body': 'Задайте честный вопрос, точно постройте линии и используйте Ицзин как зеркало для размышления, а не как обещание будущего.', 'home.start': 'Начать чтение', 'home.guide': 'Как проходит чтение', 'home.privacy': 'Ваши вопросы и дневник остаются на этом устройстве.', 'home.promise': 'Получите символы точно. Найдите собственный смысл.', 'home.featuredTitle': 'Фу — Возвращение',
   'method.eyebrow': 'Начало консультации', 'method.title': 'Как вы хотите создать шесть линий?', 'method.body': 'Каждый метод создаёт одну и ту же прозрачную запись, снизу вверх.', 'method.question': 'Вопрос для размышления', 'method.optional': 'Необязательно и приватно', 'method.placeholder': 'Что было бы полезно понять об этой ситуации?', 'method.hint': 'Открытые вопросы оставляют больше места для понимания. Можно продолжить и без вопроса.', 'method.digital.title': 'Цифровые монеты', 'method.digital.body': 'Шесть осознанных бросков с безопасным случайным источником браузера.', 'method.physical.title': 'Настоящие монеты', 'method.physical.body': 'Бросьте три монеты и введите сумму: 6, 7, 8 или 9.', 'method.direct.title': 'У меня уже есть гексаграмма', 'method.direct.body': 'Выберите основную гексаграмму и отметьте изменяющиеся линии.',
@@ -353,6 +367,7 @@ const ru: Record<TranslationKey, string> = {
   'result.empty.title': 'Текущего чтения пока нет.', 'result.empty.body': 'Сначала создайте шесть линий, и чтение появится здесь.', 'result.whatAppeared': 'Что появилось', 'result.primary': 'Основная', 'result.resulting': 'Итоговая', 'result.noChange': 'Изменяющихся линий нет — основная гексаграмма остаётся в центре.', 'result.firstReflection': 'Первое направление для размышления', 'result.whenAppears': 'Когда появляется', 'result.movingLines': 'Ваши изменяющиеся линии', 'result.whatChanging': 'Что изменяется', 'result.questions': 'Вопросы для размышления', 'result.explore': 'Открыть полную учебную карточку', 'result.journal': 'Личный дневник', 'result.journalBody': 'Запишите, что пробуждают символы. Заметка остаётся на этом устройстве.', 'result.notePlaceholder': 'Что кажется важным, неожиданным или ещё не решённым?', 'result.saveNote': 'Сохранить размышление', 'result.newReading': 'Начать новое чтение', 'result.source': 'Источник и редакционная заметка', 'result.classical': 'Классический китайский источник', 'result.interpretation': 'Редакция Yi Path', 'result.disclaimer': 'Используйте чтение для размышления, а не как точное предсказание или профессиональный совет.',
   'library.eyebrow': 'Yi Canon · рабочая версия', 'library.title': '64 гексаграммы', 'library.body': 'Просматривайте полную трёхъязычную библиотеку. Структурные факты, классический текст и современное размышление остаются раздельными.', 'library.search': 'Поиск по номеру, имени или китайскому знаку', 'library.open': 'Открыть карточку',
   'learn.eyebrow': 'Путь новичка · около 90 секунд', 'learn.title': 'Читайте перемены, не торопя их.', 'learn.body': 'Чтение — структурированное размышление: шесть линий образуют основной образ, а изменяющиеся линии показывают, где ситуация движется.', 'learn.questions.title': 'Задайте открытый вопрос', 'learn.questions.body': '«Что было бы полезно понять?» обычно оставляет больше пространства, чем требование ответа «да» или «нет».', 'learn.coins.title': 'Три монеты создают одну линию', 'learn.coins.body': 'Орёл считается за 3, решка — за 2. Сумма создаёт линию инь или ян; 6 и 9 изменяются.', 'learn.lines.title': 'Стройте снизу вверх', 'learn.lines.body': 'Линия 1 находится внизу. После шести бросков изменённые линии создают вторую гексаграмму — направление перемен, а не гарантированное будущее.', 'learn.begin': 'Начать с этим настроем',
+  'settings.appearance': 'Атмосфера', 'settings.appearanceBody': 'Выберите визуальный мир. Каждая тема учитывает настройку движения.', 'settings.theme.daylight': 'Дневной свет', 'settings.theme.night': 'Чернильная ночь', 'settings.theme.bamboo': 'Бамбуковый туман',
   'settings.eyebrow': 'Ваше устройство, ваш выбор', 'settings.title': 'Настройки и локальные данные', 'settings.language': 'Язык', 'settings.sound': 'Звуки монет', 'settings.soundBody': 'Необязательная обратная связь при цифровом броске. По умолчанию выключено.', 'settings.music': 'Фоновая музыка', 'settings.musicBody': 'Тихий звуковой фон. По умолчанию выключен.', 'settings.motion': 'Уменьшить движение', 'settings.motionBody': 'Сократить или убрать необязательную анимацию.', 'settings.data': 'Ваши локальные данные', 'settings.dataBody': 'Чтения хранятся в IndexedDB этого браузера. Сделайте копию перед сменой браузера или устройства.', 'settings.export': 'Экспортировать JSON-копию', 'settings.import': 'Импортировать JSON-копию', 'settings.importMode': 'Режим импорта', 'settings.merge': 'Объединить с текущими чтениями', 'settings.replace': 'Заменить текущие чтения', 'settings.importSuccess': 'Копия успешно импортирована.', 'settings.importError': 'Этот файл не является действительной копией Yi Path.', 'settings.clear': 'Удалить все локальные данные', 'settings.clearTitle': 'Удалить все локальные чтения?', 'settings.clearBody': 'Это удалит дневник и чтения из браузера. Отменить действие можно только при наличии экспортированной копии.', 'settings.clearConfirm': 'Да, удалить всё', 'settings.cleared': 'Все локальные чтения удалены.',
   'detail.sourceNote': 'Классический источник и редакционное толкование показаны отдельными слоями.', 'detail.status': 'Статус', 'detail.sourceLabel': 'Источник', 'detail.reference': 'Ссылка на текст',
   'settings.ambient': 'Звуковой фон для медитации',

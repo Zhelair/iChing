@@ -1,6 +1,7 @@
 import { ArrowRight, Coins, Layers3, MessageCircleQuestion, MoveRight, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { PageIntro } from '../components/PageIntro'
+import { HistoryJourney } from '../components/HistoryJourney'
 import type { LineValue, Polarity } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 import type { TranslationKey } from '../i18n/translations'
@@ -56,7 +57,9 @@ export function LearnPage() {
         ))}
       </div>
 
-      <section className="surface change-explainer mt-5 overflow-hidden p-6 sm:p-9" aria-labelledby="line-values-title">
+      <HistoryJourney />
+
+      <section id="line-lab" className="surface change-explainer mt-16 scroll-mt-28 overflow-hidden p-6 sm:p-9" aria-labelledby="line-values-title">
         <div className="grid gap-7 lg:grid-cols-[.78fr_1.22fr] lg:items-end">
           <div>
             <p className="eyebrow">{t('learn.change.eyebrow')}</p>

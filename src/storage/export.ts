@@ -1,5 +1,5 @@
 import { CONTENT_VERSION } from '../data/hexagrams'
-import type { Preferences, Reading, YiPathExport } from '../domain/types'
+import type { Preferences, Reading, Theme, YiPathExport } from '../domain/types'
 import { getAllReadings } from './db'
 
 export async function createExport(preferences: Preferences): Promise<YiPathExport> {
@@ -32,6 +32,7 @@ function isReading(value: unknown): value is Reading {
 export function parseExport(value: unknown): YiPathExport {
   if (!value || typeof value !== 'object') throw new Error('Backup must be an object.')
   const backup = value as Partial<YiPathExport>
+  const validTheme = (theme: unknown): theme is Theme => ['daylight', 'ink-night', 'bamboo-mist'].includes(theme as Theme)
   if (
     backup.app !== 'yi-path' ||
     backup.schemaVersion !== 1 ||
@@ -47,7 +48,13 @@ export function parseExport(value: unknown): YiPathExport {
   ) {
     throw new Error('Invalid Yi Path backup.')
   }
-  return backup as YiPathExport
+  return {
+    ...(backup as YiPathExport),
+    preferences: {
+      ...(backup.preferences as Preferences),
+      theme: validTheme(backup.preferences.theme) ? backup.preferences.theme : 'daylight',
+    },
+  }
 }
 
 export function downloadExport(backup: YiPathExport) {

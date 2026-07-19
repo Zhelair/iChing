@@ -4,6 +4,7 @@ export type CoinSide = 'heads' | 'tails'
 export type LineValue = 6 | 7 | 8 | 9
 export type Polarity = 'yin' | 'yang'
 export type ReadingMethod = 'digital' | 'physical' | 'direct'
+export type Theme = 'daylight' | 'ink-night' | 'bamboo-mist'
 
 export type CastLine = {
   position: 1 | 2 | 3 | 4 | 5 | 6
@@ -32,6 +33,7 @@ export type Reading = {
 
 export type Preferences = {
   locale: Locale
+  theme: Theme
   sound: boolean
   music: boolean
   reduceMotion: boolean

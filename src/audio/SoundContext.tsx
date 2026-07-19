@@ -11,6 +11,7 @@ import {
 
 type SoundContextValue = {
   playCoinToss: (coins: readonly CoinSide[]) => void
+  playHistoryCue: (kind: 'bone' | 'stalk' | 'brush' | 'coin') => void
   previewCoinSound: () => Promise<boolean>
   setAmbientPlayback: (enabled: boolean) => Promise<boolean>
 }
@@ -208,9 +209,28 @@ export function SoundProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<SoundContextValue>(() => ({
     playCoinToss: (coins) => { void renderCoinToss(coins) },
+    playHistoryCue: (kind) => {
+      if (!soundEnabledRef.current) return
+      void ensureContext().then((context) => {
+        if (!context) return
+        const now = context.currentTime
+        const oscillator = context.createOscillator()
+        const gain = context.createGain()
+        oscillator.type = kind === 'bone' ? 'triangle' : kind === 'coin' ? 'sine' : 'sine'
+        const frequencies = { bone: 170, stalk: 420, brush: 280, coin: 1180 }
+        oscillator.frequency.setValueAtTime(frequencies[kind], now)
+        oscillator.frequency.exponentialRampToValueAtTime(frequencies[kind] * (kind === 'bone' ? .65 : 1.25), now + .32)
+        gain.gain.setValueAtTime(.0001, now)
+        gain.gain.exponentialRampToValueAtTime(kind === 'coin' ? .045 : .025, now + .02)
+        gain.gain.exponentialRampToValueAtTime(.0001, now + .42)
+        oscillator.connect(gain).connect(context.destination)
+        oscillator.onended = () => { oscillator.disconnect(); gain.disconnect() }
+        oscillator.start(now); oscillator.stop(now + .44)
+      })
+    },
     previewCoinSound: () => renderCoinToss(['heads', 'tails', 'heads'], true),
     setAmbientPlayback,
-  }), [renderCoinToss, setAmbientPlayback])
+  }), [ensureContext, renderCoinToss, setAmbientPlayback])
 
   return <SoundContext.Provider value={value}>{children}</SoundContext.Provider>
 }
