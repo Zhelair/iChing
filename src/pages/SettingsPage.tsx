@@ -1,11 +1,11 @@
-import { Download, Trash2, Upload, Volume2 } from 'lucide-react'
+import { Download, FileDown, HardDrive, ShieldCheck, Trash2, Upload, Volume2 } from 'lucide-react'
 import { useRef, useState, type ChangeEvent } from 'react'
 import { useSound } from '../audio/SoundContext'
 import { PageIntro } from '../components/PageIntro'
 import type { AmbientVolume, Locale, Theme } from '../domain/types'
 import { localeNames, useI18n } from '../i18n/I18nContext'
 import { clearReadings, importReadings } from '../storage/db'
-import { createExport, downloadExport, parseExport } from '../storage/export'
+import { createExport, downloadExport, MAX_EXPORT_FILE_BYTES, parseExport } from '../storage/export'
 
 function Toggle({ checked, onChange, label, body }: { checked: boolean; onChange: (value: boolean) => void; label: string; body: string }) {
   return (
@@ -19,15 +19,45 @@ function Toggle({ checked, onChange, label, body }: { checked: boolean; onChange
   )
 }
 
-function AmbientVolumeControl({ value, onChange, label, body, levels }: { value: AmbientVolume; onChange: (value: AmbientVolume) => void; label: string; body: string; levels: [string, string, string] }) {
+function AmbientVolumeControl({ value, onChange, label, levels }: { value: AmbientVolume; onChange: (value: AmbientVolume) => void; label: string; levels: [string, string, string] }) {
   const index = value === 0 ? 0 : value === 0.5 ? 1 : 2
-  return <div className="ambient-volume border-b border-[var(--line)] py-5">
-    <div className="flex items-start gap-3"><Volume2 className="mt-1 shrink-0 text-[var(--jade)]" size={19} aria-hidden="true" /><span><label htmlFor="ambient-volume" className="block font-bold">{label}</label><span className="mt-1 block text-xs leading-5 text-[var(--ink-soft)]">{body}</span></span></div>
-    <div className="ambient-volume__control mt-5">
+  return <div className="ambient-volume border-b border-[var(--line)] py-4">
+    <div className="flex items-center gap-3"><Volume2 className="shrink-0 text-[var(--jade)]" size={19} aria-hidden="true" /><label htmlFor="ambient-volume" className="block font-bold">{label}</label></div>
+    <div className="ambient-volume__control mt-3">
       <input id="ambient-volume" type="range" min="0" max="2" step="1" value={index} onChange={(event) => onChange(([0, 0.5, 1] as AmbientVolume[])[Number(event.target.value)])} aria-valuetext={levels[index]} />
       <div className="ambient-volume__labels" aria-hidden="true">{levels.map((level, levelIndex) => <span key={level} className={levelIndex === index ? 'is-active' : ''}>{level}</span>)}</div>
     </div>
   </div>
+}
+
+const privacyCopy: Record<Locale, { eyebrow: string; title: string; intro: string; local: string; access: string; exports: string; largeFile: string }> = {
+  en: {
+    eyebrow: 'Local-first by design',
+    title: 'Privacy & security',
+    intro: 'Yi Path has no accounts, analytics, or cloud sync. Readings and journal notes remain in this browser.',
+    local: 'No API keys are used, and your questions or notes are not sent to a server.',
+    access: 'Other websites cannot read this data, but someone with access to this device or a powerful browser extension may be able to.',
+    exports: 'JSON, PNG, and PDF exports are not encrypted. Keep them as private documents; clearing the app does not delete copies you exported.',
+    largeFile: 'That backup is larger than the 5 MB import limit.',
+  },
+  bg: {
+    eyebrow: 'Локално по замисъл',
+    title: 'Поверителност и сигурност',
+    intro: 'Yi Path няма акаунти, анализи или облачно синхронизиране. Прочитите и бележките остават в този браузър.',
+    local: 'Не се използват API ключове и въпросите или бележките ви не се изпращат към сървър.',
+    access: 'Други сайтове не могат да четат тези данни, но човек с достъп до устройството или разширение с широки права в браузъра би могъл.',
+    exports: 'JSON, PNG и PDF файловете не са криптирани. Пазете ги като лични документи; изчистването на приложението не изтрива вече експортираните копия.',
+    largeFile: 'Този архив е по-голям от ограничението за импорт от 5 MB.',
+  },
+  ru: {
+    eyebrow: 'Локально по замыслу',
+    title: 'Конфиденциальность и безопасность',
+    intro: 'В Yi Path нет аккаунтов, аналитики или облачной синхронизации. Чтения и заметки остаются в этом браузере.',
+    local: 'API-ключи не используются, а ваши вопросы и заметки не отправляются на сервер.',
+    access: 'Другие сайты не могут прочитать эти данные, но доступ возможен для человека с доступом к устройству или расширения браузера с широкими правами.',
+    exports: 'Экспорты JSON, PNG и PDF не зашифрованы. Храните их как личные документы; очистка приложения не удаляет уже экспортированные копии.',
+    largeFile: 'Размер этой резервной копии превышает лимит импорта 5 МБ.',
+  },
 }
 
 export function SettingsPage() {
@@ -51,6 +81,11 @@ export function SettingsPage() {
   async function importData(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0]
     if (!file) return
+    if (file.size > MAX_EXPORT_FILE_BYTES) {
+      setMessage(privacyCopy[preferences.locale].largeFile)
+      event.target.value = ''
+      return
+    }
     try {
       const backup = parseExport(JSON.parse(await file.text()))
       await importReadings(backup, mode)
@@ -113,9 +148,22 @@ export function SettingsPage() {
             const nextVolume = available ? volume : 0
             setPreferences({ ...preferences, ambientVolume: nextVolume, music: nextVolume > 0 })
             setAudioMessage(volume > 0 && !available ? t('settings.audioUnavailable') : '')
-          }} label={t('settings.ambient')} body={t('settings.ambientBody')} levels={preferences.locale === 'ru' ? ['Выкл.', '50%', '100%'] : preferences.locale === 'bg' ? ['Изкл.', '50%', '100%'] : ['Off', '50%', '100%']} />
+          }} label={t('settings.ambient')} levels={preferences.locale === 'ru' ? ['Выкл.', '50%', '100%'] : preferences.locale === 'bg' ? ['Изкл.', '50%', '100%'] : ['Off', '50%', '100%']} />
           <Toggle checked={preferences.reduceMotion} onChange={(value) => updatePreference('reduceMotion', value)} label={t('settings.motion')} body={t('settings.motionBody')} />
           {audioMessage ? <p className="mb-4 rounded-2xl bg-[var(--jade-light)] px-4 py-3 text-sm font-semibold text-[var(--jade)]" role="status">{audioMessage}</p> : null}
+        </section>
+
+        <section className="surface mt-5 p-5 sm:p-7" aria-labelledby="privacy-security-title">
+          <div className="flex items-start gap-4">
+            <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-[var(--jade-light)] text-[var(--jade)]"><ShieldCheck size={22} aria-hidden="true" /></span>
+            <div><p className="eyebrow">{privacyCopy[preferences.locale].eyebrow}</p><h2 id="privacy-security-title" className="mt-2 text-2xl">{privacyCopy[preferences.locale].title}</h2></div>
+          </div>
+          <p className="mt-4 text-sm leading-6 text-[var(--ink-soft)]">{privacyCopy[preferences.locale].intro}</p>
+          <div className="mt-5 grid gap-3">
+            <p className="flex gap-3 rounded-2xl bg-[var(--jade-light)]/60 p-4 text-sm leading-6"><HardDrive className="mt-0.5 shrink-0 text-[var(--jade)]" size={18} aria-hidden="true" /><span>{privacyCopy[preferences.locale].local}</span></p>
+            <p className="flex gap-3 px-4 text-sm leading-6 text-[var(--ink-soft)]"><ShieldCheck className="mt-0.5 shrink-0 text-[var(--jade)]" size={18} aria-hidden="true" /><span>{privacyCopy[preferences.locale].access}</span></p>
+            <p className="flex gap-3 rounded-2xl border border-[var(--brass)]/25 bg-[var(--brass)]/8 p-4 text-sm leading-6 text-[var(--ink-soft)]"><FileDown className="mt-0.5 shrink-0 text-[var(--brass)]" size={18} aria-hidden="true" /><span>{privacyCopy[preferences.locale].exports}</span></p>
+          </div>
         </section>
 
         <section className="surface mt-5 p-5 sm:p-7">

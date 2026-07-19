@@ -1,4 +1,4 @@
-import { RotateCw, Volume2 } from 'lucide-react'
+import { Volume2 } from 'lucide-react'
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from 'react'
 import { useSound } from '../audio/SoundContext'
 import { useI18n } from '../i18n/I18nContext'
@@ -102,7 +102,7 @@ export function HistoryJourney() {
     <div className="history-layout mt-9"><aside className="hidden lg:block"><div className="surface sticky top-28 p-5"><p className="eyebrow mb-3">{c.contents}</p>{links}<p className="mt-5 flex gap-2 text-xs leading-5 text-[var(--ink-soft)]"><Volume2 size={15} className="shrink-0" />{c.sound}</p></div></aside>
       <div className="history-chapters">{c.chapters.map((chapter, index) => <article key={chapter.id} id={chapter.id} className="surface history-chapter scroll-mt-28">
         <button type="button" className="history-visual" onClick={() => play(chapter)} onPointerMove={moveIllustration} onPointerLeave={resetIllustration} aria-label={`${c.replay}: ${chapter.title}`} title={c.replay}>
-          <span className="history-visual__motion"><span key={replays[chapter.id] ?? 0} className="history-visual__animation"><Illustration scene={chapter.scene} /></span></span><span className="history-replay"><RotateCw size={15} />{c.replay}</span>
+          <span className="history-visual__motion"><span key={replays[chapter.id] ?? 0} className="history-visual__animation"><Illustration scene={chapter.scene} /></span></span>
         </button>
         <div className="history-copy"><p className="eyebrow">{String(index + 1).padStart(2, '0')} · {chapter.era}</p><h3>{chapter.title}</h3><p>{chapter.body}</p>{chapter.note ? <aside>{chapter.note}</aside> : null}
           {chapter.id === 'oracle-bones' ? <a href="https://smarthistory.org/oracle-bone/" target="_blank" rel="noreferrer">Smarthistory / Smithsonian introduction ↗</a> : null}
