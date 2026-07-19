@@ -1,5 +1,5 @@
 import { CONTENT_VERSION } from '../data/hexagrams'
-import type { Preferences, Reading, Theme, YiPathExport } from '../domain/types'
+import type { AmbientVolume, Preferences, Reading, Theme, YiPathExport } from '../domain/types'
 import { getAllReadings } from './db'
 
 export async function createExport(preferences: Preferences): Promise<YiPathExport> {
@@ -33,6 +33,7 @@ export function parseExport(value: unknown): YiPathExport {
   if (!value || typeof value !== 'object') throw new Error('Backup must be an object.')
   const backup = value as Partial<YiPathExport>
   const validTheme = (theme: unknown): theme is Theme => ['daylight', 'ink-night', 'bamboo-mist'].includes(theme as Theme)
+  const validAmbientVolume = (volume: unknown): volume is AmbientVolume => volume === 0 || volume === 0.5 || volume === 1
   if (
     backup.app !== 'yi-path' ||
     backup.schemaVersion !== 1 ||
@@ -53,6 +54,7 @@ export function parseExport(value: unknown): YiPathExport {
     preferences: {
       ...(backup.preferences as Preferences),
       theme: validTheme(backup.preferences.theme) ? backup.preferences.theme : 'daylight',
+      ambientVolume: validAmbientVolume(backup.preferences.ambientVolume) ? backup.preferences.ambientVolume : backup.preferences.music ? 0.5 : 0,
     },
   }
 }

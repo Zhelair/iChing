@@ -1,5 +1,5 @@
 import { RotateCw, Volume2 } from 'lucide-react'
-import { useState, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from 'react'
 import { useSound } from '../audio/SoundContext'
 import { useI18n } from '../i18n/I18nContext'
 
@@ -16,7 +16,7 @@ const content: Record<'en' | 'bg' | 'ru', { eyebrow: string; title: string; body
       { id: 'line-values-story', era: 'The mathematics of a line', title: 'Four values, two kinds of change.', body: 'Six is old yin and becomes yang; nine is old yang and becomes yin. Seven and eight remain stable. Try the interactive line laboratory just below.', scene: 'numbers' },
       { id: 'ten-wings', era: 'Warring States to Han thought', title: 'Commentary opened a philosophical sky.', body: 'The “Ten Wings” connected the classic with cosmology, ethics, and interpretation. Tradition attributes them to Confucius; modern scholarship does not treat that authorship as settled.', scene: 'wings' },
       { id: 'coins', era: 'A later, simpler practice', title: 'Coins made consultation more portable.', body: 'The three-coin method became a practical alternative to yarrow. It preserves 6, 7, 8, and 9, though its probabilities are not identical to the traditional stalk method.', scene: 'coins' },
-      { id: 'yi-path', era: 'Yi Path today', title: 'Faithful structure, modest claims.', body: 'Yi Path builds from the bottom line upward, shows changing lines transparently, separates source from editorial reflection, and treats the resulting hexagram as a direction—not a promised future.', note: 'A slow “Try the yarrow ritual” casting mode is planned as a later workshop.', scene: 'compass' },
+      { id: 'yi-path', era: 'Yi Path today', title: 'Faithful structure, modest claims.', body: 'Yi Path builds from the bottom line upward, shows changing lines transparently, separates source from editorial reflection, and treats the resulting hexagram as a direction—not a promised future.', note: 'The slow yarrow-stalk workshop is now available from Read.', scene: 'compass' },
     ],
   },
   bg: {
@@ -28,7 +28,7 @@ const content: Record<'en' | 'bg' | 'ru', { eyebrow: string; title: string; body
       { id: 'line-values-story', era: 'Математиката на линията', title: 'Четири стойности, два вида промяна.', body: 'Шест е стар ин и става ян; девет е стар ян и става ин. Седем и осем остават стабилни. Опитайте лабораторията по-долу.', scene: 'numbers' },
       { id: 'ten-wings', era: 'От Воюващите царства до Хан', title: 'Коментарът отваря философско небе.', body: '„Десетте крила“ свързват класиката с космология, етика и тълкуване. Традицията ги приписва на Конфуций; съвременната наука не приема авторството за установено.', scene: 'wings' },
       { id: 'coins', era: 'По-късна и по-проста практика', title: 'Монетите правят допитването преносимо.', body: 'Методът с три монети става практична алтернатива на равнеца. Той запазва 6, 7, 8 и 9, но вероятностите не са напълно еднакви.', scene: 'coins' },
-      { id: 'yi-path', era: 'Yi Path днес', title: 'Вярна структура, скромни твърдения.', body: 'Yi Path строи отдолу нагоре, показва променящите се линии, отделя източника от редакционния размисъл и приема втората хексаграма като посока, не обещано бъдеще.', note: 'Бавният режим „Опитайте ритуала с равнец“ е планиран като бъдеща работилница.', scene: 'compass' },
+      { id: 'yi-path', era: 'Yi Path днес', title: 'Вярна структура, скромни твърдения.', body: 'Yi Path строи отдолу нагоре, показва променящите се линии, отделя източника от редакционния размисъл и приема втората хексаграма като посока, не обещано бъдеще.', note: 'Бавната работилница с бял равнец вече е достъпна от „Прочит“.', scene: 'compass' },
     ],
   },
   ru: {
@@ -40,7 +40,7 @@ const content: Record<'en' | 'bg' | 'ru', { eyebrow: string; title: string; body
       { id: 'line-values-story', era: 'Математика линии', title: 'Четыре значения, два вида перемен.', body: 'Шесть — старый инь и становится ян; девять — старый ян и становится инь. Семь и восемь устойчивы. Попробуйте лабораторию ниже.', scene: 'numbers' },
       { id: 'ten-wings', era: 'От Сражающихся царств до Хань', title: 'Комментарий открыл философское небо.', body: '«Десять крыльев» связали классику с космологией, этикой и толкованием. Традиция приписывает их Конфуцию; современная наука не считает это авторство установленным.', scene: 'wings' },
       { id: 'coins', era: 'Более поздняя простая практика', title: 'Монеты сделали обращение доступнее.', body: 'Метод трёх монет стал практичной альтернативой тысячелистнику. Он сохраняет 6, 7, 8 и 9, хотя вероятности двух методов не полностью совпадают.', scene: 'coins' },
-      { id: 'yi-path', era: 'Yi Path сегодня', title: 'Точная структура, скромные утверждения.', body: 'Yi Path строит линии снизу вверх, прозрачно показывает изменения, отделяет источник от редакционного размышления и представляет вторую гексаграмму как направление, а не обещанное будущее.', note: 'Медленный режим «Попробовать ритуал тысячелистника» запланирован как будущая мастерская.', scene: 'compass' },
+      { id: 'yi-path', era: 'Yi Path сегодня', title: 'Точная структура, скромные утверждения.', body: 'Yi Path строит линии снизу вверх, прозрачно показывает изменения, отделяет источник от редакционного размышления и представляет вторую гексаграмму как направление, а не обещанное будущее.', note: 'Медленная мастерская тысячелистника теперь доступна в разделе «Чтение».', scene: 'compass' },
     ],
   },
 }
@@ -69,17 +69,40 @@ export function HistoryJourney() {
   const { preferences } = useI18n()
   const { playHistoryCue } = useSound()
   const [replays, setReplays] = useState<Record<string, number>>({})
+  const rootRef = useRef<HTMLElement>(null)
   const c = content[preferences.locale]
   const play = (chapter: Chapter) => { setReplays((values) => ({ ...values, [chapter.id]: (values[chapter.id] ?? 0) + 1 })); playHistoryCue(cueFor(chapter.scene)) }
 
+  useEffect(() => {
+    const chapters = rootRef.current?.querySelectorAll<HTMLElement>('.history-chapter')
+    if (!chapters) return
+    if (preferences.reduceMotion || !('IntersectionObserver' in window)) {
+      chapters.forEach((chapter) => chapter.classList.add('is-in-view'))
+      return
+    }
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => entry.target.classList.toggle('is-in-view', entry.isIntersecting)), { threshold: .28, rootMargin: '-8% 0px -8%' })
+    chapters.forEach((chapter) => observer.observe(chapter))
+    return () => observer.disconnect()
+  }, [preferences.reduceMotion])
+
+  function moveIllustration(event: ReactPointerEvent<HTMLButtonElement>) {
+    if (preferences.reduceMotion || event.pointerType === 'touch') return
+    const bounds = event.currentTarget.getBoundingClientRect()
+    event.currentTarget.style.setProperty('--history-x', `${((event.clientX - bounds.left) / bounds.width - .5) * 12}px`)
+    event.currentTarget.style.setProperty('--history-y', `${((event.clientY - bounds.top) / bounds.height - .5) * 9}px`)
+  }
+  function resetIllustration(event: ReactPointerEvent<HTMLButtonElement>) {
+    event.currentTarget.style.setProperty('--history-x', '0px'); event.currentTarget.style.setProperty('--history-y', '0px')
+  }
+
   const links = <nav className="history-toc" aria-label={c.contents}>{c.chapters.map((chapter, index) => <a key={chapter.id} href={`#${chapter.id}`}><span>{String(index + 1).padStart(2, '0')}</span>{chapter.title}</a>)}</nav>
-  return <section className="history-journey mt-16" aria-labelledby="history-title">
+  return <section ref={rootRef} className="history-journey mt-16" aria-labelledby="history-title">
     <div className="max-w-3xl"><p className="eyebrow">{c.eyebrow}</p><h2 id="history-title" className="mt-4 text-4xl sm:text-5xl">{c.title}</h2><p className="mt-5 text-lg leading-8 text-[var(--ink-soft)]">{c.body}</p></div>
     <details className="surface history-mobile-toc mt-7 p-4 lg:hidden"><summary>{c.contents}</summary>{links}</details>
     <div className="history-layout mt-9"><aside className="hidden lg:block"><div className="surface sticky top-28 p-5"><p className="eyebrow mb-3">{c.contents}</p>{links}<p className="mt-5 flex gap-2 text-xs leading-5 text-[var(--ink-soft)]"><Volume2 size={15} className="shrink-0" />{c.sound}</p></div></aside>
       <div className="history-chapters">{c.chapters.map((chapter, index) => <article key={chapter.id} id={chapter.id} className="surface history-chapter scroll-mt-28">
-        <button type="button" className="history-visual" onClick={() => play(chapter)} aria-label={`${c.replay}: ${chapter.title}`} title={c.replay}>
-          <span key={replays[chapter.id] ?? 0} className="history-visual__animation"><Illustration scene={chapter.scene} /></span><span className="history-replay"><RotateCw size={15} />{c.replay}</span>
+        <button type="button" className="history-visual" onClick={() => play(chapter)} onPointerMove={moveIllustration} onPointerLeave={resetIllustration} aria-label={`${c.replay}: ${chapter.title}`} title={c.replay}>
+          <span className="history-visual__motion"><span key={replays[chapter.id] ?? 0} className="history-visual__animation"><Illustration scene={chapter.scene} /></span></span><span className="history-replay"><RotateCw size={15} />{c.replay}</span>
         </button>
         <div className="history-copy"><p className="eyebrow">{String(index + 1).padStart(2, '0')} · {chapter.era}</p><h3>{chapter.title}</h3><p>{chapter.body}</p>{chapter.note ? <aside>{chapter.note}</aside> : null}
           {chapter.id === 'oracle-bones' ? <a href="https://smarthistory.org/oracle-bone/" target="_blank" rel="noreferrer">Smarthistory / Smithsonian introduction ↗</a> : null}

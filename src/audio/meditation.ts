@@ -1,14 +1,18 @@
-const PAD_TARGET = 0.14
-
 export type MeditationGraph = {
   master: GainNode
   input: GainNode
   nodes: Set<AudioNode>
   sources: Set<AudioScheduledSourceNode>
   bowlTimer: number | null
+  motifTimer: number | null
   suspendTimer: number | null
   cleanupTimer: number | null
   disposed: boolean
+  volume: 0.5 | 1
+}
+
+function volumeTarget(volume: 0.5 | 1) {
+  return volume === 1 ? .072 : .038
 }
 
 function holdAtCurrentValue(parameter: AudioParam, time: number) {
@@ -56,10 +60,10 @@ function playBowl(context: AudioContext, graph: MeditationGraph) {
   const now = context.currentTime + .02
   const base = Math.random() > .48 ? 220 : 293.66
   const ratios = [1, 2.01, 2.98, 4.16, 5.43]
-  const levels = [.08, .035, .018, .009, .005]
+  const levels = [.052, .021, .011, .005, .0025]
   const decays = [7, 5.5, 4.2, 3, 2.2]
   const bowlBus = context.createGain()
-  bowlBus.gain.value = .48
+  bowlBus.gain.value = .24
   bowlBus.connect(graph.input)
   graph.nodes.add(bowlBus)
   let remaining = ratios.length
@@ -95,7 +99,7 @@ function playBowl(context: AudioContext, graph: MeditationGraph) {
 function scheduleBowl(context: AudioContext, graph: MeditationGraph, first = false) {
   clearBowlTimer(graph)
   if (graph.disposed) return
-  const delay = first ? 6500 + Math.random() * 3000 : 20000 + Math.random() * 16000
+  const delay = first ? 9000 + Math.random() * 4000 : 26000 + Math.random() * 18000
   graph.bowlTimer = window.setTimeout(() => {
     graph.bowlTimer = null
     if (graph.disposed || context.state !== 'running') return
@@ -104,7 +108,66 @@ function scheduleBowl(context: AudioContext, graph: MeditationGraph, first = fal
   }, delay)
 }
 
-export function createMeditationGraph(context: AudioContext): MeditationGraph {
+function clearMotifTimer(graph: MeditationGraph) {
+  if (graph.motifTimer !== null) window.clearTimeout(graph.motifTimer)
+  graph.motifTimer = null
+}
+
+function playPentatonicMotif(context: AudioContext, graph: MeditationGraph) {
+  if (graph.disposed || context.state !== 'running') return
+  const scale = [196, 220, 261.63, 293.66, 329.63]
+  const notes = 2 + Math.floor(Math.random() * 3)
+  const start = context.currentTime + .03
+  for (let index = 0; index < notes; index += 1) {
+    const oscillator = context.createOscillator()
+    const overtone = context.createOscillator()
+    const gain = context.createGain()
+    const filter = context.createBiquadFilter()
+    const frequency = scale[Math.floor(Math.random() * scale.length)] / (Math.random() > .82 ? 2 : 1)
+    const at = start + index * (.48 + Math.random() * .24)
+    oscillator.type = 'triangle'
+    overtone.type = 'sine'
+    oscillator.frequency.value = frequency
+    overtone.frequency.value = frequency * 2.01
+    filter.type = 'lowpass'
+    filter.frequency.setValueAtTime(1800, at)
+    filter.frequency.exponentialRampToValueAtTime(520, at + 1.6)
+    gain.gain.setValueAtTime(.0001, at)
+    gain.gain.exponentialRampToValueAtTime(.018, at + .012)
+    gain.gain.exponentialRampToValueAtTime(.0001, at + 1.85)
+    oscillator.connect(gain)
+    overtone.connect(gain)
+    gain.connect(filter).connect(graph.input)
+    graph.sources.add(oscillator); graph.sources.add(overtone)
+    graph.nodes.add(gain); graph.nodes.add(filter)
+    let remaining = 2
+    const remove = () => {
+      remaining -= 1
+      if (remaining) return
+      graph.sources.delete(oscillator); graph.sources.delete(overtone)
+      graph.nodes.delete(gain); graph.nodes.delete(filter)
+      oscillator.disconnect(); overtone.disconnect(); gain.disconnect(); filter.disconnect()
+    }
+    oscillator.onended = remove
+    overtone.onended = remove
+    oscillator.start(at); overtone.start(at)
+    oscillator.stop(at + 1.9); overtone.stop(at + 1.9)
+  }
+}
+
+function scheduleMotif(context: AudioContext, graph: MeditationGraph, first = false) {
+  clearMotifTimer(graph)
+  if (graph.disposed) return
+  const delay = first ? 2200 : 6200 + Math.random() * 4200
+  graph.motifTimer = window.setTimeout(() => {
+    graph.motifTimer = null
+    if (graph.disposed || context.state !== 'running') return
+    playPentatonicMotif(context, graph)
+    scheduleMotif(context, graph)
+  }, delay)
+}
+
+export function createMeditationGraph(context: AudioContext, volume: 0.5 | 1 = 0.5): MeditationGraph {
   const master = context.createGain()
   const compressor = context.createDynamicsCompressor()
   const input = context.createGain()
@@ -119,17 +182,17 @@ export function createMeditationGraph(context: AudioContext): MeditationGraph {
   const filterDepth = context.createGain()
 
   master.gain.value = .0001
-  compressor.threshold.value = -22
-  compressor.knee.value = 12
-  compressor.ratio.value = 3
-  compressor.attack.value = .02
-  compressor.release.value = .35
+  compressor.threshold.value = -30
+  compressor.knee.value = 6
+  compressor.ratio.value = 10
+  compressor.attack.value = .006
+  compressor.release.value = .28
   filter.type = 'lowpass'
   filter.frequency.value = 920
   filter.Q.value = .35
-  padMix.gain.value = .9
-  dry.gain.value = .9
-  wet.gain.value = .1
+  padMix.gain.value = .62
+  dry.gain.value = .82
+  wet.gain.value = .12
   room.buffer = createRoomImpulse(context)
 
   input.connect(filter)
@@ -139,7 +202,7 @@ export function createMeditationGraph(context: AudioContext): MeditationGraph {
 
   amplitudeLfo.type = 'sine'
   amplitudeLfo.frequency.value = .027
-  amplitudeDepth.gain.value = .036
+  amplitudeDepth.gain.value = .018
   amplitudeLfo.connect(amplitudeDepth).connect(padMix.gain)
   filterLfo.type = 'sine'
   filterLfo.frequency.value = .019
@@ -152,10 +215,9 @@ export function createMeditationGraph(context: AudioContext): MeditationGraph {
   ])
   const sources = new Set<AudioScheduledSourceNode>([amplitudeLfo, filterLfo])
   const voices = [
-    { type: 'triangle' as OscillatorType, frequency: 146.83, detune: -2, gain: .08, pan: -.18 },
-    { type: 'triangle' as OscillatorType, frequency: 146.83, detune: 2, gain: .06, pan: .18 },
-    { type: 'sine' as OscillatorType, frequency: 220, detune: 1, gain: .045, pan: .08 },
-    { type: 'sine' as OscillatorType, frequency: 293.66, detune: -1, gain: .02, pan: -.06 },
+    { type: 'triangle' as OscillatorType, frequency: 146.83, detune: -2, gain: .025, pan: -.18 },
+    { type: 'triangle' as OscillatorType, frequency: 146.83, detune: 2, gain: .019, pan: .18 },
+    { type: 'sine' as OscillatorType, frequency: 220, detune: 1, gain: .014, pan: .08 },
   ]
 
   voices.forEach((voice) => {
@@ -180,20 +242,30 @@ export function createMeditationGraph(context: AudioContext): MeditationGraph {
     nodes,
     sources,
     bowlTimer: null,
+    motifTimer: null,
     suspendTimer: null,
     cleanupTimer: null,
     disposed: false,
+    volume,
   }
 
   sources.forEach((source) => source.start())
-  fadeMaster(graph, context, PAD_TARGET, 3.2)
+  fadeMaster(graph, context, volumeTarget(volume), 3.2)
   scheduleBowl(context, graph, true)
+  scheduleMotif(context, graph, true)
   return graph
+}
+
+export function setMeditationVolume(context: AudioContext, graph: MeditationGraph, volume: 0.5 | 1) {
+  if (graph.disposed) return
+  graph.volume = volume
+  fadeMaster(graph, context, volumeTarget(volume), .5)
 }
 
 export function pauseMeditation(context: AudioContext, graph: MeditationGraph) {
   if (graph.disposed) return
   clearBowlTimer(graph)
+  clearMotifTimer(graph)
   if (graph.suspendTimer !== null) window.clearTimeout(graph.suspendTimer)
   fadeMaster(graph, context, .0001, .2)
   graph.suspendTimer = window.setTimeout(() => {
@@ -210,8 +282,9 @@ export async function resumeMeditation(context: AudioContext, graph: MeditationG
   graph.suspendTimer = null
   if (context.state !== 'running') await context.resume()
   if (graph.disposed) return false
-  fadeMaster(graph, context, PAD_TARGET, 1.1)
+  fadeMaster(graph, context, volumeTarget(graph.volume), 1.1)
   scheduleBowl(context, graph, true)
+  scheduleMotif(context, graph, true)
   return true
 }
 
@@ -219,6 +292,7 @@ export function disposeMeditation(context: AudioContext, graph: MeditationGraph,
   if (graph.disposed) return
   graph.disposed = true
   clearBowlTimer(graph)
+  clearMotifTimer(graph)
   if (graph.suspendTimer !== null) window.clearTimeout(graph.suspendTimer)
   if (graph.cleanupTimer !== null) window.clearTimeout(graph.cleanupTimer)
   const fadeSeconds = immediate ? .01 : 1.05

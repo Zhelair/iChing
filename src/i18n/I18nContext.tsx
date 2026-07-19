@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
-import type { Locale, Preferences } from '../domain/types'
+import type { AmbientVolume, Locale, Preferences } from '../domain/types'
 import { translations, type TranslationKey } from './translations'
 
 const STORAGE_KEY = 'yi-path:preferences:v1'
@@ -8,13 +8,19 @@ const defaultPreferences: Preferences = {
   theme: 'daylight',
   sound: false,
   music: false,
+  ambientVolume: 0,
   reduceMotion: typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
 }
 
 function readPreferences(): Preferences {
   try {
     const stored = localStorage.getItem(STORAGE_KEY)
-    return stored ? { ...defaultPreferences, ...JSON.parse(stored) } : defaultPreferences
+    if (!stored) return defaultPreferences
+    const parsed = JSON.parse(stored) as Partial<Preferences>
+    const ambientVolume: AmbientVolume = parsed.ambientVolume === 0.5 || parsed.ambientVolume === 1
+      ? parsed.ambientVolume
+      : parsed.music ? 0.5 : 0
+    return { ...defaultPreferences, ...parsed, ambientVolume, music: ambientVolume > 0 }
   } catch {
     return defaultPreferences
   }

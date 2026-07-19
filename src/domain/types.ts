@@ -3,8 +3,9 @@ export type Locale = 'en' | 'bg' | 'ru'
 export type CoinSide = 'heads' | 'tails'
 export type LineValue = 6 | 7 | 8 | 9
 export type Polarity = 'yin' | 'yang'
-export type ReadingMethod = 'digital' | 'physical' | 'direct'
+export type ReadingMethod = 'digital' | 'physical' | 'yarrow' | 'direct'
 export type Theme = 'daylight' | 'ink-night' | 'bamboo-mist'
+export type AmbientVolume = 0 | 0.5 | 1
 
 export type CastLine = {
   position: 1 | 2 | 3 | 4 | 5 | 6
@@ -36,6 +37,7 @@ export type Preferences = {
   theme: Theme
   sound: boolean
   music: boolean
+  ambientVolume: AmbientVolume
   reduceMotion: boolean
 }
 

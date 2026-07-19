@@ -4,7 +4,7 @@ import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
 import { useSound } from '../audio/SoundContext'
 import { HexagramFigure } from '../components/HexagramFigure'
 import { HEXAGRAMS, getHexagram } from '../data/hexagrams'
-import { castCoins, createCastLine } from '../domain/casting'
+import { castCoins, castYarrowProcedure, createCastLine, type YarrowProcedure } from '../domain/casting'
 import { createReading, linesFromKnownHexagram } from '../domain/reading'
 import type { CastLine, CoinSide, LineValue, ReadingMethod } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
@@ -18,6 +18,12 @@ const lineMeta: Record<LineValue, { nameKey: TranslationKey; effectKey: Translat
   8: { nameKey: 'line.8.name', effectKey: 'line.8.effect' },
   9: { nameKey: 'line.9.name', effectKey: 'line.9.effect' },
 }
+
+const yarrowCopy = {
+  en: { eyebrow: 'Yarrow-stalk workshop', title: 'Count one line through three changes', body: 'One of fifty stalks rests aside. Divide the active forty-nine, set one from the right aside, then count both heaps by fours. Repeat three times.', begin: 'Make the first change', next: 'Make the next change', nextLine: 'Begin the next line', complete: 'The line is complete', divided: 'Divided', removed: 'set aside', remain: 'remain', source: 'The Xici describes fifty stalks, of which forty-nine are used.' },
+  bg: { eyebrow: 'Работилница с бял равнец', title: 'Пребройте една линия през три промени', body: 'Едно от 50 стъбла остава настрана. Разделете активните 49, отделете едно отдясно и пребройте двете купчини по четири. Повторете три пъти.', begin: 'Направете първата промяна', next: 'Направете следващата промяна', nextLine: 'Започнете следващата линия', complete: 'Линията е завършена', divided: 'Разделени', removed: 'отделени', remain: 'остават', source: 'Сици описва 50 стъбла, от които се използват 49.' },
+  ru: { eyebrow: 'Мастерская тысячелистника', title: 'Получите линию через три изменения', body: 'Один из 50 стеблей остаётся в стороне. Разделите 49 активных, отложите один справа и считайте обе кучки по четыре. Повторите трижды.', begin: 'Сделать первое изменение', next: 'Сделать следующее изменение', nextLine: 'Начать следующую линию', complete: 'Линия завершена', divided: 'Разделено', removed: 'отложено', remain: 'осталось', source: 'Сицы описывает 50 стеблей, из которых используются 49.' },
+} as const
 
 type Translator = (key: TranslationKey) => string
 
@@ -73,6 +79,18 @@ function CoinReveal({ coins, linePosition, tossing }: { coins: [CoinSide, CoinSi
   )
 }
 
+function YarrowWorkshop({ procedure, step, lineNumber, onAdvance, locale }: { procedure: YarrowProcedure | null; step: number; lineNumber: number; onAdvance: () => void; locale: 'en' | 'bg' | 'ru' }) {
+  const c = yarrowCopy[locale]
+  const remaining = procedure && step > 0 ? procedure.changes[Math.min(step, 3) - 1].remaining : 49
+  return <div className="yarrow-workshop">
+    <div className="yarrow-stalk-field" aria-hidden="true">{Array.from({ length: 49 }, (_, index) => <i key={index} className={index < remaining ? 'is-active' : 'is-removed'} style={{ '--stalk-index': index, '--stalk-wave': index % 7 } as CSSProperties} />)}<span className="yarrow-resting-stalk" /></div>
+    <div className="yarrow-count"><strong>{remaining}</strong><span>{c.remain}</span></div>
+    {procedure && step > 0 ? <ol className="yarrow-changes">{procedure.changes.slice(0, step).map((change, index) => <li key={index} className={index === step - 1 ? 'is-current' : ''}><span>{index + 1}</span><p>{c.divided} {change.left} + {change.right}<small>− {change.removed} {c.removed} · {change.remaining} {c.remain}</small></p></li>)}</ol> : <p className="text-sm leading-6 text-[var(--ink-soft)]">{c.source}</p>}
+    {step === 3 && procedure ? <div className="yarrow-result" role="status"><span>{c.complete}</span><strong>{procedure.value}</strong></div> : null}
+    {!(step === 3 && lineNumber === 6) ? <button type="button" className="button-primary w-full" onClick={onAdvance}>{step === 0 ? c.begin : step < 3 ? c.next : c.nextLine}</button> : null}
+  </div>
+}
+
 function Preparation({ question, t, onReady }: { question: string; t: Translator; onReady: () => void }) {
   return (
     <section className="surface preparation-card mt-8 overflow-hidden p-6 sm:p-9" aria-labelledby="preparation-title">
@@ -116,14 +134,14 @@ function RitualCue({ question, lineCount, t }: { question: string; lineCount: nu
 
 export function CastPage() {
   const { method } = useParams()
-  if (!['digital', 'physical', 'direct'].includes(method ?? '')) return <Navigate to="/reading" replace />
+  if (!['digital', 'physical', 'yarrow', 'direct'].includes(method ?? '')) return <Navigate to="/reading" replace />
 
   return <CastFlow method={method as ReadingMethod} />
 }
 
 function CastFlow({ method }: { method: ReadingMethod }) {
   const { preferences, t } = useI18n()
-  const { playCoinToss } = useSound()
+  const { playCoinToss, playHistoryCue } = useSound()
   const navigate = useNavigate()
   const [question] = useState(getDraftQuestion)
   const [prepared, setPrepared] = useState(method === 'direct')
@@ -132,6 +150,8 @@ function CastFlow({ method }: { method: ReadingMethod }) {
   const [knownId, setKnownId] = useState(1)
   const [movingPositions, setMovingPositions] = useState<number[]>([])
   const [isFinishing, setIsFinishing] = useState(false)
+  const [yarrowProcedure, setYarrowProcedure] = useState<YarrowProcedure | null>(null)
+  const [yarrowStep, setYarrowStep] = useState(0)
   const revealTimerRef = useRef<number | null>(null)
   const castLockRef = useRef(false)
 
@@ -142,6 +162,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
   const titles = {
     digital: [t('cast.digital.title'), t('cast.digitalBodyRitual')],
     physical: [t('cast.physical.title'), t('cast.physical.body')],
+    yarrow: [yarrowCopy[preferences.locale].title, yarrowCopy[preferences.locale].body],
     direct: [t('cast.direct.title'), t('cast.direct.body')],
   } as const
 
@@ -174,6 +195,21 @@ function CastFlow({ method }: { method: ReadingMethod }) {
     setLines((current) => [...current, createCastLine((current.length + 1) as CastLine['position'], value)])
   }
 
+  function advanceYarrow() {
+    if (lines.length >= 6 && yarrowStep === 3) return
+    playHistoryCue('stalk')
+    if (!yarrowProcedure || yarrowStep === 3) {
+      setYarrowProcedure(castYarrowProcedure())
+      setYarrowStep(1)
+      return
+    }
+    const nextStep = yarrowStep + 1
+    setYarrowStep(nextStep)
+    if (nextStep === 3) {
+      setLines((current) => [...current, createCastLine((current.length + 1) as CastLine['position'], yarrowProcedure.value)])
+    }
+  }
+
   function toggleMoving(position: number) {
     setMovingPositions((current) => current.includes(position) ? current.filter((item) => item !== position) : [...current, position])
   }
@@ -190,7 +226,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
     <div className="page-shell py-8 sm:py-14">
       <div className="reading-column">
         <Link to="/reading" className="button-quiet -ml-3 mb-5"><ArrowLeft size={18} aria-hidden="true" /> {t('common.back')}</Link>
-        <p className="eyebrow">{method === 'digital' ? t('method.digital.title') : method === 'physical' ? t('method.physical.title') : t('method.direct.title')}</p>
+        <p className="eyebrow">{method === 'digital' ? t('method.digital.title') : method === 'physical' ? t('method.physical.title') : method === 'yarrow' ? yarrowCopy[preferences.locale].eyebrow : t('method.direct.title')}</p>
         <h1 className="mt-3 text-4xl font-medium leading-tight tracking-[-.03em]">{titles[method][0]}</h1>
         <p className="mt-3 max-w-2xl leading-7 text-[var(--ink-soft)]">{titles[method][1]}</p>
 
@@ -222,6 +258,8 @@ function CastFlow({ method }: { method: ReadingMethod }) {
                       <button type="button" className="button-primary w-full select-none active:scale-[.98]" onClick={addDigitalLine}>{lines.length ? t('cast.next') : t('cast.castLine')}</button>
                     ) : null}
                   </>
+                ) : method === 'yarrow' ? (
+                  <YarrowWorkshop procedure={yarrowProcedure} step={yarrowStep} lineNumber={Math.max(1, lines.length + (yarrowStep === 3 ? 0 : 1))} onAdvance={advanceYarrow} locale={preferences.locale} />
                 ) : (
                   <fieldset className="w-full">
                     <legend className="mb-4 text-sm font-semibold">{t('cast.chooseTotal')} {lines.length + 1}</legend>
@@ -267,7 +305,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
 
         {prepared ? (
           <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
-            {method !== 'direct' && lines.length > 0 ? <button type="button" className="button-quiet" onClick={() => setLines((current) => current.slice(0, -1))} disabled={Boolean(pending)}><RotateCcw size={17} aria-hidden="true" /> {t('cast.undo')}</button> : <span />}
+            {method !== 'direct' && lines.length > 0 ? <button type="button" className="button-quiet" onClick={() => { setLines((current) => current.slice(0, -1)); if (method === 'yarrow') { setYarrowProcedure(null); setYarrowStep(0) } }} disabled={Boolean(pending)}><RotateCcw size={17} aria-hidden="true" /> {t('cast.undo')}</button> : <span />}
             {method === 'direct' ? (
               <button type="button" className="button-primary" onClick={() => finish(linesFromKnownHexagram(knownId, movingPositions))} disabled={isFinishing}>{t('cast.complete')}</button>
             ) : lines.length === 6 && !pending ? (

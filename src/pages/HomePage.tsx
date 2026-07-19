@@ -70,10 +70,8 @@ export function HomePage() {
           </div>
           <div className="home-companions" aria-label={preferences.locale === 'ru' ? 'Ещё два образа дня' : preferences.locale === 'bg' ? 'Още два образа за деня' : 'Two more images for today'}>
             {companions.map((hexagram, index) => (
-              <Link key={hexagram.id} to={`/hexagrams/${hexagram.id}`} className="home-companion" style={{ '--companion-delay': `${160 + index * 90}ms` } as CSSProperties}>
-                <span className="home-companion__number">{String(hexagram.id).padStart(2, '0')}</span>
+              <Link key={hexagram.id} to={`/hexagrams/${hexagram.id}`} aria-label={`${hexagram.id}. ${hexagram.editorial[preferences.locale].title}`} className="home-companion" style={{ '--companion-delay': `${160 + index * 90}ms` } as CSSProperties}>
                 <HexagramFigure linesBottomUp={hexagram.linesBottomUp} label={hexagram.editorial[preferences.locale].title} className="home-companion__figure text-[var(--obsidian)]" />
-                <span><strong>{hexagram.editorial[preferences.locale].title}</strong><small>{hexagram.chinese} · {hexagram.pinyin}</small></span>
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>
             ))}

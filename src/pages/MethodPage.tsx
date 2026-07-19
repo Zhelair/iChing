@@ -1,4 +1,4 @@
-import { Binary, ChevronRight, Coins, HandCoins } from 'lucide-react'
+import { Binary, ChevronRight, Coins, HandCoins, Sprout } from 'lucide-react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PageIntro } from '../components/PageIntro'
@@ -8,11 +8,18 @@ import { getDraftQuestion, setDraftQuestion } from '../storage/session'
 const methods = [
   { id: 'digital', title: 'method.digital.title', body: 'method.digital.body', icon: Coins },
   { id: 'physical', title: 'method.physical.title', body: 'method.physical.body', icon: HandCoins },
+  { id: 'yarrow', title: null, body: null, icon: Sprout },
   { id: 'direct', title: 'method.direct.title', body: 'method.direct.body', icon: Binary },
 ] as const
 
+const yarrowCopy = {
+  en: { title: 'Yarrow-stalk workshop', body: 'A slower historical method: divide and count forty-nine stalks through three changes for every line.' },
+  bg: { title: 'Работилница с бял равнец', body: 'По-бавен исторически метод: разделете и пребройте 49 стъбла през три промени за всяка линия.' },
+  ru: { title: 'Мастерская тысячелистника', body: 'Более медленный исторический метод: разделите и пересчитайте 49 стеблей в трёх изменениях для каждой линии.' },
+} as const
+
 export function MethodPage() {
-  const { t } = useI18n()
+  const { preferences, t } = useI18n()
   const navigate = useNavigate()
   const [question, setQuestion] = useState(getDraftQuestion)
 
@@ -40,8 +47,8 @@ export function MethodPage() {
             <button key={id} type="button" onClick={() => choose(id)} className="group surface depth-card flex min-h-28 w-full items-center gap-4 p-5 text-left sm:p-6">
               <span className="grid size-12 shrink-0 place-items-center rounded-full bg-[var(--jade-light)] text-[var(--jade)]"><Icon size={22} aria-hidden="true" /></span>
               <span className="min-w-0 flex-1">
-                <span className="block font-editorial text-xl font-semibold">{t(title)}</span>
-                <span className="mt-1 block text-sm leading-6 text-[var(--ink-soft)]">{t(body)}</span>
+                <span className="block font-editorial text-xl font-semibold">{id === 'yarrow' ? yarrowCopy[preferences.locale].title : t(title)}</span>
+                <span className="mt-1 block text-sm leading-6 text-[var(--ink-soft)]">{id === 'yarrow' ? yarrowCopy[preferences.locale].body : t(body)}</span>
               </span>
               <ChevronRight className="shrink-0 text-[var(--brass)] transition-transform group-hover:translate-x-1" size={21} aria-hidden="true" />
             </button>

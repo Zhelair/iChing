@@ -1,8 +1,8 @@
-import { Download, Trash2, Upload } from 'lucide-react'
+import { Download, Trash2, Upload, Volume2 } from 'lucide-react'
 import { useRef, useState, type ChangeEvent } from 'react'
 import { useSound } from '../audio/SoundContext'
 import { PageIntro } from '../components/PageIntro'
-import type { Locale, Theme } from '../domain/types'
+import type { AmbientVolume, Locale, Theme } from '../domain/types'
 import { localeNames, useI18n } from '../i18n/I18nContext'
 import { clearReadings, importReadings } from '../storage/db'
 import { createExport, downloadExport, parseExport } from '../storage/export'
@@ -19,9 +19,20 @@ function Toggle({ checked, onChange, label, body }: { checked: boolean; onChange
   )
 }
 
+function AmbientVolumeControl({ value, onChange, label, body, levels }: { value: AmbientVolume; onChange: (value: AmbientVolume) => void; label: string; body: string; levels: [string, string, string] }) {
+  const index = value === 0 ? 0 : value === 0.5 ? 1 : 2
+  return <div className="ambient-volume border-b border-[var(--line)] py-5">
+    <div className="flex items-start gap-3"><Volume2 className="mt-1 shrink-0 text-[var(--jade)]" size={19} aria-hidden="true" /><span><label htmlFor="ambient-volume" className="block font-bold">{label}</label><span className="mt-1 block text-xs leading-5 text-[var(--ink-soft)]">{body}</span></span></div>
+    <div className="ambient-volume__control mt-5">
+      <input id="ambient-volume" type="range" min="0" max="2" step="1" value={index} onChange={(event) => onChange(([0, 0.5, 1] as AmbientVolume[])[Number(event.target.value)])} aria-valuetext={levels[index]} />
+      <div className="ambient-volume__labels" aria-hidden="true">{levels.map((level, levelIndex) => <span key={level} className={levelIndex === index ? 'is-active' : ''}>{level}</span>)}</div>
+    </div>
+  </div>
+}
+
 export function SettingsPage() {
   const { preferences, setPreferences, updatePreference, t } = useI18n()
-  const { previewCoinSound, setAmbientPlayback } = useSound()
+  const { previewCoinSound, setAmbientVolume } = useSound()
   const [mode, setMode] = useState<'merge' | 'replace'>('merge')
   const [message, setMessage] = useState('')
   const [audioMessage, setAudioMessage] = useState('')
@@ -56,7 +67,7 @@ export function SettingsPage() {
     await clearReadings()
     sessionStorage.removeItem('yi-path:current-reading:v1')
     sessionStorage.removeItem('yi-path:question:v1')
-    setPreferences({ locale: 'en', theme: 'daylight', sound: false, music: false, reduceMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches })
+    setPreferences({ locale: 'en', theme: 'daylight', sound: false, music: false, ambientVolume: 0, reduceMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches })
     setMessage(t('settings.cleared'))
     setClearOpen(false)
   }
@@ -97,11 +108,12 @@ export function SettingsPage() {
             updatePreference('sound', available)
             setAudioMessage(available ? '' : t('settings.audioUnavailable'))
           }} label={t('settings.sound')} body={t('settings.soundBody')} />
-          <Toggle checked={preferences.music} onChange={async (value) => {
-            const available = await setAmbientPlayback(value)
-            updatePreference('music', value && available)
-            setAudioMessage(value && !available ? t('settings.audioUnavailable') : '')
-          }} label={t('settings.ambient')} body={t('settings.ambientBody')} />
+          <AmbientVolumeControl value={preferences.ambientVolume} onChange={async (volume) => {
+            const available = await setAmbientVolume(volume)
+            const nextVolume = available ? volume : 0
+            setPreferences({ ...preferences, ambientVolume: nextVolume, music: nextVolume > 0 })
+            setAudioMessage(volume > 0 && !available ? t('settings.audioUnavailable') : '')
+          }} label={t('settings.ambient')} body={t('settings.ambientBody')} levels={preferences.locale === 'ru' ? ['Выкл.', '50%', '100%'] : preferences.locale === 'bg' ? ['Изкл.', '50%', '100%'] : ['Off', '50%', '100%']} />
           <Toggle checked={preferences.reduceMotion} onChange={(value) => updatePreference('reduceMotion', value)} label={t('settings.motion')} body={t('settings.motionBody')} />
           {audioMessage ? <p className="mb-4 rounded-2xl bg-[var(--jade-light)] px-4 py-3 text-sm font-semibold text-[var(--jade)]" role="status">{audioMessage}</p> : null}
         </section>
