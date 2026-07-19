@@ -1,12 +1,35 @@
-import { ArrowRight, BookOpen, LockKeyhole } from 'lucide-react'
+import { ArrowRight, BookOpen, HeartHandshake, Languages, LockKeyhole, Settings2 } from 'lucide-react'
 import { useMemo, useRef, type CSSProperties, type PointerEvent as ReactPointerEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { HexagramFigure } from '../components/HexagramFigure'
 import { getDailyHomeHexagrams } from '../data/homeFeature'
+import type { Locale } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
+
+const preferencesCopy: Record<Locale, { title: string; body: string; settings: string; support: string }> = {
+  en: {
+    title: 'Make the practice yours',
+    body: 'English · Български · Русский. Choose a visual atmosphere, motion, and optional sound in Settings. Support is always optional too.',
+    settings: 'Open Settings',
+    support: 'Feedback & support',
+  },
+  bg: {
+    title: 'Настройте практиката по свой начин',
+    body: 'English · Български · Русский. Изберете визуална атмосфера, движение и звук по желание в Настройки. Подкрепата също винаги е по желание.',
+    settings: 'Отвори Настройки',
+    support: 'Обратна връзка и подкрепа',
+  },
+  ru: {
+    title: 'Настройте практику под себя',
+    body: 'English · Български · Русский. Выберите визуальную атмосферу, движение и необязательный звук в Настройках. Поддержка тоже всегда добровольна.',
+    settings: 'Открыть Настройки',
+    support: 'Обратная связь и поддержка',
+  },
+}
 
 export function HomePage() {
   const { preferences, t } = useI18n()
+  const welcome = preferencesCopy[preferences.locale]
   const featured = useMemo(() => getDailyHomeHexagrams(), [])
   const [primary, ...companions] = featured
   const objectRef = useRef<HTMLDivElement>(null)
@@ -53,6 +76,17 @@ export function HomePage() {
             </Link>
           </div>
           <p className="mt-6 flex items-center gap-2 text-sm text-[var(--ink-soft)]"><LockKeyhole size={16} aria-hidden="true" /> {t('home.privacy')}</p>
+          <aside className="home-preferences mt-5" aria-labelledby="home-preferences-title">
+            <span className="home-preferences__icon"><Languages size={20} aria-hidden="true" /></span>
+            <div>
+              <p id="home-preferences-title" className="font-bold text-[var(--ink)]">{welcome.title}</p>
+              <p className="mt-1 text-xs leading-5 text-[var(--ink-soft)]">{welcome.body}</p>
+              <div className="home-preferences__links mt-3">
+                <Link to="/settings"><Settings2 size={15} aria-hidden="true" /> {welcome.settings}</Link>
+                <Link to="/support"><HeartHandshake size={15} aria-hidden="true" /> {welcome.support}</Link>
+              </div>
+            </div>
+          </aside>
         </div>
 
         <div ref={objectRef} className="home-object mx-auto w-full max-w-[31rem]" onPointerMove={moveObject} onPointerLeave={resetObject}>

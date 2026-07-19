@@ -12,7 +12,7 @@ export type MeditationGraph = {
 }
 
 function volumeTarget(volume: 0.5 | 1) {
-  return volume === 1 ? .094 : .049
+  return volume === 1 ? .16 : .082
 }
 
 function holdAtCurrentValue(parameter: AudioParam, time: number) {
@@ -32,7 +32,7 @@ function fadeMaster(graph: MeditationGraph, context: AudioContext, target: numbe
 }
 
 function createRoomImpulse(context: AudioContext) {
-  const seconds = 2.2
+  const seconds = 3.4
   const length = Math.floor(context.sampleRate * seconds)
   const impulse = context.createBuffer(2, length, context.sampleRate)
 
@@ -40,9 +40,9 @@ function createRoomImpulse(context: AudioContext) {
     const data = impulse.getChannelData(channel)
     let smoothed = 0
     for (let index = 0; index < data.length; index += 1) {
-      smoothed = smoothed * .84 + (Math.random() * 2 - 1) * .16
-      const decay = Math.pow(1 - index / data.length, 2.8)
-      data[index] = smoothed * decay * .72
+      smoothed = smoothed * .9 + (Math.random() * 2 - 1) * .1
+      const decay = Math.pow(1 - index / data.length, 3.2)
+      data[index] = smoothed * decay * .68
     }
   }
 
@@ -58,12 +58,12 @@ function playBowl(context: AudioContext, graph: MeditationGraph) {
   if (graph.disposed || context.state !== 'running') return
 
   const now = context.currentTime + .02
-  const base = Math.random() > .48 ? 220 : 293.66
-  const ratios = [1, 2.01, 2.98, 4.16, 5.43]
-  const levels = [.052, .021, .011, .005, .0025]
-  const decays = [7, 5.5, 4.2, 3, 2.2]
+  const base = Math.random() > .5 ? 174.61 : 220
+  const ratios = [1, 1.51, 2.03, 2.76, 3.92]
+  const levels = [.032, .018, .012, .007, .004]
+  const decays = [9.5, 8.2, 6.8, 5.3, 4.2]
   const bowlBus = context.createGain()
-  bowlBus.gain.value = .24
+  bowlBus.gain.value = .58
   bowlBus.connect(graph.input)
   graph.nodes.add(bowlBus)
   let remaining = ratios.length
@@ -75,7 +75,7 @@ function playBowl(context: AudioContext, graph: MeditationGraph) {
     oscillator.frequency.value = base * ratio
     oscillator.detune.value = (Math.random() - .5) * 3.2
     gain.gain.setValueAtTime(.0001, now)
-    gain.gain.linearRampToValueAtTime(levels[index], now + .024 + index * .003)
+    gain.gain.linearRampToValueAtTime(levels[index], now + .16 + index * .035)
     gain.gain.exponentialRampToValueAtTime(.0001, now + decays[index])
     oscillator.connect(gain).connect(bowlBus)
     graph.nodes.add(gain)
@@ -99,7 +99,7 @@ function playBowl(context: AudioContext, graph: MeditationGraph) {
 function scheduleBowl(context: AudioContext, graph: MeditationGraph, first = false) {
   clearBowlTimer(graph)
   if (graph.disposed) return
-  const delay = first ? 9000 + Math.random() * 4000 : 26000 + Math.random() * 18000
+  const delay = first ? 12000 + Math.random() * 6000 : 32000 + Math.random() * 18000
   graph.bowlTimer = window.setTimeout(() => {
     graph.bowlTimer = null
     if (graph.disposed || context.state !== 'running') return
@@ -115,7 +115,7 @@ function clearMotifTimer(graph: MeditationGraph) {
 
 function playPentatonicMotif(context: AudioContext, graph: MeditationGraph) {
   if (graph.disposed || context.state !== 'running') return
-  const scale = [196, 220, 261.63, 293.66, 329.63]
+  const scale = [174.61, 196, 220, 261.63, 293.66]
   const notes = 2 + Math.floor(Math.random() * 3)
   const start = context.currentTime + .03
   for (let index = 0; index < notes; index += 1) {
@@ -124,17 +124,17 @@ function playPentatonicMotif(context: AudioContext, graph: MeditationGraph) {
     const gain = context.createGain()
     const filter = context.createBiquadFilter()
     const frequency = scale[Math.floor(Math.random() * scale.length)] / (Math.random() > .82 ? 2 : 1)
-    const at = start + index * (.48 + Math.random() * .24)
+    const at = start + index * (.58 + Math.random() * .24)
     oscillator.type = 'triangle'
     overtone.type = 'sine'
     oscillator.frequency.value = frequency
     overtone.frequency.value = frequency * 2.01
     filter.type = 'lowpass'
     filter.frequency.setValueAtTime(1800, at)
-    filter.frequency.exponentialRampToValueAtTime(520, at + 1.6)
+    filter.frequency.exponentialRampToValueAtTime(560, at + 2.1)
     gain.gain.setValueAtTime(.0001, at)
-    gain.gain.exponentialRampToValueAtTime(.018, at + .012)
-    gain.gain.exponentialRampToValueAtTime(.0001, at + 1.85)
+    gain.gain.exponentialRampToValueAtTime(.026, at + .04)
+    gain.gain.exponentialRampToValueAtTime(.0001, at + 2.35)
     oscillator.connect(gain)
     overtone.connect(gain)
     gain.connect(filter).connect(graph.input)
@@ -151,7 +151,7 @@ function playPentatonicMotif(context: AudioContext, graph: MeditationGraph) {
     oscillator.onended = remove
     overtone.onended = remove
     oscillator.start(at); overtone.start(at)
-    oscillator.stop(at + 1.9); overtone.stop(at + 1.9)
+    oscillator.stop(at + 2.4); overtone.stop(at + 2.4)
   }
 }
 
@@ -191,8 +191,8 @@ export function createMeditationGraph(context: AudioContext, volume: 0.5 | 1 = 0
   filter.frequency.value = 920
   filter.Q.value = .35
   padMix.gain.value = .62
-  dry.gain.value = .82
-  wet.gain.value = .12
+  dry.gain.value = .78
+  wet.gain.value = .18
   room.buffer = createRoomImpulse(context)
 
   input.connect(filter)
@@ -215,9 +215,9 @@ export function createMeditationGraph(context: AudioContext, volume: 0.5 | 1 = 0
   ])
   const sources = new Set<AudioScheduledSourceNode>([amplitudeLfo, filterLfo])
   const voices = [
-    { type: 'triangle' as OscillatorType, frequency: 146.83, detune: -2, gain: .025, pan: -.18 },
-    { type: 'triangle' as OscillatorType, frequency: 146.83, detune: 2, gain: .019, pan: .18 },
-    { type: 'sine' as OscillatorType, frequency: 220, detune: 1, gain: .014, pan: .08 },
+    { type: 'triangle' as OscillatorType, frequency: 146.83, detune: -2, gain: .029, pan: -.18 },
+    { type: 'triangle' as OscillatorType, frequency: 146.83, detune: 2, gain: .022, pan: .18 },
+    { type: 'sine' as OscillatorType, frequency: 220, detune: 1, gain: .016, pan: .08 },
   ]
 
   voices.forEach((voice) => {

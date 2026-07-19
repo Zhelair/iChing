@@ -1,5 +1,6 @@
-import { Download, FileDown, HardDrive, ShieldCheck, Trash2, Upload, Volume2 } from 'lucide-react'
+import { ArrowRight, Download, FileDown, HardDrive, HeartHandshake, ShieldCheck, Trash2, Upload, Volume2 } from 'lucide-react'
 import { useRef, useState, type ChangeEvent } from 'react'
+import { Link } from 'react-router-dom'
 import { useSound } from '../audio/SoundContext'
 import { PageIntro } from '../components/PageIntro'
 import type { AmbientVolume, Locale, Theme } from '../domain/types'
@@ -58,6 +59,12 @@ const privacyCopy: Record<Locale, { eyebrow: string; title: string; intro: strin
     exports: 'Экспорты JSON, PNG и PDF не зашифрованы. Храните их как личные документы; очистка приложения не удаляет уже экспортированные копии.',
     largeFile: 'Размер этой резервной копии превышает лимит импорта 5 МБ.',
   },
+}
+
+const supportCopy: Record<Locale, { title: string; body: string; action: string }> = {
+  en: { title: 'Feedback & support', body: 'Share a thought, report a problem, or find the optional support link.', action: 'Open' },
+  bg: { title: 'Обратна връзка и подкрепа', body: 'Споделете мисъл, сигнализирайте за проблем или намерете линка за подкрепа по желание.', action: 'Отвори' },
+  ru: { title: 'Обратная связь и поддержка', body: 'Поделитесь мыслью, сообщите о проблеме или найдите необязательную ссылку для поддержки.', action: 'Открыть' },
 }
 
 export function SettingsPage() {
@@ -188,6 +195,12 @@ export function SettingsPage() {
             <button type="button" className="button-secondary border-red-900/25 text-red-900" onClick={() => setClearOpen(true)}><Trash2 size={17} aria-hidden="true" /> {t('settings.clear')}</button>
           </div>
         </section>
+
+        <Link to="/support" className="surface group mt-5 flex min-h-24 items-center gap-4 p-5 sm:p-7">
+          <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-[var(--jade-light)] text-[var(--jade)]"><HeartHandshake size={22} aria-hidden="true" /></span>
+          <span className="min-w-0 flex-1"><span className="block font-editorial text-xl text-[var(--ink)]">{supportCopy[preferences.locale].title}</span><span className="mt-1 block text-xs leading-5 text-[var(--ink-soft)]">{supportCopy[preferences.locale].body}</span></span>
+          <span className="hidden items-center gap-1 text-xs font-bold text-[var(--jade)] sm:flex">{supportCopy[preferences.locale].action} <ArrowRight className="transition-transform group-hover:translate-x-1" size={16} aria-hidden="true" /></span>
+        </Link>
       </div>
 
       {clearOpen ? (

@@ -232,7 +232,8 @@ export function SoundProvider({ children }: { children: ReactNode }) {
         oscillator.frequency.setValueAtTime(frequencies[kind], now)
         oscillator.frequency.exponentialRampToValueAtTime(frequencies[kind] * (kind === 'bone' ? .65 : 1.25), now + .32)
         gain.gain.setValueAtTime(.0001, now)
-        gain.gain.exponentialRampToValueAtTime(kind === 'coin' ? .045 : .025, now + .02)
+        const peak = kind === 'coin' ? .045 : kind === 'stalk' ? .0375 : .025
+        gain.gain.exponentialRampToValueAtTime(peak, now + .02)
         gain.gain.exponentialRampToValueAtTime(.0001, now + .42)
         oscillator.connect(gain).connect(context.destination)
         oscillator.onended = () => { oscillator.disconnect(); gain.disconnect() }

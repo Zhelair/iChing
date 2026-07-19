@@ -100,7 +100,6 @@ export function JournalPage() {
     if (undoTimer.current) window.clearTimeout(undoTimer.current)
   }
   function review(reading: Reading) { setCurrentReading(reading); navigate('/result') }
-  function printReading(reading: Reading) { setCurrentReading(reading); navigate('/result?print=1') }
 
   return (
     <div className="page-shell py-10 sm:py-16">
@@ -131,7 +130,7 @@ export function JournalPage() {
                   {selectedId === reading.id ? <div className="journal-editor">
                     <div><label htmlFor={`note-${reading.id}`}>{c.note}</label><textarea id={`note-${reading.id}`} className="field mt-2 min-h-32" value={note} onChange={(event) => { setNote(event.target.value); setSaved(false) }} placeholder={c.noteHint} /></div>
                     <div><label htmlFor={`tags-${reading.id}`}><Tag size={15} /> {c.tags}</label><input id={`tags-${reading.id}`} className="field mt-2" value={tags} onChange={(event) => { setTags(event.target.value); setSaved(false) }} placeholder={c.tagsHint} /></div>
-                    <div className="flex flex-wrap gap-3"><button className="button-primary" type="button" onClick={saveEdits}>{saved ? c.saved : c.save}</button><button className="button-secondary" type="button" onClick={() => review(reading)}>{c.review}</button><ReadingExportActions reading={reading} onPrint={() => printReading(reading)} compact /><button className="button-text danger-action" type="button" onClick={removeSelected}><Trash2 size={16} /> {c.remove}</button></div>
+                    <div className="flex flex-wrap gap-3"><button className="button-primary" type="button" onClick={saveEdits}>{saved ? c.saved : c.save}</button><button className="button-secondary" type="button" onClick={() => review(reading)}>{c.review}</button><ReadingExportActions reading={reading} compact /><button className="button-text danger-action" type="button" onClick={removeSelected}><Trash2 size={16} /> {c.remove}</button></div>
                   </div> : null}
                 </article>
               })}</div>

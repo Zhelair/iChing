@@ -1,6 +1,6 @@
 import { ArrowRight, BookOpen, Check, ChevronRight } from 'lucide-react'
-import { useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { HexagramFigure } from '../components/HexagramFigure'
 import { ReadingExportActions } from '../components/ReadingExportActions'
 import { getHexagram } from '../data/hexagrams'
@@ -39,23 +39,6 @@ export function ResultPage() {
   const [reading, setReading] = useState(getCurrentReading)
   const [note, setNote] = useState(reading?.note ?? '')
   const [saved, setSaved] = useState(false)
-  const [searchParams] = useSearchParams()
-
-  useEffect(() => {
-    if (!reading || searchParams.get('print') !== '1') return
-    let cancelled = false
-    let timer: number | undefined
-    const openPrintDialog = async () => {
-      await document.fonts?.ready
-      if (cancelled) return
-      timer = window.setTimeout(() => window.print(), 150)
-    }
-    void openPrintDialog()
-    return () => {
-      cancelled = true
-      if (timer !== undefined) window.clearTimeout(timer)
-    }
-  }, [reading, searchParams])
 
   if (!reading) {
     return (
