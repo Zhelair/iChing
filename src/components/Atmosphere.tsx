@@ -1,3 +1,5 @@
+import type { CSSProperties } from 'react'
+
 export function Atmosphere() {
   return (
     <div className="spatial-field" aria-hidden="true">
@@ -20,6 +22,10 @@ export function Atmosphere() {
       </svg>
 
       <span className="spatial-vignette" />
+      <div className="bamboo-grove">
+        {[0, 1, 2, 3, 4, 5].map((index) => <span key={index} className="bamboo-stem" style={{ '--bamboo-index': index } as CSSProperties}><i /><i /><i /></span>)}
+      </div>
+      <div className="ink-stars">{[0, 1, 2, 3, 4, 5, 6].map((index) => <i key={index} />)}</div>
     </div>
   )
 }

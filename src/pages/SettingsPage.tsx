@@ -2,7 +2,7 @@ import { Download, Trash2, Upload } from 'lucide-react'
 import { useRef, useState, type ChangeEvent } from 'react'
 import { useSound } from '../audio/SoundContext'
 import { PageIntro } from '../components/PageIntro'
-import type { Locale } from '../domain/types'
+import type { Locale, Theme } from '../domain/types'
 import { localeNames, useI18n } from '../i18n/I18nContext'
 import { clearReadings, importReadings } from '../storage/db'
 import { createExport, downloadExport, parseExport } from '../storage/export'
@@ -27,6 +27,11 @@ export function SettingsPage() {
   const [audioMessage, setAudioMessage] = useState('')
   const [clearOpen, setClearOpen] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const themes: { id: Theme; label: 'settings.theme.daylight' | 'settings.theme.night' | 'settings.theme.bamboo' }[] = [
+    { id: 'daylight', label: 'settings.theme.daylight' },
+    { id: 'ink-night', label: 'settings.theme.night' },
+    { id: 'bamboo-mist', label: 'settings.theme.bamboo' },
+  ]
 
   async function exportData() {
     downloadExport(await createExport(preferences))
@@ -51,7 +56,7 @@ export function SettingsPage() {
     await clearReadings()
     sessionStorage.removeItem('yi-path:current-reading:v1')
     sessionStorage.removeItem('yi-path:question:v1')
-    setPreferences({ locale: 'en', sound: false, music: false, reduceMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches })
+    setPreferences({ locale: 'en', theme: 'daylight', sound: false, music: false, reduceMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches })
     setMessage(t('settings.cleared'))
     setClearOpen(false)
   }
@@ -65,6 +70,19 @@ export function SettingsPage() {
           <h2 className="text-2xl">{t('settings.language')}</h2>
           <div className="mt-5 grid grid-cols-3 gap-2" role="group" aria-label={t('settings.language')}>
             {(Object.keys(localeNames) as Locale[]).map((locale) => <button key={locale} type="button" onClick={() => updatePreference('locale', locale)} aria-pressed={preferences.locale === locale} className={`min-h-12 rounded-2xl border px-2 text-sm font-bold ${preferences.locale === locale ? 'border-[var(--jade)] bg-[var(--jade)] text-white' : 'border-[var(--line)] bg-white/45'}`}>{localeNames[locale]}</button>)}
+          </div>
+        </section>
+
+        <section className="surface mt-5 p-5 sm:p-7">
+          <h2 className="text-2xl">{t('settings.appearance')}</h2>
+          <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">{t('settings.appearanceBody')}</p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-3" role="group" aria-label={t('settings.appearance')}>
+            {themes.map(({ id, label }) => (
+              <button key={id} type="button" onClick={() => updatePreference('theme', id)} aria-pressed={preferences.theme === id} className={`theme-choice theme-choice--${id} ${preferences.theme === id ? 'is-selected' : ''}`}>
+                <span className="theme-choice__scene" aria-hidden="true"><i /><i /><i /></span>
+                <span>{t(label)}</span>
+              </button>
+            ))}
           </div>
         </section>
 

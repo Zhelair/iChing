@@ -1,12 +1,14 @@
 import { ArrowRight, BookOpen, LockKeyhole } from 'lucide-react'
-import { useRef, type PointerEvent as ReactPointerEvent } from 'react'
+import { useMemo, useRef, type CSSProperties, type PointerEvent as ReactPointerEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { HexagramFigure } from '../components/HexagramFigure'
-import { HOME_HEXAGRAM } from '../data/homeFeature'
+import { getDailyHomeHexagrams } from '../data/homeFeature'
 import { useI18n } from '../i18n/I18nContext'
 
 export function HomePage() {
   const { preferences, t } = useI18n()
+  const featured = useMemo(() => getDailyHomeHexagrams(), [])
+  const [primary, ...companions] = featured
   const objectRef = useRef<HTMLDivElement>(null)
 
   function moveObject(event: ReactPointerEvent<HTMLDivElement>) {
@@ -53,18 +55,28 @@ export function HomePage() {
           <p className="mt-6 flex items-center gap-2 text-sm text-[var(--ink-soft)]"><LockKeyhole size={16} aria-hidden="true" /> {t('home.privacy')}</p>
         </div>
 
-        <div ref={objectRef} className="home-object mx-auto w-full max-w-[28rem]" onPointerMove={moveObject} onPointerLeave={resetObject}>
+        <div ref={objectRef} className="home-object mx-auto w-full max-w-[31rem]" onPointerMove={moveObject} onPointerLeave={resetObject}>
           <span className="home-object__shadow" aria-hidden="true" />
           <div className="surface home-object__card flex min-h-[31rem] flex-col items-center justify-between overflow-hidden p-8 text-center sm:p-10">
             <span className="home-object__light" aria-hidden="true" />
             <div className="home-object__meta flex w-full items-center justify-between text-xs font-bold uppercase tracking-[.16em] text-[var(--ink-soft)]">
-              <span>{HOME_HEXAGRAM.id}</span><span>{HOME_HEXAGRAM.chinese}</span>
+              <span>{String(primary.id).padStart(2, '0')}</span><span>{primary.chinese}</span>
             </div>
-            <div className="home-object__hexagram"><HexagramFigure linesBottomUp={HOME_HEXAGRAM.linesBottomUp} label={t('home.featuredTitle')} className="text-[var(--obsidian)]" /></div>
+            <div className="home-object__hexagram"><HexagramFigure linesBottomUp={primary.linesBottomUp} label={primary.editorial[preferences.locale].title} className="text-[var(--obsidian)]" /></div>
             <div className="home-object__copy">
-              <p className="font-editorial text-3xl">{t('home.featuredTitle')}</p>
+              <p className="font-editorial text-3xl">{primary.editorial[preferences.locale].title}</p>
               <p className="mx-auto mt-4 max-w-xs text-sm leading-6 text-[var(--ink-soft)]">{t('home.promise')}</p>
             </div>
+          </div>
+          <div className="home-companions" aria-label={preferences.locale === 'ru' ? 'Ещё два образа дня' : preferences.locale === 'bg' ? 'Още два образа за деня' : 'Two more images for today'}>
+            {companions.map((hexagram, index) => (
+              <Link key={hexagram.id} to={`/hexagrams/${hexagram.id}`} className="home-companion" style={{ '--companion-delay': `${160 + index * 90}ms` } as CSSProperties}>
+                <span className="home-companion__number">{String(hexagram.id).padStart(2, '0')}</span>
+                <HexagramFigure linesBottomUp={hexagram.linesBottomUp} label={hexagram.editorial[preferences.locale].title} className="home-companion__figure text-[var(--obsidian)]" />
+                <span><strong>{hexagram.editorial[preferences.locale].title}</strong><small>{hexagram.chinese} · {hexagram.pinyin}</small></span>
+                <ArrowRight size={15} aria-hidden="true" />
+              </Link>
+            ))}
           </div>
         </div>
       </section>

@@ -1,11 +1,12 @@
 import { describe, expect, it } from 'vitest'
-import { getHexagram } from './hexagrams'
-import { HOME_HEXAGRAM } from './homeFeature'
+import { getDailyHomeHexagrams } from './homeFeature'
 
 describe('home feature', () => {
-  it('stays aligned with hexagram 24 in the full corpus', () => {
-    const canonical = getHexagram(HOME_HEXAGRAM.id)
-    expect(HOME_HEXAGRAM.chinese).toBe(canonical.chinese)
-    expect(HOME_HEXAGRAM.linesBottomUp).toEqual(canonical.linesBottomUp)
+  it('selects three unique hexagrams consistently for a local day', () => {
+    const morning = getDailyHomeHexagrams(new Date(2026, 6, 19, 8))
+    const evening = getDailyHomeHexagrams(new Date(2026, 6, 19, 22))
+    expect(morning.map(({ id }) => id)).toEqual(evening.map(({ id }) => id))
+    expect(new Set(morning.map(({ id }) => id))).toHaveLength(3)
+    expect(morning.every(({ id }) => id >= 1 && id <= 64)).toBe(true)
   })
 })
