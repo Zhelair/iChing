@@ -1,6 +1,7 @@
 import { PDFDocument } from 'pdf-lib'
 import { getHexagram } from '../data/hexagrams'
 import type { Locale, Polarity, Reading } from '../domain/types'
+import { translations } from '../i18n/translations'
 
 const labels = {
   en: { primary: 'Primary hexagram', resulting: 'Resulting hexagram', changing: 'Changing lines', reflection: 'First reflection', when: 'When it appears', question: 'Question', method: 'Method', line: 'Line', note: 'Journal note', stored: 'A reflective record · stored locally', methods: { digital: 'Digital coins', physical: 'Physical coins', yarrow: 'Yarrow stalks', direct: 'Direct entry' }, values: { 6: 'Old yin - becomes yang', 7: 'Young yang - remains yang', 8: 'Young yin - remains yin', 9: 'Old yang - becomes yin' } },
@@ -40,100 +41,138 @@ function drawHexagram(context: CanvasRenderingContext2D, lines: readonly { polar
   })
 }
 
-async function createReadingCanvas(reading: Reading, locale: Locale) {
+async function createReadingCanvas(reading: Reading, locale: Locale, complete = false) {
   await document.fonts?.ready
   const primary = getHexagram(reading.primaryHexagramId)
   const resulting = getHexagram(reading.resultingHexagramId)
   const editorial = primary.editorial[locale]
+  const resultingEditorial = resulting.editorial[locale]
   const c = labels[locale]
+  const ui = translations[locale]
   const moving = reading.lines.filter((line) => line.moving)
+  const formattedDate = new Intl.DateTimeFormat(locale, { dateStyle: 'long', timeStyle: 'short' }).format(new Date(reading.createdAt))
+
+  function render(canvas: HTMLCanvasElement) {
+    const context = canvas.getContext('2d')
+    if (!context) throw new Error('Canvas export is unavailable.')
+
+    context.fillStyle = '#f4f0e7'
+    context.fillRect(0, 0, canvas.width, canvas.height)
+    const glow = context.createRadialGradient(1080, 180, 20, 1080, 180, 720)
+    glow.addColorStop(0, 'rgba(216,231,219,.92)')
+    glow.addColorStop(1, 'rgba(216,231,219,0)')
+    context.fillStyle = glow
+    context.fillRect(0, 0, canvas.width, 1040)
+    context.strokeStyle = 'rgba(49,95,80,.12)'
+    context.lineWidth = 2
+    for (let index = 0; index < 5; index += 1) {
+      const waveY = canvas.height - 720 + index * 70
+      context.beginPath(); context.moveTo(-80, waveY); context.bezierCurveTo(320, waveY - 220 + index * 10, 880, waveY + 140, 1500, waveY - 170 + index * 14); context.stroke()
+    }
+
+    context.fillStyle = '#315f50'
+    context.font = '800 24px "Manrope Variable", sans-serif'
+    context.letterSpacing = '5px'
+    context.fillText('YI PATH · 易', 100, 100)
+    context.letterSpacing = '0px'
+    context.fillStyle = '#211f1a'
+    context.font = '600 62px "Lora Variable", Georgia, serif'
+    let cursor = drawWrappedText(context, editorial.title, 100, 205, 1200, 74, 2) + 16
+
+    context.fillStyle = '#676154'
+    context.font = '600 20px "Manrope Variable", Arial, sans-serif'
+    context.fillText(formattedDate, 100, cursor)
+    context.textAlign = 'right'
+    context.fillText(`${c.method}: ${c.methods[reading.method]}`, 1300, cursor)
+    context.textAlign = 'left'
+    cursor += 48
+
+    if (reading.question) {
+      context.fillStyle = '#315f50'; context.font = '800 18px "Manrope Variable", Arial, sans-serif'; context.fillText(c.question.toUpperCase(), 100, cursor)
+      cursor += 42
+      context.fillStyle = '#676154'; context.font = 'italic 28px "Lora Variable", Georgia, serif'
+      cursor = drawWrappedText(context, `“${reading.question}”`, 100, cursor, 1200, 42, 5) + 12
+    }
+
+    const cardY = cursor + 32
+    const cardWidth = moving.length ? 570 : 760
+    const cardX = moving.length ? 100 : 320
+    const drawCard = (x: number, type: 'primary' | 'resulting') => {
+      const hexagram = type === 'primary' ? primary : resulting
+      const pattern = type === 'primary' ? reading.lines : reading.lines.map((line) => ({ polarity: line.transformedPolarity }))
+      context.fillStyle = 'rgba(255,253,248,.9)'; roundedRect(context, x, cardY, cardWidth, 360, 34); context.fill()
+      context.strokeStyle = 'rgba(80,99,82,.2)'; context.stroke()
+      context.fillStyle = '#1d2420'; drawHexagram(context, pattern, x + 52, cardY + 68, 170)
+      context.fillStyle = '#315f50'; context.font = '800 20px "Manrope Variable", sans-serif'; context.fillText(type === 'primary' ? c.primary : c.resulting, x + 270, cardY + 86)
+      context.fillStyle = '#211f1a'; context.font = '600 34px "Lora Variable", Georgia, serif'; drawWrappedText(context, `${hexagram.id}. ${hexagram.editorial[locale].title}`, x + 270, cardY + 145, cardWidth - 315, 44, 4)
+    }
+    drawCard(cardX, 'primary')
+    if (moving.length) drawCard(730, 'resulting')
+
+    cursor = cardY + 450
+    context.fillStyle = '#315f50'; context.font = '800 19px "Manrope Variable", sans-serif'; context.fillText(`01 · ${c.reflection}`.toUpperCase(), 100, cursor)
+    cursor += 62
+    context.fillStyle = '#211f1a'; context.font = '600 37px "Lora Variable", Georgia, serif'; cursor = drawWrappedText(context, editorial.coreThread, 100, cursor, 1200, 53, 10) + 36
+
+    context.fillStyle = '#315f50'; context.font = '800 19px "Manrope Variable", sans-serif'; context.fillText(c.when.toUpperCase(), 100, cursor)
+    cursor += 54
+    context.fillStyle = '#676154'; context.font = '400 27px "Manrope Variable", Arial, sans-serif'; cursor = drawWrappedText(context, editorial.whenItAppears, 100, cursor, 1200, 43, 10) + 38
+
+    if (moving.length) {
+      context.fillStyle = '#9a6e2f'; context.font = '800 19px "Manrope Variable", sans-serif'; context.fillText(`02 · ${c.changing}`.toUpperCase(), 100, cursor); cursor += 42
+      for (const line of moving) {
+        context.strokeStyle = 'rgba(49,95,80,.18)'; context.beginPath(); context.moveTo(100, cursor); context.lineTo(1300, cursor); context.stroke(); cursor += 42
+        context.fillStyle = '#211f1a'; context.font = '700 27px "Lora Variable", Georgia, serif'; context.fillText(`${c.line} ${line.position} · ${line.value}`, 100, cursor)
+        context.fillStyle = '#9a6e2f'; context.font = '700 18px "Manrope Variable", Arial, sans-serif'; context.fillText(c.values[line.value], 390, cursor)
+        cursor += 42
+        context.fillStyle = '#676154'; context.font = '400 24px "Manrope Variable", Arial, sans-serif'; cursor = drawWrappedText(context, editorial.lineReflections[String(line.position)], 100, cursor, 1200, 38, 6) + 20
+      }
+    }
+
+    if (complete && moving.length) {
+      cursor += 24
+      context.fillStyle = '#315f50'; context.font = '800 19px "Manrope Variable", sans-serif'; context.fillText(`03 · ${ui['result.whatChanging']}`.toUpperCase(), 100, cursor); cursor += 58
+      context.fillStyle = '#211f1a'; context.font = '600 39px "Lora Variable", Georgia, serif'; cursor = drawWrappedText(context, resultingEditorial.title, 100, cursor, 1200, 52, 3) + 20
+      context.fillStyle = '#676154'; context.font = '400 27px "Manrope Variable", Arial, sans-serif'; cursor = drawWrappedText(context, resultingEditorial.coreThread, 100, cursor, 1200, 43, 12) + 48
+    }
+
+    if (complete) {
+      context.fillStyle = '#315f50'; context.font = '800 19px "Manrope Variable", sans-serif'; context.fillText(ui['result.questions'].toUpperCase(), 100, cursor); cursor += 52
+      for (const question of editorial.reflectionQuestions) {
+        context.fillStyle = '#9a6e2f'; context.font = '700 28px "Lora Variable", Georgia, serif'; context.fillText('›', 102, cursor)
+        context.fillStyle = '#676154'; context.font = '400 26px "Manrope Variable", Arial, sans-serif'; cursor = drawWrappedText(context, question, 145, cursor, 1155, 41, 5) + 16
+      }
+      cursor += 20
+    }
+
+    if (reading.note) {
+      context.fillStyle = '#315f50'; context.font = '800 19px "Manrope Variable", sans-serif'; context.fillText(c.note.toUpperCase(), 100, cursor); cursor += 48
+      context.fillStyle = '#676154'; context.font = '400 27px "Manrope Variable", sans-serif'; cursor = drawWrappedText(context, reading.note, 100, cursor, 1200, 40, complete ? 40 : 5) + 36
+    }
+
+    if (complete) {
+      context.fillStyle = '#315f50'; context.font = '800 19px "Manrope Variable", sans-serif'; context.fillText(ui['result.source'].toUpperCase(), 100, cursor); cursor += 50
+      context.fillStyle = '#211f1a'; context.font = '700 23px "Manrope Variable", Arial, sans-serif'; context.fillText(`${ui['result.classical']}:`, 100, cursor); cursor += 38
+      context.fillStyle = '#676154'; context.font = '400 24px "Manrope Variable", Arial, sans-serif'; cursor = drawWrappedText(context, primary.classical.judgment, 100, cursor, 1200, 38, 15) + 28
+      context.fillStyle = '#211f1a'; context.font = '700 23px "Manrope Variable", Arial, sans-serif'; context.fillText(`${ui['result.interpretation']}:`, 100, cursor)
+      context.fillStyle = '#676154'; context.font = '400 23px "Manrope Variable", Arial, sans-serif'; context.fillText(`${primary.provenance.contentType} · ${reading.contentVersion}`, 430, cursor); cursor += 52
+      context.fillStyle = '#676154'; context.font = 'italic 23px "Manrope Variable", Arial, sans-serif'; cursor = drawWrappedText(context, ui['result.disclaimer'], 100, cursor, 1200, 37, 8) + 28
+    }
+
+    context.fillStyle = '#676154'; context.font = '600 19px "Manrope Variable", sans-serif'
+    context.fillText(formattedDate, 100, canvas.height - 92)
+    context.textAlign = 'right'; context.fillText(c.stored, 1300, canvas.height - 92); context.textAlign = 'left'
+    return cursor
+  }
+
+  const measuringCanvas = document.createElement('canvas')
+  measuringCanvas.width = 1400
+  measuringCanvas.height = 6400
+  const contentEnd = render(measuringCanvas)
   const canvas = document.createElement('canvas')
   canvas.width = 1400
-  canvas.height = 2200 + (reading.question ? 130 : 0) + moving.length * 170 + (reading.note ? 230 : 0)
-  const context = canvas.getContext('2d')
-  if (!context) throw new Error('Canvas export is unavailable.')
-
-  context.fillStyle = '#f4f0e7'
-  context.fillRect(0, 0, canvas.width, canvas.height)
-  const glow = context.createRadialGradient(1080, 180, 20, 1080, 180, 720)
-  glow.addColorStop(0, 'rgba(216,231,219,.92)')
-  glow.addColorStop(1, 'rgba(216,231,219,0)')
-  context.fillStyle = glow
-  context.fillRect(0, 0, canvas.width, 1040)
-  context.strokeStyle = 'rgba(49,95,80,.12)'
-  context.lineWidth = 2
-  for (let index = 0; index < 5; index += 1) {
-    const waveY = canvas.height - 720 + index * 70
-    context.beginPath(); context.moveTo(-80, waveY); context.bezierCurveTo(320, waveY - 220 + index * 10, 880, waveY + 140, 1500, waveY - 170 + index * 14); context.stroke()
-  }
-
-  context.fillStyle = '#315f50'
-  context.font = '800 24px "Manrope Variable", sans-serif'
-  context.letterSpacing = '5px'
-  context.fillText('YI PATH · 易', 100, 100)
-  context.letterSpacing = '0px'
-  context.fillStyle = '#211f1a'
-  context.font = '600 62px "Lora Variable", Georgia, serif'
-  let cursor = drawWrappedText(context, editorial.title, 100, 205, 1200, 74, 2) + 16
-
-  context.fillStyle = '#676154'
-  context.font = '600 20px "Manrope Variable", Arial, sans-serif'
-  const formattedDate = new Intl.DateTimeFormat(locale, { dateStyle: 'long', timeStyle: 'short' }).format(new Date(reading.createdAt))
-  context.fillText(formattedDate, 100, cursor)
-  context.textAlign = 'right'
-  context.fillText(`${c.method}: ${c.methods[reading.method]}`, 1300, cursor)
-  context.textAlign = 'left'
-  cursor += 48
-
-  if (reading.question) {
-    context.fillStyle = '#315f50'; context.font = '800 18px "Manrope Variable", Arial, sans-serif'; context.fillText(c.question.toUpperCase(), 100, cursor)
-    cursor += 42
-    context.fillStyle = '#676154'; context.font = 'italic 28px "Lora Variable", Georgia, serif'
-    cursor = drawWrappedText(context, `“${reading.question}”`, 100, cursor, 1200, 42, 3) + 12
-  }
-
-  const cardY = cursor + 32
-  const cardWidth = moving.length ? 570 : 760
-  const cardX = moving.length ? 100 : 320
-  const drawCard = (x: number, type: 'primary' | 'resulting') => {
-    const hexagram = type === 'primary' ? primary : resulting
-    const pattern = type === 'primary' ? reading.lines : reading.lines.map((line) => ({ polarity: line.transformedPolarity }))
-    context.fillStyle = 'rgba(255,253,248,.9)'; roundedRect(context, x, cardY, cardWidth, 360, 34); context.fill()
-    context.strokeStyle = 'rgba(80,99,82,.2)'; context.stroke()
-    context.fillStyle = '#1d2420'; drawHexagram(context, pattern, x + 52, cardY + 68, 170)
-    context.fillStyle = '#315f50'; context.font = '800 20px "Manrope Variable", sans-serif'; context.fillText(type === 'primary' ? c.primary : c.resulting, x + 270, cardY + 86)
-    context.fillStyle = '#211f1a'; context.font = '600 34px "Lora Variable", Georgia, serif'; drawWrappedText(context, `${hexagram.id}. ${hexagram.editorial[locale].title}`, x + 270, cardY + 145, cardWidth - 315, 44, 4)
-  }
-  drawCard(cardX, 'primary')
-  if (moving.length) drawCard(730, 'resulting')
-
-  cursor = cardY + 450
-  context.fillStyle = '#315f50'; context.font = '800 19px "Manrope Variable", sans-serif'; context.fillText(c.reflection.toUpperCase(), 100, cursor)
-  cursor += 62
-  context.fillStyle = '#211f1a'; context.font = '600 37px "Lora Variable", Georgia, serif'; cursor = drawWrappedText(context, editorial.coreThread, 100, cursor, 1200, 53, 7) + 36
-
-  context.fillStyle = '#315f50'; context.font = '800 19px "Manrope Variable", sans-serif'; context.fillText(c.when.toUpperCase(), 100, cursor)
-  cursor += 54
-  context.fillStyle = '#676154'; context.font = '400 27px "Manrope Variable", Arial, sans-serif'; cursor = drawWrappedText(context, editorial.whenItAppears, 100, cursor, 1200, 43, 7) + 38
-
-  if (moving.length) {
-    context.fillStyle = '#9a6e2f'; context.font = '800 19px "Manrope Variable", sans-serif'; context.fillText(c.changing.toUpperCase(), 100, cursor); cursor += 42
-    for (const line of moving) {
-      context.strokeStyle = 'rgba(49,95,80,.18)'; context.beginPath(); context.moveTo(100, cursor); context.lineTo(1300, cursor); context.stroke(); cursor += 42
-      context.fillStyle = '#211f1a'; context.font = '700 27px "Lora Variable", Georgia, serif'; context.fillText(`${c.line} ${line.position} · ${line.value}`, 100, cursor)
-      context.fillStyle = '#9a6e2f'; context.font = '700 18px "Manrope Variable", Arial, sans-serif'; context.fillText(c.values[line.value], 390, cursor)
-      cursor += 42
-      context.fillStyle = '#676154'; context.font = '400 24px "Manrope Variable", Arial, sans-serif'; cursor = drawWrappedText(context, editorial.lineReflections[String(line.position)], 100, cursor, 1200, 38, 2) + 20
-    }
-  }
-  if (reading.note) {
-    context.fillStyle = '#315f50'; context.font = '800 19px "Manrope Variable", sans-serif'; context.fillText(c.note.toUpperCase(), 100, cursor); cursor += 48
-    context.fillStyle = '#676154'; context.font = '400 27px "Manrope Variable", sans-serif'; drawWrappedText(context, reading.note, 100, cursor, 1200, 40, 5)
-  }
-  context.fillStyle = '#676154'; context.font = '600 19px "Manrope Variable", sans-serif'
-  context.fillText(formattedDate, 100, canvas.height - 92)
-  context.textAlign = 'right'; context.fillText(c.stored, 1300, canvas.height - 92); context.textAlign = 'left'
-
+  canvas.height = Math.max(complete ? 2800 : 2200, Math.ceil(contentEnd + 760))
+  render(canvas)
   return canvas
 }
 
@@ -156,7 +195,7 @@ export async function downloadReadingImage(reading: Reading, locale: Locale) {
 }
 
 export async function downloadReadingPdf(reading: Reading, locale: Locale) {
-  const canvas = await createReadingCanvas(reading, locale)
+  const canvas = await createReadingCanvas(reading, locale, true)
   const imageBlob = await canvasBlob(canvas, 'image/jpeg', .94)
   const pdf = await PDFDocument.create()
   const image = await pdf.embedJpg(await imageBlob.arrayBuffer())

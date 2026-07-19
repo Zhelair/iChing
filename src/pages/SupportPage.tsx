@@ -25,7 +25,6 @@ const copy: Record<Locale, {
   supportBody: string
   bmac: string
   bmacComing: string
-  noUnlocks: string
 }> = {
   en: {
     eyebrow: 'Optional, always',
@@ -43,11 +42,10 @@ const copy: Record<Locale, {
     emailComing: 'Feedback email coming soon',
     writeFirst: 'Write a message to enable the feedback actions.',
     copyFailed: 'The browser could not copy this message. Please select and copy it manually.',
-    supportTitle: 'Support the work',
-    supportBody: 'Yi Path is not a paid app. If you simply want to help with its writing, research, and continued development, you may support it on Buy Me a Coffee. Completely optional.',
+    supportTitle: 'Support Yi Path',
+    supportBody: 'If Yi Path feels useful, you can buy me a coffee and help me keep improving it. Completely optional.',
     bmac: 'Buy Me a Coffee',
-    bmacComing: 'Support link coming soon',
-    noUnlocks: 'Support never unlocks features or changes your reading.',
+    bmacComing: 'Coffee link coming soon',
   },
   bg: {
     eyebrow: 'Винаги по желание',
@@ -65,11 +63,10 @@ const copy: Record<Locale, {
     emailComing: 'Имейлът за обратна връзка идва скоро',
     writeFirst: 'Напишете съобщение, за да активирате действията.',
     copyFailed: 'Браузърът не успя да копира съобщението. Маркирайте го и го копирайте ръчно.',
-    supportTitle: 'Подкрепете проекта',
-    supportBody: 'Yi Path не е платено приложение. Ако просто искате да помогнете за писането, проучването и бъдещото развитие, можете да го подкрепите в Buy Me a Coffee. Напълно по желание.',
+    supportTitle: 'Подкрепете Yi Path',
+    supportBody: 'Ако Yi Path ви е полезно, можете да ме почерпите с кафе и да помогнете да го развивам. Напълно по желание.',
     bmac: 'Buy Me a Coffee',
-    bmacComing: 'Линкът за подкрепа идва скоро',
-    noUnlocks: 'Подкрепата не отключва функции и не променя прочита ви.',
+    bmacComing: 'Линкът за кафе идва скоро',
   },
   ru: {
     eyebrow: 'Всегда по желанию',
@@ -87,11 +84,10 @@ const copy: Record<Locale, {
     emailComing: 'Email для отзывов скоро появится',
     writeFirst: 'Напишите сообщение, чтобы активировать действия.',
     copyFailed: 'Браузеру не удалось скопировать сообщение. Выделите и скопируйте его вручную.',
-    supportTitle: 'Поддержать проект',
-    supportBody: 'Yi Path — не платное приложение. Если вы просто хотите помочь с текстами, исследованиями и дальнейшей разработкой, проект можно поддержать через Buy Me a Coffee. Полностью по желанию.',
+    supportTitle: 'Поддержать Yi Path',
+    supportBody: 'Если Yi Path оказался полезным, можете угостить меня кофе и помочь развивать его дальше. Полностью по желанию.',
     bmac: 'Buy Me a Coffee',
-    bmacComing: 'Ссылка для поддержки скоро появится',
-    noUnlocks: 'Поддержка не открывает функции и не меняет ваше чтение.',
+    bmacComing: 'Ссылка на кофе скоро появится',
   },
 }
 
@@ -171,7 +167,6 @@ export function SupportPage() {
           <div className="mt-6">
             {BMAC_URL ? <a className="button-secondary" href={BMAC_URL} target="_blank" rel="noreferrer"><Coffee size={18} aria-hidden="true" /> {c.bmac}</a> : <button className="button-secondary" type="button" disabled><Coffee size={18} aria-hidden="true" /> {c.bmacComing}</button>}
           </div>
-          <p className="mt-5 border-t border-[var(--line)] pt-5 text-xs leading-5 text-[var(--ink-soft)]">{c.noUnlocks}</p>
         </section>
       </div>
     </div>

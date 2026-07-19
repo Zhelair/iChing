@@ -5,10 +5,10 @@ import { translations, type TranslationKey } from './translations'
 const STORAGE_KEY = 'yi-path:preferences:v1'
 const defaultPreferences: Preferences = {
   locale: 'en',
-  theme: 'daylight',
-  sound: false,
-  music: false,
-  ambientVolume: 0,
+  theme: 'bamboo-mist',
+  sound: true,
+  music: true,
+  ambientVolume: 1,
   reduceMotion: typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
 }
 
