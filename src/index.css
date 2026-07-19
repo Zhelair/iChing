@@ -602,8 +602,8 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
 .yarrow-stalk-field { position: relative; display: flex; min-height: 12rem; align-items: flex-end; justify-content: center; gap: 2px; overflow: hidden; border: 1px solid color-mix(in srgb,var(--jade) 20%,var(--line)); border-radius: 1.35rem; background: linear-gradient(145deg,color-mix(in srgb,var(--jade-light) 70%,transparent),color-mix(in srgb,var(--white) 50%,transparent)); padding: 2.7rem 1rem 1.4rem; }
 .yarrow-stalk-field i { display: block; width: 3px; height: calc(6.4rem + var(--stalk-wave) * .22rem); flex: none; border-radius: 999px; background: var(--jade); transform: rotate(calc((var(--stalk-index) - 24) * .13deg)); transform-origin: bottom; transition: opacity 450ms ease, transform 620ms cubic-bezier(.2,.8,.2,1); }
 .yarrow-stalk-field i.is-removed { opacity: .09; transform: translateY(2.8rem) rotate(14deg); }
-.yarrow-stalk-field.is-ritual i.is-counted-kept { animation: yarrow-count-kept 2.1s cubic-bezier(.3,.7,.25,1) both; animation-delay: calc(var(--stalk-wave) * 12ms); }
-.yarrow-stalk-field.is-ritual i.is-counted-removed { animation: yarrow-count-removed 2.1s cubic-bezier(.3,.7,.25,1) both; animation-delay: calc(var(--stalk-wave) * 12ms); }
+.yarrow-stalk-field.is-ritual i.is-counted-kept { animation: yarrow-count-kept var(--yarrow-duration,5.4s) cubic-bezier(.3,.7,.25,1) both; animation-delay: calc(var(--stalk-wave) * 12ms); }
+.yarrow-stalk-field.is-ritual i.is-counted-removed { animation: yarrow-count-removed var(--yarrow-duration,5.4s) cubic-bezier(.3,.7,.25,1) both; animation-delay: calc(var(--stalk-wave) * 12ms); }
 @keyframes yarrow-count-kept {
   0% { opacity: 1; transform: rotate(calc((var(--stalk-index) - 24) * .13deg)); }
   15% { transform: translateY(-.45rem) rotate(calc((var(--stalk-index) - 24) * -.2deg)); }
