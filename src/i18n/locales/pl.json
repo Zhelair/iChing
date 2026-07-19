@@ -73,7 +73,7 @@
     "cast.complete": "Pokaż odczyt",
     "cast.physical.title": "Wprowadź rzuty prawdziwymi monetami",
     "cast.physical.body": "Orzeł = 3, reszka = 2. Najpierw wprowadź dolną linię.",
-    "cast.physical.setAside": "Przygotuj 18 monet tego samego nominału — drobne monety są odpowiednie. Dla każdej linii weź kolejne trzy monety, dobrze potrząśnij nimi w dłoniach i upuść je na stół. Powtarzaj z nową trójką, aż ukończysz wszystkie sześć linii. Przeznacz te monety wyłącznie do praktyki, a po odczycie przechowuj je razem.",
+    "cast.physical.setAside": "Przygotuj 18 monet tego samego nominału — drobne monety są odpowiednie. Dla każdej linii weź kolejne trzy monety, dobrze potrząśnij nimi w dłoniach i upuść je na stół. Powtarzaj z nową trójką, aż ukończysz wszystkie sześć linii. Trzymaj te 18 monet razem i używaj ich wyłącznie do tej praktyki. Odkładaj je po każdym odczycie, aby były gotowe do przyszłych konsultacji.",
     "cast.chooseTotal": "Wybierz sumę dla linii",
     "cast.undo": "Cofnij ostatnią linię",
     "cast.direct.title": "Wprowadź znany heksagram",
@@ -283,6 +283,9 @@
       "divided": "Podzielono",
       "removed": "odłożono",
       "remain": "pozostało",
+      "mixing": "Mieszanie łodyg",
+      "dividing": "Dzielenie na dwa stosy",
+      "counting": "Liczenie po cztery",
       "source": "Xici opisuje pięćdziesiąt łodyg, z których używa się czterdziestu dziewięciu. Ten cyfrowy model zachowuje standardowy rozkład prawdopodobieństwa linii 1:5:7:3 i przedstawia prawidłową ścieżkę trzech przemian."
     },
     "journal": {

@@ -73,7 +73,7 @@
     "cast.complete": "Lesung anzeigen",
     "cast.physical.title": "Ihre echten Münzwürfe eingeben",
     "cast.physical.body": "Kopf = 3, Zahl = 2. Geben Sie die unterste Linie zuerst ein.",
-    "cast.physical.setAside": "Bereiten Sie 18 Münzen desselben Nennwerts vor – Centmünzen sind gut geeignet. Nehmen Sie für jede Linie die nächsten drei Münzen, schütteln Sie sie gründlich in den Händen und lassen Sie sie auf einen Tisch fallen. Wiederholen Sie dies mit einer neuen Dreiergruppe, bis alle sechs Linien vollständig sind. Verwenden Sie diese Münzen ausschließlich für die Praxis und bewahren Sie sie danach gemeinsam auf.",
+    "cast.physical.setAside": "Bereiten Sie 18 Münzen desselben Nennwerts vor – Centmünzen sind gut geeignet. Nehmen Sie für jede Linie die nächsten drei Münzen, schütteln Sie sie gründlich in den Händen und lassen Sie sie auf einen Tisch fallen. Wiederholen Sie dies mit einer neuen Dreiergruppe, bis alle sechs Linien vollständig sind. Bewahren Sie diese 18 Münzen gemeinsam auf und verwenden Sie sie ausschließlich für diese Praxis. Legen Sie sie nach jeder Lesung zurück, damit sie für künftige Befragungen bereitliegen.",
     "cast.chooseTotal": "Wählen Sie die Summe für Linie",
     "cast.undo": "Letzte Linie rückgängig machen",
     "cast.direct.title": "Ein bekanntes Hexagramm eingeben",
@@ -283,6 +283,9 @@
       "divided": "Geteilt",
       "removed": "beiseitegelegt",
       "remain": "verbleiben",
+      "mixing": "Die Stängel mischen",
+      "dividing": "In zwei Haufen teilen",
+      "counting": "In Vierergruppen zählen",
       "source": "Das Xici beschreibt fünfzig Stängel, von denen neunundvierzig verwendet werden. Dieses digitale Modell bewahrt die standardisierten Linienwahrscheinlichkeiten 1:5:7:3 und zeigt einen gültigen Ablauf aus drei Wandlungen."
     },
     "journal": {

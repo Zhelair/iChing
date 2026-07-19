@@ -22,9 +22,9 @@ const lineMeta: Record<LineValue, { nameKey: TranslationKey; effectKey: Translat
 }
 
 const yarrowCopy = {
-  en: { eyebrow: 'Yarrow-stalk workshop', title: 'Count one line through three changes', body: 'One of fifty stalks rests aside. Divide the active forty-nine, set one from the right aside, then count both heaps by fours. Repeat three times.', begin: 'Make the first change', next: 'Make the next change', nextLine: 'Begin the next line', complete: 'The line is complete', divided: 'Divided', removed: 'set aside', remain: 'remain', source: 'The Xici describes fifty stalks, of which forty-nine are used. This digital model preserves the standardized 1:5:7:3 line odds and displays a valid three-change path.' },
-  bg: { eyebrow: 'Работилница с бял равнец', title: 'Пребройте една линия през три промени', body: 'Едно от 50 стъбла остава настрана. Разделете активните 49, отделете едно отдясно и пребройте двете купчини по четири. Повторете три пъти.', begin: 'Направете първата промяна', next: 'Направете следващата промяна', nextLine: 'Започнете следващата линия', complete: 'Линията е завършена', divided: 'Разделени', removed: 'отделени', remain: 'остават', source: 'Сици описва 50 стъбла, от които се използват 49. Този дигитален модел запазва стандартизираните вероятности 1:5:7:3 и показва валиден път през три промени.' },
-  ru: { eyebrow: 'Мастерская тысячелистника', title: 'Получите линию через три изменения', body: 'Один из 50 стеблей остаётся в стороне. Разделите 49 активных, отложите один справа и считайте обе кучки по четыре. Повторите трижды.', begin: 'Сделать первое изменение', next: 'Сделать следующее изменение', nextLine: 'Начать следующую линию', complete: 'Линия завершена', divided: 'Разделено', removed: 'отложено', remain: 'осталось', source: 'Сицы описывает 50 стеблей, из которых используются 49. Эта цифровая модель сохраняет стандартизированные вероятности 1:5:7:3 и показывает допустимый путь трёх изменений.' },
+  en: { eyebrow: 'Yarrow-stalk workshop', title: 'Count one line through three changes', body: 'One of fifty stalks rests aside. Divide the active forty-nine, set one from the right aside, then count both heaps by fours. Repeat three times.', begin: 'Make the first change', next: 'Make the next change', nextLine: 'Begin the next line', complete: 'The line is complete', divided: 'Divided', removed: 'set aside', remain: 'remain', mixing: 'Mixing the stalks', dividing: 'Dividing into two heaps', counting: 'Counting by fours', source: 'The Xici describes fifty stalks, of which forty-nine are used. This digital model preserves the standardized 1:5:7:3 line odds and displays a valid three-change path.' },
+  bg: { eyebrow: 'Работилница с бял равнец', title: 'Пребройте една линия през три промени', body: 'Едно от 50 стъбла остава настрана. Разделете активните 49, отделете едно отдясно и пребройте двете купчини по четири. Повторете три пъти.', begin: 'Направете първата промяна', next: 'Направете следващата промяна', nextLine: 'Започнете следващата линия', complete: 'Линията е завършена', divided: 'Разделени', removed: 'отделени', remain: 'остават', mixing: 'Смесване на стъблата', dividing: 'Разделяне на две купчини', counting: 'Броене по четири', source: 'Сици описва 50 стъбла, от които се използват 49. Този дигитален модел запазва стандартизираните вероятности 1:5:7:3 и показва валиден път през три промени.' },
+  ru: { eyebrow: 'Мастерская тысячелистника', title: 'Получите линию через три изменения', body: 'Один из 50 стеблей остаётся в стороне. Разделите 49 активных, отложите один справа и считайте обе кучки по четыре. Повторите трижды.', begin: 'Сделать первое изменение', next: 'Сделать следующее изменение', nextLine: 'Начать следующую линию', complete: 'Линия завершена', divided: 'Разделено', removed: 'отложено', remain: 'осталось', mixing: 'Перемешиваем стебли', dividing: 'Делим на две кучки', counting: 'Считаем по четыре', source: 'Сицы описывает 50 стеблей, из которых используются 49. Эта цифровая модель сохраняет стандартизированные вероятности 1:5:7:3 и показывает допустимый путь трёх изменений.' },
 } as const
 
 type Translator = (key: TranslationKey) => string
@@ -92,17 +92,32 @@ type YarrowCopy = {
   divided: string
   removed: string
   remain: string
+  mixing: string
+  dividing: string
+  counting: string
   source: string
 }
 
-function YarrowWorkshop({ procedure, step, lineNumber, onAdvance, copy: c }: { procedure: YarrowProcedure | null; step: number; lineNumber: number; onAdvance: () => void; copy: YarrowCopy }) {
+type YarrowPhase = 'idle' | 'mixing' | 'dividing' | 'counting'
+
+function YarrowWorkshop({ procedure, step, animatingStep, phase, lineNumber, onAdvance, copy: c }: { procedure: YarrowProcedure | null; step: number; animatingStep: number | null; phase: YarrowPhase; lineNumber: number; onAdvance: () => void; copy: YarrowCopy }) {
   const remaining = procedure && step > 0 ? procedure.changes[Math.min(step, 3) - 1].remaining : 49
-  return <div className="yarrow-workshop">
-    <div className="yarrow-stalk-field" aria-hidden="true">{Array.from({ length: 49 }, (_, index) => <i key={index} className={index < remaining ? 'is-active' : 'is-removed'} style={{ '--stalk-index': index, '--stalk-wave': index % 7 } as CSSProperties} />)}<span className="yarrow-resting-stalk" /></div>
+  const ritualChange = procedure && animatingStep ? procedure.changes[animatingStep - 1] : null
+  const phaseLabel = phase === 'mixing' ? c.mixing : phase === 'dividing' ? c.dividing : phase === 'counting' ? c.counting : ''
+
+  return <div className={`yarrow-workshop ${phase !== 'idle' ? 'is-ritual-active' : ''}`} aria-busy={phase !== 'idle'}>
+    <div className={`yarrow-stalk-field ${ritualChange ? 'is-ritual' : ''}`} aria-hidden="true">{Array.from({ length: 49 }, (_, index) => {
+      const wasAlreadyRemoved = ritualChange ? index >= ritualChange.before : index >= remaining
+      const willBeRemoved = ritualChange ? index >= ritualChange.remaining && index < ritualChange.before : false
+      const side = ritualChange && index < ritualChange.left ? 'is-left' : 'is-right'
+      const className = wasAlreadyRemoved ? 'is-removed' : ritualChange ? `${willBeRemoved ? 'is-counted-removed' : 'is-counted-kept'} ${side}` : 'is-active'
+      return <i key={index} className={className} style={{ '--stalk-index': index, '--stalk-wave': index % 7, '--stalk-shift': side === 'is-left' ? '-15px' : '15px' } as CSSProperties} />
+    })}<span className="yarrow-resting-stalk" /></div>
     <div className="yarrow-count"><strong>{remaining}</strong><span>{c.remain}</span></div>
-    {procedure && step > 0 ? <ol className="yarrow-changes">{procedure.changes.slice(0, step).map((change, index) => <li key={index} className={index === step - 1 ? 'is-current' : ''}><span>{index + 1}</span><div className="yarrow-change__copy"><p><span>{c.divided}</span><strong>{change.left} + {change.right}</strong></p><small>− {change.removed} {c.removed} · {change.remaining} {c.remain}</small></div></li>)}</ol> : <p className="text-sm leading-6 text-[var(--ink-soft)]">{c.source}</p>}
+    {procedure && step > 0 ? <ol className="yarrow-changes">{procedure.changes.slice(0, step).map((change, index) => <li key={index} className={index === step - 1 ? 'is-current' : ''}><span>{index + 1}</span><div className="yarrow-change__copy"><p><span>{c.divided}</span><strong>{change.left} + {change.right}</strong></p><small>− {change.removed} {c.removed} · {change.remaining} {c.remain}</small></div></li>)}</ol> : ritualChange ? null : <p className="text-sm leading-6 text-[var(--ink-soft)]">{c.source}</p>}
+    {ritualChange ? <div className={`yarrow-ritual-status is-${phase}`} role="status" aria-live="polite" aria-atomic="true"><span className="yarrow-ritual-status__pulse" aria-hidden="true" /><div><p>{phaseLabel}</p>{phase === 'dividing' ? <strong>{ritualChange.left} + {ritualChange.right}</strong> : phase === 'counting' ? <strong>− {ritualChange.removed} {c.removed} · {ritualChange.remaining} {c.remain}</strong> : null}</div></div> : null}
     {step === 3 && procedure ? <div className="yarrow-result" role="status"><span>{c.complete}</span><strong>{procedure.value}</strong></div> : null}
-    {!(step === 3 && lineNumber === 6) ? <button type="button" className="button-primary w-full" onClick={onAdvance}>{step === 0 ? c.begin : step < 3 ? c.next : c.nextLine}</button> : null}
+    {!(step === 3 && lineNumber === 6) ? <button type="button" className="button-primary w-full" onClick={onAdvance} disabled={phase !== 'idle'}>{phase !== 'idle' ? phaseLabel : step === 0 ? c.begin : step < 3 ? c.next : c.nextLine}</button> : null}
   </div>
 }
 
@@ -172,11 +187,16 @@ function CastFlow({ method }: { method: ReadingMethod }) {
   const [isFinishing, setIsFinishing] = useState(false)
   const [yarrowProcedure, setYarrowProcedure] = useState<YarrowProcedure | null>(null)
   const [yarrowStep, setYarrowStep] = useState(0)
+  const [yarrowAnimatingStep, setYarrowAnimatingStep] = useState<number | null>(null)
+  const [yarrowPhase, setYarrowPhase] = useState<YarrowPhase>('idle')
   const revealTimerRef = useRef<number | null>(null)
+  const yarrowTimersRef = useRef<number[]>([])
   const castLockRef = useRef(false)
+  const yarrowLockRef = useRef(false)
 
   useEffect(() => () => {
     if (revealTimerRef.current !== null) window.clearTimeout(revealTimerRef.current)
+    yarrowTimersRef.current.forEach((timer) => window.clearTimeout(timer))
   }, [])
 
   const titles = {
@@ -216,18 +236,36 @@ function CastFlow({ method }: { method: ReadingMethod }) {
   }
 
   function advanceYarrow() {
-    if (lines.length >= 6 && yarrowStep === 3) return
+    if (yarrowLockRef.current || (lines.length >= 6 && yarrowStep === 3)) return
+    yarrowLockRef.current = true
     playHistoryCue('stalk')
+    let activeProcedure = yarrowProcedure
+    let targetStep = yarrowStep + 1
     if (!yarrowProcedure || yarrowStep === 3) {
-      setYarrowProcedure(castYarrowProcedure())
-      setYarrowStep(1)
-      return
+      activeProcedure = castYarrowProcedure()
+      targetStep = 1
+      setYarrowProcedure(activeProcedure)
+      setYarrowStep(0)
     }
-    const nextStep = yarrowStep + 1
-    setYarrowStep(nextStep)
-    if (nextStep === 3) {
-      setLines((current) => [...current, createCastLine((current.length + 1) as CastLine['position'], yarrowProcedure.value)])
-    }
+    if (!activeProcedure) return
+
+    const phaseTimes = preferences.reduceMotion ? [20, 40, 70] : [650, 1320, 2200]
+    setYarrowAnimatingStep(targetStep)
+    setYarrowPhase('mixing')
+    yarrowTimersRef.current = [
+      window.setTimeout(() => setYarrowPhase('dividing'), phaseTimes[0]),
+      window.setTimeout(() => setYarrowPhase('counting'), phaseTimes[1]),
+      window.setTimeout(() => {
+        setYarrowStep(targetStep)
+        setYarrowAnimatingStep(null)
+        setYarrowPhase('idle')
+        yarrowLockRef.current = false
+        yarrowTimersRef.current = []
+        if (targetStep === 3) {
+          setLines((current) => [...current, createCastLine((current.length + 1) as CastLine['position'], activeProcedure.value)])
+        }
+      }, phaseTimes[2]),
+    ]
   }
 
   function toggleMoving(position: number) {
@@ -280,7 +318,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
                     ) : null}
                   </>
                 ) : method === 'yarrow' ? (
-                  <YarrowWorkshop procedure={yarrowProcedure} step={yarrowStep} lineNumber={Math.max(1, lines.length + (yarrowStep === 3 ? 0 : 1))} onAdvance={advanceYarrow} copy={yarrow} />
+                  <YarrowWorkshop procedure={yarrowProcedure} step={yarrowStep} animatingStep={yarrowAnimatingStep} phase={yarrowPhase} lineNumber={Math.max(1, lines.length + (yarrowStep === 3 ? 0 : 1))} onAdvance={advanceYarrow} copy={yarrow} />
                 ) : (
                   <fieldset className="w-full">
                     <legend className="mb-4 text-sm font-semibold">{t('cast.chooseTotal')} {lines.length + 1}</legend>
@@ -324,7 +362,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
 
         {prepared ? (
           <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
-            {method !== 'direct' && lines.length > 0 ? <button type="button" className="button-quiet" onClick={() => { setLines((current) => current.slice(0, -1)); if (method === 'yarrow') { setYarrowProcedure(null); setYarrowStep(0) } }} disabled={Boolean(pending)}><RotateCcw size={17} aria-hidden="true" /> {t('cast.undo')}</button> : <span />}
+            {method !== 'direct' && lines.length > 0 ? <button type="button" className="button-quiet" onClick={() => { setLines((current) => current.slice(0, -1)); if (method === 'yarrow') { setYarrowProcedure(null); setYarrowStep(0) } }} disabled={Boolean(pending) || yarrowPhase !== 'idle'}><RotateCcw size={17} aria-hidden="true" /> {t('cast.undo')}</button> : <span />}
             {method === 'direct' ? (
               <button type="button" className="button-primary" onClick={() => finish(linesFromKnownHexagram(knownId, movingPositions))} disabled={isFinishing}>{t('cast.complete')}</button>
             ) : lines.length === 6 && !pending ? (

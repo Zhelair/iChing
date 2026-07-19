@@ -73,7 +73,7 @@
     "cast.complete": "Mostra la lettura",
     "cast.physical.title": "Inserisci i tuoi lanci reali",
     "cast.physical.body": "Testa = 3 e croce = 2. Inserisci prima la linea inferiore.",
-    "cast.physical.setAside": "Prepara 18 monete dello stesso valore — i centesimi vanno bene. Per ogni linea, prendi le tre monete successive, agitale bene tra le mani e lasciale cadere su un tavolo. Ripeti con un nuovo gruppo di tre fino a completare tutte e sei le linee. Riserva queste monete solo alla pratica e riponile insieme al termine.",
+    "cast.physical.setAside": "Prepara 18 monete dello stesso valore — i centesimi vanno bene. Per ogni linea, prendi le tre monete successive, agitale bene tra le mani e lasciale cadere su un tavolo. Ripeti con un nuovo gruppo di tre fino a completare tutte e sei le linee. Conserva insieme queste 18 monete e usale solo per questa pratica. Riponile dopo ogni lettura affinché siano pronte per le consultazioni future.",
     "cast.chooseTotal": "Scegli il totale per la linea",
     "cast.undo": "Annulla l’ultima linea",
     "cast.direct.title": "Inserisci un esagramma noto",
@@ -283,6 +283,9 @@
       "divided": "Divisi",
       "removed": "messi da parte",
       "remain": "restano",
+      "mixing": "Mescolando gli steli",
+      "dividing": "Dividendo in due mucchi",
+      "counting": "Contando a gruppi di quattro",
       "source": "Lo Xici descrive cinquanta steli, dei quali ne vengono usati quarantanove. Questo modello digitale conserva le probabilità standardizzate 1:5:7:3 delle linee e mostra un percorso valido di tre mutamenti."
     },
     "journal": {

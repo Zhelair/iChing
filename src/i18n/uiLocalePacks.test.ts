@@ -19,7 +19,7 @@ const featureGroups = [
 const featureKeys = {
   history: ['eyebrow', 'title', 'contents', 'replay', 'oracleSource', 'yarrowSource', 'chapters'],
   methodYarrow: ['title', 'body'],
-  castYarrow: ['eyebrow', 'title', 'body', 'begin', 'next', 'nextLine', 'complete', 'divided', 'removed', 'remain', 'source'],
+  castYarrow: ['eyebrow', 'title', 'body', 'begin', 'next', 'nextLine', 'complete', 'divided', 'removed', 'remain', 'mixing', 'dividing', 'counting', 'source'],
   journal: ['yarrow', 'eyebrow', 'title', 'body', 'search', 'all', 'digital', 'physical', 'direct', 'readings', 'recurring', 'seen', 'empty', 'emptyBody', 'begin', 'noResults', 'question', 'untitled', 'note', 'noteHint', 'tags', 'tagsHint', 'save', 'saved', 'review', 'remove', 'removeTitle', 'removeBody', 'removeCancel', 'removeConfirm', 'undo', 'undoAction', 'backups', 'settings', 'contents', 'changed', 'stable', 'thisMonth'],
   support: ['eyebrow', 'title', 'intro', 'feedbackTitle', 'feedbackBody', 'name', 'email', 'message', 'placeholder', 'copyFeedback', 'copied', 'sendFeedback', 'sending', 'sent', 'sendFailed', 'tryLater', 'writeFirst', 'copyFailed', 'supportTitle', 'supportBody', 'bmac', 'bmacComing', 'feedbackHeading', 'feedbackName', 'feedbackEmail'],
   settingsPrivacy: ['eyebrow', 'title', 'intro', 'local', 'access', 'exports', 'largeFile'],
