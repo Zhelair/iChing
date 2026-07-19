@@ -7,6 +7,7 @@ const en = {
   'nav.library': 'Library',
   'nav.learn': 'Learn',
   'nav.settings': 'Settings',
+  'nav.support': 'Support',
   'brand.tagline': 'A quiet practice for meeting change',
   'common.back': 'Back',
   'common.cancel': 'Cancel',
@@ -187,6 +188,7 @@ const bg: Record<TranslationKey, string> = {
   'nav.library': 'Библиотека',
   'nav.learn': 'Научи',
   'nav.settings': 'Настройки',
+  'nav.support': 'Подкрепа',
   'brand.tagline': 'Тиха практика за среща с промяната',
   'common.back': 'Назад',
   'common.cancel': 'Отказ',
@@ -359,7 +361,7 @@ const bg: Record<TranslationKey, string> = {
 }
 
 const ru: Record<TranslationKey, string> = {
-  'nav.home': 'Главная', 'nav.read': 'Чтение', 'nav.journal': 'Дневник', 'nav.library': 'Библиотека', 'nav.learn': 'Обучение', 'nav.settings': 'Настройки',
+  'nav.home': 'Главная', 'nav.read': 'Чтение', 'nav.journal': 'Дневник', 'nav.library': 'Библиотека', 'nav.learn': 'Обучение', 'nav.settings': 'Настройки', 'nav.support': 'Поддержка',
   'brand.tagline': 'Тихая практика встречи с переменами', 'common.back': 'Назад', 'common.cancel': 'Отмена', 'common.close': 'Закрыть', 'common.continue': 'Продолжить', 'common.save': 'Сохранить', 'common.saved': 'Сохранено', 'common.skip': 'Перейти к основному содержанию', 'common.line': 'Линия', 'common.of': 'из', 'common.loading': 'Загрузка…',
   'home.eyebrow': 'Приватно · локально · без аккаунта', 'home.title': 'Встречайте перемены с более спокойным умом.', 'home.body': 'Задайте честный вопрос, точно постройте линии и используйте Ицзин как зеркало для размышления, а не как обещание будущего.', 'home.start': 'Начать чтение', 'home.guide': 'Как проходит чтение', 'home.privacy': 'Ваши вопросы и дневник остаются на этом устройстве.', 'home.promise': 'Получите символы точно. Найдите собственный смысл.', 'home.featuredTitle': 'Фу — Возвращение',
   'method.eyebrow': 'Начало консультации', 'method.title': 'Как вы хотите создать шесть линий?', 'method.body': 'Каждый метод создаёт одну и ту же прозрачную запись, снизу вверх.', 'method.question': 'Вопрос для размышления', 'method.optional': 'Необязательно и приватно', 'method.placeholder': 'Что было бы полезно понять об этой ситуации?', 'method.hint': 'Открытые вопросы оставляют больше места для понимания. Можно продолжить и без вопроса.', 'method.digital.title': 'Цифровые монеты', 'method.digital.body': 'Шесть осознанных бросков с безопасным случайным источником браузера.', 'method.physical.title': 'Настоящие монеты', 'method.physical.body': 'Бросьте три монеты и введите сумму: 6, 7, 8 или 9.', 'method.direct.title': 'У меня уже есть гексаграмма', 'method.direct.body': 'Выберите основную гексаграмму и отметьте изменяющиеся линии.',

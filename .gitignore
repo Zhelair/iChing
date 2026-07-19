@@ -8,3 +8,4 @@ yi-path-export-*.json
 .codex-dev-server*.log
 mobile-*.png
 desktop-library*.png
+tmp/

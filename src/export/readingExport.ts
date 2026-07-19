@@ -1,3 +1,4 @@
+import { PDFDocument } from 'pdf-lib'
 import { getHexagram } from '../data/hexagrams'
 import type { Locale, Polarity, Reading } from '../domain/types'
 
@@ -39,7 +40,7 @@ function drawHexagram(context: CanvasRenderingContext2D, lines: readonly { polar
   })
 }
 
-export async function downloadReadingImage(reading: Reading, locale: Locale) {
+async function createReadingCanvas(reading: Reading, locale: Locale) {
   await document.fonts?.ready
   const primary = getHexagram(reading.primaryHexagramId)
   const resulting = getHexagram(reading.resultingHexagramId)
@@ -133,11 +134,41 @@ export async function downloadReadingImage(reading: Reading, locale: Locale) {
   context.fillText(formattedDate, 100, canvas.height - 92)
   context.textAlign = 'right'; context.fillText(c.stored, 1300, canvas.height - 92); context.textAlign = 'left'
 
-  const blob = await new Promise<Blob>((resolve, reject) => canvas.toBlob((result) => result ? resolve(result) : reject(new Error('Image export failed.')), 'image/png'))
+  return canvas
+}
+
+function canvasBlob(canvas: HTMLCanvasElement, type: 'image/png' | 'image/jpeg', quality?: number) {
+  return new Promise<Blob>((resolve, reject) => canvas.toBlob((result) => result ? resolve(result) : reject(new Error('Reading export failed.')), type, quality))
+}
+
+function downloadBlob(blob: Blob, filename: string) {
   const url = URL.createObjectURL(blob)
   const anchor = document.createElement('a')
   anchor.href = url
-  anchor.download = `yi-path-reading-${reading.createdAt.slice(0, 10)}.png`
+  anchor.download = filename
   anchor.click()
   window.setTimeout(() => URL.revokeObjectURL(url), 1000)
+}
+
+export async function downloadReadingImage(reading: Reading, locale: Locale) {
+  const canvas = await createReadingCanvas(reading, locale)
+  downloadBlob(await canvasBlob(canvas, 'image/png'), `yi-path-reading-${reading.createdAt.slice(0, 10)}.png`)
+}
+
+export async function downloadReadingPdf(reading: Reading, locale: Locale) {
+  const canvas = await createReadingCanvas(reading, locale)
+  const imageBlob = await canvasBlob(canvas, 'image/jpeg', .94)
+  const pdf = await PDFDocument.create()
+  const image = await pdf.embedJpg(await imageBlob.arrayBuffer())
+  const pageWidth = 700
+  const pageHeight = pageWidth * canvas.height / canvas.width
+  const page = pdf.addPage([pageWidth, pageHeight])
+  page.drawImage(image, { x: 0, y: 0, width: pageWidth, height: pageHeight })
+  pdf.setTitle(getHexagram(reading.primaryHexagramId).editorial[locale].title)
+  pdf.setAuthor('Yi Path')
+  pdf.setSubject('A private reflective reading generated locally')
+  pdf.setCreator('Yi Path')
+  pdf.setCreationDate(new Date(reading.createdAt))
+  const bytes = Uint8Array.from(await pdf.save())
+  downloadBlob(new Blob([bytes], { type: 'application/pdf' }), `yi-path-reading-${reading.createdAt.slice(0, 10)}.pdf`)
 }

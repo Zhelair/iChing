@@ -11,6 +11,7 @@ const LibraryPage = lazy(() => import('./pages/LibraryPage').then(({ LibraryPage
 const HexagramPage = lazy(() => import('./pages/HexagramPage').then(({ HexagramPage: page }) => ({ default: page })))
 const SettingsPage = lazy(() => import('./pages/SettingsPage').then(({ SettingsPage: page }) => ({ default: page })))
 const JournalPage = lazy(() => import('./pages/JournalPage').then(({ JournalPage: page }) => ({ default: page })))
+const SupportPage = lazy(() => import('./pages/SupportPage').then(({ SupportPage: page }) => ({ default: page })))
 
 export function App() {
   return (
@@ -26,6 +27,7 @@ export function App() {
         <Route path="hexagrams/:number" element={<HexagramPage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="journal" element={<JournalPage />} />
+        <Route path="support" element={<SupportPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

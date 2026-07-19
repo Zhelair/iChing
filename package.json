@@ -16,6 +16,7 @@
     "@fontsource-variable/manrope": "5.2.8",
     "idb": "8.0.3",
     "lucide-react": "1.25.0",
+    "pdf-lib": "1.17.1",
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "react-router-dom": "7.18.1"
