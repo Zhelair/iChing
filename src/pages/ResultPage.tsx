@@ -1,7 +1,8 @@
 import { ArrowRight, BookOpen, Check, ChevronRight } from 'lucide-react'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { HexagramFigure } from '../components/HexagramFigure'
+import { ReadingExportActions } from '../components/ReadingExportActions'
 import { getHexagram } from '../data/hexagrams'
 import type { LineValue, Reading } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
@@ -38,6 +39,13 @@ export function ResultPage() {
   const [reading, setReading] = useState(getCurrentReading)
   const [note, setNote] = useState(reading?.note ?? '')
   const [saved, setSaved] = useState(false)
+  const [searchParams] = useSearchParams()
+
+  useEffect(() => {
+    if (!reading || searchParams.get('print') !== '1') return
+    const timer = window.setTimeout(() => window.print(), 500)
+    return () => window.clearTimeout(timer)
+  }, [reading, searchParams])
 
   if (!reading) {
     return (
@@ -66,12 +74,11 @@ export function ResultPage() {
   }
 
   return (
-    <div className="page-shell py-10 sm:py-16">
+    <div className="result-page page-shell py-10 sm:py-16">
       <div className="reading-column space-y-5">
-        <header className="text-center">
-          <p className="eyebrow">{t('result.whatAppeared')}</p>
-          <h1 className="mt-3 text-4xl font-medium sm:text-5xl">{primaryEditorial.title}</h1>
-          {reading.question ? <p className="mx-auto mt-4 max-w-xl font-editorial text-lg italic leading-7 text-[var(--ink-soft)]">“{reading.question}”</p> : null}
+        <header className="result-heading">
+          <div><p className="eyebrow">{t('result.whatAppeared')}</p><h1 className="mt-3 text-4xl font-medium sm:text-5xl">{primaryEditorial.title}</h1>{reading.question ? <p className="mt-4 max-w-xl font-editorial text-lg italic leading-7 text-[var(--ink-soft)]">“{reading.question}”</p> : null}</div>
+          <ReadingExportActions reading={reading} />
         </header>
 
         <section className="surface p-4 sm:p-6" aria-labelledby="appeared-title">

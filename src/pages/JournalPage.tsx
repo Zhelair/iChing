@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { HexagramFigure } from '../components/HexagramFigure'
 import { PageIntro } from '../components/PageIntro'
+import { ReadingExportActions } from '../components/ReadingExportActions'
 import { getHexagram } from '../data/hexagrams'
 import type { Reading, ReadingMethod } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
@@ -11,20 +12,23 @@ import { setCurrentReading } from '../storage/session'
 
 const copy = {
   en: {
+    yarrow: 'Yarrow',
     eyebrow: 'Private practice · local journal', title: 'A record of encounters with change.', body: 'Return to questions, refine your notes, and notice recurring images without turning reflection into a score.',
     search: 'Search questions, notes, tags, or hexagrams', all: 'All methods', digital: 'Digital', physical: 'Physical', direct: 'Entered', readings: 'readings', recurring: 'Recurring images', seen: 'seen', empty: 'Your journal is quiet for now.', emptyBody: 'Complete a reading and it will appear here automatically.', begin: 'Begin a reading', noResults: 'No entries match these filters.', question: 'Question', untitled: 'Untitled reflection', note: 'Reflection', noteHint: 'What became clearer with time?', tags: 'Tags', tagsHint: 'work, family, timing', save: 'Save changes', saved: 'Saved locally', review: 'Review reading', remove: 'Remove entry', undo: 'Entry removed.', undoAction: 'Undo', backups: 'JSON backup and restore stay in Settings.', settings: 'Open Settings', contents: 'Journal filters', changed: 'changing lines', stable: 'stable reading', thisMonth: 'This month',
   },
   bg: {
+    yarrow: 'Равнец',
     eyebrow: 'Лична практика · локален дневник', title: 'Запис на срещите с промяната.', body: 'Връщайте се към въпросите, допълвайте бележките и забелязвайте повтарящи се образи, без да превръщате размисъла в резултат.',
     search: 'Търсете във въпроси, бележки, етикети или хексаграми', all: 'Всички методи', digital: 'Дигитални', physical: 'Физически', direct: 'Въведени', readings: 'прочита', recurring: 'Повтарящи се образи', seen: 'срещана', empty: 'Дневникът ви засега е тих.', emptyBody: 'Завършете прочит и той автоматично ще се появи тук.', begin: 'Започнете прочит', noResults: 'Няма записи с тези филтри.', question: 'Въпрос', untitled: 'Размисъл без заглавие', note: 'Размисъл', noteHint: 'Какво стана по-ясно с времето?', tags: 'Етикети', tagsHint: 'работа, семейство, време', save: 'Запази промените', saved: 'Запазено локално', review: 'Преглед на прочита', remove: 'Премахни записа', undo: 'Записът е премахнат.', undoAction: 'Отмени', backups: 'JSON архивът и възстановяването са в Настройки.', settings: 'Отвори Настройки', contents: 'Филтри на дневника', changed: 'променящи се линии', stable: 'стабилен прочит', thisMonth: 'Този месец',
   },
   ru: {
+    yarrow: 'Тысячелистник',
     eyebrow: 'Личная практика · локальный дневник', title: 'История встреч с переменами.', body: 'Возвращайтесь к вопросам, дополняйте заметки и замечайте повторяющиеся образы, не превращая размышление в оценку.',
     search: 'Поиск по вопросам, заметкам, тегам и гексаграммам', all: 'Все методы', digital: 'Цифровые', physical: 'Настоящие', direct: 'Введённые', readings: 'чтений', recurring: 'Повторяющиеся образы', seen: 'встречалась', empty: 'Ваш дневник пока тих.', emptyBody: 'Завершите чтение, и оно автоматически появится здесь.', begin: 'Начать чтение', noResults: 'Нет записей с такими фильтрами.', question: 'Вопрос', untitled: 'Размышление без заголовка', note: 'Размышление', noteHint: 'Что со временем стало яснее?', tags: 'Теги', tagsHint: 'работа, семья, время', save: 'Сохранить изменения', saved: 'Сохранено локально', review: 'Открыть чтение', remove: 'Удалить запись', undo: 'Запись удалена.', undoAction: 'Отменить', backups: 'JSON-копия и восстановление находятся в Настройках.', settings: 'Открыть Настройки', contents: 'Фильтры дневника', changed: 'изменяющихся линий', stable: 'стабильное чтение', thisMonth: 'Этот месяц',
   },
 } as const
 
-const methodOptions: Array<'all' | ReadingMethod> = ['all', 'digital', 'physical', 'direct']
+const methodOptions: Array<'all' | ReadingMethod> = ['all', 'digital', 'physical', 'yarrow', 'direct']
 
 export function JournalPage() {
   const { preferences } = useI18n()
@@ -96,6 +100,7 @@ export function JournalPage() {
     if (undoTimer.current) window.clearTimeout(undoTimer.current)
   }
   function review(reading: Reading) { setCurrentReading(reading); navigate('/result') }
+  function printReading(reading: Reading) { setCurrentReading(reading); navigate('/result?print=1') }
 
   return (
     <div className="page-shell py-10 sm:py-16">
@@ -126,7 +131,7 @@ export function JournalPage() {
                   {selectedId === reading.id ? <div className="journal-editor">
                     <div><label htmlFor={`note-${reading.id}`}>{c.note}</label><textarea id={`note-${reading.id}`} className="field mt-2 min-h-32" value={note} onChange={(event) => { setNote(event.target.value); setSaved(false) }} placeholder={c.noteHint} /></div>
                     <div><label htmlFor={`tags-${reading.id}`}><Tag size={15} /> {c.tags}</label><input id={`tags-${reading.id}`} className="field mt-2" value={tags} onChange={(event) => { setTags(event.target.value); setSaved(false) }} placeholder={c.tagsHint} /></div>
-                    <div className="flex flex-wrap gap-3"><button className="button-primary" type="button" onClick={saveEdits}>{saved ? c.saved : c.save}</button><button className="button-secondary" type="button" onClick={() => review(reading)}>{c.review}</button><button className="button-text danger-action" type="button" onClick={removeSelected}><Trash2 size={16} /> {c.remove}</button></div>
+                    <div className="flex flex-wrap gap-3"><button className="button-primary" type="button" onClick={saveEdits}>{saved ? c.saved : c.save}</button><button className="button-secondary" type="button" onClick={() => review(reading)}>{c.review}</button><ReadingExportActions reading={reading} onPrint={() => printReading(reading)} compact /><button className="button-text danger-action" type="button" onClick={removeSelected}><Trash2 size={16} /> {c.remove}</button></div>
                   </div> : null}
                 </article>
               })}</div>

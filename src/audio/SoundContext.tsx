@@ -1,11 +1,12 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, type ReactNode } from 'react'
-import type { CoinSide } from '../domain/types'
+import type { AmbientVolume, CoinSide } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 import {
   createMeditationGraph,
   disposeMeditation,
   pauseMeditation,
   resumeMeditation,
+  setMeditationVolume,
   type MeditationGraph,
 } from './meditation'
 
@@ -13,7 +14,7 @@ type SoundContextValue = {
   playCoinToss: (coins: readonly CoinSide[]) => void
   playHistoryCue: (kind: 'bone' | 'stalk' | 'brush' | 'coin') => void
   previewCoinSound: () => Promise<boolean>
-  setAmbientPlayback: (enabled: boolean) => Promise<boolean>
+  setAmbientVolume: (volume: AmbientVolume) => Promise<boolean>
 }
 
 const SoundContext = createContext<SoundContextValue | null>(null)
@@ -30,7 +31,8 @@ export function SoundProvider({ children }: { children: ReactNode }) {
   const contextRef = useRef<AudioContext | null>(null)
   const ambientRef = useRef<MeditationGraph | null>(null)
   const soundEnabledRef = useRef(preferences.sound)
-  const ambientWantedRef = useRef(preferences.music)
+  const ambientWantedRef = useRef(preferences.ambientVolume > 0)
+  const ambientVolumeRef = useRef<0.5 | 1>(preferences.ambientVolume || 0.5)
   const ambientOperationRef = useRef(0)
 
   useEffect(() => {
@@ -64,15 +66,16 @@ export function SoundProvider({ children }: { children: ReactNode }) {
 
   const startAmbient = useCallback((context: AudioContext) => {
     if (ambientRef.current || !ambientWantedRef.current) return ambientRef.current
-    const graph = createMeditationGraph(context)
+    const graph = createMeditationGraph(context, ambientVolumeRef.current)
     ambientRef.current = graph
     return graph
   }, [])
 
-  const setAmbientPlayback = useCallback(async (enabled: boolean) => {
+  const setAmbientVolume = useCallback(async (volume: AmbientVolume) => {
     const operation = ++ambientOperationRef.current
-    ambientWantedRef.current = enabled
-    if (!enabled) {
+    ambientWantedRef.current = volume > 0
+    if (volume > 0) ambientVolumeRef.current = volume === 1 ? 1 : 0.5
+    if (volume === 0) {
       stopAmbient()
       return true
     }
@@ -83,7 +86,10 @@ export function SoundProvider({ children }: { children: ReactNode }) {
 
     try {
       const graph = ambientRef.current
-      if (graph) return await resumeMeditation(context, graph)
+      if (graph) {
+        setMeditationVolume(context, graph, ambientVolumeRef.current)
+        return await resumeMeditation(context, graph)
+      }
       startAmbient(context)
       return true
     } catch {
@@ -93,19 +99,24 @@ export function SoundProvider({ children }: { children: ReactNode }) {
   }, [ensureContext, startAmbient, stopAmbient])
 
   useEffect(() => {
-    ambientWantedRef.current = preferences.music
-    if (!preferences.music) {
+    ambientWantedRef.current = preferences.ambientVolume > 0
+    if (preferences.ambientVolume > 0) ambientVolumeRef.current = preferences.ambientVolume === 1 ? 1 : 0.5
+    if (preferences.ambientVolume === 0) {
       ++ambientOperationRef.current
       stopAmbient()
       return
     }
-    if (ambientRef.current) return
+    if (ambientRef.current) {
+      const context = contextRef.current
+      if (context) setMeditationVolume(context, ambientRef.current, ambientVolumeRef.current)
+      return
+    }
 
-    const beginAfterPointer = () => void setAmbientPlayback(true)
+    const beginAfterPointer = () => void setAmbientVolume(ambientVolumeRef.current)
     const beginAfterKey = (event: KeyboardEvent) => {
       if (event.key !== 'Enter' && event.key !== ' ') return
       window.removeEventListener('keydown', beginAfterKey)
-      void setAmbientPlayback(true)
+      void setAmbientVolume(ambientVolumeRef.current)
     }
     window.addEventListener('pointerdown', beginAfterPointer, { once: true })
     window.addEventListener('keydown', beginAfterKey)
@@ -113,7 +124,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       window.removeEventListener('pointerdown', beginAfterPointer)
       window.removeEventListener('keydown', beginAfterKey)
     }
-  }, [preferences.music, setAmbientPlayback, stopAmbient])
+  }, [preferences.ambientVolume, setAmbientVolume, stopAmbient])
 
   useEffect(() => {
     const handleVisibility = () => {
@@ -229,8 +240,8 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       })
     },
     previewCoinSound: () => renderCoinToss(['heads', 'tails', 'heads'], true),
-    setAmbientPlayback,
-  }), [ensureContext, renderCoinToss, setAmbientPlayback])
+    setAmbientVolume,
+  }), [ensureContext, renderCoinToss, setAmbientVolume])
 
   return <SoundContext.Provider value={value}>{children}</SoundContext.Provider>
 }

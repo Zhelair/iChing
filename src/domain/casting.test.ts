@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { HEXAGRAMS, findHexagramByPattern } from '../data/hexagrams'
 import {
   castCoins,
+  castYarrowProcedure,
   coinTotal,
   createCastLine,
   patternFromLines,
@@ -31,6 +32,28 @@ describe('three-coin rules', () => {
       coins: ['tails', 'heads', 'heads'],
       value: 8,
     })
+  })
+})
+
+describe('yarrow-stalk procedure', () => {
+  it('performs three valid changes and produces a 6, 7, 8, or 9', () => {
+    let seed = 17
+    const random = () => {
+      seed = (seed * 1664525 + 1013904223) >>> 0
+      return seed / 4294967296
+    }
+    for (let line = 0; line < 128; line += 1) {
+      const procedure = castYarrowProcedure(random)
+      expect(procedure.changes).toHaveLength(3)
+      expect([6, 7, 8, 9]).toContain(procedure.value)
+      expect(procedure.changes[0].before).toBe(49)
+      procedure.changes.forEach((change, index) => {
+        expect(change.left + change.right).toBe(change.before)
+        expect(change.before - change.removed).toBe(change.remaining)
+        expect(index === 0 ? [5, 9] : [4, 8]).toContain(change.removed)
+      })
+      expect(procedure.changes[2].remaining / 4).toBe(procedure.value)
+    }
   })
 })
 
