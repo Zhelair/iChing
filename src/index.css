@@ -522,6 +522,8 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
 .home-preferences__links a:hover { border-color: color-mix(in srgb,var(--jade) 42%,var(--line)); background: var(--jade-light); }
 .home-preferences__links a:active { transform: translateY(1px); }
 
+.feedback-honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); opacity: 0; pointer-events: none; white-space: nowrap; }
+
 @media (max-width: 479px) {
   .home-preferences__links { display: grid; grid-template-columns: 1fr; }
   .home-preferences__links a { width: 100%; }
