@@ -46,7 +46,9 @@ export function SoundProvider({ children }: { children: ReactNode }) {
         const AudioContextClass = globalThis.AudioContext
           ?? (globalThis as typeof globalThis & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext
         if (!AudioContextClass) return null
-        context = new AudioContextClass({ latencyHint: 'interactive' })
+        // A balanced buffer is still responsive for casts, while being much less
+        // prone to crackling or falling behind on mobile audio hardware.
+        context = new AudioContextClass({ latencyHint: 'balanced' })
         contextRef.current = context
       }
       if (context.state !== 'running') await context.resume()
@@ -178,7 +180,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     whooshFilter.frequency.exponentialRampToValueAtTime(1800, now + .24)
     whooshFilter.Q.value = .7
     whooshGain.gain.setValueAtTime(.0001, now)
-    whooshGain.gain.exponentialRampToValueAtTime(.038, now + .045)
+    whooshGain.gain.exponentialRampToValueAtTime(.0456, now + .045)
     whooshGain.gain.exponentialRampToValueAtTime(.0001, now + .4)
     whoosh.connect(whooshFilter).connect(whooshGain).connect(context.destination)
     whoosh.onended = () => {
@@ -200,7 +202,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       oscillator.frequency.setValueAtTime(frequency + index * 34, impactAt)
       overtone.frequency.setValueAtTime(frequency * 1.72 + index * 40, impactAt)
       gain.gain.setValueAtTime(.0001, impactAt)
-      gain.gain.exponentialRampToValueAtTime(.055, impactAt + .008)
+      gain.gain.exponentialRampToValueAtTime(.066, impactAt + .008)
       gain.gain.exponentialRampToValueAtTime(.0001, impactAt + .32)
       oscillator.connect(gain)
       overtone.connect(gain)
@@ -232,7 +234,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
         oscillator.frequency.setValueAtTime(frequencies[kind], now)
         oscillator.frequency.exponentialRampToValueAtTime(frequencies[kind] * (kind === 'bone' ? .65 : 1.25), now + .32)
         gain.gain.setValueAtTime(.0001, now)
-        const peak = kind === 'coin' ? .045 : kind === 'stalk' ? .0375 : .025
+        const peak = kind === 'coin' ? .054 : kind === 'stalk' ? .045 : .025
         gain.gain.exponentialRampToValueAtTime(peak, now + .02)
         gain.gain.exponentialRampToValueAtTime(.0001, now + .42)
         oscillator.connect(gain).connect(context.destination)

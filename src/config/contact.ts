@@ -1,4 +1,3 @@
-// Add the public destinations here when they are ready. Keeping them blank lets
-// the interface explain that the channel is coming soon without using dead links.
-export const FEEDBACK_EMAIL = ''
-export const BMAC_URL = ''
+// These are public contact destinations, not credentials or private configuration.
+export const FEEDBACK_EMAIL = 'nik.sales.737@gmail.com'
+export const BMAC_URL = 'https://buymeacoffee.com/niksales73l'

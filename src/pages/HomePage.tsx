@@ -82,8 +82,8 @@ export function HomePage() {
               <p id="home-preferences-title" className="font-bold text-[var(--ink)]">{welcome.title}</p>
               <p className="mt-1 text-xs leading-5 text-[var(--ink-soft)]">{welcome.body}</p>
               <div className="home-preferences__links mt-3">
-                <Link to="/settings"><Settings2 size={15} aria-hidden="true" /> {welcome.settings}</Link>
-                <Link to="/support"><HeartHandshake size={15} aria-hidden="true" /> {welcome.support}</Link>
+                <Link to="/settings"><Settings2 size={18} aria-hidden="true" /> {welcome.settings}</Link>
+                <Link to="/support"><HeartHandshake size={18} aria-hidden="true" /> {welcome.support}</Link>
               </div>
             </div>
           </aside>

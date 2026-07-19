@@ -12,7 +12,14 @@ export type MeditationGraph = {
 }
 
 function volumeTarget(volume: 0.5 | 1) {
-  return volume === 1 ? .192 : .0984
+  return volume === 1 ? .42 : .22
+}
+
+function useLightweightAudioGraph() {
+  if (typeof window === 'undefined') return false
+  const coarsePointer = window.matchMedia?.('(pointer: coarse)').matches ?? false
+  const limitedCpu = typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4
+  return coarsePointer || limitedCpu
 }
 
 function holdAtCurrentValue(parameter: AudioParam, time: number) {
@@ -31,10 +38,10 @@ function fadeMaster(graph: MeditationGraph, context: AudioContext, target: numbe
   graph.master.gain.linearRampToValueAtTime(target, now + seconds)
 }
 
-function createRoomImpulse(context: AudioContext) {
-  const seconds = 3.4
+function createRoomImpulse(context: AudioContext, lightweight: boolean) {
+  const seconds = lightweight ? 1.8 : 3.4
   const length = Math.floor(context.sampleRate * seconds)
-  const impulse = context.createBuffer(2, length, context.sampleRate)
+  const impulse = context.createBuffer(lightweight ? 1 : 2, length, context.sampleRate)
 
   for (let channel = 0; channel < impulse.numberOfChannels; channel += 1) {
     const data = impulse.getChannelData(channel)
@@ -168,6 +175,7 @@ function scheduleMotif(context: AudioContext, graph: MeditationGraph, first = fa
 }
 
 export function createMeditationGraph(context: AudioContext, volume: 0.5 | 1 = 0.5): MeditationGraph {
+  const lightweight = useLightweightAudioGraph()
   const master = context.createGain()
   const compressor = context.createDynamicsCompressor()
   const input = context.createGain()
@@ -191,9 +199,9 @@ export function createMeditationGraph(context: AudioContext, volume: 0.5 | 1 = 0
   filter.frequency.value = 920
   filter.Q.value = .35
   padMix.gain.value = .62
-  dry.gain.value = .78
-  wet.gain.value = .18
-  room.buffer = createRoomImpulse(context)
+  dry.gain.value = lightweight ? .86 : .78
+  wet.gain.value = lightweight ? .1 : .18
+  room.buffer = createRoomImpulse(context, lightweight)
 
   input.connect(filter)
   filter.connect(dry).connect(master)
