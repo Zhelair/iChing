@@ -1,5 +1,5 @@
 {
-  "contentVersion": "2026.07.17-draft.1",
+  "contentVersion": "2026.07.19-draft.3",
   "generatedFrom": "content/final",
   "cards": [
     {
@@ -14,7 +14,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-33-retreat.md"
       },
@@ -98,7 +98,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-34-great-power.md"
       },
@@ -182,7 +182,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-35-progress.md"
       },
@@ -266,7 +266,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-36-darkening-of-the-light.md"
       },
@@ -350,7 +350,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-37-the-family.md"
       },
@@ -434,7 +434,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-38-opposition.md"
       },
@@ -518,7 +518,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-39-obstruction.md"
       },
@@ -602,7 +602,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-40-release.md"
       },
@@ -686,7 +686,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-41-decrease.md"
       },
@@ -770,7 +770,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-42-increase.md"
       },
@@ -854,14 +854,14 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-43-breakthrough.md"
       },
       "classical": {
         "judgment": "夬：揚于王庭，孚號，有厲，告自邑，不利即戎，利有攸往。",
         "lines": [
-          "初九：壯于前趾，往不勝為吝。",
+          "初九：壯于前趾，往不勝為咎。",
           "九二：惕號，莫夜有戎，勿恤。",
           "九三：壯于頄，有凶。君子夬夬，獨行遇雨，若濡有慍，無咎。",
           "九四：臀無膚，其行次且。牽羊悔亡，聞言不信。",
@@ -938,7 +938,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-44-encounter.md"
       },
@@ -1022,7 +1022,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-45-gathering-together.md"
       },
@@ -1106,7 +1106,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-46-pushing-upward.md"
       },
@@ -1190,7 +1190,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-47-oppression.md"
       },
@@ -1274,7 +1274,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-48-the-well.md"
       },
@@ -1283,10 +1283,10 @@
         "lines": [
           "初六：井泥不食，舊井無禽。",
           "九二：井谷射鮒，甕敝漏。",
-          "九三：井渫不食，為我民惻，可用汲，王明，並受其福。",
+          "九三：井渫不食，為我心惻，可用汲，王明，並受其福。",
           "六四：井甃，無咎。",
           "九五：井冽，寒泉食。",
-          "上六：井收勿幕，有孚無吉。"
+          "上六：井收勿幕，有孚元吉。"
         ]
       },
       "locales": {
@@ -1358,7 +1358,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-49-revolution.md"
       },
@@ -1442,7 +1442,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-50-the-cauldron.md"
       },
@@ -1526,7 +1526,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-51-the-arousing-shock.md"
       },
@@ -1610,7 +1610,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-52-keeping-still.md"
       },
@@ -1694,7 +1694,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-53-gradual-development.md"
       },
@@ -1778,7 +1778,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-54-the-marrying-maiden.md"
       },
@@ -1862,7 +1862,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-55-abundance.md"
       },
@@ -1946,7 +1946,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-56-the-wanderer.md"
       },
@@ -2030,7 +2030,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-57-gentle-penetration.md"
       },
@@ -2114,7 +2114,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-58-joyous-exchange.md"
       },
@@ -2198,7 +2198,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-59-dispersion.md"
       },
@@ -2282,7 +2282,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-60-limitation.md"
       },
@@ -2366,7 +2366,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-61-inner-truth.md"
       },
@@ -2450,7 +2450,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-62-small-exceeding.md"
       },
@@ -2534,7 +2534,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-63-already-complete.md"
       },
@@ -2618,7 +2618,7 @@
       "provenance": {
         "status": "detailed trilingual draft — editorial review required before public release",
         "classicalSource": "周易 / Zhouyi (Yijing), original Chinese text",
-        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production",
+        "textReference": "Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.",
         "contentType": "AI-assisted interpretation based on the classical Chinese source",
         "sourceFile": "hexagram-64-before-completion.md"
       },

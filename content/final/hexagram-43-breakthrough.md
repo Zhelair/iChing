@@ -2,7 +2,7 @@
 
 **Status:** detailed trilingual draft — editorial review required before public release  
 **Classical source:** `周易 / Zhouyi (Yijing)`, original Chinese text  
-**Text reference:** Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production  
+**Text reference:** Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.
 **Content type:** AI-assisted interpretation based on the classical Chinese source
 
 ## Canonical data
@@ -20,7 +20,7 @@
 
 ```text
 夬：揚于王庭，孚號，有厲，告自邑，不利即戎，利有攸往。
-初九：壯于前趾，往不勝為吝。
+初九：壯于前趾，往不勝為咎。
 九二：惕號，莫夜有戎，勿恤。
 九三：壯于頄，有凶。君子夬夬，獨行遇雨，若濡有慍，無咎。
 九四：臀無膚，其行次且。牽羊悔亡，聞言不信。

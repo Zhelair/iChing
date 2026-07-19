@@ -1,4 +1,6 @@
-export type Locale = 'en' | 'bg' | 'ru'
+import type { Locale } from './locales'
+
+export type { Locale } from './locales'
 
 export type CoinSide = 'heads' | 'tails'
 export type LineValue = 6 | 7 | 8 | 9

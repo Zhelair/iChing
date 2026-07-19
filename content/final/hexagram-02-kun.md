@@ -2,7 +2,7 @@
 
 **Status:** English editorial master — Bulgarian and Russian wording passes pending  
 **Classical source:** `周易 / Zhouyi (Yijing)`, original Chinese text  
-**Provisional text reference:** Project Gutenberg eBook #25501, Chinese *Yi Jing* (verify against a second source before production)  
+**Text reference:** Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.
 **Content type:** AI-assisted interpretation based on the classical Chinese source
 
 ## Canonical data

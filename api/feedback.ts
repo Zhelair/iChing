@@ -1,4 +1,5 @@
 import { Resend } from 'resend'
+import { isLocale, type Locale } from '../src/domain/locales'
 
 const MAX_BODY_CHARACTERS = 10_000
 const MAX_MESSAGE_CHARACTERS = 4_000
@@ -12,7 +13,7 @@ type FeedbackPayload = {
   name: string
   email: string
   message: string
-  locale: 'en' | 'bg' | 'ru'
+  locale: Locale
   website: string
   startedAt: number
 }
@@ -69,7 +70,7 @@ export function validateFeedbackPayload(input: unknown, now = Date.now()): Valid
   const name = candidate.name.trim()
   const email = candidate.email.trim()
   const message = candidate.message.trim()
-  const locale = candidate.locale === 'bg' || candidate.locale === 'ru' ? candidate.locale : 'en'
+  const locale = isLocale(candidate.locale) ? candidate.locale : 'en'
 
   if (!message || message.length > MAX_MESSAGE_CHARACTERS || name.length > 80 || email.length > 120 || !isValidEmail(email)) {
     return { ok: false, code: 'invalid', message: 'Please check the feedback fields.' }

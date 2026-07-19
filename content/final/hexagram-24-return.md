@@ -2,7 +2,7 @@
 
 **Status:** detailed trilingual draft — editorial review required before public release  
 **Classical source:** `周易 / Zhouyi (Yijing)`, original Chinese text  
-**Text reference:** Project Gutenberg eBook #25501, Chinese *Yi Jing*; verify against a second source before production  
+**Text reference:** Project Gutenberg eBook #25501, Chinese *Yi Jing*; cross-checked against the Chinese Text Project received text on 2026-07-19; edition variants and qualified scholarly review pending.
 **Content type:** AI-assisted interpretation based on the classical Chinese source
 
 ## Canonical data
@@ -20,7 +20,7 @@
 
 ```text
 復：亨。出入無疾，朋來無咎。反復其道，七日來復，利有攸往。
-初九：不復遠，無祗悔，元吉。
+初九：不遠復，無祗悔，元吉。
 六二：休復，吉。
 六三：頻復厲，無咎。
 六四：中行獨復。

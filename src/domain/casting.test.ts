@@ -36,24 +36,43 @@ describe('three-coin rules', () => {
 })
 
 describe('yarrow-stalk procedure', () => {
-  it('performs three valid changes and produces a 6, 7, 8, or 9', () => {
-    let seed = 17
-    const random = () => {
-      seed = (seed * 1664525 + 1013904223) >>> 0
-      return seed / 4294967296
-    }
-    for (let line = 0; line < 128; line += 1) {
-      const procedure = castYarrowProcedure(random)
+  function sequenceRandom(values: number[]) {
+    let index = 0
+    return () => values[index++] ?? .5
+  }
+
+  function remainder(count: number) {
+    return count % 4 || 4
+  }
+
+  it('performs three physically possible changes for every standardized outcome bucket', () => {
+    for (let bucket = 0; bucket < 16; bucket += 1) {
+      const procedure = castYarrowProcedure(sequenceRandom([(bucket + .5) / 16, 0, .5, 1]))
       expect(procedure.changes).toHaveLength(3)
       expect([6, 7, 8, 9]).toContain(procedure.value)
       expect(procedure.changes[0].before).toBe(49)
       procedure.changes.forEach((change, index) => {
         expect(change.left + change.right).toBe(change.before)
+        expect(change.left).toBeGreaterThanOrEqual(1)
+        expect(change.right).toBeGreaterThanOrEqual(2)
+        expect(remainder(change.left)).toBeLessThanOrEqual(change.left)
+        expect(remainder(change.right - 1)).toBeLessThanOrEqual(change.right - 1)
+        expect(1 + remainder(change.left) + remainder(change.right - 1)).toBe(change.removed)
         expect(change.before - change.removed).toBe(change.remaining)
         expect(index === 0 ? [5, 9] : [4, 8]).toContain(change.removed)
       })
       expect(procedure.changes[2].remaining / 4).toBe(procedure.value)
     }
+  })
+
+  it('maps sixteen equiprobable buckets to the canonical 1:5:7:3 line distribution', () => {
+    const counts: Record<LineValue, number> = { 6: 0, 7: 0, 8: 0, 9: 0 }
+    for (let bucket = 0; bucket < 16; bucket += 1) {
+      const procedure = castYarrowProcedure(sequenceRandom([(bucket + .5) / 16, .5, .5, .5]))
+      counts[procedure.value] += 1
+    }
+
+    expect(counts).toEqual({ 6: 1, 7: 5, 8: 7, 9: 3 })
   })
 })
 

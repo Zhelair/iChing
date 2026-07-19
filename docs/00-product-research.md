@@ -4,7 +4,7 @@
 
 **Working name:** `Yi Path` / `Пътят на Промяната`.
 
-Position it as a beautiful, private **reflection ritual and learning companion** for the *Yijing* (I Ching / Book of Changes), not as a machine that predicts or promises outcomes. Launch in **English, Bulgarian, and Russian** together; the interface, editorial material, search, dates and onboarding must all be proper localisations, not machine-translated strings. Bulgarian content is still a valuable early differentiator, but the product should be international from day one.
+Position it as a beautiful, private **reflection ritual and learning companion** for the *Yijing* (I Ching / Book of Changes), not as a machine that predicts or promises outcomes. The current language set is **English, Bulgarian, Russian, German, Italian, French, Spanish, European Portuguese, and Polish**; the interface, editorial material, search, dates, and onboarding must all be proper localisations. AI-assisted drafts remain visibly labelled until native review. Bulgarian content is still a valuable early differentiator, but the product should be international from day one.
 
 The important correction: this should not be marketed as “Confucius’s original book.” The Yijing is a composite Chinese classic; the Ten Wings were traditionally attributed to Confucius, but modern scholarship does not accept that he wrote them. See [Oxford Academic](https://academic.oup.com/book/8934/chapter-abstract/155245419) and the [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/archives/win2022/entries/chinese-change/index.html).
 
@@ -24,7 +24,7 @@ That is more differentiated than another instant “AI fortune teller.” It bui
 3. **Reading result** — primary hexagram, changing lines, relating hexagram, a clear “read in this order” path, and plain-language interpretation.
 4. **Reflection journal** — save the question, result, notes, tags and date. Local-first by default; export to Markdown/PDF.
 5. **Learn** — a friendly 64-hexagram library, three-coin method, changing-lines explainer, and a small glossary.
-6. **Languages from day one** — interface is fully internationalised. Start with Bulgarian and English; do not translate sacred/classical content automatically.
+6. **Languages from day one** — the interface and modern editorial layer support all nine current locales; do not translate sacred/classical content automatically.
 
 ## The moment that should feel special
 
@@ -55,7 +55,7 @@ Every throw must have an ordinary visible control as an alternative. Make motion
 
 Keep every person able to cast, enter real coins, see the primary/relating hexagram, read a basic interpretation and save a few readings for free. Paywalls on the actual oracle will feel extractive.
 
-- **Free:** unlimited casting, core 64 library, three saved readings, local notes, Bulgarian/English UI.
+- **Free:** unlimited casting, core 64 library, three saved readings, local notes, and all nine interface languages.
 - **Plus — about 6–8 BGN/month or 49–59 BGN/year:** unlimited journal, encrypted sync, exports, tags/search, personal pattern view, extra licensed commentary/translation, audio reflections, custom practice reminders.
 - **Courses / seasonal packs — one-off:** a beginner course, “how to ask” workshop, classical context, or partner-led Bulgarian content. This may be stronger than an expensive subscription in a small first market.
 - **Later:** a carefully moderated reading circle or live sessions with qualified teachers. Never sell “certainty” or crisis guidance.
@@ -84,8 +84,8 @@ The source of truth should be a versioned, reviewable **Yi Canon** maintained in
 Yi Canon v1.0
 ├─ Structure: 8 trigrams, 64 King Wen hexagrams, six lines, transformations
 ├─ Classical corpus: Chinese source text, passage-level references
-├─ Translation packs: English / Bulgarian / Russian, each with explicit licence
-├─ Editorial packs: original beginner explanations, glossary, course content
+├─ Translation packs: any named classical translation, separately licensed and attributed
+├─ Editorial packs: nine-language original beginner explanations with explicit review status
 ├─ Calculation rules: coin/yarrow probabilities and changing-line mapping
 └─ Provenance: source, author/translator, licence, reviewer, revision and date
 ```
@@ -94,9 +94,9 @@ Yi Canon v1.0
 
 **2. Classical Chinese text:** use an authoritative scholarly reference to check it, but do not treat a website as a content API. The [Chinese Text Project](https://ctext.org/book-of-changes/ens) is excellent for research and parallel viewing, but its terms say the site and content may not be republished without permission, and translations remain the translators’ copyright. Cite it in research; do not scrape or copy it into the product. [Their terms](https://ctext.org/faq)
 
-**3. Translation packs:** launch only when the exact text and territory have been cleared. A public-domain English edition can be a temporary baseline after jurisdiction-specific review; modern English, Bulgarian and Russian translations should be licensed or newly commissioned. The UI should always display: `Translator · edition/year · source · licence · passage ID`. A user must always know what they are reading.
+**3. Translation packs:** launch only when the exact text and territory have been cleared. A public-domain English edition can be a temporary baseline after jurisdiction-specific review; any named modern translation should be licensed or newly commissioned. The UI should always display: `Translator · edition/year · source · licence · passage ID`. A user must always know what they are reading. Yi Path’s current nine-language editorial layer is a separately labelled AI-assisted paraphrase, not a named translation.
 
-**4. Original editorial layer:** commission an English/Russian/Bulgarian editorial team (ideally including a sinologist and native editor for each language) to write clear, original explanations. Every editorial claim points back to a passage and source. Do not let AI translate classical passages or silently merge several translations.
+**4. Original editorial layer:** commission a subject-matter editor plus a native editor for every supported language to refine the current drafts into clear, original explanations. Every editorial claim points back to a passage and source. Do not let AI translate classical passages or silently merge several translations.
 
 **5. Release discipline:** changes happen in named content releases—e.g. `bg-kutsarova-licensed-1.0`, `en-legge-verified-1.0`, `editorial-bg-1.0`—with a changelog. This makes corrections, citations, re-licensing and user trust manageable.
 
@@ -120,7 +120,7 @@ You do **not** need to pay a publisher or sign a contract to use the ancient Yij
 
 1. Use a verified **public-domain Chinese source text** as the classical source. Do not copy a website's translation or its HTML/design; preserve your own canonical text file and source references.
 2. Implement the hexagram/trigram/line rules yourself from the finite structural data; this has no need for a paid content provider.
-3. Generate a new **AI-assisted contemporary interpretation** in English, Bulgarian or Russian from the resulting hexagram/lines and the classical Chinese passage. It must be labelled as interpretation/paraphrase—not as an authoritative human translation.
+3. Generate a new **AI-assisted contemporary interpretation** in any supported interface language from the resulting hexagram/lines and the classical Chinese passage. It must be labelled as interpretation/paraphrase—not as an authoritative human translation.
 4. Add a source drawer: `Classical source: Zhouyi (Chinese text) · Interpretation: AI-assisted, generated for this reading · Methodology`.
 5. Never ask an AI to “take the translation from [website]”, scrape a site, or reproduce a named translator. That is exactly how the app could accidentally emit protected wording.
 

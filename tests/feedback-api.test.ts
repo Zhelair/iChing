@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import feedbackHandler, { validateFeedbackPayload } from '../api/feedback'
+import { EXTENDED_LOCALES } from '../src/domain/locales'
 
 const now = 2_000_000
 
@@ -20,6 +21,12 @@ describe('feedback validation', () => {
     const result = validateFeedbackPayload(payload({ name: '  Nik  ' }), now)
     expect(result.ok).toBe(true)
     if (result.ok) expect(result.value.name).toBe('Nik')
+  })
+
+  it.each(EXTENDED_LOCALES)('preserves the supported %s locale', (locale) => {
+    const result = validateFeedbackPayload(payload({ locale }), now)
+    expect(result.ok).toBe(true)
+    if (result.ok) expect(result.value.locale).toBe(locale)
   })
 
   it('rejects an invalid reply address', () => {

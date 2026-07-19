@@ -5,8 +5,10 @@ import { HexagramFigure } from '../components/HexagramFigure'
 import { PageIntro } from '../components/PageIntro'
 import { ReadingExportActions } from '../components/ReadingExportActions'
 import { getHexagram } from '../data/hexagrams'
+import { isBuiltInContentLocale } from '../domain/locales'
 import type { Reading, ReadingMethod } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
+import { getUiLocalePack } from '../i18n/uiLocalePacks'
 import { deleteReading, getAllReadings, saveReading } from '../storage/db'
 import { setCurrentReading } from '../storage/session'
 
@@ -31,8 +33,10 @@ const copy = {
 const methodOptions: Array<'all' | ReadingMethod> = ['all', 'digital', 'physical', 'yarrow', 'direct']
 
 export function JournalPage() {
-  const { preferences } = useI18n()
-  const c = copy[preferences.locale]
+  const { editorialFor, preferences } = useI18n()
+  const c = isBuiltInContentLocale(preferences.locale)
+    ? copy[preferences.locale]
+    : getUiLocalePack(preferences.locale).features.journal
   const navigate = useNavigate()
   const [readings, setReadings] = useState<Reading[]>([])
   const [loaded, setLoaded] = useState(false)
@@ -68,9 +72,9 @@ export function JournalPage() {
   const filtered = useMemo(() => readings.filter((reading) => {
     if (method !== 'all' && reading.method !== method) return false
     const hexagram = getHexagram(reading.primaryHexagramId)
-    const haystack = [reading.question, reading.note, reading.tags.join(' '), hexagram.pinyin, hexagram.chinese, hexagram.editorial[preferences.locale].title, String(hexagram.id)].join(' ').toLocaleLowerCase(preferences.locale)
+    const haystack = [reading.question, reading.note, reading.tags.join(' '), hexagram.pinyin, hexagram.chinese, editorialFor(hexagram).title, String(hexagram.id)].join(' ').toLocaleLowerCase(preferences.locale)
     return haystack.includes(query.trim().toLocaleLowerCase(preferences.locale))
-  }), [method, preferences.locale, query, readings])
+  }), [editorialFor, method, preferences.locale, query, readings])
 
   const groups = useMemo(() => {
     const formatter = new Intl.DateTimeFormat(preferences.locale, { month: 'long', year: 'numeric' })
@@ -134,8 +138,8 @@ export function JournalPage() {
                 const moving = reading.lines.filter(({ moving }) => moving).length
                 return <article key={reading.id} className={`surface journal-entry ${selectedId === reading.id ? 'is-open' : ''}`}>
                   <button type="button" className="journal-entry__summary" onClick={() => selectedId === reading.id ? setSelectedId(null) : openEditor(reading)} aria-expanded={selectedId === reading.id}>
-                    <span className="journal-entry__figure"><HexagramFigure linesBottomUp={hexagram.linesBottomUp} label={hexagram.editorial[preferences.locale].title} /></span>
-                    <span className="min-w-0 flex-1 text-left"><span className="journal-entry__date">{new Intl.DateTimeFormat(preferences.locale, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(reading.createdAt))}</span><strong>{reading.question || c.untitled}</strong><small>{String(hexagram.id).padStart(2, '0')} · {hexagram.editorial[preferences.locale].title} · {moving ? `${moving} ${c.changed}` : c.stable}</small></span>
+                    <span className="journal-entry__figure"><HexagramFigure linesBottomUp={hexagram.linesBottomUp} label={editorialFor(hexagram).title} /></span>
+                    <span className="min-w-0 flex-1 text-left"><span className="journal-entry__date">{new Intl.DateTimeFormat(preferences.locale, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(reading.createdAt))}</span><strong>{reading.question || c.untitled}</strong><small>{String(hexagram.id).padStart(2, '0')} · {editorialFor(hexagram).title} · {moving ? `${moving} ${c.changed}` : c.stable}</small></span>
                     {counts[hexagram.id] > 1 ? <span className="journal-repeat">{counts[hexagram.id]}×</span> : null}<ArrowRight className="journal-entry__arrow" size={18} />
                   </button>
                   {selectedId === reading.id ? <div className="journal-editor">

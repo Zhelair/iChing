@@ -18,9 +18,9 @@ const lineMeta: Record<LineValue, { nameKey: TranslationKey; effectKey: Translat
 }
 
 function ReadingHexagram({ reading, type }: { reading: Reading; type: 'primary' | 'resulting' }) {
-  const { preferences, t } = useI18n()
+  const { editorialFor, t } = useI18n()
   const hexagram = getHexagram(type === 'primary' ? reading.primaryHexagramId : reading.resultingHexagramId)
-  const editorial = hexagram.editorial[preferences.locale]
+  const editorial = editorialFor(hexagram)
   const pattern = type === 'primary' ? reading.lines : reading.lines.map((line) => ({ polarity: line.transformedPolarity }))
 
   return (
@@ -35,7 +35,7 @@ function ReadingHexagram({ reading, type }: { reading: Reading; type: 'primary' 
 }
 
 export function ResultPage() {
-  const { preferences, t } = useI18n()
+  const { editorialFor, editorialMetaFor, t } = useI18n()
   const [reading, setReading] = useState(getCurrentReading)
   const [note, setNote] = useState(reading?.note ?? '')
   const [saved, setSaved] = useState(false)
@@ -52,9 +52,14 @@ export function ResultPage() {
 
   const primary = getHexagram(reading.primaryHexagramId)
   const resulting = getHexagram(reading.resultingHexagramId)
-  const primaryEditorial = primary.editorial[preferences.locale]
-  const resultingEditorial = resulting.editorial[preferences.locale]
+  const primaryEditorial = editorialFor(primary)
+  const resultingEditorial = editorialFor(resulting)
+  const primaryEditorialMeta = editorialMetaFor(primary)
   const movingLines = reading.lines.filter((line) => line.moving)
+  const specialStatement = movingLines.length === 6 && (primary.id === 1 || primary.id === 2)
+    ? primary.classical.lines[6]
+    : undefined
+  const specialReflection = specialStatement ? primaryEditorial.lineReflections.all : undefined
 
   async function saveNote() {
     if (!reading) return
@@ -101,10 +106,26 @@ export function ResultPage() {
                   <div>
                     <h3 className="text-lg font-semibold">{t('common.line')} {line.position} · {line.value} · {t(lineMeta[line.value].nameKey)}</h3>
                     <p className="mt-1 text-sm font-semibold text-[var(--brass)]">{t(lineMeta[line.value].effectKey)}</p>
-                    <p className="mt-1 leading-7 text-[var(--ink-soft)]">{primaryEditorial.lineReflections[String(line.position)]}</p>
+                    <div className="mt-4 grid gap-3">
+                      <div className="rounded-2xl bg-[var(--paper-deep)] px-4 py-3">
+                        <p className="text-xs font-extrabold uppercase tracking-[.12em] text-[var(--jade)]">{t('result.receivedLine')}</p>
+                        <p lang="zh-Hant" className="mt-2 font-editorial text-lg leading-8 text-[var(--ink)]">{primary.classical.lines[line.position - 1]}</p>
+                      </div>
+                      <div className="px-1">
+                        <p className="text-xs font-extrabold uppercase tracking-[.12em] text-[var(--brass)]">{t('result.modernReflection')}</p>
+                        <p className="mt-2 leading-7 text-[var(--ink-soft)]">{primaryEditorial.lineReflections[String(line.position)]}</p>
+                      </div>
+                    </div>
                   </div>
                 </article>
               ))}
+              {specialStatement ? (
+                <article className="rounded-3xl border border-[var(--line)] bg-[var(--paper-deep)] p-5 sm:p-6">
+                  <p className="text-xs font-extrabold uppercase tracking-[.12em] text-[var(--jade)]">{t('result.specialStatement')}</p>
+                  <p lang="zh-Hant" className="mt-3 font-editorial text-xl leading-8">{specialStatement}</p>
+                  {specialReflection ? <><p className="mt-5 text-xs font-extrabold uppercase tracking-[.12em] text-[var(--brass)]">{t('result.specialReflection')}</p><p className="mt-2 leading-7 text-[var(--ink-soft)]">{specialReflection}</p></> : null}
+                </article>
+              ) : null}
             </div>
           </section>
         ) : null}
@@ -136,8 +157,11 @@ export function ResultPage() {
         <details className="surface p-6 text-sm">
           <summary className="cursor-pointer font-bold text-[var(--jade)]">{t('result.source')}</summary>
           <div className="mt-5 space-y-4 leading-6 text-[var(--ink-soft)]">
-            <div><strong className="text-[var(--ink)]">{t('result.classical')}:</strong> {primary.classical.judgment}</div>
+            <p>{t('result.sourceScope')}</p>
+            <div><strong className="text-[var(--ink)]">{t('result.classical')}:</strong> <span lang="zh-Hant">{primary.classical.judgment}</span></div>
+            <div><strong className="text-[var(--ink)]">{t('detail.sourceLabel')}:</strong> {primary.provenance.classicalSource} · {primary.provenance.textReference}</div>
             <div><strong className="text-[var(--ink)]">{t('result.interpretation')}:</strong> {primary.provenance.contentType} · {reading.contentVersion}</div>
+            <div><strong className="text-[var(--ink)]">{t('detail.status')}:</strong> {t('detail.draftStatus')} · {primaryEditorialMeta.variant}</div>
             <p>{t('result.disclaimer')}</p>
           </div>
         </details>

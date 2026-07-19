@@ -6,13 +6,13 @@ import { HEXAGRAMS } from '../data/hexagrams'
 import { useI18n } from '../i18n/I18nContext'
 
 export function LibraryPage() {
-  const { preferences, t } = useI18n()
+  const { editorialFor, preferences, t } = useI18n()
   const [query, setQuery] = useState('')
   const normalized = query.trim().toLocaleLowerCase(preferences.locale)
   const results = useMemo(() => HEXAGRAMS.filter((hexagram) => {
-    const editorial = hexagram.editorial[preferences.locale]
+    const editorial = editorialFor(hexagram)
     return !normalized || [String(hexagram.id), hexagram.chinese, hexagram.pinyin, editorial.title].some((value) => value.toLocaleLowerCase(preferences.locale).includes(normalized))
-  }), [normalized, preferences.locale])
+  }), [editorialFor, normalized, preferences.locale])
 
   return (
     <div className="page-shell py-10 sm:py-16">
@@ -25,7 +25,7 @@ export function LibraryPage() {
       <p className="mt-5 text-sm font-semibold text-[var(--ink-soft)]" aria-live="polite">{results.length} / 64</p>
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {results.map((hexagram) => {
-          const editorial = hexagram.editorial[preferences.locale]
+          const editorial = editorialFor(hexagram)
           return (
             <Link to={`/hexagrams/${hexagram.id}`} key={hexagram.id} className="group surface depth-card flex min-h-52 flex-col justify-between p-5">
               <div className="flex items-start justify-between">

@@ -1,14 +1,16 @@
 import { Volume2 } from 'lucide-react'
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from 'react'
 import { useSound } from '../audio/SoundContext'
+import { isBuiltInContentLocale } from '../domain/locales'
 import { useI18n } from '../i18n/I18nContext'
+import { getUiLocalePack } from '../i18n/uiLocalePacks'
 
 type Scene = 'bone' | 'scroll' | 'stalk' | 'numbers' | 'wings' | 'coins' | 'compass'
 type Chapter = { id: string; era: string; title: string; body: string; note?: string; scene: Scene }
 
-const content: Record<'en' | 'bg' | 'ru', { eyebrow: string; title: string; body: string; contents: string; replay: string; sound: string; chapters: Chapter[] }> = {
+const content: Record<'en' | 'bg' | 'ru', { eyebrow: string; title: string; body: string; contents: string; replay: string; sound: string; oracleSource: string; yarrowSource: string; chapters: Chapter[] }> = {
   en: {
-    eyebrow: 'A short illustrated history', title: 'From fire-marked bone to a living book.', body: 'The Yijing was not invented all at once. Move through the layers—archaeology, text, ritual, and later philosophy—without collapsing them into a single legend.', contents: 'On this journey', replay: 'Replay illustration', sound: 'A quiet cue plays only when coin sounds are enabled.',
+    eyebrow: 'A short illustrated history', title: 'From fire-marked bone to a living book.', body: 'The Yijing was not invented all at once. Move through the layers—archaeology, text, ritual, and later philosophy—without collapsing them into a single legend.', contents: 'On this journey', replay: 'Replay illustration', sound: 'A quiet cue plays only when coin sounds are enabled.', oracleSource: 'Smarthistory / Smithsonian introduction ↗', yarrowSource: 'Stanford Encyclopedia of Philosophy ↗',
     chapters: [
       { id: 'oracle-bones', era: 'Shang dynasty · before the Yijing', title: 'Questions met heat and bone.', body: 'Diviners inscribed questions on ox scapulae or tortoise plastrons, applied heat, and read the resulting cracks. This is crucial historical context—not an early coin method.', scene: 'bone' },
       { id: 'zhouyi', era: 'Western Zhou · a layered text emerges', title: 'Sixty-four figures become a book of change.', body: 'Hexagram figures, judgments, and line statements formed the early Zhouyi. The received text grew through transmission and editorial layers rather than appearing as one finished object.', scene: 'scroll' },
@@ -20,7 +22,7 @@ const content: Record<'en' | 'bg' | 'ru', { eyebrow: string; title: string; body
     ],
   },
   bg: {
-    eyebrow: 'Кратка илюстрирана история', title: 'От белязаната с огън кост до жива книга.', body: 'И Дзин не е създаден наведнъж. Проследете пластовете — археология, текст, ритуал и по-късна философия — без да ги свеждаме до една легенда.', contents: 'По този път', replay: 'Повтори илюстрацията', sound: 'Тих звук има само когато звуците на монети са включени.',
+    eyebrow: 'Кратка илюстрирана история', title: 'От белязаната с огън кост до жива книга.', body: 'И Дзин не е създаден наведнъж. Проследете пластовете — археология, текст, ритуал и по-късна философия — без да ги свеждаме до една легенда.', contents: 'По този път', replay: 'Повтори илюстрацията', sound: 'Тих звук има само когато звуците на монети са включени.', oracleSource: 'Въведение от Smarthistory / Smithsonian ↗', yarrowSource: 'Станфордска енциклопедия по философия ↗',
     chapters: [
       { id: 'oracle-bones', era: 'Династия Шан · преди И Дзин', title: 'Въпросите срещали топлина и кост.', body: 'Гадатели изписвали въпроси върху волски лопатки или коруби от костенурка, нагрявали ги и разчитали пукнатините. Това е исторически контекст, а не ранен метод с монети.', scene: 'bone' },
       { id: 'zhouyi', era: 'Западна Джоу · възниква многопластов текст', title: 'Шестдесет и четири фигури стават книга на промяната.', body: 'Хексаграмите, съжденията и текстовете на линиите оформят ранния Джоу-и. Познатият текст расте чрез предаване и редакционни пластове.', scene: 'scroll' },
@@ -32,7 +34,7 @@ const content: Record<'en' | 'bg' | 'ru', { eyebrow: string; title: string; body
     ],
   },
   ru: {
-    eyebrow: 'Краткая история в иллюстрациях', title: 'От отмеченной огнём кости до живой книги.', body: 'Ицзин не возник в один момент. Пройдите через его слои — археологию, текст, ритуал и позднюю философию — не сводя их к одной легенде.', contents: 'На этом пути', replay: 'Повторить иллюстрацию', sound: 'Тихий звук играет только при включённых звуках монет.',
+    eyebrow: 'Краткая история в иллюстрациях', title: 'От отмеченной огнём кости до живой книги.', body: 'Ицзин не возник в один момент. Пройдите через его слои — археологию, текст, ритуал и позднюю философию — не сводя их к одной легенде.', contents: 'На этом пути', replay: 'Повторить иллюстрацию', sound: 'Тихий звук играет только при включённых звуках монет.', oracleSource: 'Введение Smarthistory / Smithsonian ↗', yarrowSource: 'Стэнфордская философская энциклопедия ↗',
     chapters: [
       { id: 'oracle-bones', era: 'Династия Шан · до Ицзина', title: 'Вопросы встречались с жаром и костью.', body: 'Прорицатели вырезали вопросы на лопатках быков и панцирях черепах, нагревали их и читали трещины. Это важный исторический контекст, а не ранний монетный метод.', scene: 'bone' },
       { id: 'zhouyi', era: 'Западная Чжоу · возникает многослойный текст', title: 'Шестьдесят четыре фигуры становятся книгой перемен.', body: 'Гексаграммы, суждения и тексты линий составили ранний Чжоу-и. Полученный текст рос благодаря передаче и редакционным слоям.', scene: 'scroll' },
@@ -70,7 +72,9 @@ export function HistoryJourney() {
   const { playHistoryCue } = useSound()
   const [replays, setReplays] = useState<Record<string, number>>({})
   const rootRef = useRef<HTMLElement>(null)
-  const c = content[preferences.locale]
+  const c = isBuiltInContentLocale(preferences.locale)
+    ? content[preferences.locale]
+    : getUiLocalePack(preferences.locale).features.history
   const play = (chapter: Chapter) => { setReplays((values) => ({ ...values, [chapter.id]: (values[chapter.id] ?? 0) + 1 })); playHistoryCue(cueFor(chapter.scene)) }
 
   useEffect(() => {
@@ -105,8 +109,8 @@ export function HistoryJourney() {
           <span className="history-visual__motion"><span key={replays[chapter.id] ?? 0} className="history-visual__animation"><Illustration scene={chapter.scene} /></span></span>
         </button>
         <div className="history-copy"><p className="eyebrow">{String(index + 1).padStart(2, '0')} · {chapter.era}</p><h3>{chapter.title}</h3><p>{chapter.body}</p>{chapter.note ? <aside>{chapter.note}</aside> : null}
-          {chapter.id === 'oracle-bones' ? <a href="https://smarthistory.org/oracle-bone/" target="_blank" rel="noreferrer">Smarthistory / Smithsonian introduction ↗</a> : null}
-          {chapter.id === 'yarrow' ? <a href="https://plato.stanford.edu/archives/sum2024/entries/chinese-change/" target="_blank" rel="noreferrer">Stanford Encyclopedia of Philosophy ↗</a> : null}
+          {chapter.id === 'oracle-bones' ? <a href="https://smarthistory.org/oracle-bone/" target="_blank" rel="noreferrer">{c.oracleSource}</a> : null}
+          {chapter.id === 'yarrow' ? <a href="https://plato.stanford.edu/archives/sum2024/entries/chinese-change/" target="_blank" rel="noreferrer">{c.yarrowSource}</a> : null}
         </div>
       </article>)}</div>
     </div>

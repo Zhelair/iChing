@@ -2,10 +2,11 @@ import { Check, Coffee, Copy, HeartHandshake, LoaderCircle, MessageSquareText, S
 import { useEffect, useState, type FormEvent } from 'react'
 import { PageIntro } from '../components/PageIntro'
 import { BMAC_URL } from '../config/contact'
-import type { Locale } from '../domain/types'
+import { isBuiltInContentLocale, type BuiltInContentLocale } from '../domain/locales'
 import { useI18n } from '../i18n/I18nContext'
+import { getUiLocalePack } from '../i18n/uiLocalePacks'
 
-const copy: Record<Locale, {
+const copy: Record<BuiltInContentLocale, {
   eyebrow: string
   title: string
   intro: string
@@ -28,6 +29,9 @@ const copy: Record<Locale, {
   supportBody: string
   bmac: string
   bmacComing: string
+  feedbackHeading: string
+  feedbackName: string
+  feedbackEmail: string
 }> = {
   en: {
     eyebrow: 'Optional, always',
@@ -52,6 +56,9 @@ const copy: Record<Locale, {
     supportBody: 'If Yi Path feels useful, you can buy me a coffee and help me keep improving it. Completely optional.',
     bmac: 'Buy Me a Coffee',
     bmacComing: 'Coffee link coming soon',
+    feedbackHeading: 'Yi Path feedback',
+    feedbackName: 'Name',
+    feedbackEmail: 'Reply email',
   },
   bg: {
     eyebrow: 'Винаги по желание',
@@ -76,6 +83,9 @@ const copy: Record<Locale, {
     supportBody: 'Ако Yi Path ви е полезно, можете да ме почерпите с кафе и да помогнете да го развивам. Напълно по желание.',
     bmac: 'Buy Me a Coffee',
     bmacComing: 'Линкът за кафе идва скоро',
+    feedbackHeading: 'Обратна връзка за Yi Path',
+    feedbackName: 'Име',
+    feedbackEmail: 'Имейл за отговор',
   },
   ru: {
     eyebrow: 'Всегда по желанию',
@@ -100,14 +110,17 @@ const copy: Record<Locale, {
     supportBody: 'Если Yi Path оказался полезным, можете угостить меня кофе и помочь развивать его дальше. Полностью по желанию.',
     bmac: 'Buy Me a Coffee',
     bmacComing: 'Ссылка на кофе скоро появится',
+    feedbackHeading: 'Отзыв о Yi Path',
+    feedbackName: 'Имя',
+    feedbackEmail: 'Email для ответа',
   },
 }
 
-function buildFeedback(name: string, email: string, message: string) {
+function buildFeedback(c: { feedbackHeading: string; feedbackName: string; feedbackEmail: string }, name: string, email: string, message: string) {
   return [
-    'Yi Path feedback',
-    name.trim() ? `Name: ${name.trim()}` : '',
-    email.trim() ? `Reply email: ${email.trim()}` : '',
+    c.feedbackHeading,
+    name.trim() ? `${c.feedbackName}: ${name.trim()}` : '',
+    email.trim() ? `${c.feedbackEmail}: ${email.trim()}` : '',
     '',
     message.trim(),
   ].filter((line, index, lines) => line || (index > 0 && index < lines.length - 1)).join('\n')
@@ -115,7 +128,9 @@ function buildFeedback(name: string, email: string, message: string) {
 
 export function SupportPage() {
   const { preferences } = useI18n()
-  const c = copy[preferences.locale]
+  const c = isBuiltInContentLocale(preferences.locale)
+    ? copy[preferences.locale]
+    : getUiLocalePack(preferences.locale).features.support
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -135,7 +150,7 @@ export function SupportPage() {
   async function copyMessage() {
     if (!canSend) return
     try {
-      await navigator.clipboard.writeText(buildFeedback(name, email, message))
+      await navigator.clipboard.writeText(buildFeedback(c, name, email, message))
       setStatus('copied')
       window.setTimeout(() => setStatus((current) => current === 'copied' ? 'idle' : current), 2400)
     } catch {
