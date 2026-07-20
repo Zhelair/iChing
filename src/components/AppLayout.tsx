@@ -1,7 +1,6 @@
-import { BookOpen, BookOpenText, HeartHandshake, Library, NotebookPen, Settings, Volume2 } from 'lucide-react'
+import { BookOpen, BookOpenText, HeartHandshake, Library, NotebookPen, Settings } from 'lucide-react'
 import { Suspense, useEffect, useRef } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
-import { useSound } from '../audio/SoundContext'
 import { useI18n } from '../i18n/I18nContext'
 import { Atmosphere } from './Atmosphere'
 
@@ -16,7 +15,6 @@ const navItems = [
 
 export function AppLayout() {
   const { preferences, t } = useI18n()
-  const { ambientStatus, restartAmbientFromGesture } = useSound()
   const { pathname } = useLocation()
   const frameRef = useRef<HTMLDivElement>(null)
   const ritualMode = pathname.startsWith('/cast/')
@@ -114,16 +112,6 @@ export function AppLayout() {
           ))}
         </nav>
       </header>
-
-      {preferences.ambientVolume > 0 && ambientStatus === 'blocked' ? (
-        <div className="sound-start-cue page-shell relative z-30" role="status">
-          <span className="sound-start-cue__icon"><Volume2 size={18} aria-hidden="true" /></span>
-          <span className="sound-start-cue__label">{t('settings.ambient')}</span>
-          <button type="button" onClick={() => { void restartAmbientFromGesture(preferences.ambientVolume) }} aria-label={`${t('common.continue')}: ${t('settings.ambient')}`}>
-            {t('common.continue')}
-          </button>
-        </div>
-      ) : null}
 
       <main id="main" className="relative z-10">
         <Suspense fallback={<div className="page-shell py-16" role="status"><div className="route-loading"><span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" /> {t('common.loading')}</div></div>}>
