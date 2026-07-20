@@ -8,7 +8,7 @@
       "id": 1,
       "title": "Qián — Fuerza creativa",
       "coreThread": "Hay una poderosa energía creativa disponible. Su mejor expresión no es la fuerza por sí misma, sino la acción disciplinada, la integridad y el respeto por el momento oportuno.",
-      "whenItAppears": "Quizá estés al comienzo de algo importante o se te pida que asumas el liderazgo. Desarrolla la capacidad necesaria para aquello que quieres crear. Deja que la confianza se convierta en trabajo constante, no en presión sobre ti ni sobre otras personas.",
+      "whenItAppears": "Quizá estés al comienzo de algo importante o se te pida que asumas el liderazgo. Desarrolla la capacidad necesaria para aquello que quieres crear. Convierte la confianza en trabajo constante, no en presión sobre ti ni sobre los demás.",
       "reflectionQuestions": [
         "¿Qué quiere realmente cobrar vida aquí?",
         "¿Dónde necesita mi confianza ir acompañada de más paciencia o disciplina?",
@@ -17,7 +17,7 @@
       "lineReflections": {
         "1": "Reserva tu fuerza. Prepárate; no fuerces un comienzo prematuro.",
         "2": "Tu capacidad empieza a hacerse visible. Busca o acepta apoyo sabio y una colaboración honesta.",
-        "3": "Sigue trabajando con cuidado. El esfuerzo constante y la atención te ayudan a evitar dificultades que pueden prevenirse.",
+        "3": "Sigue trabajando con cuidado. El esfuerzo constante y la atención te ayudan a evitar dificultades innecesarias.",
         "4": "Estás ante un umbral. Un movimiento mesurado puede ser lo adecuado; no hace falta saltar a ciegas.",
         "5": "Asume plenamente un liderazgo responsable. Pon tu influencia al servicio de algo más grande que el ego.",
         "6": "Presta atención a los excesos. Lo que ha subido demasiado necesita humildad, descanso o un cambio de enfoque.",
@@ -36,7 +36,7 @@
       ],
       "lineReflections": {
         "1": "Las señales pequeñas importan. Atiende pronto una dificultad que empieza a formarse, antes de que se endurezca y sea más difícil moverla.",
-        "2": "Trabaja desde tus fortalezas naturales con sencillez e integridad. La contribución adecuada no necesita una representación innecesaria.",
+        "2": "Trabaja desde tus cualidades naturales con sencillez e integridad. La contribución adecuada no necesita una puesta en escena.",
         "3": "Mantén tu capacidad con modestia. Sirve a la obra sin exigir reconocimiento; terminarla puede importar más que poseerla.",
         "4": "Quizá sea momento de contener en lugar de explicar. Una reserva cuidadosa protege lo que todavía está tomando forma.",
         "5": "La dignidad serena basta. Elige lo apropiado y sincero por encima de lo llamativo.",
@@ -66,7 +66,7 @@
     {
       "id": 4,
       "title": "Méng — Aprender en lo desconocido",
-      "coreThread": "Estás al comienzo de la comprensión de algo. La curiosidad es bienvenida, pero necesita sinceridad, atención y disposición para aprender de una guía real o de la experiencia. No confundas preguntar repetidamente con aprender en profundidad.",
+      "coreThread": "Estás empezando a comprender algo. La curiosidad es bienvenida, pero necesita sinceridad, atención y disposición para aprender de una orientación fiable o de la experiencia. No confundas preguntar una y otra vez con aprender en profundidad.",
       "whenItAppears": "Vuelve a los principios básicos. Formula una pregunta clara, acepta la respuesta que recibas y ponla en práctica antes de buscar otra. Es una invitación a cultivar el discernimiento, no a avergonzarte por ser principiante.",
       "reflectionQuestions": [
         "¿Qué es lo que todavía no comprendo de verdad?",
@@ -74,7 +74,7 @@
         "¿Dónde necesito práctica en lugar de otra explicación?"
       ],
       "lineReflections": {
-        "1": "Empieza a aprender con un límite claro. Libera lo que te ata, pero no sustituyas una confusión por una libertad descuidada.",
+        "1": "Empieza a aprender dentro de unos límites claros. Libérate de lo que te ata, pero no sustituyas la confusión por una libertad irresponsable.",
         "2": "Haz sitio a la inexperiencia, tanto en ti como en los demás. Una responsabilidad paciente puede convertir la incertidumbre en capacidad.",
         "3": "No entregues tu capacidad de decidir a cambio de brillo, estatus o una promesa tentadora. Una elección que te hace abandonarte no es una buena maestra.",
         "4": "La confusión se vuelve dolorosa cuando se lleva en soledad. Admite que estás bloqueado y busca una fuente de orientación digna de confianza.",
@@ -103,7 +103,7 @@
     },
     {
       "id": 6,
-      "title": "Sòng — Conflicto y límites de la disputa",
+      "title": "Sòng — Conflicto y límites",
       "coreThread": "Existe un desacuerdo real y quizá tengas la certeza de que tu posición está justificada. Este hexagrama no te pide que niegues el problema. Advierte que llevar una disputa hasta su amargo final puede dañar a todas las personas implicadas. Mantente alerta, cíñete a los hechos y busca una perspectiva justa más allá de las dos partes.",
       "whenItAppears": "Aclara qué debe protegerse y qué no necesita convertirse en una batalla. Habla directamente, deja constancia de lo importante y busca una mediación, un consejo o un proceso neutral de confianza cuando el asunto supere una conversación privada. No des un gran salto mientras el terreno siga en disputa.",
       "reflectionQuestions": [
@@ -122,9 +122,9 @@
     },
     {
       "id": 7,
-      "title": "Shī — Esfuerzo colectivo disciplinado",
+      "title": "Shī — Esfuerzo colectivo y disciplina",
       "coreThread": "Esta situación necesita un esfuerzo coordinado, funciones claras y principios firmes. Shī no pide agresividad ni control. Señala el uso disciplinado de la fuerza compartida: responder a una necesidad real, establecer el orden antes de actuar y dejar la responsabilidad en manos de una persona experimentada y digna de confianza.",
-      "whenItAppears": "Devuelve una situación dispersa a un propósito claro. Nombra la tarea, decide quién responde de cada parte y emplea reglas que protejan a todo el grupo. Evita la escalada, las luchas de estatus y la urgencia teatral. Una respuesta mesurada —o incluso una pausa estratégica— puede ser más sabia que la fuerza.",
+      "whenItAppears": "Devuelve una situación dispersa a un propósito claro. Nombra la tarea, decide quién responde de cada parte y establece reglas que protejan a todo el grupo. Evita la escalada, las luchas de poder y la urgencia teatral. Una respuesta mesurada —o incluso una pausa estratégica— puede ser más sabia que el uso de la fuerza.",
       "reflectionQuestions": [
         "¿Qué necesita realmente un esfuerzo coordinado aquí?",
         "¿Quién tiene la experiencia y el carácter para asumir la responsabilidad?",
@@ -133,7 +133,7 @@
       ],
       "lineReflections": {
         "1": "Empieza con disciplina. Establece reglas sólidas y un método compartido antes de iniciar el trabajo; de lo contrario, el desorden puede dañar un objetivo valioso.",
-        "2": "Permanece en el centro del trabajo. Tu capacidad puede ser reconocida y recibir responsabilidad, pero usa esa confianza al servicio del conjunto, no del estatus personal.",
+        "2": "Permanece en el centro del trabajo. Tu capacidad puede ser reconocida y quizá recibas más responsabilidad, pero pon esa confianza al servicio del conjunto, no de tu posición personal.",
         "3": "Una estrategia fallida puede dejar al grupo cargando con las consecuencias. No repitas por orgullo un enfoque perjudicial; revisa el liderazgo, la información y la coordinación.",
         "4": "Una retirada o pausa estratégica no es un fracaso. Da un paso atrás, reúne fuerzas y preserva lo importante hasta que la situación esté más clara.",
         "5": "Actúa solo contra un problema real y claramente identificado. Deja que dirija quien tiene experiencia; un liderazgo disperso o inmaduro puede convertir una respuesta necesaria en una pérdida evitable.",
@@ -164,7 +164,7 @@
       "id": 9,
       "title": "Xiǎo Chù — Pequeña contención",
       "coreThread": "Una fuerza pequeña pero real está conteniendo las cosas. La imagen muestra nubes densas que todavía no se han convertido en lluvia: existe potencial, pero las condiciones aún no están listas para una liberación decisiva. Xiǎo Chù no pide rendirse. Pide una influencia paciente: cuidar lo que puede cuidarse, reunir fuerzas y negarse a convertir la demora en una crisis.",
-      "whenItAppears": "Afina, prepara y haz pequeños ajustes. Construye confianza mediante promesas modestas que de verdad puedan cumplirse. La presión por terminar o demostrar algo puede ser fuerte, pero la situación se beneficia más de la calibración que de un empujón espectacular. Las nubes que se reúnen no son un fracaso, sino la señal de que algo está tomando forma.",
+      "whenItAppears": "Afina, prepara y haz pequeños ajustes. Construye confianza mediante promesas modestas que de verdad puedan cumplirse. La presión por terminar o demostrar algo puede ser fuerte, pero la situación se beneficia más de la mesura que de un empujón espectacular. Las nubes que se reúnen no son un fracaso, sino la señal de que algo está tomando forma.",
       "reflectionQuestions": [
         "¿Qué necesita moldearse con constancia en lugar de recurrir a la fuerza?",
         "¿Dónde estoy tratando una demora como si fuera una crisis?",
@@ -172,10 +172,10 @@
         "¿Es realmente el momento de avanzar o de proteger un equilibrio que todavía se está formando?"
       ],
       "lineReflections": {
-        "1": "Vuelve a tu propio rumbo sólido. Corregirte pronto no es una derrota ni tiene por qué convertirse en un drama; es el movimiento favorable.",
-        "2": "Deja que otros te atraigan de vuelta hacia una dirección sólida. Regresar juntos a lo correcto es mejor que insistir en soledad.",
+        "1": "Vuelve a tu buen rumbo. Corregirte pronto no es una derrota ni tiene por qué convertirse en un drama; es el movimiento favorable.",
+        "2": "Deja que los demás te ayuden a recuperar el buen rumbo. Regresar juntos a lo correcto es mejor que insistir en soledad.",
         "3": "Forzar el progreso puede romper la cooperación, como un carro que pierde los radios de sus ruedas. Observa la tensión en una alianza o un hogar antes de que la presión enfrente a quienes eran aliados.",
-        "4": "La confianza honesta permite que el peligro y el miedo retrocedan. Habla con claridad, cumple tu palabra y no lleves una antigua alarma al siguiente paso cuando ya no corresponde.",
+        "4": "La confianza sincera permite que el peligro y el miedo retrocedan. Habla con claridad, cumple tu palabra y no lleves un miedo antiguo al siguiente paso cuando ya no corresponde.",
         "5": "La confianza crea un vínculo real entre las personas. Comparte recursos, reconocimiento y buena fortuna con quienes están cerca del trabajo en lugar de retenerlo todo para ti.",
         "6": "La lluvia ha llegado y el asunto se ha asentado, así que no sigas presionando. En el punto de plenitud, persistir puede perturbar un equilibrio recién alcanzado; la contención sigue siendo la fuerza más sabia."
       }
@@ -183,7 +183,7 @@
     {
       "id": 10,
       "title": "Lǚ — Caminar con cuidado",
-      "coreThread": "Muévete cerca de lo que tiene poder con conciencia y respeto. Lǚ muestra a alguien que pisa la cola de un tigre sin recibir un mordisco: el peligro es real, pero una conducta cuidadosa hace posible el paso. El valor no consiste en exhibir fuerza, sino en actuar con aplomo, tacto y una atención clara a la situación.",
+      "coreThread": "Muévete cerca de lo que tiene poder con atención y respeto. Lǚ muestra a alguien que pisa la cola de un tigre sin ser mordido: el peligro es real, pero una conducta cuidadosa hace posible el paso. El valor no consiste en exhibir fuerza, sino en actuar con aplomo, tacto y una comprensión clara de la situación.",
       "whenItAppears": "Mantente en el camino adecuado incluso cuando nadie mire. Sé modesto en una situación cargada, claro respecto a tus límites y atento a lo que podría provocar a una persona, institución o fuerza más poderosa. Puedes avanzar, pero no de cualquier manera. La cortesía no es aquí sumisión, sino un respeto inteligente por las consecuencias de cada paso.",
       "reflectionQuestions": [
         "¿Dónde me muevo cerca de algo poderoso o sensible?",
@@ -195,7 +195,7 @@
         "1": "Empieza con sencillez y sin fingir. Una conducta simple y honesta basta para el primer paso; avanzar así no implica culpa.",
         "2": "Un camino llano sostiene una integridad tranquila. Sigue lo correcto sin necesitar reconocimiento público; la firmeza interior es su propia protección.",
         "3": "Una visión limitada o un paso inestable se vuelven peligrosos cuando se confunden con una capacidad plena. No asumas un papel poderoso solo para demostrar valor, sobre todo cuando la situación puede morder de verdad.",
-        "4": "Estás cerca del peligro, así que permanece alerta y respetuoso. Esta vigilancia no es debilidad; sostenida con cuidado, al final te permite atravesar a salvo.",
+        "4": "Estás cerca del peligro, así que permanece alerta y actúa con respeto. Esta vigilancia no es debilidad; si la mantienes, te permitirá atravesar a salvo.",
         "5": "Sé decidido, pero no olvides que una acción firme conlleva riesgos. La integridad cuando hay mucho en juego sigue necesitando humildad, consulta y una mirada honesta a lo que podría salir mal.",
         "6": "Revisa el camino recorrido y examina sus resultados. Cuando puedas ver tanto las consecuencias como el patrón de tu conducta, serán posibles una conclusión sólida y una fortuna duradera."
       }
@@ -215,7 +215,7 @@
         "1": "Al tirar de una raíz salen también las raíces conectadas a ella. Un buen primer movimiento puede impulsar a todo un grupo; avanza con los demás en lugar de intentar elevarte en solitario.",
         "2": "Acoge lo áspero o difícil, cruza el río cuando haga falta y no descuides a quienes están lejos. Deja que la equidad, no un círculo privado, guíe el centro de tu trabajo.",
         "3": "Ningún terreno llano permanece llano para siempre y ninguna partida carece de regreso. Recibe el giro del ciclo con una integridad constante; la confianza y el sustento cotidiano siguen disponibles.",
-        "4": "Ofrece lo que tienes sin exhibición ni cálculo. Las personas vecinas pueden encontrarse en la confianza antes de que exista una invitación formal.",
+        "4": "Ofrece lo que tienes sin exhibición ni cálculo. Los vecinos pueden encontrarse desde la confianza antes de que exista una invitación formal.",
         "5": "Una unión valiosa trae una profunda bendición cuando se aborda con humildad y una relación justa, no desde el estatus ni la posesión. Honra a quienes unen su futuro al tuyo.",
         "6": "Cuando la muralla de la ciudad cae de nuevo al foso, no respondas al declive con fuerza. Da una dirección local clara, protege lo que queda y no defiendas con obstinación una posición cuyo tiempo ya ha pasado."
       }
@@ -232,8 +232,8 @@
         "¿Qué señal temprana mostraría que el estancamiento empieza a ceder?"
       ],
       "lineReflections": {
-        "1": "Las raíces siguen conectadas. Mantente junto a tus compañeros en lo correcto; incluso en un tiempo bloqueado, la integridad compartida tiene un futuro vivo.",
-        "2": "Algunas personas pueden adaptarse a un orden comprometido y llamarlo éxito. No confundas sobrevivir dentro de él con la labor de quien debe preservar un principio más amplio.",
+        "1": "Las raíces siguen conectadas. Mantente junto a tus compañeros en lo correcto; incluso en un tiempo de bloqueo, la integridad compartida conserva la posibilidad de un futuro.",
+        "2": "Algunas personas pueden adaptarse a un orden degradado y llamarlo éxito. No confundas sobrevivir dentro de él con la labor de quien debe preservar un principio más amplio.",
         "3": "No escondas la vergüenza dentro de ti ni detrás de apariencias corteses. Reconoce la parte de la situación que viola tu conciencia.",
         "4": "Un mandato verdadero o una responsabilidad clara pueden reabrir el movimiento. Actúa sin culpa cuando haya llegado el momento y deja que la bendición alcance a quienes comparten el trabajo.",
         "5": "El estancamiento empieza a ceder, pero no te relajes hasta caer en el descuido. Ten presente la posibilidad de pérdida y asegura las raíces de lo importante, como quien sujeta una cuerda a una morera fuerte.",
@@ -243,7 +243,7 @@
     {
       "id": 13,
       "title": "Tóng Rén — Comunidad a cielo abierto",
-      "coreThread": "Encuéntrate con las personas abiertamente en torno a un propósito común real. Tóng Rén es más fuerte que la lealtad privada o un círculo íntimo conocido: pide una comunidad capaz de sostenerse en campo abierto, visible y lo bastante amplia para incluir las diferencias. Un propósito común así puede sostener una travesía exigente.",
+      "coreThread": "Reúnete abiertamente con otras personas en torno a un propósito común verdadero. Tóng Rén va más allá de la lealtad privada o del círculo íntimo: pide una comunidad capaz de mostrarse a cielo abierto y lo bastante amplia para incluir las diferencias. Un propósito común así puede sostener una travesía exigente.",
       "whenItAppears": "Nombra el trabajo que de verdad puede compartirse. Haz sitio a personas más allá de la familia, el grupo o la ventaja personal, sin dejar de ser firme respecto al propósito. La apertura no es ingenuidad; significa negarse a que el miedo y las facciones definan todo el horizonte.",
       "reflectionQuestions": [
         "¿Qué propósito compartido es mayor que nuestras lealtades privadas?",
@@ -263,8 +263,8 @@
     {
       "id": 14,
       "title": "Dà Yǒu — Gran posesión",
-      "coreThread": "Hay influencia, capacidad o recursos disponibles. Dà Yǒu pide administración responsable en lugar de propiedad: deja que la abundancia circule mediante la gratitud, la claridad y la responsabilidad. Lo que sostienes se vuelve favorable cuando sirve a algo mayor que tu imagen.",
-      "whenItAppears": "Usa tu capacidad de forma visible, pero sin ostentación. Lleva lo que debe llevarse, comparte el reconocimiento con personas valiosas y conserva la dignidad necesaria para orientar. La abundancia está más segura cuando la generosidad y los límites trabajan juntos.",
+      "coreThread": "Dispones de influencia, capacidad o recursos. Dà Yǒu pide una buena gestión, no la mera posesión: deja que la abundancia circule con gratitud, claridad y responsabilidad. Lo que tienes entre manos se vuelve favorable cuando sirve a algo mayor que tu propia imagen.",
+      "whenItAppears": "Usa tu capacidad de forma visible, pero sin ostentación. Asume lo que te corresponde, comparte el reconocimiento con personas valiosas y conserva la dignidad necesaria para orientar. La abundancia está más segura cuando la generosidad y los límites actúan juntos.",
       "reflectionQuestions": [
         "¿Qué recurso o influencia me corresponde administrar ahora?",
         "¿Cómo puede servir en lugar de engrandecerme?",
@@ -272,9 +272,9 @@
       ],
       "lineReflections": {
         "1": "Evita enredarte con lo que hace daño. Una dificultad tratada con honestidad te mantiene libre de culpa.",
-        "2": "Tienes un gran carro para una carga real. Asume la tarea valiosa; la capacidad está hecha para llegar a algún lugar útil.",
+        "2": "Tienes un gran carro para una carga real. Asume la tarea valiosa; tu capacidad está hecha para servir a algo útil.",
         "3": "Ofrece lo que sostienes a un propósito mayor que el beneficio privado. Un enfoque mezquino no puede asumir una responsabilidad pública.",
-        "4": "No conviertas tu abundancia en pompa. Rechazar una exhibición inflada te protege del error.",
+        "4": "No conviertas tu abundancia en arrogancia. Renunciar a la ostentación te protege del error.",
         "5": "Haz que la confianza sea cálida, clara y esté unida a una autoridad serena. La amabilidad sin dirección puede convertirse en confusión; la autoridad sin confianza se convierte en miedo.",
         "6": "La ayuda llega cuando el uso del poder se alinea con lo correcto. Recibe el apoyo con gratitud, no como un derecho adquirido."
       }
@@ -291,7 +291,7 @@
       ],
       "lineReflections": {
         "1": "La humildad al comienzo da valor para una travesía difícil. No necesitas exagerar tu importancia para emprender el viaje.",
-        "2": "Deja que la modestia se oiga en tu conducta. Una reputación de fiabilidad serena es favorable cuando se apoya en la verdad.",
+        "2": "Deja que la modestia se perciba en tu conducta. La reputación de ser una persona serena y fiable es favorable cuando se apoya en la verdad.",
         "3": "Quien trabaja con empeño sin atribuirse todo el resultado puede llevar la obra a buen término. Sigue sirviendo a la tarea.",
         "4": "Extender la modestia hacia fuera no presenta desventaja. Haz sitio, comparte el honor y rebaja las barreras innecesarias.",
         "5": "La falta de riqueza personal no implica falta de fuerza. Corrige con tus vecinos un desequilibrio de forma directa cuando sea necesario, sin codicia ni humillación.",
@@ -301,8 +301,8 @@
     {
       "id": 16,
       "title": "Yù — Entusiasmo",
-      "coreThread": "Un sentimiento auténtico puede convertirse en movimiento compartido. Yù da al entusiasmo un ritmo, una estructura y una razón digna de servicio; la excitación por sí sola no basta. Cuando la señal interior es verdadera, puede reunir a las personas y preparar un esfuerzo colectivo.",
-      "whenItAppears": "Deja que la energía se convierta en preparación, no en ruido. Crea una función clara, un plan práctico y un centro digno de confianza. Observa la diferencia entre la alegría que impulsa la acción y la representación que pide ser admirada.",
+      "coreThread": "Un sentimiento auténtico puede convertirse en movimiento compartido. Yù da al entusiasmo un ritmo, una estructura y una causa a la que merece la pena servir; la excitación por sí sola no basta. Cuando el impulso interior es verdadero, puede reunir a las personas y preparar un esfuerzo colectivo.",
+      "whenItAppears": "Deja que la energía se convierta en preparación, no en ruido. Define funciones claras, un plan práctico y un centro digno de confianza. Distingue entre la alegría que impulsa la acción y la exhibición que busca admiración.",
       "reflectionQuestions": [
         "¿En qué quiere convertirse esta energía en la práctica?",
         "¿Qué estructura le permitiría servir a algo más que un estado de ánimo?",
@@ -311,7 +311,7 @@
       "lineReflections": {
         "1": "Anunciar a gritos el entusiasmo antes de que tenga sustancia trae desventura. Deja que la obra madure antes de celebrarla.",
         "2": "Sé firme como una piedra al reconocer el momento. Una percepción clara no necesita un día entero para liberarse de un falso entusiasmo.",
-        "3": "Buscar el entusiasmo en otra persona alzando la mirada hacia ella trae pesar; esperar demasiado también. Convierte tu propia comprensión en un movimiento oportuno.",
+        "3": "Esperar que el entusiasmo de otra persona te impulse trae pesar; demorarte demasiado, también. Convierte tu propia comprensión en una acción oportuna.",
         "4": "Cuando el entusiasmo nace de un centro digno de confianza, las personas se reúnen de manera natural. No dudes del apoyo creado por un propósito común claro.",
         "5": "Puede persistir una debilidad o una carga sin que ello ponga fin al trabajo. Cuida esa condición en lugar de fingir que no existe.",
         "6": "Un entusiasmo que se ha vuelto oscuro, automático o embriagador debe cambiar. Reconocerlo a tiempo elimina la culpa y abre un mejor uso de la energía."
@@ -321,15 +321,15 @@
       "id": 17,
       "title": "Suí — Seguir",
       "coreThread": "Sigue lo que es sólido, no solo lo que es popular. Suí es receptividad activa: adaptarse a las circunstancias cambiantes sin perder el contacto con una dirección más profunda. La influencia adecuada facilita el movimiento; un apego equivocado te empequeñece.",
-      "whenItAppears": "Observa quién o qué está marcando tu rumbo. Disponte a cambiar una función o un hábito, a conocer personas más allá de tu puerta habitual y a aprender de una orientación valiosa. Seguir solo es sabio cuando tu integridad permanece despierta.",
+      "whenItAppears": "Observa quién o qué está marcando tu rumbo. Disponte a cambiar de papel o de hábito, a conocer personas fuera de tu círculo habitual y a aprender de una orientación valiosa. Seguir solo es sabio cuando mantienes despierta tu integridad.",
       "reflectionQuestions": [
         "¿Qué estoy siguiendo y por qué?",
         "¿Esta adaptación mejora mi relación con los demás o me aleja de mí?",
         "¿Qué influencia merece confianza?"
       ],
       "lineReflections": {
-        "1": "Una función o un deber cambian. Mantente fiel al principio y después sal de tu círculo habitual; el contacto nuevo puede dar fruto.",
-        "2": "Aferrarte a la opción menor o más inmediata puede hacerte perder a la guía más madura. Elige con cuidado aquello a lo que te vinculas.",
+        "1": "Tu papel o tus responsabilidades cambian. Mantente fiel a tus principios y después sal de tu círculo habitual; un nuevo encuentro puede dar fruto.",
+        "2": "Aferrarte a la opción menor o más inmediata puede alejarte de una guía más madura. Elige con cuidado aquello a lo que te vinculas.",
         "3": "Elegir la dirección más madura puede implicar dejar atrás un apego menor. Puedes encontrar lo que de verdad buscas si te mantienes firme una vez tomada la decisión.",
         "4": "Lo que ganas al seguir puede volverse peligroso si solo intentas conservarlo. Mantén la confianza en el camino correcto y haz transparente tu conducta.",
         "5": "Deposita tu confianza en lo que es verdaderamente bueno. Este sencillo reconocimiento es favorable.",
@@ -352,7 +352,7 @@
         "3": "La reparación puede traer cierta vergüenza o críticas, pero no una gran culpa cuando el trabajo se hace con sinceridad.",
         "4": "Consentir la vieja corrupción permite que se ahonde. Si sigues adelante sin cambiar el patrón, es probable que llegue el pesar.",
         "5": "Una reparación responsable obtiene estima verdadera. Haz visible la mejora mediante un cuidado constante, no alabándote.",
-        "6": "Algunas estructuras corruptas no pueden servirse sin perder la integridad del trabajo. Rechaza la función comprometida y honra la tarea superior."
+        "6": "No puedes servir a ciertas estructuras corruptas sin traicionar la integridad del trabajo. Rechaza ese papel y honra una tarea más elevada."
       }
     },
     {
@@ -378,7 +378,7 @@
       "id": 20,
       "title": "Guān — Contemplación",
       "coreThread": "Retrocede lo suficiente para ver el patrón. Guān comienza con la pausa reverente antes de una ofrenda: el acto exterior todavía no ha sucedido, pero la presencia sincera ya comunica. Tu forma de estar es visible; hazla digna de confianza.",
-      "whenItAppears": "Observa antes de intervenir. Mira cómo afectan tus actos a otras personas, cómo está dispuesto el campo más amplio y qué te permite comprender tu posición. La contemplación no es pasividad; prepara un siguiente movimiento más responsable.",
+      "whenItAppears": "Observa antes de intervenir. Mira cómo afectan tus actos a otras personas, qué ocurre en el contexto más amplio y qué te permite comprender tu posición. La contemplación no es pasividad; prepara un próximo paso más responsable.",
       "reflectionQuestions": [
         "¿Qué se vuelve visible cuando dejo de intentar controlar la escena?",
         "¿Qué está comunicando ya mi manera de estar?",
@@ -386,7 +386,7 @@
       ],
       "lineReflections": {
         "1": "Una mirada infantil puede ser inofensiva para quien tiene poca responsabilidad, pero es demasiado estrecha cuando se te pide un juicio maduro.",
-        "2": "Una mirada por la rendija solo ve una parte de la situación. Puede convenir a una posición protegida o privada, pero no la confundas con toda la verdad.",
+        "2": "Una mirada por la rendija solo ve una parte de la situación. Una perspectiva resguardada o privada puede tener su utilidad, pero no la confundas con toda la verdad.",
         "3": "Observa tu propia vida y deja que esa observación guíe el avance o la retirada. El conocimiento propio aclara el momento oportuno.",
         "4": "Observa el ámbito más amplio y su luz. Aprende del conjunto y después disponte a participar en él con respeto, en lugar de seguir como espectador distante.",
         "5": "Quien tiene responsabilidad debe examinar el efecto de su propia conducta. Una observación honesta de uno mismo elimina la culpa.",
@@ -407,7 +407,7 @@
         "1": "Una pequeña restricción al comienzo evita una falta mayor. Acepta el límite correctivo antes de que crezca el daño.",
         "2": "Aborda directamente lo que está cerca de la superficie. El trabajo puede parecer cortante, pero quitar un obstáculo visible no implica culpa.",
         "3": "El obstáculo contiene algo desagradable o tóxico. Espera una dificultad menor, pero no abandones el trabajo necesario.",
-        "4": "El nudo duro ofrece una prueba: una flecha de metal señala lo que es cierto. Persevera con cuidado en el caso difícil y el resultado será bueno.",
+        "4": "El nudo es duro, pero encuentras una flecha de metal: una prueba firme de lo que es cierto. Persevera con cuidado ante este caso difícil y el resultado será bueno.",
         "5": "Encuentra el centro valioso dentro de un problema difícil. Mantente fiel a tus principios y consciente del riesgo; un juicio firme no tiene por qué volverse severo.",
         "6": "Cuando la restricción pesa tanto que vuelve a alguien sordo a la corrección, llega la desventura. Los límites deben seguir conectados con la comprensión."
       }
@@ -454,7 +454,7 @@
       "id": 24,
       "title": "Fù — Retorno",
       "coreThread": "Un pequeño regreso a lo verdadero puede cambiar la dirección de todo un ciclo. Fù recibe la primera señal de renovación: el camino vuelve, las amistades pueden regresar y el movimiento se hace posible de nuevo. Da a este comienzo un ritmo constante en lugar de exigir una transformación instantánea.",
-      "whenItAppears": "Regresa pronto y con sencillez. Retoma la práctica, relación o valor que has descuidado y protege después el pequeño movimiento nuevo. La advertencia señala el peligro de perderse en la inversión y convertir la corrección en una campaña de fuerza.",
+      "whenItAppears": "Regresa pronto y con sencillez. Retoma la práctica, la relación o el valor que has descuidado y protege después ese pequeño impulso nuevo. La advertencia señala el peligro de perder el momento del retorno y convertir la corrección en una campaña de fuerza.",
       "reflectionQuestions": [
         "¿Qué pequeño movimiento verdadero está regresando?",
         "¿Dónde puedo corregir el rumbo antes de que crezca el pesar?",
@@ -465,7 +465,7 @@
         "2": "Un retorno tranquilo es bueno. Deja que lo sostengan la bondad y un lugar seguro donde volver a empezar.",
         "3": "Desviarse y regresar repetidamente puede parecer peligroso, pero no está más allá de toda reparación. Aprende el ritmo en lugar de condenarte.",
         "4": "En medio de una multitud, quizá seas la única persona que regresa. Mantén la fe en la dirección verdadera incluso sin compañía inmediata.",
-        "5": "Un retorno sustancial nace del corazón y no deja lugar al pesar. No lo conviertas en representación; hazlo real.",
+        "5": "Un retorno sincero nace del corazón y no deja lugar al pesar. No lo conviertas en un gesto de cara a los demás; hazlo real.",
         "6": "Perder el camino del retorno trae desastre. No militarices un momento perdido ni insistas en una dirección que el tiempo ya no sostiene."
       }
     },
@@ -492,7 +492,7 @@
       "id": 26,
       "title": "Dà Chù — Gran contención",
       "coreThread": "Desarrolla la capacidad antes de liberarla. Dà Chù reúne aprendizaje, fuerza e impulsos poderosos para que sirvan a un propósito mayor que el deseo inmediato. La contención no es aquí represión, sino entrenamiento para una travesía significativa.",
-      "whenItAppears": "Estudia, prepárate y acepta la disciplina que hará fiable la acción posterior. Busca alimento más allá del hogar privado —en docentes, instituciones, trabajo público o un ámbito más amplio— y después dirige con cuidado la fuerza acumulada.",
+      "whenItAppears": "Estudia, prepárate y acepta la disciplina que hará fiable tu acción futura. Busca alimento más allá de tu entorno habitual —en maestros, instituciones, el trabajo público o un ámbito más amplio— y después dirige con cuidado la fuerza acumulada.",
       "reflectionQuestions": [
         "¿Qué capacidad debo desarrollar antes de actuar?",
         "¿Qué impulso necesita entrenamiento en lugar de liberación?",
@@ -523,7 +523,7 @@
         "3": "Una forma de alimentarte ha ido en contra de lo saludable. Detente; continuar no ofrece ningún beneficio.",
         "4": "Buscar alimento para una responsabilidad real puede ser bueno. Mantente alerta como un tigre, pero deja que tu afán sirva al cuidado, no a la codicia.",
         "5": "Permanece firme en tu lugar cuando la ruta habitual no esté disponible. No es momento para una gran travesía.",
-        "6": "Otras personas pueden nutrirse a través de ti. La función es exigente pero favorable; prepara con cuidado el paso mayor que requiere."
+        "6": "Otras personas pueden nutrirse a través de ti. Es un papel exigente pero favorable; prepara con cuidado el gran paso que requiere."
       }
     },
     {
@@ -540,7 +540,7 @@
         "1": "Protege el comienzo con un cuidado sencillo, como una estera de juncos blancos. La precaución no es excesiva cuando la carga es delicada.",
         "2": "La renovación puede venir de una combinación inesperada. Un árbol marchito puede brotar de nuevo; no descartes una posibilidad vivificante porque no sea convencional.",
         "3": "La viga maestra se dobla: la tensión ya es estructural. Negarla agrava el peligro.",
-        "4": "Se ha elevado un apoyo y la situación puede sostenerse. No compliques la reparación con una segunda vinculación innecesaria.",
+        "4": "Se ha reforzado el apoyo y la situación puede sostenerse. No comprometas la reparación buscando además otras ventajas.",
         "5": "Una floración tardía puede ser inofensiva, pero quizá no restaure toda la vitalidad. Recíbela sin confundir un breve florecer con una solución completa.",
         "6": "Ir demasiado lejos en la travesía puede hacer que el agua te cubra la cabeza. El intento puede ser comprensible, pero el riesgo es real; busca ayuda antes de quedar sumergido."
       }
@@ -559,7 +559,7 @@
         "1": "No desciendas más en la fosa. Reconoce el patrón de peligro cuando empieza y detén la espiral.",
         "2": "En el peligro, busca una pequeña ganancia en lugar de una victoria total. Un apoyo modesto y seguro importa.",
         "3": "Tanto ir como volver parecen peligrosos y el lugar de descanso no es seguro. No fuerces un movimiento desde el punto más profundo.",
-        "4": "Basta una sencilla vasija de vino y comida pasada por una ventana. Deja que un contacto honesto y modesto traiga ayuda; las formas elaboradas son innecesarias.",
+        "4": "Una sencilla vasija de vino y un cuenco de comida entregados por la ventana bastan. Deja que un contacto honesto y modesto traiga ayuda; las formalidades son innecesarias.",
         "5": "El agua no se ha desbordado; está alcanzando su nivel. No llenes la situación con más esfuerzo del que puede contener.",
         "6": "Las cuerdas y el cercado de espinas describen una crisis que lleva demasiado tiempo sin salida. Toma en serio el aislamiento y busca apoyo antes de que se convierta en un largo cautiverio."
       }
@@ -586,7 +586,7 @@
     {
       "id": 31,
       "title": "Xián — Influencia mutua",
-      "coreThread": "Está actuando una conexión sutil. Xián trata de la atracción, la receptividad y la manera en que una persona mueve a otra. Deja que la influencia esté guiada por el respeto, el consentimiento y un centro estable; una conexión auténtica no requiere presión ni que pierdas quién eres.",
+      "coreThread": "Está actuando una conexión sutil. Xián trata de la atracción, la receptividad y la manera en que una persona influye en otra. Deja que esa influencia se guíe por el respeto, el consentimiento y un centro estable; una conexión auténtica no requiere presión ni que pierdas quién eres.",
       "whenItAppears": "Observa el primer movimiento del sentimiento, pero no dejes que cada impulso decida la acción. La buena influencia viaja mediante la apertura y la integridad. La atracción se vuelve digna de confianza cuando ambas personas conservan la libertad de responder.",
       "reflectionQuestions": [
         "¿Qué influencia circula entre nosotros?",
@@ -596,7 +596,7 @@
       "lineReflections": {
         "1": "La influencia empieza en el dedo del pie: un primer impulso pequeño. Obsérvalo sin convertirlo en un compromiso.",
         "2": "El sentimiento llega a la pantorrilla y quiere actuar, pero es mejor permanecer quieto. No dejes que la urgencia corporal elija por ti.",
-        "3": "El impulso alcanza el muslo e intenta aferrar aquello que sigue. Perseguir demasiado pronto a otra persona trae pesar.",
+        "3": "El impulso alcanza el muslo y trata de aferrarse a quien va delante. Perseguir demasiado pronto a otra persona trae pesar.",
         "4": "La integridad constante elimina el pesar. Los pensamientos y las señales pueden ir y venir, y las amistades responder a ellos; mantén clara tu dirección interior.",
         "5": "La influencia alcanza la espalda, el centro estable del cuerpo. Una conexión arraigada puede sentirse sin agitación ni pesar.",
         "6": "La influencia en las mejillas, la mandíbula y la lengua puede quedarse en palabras. Haz que las palabras respondan ante la acción y el sentimiento real."
@@ -617,7 +617,7 @@
         "2": "El pesar desaparece cuando recuperas un ritmo equilibrado y constante.",
         "3": "Sin constancia de carácter puede llegar la vergüenza. Cumple tu palabra en lugar de insistir en una forma exterior fija.",
         "4": "Cazar sin atrapar nada muestra un esfuerzo dirigido al campo equivocado. La persistencia no compensa un mal objetivo.",
-        "5": "La constancia debe ajustarse a la relación y la función en cuestión. La receptividad mutua es favorable; una rigidez unilateral puede volverse perjudicial.",
+        "5": "La constancia debe ajustarse a la relación y al papel que desempeñas. La receptividad mutua es favorable; una rigidez unilateral puede volverse perjudicial.",
         "6": "Una «constancia» inquieta y temblorosa es una contradicción. No llames compromiso estable a la agitación repetida."
       }
     },
@@ -627,12 +627,12 @@
       "coreThread": "Dar un paso atrás puede preservar lo importante. Dùn no es derrota ni desaparición, sino una retirada oportuna de unas condiciones que malgastarían tu energía o comprometerían tu integridad. Mantén la visión a largo plazo y vete sin amargura.",
       "whenItAppears": "Reduce tu exposición, protege lo esencial y establece un límite limpio. La retirada es más fuerte cuando es deliberada y amable, no una reacción airada. Una posición menor pero correcta sigue teniendo valor.",
       "reflectionQuestions": [
-        "¿Qué ya no merece que lo confronte directamente?",
+        "¿Qué ya no merece un enfrentamiento directo?",
         "¿Qué necesita protección mientras doy un paso atrás?",
         "¿Cómo puedo retirarme sin resentimiento ni dramatismo?"
       ],
       "lineReflections": {
-        "1": "Cuando la retirada se retrasa en la cola, el peligro aumenta. No sigas adelante desde la posición más expuesta.",
+        "1": "Si quedas a la cola de la retirada, el peligro aumenta. No intentes avanzar desde la posición más expuesta.",
         "2": "Un lazo firme, como cuero amarillo de buey, no puede deshacerse sin más. Reconoce qué compromisos deben honrarse incluso mientras te retiras.",
         "3": "Una retirada atada es dolorosa y arriesgada. Mantén manejables las responsabilidades cercanas, pero no dejes que las personas dependientes se conviertan en motivo para permanecer en una lucha dañina.",
         "4": "La persona noble puede retirarse con gracia; una persona mezquina puede vivirlo como una pérdida. Vete de una manera que preserve la dignidad.",
@@ -644,7 +644,7 @@
       "id": 34,
       "title": "Dà Zhuàng — Gran poder",
       "coreThread": "El poder necesita una dirección correcta. Dà Zhuàng aporta fuerza, confianza e impulso, pero esa fortaleza solo es favorable cuando la guía la integridad. Traspasar el límite adecuado debilita la misma posición que intentas afirmar.",
-      "whenItAppears": "Usa la fuerza con franqueza y ética. Deja que el poder pase por una estructura digna, no por la agresividad, el orgullo o la necesidad de ganar cada contienda. La fuerza verdadera abre espacio al movimiento; no deja sus cuernos atrapados en la cerca.",
+      "whenItAppears": "Usa la fuerza con franqueza y sentido ético. Encauza el poder mediante una estructura digna, no mediante la agresividad, el orgullo o la necesidad de ganar cada contienda. La fuerza verdadera permite avanzar; no deja sus cuernos atrapados en la cerca.",
       "reflectionQuestions": [
         "¿Cuál es el uso correcto de mi fuerza aquí?",
         "¿Qué límite debo respetar?",
@@ -690,7 +690,7 @@
       ],
       "lineReflections": {
         "1": "El ave baja las alas y viaja sin comodidad. Abandona lo que te hace daño aunque la partida sea austera y nadie la comprenda.",
-        "2": "La luz está herida, pero es posible un rescate fuerte. Acepta ayuda práctica y úsala para recuperar el movimiento.",
+        "2": "La luz está herida, pero aún es posible un rescate. Acepta ayuda práctica y úsala para volver a ponerte a salvo.",
         "3": "Puedes enfrentarte al daño central, pero no te apresures a hacer permanente la victoria. El cambio necesita una consolidación paciente.",
         "4": "Después de ver el corazón del oscurecimiento, abandona la cámara interior. Deja que la comprensión guíe una salida real, no solo un saber privado.",
         "5": "Preserva la integridad en silencio, como la persona sabia que oculta su luz en una corte corrupta. Resistir puede ser una elección moral activa.",
@@ -701,7 +701,7 @@
       "id": 37,
       "title": "Jiā Rén — La familia",
       "coreThread": "El orden empieza en las relaciones cercanas. Jiā Rén usa el hogar como imagen: aclara las responsabilidades, cumple las promesas y expresa el cuidado mediante una conducta cotidiana fiable. La formulación histórica refleja su época; el principio duradero es la responsabilidad recíproca, no una jerarquía fija de género.",
-      "whenItAppears": "Crea acuerdos claros en el grupo más cercano —familia, equipo, hogar o pareja—. El cuidado necesita estructura, pero la estructura sin calidez se convierte en miedo. Deja que las funciones se apoyen entre sí y que la confianza sea visible en las rutinas ordinarias.",
+      "whenItAppears": "Crea acuerdos claros en el grupo más cercano —familia, equipo, hogar o pareja—. El cuidado necesita estructura, pero la estructura sin calidez se convierte en miedo. Haz que las responsabilidades se apoyen entre sí y que la confianza sea visible en las rutinas cotidianas.",
       "reflectionQuestions": [
         "¿Qué acuerdo aportaría más orden y cuidado a este grupo cercano?",
         "¿Las responsabilidades son claras y recíprocas?",
@@ -746,7 +746,7 @@
         "¿Qué se vuelve posible si regreso y vuelvo a reunir fuerzas?"
       ],
       "lineReflections": {
-        "1": "Avanzar encuentra obstrucción; regresar trae reconocimiento. Retirarse para prepararse es el movimiento más sabio.",
+        "1": "Avanzar encuentra obstrucción; regresar trae reconocimiento. Retirarte para prepararte es la decisión más sabia.",
         "2": "Quizá estés llevando una dificultad por una causa mayor que tú. No interpretes cada carga como un fracaso personal.",
         "3": "Avanzar encuentra obstrucción; regresar te restablece. Cambia de rumbo antes de que el bloqueo se convierta en agotamiento.",
         "4": "Regresa a la conexión. El camino a través de la dificultad puede encontrarse con otras personas, no en soledad.",
@@ -757,7 +757,7 @@
     {
       "id": 40,
       "title": "Xiè — Liberación",
-      "coreThread": "La tensión ya puede aflojarse. Xiè te invita a resolver el problema inmediato, perdonar lo que puede soltarse y volver al movimiento sencillo. Si no hay nada urgente que perseguir, recuperarse es bueno; si hace falta actuar, actuar a tiempo es mejor que demorarse.",
+      "coreThread": "La tensión ya puede aflojarse. Xiè te invita a resolver el problema inmediato, perdonar lo que puede soltarse y recuperar un modo de actuar sencillo. Si no hay nada urgente que perseguir, recuperarte es bueno; si hace falta actuar, hacerlo a tiempo es mejor que demorarse.",
       "whenItAppears": "Desata lo que está ligado y aclara lo que se oculta. No cargues con un peso mientras finges estar por encima de él ni mantengas vivo un conflicto antiguo después de que su propósito haya terminado. La liberación es práctica, no vaga.",
       "reflectionQuestions": [
         "¿Qué tensión inmediata puede resolverse ahora?",
@@ -825,7 +825,7 @@
         "1": "El poder en los dedos de los pies se precipita y no puede imponerse. No confundas la urgencia con estar preparado.",
         "2": "Mantente alerta: el conflicto puede llegar de noche. Una vigilancia preparada basta; no dejes que la preocupación te consuma.",
         "3": "La ira visible es peligrosa. La persona de principios puede caminar sola entre la incomodidad y la incomprensión, pero seguir libre de culpa.",
-        "4": "Cuando moverse resulta doloroso y vacilante, sigue la orientación viable aunque al principio no confíes del todo en ella. La resistencia obstinada prolonga el pesar.",
+        "4": "Cuando avanzar resulta doloroso y vacilante, sigue la orientación que ofrece una salida, aunque al principio no confíes del todo en ella. La resistencia obstinada prolonga el pesar.",
         "5": "Corta la mala hierba obstinada del centro, pero mantente en el camino medio. La decisión sin exceso no implica culpa.",
         "6": "Si nunca se expresa la advertencia, el patrón dañino continúa hasta su mal final. El silencio no siempre es paz."
       }
@@ -841,8 +841,8 @@
         "¿Qué debe mantenerse contenido en lugar de ofrecerse al exterior?"
       ],
       "lineReflections": {
-        "1": "Fija pronto el freno. Avanzar sin contención expone al peligro, aunque el impulso sea inquieto y persuasivo.",
-        "2": "Guarda el pez en la bolsa: mantén cerca un asunto valioso o delicado. Todavía no es para visitantes ni para mostrarse en público.",
+        "1": "Pon el freno desde el principio. Avanzar sin contención te expone al peligro, por inquieto y persuasivo que sea el impulso.",
+        "2": "Guarda el pez en la bolsa: mantén cerca un asunto valioso o delicado. Todavía no es momento de compartirlo ni de mostrarlo en público.",
         "3": "La vacilación duele, pero puede evitar un error mayor. Avanza con cuidado a través de la incomodidad.",
         "4": "Una bolsa vacía significa que no se conservó una oportunidad cuando estaba presente. No culpes a otros por lo que no supiste proteger.",
         "5": "Mantén el melón envuelto y el brillo contenido. Puede llegar un regalo inesperado cuando proteges lo que está creciendo.",
@@ -890,7 +890,7 @@
     {
       "id": 47,
       "title": "Kùn — Opresión",
-      "coreThread": "Los recursos pueden parecer limitados, pero tu postura interior sigue disponible. Kùn pide una palabra verdadera, conservar la fuerza y ser fiel al sentido cuando las condiciones externas no responden. Quizá tus palabras no sean creídas de inmediato; la integridad sigue importando.",
+      "coreThread": "Los recursos pueden parecer limitados, pero aún puedes elegir tu actitud interior. Kùn pide hablar con verdad, conservar la fuerza y mantenerte fiel al sentido cuando las condiciones externas no responden. Quizá no crean tus palabras de inmediato; la integridad sigue importando.",
       "whenItAppears": "No malgastes la escasa energía intentando demostrar quién eres ante cada oyente. Encuentra los pequeños apoyos que quedan, acepta la ayuda poco a poco y muévete solo después de comprender la situación. El confinamiento es real, pero no define a toda la persona.",
       "reflectionQuestions": [
         "¿Qué fuerza debo conservar ahora mismo?",
@@ -899,8 +899,8 @@
       ],
       "lineReflections": {
         "1": "Atascado sobre un tocón y entrando en un valle oscuro, puedes sentir que nadie te ve durante mucho tiempo. Nombra el aislamiento y busca un punto real de contacto.",
-        "2": "Incluso rodeada de comida, estatus o abundancia exterior, una persona puede sentirse limitada. Recurre a un ritual sencillo y a un apoyo sincero; no avances hacia el peligro.",
-        "3": "Apoyarse en piedra y espinas conduce a un hogar donde no se encuentra consuelo. Cambia el apoyo doloroso del que estás dependiendo.",
+        "2": "Aunque te rodeen la comida, el estatus o la abundancia exterior, puedes sentirte sin salida. Recurre a un ritual sencillo y a un apoyo sincero; no avances hacia el peligro.",
+        "3": "Apoyarte en piedras y espinas te lleva a un hogar donde no encuentras consuelo. Deja de depender de aquello que te hace daño.",
         "4": "La ayuda llega despacio, pero lleva la carga de un carruaje dorado: el estatus o los recursos pueden complicarla. Recíbela con cuidado; aun así, las dificultades pueden terminar.",
         "5": "La humillación y la restricción quizá solo cedan poco a poco. Mantén la fe en el propósito profundo y emplea formas pacientes de renovación.",
         "6": "Enredado en lianas sobre un terreno inestable, cualquier movimiento parece lamentable. Una vez reconocido el pesar, un avance cuidadoso se vuelve favorable."
@@ -917,7 +917,7 @@
         "¿Qué permitiría a otras personas extraer de él con responsabilidad?"
       ],
       "lineReflections": {
-        "1": "Un pozo lodoso y abandonado no puede nutrir a nadie. No esperes vida de una fuente que se ha dejado descuidada.",
+        "1": "Un pozo lodoso y abandonado no puede nutrir a nadie. No esperes vida de una fuente que nadie cuida.",
         "2": "El agua se desperdicia en peces pequeños mientras la jarra gotea. Repara el recipiente y dirige de nuevo la atención hacia un uso real.",
         "3": "El pozo está limpio, pero nadie extrae agua; es una pérdida para la comunidad. Haz accesible el recurso y todos podrán compartir su beneficio.",
         "4": "Reviste el pozo con piedra. Un buen mantenimiento no implica culpa.",
@@ -941,7 +941,7 @@
         "3": "Avanzar demasiado pronto es peligroso. Expón repetidamente las razones hasta que la confianza esté establecida de verdad.",
         "4": "La confianza hace posible un cambio de mandato. Cuando las personas comprenden la necesidad, el pesar desaparece.",
         "5": "Una gran persona cambia como un tigre: la transformación es inconfundible antes de cualquier adivinación o explicación. Deja que tus actos muestren la nueva forma.",
-        "6": "El cambio de la persona madura es refinado; otras quizá solo cambien de rostro. No sigas presionando después de la transformación: mantente firme en el nuevo orden."
+        "6": "El cambio de la persona madura es refinado; otras personas quizá solo cambien de rostro. No sigas presionando después de la transformación: mantente firme en el nuevo orden."
       }
     },
     {
@@ -979,7 +979,7 @@
         "3": "El temblor puede continuar, pero actuar después del choque no tiene por qué traer error. Muévete con suavidad, no te quedes paralizado.",
         "4": "El choque se hunde en el barro. El progreso se ralentiza; estabiliza el terreno antes de intentar acelerar.",
         "5": "Los choques pueden ir y venir, pero lo esencial no tiene por qué perderse. Atiende el trabajo que permanece.",
-        "6": "El pánico se extiende por las miradas vigilantes y perjudica cualquier avance. Si la perturbación está en la persona vecina y no en ti, conserva la calma; la tensión aun puede afectar a las relaciones cercanas."
+        "6": "El pánico se extiende en las miradas inquietas y perjudica cualquier avance. Si la perturbación afecta a quienes te rodean y no directamente a ti, conserva la calma; la tensión aún puede alcanzar tus relaciones cercanas."
       }
     },
     {
@@ -1008,13 +1008,13 @@
       "whenItAppears": "Elige el ritmo que permita arraigar a la relación, la habilidad o el trabajo. No exijas un resultado maduro de una etapa temprana. El progreso es real cuando puede repetirse y compartirse, no solo anunciarse.",
       "reflectionQuestions": [
         "¿En qué etapa estoy realmente?",
-        "¿Qué base estable hace falta antes del siguiente movimiento?",
+        "¿Qué base estable hace falta antes del siguiente paso?",
         "¿Dónde ayudaría la paciencia a proteger un compromiso a largo plazo?"
       ],
       "lineReflections": {
         "1": "En la orilla, el comienzo parece expuesto y atrae comentarios. Los pequeños riesgos son naturales; no dejes que el ruido te haga abandonar el camino.",
         "2": "En la roca hay alimento y compañía disponibles. Descansa en esta etapa estable y deja que la confianza crezca mediante el disfrute cotidiano.",
-        "3": "En terreno abierto, un avance puede dejar desprotegida una relación y sin realizar un futuro esperado. Protege el límite antes de expandirte.",
+        "3": "En terreno abierto, un avance puede dejar desprotegida una relación y frustrar un futuro esperado. Protege los límites antes de expandirte.",
         "4": "En el árbol, el ganso encuentra una rama adecuada. Adáptate a un apoyo imperfecto pero viable en lugar de esperar unas condiciones ideales.",
         "5": "En la colina, un resultado deseado se demora, pero la oposición no gana para siempre. Mantente fiel al proceso sin forzar sus tiempos.",
         "6": "En el camino abierto, las plumas pasan a formar parte de una ceremonia. Un desarrollo maduro puede convertirse en un ejemplo elegante para otras personas."
@@ -1024,15 +1024,15 @@
       "id": 54,
       "title": "Guī Mèi — La doncella que se casa",
       "coreThread": "Una disposición desigual o incompleta necesita una mirada clara. Guī Mèi emplea las costumbres matrimoniales de su época para mostrar una relación o acuerdo formado fuera de orden: hay atracción y movimiento, pero las condiciones todavía no sostienen un avance pleno. Protege la dignidad y no construyas sobre suposiciones dictadas por el deseo.",
-      "whenItAppears": "Conoce los términos reales del acuerdo. Acepta una función limitada solo si lo haces de forma consciente y viable, no porque esperes que se convierta silenciosamente en otra cosa. El momento oportuno y la realidad mutua importan más que las apariencias.",
+      "whenItAppears": "Conoce los términos reales del acuerdo. Acepta un papel limitado solo si lo haces de forma consciente y viable, no porque esperes que se convierta silenciosamente en otra cosa. El momento oportuno y la realidad mutua importan más que las apariencias.",
       "reflectionQuestions": [
         "¿Qué es desigual o incompleto en esta disposición?",
         "¿Qué puedo aceptar con honestidad y qué no debo dar por supuesto?",
         "¿Es esperar la acción más digna y realista?"
       ],
       "lineReflections": {
-        "1": "Incluso con una limitación, una persona puede caminar. Avanza solo dentro de la función y la capacidad que están disponibles de verdad.",
-        "2": "Una visión parcial todavía puede reconocer lo correcto. Conserva la integridad de la persona interior e independiente en lugar de buscar aprobación externa.",
+        "1": "Incluso con una limitación, una persona puede caminar. Avanza solo dentro del papel y la capacidad que están disponibles de verdad.",
+        "2": "Una visión parcial todavía puede reconocer lo correcto. Conserva tu integridad y tu independencia interior en lugar de buscar aprobación externa.",
         "3": "Esperar un lugar superior y después regresar a uno menor muestra el coste de una posición ilusoria. No cambies la dignidad por estatus.",
         "4": "Una unión demorada puede encontrar su momento adecuado más adelante. Esperar no es fracasar cuando las condiciones aún no son correctas.",
         "5": "Una apariencia exterior sencilla puede contener más valor real que una exhibición ornamentada. Cerca de la plenitud, la armonía y el momento oportuno importan más que la comparación.",
@@ -1043,17 +1043,17 @@
       "id": 55,
       "title": "Fēng — Abundancia",
       "coreThread": "El momento está lleno y luminoso, pero no permanecerá igual. Fēng te pide estar presente en el punto máximo de visibilidad, aprovechar bien la oportunidad y compartir la luz. No te preocupes porque el mediodía no pueda durar siempre; sácale todo el partido mientras esté aquí.",
-      "whenItAppears": "Encuentra a la contraparte capaz de estar a la altura del momento, comunícate con claridad a través de cualquier oscuridad y deja circular el reconocimiento. La abundancia se vuelve solitaria cuando se encierra y cierra la casa a los demás.",
+      "whenItAppears": "Encuentra a alguien capaz de estar a la altura del momento, comunícate con claridad a través de cualquier oscuridad y deja circular el reconocimiento. La abundancia se vuelve solitaria cuando se encierra y cierra la casa a los demás.",
       "reflectionQuestions": [
         "¿Qué alcanza ahora su expresión más plena?",
-        "¿Quién es la persona o contraparte adecuada para colaborar en este momento?",
+        "¿Quién es la persona adecuada para colaborar en este momento?",
         "¿Cómo puedo compartir la luz en lugar de aislarme dentro de ella?"
       ],
       "lineReflections": {
-        "1": "Encontrar a una contraparte a tu altura merece reconocimiento. Aunque el momento sea inusual, una buena colaboración puede llevar el trabajo adelante.",
+        "1": "Encontrar a alguien a tu altura merece reconocimiento. Aunque el momento sea inusual, una buena colaboración puede llevar el trabajo adelante.",
         "2": "Un dosel oculta el sol hasta que las estrellas aparecen al mediodía; siguen la confusión y la sospecha. Envía una señal sincera y clara, y el camino se abrirá.",
         "3": "Una oscuridad mayor puede limitar tu capacidad de actuar, como un brazo derecho roto. Trabaja con lo que queda en lugar de culparte por la limitación.",
-        "4": "En la misma oscuridad, encontrar a una contraparte a tu altura trae buena fortuna. La comprensión compartida restaura la luz.",
+        "4": "En la misma oscuridad, encontrar a alguien a tu altura trae buena fortuna. La comprensión compartida restaura la luz.",
         "5": "Aporta lo que es singular y excelente. Recibirá celebración y reconocimiento.",
         "6": "Una casa grande con la familia oculta se vuelve vacía e invisible. No dejes que la abundancia se convierta en aislamiento; abre la puerta antes de que arraigue la soledad."
       }
@@ -1090,7 +1090,7 @@
       "lineReflections": {
         "1": "Avanzar y retroceder necesita un valor disciplinado. Sé flexible en el método y firme en los principios.",
         "2": "Ve bajo la superficie y emplea todos los medios honestos de investigación. Examinar con cuidado los asuntos ocultos da buen resultado.",
-        "3": "La sumisión repetida se vuelve lamentable. No te disculpes por existir ni sigas cediendo más allá del punto de sabiduría.",
+        "3": "La sumisión repetida acaba siendo lamentable. No te disculpes por existir ni sigas cediendo más allá de lo sensato.",
         "4": "El pesar desaparece cuando la búsqueda encuentra varias clases de valor real. Un esfuerzo suave puede producir una cosecha abundante.",
         "5": "Un ciclo de revisión no tiene un comienzo limpio, pero puede tener un buen final. Prepárate antes del cambio y revísalo después.",
         "6": "Ceder bajo la cama hasta perder las herramientas es peligroso. Recupera tus recursos y tu límite."
@@ -1118,7 +1118,7 @@
     {
       "id": 59,
       "title": "Huàn — Dispersión",
-      "coreThread": "Lo que está congelado o dividido puede aflojarse. Huàn disuelve un bloqueo mediante una conexión sincera y después reúne a las personas alrededor de un centro renovado. El movimiento no es dispersión sin rumbo: libera lo que se ha vuelto rígido para que pueda formarse una unidad más verdadera.",
+      "coreThread": "Lo que está congelado o dividido puede aflojarse. Huàn disuelve un bloqueo mediante una conexión sincera y después reúne a las personas alrededor de un centro renovado. No se trata de dispersarse sin rumbo, sino de liberar lo que se ha vuelto rígido para que pueda formarse una unidad más verdadera.",
       "whenItAppears": "Muévete pronto para ayudar cuando el momento lo pida, afloja el ego y las facciones, y comunica con suficiente amplitud para que se comprenda el propósito compartido. El río puede cruzarse cuando las personas dejan de estar atrapadas en islas separadas.",
       "reflectionQuestions": [
         "¿Qué rigidez o división necesita disolverse?",
@@ -1179,14 +1179,14 @@
       "whenItAppears": "Haz la pequeña reparación, recurre a la relación cercana y mantén la ambición proporcionada. Un poco de cuidado extra puede ser correcto; una gran extralimitación no. Deja que la escala de la respuesta coincida con la de la situación.",
       "reflectionQuestions": [
         "¿Qué pequeño detalle necesita mi atención ahora?",
-        "¿Dónde funcionaría mejor una acción modesta que un gran movimiento?",
+        "¿Dónde funcionaría mejor una acción modesta que un gran gesto?",
         "¿Qué significa «descender» en esta situación?"
       ],
       "lineReflections": {
         "1": "El ave vuela demasiado alto y encuentra desventura. No te eleves por encima de lo que el momento puede sostener.",
         "2": "Encuentra al familiar más cercano o a la persona intermediaria en lugar de forzar el acceso a la máxima autoridad. La conexión cercana y disponible basta.",
         "3": "Si no tomas la pequeña precaución, el daño puede llegar por detrás. Protege el detalle antes de que se convierta en una amenaza mayor.",
-        "4": "No te excedas; atiende lo que tienes justo delante. Ir más lejos conlleva riesgos, y tampoco es la respuesta convertir esta contención en permanente.",
+        "4": "No te excedas; atiende lo que tienes justo delante. Ir más lejos conlleva riesgos, pero tampoco conviertas esta contención en una norma permanente.",
         "5": "Nubes densas retienen la lluvia pero no la liberan. Busca el pequeño recurso oculto cerca del suelo en lugar de exigir un resultado espectacular desde arriba.",
         "6": "Perder el encuentro y volar más allá trae desastre. No dejes que la abstracción te lleve más allá de la situación humana real."
       }
@@ -1217,7 +1217,7 @@
       "whenItAppears": "Prepara la transición en lugar de declarar la victoria. Contén la parte que quiere precipitarse, emprende la travesía mayor solo cuando esté verdaderamente preparada y deja que el esfuerzo sostenido cubra la distancia final.",
       "reflectionQuestions": [
         "¿Qué detalle final aún podría deshacer la travesía?",
-        "¿Dónde necesito contención antes del siguiente movimiento?",
+        "¿Dónde necesito contención antes del siguiente paso?",
         "¿Qué preparación haría segura la transición mayor?"
       ],
       "lineReflections": {
