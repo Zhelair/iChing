@@ -15,6 +15,7 @@ type SoundContextValue = {
   playCoinToss: (coins: readonly CoinSide[]) => void
   playHistoryCue: (kind: 'bone' | 'stalk' | 'brush' | 'coin') => void
   previewCoinSound: () => Promise<boolean>
+  restartAmbientFromGesture: (volume: AmbientVolume) => Promise<boolean>
   setAmbientVolume: (volume: AmbientVolume) => Promise<boolean>
 }
 
@@ -41,7 +42,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     soundEnabledRef.current = preferences.sound
   }, [preferences.sound])
 
-  const ensureContext = useCallback(async () => {
+  const getOrCreateContext = useCallback(() => {
     try {
       let context = contextRef.current
       if (!context || context.state === 'closed') {
@@ -53,13 +54,23 @@ export function SoundProvider({ children }: { children: ReactNode }) {
         context = new AudioContextClass({ latencyHint: 'balanced' })
         contextRef.current = context
       }
+      return context
+    } catch {
+      return null
+    }
+  }, [])
+
+  const ensureContext = useCallback(async () => {
+    try {
+      const context = getOrCreateContext()
+      if (!context) return null
       if (context.state !== 'running') await context.resume()
       if (context.state !== 'running') return null
       return context
     } catch {
       return null
     }
-  }, [])
+  }, [getOrCreateContext])
 
   const stopAmbient = useCallback((immediate = false) => {
     const graph = ambientRef.current
@@ -114,6 +125,44 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     }
   }, [ensureContext, startAmbient, stopAmbient])
 
+  const restartAmbientFromGesture = useCallback(async (volume: AmbientVolume) => {
+    const operation = ++ambientOperationRef.current
+    ambientWantedRef.current = volume > 0
+    if (volume === 0) {
+      stopAmbient(true)
+      setAmbientStatus('off')
+      return true
+    }
+
+    ambientVolumeRef.current = volume === 1 ? 1 : 0.5
+    setAmbientStatus('starting')
+    const context = getOrCreateContext()
+    if (!context) {
+      if (operation === ambientOperationRef.current) setAmbientStatus('blocked')
+      return false
+    }
+
+    stopAmbient(true)
+    let graph: MeditationGraph | null = null
+    try {
+      // Mobile Safari/Chrome may report a resumed context while keeping sources
+      // created after that async boundary silent. Build and start the fresh graph
+      // synchronously inside the user's gesture, then resume the context.
+      graph = createMeditationGraph(context, ambientVolumeRef.current)
+      ambientRef.current = graph
+      if (context.state !== 'running') await context.resume()
+      if (context.state !== 'running') throw new Error('Audio context did not start.')
+      if (operation !== ambientOperationRef.current || !ambientWantedRef.current) return true
+      setMeditationVolume(context, graph, ambientVolumeRef.current)
+      setAmbientStatus('playing')
+      return true
+    } catch {
+      if (ambientRef.current === graph) stopAmbient(true)
+      if (operation === ambientOperationRef.current) setAmbientStatus('blocked')
+      return false
+    }
+  }, [getOrCreateContext, stopAmbient])
+
   useEffect(() => {
     ambientWantedRef.current = preferences.ambientVolume > 0
     if (preferences.ambientVolume > 0) ambientVolumeRef.current = preferences.ambientVolume === 1 ? 1 : 0.5
@@ -140,7 +189,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     function beginAfterInteraction() {
       if (starting) return
       starting = true
-      void setAmbientVolume(ambientVolumeRef.current).then((available) => {
+      void restartAmbientFromGesture(ambientVolumeRef.current).then((available) => {
         starting = false
         if (available) removeUnlockListeners()
       })
@@ -156,7 +205,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       if (available) removeUnlockListeners()
     })
     return removeUnlockListeners
-  }, [preferences.ambientVolume, setAmbientVolume, stopAmbient])
+  }, [preferences.ambientVolume, restartAmbientFromGesture, setAmbientVolume, stopAmbient])
 
   useEffect(() => {
     const handleVisibility = () => {
@@ -279,8 +328,9 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       })
     },
     previewCoinSound: () => renderCoinToss(['heads', 'tails', 'heads'], true),
+    restartAmbientFromGesture,
     setAmbientVolume,
-  }), [ambientStatus, ensureContext, renderCoinToss, setAmbientVolume])
+  }), [ambientStatus, ensureContext, renderCoinToss, restartAmbientFromGesture, setAmbientVolume])
 
   return <SoundContext.Provider value={value}>{children}</SoundContext.Provider>
 }

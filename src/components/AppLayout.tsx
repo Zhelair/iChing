@@ -16,7 +16,7 @@ const navItems = [
 
 export function AppLayout() {
   const { preferences, t } = useI18n()
-  const { ambientStatus, setAmbientVolume } = useSound()
+  const { ambientStatus, restartAmbientFromGesture } = useSound()
   const { pathname } = useLocation()
   const frameRef = useRef<HTMLDivElement>(null)
   const ritualMode = pathname.startsWith('/cast/')
@@ -119,7 +119,7 @@ export function AppLayout() {
         <div className="sound-start-cue page-shell relative z-30" role="status">
           <span className="sound-start-cue__icon"><Volume2 size={18} aria-hidden="true" /></span>
           <span className="sound-start-cue__label">{t('settings.ambient')}</span>
-          <button type="button" onClick={() => { void setAmbientVolume(preferences.ambientVolume) }} aria-label={`${t('common.continue')}: ${t('settings.ambient')}`}>
+          <button type="button" onClick={() => { void restartAmbientFromGesture(preferences.ambientVolume) }} aria-label={`${t('common.continue')}: ${t('settings.ambient')}`}>
             {t('common.continue')}
           </button>
         </div>
