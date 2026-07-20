@@ -190,7 +190,7 @@ Completing Russian before changing Bulgarian gives the project a tested pattern 
 | Language | Terminology | Interface | Editorial cards | Mobile check | Tests/build | Status |
 |---|---:|---:|---:|---:|---:|---|
 | English | — | — | — | — | — | Semantic source; ongoing editorial maintenance |
-| Russian | ☐ | ☐ | ☐ | ☐ | ☐ | Planned first |
+| Russian | ☑ | ☑ | ☑ | ☑ | ☑ | Complete — high-confidence editorial review and verification |
 | Bulgarian | ☐ | ☐ | ☐ | ☐ | ☐ | Planned second |
 | Spanish | ☐ | ☐ | ☐ | ☐ | ☐ | Planned third |
 | German | ☐ | ☐ | ☐ | ☐ | ☐ | Milestone 2 |

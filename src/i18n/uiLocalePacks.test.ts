@@ -66,3 +66,12 @@ describe('extended UI locale packs', () => {
     expectCompleteStrings(pack.features)
   })
 })
+
+describe('reviewed Russian interface terminology', () => {
+  it('uses the approved reading and storage terms consistently', () => {
+    expect(translations.ru['result.resulting']).toBe('Результирующая')
+    expect(translations.ru['learn.flow.result.title']).toBe('3. Результирующая гексаграмма')
+    expect(translations.ru['settings.export']).toBe('Экспортировать резервную копию JSON')
+    expect(Object.values(translations.ru).some((value) => /итогов(?:ая|ой|ую) гексаграмм/i.test(value))).toBe(false)
+  })
+})
