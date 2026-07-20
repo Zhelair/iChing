@@ -191,7 +191,7 @@ Completing Russian before changing Bulgarian gives the project a tested pattern 
 |---|---:|---:|---:|---:|---:|---|
 | English | — | — | — | — | — | Semantic source; ongoing editorial maintenance |
 | Russian | ☑ | ☑ | ☑ | ☑ | ☑ | Complete — high-confidence editorial review and verification |
-| Bulgarian | ☐ | ☐ | ☐ | ☐ | ☐ | Planned second |
+| Bulgarian | ☑ | ☑ | ☑ | ☑ | ☑ | Complete — high-confidence editorial review and verification |
 | Spanish | ☐ | ☐ | ☐ | ☐ | ☐ | Planned third |
 | German | ☐ | ☐ | ☐ | ☐ | ☐ | Milestone 2 |
 | Italian | ☐ | ☐ | ☐ | ☐ | ☐ | Milestone 2 |

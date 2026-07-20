@@ -16,7 +16,7 @@ const methods = [
 
 const yarrowCopy = {
   en: { title: 'Yarrow-stalk workshop', body: 'A slower historical method: divide and count forty-nine stalks through three changes for every line.' },
-  bg: { title: 'Работилница с бял равнец', body: 'По-бавен исторически метод: разделете и пребройте 49 стъбла през три промени за всяка линия.' },
+  bg: { title: 'Практика с бял равнец', body: 'По-бавен традиционен метод: за всяка линия разделете и пребройте 49 стъбла в три последователни промени.' },
   ru: { title: 'Практика с тысячелистником', body: 'Более медленный традиционный метод: для каждой линии разделите и пересчитайте 49 стеблей в ходе трёх изменений.' },
 } as const
 

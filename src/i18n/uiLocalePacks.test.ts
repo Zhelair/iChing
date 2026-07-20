@@ -75,3 +75,14 @@ describe('reviewed Russian interface terminology', () => {
     expect(Object.values(translations.ru).some((value) => /итогов(?:ая|ой|ую) гексаграмм/i.test(value))).toBe(false)
   })
 })
+
+describe('reviewed Bulgarian interface terminology', () => {
+  it('uses the approved reading and storage terms consistently', () => {
+    expect(translations.bg['result.resulting']).toBe('Трансформационна')
+    expect(translations.bg['learn.flow.result.title']).toBe('3. Трансформационна хексаграма')
+    expect(translations.bg['method.physical.title']).toBe('Обикновени монети')
+    expect(translations.bg['settings.export']).toBe('Експортирай резервно копие JSON')
+    expect(Object.values(translations.bg).some((value) => /резултатн(?:а|ата|ата) хексаграм/i.test(value))).toBe(false)
+    expect(Object.values(translations.bg).some((value) => /JSON архив/i.test(value))).toBe(false)
+  })
+})
