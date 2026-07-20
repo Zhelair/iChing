@@ -86,3 +86,19 @@ describe('reviewed Bulgarian interface terminology', () => {
     expect(Object.values(translations.bg).some((value) => /JSON архив/i.test(value))).toBe(false)
   })
 })
+
+describe('reviewed Spanish interface language', () => {
+  it('uses the approved terminology and an informal singular register', () => {
+    const pack = getUiLocalePack('es')
+    const serialized = JSON.stringify(pack)
+
+    expect(pack.translations['result.resulting']).toBe('Resultante')
+    expect(pack.translations['learn.flow.result.title']).toBe('3. Hexagrama resultante')
+    expect(pack.translations['method.physical.title']).toBe('Monedas corrientes')
+    expect(pack.translations['settings.export']).toBe('Exportar copia de seguridad JSON')
+    expect(pack.features.journal.direct).toBe('Entrada manual')
+    expect(pack.features.methodYarrow.title).toBe('Práctica con tallos de milenrama')
+    expect(serialized).not.toMatch(/Monedas reales|Entrada directa|Taller de tallos de milenrama/)
+    expect(serialized).not.toMatch(/\b(?:usted|Acoja|Plantee|Haga|Elija|Introduzca|Vuelva|Comparta|Escriba|Inténtelo)\b/)
+  })
+})
