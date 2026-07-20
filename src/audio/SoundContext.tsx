@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, type ReactNode } from 'react'
 import type { AmbientVolume, CoinSide } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 import {
@@ -11,11 +11,9 @@ import {
 } from './meditation'
 
 type SoundContextValue = {
-  ambientStatus: 'off' | 'starting' | 'blocked' | 'playing'
   playCoinToss: (coins: readonly CoinSide[]) => void
   playHistoryCue: (kind: 'bone' | 'stalk' | 'brush' | 'coin') => void
   previewCoinSound: () => Promise<boolean>
-  restartAmbientFromGesture: (volume: AmbientVolume) => Promise<boolean>
   setAmbientVolume: (volume: AmbientVolume) => Promise<boolean>
 }
 
@@ -36,13 +34,12 @@ export function SoundProvider({ children }: { children: ReactNode }) {
   const ambientWantedRef = useRef(preferences.ambientVolume > 0)
   const ambientVolumeRef = useRef<0.5 | 1>(preferences.ambientVolume || 0.5)
   const ambientOperationRef = useRef(0)
-  const [ambientStatus, setAmbientStatus] = useState<SoundContextValue['ambientStatus']>(preferences.ambientVolume > 0 ? 'starting' : 'off')
 
   useEffect(() => {
     soundEnabledRef.current = preferences.sound
   }, [preferences.sound])
 
-  const getOrCreateContext = useCallback(() => {
+  const ensureContext = useCallback(async () => {
     try {
       let context = contextRef.current
       if (!context || context.state === 'closed') {
@@ -54,23 +51,13 @@ export function SoundProvider({ children }: { children: ReactNode }) {
         context = new AudioContextClass({ latencyHint: 'balanced' })
         contextRef.current = context
       }
-      return context
-    } catch {
-      return null
-    }
-  }, [])
-
-  const ensureContext = useCallback(async () => {
-    try {
-      const context = getOrCreateContext()
-      if (!context) return null
       if (context.state !== 'running') await context.resume()
       if (context.state !== 'running') return null
       return context
     } catch {
       return null
     }
-  }, [getOrCreateContext])
+  }, [])
 
   const stopAmbient = useCallback((immediate = false) => {
     const graph = ambientRef.current
@@ -93,75 +80,26 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     if (volume > 0) ambientVolumeRef.current = volume === 1 ? 1 : 0.5
     if (volume === 0) {
       stopAmbient()
-      setAmbientStatus('off')
       return true
     }
 
-    setAmbientStatus('starting')
     const context = await ensureContext()
-    if (!context) {
-      if (operation === ambientOperationRef.current) setAmbientStatus('blocked')
-      return false
-    }
+    if (!context) return false
     if (operation !== ambientOperationRef.current || !ambientWantedRef.current) return true
 
     try {
       const graph = ambientRef.current
       if (graph) {
         setMeditationVolume(context, graph, ambientVolumeRef.current)
-        const resumed = await resumeMeditation(context, graph)
-        if (operation === ambientOperationRef.current) setAmbientStatus(resumed ? 'playing' : 'blocked')
-        return resumed
+        return await resumeMeditation(context, graph)
       }
       startAmbient(context)
-      if (operation === ambientOperationRef.current) setAmbientStatus('playing')
       return true
     } catch {
-      if (operation === ambientOperationRef.current) {
-        stopAmbient(true)
-        setAmbientStatus('blocked')
-      }
+      if (operation === ambientOperationRef.current) stopAmbient(true)
       return false
     }
   }, [ensureContext, startAmbient, stopAmbient])
-
-  const restartAmbientFromGesture = useCallback(async (volume: AmbientVolume) => {
-    const operation = ++ambientOperationRef.current
-    ambientWantedRef.current = volume > 0
-    if (volume === 0) {
-      stopAmbient(true)
-      setAmbientStatus('off')
-      return true
-    }
-
-    ambientVolumeRef.current = volume === 1 ? 1 : 0.5
-    setAmbientStatus('starting')
-    const context = getOrCreateContext()
-    if (!context) {
-      if (operation === ambientOperationRef.current) setAmbientStatus('blocked')
-      return false
-    }
-
-    stopAmbient(true)
-    let graph: MeditationGraph | null = null
-    try {
-      // Mobile Safari/Chrome may report a resumed context while keeping sources
-      // created after that async boundary silent. Build and start the fresh graph
-      // synchronously inside the user's gesture, then resume the context.
-      graph = createMeditationGraph(context, ambientVolumeRef.current)
-      ambientRef.current = graph
-      if (context.state !== 'running') await context.resume()
-      if (context.state !== 'running') throw new Error('Audio context did not start.')
-      if (operation !== ambientOperationRef.current || !ambientWantedRef.current) return true
-      setMeditationVolume(context, graph, ambientVolumeRef.current)
-      setAmbientStatus('playing')
-      return true
-    } catch {
-      if (ambientRef.current === graph) stopAmbient(true)
-      if (operation === ambientOperationRef.current) setAmbientStatus('blocked')
-      return false
-    }
-  }, [getOrCreateContext, stopAmbient])
 
   useEffect(() => {
     ambientWantedRef.current = preferences.ambientVolume > 0
@@ -169,27 +107,25 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     if (preferences.ambientVolume === 0) {
       ++ambientOperationRef.current
       stopAmbient()
-      setAmbientStatus('off')
       return
     }
     if (ambientRef.current) {
       const context = contextRef.current
       if (context) setMeditationVolume(context, ambientRef.current, ambientVolumeRef.current)
-      setAmbientStatus(context?.state === 'running' ? 'playing' : 'blocked')
       return
     }
 
     let starting = false
     const usesPointerEvents = 'PointerEvent' in window
     function removeUnlockListeners() {
-      if (usesPointerEvents) window.removeEventListener('pointerdown', beginAfterInteraction)
-      else window.removeEventListener('touchstart', beginAfterInteraction)
+      if (usesPointerEvents) window.removeEventListener('pointerup', beginAfterInteraction)
+      else window.removeEventListener('touchend', beginAfterInteraction)
       window.removeEventListener('keydown', beginAfterKey)
     }
     function beginAfterInteraction() {
       if (starting) return
       starting = true
-      void restartAmbientFromGesture(ambientVolumeRef.current).then((available) => {
+      void setAmbientVolume(ambientVolumeRef.current).then((available) => {
         starting = false
         if (available) removeUnlockListeners()
       })
@@ -198,14 +134,11 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       if (event.key !== 'Enter' && event.key !== ' ') return
       beginAfterInteraction()
     }
-    if (usesPointerEvents) window.addEventListener('pointerdown', beginAfterInteraction)
-    else window.addEventListener('touchstart', beginAfterInteraction, { passive: true })
+    if (usesPointerEvents) window.addEventListener('pointerup', beginAfterInteraction)
+    else window.addEventListener('touchend', beginAfterInteraction, { passive: true })
     window.addEventListener('keydown', beginAfterKey)
-    void setAmbientVolume(ambientVolumeRef.current).then((available) => {
-      if (available) removeUnlockListeners()
-    })
     return removeUnlockListeners
-  }, [preferences.ambientVolume, restartAmbientFromGesture, setAmbientVolume, stopAmbient])
+  }, [preferences.ambientVolume, setAmbientVolume, stopAmbient])
 
   useEffect(() => {
     const handleVisibility = () => {
@@ -221,16 +154,11 @@ export function SoundProvider({ children }: { children: ReactNode }) {
 
       if (!ambientWantedRef.current) return
       if (graph) {
-        void resumeMeditation(context, graph).then((resumed) => {
-          setAmbientStatus(resumed ? 'playing' : 'blocked')
-        }).catch(() => setAmbientStatus('blocked'))
+        void resumeMeditation(context, graph).catch(() => undefined)
       } else {
         void context.resume().then(() => {
-          if (ambientWantedRef.current) {
-            startAmbient(context)
-            setAmbientStatus('playing')
-          }
-        }).catch(() => setAmbientStatus('blocked'))
+          if (ambientWantedRef.current) startAmbient(context)
+        }).catch(() => undefined)
       }
     }
 
@@ -305,7 +233,6 @@ export function SoundProvider({ children }: { children: ReactNode }) {
   }, [ensureContext])
 
   const value = useMemo<SoundContextValue>(() => ({
-    ambientStatus,
     playCoinToss: (coins) => { void renderCoinToss(coins) },
     playHistoryCue: (kind) => {
       if (!soundEnabledRef.current) return
@@ -328,9 +255,8 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       })
     },
     previewCoinSound: () => renderCoinToss(['heads', 'tails', 'heads'], true),
-    restartAmbientFromGesture,
     setAmbientVolume,
-  }), [ambientStatus, ensureContext, renderCoinToss, restartAmbientFromGesture, setAmbientVolume])
+  }), [ensureContext, renderCoinToss, setAmbientVolume])
 
   return <SoundContext.Provider value={value}>{children}</SoundContext.Provider>
 }
