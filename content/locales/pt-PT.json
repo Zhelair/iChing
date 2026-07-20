@@ -54,7 +54,7 @@
     {"id":48,"title":"Jǐng — O poço","coreThread":"Regresse à fonte partilhada. Uma cidade pode mudar, mas o poço permanece: o recurso duradouro precisa de acesso, manutenção e uso justo. Não confunda boa fonte com recipiente gasto nem falhe no último passo deixando cair a vasilha.","whenItAppears":"Repare o acesso ao que serve todos — conhecimento, cuidado, infraestrutura, confiança ou recurso prático. O valor pode já existir, mas precisa de ser limpo, extraído e partilhado. A manutenção é trabalho significativo.","reflectionQuestions":["Que fonte comum precisa de cuidado ou melhor acesso?","É o recurso fraco ou apenas o recipiente e o processo?","O que permitiria aos outros extraí-lo de forma responsável?"],"lineReflections":{"1":"Um poço lamacento e abandonado não nutre ninguém. Não espere vida de fonte negligenciada.","2":"A água desperdiça-se em pequenos peixes enquanto a vasilha verte. Repare o recipiente e redirecione atenção para uso real.","3":"O poço está limpo, mas ninguém tira água; é perda para a comunidade. Torne o recurso acessível e todos partilharão o benefício.","4":"Revista o poço com pedra. Boa manutenção não traz culpa.","5":"Água de nascente, límpida e fresca, está pronta a beber. Confie na fonte restaurada e use-a simplesmente.","6":"O poço está aberto e utilizável; não o cubra. Acesso sincero e partilhado é o maior bem."}},
 {
         "id":  49,
-        "title":  "Gé — Revolution",
+        "title":  "Gé — A revolução",
         "coreThread":  "Change becomes legitimate when the old form has truly expired. Gé asks for preparation, clear communication, and right timing: only when the reason for transformation is understood can trust replace regret.",
         "whenItAppears":  "Do not change merely because novelty is attractive. Hold the old form firmly until the time is ripe, explain the need more than once, and make the transformation visible in conduct. A real mandate is earned through trust.",
         "reflectionQuestions":  [
@@ -73,7 +73,7 @@
     },
     {
         "id":  50,
-        "title":  "Dǐng — The cauldron",
+        "title":  "Dǐng — O caldeirão",
         "coreThread":  "Refine raw material into something nourishing. Dǐng is the vessel of transformation: skill, culture, attention, and care turn what is unformed into sustenance for others. The quality of the vessel matters as much as the ingredients.",
         "whenItAppears":  "Prepare your work carefully and think about who it will feed. Remove what has spoiled, protect the process from interference, and strengthen the parts that carry the responsibility. This is a time for craft with purpose.",
         "reflectionQuestions":  [
@@ -92,7 +92,7 @@
     },
     {
         "id":  51,
-        "title":  "Zhèn — The arousing shock",
+        "title":  "Zhèn — O incitar",
         "coreThread":  "A shock can wake you up. Zhèn does not deny the first alarm; it shows fear arriving, then laughter and speech returning. Preserve what is essential, regain presence, and learn what the disturbance reveals.",
         "whenItAppears":  "Let the first wave pass before deciding what it means. Secure your basics, avoid chasing every apparent loss, and move when the body and mind have recovered enough to act. Shock becomes useful when it restores attention.",
         "reflectionQuestions":  [
@@ -111,7 +111,7 @@
     },
     {
         "id":  52,
-        "title":  "Gèn — Keeping still",
+        "title":  "Gèn — A quietude",
         "coreThread":  "Stillness is an active boundary. Gèn asks you to stop where stopping is right, release the urge to chase, and return attention to the present. Like a mountain, it is not absence of life but a stable limit that lets things settle.",
         "whenItAppears":  "Pause the motion that is carrying you away from yourself. Still the relevant part of the situation rather than freezing the whole life. Good stopping creates space for clear speech, right timing, and calm action later.",
         "reflectionQuestions":  [
@@ -130,7 +130,7 @@
     },
     {
         "id":  53,
-        "title":  "Jiàn — Gradual development",
+        "title":  "Jiàn — O desenvolvimento gradual",
         "coreThread":  "A lasting change grows in sequence. Jiàn follows the wild goose from shore to rock, land, tree, hill, and open path: each stage asks for a different kind of footing. Respect the stages, make commitments that can mature, and let trust develop naturally.",
         "whenItAppears":  "Choose the pace that allows relationship, skill, or work to root. Do not demand a mature result from an early stage. Progress is real when it can be repeated and shared, not merely announced.",
         "reflectionQuestions":  [
@@ -149,7 +149,7 @@
     },
     {
         "id":  54,
-        "title":  "Guī Mèi — The marrying maiden",
+        "title":  "Guī Mèi — A jovem que se casa",
         "coreThread":  "An unequal or incomplete arrangement needs clear eyes. Guī Mèi uses the marriage customs of its era to show a relationship or agreement formed out of order: attraction and movement are present, but the conditions do not yet support a full advance. Protect dignity and do not build on wishful assumptions.",
         "whenItAppears":  "Know the actual terms of the arrangement. Accept a limited role only if it is conscious and workable, not because you hope it will silently become something else. Timing and mutual reality matter more than appearances.",
         "reflectionQuestions":  [
@@ -168,7 +168,7 @@
     },
     {
         "id":  55,
-        "title":  "Fēng — Abundance",
+        "title":  "Fēng — A abundância",
         "coreThread":  "The moment is full and bright, but it will not remain unchanged. Fēng asks you to be present at the height of visibility, use the opportunity well, and share the light. Do not worry that noon must last forever; make the most of it while it is here.",
         "whenItAppears":  "Meet the counterpart who can match the moment, communicate clearly through any obscurity, and let recognition circulate. Abundance becomes lonely when it turns inward and shuts the house against others.",
         "reflectionQuestions":  [
@@ -187,7 +187,7 @@
     },
     {
         "id":  56,
-        "title":  "Lǚ — The wanderer",
+        "title":  "Lǚ — O viajante",
         "coreThread":  "You are away from familiar ground. Lǚ asks you to travel lightly, observe local conditions, and let courtesy protect you where roots are shallow. Small success is possible when you remain alert and do not act as though you own the place.",
         "whenItAppears":  "Secure a modest base, keep your resources close, and build reliable support one relationship at a time. Do not make small inconveniences into drama, but take loss of shelter or trust seriously.",
         "reflectionQuestions":  [
@@ -206,7 +206,7 @@
     },
     {
         "id":  57,
-        "title":  "Xùn — Gentle penetration",
+        "title":  "Xùn — A suavidade penetrante",
         "coreThread":  "Gentle influence works through repetition and clear entry points. Xùn is wind: it reaches places force cannot, but it needs direction. Be persistent without pressure, make your message easy to receive, and seek guidance from someone who sees the larger pattern.",
         "whenItAppears":  "Enter gradually, listen deeply, and revise with care. Gentleness is not loss of agency; if you become so yielding that you lose your tools and resources, the influence has become unhealthy.",
         "reflectionQuestions":  [
@@ -225,7 +225,7 @@
     },
     {
         "id":  58,
-        "title":  "Duì — Joyous exchange",
+        "title":  "Duì — A alegria",
         "coreThread":  "Joy grows through honest exchange. Duì asks you to speak openly, listen well, and let pleasure remain connected to substance. Shared delight can strengthen a group, but flattery, seduction, or avoidance can hollow it out.",
         "whenItAppears":  "Make room for true conversation. Let warmth be reciprocal and principled, and notice whether a pleasant offer is inviting genuine connection or merely pulling you away from yourself.",
         "reflectionQuestions":  [
@@ -244,7 +244,7 @@
     },
     {
         "id":  59,
-        "title":  "Huàn — Dispersion",
+        "title":  "Huàn — A dispersão",
         "coreThread":  "What is frozen or divided can be loosened. Huàn dissolves a blockage with sincere connection, then gathers people around a renewed centre. The movement is not aimless scattering: release what has become rigid so a truer unity can form.",
         "whenItAppears":  "Move quickly to help when the moment calls for it, loosen ego and faction, and communicate widely enough for the shared purpose to be understood. The river can be crossed when people are no longer trapped in separate islands.",
         "reflectionQuestions":  [
@@ -263,7 +263,7 @@
     },
     {
         "id":  60,
-        "title":  "Jié — Limitation",
+        "title":  "Jié — A limitação",
         "coreThread":  "A good limit makes freedom usable. Jié asks for clear, humane boundaries that protect energy, resources, and trust without turning life into punishment. Bitter limitation cannot be maintained as a virtue.",
         "whenItAppears":  "Set the rule that fits the actual situation. Stay in when staying in protects the work; go out when the moment requires engagement. The measure is not severity but whether the boundary makes life and relationship more sustainable.",
         "reflectionQuestions":  [
@@ -282,7 +282,7 @@
     },
     {
         "id":  61,
-        "title":  "Zhōng Fú — Inner truth",
+        "title":  "Zhōng Fú — A verdade interior",
         "coreThread":  "Trust begins with inner sincerity. Zhōng Fú asks you to align what you say, intend, and do; even a delicate connection can respond to that coherence. The image of pigs and fish points to trust reaching what is simple and hard to impress.",
         "whenItAppears":  "Prepare carefully, communicate from the heart, and let resonance rather than pressure create the bond. Inner truth supports a difficult crossing, but it does not mean broadcasting lofty claims without grounded action.",
         "reflectionQuestions":  [
@@ -301,7 +301,7 @@
     },
     {
         "id":  62,
-        "title":  "Xiǎo Guò — Small exceeding",
+        "title":  "Xiǎo Guò — A preponderância do pequeno",
         "coreThread":  "Attend to the small and near. Xiǎo Guò is not a time for grand gestures: careful detail, modest action, and a lower flight carry the day. The bird’s call says that it is better to come down than to rise too high.",
         "whenItAppears":  "Make the small repair, use the close relationship, and keep the ambition proportionate. A little extra care can be correct; large overreach is not. Let the scale of the response match the scale of the situation.",
         "reflectionQuestions":  [
@@ -320,7 +320,7 @@
     },
     {
         "id":  63,
-        "title":  "Jì Jì — Already complete",
+        "title":  "Jì Jì — Após a conclusão",
         "coreThread":  "A task may be complete, but completion needs maintenance. Jì Jì begins well and can end in disorder if attention relaxes. Keep order, tend the details, and do not assume the work will run itself because the crossing has been made.",
         "whenItAppears":  "Stabilise rather than expand. Make small adjustments, protect against leaks, and value sincere maintenance over impressive display. The final stage is often where care matters most.",
         "reflectionQuestions":  [
@@ -339,7 +339,7 @@
     },
     {
         "id":  64,
-        "title":  "Wèi Jì — Before completion",
+        "title":  "Wèi Jì — Antes da conclusão",
         "coreThread":  "You are close, but not finished. Wèi Jì is the small fox nearly across the water whose tail gets wet: the last details still matter. Stay alert, avoid premature celebration, and cross carefully.",
         "whenItAppears":  "Prepare the transition rather than declaring victory. Restrain the part that wants to rush, make the larger crossing only when it is truly prepared, and let sustained effort carry the final distance.",
         "reflectionQuestions":  [

@@ -30,6 +30,23 @@ describe('generated Yi Canon content', () => {
     }
   })
 
+  it('preserves the reviewed canonical names and tone-marked pinyin', () => {
+    const expected = [
+      [18, '蠱', 'Gǔ'],
+      [21, '噬嗑', 'Shì Kè'],
+      [22, '賁', 'Bì'],
+      [23, '剝', 'Bō'],
+      [27, '頤', 'Yí'],
+      [48, '井', 'Jǐng'],
+      [50, '鼎', 'Dǐng'],
+      [59, '渙', 'Huàn'],
+    ] as const
+
+    for (const [id, chinese, pinyin] of expected) {
+      expect(HEXAGRAMS[id - 1]).toMatchObject({ id, chinese, pinyin })
+    }
+  })
+
   it('preserves the reviewed received-text corrections', () => {
     expect(HEXAGRAMS[2].classical.lines[2]).toBe('六三：即鹿無虞，惟入于林中，君子幾不如舍，往吝。')
     expect(HEXAGRAMS[17].classical.lines[2]).toBe('九三：幹父之蠱，小有悔，無大咎。')
