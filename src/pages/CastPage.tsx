@@ -1,5 +1,5 @@
 import { ArrowLeft, Check, CircleDot, RotateCcw, Sparkles, Wind } from 'lucide-react'
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type RefObject } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
 import { useSound } from '../audio/SoundContext'
 import { HexagramFigure } from '../components/HexagramFigure'
@@ -108,7 +108,7 @@ function yarrowPhaseTimings(copy: YarrowCopy, reduceMotion: boolean): [number, n
   return [mixing, mixing + dividing, mixing + dividing + counting]
 }
 
-function YarrowWorkshop({ procedure, step, animatingStep, phase, ritualDuration, lineNumber, onAdvance, copy: c }: { procedure: YarrowProcedure | null; step: number; animatingStep: number | null; phase: YarrowPhase; ritualDuration: number; lineNumber: number; onAdvance: () => void; copy: YarrowCopy }) {
+function YarrowWorkshop({ procedure, step, animatingStep, phase, ritualDuration, lineNumber, onAdvance, actionRef, copy: c }: { procedure: YarrowProcedure | null; step: number; animatingStep: number | null; phase: YarrowPhase; ritualDuration: number; lineNumber: number; onAdvance: () => void; actionRef: RefObject<HTMLButtonElement | null>; copy: YarrowCopy }) {
   const remaining = procedure && step > 0 ? procedure.changes[Math.min(step, 3) - 1].remaining : 49
   const ritualChange = procedure && animatingStep ? procedure.changes[animatingStep - 1] : null
   const phaseLabel = phase === 'mixing' ? c.mixing : phase === 'dividing' ? c.dividing : phase === 'counting' ? c.counting : ''
@@ -125,7 +125,7 @@ function YarrowWorkshop({ procedure, step, animatingStep, phase, ritualDuration,
     {procedure && step > 0 ? <ol className="yarrow-changes">{procedure.changes.slice(0, step).map((change, index) => <li key={index} className={index === step - 1 ? 'is-current' : ''}><span>{index + 1}</span><div className="yarrow-change__copy"><p><span>{c.divided}</span><strong>{change.left} + {change.right}</strong></p><small>− {change.removed} {c.removed} · {change.remaining} {c.remain}</small></div></li>)}</ol> : ritualChange ? null : <p className="text-sm leading-6 text-[var(--ink-soft)]">{c.source}</p>}
     {ritualChange ? <div className={`yarrow-ritual-status is-${phase}`} role="status" aria-live="polite" aria-atomic="true"><span className="yarrow-ritual-status__pulse" aria-hidden="true" /><div><p>{phaseLabel}</p>{phase === 'dividing' ? <strong>{ritualChange.left} + {ritualChange.right}</strong> : phase === 'counting' ? <strong>− {ritualChange.removed} {c.removed} · {ritualChange.remaining} {c.remain}</strong> : null}</div></div> : null}
     {step === 3 && procedure ? <div className="yarrow-result" role="status"><span>{c.complete}</span><strong>{procedure.value}</strong></div> : null}
-    {!(step === 3 && lineNumber === 6) ? <button type="button" className="button-primary w-full" onClick={onAdvance} disabled={phase !== 'idle'}>{phase !== 'idle' ? phaseLabel : step === 0 ? c.begin : step < 3 ? c.next : c.nextLine}</button> : null}
+    {!(step === 3 && lineNumber === 6) ? <button ref={actionRef} type="button" className="button-primary ritual-next-action w-full" onClick={onAdvance} disabled={phase !== 'idle'}>{phase !== 'idle' ? phaseLabel : step === 0 ? c.begin : step < 3 ? c.next : c.nextLine}</button> : null}
   </div>
 }
 
@@ -197,15 +197,39 @@ function CastFlow({ method }: { method: ReadingMethod }) {
   const [yarrowStep, setYarrowStep] = useState(0)
   const [yarrowAnimatingStep, setYarrowAnimatingStep] = useState<number | null>(null)
   const [yarrowPhase, setYarrowPhase] = useState<YarrowPhase>('idle')
+  const [autoFocusStep, setAutoFocusStep] = useState(0)
   const revealTimerRef = useRef<number | null>(null)
   const yarrowTimersRef = useRef<number[]>([])
   const castLockRef = useRef(false)
   const yarrowLockRef = useRef(false)
+  const ritualCueRef = useRef<HTMLDivElement>(null)
+  const ritualActionRef = useRef<HTMLButtonElement>(null)
+  const completeActionRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => () => {
     if (revealTimerRef.current !== null) window.clearTimeout(revealTimerRef.current)
     yarrowTimersRef.current.forEach((timer) => window.clearTimeout(timer))
   }, [])
+
+  useEffect(() => {
+    if (!autoFocusStep || !window.matchMedia('(max-width: 639px)').matches) return
+
+    const emphasizeThird = method === 'digital' && lines.length === 2
+    const target = emphasizeThird
+      ? ritualCueRef.current
+      : lines.length === 6
+        ? completeActionRef.current
+        : ritualActionRef.current
+    if (!target) return
+
+    const frame = window.requestAnimationFrame(() => {
+      target.scrollIntoView({
+        behavior: preferences.reduceMotion ? 'auto' : 'smooth',
+        block: emphasizeThird ? 'start' : 'center',
+      })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [autoFocusStep, lines.length, method, preferences.reduceMotion])
 
   const titles = {
     digital: [t('cast.digital.title'), t('cast.digitalBodyRitual')],
@@ -235,6 +259,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
       setPending(null)
       castLockRef.current = false
       revealTimerRef.current = null
+      setAutoFocusStep((current) => current + 1)
     }, preferences.reduceMotion ? 20 : 840)
   }
 
@@ -272,6 +297,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
         if (targetStep === 3) {
           setLines((current) => [...current, createCastLine((current.length + 1) as CastLine['position'], activeProcedure.value)])
         }
+        setAutoFocusStep((current) => current + 1)
       }, phaseTimes[2]),
     ]
   }
@@ -290,7 +316,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
     : ''
 
   return (
-    <div className="page-shell py-8 sm:py-14">
+    <div className={`page-shell cast-page py-8 sm:py-14 ${method === 'digital' && lines.length === 2 ? 'cast-page--third-focus' : ''}`}>
       <div className="reading-column">
         <Link to="/reading" className="button-quiet -ml-3 mb-5"><ArrowLeft size={18} aria-hidden="true" /> {t('common.back')}</Link>
         <p className="eyebrow">{method === 'digital' ? t('method.digital.title') : method === 'physical' ? t('method.physical.title') : method === 'yarrow' ? yarrow.eyebrow : t('method.direct.title')}</p>
@@ -302,7 +328,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
 
         {prepared && method !== 'direct' ? (
           <>
-            {lines.length < 6 ? <RitualCue emphasizeThird={method === 'digital' || method === 'physical'} question={question} lineCount={lines.length} t={t} /> : null}
+            {lines.length < 6 ? <div ref={ritualCueRef} className="ritual-cue-anchor"><RitualCue emphasizeThird={method === 'digital' || method === 'physical'} question={question} lineCount={lines.length} t={t} /></div> : null}
             <div className="mt-5 grid gap-4 sm:grid-cols-[1fr_1fr] sm:items-stretch sm:gap-5">
               <CastProgress lines={lines} t={t} />
               <div className={`surface ritual-card ${pending ? 'is-casting' : ''}`} aria-busy={Boolean(pending)}>
@@ -323,11 +349,11 @@ function CastFlow({ method }: { method: ReadingMethod }) {
                     ) : null}
                     {lastSettledLine ? <p key={`status-${lastSettledLine.position}`} className="sr-only" role="status" aria-atomic="true">{resultStatus}</p> : null}
                     {!pending && lines.length < 6 ? (
-                      <button type="button" className="button-primary w-full select-none active:scale-[.98]" onClick={addDigitalLine}>{lines.length ? t('cast.next') : t('cast.castLine')}</button>
+                      <button ref={ritualActionRef} type="button" className="button-primary ritual-next-action w-full select-none active:scale-[.98]" onClick={addDigitalLine}>{lines.length ? t('cast.next') : t('cast.castLine')}</button>
                     ) : null}
                   </>
                 ) : method === 'yarrow' ? (
-                  <YarrowWorkshop procedure={yarrowProcedure} step={yarrowStep} animatingStep={yarrowAnimatingStep} phase={yarrowPhase} ritualDuration={yarrowTimings[2]} lineNumber={Math.max(1, lines.length + (yarrowStep === 3 ? 0 : 1))} onAdvance={advanceYarrow} copy={yarrow} />
+                  <YarrowWorkshop procedure={yarrowProcedure} step={yarrowStep} animatingStep={yarrowAnimatingStep} phase={yarrowPhase} ritualDuration={yarrowTimings[2]} lineNumber={Math.max(1, lines.length + (yarrowStep === 3 ? 0 : 1))} onAdvance={advanceYarrow} actionRef={ritualActionRef} copy={yarrow} />
                 ) : (
                   <fieldset className="w-full">
                     <legend className="mb-4 text-sm font-semibold">{t('cast.chooseTotal')} {lines.length + 1}</legend>
@@ -375,7 +401,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
             {method === 'direct' ? (
               <button type="button" className="button-primary" onClick={() => finish(linesFromKnownHexagram(knownId, movingPositions))} disabled={isFinishing}>{t('cast.complete')}</button>
             ) : lines.length === 6 && !pending ? (
-              <button type="button" className="button-primary" onClick={() => finish(lines)} disabled={isFinishing}>{t('cast.complete')}</button>
+              <button ref={completeActionRef} type="button" className="button-primary ritual-next-action" onClick={() => finish(lines)} disabled={isFinishing}>{t('cast.complete')}</button>
             ) : null}
           </div>
         ) : null}

@@ -118,8 +118,8 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     let starting = false
     const usesPointerEvents = 'PointerEvent' in window
     function removeUnlockListeners() {
-      if (usesPointerEvents) window.removeEventListener('pointerup', beginAfterInteraction)
-      else window.removeEventListener('touchend', beginAfterInteraction)
+      if (usesPointerEvents) window.removeEventListener('pointerdown', beginAfterInteraction)
+      else window.removeEventListener('touchstart', beginAfterInteraction)
       window.removeEventListener('keydown', beginAfterKey)
     }
     function beginAfterInteraction() {
@@ -134,9 +134,12 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       if (event.key !== 'Enter' && event.key !== ' ') return
       beginAfterInteraction()
     }
-    if (usesPointerEvents) window.addEventListener('pointerup', beginAfterInteraction)
-    else window.addEventListener('touchend', beginAfterInteraction, { passive: true })
+    if (usesPointerEvents) window.addEventListener('pointerdown', beginAfterInteraction)
+    else window.addEventListener('touchstart', beginAfterInteraction, { passive: true })
     window.addEventListener('keydown', beginAfterKey)
+    void setAmbientVolume(ambientVolumeRef.current).then((available) => {
+      if (available) removeUnlockListeners()
+    })
     return removeUnlockListeners
   }, [preferences.ambientVolume, setAmbientVolume, stopAmbient])
 

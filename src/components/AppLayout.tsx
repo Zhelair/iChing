@@ -96,12 +96,12 @@ export function AppLayout() {
     <div ref={frameRef} className={`app-frame relative isolate min-h-screen overflow-x-clip ${ritualMode ? 'pb-6' : 'app-frame--with-mobile-nav'}`} data-scene={scene} data-locale={preferences.locale}>
       <Atmosphere />
       <a href="#main" className="skip-link fixed left-3 top-3 z-50 -translate-y-24 rounded-full bg-[var(--obsidian)] px-4 py-3 text-white focus:translate-y-0">{t('common.skip')}</a>
-      <header className="site-header page-shell relative z-20 flex h-20 items-center justify-between border-b border-black/8">
-        <NavLink to="/" className="group flex items-center gap-3" aria-label={t('nav.homeLabel')}>
-          <span className="brand-mark grid size-10 place-items-center rounded-full border border-[var(--brass)]/45 bg-white/45 font-editorial text-xl text-[var(--jade)]">易</span>
-          <span>
+      <header className="site-header page-shell relative z-20 flex h-[4.5rem] items-center justify-between border-b border-black/8 sm:h-20">
+        <NavLink to="/" className="group flex min-w-0 items-center gap-2.5 sm:gap-3" aria-label={t('nav.homeLabel')}>
+          <span className="brand-mark grid size-9 shrink-0 place-items-center rounded-full border border-[var(--brass)]/45 bg-white/45 font-editorial text-lg text-[var(--jade)] sm:size-10 sm:text-xl">易</span>
+          <span className="min-w-0">
             <span className="block font-editorial text-lg font-semibold leading-none">Yi Path</span>
-            <span className="mt-1 hidden text-[.65rem] text-[var(--ink-soft)] sm:block">{t('brand.tagline')}</span>
+            <span className="mt-0.5 block max-w-[15rem] text-[.6rem] leading-tight text-[var(--ink-soft)] sm:mt-1 sm:max-w-none sm:text-[.65rem]">{t('brand.tagline')}</span>
           </span>
         </NavLink>
         <nav className="hidden items-center gap-1 lg:flex" aria-label={t('nav.primaryLabel')}>
