@@ -38,7 +38,7 @@ export function HomePage() {
   }
 
   return (
-    <div className="page-shell py-10 sm:py-16 lg:py-20">
+    <div className="page-shell py-8 sm:py-16 lg:py-20">
       <section className="grid items-center gap-12 lg:grid-cols-[1.12fr_.88fr] lg:gap-16">
         <div>
           <p className="eyebrow mb-6">{t('home.eyebrow')}</p>
