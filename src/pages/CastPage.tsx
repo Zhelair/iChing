@@ -212,7 +212,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
   }, [])
 
   useEffect(() => {
-    if (!autoFocusStep || !window.matchMedia('(max-width: 639px)').matches) return
+    if (!autoFocusStep) return
 
     const emphasizeThird = method === 'digital' && lines.length === 2
     const target = emphasizeThird
