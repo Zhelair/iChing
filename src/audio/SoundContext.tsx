@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, type ReactNode } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { AmbientVolume, CoinSide } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 import {
@@ -11,6 +11,7 @@ import {
 } from './meditation'
 
 type SoundContextValue = {
+  ambientStatus: 'off' | 'starting' | 'blocked' | 'playing'
   playCoinToss: (coins: readonly CoinSide[]) => void
   playHistoryCue: (kind: 'bone' | 'stalk' | 'brush' | 'coin') => void
   previewCoinSound: () => Promise<boolean>
@@ -34,6 +35,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
   const ambientWantedRef = useRef(preferences.ambientVolume > 0)
   const ambientVolumeRef = useRef<0.5 | 1>(preferences.ambientVolume || 0.5)
   const ambientOperationRef = useRef(0)
+  const [ambientStatus, setAmbientStatus] = useState<SoundContextValue['ambientStatus']>(preferences.ambientVolume > 0 ? 'starting' : 'off')
 
   useEffect(() => {
     soundEnabledRef.current = preferences.sound
@@ -80,23 +82,34 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     if (volume > 0) ambientVolumeRef.current = volume === 1 ? 1 : 0.5
     if (volume === 0) {
       stopAmbient()
+      setAmbientStatus('off')
       return true
     }
 
+    setAmbientStatus('starting')
     const context = await ensureContext()
-    if (!context) return false
+    if (!context) {
+      if (operation === ambientOperationRef.current) setAmbientStatus('blocked')
+      return false
+    }
     if (operation !== ambientOperationRef.current || !ambientWantedRef.current) return true
 
     try {
       const graph = ambientRef.current
       if (graph) {
         setMeditationVolume(context, graph, ambientVolumeRef.current)
-        return await resumeMeditation(context, graph)
+        const resumed = await resumeMeditation(context, graph)
+        if (operation === ambientOperationRef.current) setAmbientStatus(resumed ? 'playing' : 'blocked')
+        return resumed
       }
       startAmbient(context)
+      if (operation === ambientOperationRef.current) setAmbientStatus('playing')
       return true
     } catch {
-      if (operation === ambientOperationRef.current) stopAmbient(true)
+      if (operation === ambientOperationRef.current) {
+        stopAmbient(true)
+        setAmbientStatus('blocked')
+      }
       return false
     }
   }, [ensureContext, startAmbient, stopAmbient])
@@ -107,11 +120,13 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     if (preferences.ambientVolume === 0) {
       ++ambientOperationRef.current
       stopAmbient()
+      setAmbientStatus('off')
       return
     }
     if (ambientRef.current) {
       const context = contextRef.current
       if (context) setMeditationVolume(context, ambientRef.current, ambientVolumeRef.current)
+      setAmbientStatus(context?.state === 'running' ? 'playing' : 'blocked')
       return
     }
 
@@ -157,11 +172,16 @@ export function SoundProvider({ children }: { children: ReactNode }) {
 
       if (!ambientWantedRef.current) return
       if (graph) {
-        void resumeMeditation(context, graph).catch(() => undefined)
+        void resumeMeditation(context, graph).then((resumed) => {
+          setAmbientStatus(resumed ? 'playing' : 'blocked')
+        }).catch(() => setAmbientStatus('blocked'))
       } else {
         void context.resume().then(() => {
-          if (ambientWantedRef.current) startAmbient(context)
-        }).catch(() => undefined)
+          if (ambientWantedRef.current) {
+            startAmbient(context)
+            setAmbientStatus('playing')
+          }
+        }).catch(() => setAmbientStatus('blocked'))
       }
     }
 
@@ -236,6 +256,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
   }, [ensureContext])
 
   const value = useMemo<SoundContextValue>(() => ({
+    ambientStatus,
     playCoinToss: (coins) => { void renderCoinToss(coins) },
     playHistoryCue: (kind) => {
       if (!soundEnabledRef.current) return
@@ -259,7 +280,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     },
     previewCoinSound: () => renderCoinToss(['heads', 'tails', 'heads'], true),
     setAmbientVolume,
-  }), [ensureContext, renderCoinToss, setAmbientVolume])
+  }), [ambientStatus, ensureContext, renderCoinToss, setAmbientVolume])
 
   return <SoundContext.Provider value={value}>{children}</SoundContext.Provider>
 }
