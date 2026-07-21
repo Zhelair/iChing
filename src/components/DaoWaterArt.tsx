@@ -16,7 +16,6 @@ export function DaoWaterArt() {
         <ellipse cx="443" cy="247" rx="96" ry="29" />
         <ellipse cx="443" cy="247" rx="133" ry="41" />
       </g>
-      <circle className="dao-water-art__moon" cx="500" cy="86" r="44" />
     </svg>
   )
 }

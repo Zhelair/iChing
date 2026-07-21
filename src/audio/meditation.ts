@@ -270,6 +270,11 @@ export function setMeditationVolume(context: AudioContext, graph: MeditationGrap
   fadeMaster(graph, context, volumeTarget(volume), .5)
 }
 
+export function setMeditationDucked(context: AudioContext, graph: MeditationGraph, ducked: boolean) {
+  if (graph.disposed) return
+  fadeMaster(graph, context, ducked ? .045 : volumeTarget(graph.volume), ducked ? .7 : 1.4)
+}
+
 export function pauseMeditation(context: AudioContext, graph: MeditationGraph) {
   if (graph.disposed) return
   clearBowlTimer(graph)

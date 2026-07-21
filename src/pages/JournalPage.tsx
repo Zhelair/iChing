@@ -1,7 +1,8 @@
-import { ArrowRight, BookOpenText, CalendarDays, FileText, RotateCcw, Search, Tag, Trash2, Wind } from 'lucide-react'
+import { ArrowRight, CalendarDays, RotateCcw, Search, Tag, Trash2 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { HexagramFigure } from '../components/HexagramFigure'
+import { JournalTextEntryCard } from '../components/JournalTextEntryCard'
 import { PageIntro } from '../components/PageIntro'
 import { ReadingExportActions } from '../components/ReadingExportActions'
 import { getHexagram } from '../data/hexagrams'
@@ -10,7 +11,7 @@ import { isBuiltInContentLocale } from '../domain/locales'
 import type { JournalEntry, Reading, ReadingMethod } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 import { getUiLocalePack } from '../i18n/uiLocalePacks'
-import { deleteJournalEntry, deleteReading, getAllJournalEntries, getAllReadings, saveReading } from '../storage/db'
+import { deleteJournalEntry, deleteReading, getAllJournalEntries, getAllReadings, saveJournalEntry, saveReading } from '../storage/db'
 import { setCurrentReading } from '../storage/session'
 
 const copy = {
@@ -136,7 +137,7 @@ export function JournalPage() {
 
         <section aria-live="polite">
           {!loaded ? <div className="surface p-8">…</div> : <>
-          {filteredEntries.length ? <div className="journal-group"><h2 className="journal-month">{daoCopy.notebook} · {filteredEntries.length}</h2><div className="space-y-3">{filteredEntries.map((entry) => <article key={entry.id} className="surface journal-text-entry"><span className="journal-text-entry__icon">{entry.kind === 'practice' ? <Wind size={19} /> : entry.kind === 'study' ? <BookOpenText size={19} /> : <FileText size={19} />}</span><div><span>{new Intl.DateTimeFormat(preferences.locale, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(entry.createdAt))} · {entry.kind}</span><h3>{entry.title}</h3><p>{entry.body}</p><div className="journal-text-entry__actions"><Link to="/dao">{daoCopy.navDao}</Link><button type="button" onClick={() => void deleteJournalEntry(entry.id).then(() => setJournalEntries((items) => items.filter(({ id }) => id !== entry.id)))}><Trash2 size={15} />{c.remove}</button></div></div></article>)}</div></div> : null}
+          {filteredEntries.length ? <div className="journal-group"><h2 className="journal-month">{daoCopy.notebook} · {filteredEntries.length}</h2><div className="space-y-3">{filteredEntries.map((entry) => <JournalTextEntryCard key={entry.id} entry={entry} locale={preferences.locale} daoCopy={daoCopy} labels={{ save: c.save, saved: c.saved, remove: c.remove }} onSave={async (updated) => { await saveJournalEntry(updated); setJournalEntries((items) => items.map((item) => item.id === updated.id ? updated : item)) }} onDelete={async (id) => { await deleteJournalEntry(id); setJournalEntries((items) => items.filter((item) => item.id !== id)) }} />)}</div></div> : null}
           {readings.length === 0 && journalEntries.length === 0 ? <div className="surface journal-empty p-8 sm:p-12"><CalendarDays size={34} /><h2 className="mt-5 text-3xl">{c.empty}</h2><p className="mt-3 text-[var(--ink-soft)]">{c.emptyBody}</p><div className="mt-7 flex flex-wrap gap-3"><Link to="/reading" className="button-primary">{c.begin}<ArrowRight size={17} /></Link><Link to="/dao" className="button-secondary">{daoCopy.navDao}</Link></div></div> : filtered.length === 0 && filteredEntries.length === 0 ? <div className="surface p-8 text-[var(--ink-soft)]">{c.noResults}</div> : groups.map((group) => (
             <div key={group.label} className="journal-group"><h2 className="journal-month">{group.label}</h2>
               <div className="space-y-3">{group.readings.map((reading) => {

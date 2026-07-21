@@ -6,6 +6,7 @@ import {
   disposeMeditation,
   pauseMeditation,
   resumeMeditation,
+  setMeditationDucked,
   setMeditationVolume,
   type MeditationGraph,
 } from './meditation'
@@ -16,6 +17,7 @@ type SoundContextValue = {
   previewCoinSound: () => Promise<boolean>
   setAmbientVolume: (volume: AmbientVolume) => Promise<boolean>
   playPracticeCue: (kind: 'begin' | 'pause' | 'complete') => Promise<boolean>
+  setPracticeAudioActive: (active: boolean) => void
 }
 
 const SoundContext = createContext<SoundContextValue | null>(null)
@@ -35,6 +37,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
   const ambientWantedRef = useRef(preferences.ambientVolume > 0)
   const ambientVolumeRef = useRef<0.5 | 1>(preferences.ambientVolume || 0.5)
   const ambientOperationRef = useRef(0)
+  const practiceAudioActiveRef = useRef(false)
 
   useEffect(() => {
     soundEnabledRef.current = preferences.sound
@@ -72,6 +75,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     if (ambientRef.current || !ambientWantedRef.current) return ambientRef.current
     const graph = createMeditationGraph(context, ambientVolumeRef.current)
     ambientRef.current = graph
+    if (practiceAudioActiveRef.current) setMeditationDucked(context, graph, true)
     return graph
   }, [])
 
@@ -92,7 +96,9 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       const graph = ambientRef.current
       if (graph) {
         setMeditationVolume(context, graph, ambientVolumeRef.current)
-        return await resumeMeditation(context, graph)
+        const resumed = await resumeMeditation(context, graph)
+        if (practiceAudioActiveRef.current) setMeditationDucked(context, graph, true)
+        return resumed
       }
       startAmbient(context)
       return true
@@ -280,6 +286,12 @@ export function SoundProvider({ children }: { children: ReactNode }) {
         oscillator.stop(at + 1.85)
       })
       return true
+    },
+    setPracticeAudioActive: (active) => {
+      practiceAudioActiveRef.current = active
+      const context = contextRef.current
+      const graph = ambientRef.current
+      if (context && graph && context.state !== 'closed') setMeditationDucked(context, graph, active)
     },
   }), [ensureContext, renderCoinToss, setAmbientVolume])
 
