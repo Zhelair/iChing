@@ -1,8 +1,8 @@
 import { CONTENT_VERSION, findHexagramByPattern } from '../data/hexagrams'
 import { patternFromLines } from '../domain/casting'
 import { isLocale } from '../domain/locales'
-import type { AmbientVolume, CastLine, LineValue, Polarity, Preferences, Reading, ReadingMethod, Theme, YiPathExport } from '../domain/types'
-import { getAllReadings } from './db'
+import type { AmbientVolume, CastLine, JournalEntry, LineValue, Polarity, PracticeSession, Preferences, Reading, ReadingMethod, ReadingProgress, StudyNote, Theme, YiPathExport } from '../domain/types'
+import { getAllJournalEntries, getAllReadingProgress, getAllReadings, getPracticeSessions, getStudyNotes } from './db'
 
 export const MAX_EXPORT_FILE_BYTES = 5 * 1024 * 1024
 const MAX_IMPORTED_READINGS = 5000
@@ -66,14 +66,58 @@ function hasConsistentHexagrams(reading: Partial<Reading>) {
 }
 
 export async function createExport(preferences: Preferences): Promise<YiPathExport> {
+  const [readings, studyNotes, journalEntries, readingProgress, practiceSessions] = await Promise.all([getAllReadings(), getStudyNotes(), getAllJournalEntries(), getAllReadingProgress(), getPracticeSessions()])
   return {
     app: 'yi-path',
     schemaVersion: 1,
     contentVersion: CONTENT_VERSION,
     exportedAt: new Date().toISOString(),
-    readings: await getAllReadings(),
+    readings,
+    studyNotes,
+    journalEntries,
+    readingProgress,
+    practiceSessions,
     preferences,
   }
+}
+
+function isTags(value: unknown): value is string[] {
+  return Array.isArray(value) && value.length <= 40 && value.every((tag) => isBoundedString(tag, 60, false))
+}
+
+function isStudyNote(value: unknown): value is StudyNote {
+  if (!value || typeof value !== 'object') return false
+  const note = value as Partial<StudyNote>
+  const anchor = note.anchor
+  return isBoundedString(note.id, 128, false) && note.schemaVersion === 1 && isDate(note.createdAt) && isDate(note.updatedAt) && isLocale(note.locale)
+    && isBoundedString(note.body, 10000, false) && isTags(note.tags) && Boolean(anchor)
+    && isBoundedString(anchor?.workId, 160, false) && isBoundedString(anchor?.passageId, 160, false)
+    && Number.isInteger(anchor?.startOffset) && Number.isInteger(anchor?.endOffset) && isBoundedString(anchor?.quote, 1000)
+}
+
+function isJournalEntry(value: unknown): value is JournalEntry {
+  if (!value || typeof value !== 'object') return false
+  const entry = value as Partial<JournalEntry>
+  return isBoundedString(entry.id, 128, false) && entry.schemaVersion === 1 && isDate(entry.createdAt) && isDate(entry.updatedAt) && isLocale(entry.locale)
+    && (entry.kind === 'freeform' || entry.kind === 'study' || entry.kind === 'practice') && isBoundedString(entry.title, 300, false)
+    && isBoundedString(entry.body, 20000, false) && isTags(entry.tags)
+    && (entry.sourceId === undefined || isBoundedString(entry.sourceId, 240, false))
+    && (entry.durationSeconds === undefined || (Number.isInteger(entry.durationSeconds) && entry.durationSeconds >= 0 && entry.durationSeconds <= 86400))
+}
+
+function isReadingProgress(value: unknown): value is ReadingProgress {
+  if (!value || typeof value !== 'object') return false
+  const progress = value as Partial<ReadingProgress>
+  return isBoundedString(progress.workId, 160, false) && isDate(progress.updatedAt) && isBoundedString(progress.passageId, 160, false)
+    && typeof progress.progress === 'number' && progress.progress >= 0 && progress.progress <= 1
+}
+
+function isPracticeSession(value: unknown): value is PracticeSession {
+  if (!value || typeof value !== 'object') return false
+  const session = value as Partial<PracticeSession>
+  return isBoundedString(session.id, 128, false) && session.schemaVersion === 1 && isDate(session.createdAt) && isBoundedString(session.practiceId, 160, false)
+    && Number.isInteger(session.durationSeconds) && Number(session.durationSeconds) >= 0 && Number(session.durationSeconds) <= 86400
+    && typeof session.completed === 'boolean' && (session.reflectionEntryId === undefined || isBoundedString(session.reflectionEntryId, 128, false))
 }
 
 function isReading(value: unknown): value is Reading {
@@ -114,6 +158,10 @@ export function parseExport(value: unknown): YiPathExport {
     !Array.isArray(backup.readings) ||
     backup.readings.length > MAX_IMPORTED_READINGS ||
     !backup.readings.every(isReading) ||
+    (backup.studyNotes !== undefined && (!Array.isArray(backup.studyNotes) || backup.studyNotes.length > MAX_IMPORTED_READINGS || !backup.studyNotes.every(isStudyNote))) ||
+    (backup.journalEntries !== undefined && (!Array.isArray(backup.journalEntries) || backup.journalEntries.length > MAX_IMPORTED_READINGS || !backup.journalEntries.every(isJournalEntry))) ||
+    (backup.readingProgress !== undefined && (!Array.isArray(backup.readingProgress) || backup.readingProgress.length > MAX_IMPORTED_READINGS || !backup.readingProgress.every(isReadingProgress))) ||
+    (backup.practiceSessions !== undefined && (!Array.isArray(backup.practiceSessions) || backup.practiceSessions.length > MAX_IMPORTED_READINGS || !backup.practiceSessions.every(isPracticeSession))) ||
     !backup.preferences ||
     !isLocale(backup.preferences.locale) ||
     typeof backup.preferences.sound !== 'boolean' ||

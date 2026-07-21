@@ -34,6 +34,58 @@ export type Reading = {
   tags: string[]
 }
 
+export type ContentAnchor = {
+  workId: string
+  passageId: string
+  startOffset: number
+  endOffset: number
+  quote: string
+}
+
+export type StudyNote = {
+  id: string
+  schemaVersion: 1
+  createdAt: string
+  updatedAt: string
+  locale: Locale
+  anchor: ContentAnchor
+  body: string
+  tags: string[]
+}
+
+export type JournalEntryKind = 'freeform' | 'study' | 'practice'
+
+export type JournalEntry = {
+  id: string
+  schemaVersion: 1
+  createdAt: string
+  updatedAt: string
+  locale: Locale
+  kind: JournalEntryKind
+  title: string
+  body: string
+  tags: string[]
+  sourceId?: string
+  durationSeconds?: number
+}
+
+export type ReadingProgress = {
+  workId: string
+  updatedAt: string
+  passageId: string
+  progress: number
+}
+
+export type PracticeSession = {
+  id: string
+  schemaVersion: 1
+  createdAt: string
+  practiceId: string
+  durationSeconds: number
+  completed: boolean
+  reflectionEntryId?: string
+}
+
 export type Preferences = {
   locale: Locale
   theme: Theme
@@ -49,5 +101,9 @@ export type YiPathExport = {
   contentVersion: string
   exportedAt: string
   readings: Reading[]
+  studyNotes?: StudyNote[]
+  journalEntries?: JournalEntry[]
+  readingProgress?: ReadingProgress[]
+  practiceSessions?: PracticeSession[]
   preferences: Preferences
 }

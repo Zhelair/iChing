@@ -1,20 +1,22 @@
-import { BookOpen, BookOpenText, HeartHandshake, Library, NotebookPen, Settings } from 'lucide-react'
+import { BookOpen, BookOpenText, Compass, HeartHandshake, NotebookPen, Settings } from 'lucide-react'
 import { Suspense, useEffect, useRef } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useI18n } from '../i18n/I18nContext'
 import { Atmosphere } from './Atmosphere'
+import { DAO_COPY } from '../data/daoContent'
 
 const navItems = [
   { to: '/reading', key: 'nav.read', icon: BookOpenText, end: false, desktopOnly: false },
   { to: '/journal', key: 'nav.journal', icon: NotebookPen, end: false, desktopOnly: false },
-  { to: '/library', key: 'nav.library', icon: Library, end: false, desktopOnly: false },
-  { to: '/learn', key: 'nav.learn', icon: BookOpen, end: false, desktopOnly: false },
+  { to: '/iching', key: 'iching', icon: BookOpen, end: false, desktopOnly: false },
+  { to: '/dao', key: 'dao', icon: Compass, end: false, desktopOnly: false },
   { to: '/settings', key: 'nav.settings', icon: Settings, end: false, desktopOnly: false },
   { to: '/support', key: 'nav.support', icon: HeartHandshake, end: false, desktopOnly: true },
 ] as const
 
 export function AppLayout() {
   const { preferences, t } = useI18n()
+  const daoCopy = DAO_COPY[preferences.locale]
   const { pathname } = useLocation()
   const frameRef = useRef<HTMLDivElement>(null)
   const ritualMode = pathname.startsWith('/cast/')
@@ -24,7 +26,7 @@ export function AppLayout() {
       ? 'ritual'
         : pathname === '/result' || pathname === '/journal'
         ? 'reflection'
-        : pathname === '/learn' || pathname === '/start' || pathname === '/library' || pathname.startsWith('/hexagrams/')
+        : pathname.startsWith('/iching') || pathname === '/learn' || pathname === '/start' || pathname === '/library' || pathname.startsWith('/hexagrams/') || pathname.startsWith('/dao')
           ? 'study'
           : pathname === '/settings' || pathname === '/support'
             ? 'quiet'
@@ -107,7 +109,7 @@ export function AppLayout() {
         <nav className="hidden items-center gap-1 lg:flex" aria-label={t('nav.primaryLabel')}>
           {navItems.map(({ to, key, end }) => (
             <NavLink key={to} to={to} end={end} className={({ isActive }) => `min-h-11 rounded-full px-4 py-3 text-sm font-semibold transition-colors ${isActive ? 'bg-[var(--jade-light)] text-[var(--jade)]' : 'text-[var(--ink-soft)] hover:bg-white/55 hover:text-[var(--ink)]'}`}>
-              {t(key)}
+              {key === 'iching' ? daoCopy.navIChing : key === 'dao' ? daoCopy.navDao : t(key)}
             </NavLink>
           ))}
         </nav>
@@ -123,7 +125,7 @@ export function AppLayout() {
         {navItems.filter(({ desktopOnly }) => !desktopOnly).map(({ to, key, icon: Icon, end }) => (
           <NavLink key={to} to={to} end={end} className={({ isActive }) => `flex min-h-16 min-w-0 flex-col items-center justify-center gap-1 rounded-2xl px-1 text-[.65rem] font-semibold ${isActive ? 'bg-white/13 text-[#f4dfaa]' : 'text-white/68'}`}>
             <Icon aria-hidden="true" size={19} strokeWidth={1.8} />
-            <span className="mobile-navigation__label" lang={preferences.locale}>{t(key)}</span>
+            <span className="mobile-navigation__label" lang={preferences.locale}>{key === 'iching' ? daoCopy.navIChing : key === 'dao' ? daoCopy.navDao : t(key)}</span>
           </NavLink>
         ))}
       </nav> : null}

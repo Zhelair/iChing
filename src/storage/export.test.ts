@@ -6,7 +6,13 @@ import { linesFromKnownHexagram } from '../domain/reading'
 import type { YiPathExport } from '../domain/types'
 import { MAX_EXPORT_FILE_BYTES, parseExport } from './export'
 
-vi.mock('./db', () => ({ getAllReadings: vi.fn(async () => []) }))
+vi.mock('./db', () => ({
+  getAllReadings: vi.fn(async () => []),
+  getStudyNotes: vi.fn(async () => []),
+  getAllJournalEntries: vi.fn(async () => []),
+  getAllReadingProgress: vi.fn(async () => []),
+  getPracticeSessions: vi.fn(async () => []),
+}))
 
 function validBackup(): YiPathExport {
   const lines = linesFromKnownHexagram(1, [1, 4])
@@ -75,5 +81,14 @@ describe('Yi Path backup validation', () => {
     const badDate = copyBackup()
     badDate.exportedAt = 'not-a-date'
     expect(() => parseExport(badDate)).toThrow('Invalid Yi Path backup')
+  })
+
+  it('accepts the optional Dao study, journal, progress, and practice records', () => {
+    const backup = copyBackup()
+    backup.studyNotes = [{ id: 'note-1', schemaVersion: 1, createdAt: backup.exportedAt, updatedAt: backup.exportedAt, locale: 'en', anchor: { workId: 'dao-work', passageId: 'water', startOffset: 0, endOffset: 5, quote: 'Water' }, body: 'A study note', tags: ['dao'] }]
+    backup.journalEntries = [{ id: 'entry-1', schemaVersion: 1, createdAt: backup.exportedAt, updatedAt: backup.exportedAt, locale: 'en', kind: 'practice', title: 'Settling breath', body: 'A little quieter.', tags: ['dao'], durationSeconds: 60 }]
+    backup.readingProgress = [{ workId: 'dao-work', updatedAt: backup.exportedAt, passageId: 'water', progress: 1 / 3 }]
+    backup.practiceSessions = [{ id: 'session-1', schemaVersion: 1, createdAt: backup.exportedAt, practiceId: 'settling-breath-v1', durationSeconds: 60, completed: true, reflectionEntryId: 'entry-1' }]
+    expect(parseExport(backup).journalEntries).toHaveLength(1)
   })
 })

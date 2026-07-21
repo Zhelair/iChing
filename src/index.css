@@ -661,3 +661,81 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
   .result-page textarea { display: none !important; }
   .print-journal-note { display: block !important; white-space: pre-wrap; }
 }
+
+/* Dao study sanctuary: long-form reading, notes, practice, and daily reflection. */
+.dao-page { padding-bottom: 6rem; }
+.dao-hero { position: relative; display: grid; min-height: min(42rem,calc(100dvh - 5rem)); align-items: center; gap: 2rem; padding-block: clamp(3rem,8vw,7rem); }
+.dao-hero__copy { position: relative; z-index: 2; max-width: 44rem; }
+.dao-hero h1 { max-width: 13ch; margin-top: 1rem; font-size: clamp(2.65rem,7vw,5.8rem); line-height: .98; text-wrap: balance; }
+.dao-hero__copy > p:not(.eyebrow) { max-width: 37rem; margin-top: 1.6rem; color: var(--ink-soft); font-size: clamp(1rem,2vw,1.18rem); line-height: 1.75; }
+.dao-hero__actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+.dao-hero__art { position: relative; min-height: 21rem; color: var(--jade); }
+.dao-hero__art > span { position: absolute; top: 7%; right: 8%; color: color-mix(in srgb,var(--jade) 23%,transparent); font-family: "Lora Variable",serif; font-size: clamp(5rem,13vw,10rem); line-height: 1; }
+.dao-water-art { width: 100%; height: auto; overflow: visible; }
+.dao-water-art__mountain { fill: color-mix(in srgb,var(--jade) 8%,transparent); }
+.dao-water-art__stream { fill: none; stroke: url(#dao-water); stroke-width: 18; stroke-linecap: round; stroke-dasharray: 900; animation: dao-stream-draw 2.4s cubic-bezier(.2,.75,.2,1) both; }
+.dao-water-art__stream--fine { stroke-width: 2; stroke-dasharray: 8 14; opacity: .65; animation: dao-current 10s linear infinite; }
+.dao-water-art__rings ellipse { stroke: color-mix(in srgb,var(--jade) 34%,transparent); stroke-width: 2; transform-origin: 443px 247px; animation: dao-ring 4.8s ease-out infinite; }
+.dao-water-art__rings ellipse:nth-child(2) { animation-delay: 1.1s; }.dao-water-art__rings ellipse:nth-child(3) { animation-delay: 2.2s; }
+.dao-water-art__moon { fill: color-mix(in srgb,var(--brass) 14%,transparent); stroke: color-mix(in srgb,var(--brass) 36%,transparent); }
+@keyframes dao-stream-draw { from { stroke-dashoffset: 900; opacity: 0; } }
+@keyframes dao-current { to { stroke-dashoffset: -220; } }
+@keyframes dao-ring { 0% { opacity: 0; transform: scale(.72); } 24% { opacity: .7; } 100% { opacity: 0; transform: scale(1.14); } }
+
+.dao-paths { position: relative; z-index: 3; display: grid; gap: .75rem; margin-top: -2.5rem; }
+.dao-path-card { position: relative; display: grid; min-height: 13rem; grid-template-columns: 1fr auto; align-content: space-between; gap: .7rem; padding: 1.2rem; text-decoration: none; transition: border-color 180ms ease,transform 220ms ease,box-shadow 220ms ease; }
+.dao-path-card__index { color: var(--jade); font-size: .68rem; font-weight: 850; letter-spacing: .12em; }
+.dao-path-card__icon,.dao-section-icon,.dao-note-icon { display: grid; width: 2.8rem; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--jade-light); color: var(--jade); }
+.dao-path-card strong { grid-column: 1/-1; align-self: end; font-family: "Lora Variable",serif; font-size: 1.35rem; }
+.dao-path-card small { grid-column: 1/-1; color: var(--ink-soft); font-size: .78rem; line-height: 1.55; }
+@media (hover:hover) and (pointer:fine) { .dao-path-card:hover { border-color: color-mix(in srgb,var(--jade) 42%,var(--line)); box-shadow: 0 22px 55px rgba(41,62,48,.12); transform: translateY(-4px); } }
+.dao-sections { display: grid; gap: clamp(1.5rem,5vw,4rem); margin-top: clamp(3rem,8vw,7rem); }
+
+.dao-reader { display: grid; align-items: start; gap: 1rem; }
+.dao-reader__toc,.dao-reader__notes { padding: 1.2rem; }
+.dao-reader__toc nav { display: grid; gap: .3rem; }
+.dao-reader__toc button { display: grid; width: 100%; min-height: 3.5rem; grid-template-columns: 1.8rem minmax(0,1fr) auto; align-items: center; gap: .45rem; border: 0; border-radius: .85rem; background: transparent; padding: .6rem .7rem; color: var(--ink-soft); text-align: left; cursor: pointer; transition: background-color 180ms ease,color 180ms ease; }
+.dao-reader__toc button span { color: var(--brass); font-size: .62rem; font-weight: 850; }.dao-reader__toc button.is-active { background: var(--jade-light); color: var(--jade); }
+.dao-reader__page { padding: clamp(1.4rem,5vw,4rem); }
+.dao-reader__page h2 { max-width: 15ch; text-wrap: balance; }
+.dao-reader__lead { max-width: 66ch; margin-top: 1.4rem; color: var(--ink-soft); font-size: 1.04rem; line-height: 1.8; }
+.dao-reader__passage { position: relative; max-width: 67ch; margin-top: clamp(2rem,5vw,4rem); border-top: 1px solid var(--line); padding-top: 2.2rem; animation: dao-passage-enter 280ms ease-out both; }
+.dao-reader__mark { display: grid; width: 2.7rem; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--jade-light); color: var(--jade); }
+.dao-reader__passage h3 { margin-top: 1.3rem; font-size: clamp(1.65rem,3vw,2.2rem); }.dao-reader__passage p { margin-top: 1rem; font-family: "Lora Variable",serif; font-size: clamp(1.08rem,2vw,1.23rem); line-height: 1.9; }
+.dao-scope { display: grid; max-width: 67ch; gap: .7rem; margin-top: 2.5rem; }.dao-scope > div { border-left: 3px solid var(--brass); border-radius: 0 .9rem .9rem 0; background: color-mix(in srgb,var(--brass) 8%,transparent); padding: .8rem 1rem; }.dao-scope dt { color: var(--brass); font-size: .65rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }.dao-scope dd { margin-top: .35rem; color: var(--ink-soft); font-size: .78rem; line-height: 1.6; }
+.dao-reader__notes textarea,.dao-notebook textarea,.dao-living textarea,.dao-practice textarea { resize: vertical; }
+.dao-saved-notes { display: grid; gap: .65rem; }.dao-saved-notes article { border-left: 2px solid var(--brass); padding-left: .75rem; }.dao-saved-notes span { color: var(--jade); font-size: .64rem; font-weight: 800; }.dao-saved-notes p { margin-top: .25rem; color: var(--ink-soft); font-size: .75rem; line-height: 1.55; white-space: pre-wrap; }.dao-saved-notes > p { color: var(--ink-soft); font-size: .75rem; }
+@keyframes dao-passage-enter { from { opacity: 0; transform: translateY(8px); } }
+
+.dao-notebook,.dao-living,.dao-practice { padding: clamp(1.4rem,5vw,3.5rem); }
+.dao-notebook { display: grid; gap: 2rem; }.dao-notebook__form { min-width: 0; }.dao-notebook__form label,.dao-practice__reflection label { display: block; font-size: .76rem; font-weight: 800; }
+.button-primary:disabled,.button-secondary:disabled { cursor: not-allowed; opacity: .45; }
+
+.dao-practice { position: relative; display: grid; overflow: hidden; gap: 2rem; background: linear-gradient(135deg,color-mix(in srgb,var(--white) 76%,transparent),color-mix(in srgb,var(--jade-light) 58%,transparent)); }
+.dao-practice::after { position: absolute; right: -8rem; bottom: -10rem; width: 30rem; aspect-ratio: 1; border: 1px solid color-mix(in srgb,var(--jade) 11%,transparent); border-radius: 50%; content: ''; pointer-events: none; }
+.dao-practice__copy,.dao-practice__player { position: relative; z-index: 1; }
+.dao-safety { max-width: 42rem; border-left: 3px solid var(--brass); padding: .75rem 1rem; color: var(--ink-soft); font-size: .78rem; line-height: 1.6; }
+.dao-practice__player { display: grid; justify-items: center; gap: 1.1rem; }
+.dao-practice__orb { position: relative; display: grid; width: min(100%,18rem); aspect-ratio: 1; place-items: center; }
+.dao-practice__orb::before { position: absolute; width: 67%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 38% 32%,color-mix(in srgb,var(--white) 75%,transparent),color-mix(in srgb,var(--jade) 15%,transparent)); box-shadow: 0 18px 65px color-mix(in srgb,var(--jade) 18%,transparent); content: ''; animation: dao-breath-orb 9s ease-in-out infinite alternate; }
+.dao-practice__orb svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }.dao-practice__track,.dao-practice__progress { fill: none; stroke-width: 3; }.dao-practice__track { stroke: color-mix(in srgb,var(--jade) 13%,transparent); }.dao-practice__progress { stroke: var(--jade); stroke-linecap: round; transition: stroke-dashoffset 700ms ease; }
+.dao-practice__orb > div { position: relative; z-index: 1; display: grid; justify-items: center; gap: .45rem; text-align: center; }.dao-practice__phase { color: var(--jade); font-size: .7rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }.dao-practice__orb strong { font-family: "Lora Variable",serif; font-size: 2.1rem; font-variant-numeric: tabular-nums; }
+.dao-duration,.dao-practice__controls { display: flex; flex-wrap: wrap; justify-content: center; gap: .55rem; }.dao-duration button,.dao-sound-toggle { min-height: 2.9rem; border: 1px solid var(--line); border-radius: 999px; background: color-mix(in srgb,var(--white) 64%,transparent); padding: .65rem .9rem; color: var(--ink-soft); font-size: .75rem; font-weight: 800; cursor: pointer; }.dao-duration button.is-active { border-color: var(--jade); background: var(--jade-light); color: var(--jade); }.dao-sound-toggle { display: flex; align-items: center; gap: .5rem; }
+.dao-practice__primary { min-width: min(100%,15rem); justify-content: center; }.dao-practice__reflection { width: min(100%,31rem); }
+.dao-practice__player.is-paused .dao-practice__orb::before { animation-play-state: paused; opacity: .55; }
+@keyframes dao-breath-orb { from { opacity: .68; transform: scale(.87); } to { opacity: 1; transform: scale(1.04); } }
+
+.dao-living { display: grid; gap: 2rem; }.dao-living__fields { display: grid; gap: .7rem; }.dao-living__field { display: grid; grid-template-columns: 2rem minmax(0,1fr); gap: .3rem .7rem; border: 1px solid var(--line); border-radius: 1rem; background: color-mix(in srgb,var(--white) 38%,transparent); padding: .85rem; }.dao-living__field > span { grid-row: 1/3; color: var(--brass); font-size: .65rem; font-weight: 850; }.dao-living__field label { font-family: "Lora Variable",serif; font-size: 1.1rem; font-weight: 650; }.dao-living__field textarea { min-height: 5.5rem; border: 0; outline: none; background: transparent; color: var(--ink); font: inherit; font-size: .83rem; line-height: 1.6; }
+
+.iching-hub { display: grid; gap: 1rem; }.iching-hub__card { display: flex; min-height: 20rem; flex-direction: column; align-items: flex-start; padding: clamp(1.3rem,4vw,2.2rem); text-decoration: none; transition: border-color 180ms ease,transform 220ms ease; }.iching-hub__card > span { display: grid; width: 3.2rem; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--jade-light); color: var(--jade); }.iching-hub__card .eyebrow { margin-top: auto; padding-top: 3rem; }.iching-hub__card h2 { margin-top: .7rem; font-size: 1.8rem; }.iching-hub__card > p:not(.eyebrow) { margin-top: .8rem; color: var(--ink-soft); font-size: .85rem; line-height: 1.65; }.iching-hub__card strong { display: inline-flex; align-items: center; gap: .45rem; margin-top: 1rem; color: var(--jade); font-size: .78rem; }.iching-hub__card--accent { background: linear-gradient(145deg,color-mix(in srgb,var(--brass) 10%,var(--white)),color-mix(in srgb,var(--white) 60%,transparent)); }
+@media (hover:hover) and (pointer:fine) { .iching-hub__card:hover { border-color: color-mix(in srgb,var(--jade) 45%,var(--line)); transform: translateY(-3px); } }
+
+.journal-text-entry { display: grid; grid-template-columns: 2.8rem minmax(0,1fr); gap: .9rem; padding: 1rem; }.journal-text-entry__icon { display: grid; width: 2.8rem; aspect-ratio: 1; place-items: center; border-radius: .8rem; background: var(--jade-light); color: var(--jade); }.journal-text-entry > div > span { color: var(--jade); font-size: .62rem; font-weight: 800; text-transform: uppercase; }.journal-text-entry h3 { margin-top: .4rem; font-size: 1.2rem; }.journal-text-entry p { max-width: 70ch; margin-top: .45rem; color: var(--ink-soft); font-size: .78rem; line-height: 1.65; white-space: pre-wrap; }.journal-text-entry__actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: .7rem; }.journal-text-entry__actions a,.journal-text-entry__actions button { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .35rem; border: 0; background: transparent; padding: .4rem 0; color: var(--jade); font-size: .72rem; font-weight: 800; cursor: pointer; }.journal-text-entry__actions button { color: #91473f; }
+
+@media (min-width: 640px) { .dao-paths { grid-template-columns: repeat(2,minmax(0,1fr)); }.iching-hub { grid-template-columns: repeat(2,minmax(0,1fr)); }.iching-hub__card--accent { grid-column: 1/-1; min-height: 15rem; } }
+@media (min-width: 900px) { .dao-hero { grid-template-columns: minmax(0,1.05fr) minmax(22rem,.95fr); }.dao-paths { grid-template-columns: repeat(4,minmax(0,1fr)); }.dao-notebook,.dao-practice,.dao-living { grid-template-columns: minmax(0,.9fr) minmax(24rem,1.1fr); align-items: center; }.iching-hub { grid-template-columns: repeat(3,minmax(0,1fr)); }.iching-hub__card--accent { grid-column: auto; min-height: 20rem; } }
+@media (min-width: 1180px) { .dao-reader { grid-template-columns: 14rem minmax(0,1fr) 18rem; }.dao-reader__toc,.dao-reader__notes { position: sticky; top: 6.5rem; max-height: calc(100dvh - 8rem); overflow-y: auto; } }
+@media (max-width: 1179px) and (min-width: 760px) { .dao-reader { grid-template-columns: 13rem minmax(0,1fr); }.dao-reader__notes { grid-column: 2; } }
+@media (max-width: 639px) { .dao-hero { min-height: auto; padding-top: 3rem; }.dao-hero__art { min-height: 13rem; }.dao-paths { margin-top: 0; }.dao-path-card { min-height: 10.5rem; }.dao-hero__actions,.dao-hero__actions a,.dao-practice__controls,.dao-practice__controls button { width: 100%; }.dao-reader__toc nav { grid-template-columns: 1fr; }.dao-notebook,.dao-living,.dao-practice { padding: 1.2rem; }.dao-practice__orb { width: 15rem; }.dao-duration { width: 100%; }.dao-duration button { flex: 1; padding-inline: .5rem; }.journal-text-entry { grid-template-columns: 1fr; }.journal-text-entry__icon { width: 2.5rem; } }
+@media (prefers-reduced-motion: reduce) { .dao-water-art__stream,.dao-water-art__rings ellipse,.dao-practice__orb::before,.dao-reader__passage { animation: none !important; }.dao-practice__progress { transition: none; } }
+[data-reduce-motion="true"] .dao-water-art__stream,[data-reduce-motion="true"] .dao-water-art__rings ellipse,[data-reduce-motion="true"] .dao-practice__orb::before,[data-reduce-motion="true"] .dao-reader__passage { animation: none !important; }

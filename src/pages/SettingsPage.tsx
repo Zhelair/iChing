@@ -7,7 +7,7 @@ import { isBuiltInContentLocale, LOCALE_NAMES, SUPPORTED_LOCALES } from '../doma
 import type { AmbientVolume, Locale, Theme } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 import { getUiLocalePack } from '../i18n/uiLocalePacks'
-import { clearReadings, importReadings } from '../storage/db'
+import { clearAllLocalData, importReadings } from '../storage/db'
 import { createExport, downloadExport, MAX_EXPORT_FILE_BYTES, parseExport } from '../storage/export'
 
 function Toggle({ checked, onChange, label, body }: { checked: boolean; onChange: (value: boolean) => void; label: string; body?: string }) {
@@ -154,7 +154,7 @@ export function SettingsPage() {
   }
 
   async function clearAll() {
-    await clearReadings()
+    await clearAllLocalData()
     sessionStorage.removeItem('yi-path:current-reading:v1')
     sessionStorage.removeItem('yi-path:question:v1')
     setPreferences({ locale: 'en', theme: 'bamboo-mist', sound: true, music: true, ambientVolume: 1, reduceMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches })
