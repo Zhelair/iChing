@@ -12,13 +12,17 @@ const copy = {
   ru: { image: 'Сохранить изображение', pdf: 'Скачать PDF', saved: 'Изображение сохранено', imageWorking: 'Создание изображения…', imageError: 'Изображение недоступно', pdfWorking: 'Создание PDF…', pdfSaved: 'PDF скачан', pdfError: 'PDF недоступен' },
 } as const
 
+export function getExportActionCopy(locale: ReturnType<typeof useI18n>['preferences']['locale']) {
+  return isBuiltInContentLocale(locale)
+    ? copy[locale]
+    : getUiLocalePack(locale).features.exportActions
+}
+
 export function ReadingExportActions({ reading, compact = false }: { reading: Reading; compact?: boolean }) {
   const { preferences } = useI18n()
   const [imageStatus, setImageStatus] = useState<'idle' | 'working' | 'saved' | 'error'>('idle')
   const [pdfStatus, setPdfStatus] = useState<'idle' | 'working' | 'saved' | 'error'>('idle')
-  const c = isBuiltInContentLocale(preferences.locale)
-    ? copy[preferences.locale]
-    : getUiLocalePack(preferences.locale).features.exportActions
+  const c = getExportActionCopy(preferences.locale)
   async function saveImage() {
     setImageStatus('working')
     try {

@@ -1,5 +1,5 @@
 import { Check, Pause, Play, Square, Volume2, VolumeX } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { useSound } from '../audio/SoundContext'
 import type { DaoCopy } from '../data/daoContent'
 import type { Locale } from '../domain/locales'
@@ -9,15 +9,22 @@ import { saveJournalEntry, savePracticeSession } from '../storage/db'
 type PracticeState = 'idle' | 'running' | 'paused' | 'complete'
 
 export function BreathPractice({ copy, locale }: { copy: DaoCopy; locale: Locale }) {
-  const { playPracticeCue } = useSound()
+  const { playPracticeCue, setPracticeAudioActive } = useSound()
   const [duration, setDuration] = useState(180)
   const [remaining, setRemaining] = useState(180)
   const [state, setState] = useState<PracticeState>('idle')
   const [sound, setSound] = useState(true)
+  const [arrival, setArrival] = useState(0)
   const [reflection, setReflection] = useState('')
   const [reflectionSaved, setReflectionSaved] = useState(false)
   const sessionId = useRef<string | null>(null)
   const completionSaved = useRef(false)
+
+  useEffect(() => {
+    const active = sound && (state === 'running' || state === 'paused')
+    setPracticeAudioActive(active)
+    return () => setPracticeAudioActive(false)
+  }, [setPracticeAudioActive, sound, state])
 
   useEffect(() => {
     if (state !== 'running') return
@@ -41,6 +48,7 @@ export function BreathPractice({ copy, locale }: { copy: DaoCopy; locale: Locale
   }
 
   function begin() {
+    if (arrival < 100) return
     sessionId.current = crypto.randomUUID()
     completionSaved.current = false
     setRemaining(duration); setReflection(''); setReflectionSaved(false); setState('running')
@@ -91,10 +99,14 @@ export function BreathPractice({ copy, locale }: { copy: DaoCopy; locale: Locale
       {state === 'idle' ? <>
         <div className="dao-duration" role="group" aria-label={copy.minutes}>{[60, 180, 300].map((seconds) => <button type="button" key={seconds} className={duration === seconds ? 'is-active' : ''} onClick={() => chooseDuration(seconds)} aria-pressed={duration === seconds}>{seconds / 60} {copy.minutes}</button>)}</div>
         <button type="button" className="dao-sound-toggle" aria-pressed={sound} onClick={() => setSound((value) => !value)}>{sound ? <Volume2 size={18} /> : <VolumeX size={18} />}{copy.sound}</button>
-        <button type="button" className="button-primary dao-practice__primary" onClick={begin}><Play size={18} />{copy.start}</button>
+        <label className="dao-arrival" htmlFor="dao-arrival">
+          <span>{arrival === 100 ? copy.start : copy.settle}</span>
+          <span className="dao-arrival__track" style={{ '--arrival': arrival } as CSSProperties}><span aria-hidden="true" style={{ transform: `scaleX(${arrival / 100})` }} /><input id="dao-arrival" type="range" min="0" max="100" step="1" value={arrival} onInput={(event) => setArrival(Number(event.currentTarget.value))} aria-valuetext={arrival === 100 ? copy.start : copy.settle} /></span>
+        </label>
+        <button type="button" className="button-primary dao-practice__primary" disabled={arrival < 100} onClick={begin}><Play size={18} />{copy.start}</button>
       </> : state === 'running' ? <div className="dao-practice__controls"><button type="button" className="button-primary" onClick={pause}><Pause size={18} />{copy.pause}</button><button type="button" className="button-secondary" onClick={finish}><Square size={16} />{copy.finish}</button></div> : state === 'paused' ? <div className="dao-practice__controls"><button type="button" className="button-primary" onClick={() => { setState('running'); if (sound) void playPracticeCue('begin') }}><Play size={18} />{copy.resume}</button><button type="button" className="button-secondary" onClick={finish}><Square size={16} />{copy.finish}</button></div> : <div className="dao-practice__reflection">
         <label htmlFor="practice-reflection">{copy.reflection}</label><textarea id="practice-reflection" className="field mt-2 min-h-32" value={reflection} onChange={(event) => { setReflection(event.target.value); setReflectionSaved(false) }} placeholder={copy.reflectionHint} />
-        <div className="mt-3 flex flex-wrap gap-3"><button type="button" className="button-primary" disabled={!reflection.trim()} onClick={() => void saveReflection()}>{reflectionSaved ? <Check size={17} /> : null}{reflectionSaved ? copy.journalSaved : copy.saveReflection}</button><button type="button" className="button-secondary" onClick={() => { setState('idle'); setRemaining(duration) }}>{copy.close}</button></div>
+        <div className="mt-3 flex flex-wrap gap-3"><button type="button" className="button-primary" disabled={!reflection.trim()} onClick={() => void saveReflection()}>{reflectionSaved ? <Check size={17} /> : null}{reflectionSaved ? copy.journalSaved : copy.saveReflection}</button><button type="button" className="button-secondary" onClick={() => { setState('idle'); setRemaining(duration); setArrival(0) }}>{copy.close}</button></div>
       </div>}
     </div>
   </section>
