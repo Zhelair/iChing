@@ -1,5 +1,5 @@
 import { Check, ChevronLeft, ChevronRight, Sprout } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import type { DaoCopy } from '../data/daoContent'
 import type { Locale } from '../domain/locales'
 import type { JournalEntry } from '../domain/types'
@@ -36,6 +36,10 @@ export function DaoLivingPractice({ copy, locale }: { copy: DaoCopy; locale: Loc
   return <section id="dao-living" className="surface dao-living scroll-mt-24" aria-labelledby="dao-living-title">
     <div className="dao-living__intro"><span className="dao-section-icon"><Sprout size={22} /></span><p className="eyebrow mt-5">{copy.living}</p><h2 id="dao-living-title" className="mt-3 text-3xl sm:text-4xl">{copy.livingTitle}</h2><p className="mt-3 leading-7 text-[var(--ink-soft)]">{copy.livingBody}</p></div>
     <div className="dao-living__journey">
+      <div className="dao-living__current" aria-hidden="true" style={{ '--living-progress': activeIndex / (fields.length - 1) } as CSSProperties}>
+        <span className="dao-living__current-line" />
+        {fields.map((item, index) => <i key={item} className={index === activeIndex ? 'is-current' : index < activeIndex || answers[item].trim() ? 'is-complete' : ''}>{index < activeIndex || answers[item].trim() ? <Check size={13} /> : index + 1}</i>)}
+      </div>
       <div className="dao-living__steps" role="tablist" aria-label={copy.livingTitle}>
         {fields.map((item, index) => <button key={item} type="button" role="tab" aria-selected={index === activeIndex} className={index === activeIndex ? 'is-active' : answers[item].trim() ? 'is-complete' : ''} onClick={() => setActiveIndex(index)}><span aria-hidden="true">{answers[item].trim() ? <Check size={14} /> : null}</span>{copy[item]}</button>)}
       </div>

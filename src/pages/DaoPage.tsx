@@ -1,7 +1,6 @@
 import { Feather, Wind } from 'lucide-react'
 import { BreathPractice } from '../components/BreathPractice'
 import { DaoLivingPractice } from '../components/DaoLivingPractice'
-import { DaoNotebook } from '../components/DaoNotebook'
 import { DaoReader } from '../components/DaoReader'
 import { DaoWaterArt } from '../components/DaoWaterArt'
 import { DAO_COPY } from '../data/daoContent'
@@ -26,7 +25,6 @@ export function DaoPage() {
 
     <div className="page-shell dao-sections">
       <DaoReader copy={copy} locale={preferences.locale} />
-      <DaoNotebook copy={copy} locale={preferences.locale} />
       <BreathPractice copy={copy} locale={preferences.locale} />
       <DaoLivingPractice copy={copy} locale={preferences.locale} />
     </div>

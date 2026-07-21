@@ -1,9 +1,40 @@
 # Yi Path — Dao study and practice platform
 
-**Status:** Product, UX, content, data, graphics, and audio plan; no implementation yet  
+**Status:** Active implementation; navigation, study reader, local notes, Journal integration, settling-breath practice, and daily-life reflection are implemented
 **Date:** 21 July 2026  
 **Primary route:** `/dao`  
 **Related plans:** `docs/10-the-way-experience-plan.md` and `docs/11-the-way-localization-blueprint.md`
+
+## Source-grounding update — 21 July 2026
+
+The Stanford Encyclopedia of Philosophy entry [Chinese Philosophy of Change](https://plato.stanford.edu/archives/sum2024/entries/chinese-change/) is now part of the editorial source trail. It is a scholarly secondary source about the *Yijing*, not a primary Daoist practice manual. Yi Path therefore uses it in a deliberately bounded way:
+
+- **Historical procedure:** the fifty/forty-nine-stalk sequence in the `Xici` can support the existing yarrow-casting experience. Present it as a documented divination procedure, with its textual and historical layer named.
+- **Interpretive study:** finitude, uncertainty, symbolism, decision-making, human agency, and competing cosmological, humanistic, and divinatory approaches can become sourced study chapters.
+- **Modern study ritual:** an interactive exercise may ask the reader to observe a situation, identify what remains unknown, attend to a symbol, and consider an adequate response. It must be labelled as a modern Yi Path exercise informed by scholarship—not an ancient ritual.
+- **Dao meditation:** settling breath and future embodied practices cannot be authenticated from this article. They remain conservative modern introductory exercises until a relevant primary text, historical study, lineage context, and qualified review support a stronger label.
+
+### Required provenance record
+
+Every future ritual, meditation, or procedure should store:
+
+```ts
+type PracticeProvenance = {
+  classification: 'historical-procedure' | 'textual-theme' | 'later-lineage' | 'modern-guided-practice'
+  tradition: 'yijing' | 'early-daoist-text' | 'historical-daoism' | 'modern-editorial'
+  primarySources: string[]
+  scholarship: string[]
+  editorialAdaptation: string
+  reviewer?: string
+  safetyReview?: string
+}
+```
+
+The visible interface should expose the classification and a short source trail. No practice should be called “ancient,” “traditional,” or “Daoist” merely because its visual language uses water, bamboo, breathing, or Chinese characters.
+
+### Current sound decision
+
+Dao practices do not use a separate ambient soundtrack. Only brief, optional interaction cues mark meaningful state changes such as arriving, beginning, pausing, and completing. The cues never carry instructions and never replace visible state.
 
 ## Product decision
 
@@ -363,6 +394,8 @@ Graphics contain no baked-in language. All titles, labels, accessible descriptio
 
 ## Music and sound system
 
+> **Superseded direction:** Dao has no ambient or practice-bed soundtrack. Retain this section only as historical exploration. The implemented direction is the brief state-change cue policy in “Current sound decision” above.
+
 Yes, the sound can be designed and implemented. The current project already synthesises ambient pads, bowls, pentatonic motifs, coin sounds, and history cues through Web Audio.
 
 ### Reusable audio architecture
@@ -545,4 +578,3 @@ The first release should prove the complete loop rather than build a huge empty 
 - Every quote and factual claim is traceable to reviewed sources.
 - Every full text or excerpt has a rights decision.
 - No streak, score, supernatural certainty, medical promise, or single definition of “a Daoist life” is imposed on the user.
-
