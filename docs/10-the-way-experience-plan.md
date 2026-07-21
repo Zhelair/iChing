@@ -2,23 +2,27 @@
 
 **Status:** Product and UX plan; no implementation yet  
 **Date:** 21 July 2026  
-**Recommended route:** `/learn/the-way`
+**Recommended routes:** `/iching` and `/dao`
+
+The expanded study, notebook, Journal, practice-player, graphics, audio, and data architecture is specified in `docs/12-dao-study-and-practice-platform.md`.
 
 ## Decision summary
 
-Build **an interactive visual essay inside Learn**, not a seventh top-level navigation item and not a long encyclopedia page.
+Give **I Ching** and **Dao** separate top-level identities without increasing the number of navigation items. Replace the current **Library + Learn** pair with **I Ching + Dao**.
 
 The existing `/learn` page already has a strong language: warm paper, editorial type, muted jade and brass, generous spacing, illustrated SVG scenes, pointer depth, in-view animation, replay controls, and small sound cues. “The Way of Change” should extend that language.
 
 The key product decisions are:
 
-1. Keep **Learn** as the navigation label in all nine languages.
-2. Let `/learn` remain the practical “how to read” lesson and add a prominent invitation to `/learn/the-way`.
-3. Make `/learn/the-way` a guided sequence of short concepts, demonstrations, and practices.
-4. Use interaction to reveal relationships: change, polarity, cycles, timing, and attention.
-5. Reuse the existing ambient sound system. Add only short semantic cues; do not add a separate autoplay music track.
-6. Lock the English meaning and sources before translating the new lesson into all nine languages.
-7. Keep the tone reflective and historically careful. Do not present philosophical interpretation as scientific fact or guaranteed metaphysics.
+1. Create an **I Ching** destination that contains the practical guide, illustrated history, and 64-hexagram library.
+2. Create a separate **Dao** destination for the interactive philosophical essay.
+3. Replace two existing navigation items rather than adding a seventh desktop item or a sixth mobile item.
+4. Keep both destinations visible on desktop and mobile so the distinction remains clear everywhere.
+5. Make `/dao` a guided sequence of short concepts, demonstrations, and practices.
+6. Use interaction to reveal relationships: change, polarity, cycles, timing, and attention.
+7. Reuse the existing ambient sound system. Add only short semantic cues; do not add a separate autoplay music track.
+8. Lock the English meaning and sources before translating the new lesson into all nine languages.
+9. Keep the tone reflective and historically careful. Do not present philosophical interpretation as scientific fact or guaranteed metaphysics.
 
 ## Why this shape fits the product
 
@@ -26,7 +30,15 @@ Yi Path is strongest when it feels like a **quiet practice**, not a fortune-tell
 
 > I understand the pattern → I can feel it through a small interaction → I can carry it into a reading.
 
-This also protects the mobile navigation. It already contains five primary destinations, the recommended maximum for a bottom bar. “The Way” belongs under Learn rather than competing with Read, Journal, Library, Learn, and Settings.
+This structure protects the mobile navigation while respecting the conceptual separation. The current mobile bar has five destinations:
+
+> Read · Journal · Library · Learn · Settings
+
+The revised bar also has five:
+
+> Read · Journal · I Ching · Dao · Settings
+
+On desktop, **Library + Learn** similarly become **I Ching + Dao**, so the total remains six when Support is included. No overflow menu, cramped sixth mobile icon, or device-specific conceptual mismatch is needed.
 
 ## Product promise for the lesson
 
@@ -36,19 +48,68 @@ The lesson is not intended to teach “all of Daoism.” It offers a careful bri
 
 ## Recommended information architecture
 
-### `/learn`
+### `/iching`
 
-Keep the current beginner lesson, line-value lab, reading order, and illustrated history. Add one feature card after the reading-order section:
+Create a calm landing page with three clear entrances:
 
-- Eyebrow: **Go deeper**
-- Title: **Explore the way change moves**
-- Body: A calm introduction to polarity, cycles, timing, and action without force.
-- CTA: **Enter The Way of Change**
-- Estimated time: **5–7 minutes**
+- **How to read** — the current beginner lesson, line-value lab, and reading order.
+- **The 64 hexagrams** — the current searchable Library.
+- **History and sources** — the current illustrated journey and source notes.
 
-### `/learn/the-way`
+This page should not become a dashboard. Use three editorial “doorway” panels with one featured entrance and two quieter supporting entrances. On mobile, stack them as a short reading journey rather than a dense grid.
 
-The page should feel like a journey with six short chapters. Each chapter must still work as plain text with motion, sound, and pointer effects disabled.
+Recommended nested routes:
+
+- `/iching/guide`
+- `/iching/hexagrams`
+- `/iching/hexagrams/:number`
+- `/iching/history`
+
+Keep `/learn`, `/start`, `/library`, and `/hexagrams/:number` as redirects or aliases during migration so saved links continue to work.
+
+### `/dao`
+
+Make `/dao` a calm doorway with two depths:
+
+1. **Start here** — the interactive visual essay described below.
+2. **Explore further** — a progressively disclosed collection of concepts, texts, traditions, and practices.
+
+The landing view should not display dozens of equally weighted cards. Feature the visual essay as the clear first path, followed by a quiet “Explore further” shelf containing five editorial entrances:
+
+- **Ideas** — dào, dé, wúwéi, zìrán, simplicity, emptiness, and related concepts.
+- **Texts** — *Daodejing*, *Zhuangzi*, *Neiye*, and later texts, each with period and attribution context.
+- **Traditions** — philosophical interpretation, religious Daoism, Zhengyi, Quanzhen, and other historical lineages without implying one uniform Daoism.
+- **Practices** — meditation, ritual, qigong, neidan, and yangsheng presented descriptively and with clear safety/scope boundaries.
+- **Connections and boundaries** — Yijing, yin-yang traditions, Taiji, Chinese medicine, and other neighbouring fields, explicitly distinguishing historical influence from shared modern association.
+
+Recommended future routes:
+
+- `/dao/start`
+- `/dao/ideas`
+- `/dao/texts`
+- `/dao/traditions`
+- `/dao/practices`
+- `/dao/connections`
+- `/dao/glossary/:term`
+
+Only `/dao` and the first visual essay belong in the initial build. The explorer can grow one reviewed module at a time without making the main experience longer.
+
+The visual essay should feel like a journey with six short chapters. Each chapter must still work as plain text with motion, sound, and pointer effects disabled.
+
+The Dao page may include small contextual links to relevant I Ching lessons, but it must not imply that the Yijing is simply a Daoist text or that Daoism is merely an explanation layer for divination.
+
+### Depth without clutter
+
+Use progressive disclosure consistently:
+
+- The first screen answers “Where should I begin?”
+- The visual essay answers “What are a few central lenses?”
+- Explorer modules answer “What else exists, and where does this idea come from?”
+- Glossary and sources answer “What exactly does this term or claim mean?”
+
+Each explorer module should show a compact context label such as **Early text**, **Later religious tradition**, **Modern practice**, **Interpretive lens**, or **Contested connection**. This prevents visually adjacent cards from implying that every concept, school, and practice has the same origin or authority.
+
+Avoid a gamified completion percentage for Dao. The purpose is orientation and return, not collecting every detail or creating a streak.
 
 #### 1. Threshold — “Change is not a verdict”
 
@@ -219,10 +280,12 @@ This is a planning map, not an instruction to implement everything at once.
 
 ### Routes and pages
 
-- `src/pages/LearnPage.tsx` — add the feature invitation.
-- `src/pages/TheWayPage.tsx` — new route-level page.
-- `src/App.tsx` — add `/learn/the-way`.
-- `src/components/AppLayout.tsx` — treat the route as the existing `study` atmosphere; keep Learn active for nested routes.
+- `src/pages/IChingPage.tsx` — new hub for guide, library, and history.
+- `src/pages/DaoPage.tsx` — new route-level interactive essay.
+- `src/pages/LearnPage.tsx` — retain as the practical guide during migration.
+- `src/pages/LibraryPage.tsx` — retain as the hexagram collection during migration.
+- `src/App.tsx` — add `/iching/*` and `/dao`, plus legacy redirects.
+- `src/components/AppLayout.tsx` — replace Library/Learn navigation entries with I Ching/Dao and preserve active state on nested routes.
 
 ### Components
 
@@ -299,8 +362,8 @@ Store the nine lesson files together under a dedicated content directory and val
 
 The smallest valuable version is:
 
-1. the Learn invitation;
-2. the new page with chapters 1–3 and 6;
+1. the I Ching hub that links to the existing guide and Library without moving their implementations yet;
+2. the new Dao page with chapters 1–3 and 6;
 3. one line transformation and one four-phase cycle interaction;
 4. no new audio engine—only one existing brush/bowl cue;
 5. English plus the full nine-locale content schema;
@@ -312,10 +375,9 @@ This slice proves the concept without committing to the more sensitive wúwéi, 
 
 - The page teaches a coherent idea even with JavaScript motion and sound disabled.
 - A visitor can finish it comfortably on a 375px phone.
-- Learn remains the only new navigation concept; no overloaded bottom bar.
+- I Ching and Dao replace Library and Learn one-for-one; the bottom bar remains at five destinations.
 - Motion is meaningful, interruptible, and reduced-motion safe.
 - Audio is optional, user-initiated, and never the sole feedback channel.
 - Every philosophical/historical claim has a recorded source or is clearly labelled as reflection.
 - All nine locales use the same validated content structure.
 - Every locale has passed in-context naturalness review, not only automated completeness checks.
-

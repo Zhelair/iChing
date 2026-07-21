@@ -42,6 +42,90 @@ Before translation begins:
 
 Canonical Chinese characters, tone-marked pinyin, hexagram numbers, line order, and casting mechanics are shared facts. A translator may localise the surrounding explanation but must not silently alter them.
 
+## Research and source hierarchy
+
+No AI overview, Reddit post, Wikipedia paragraph, or search-result summary is accepted as evidence for a published claim. These can reveal a question worth investigating, but every factual statement must resolve to the source ledger below.
+
+### Layer 1 — primary texts
+
+Use the original passages to identify what a text actually says and where it says it:
+
+- [Book of Changes / Zhouyi — Chinese Text Project](https://ctext.org/book-of-changes/ens)
+- [Daodejing — Chinese Text Project](https://ctext.org/dao-de-jing/)
+- [Zhuangzi — Chinese Text Project](https://ctext.org/zhuangzi)
+
+The Chinese Text Project is valuable for locating and comparing passages. Its available English rendering is not automatically the final modern English wording; important passages must be checked against more than one respected scholarly translation and commentary.
+
+### Layer 2 — scholarly interpretation and textual history
+
+Use peer-reviewed or specialist academic references to avoid collapsing complex traditions into slogans:
+
+- [Chinese Philosophy of Change (Yijing) — Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/chinese-change/)
+- [Daoism — Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/daoism/)
+- [Religious Daoism — Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/daoism-religion/)
+- [Laozi — Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/laozi/)
+- [Zhuangzi — Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/zhuangzi/)
+- Edward L. Shaughnessy, [*Unearthing the Changes*](https://cup.columbia.edu/book/unearthing-the-changes/9780231533300/), Columbia University Press.
+- Edward Slingerland, *Effortless Action: Wu-wei as Conceptual Metaphor and Spiritual Ideal in Early China*, Oxford University Press.
+
+These sources are used comparatively. A single encyclopedia entry or scholar does not become Yi Path’s unquestionable doctrine, especially where interpretations are contested.
+
+### Layer 3 — archaeology and material history
+
+Use museum and university collections for claims about physical objects, dates, inscriptions, and divination practice:
+
+- [Oracle Bone, Shang Dynasty — Smarthistory / Smithsonian](https://smarthistory.org/oracle-bone/)
+- [Oracle bone — Metropolitan Museum of Art](https://www.metmuseum.org/art/collection/search/60695)
+
+Material-history sources must not be stretched into unsupported claims about the direct origin of trigrams or later philosophical schools.
+
+### Layer 4 — target-language editions and terminology
+
+For each of the nine languages, consult reputable published translations and academic reference works in that language. Their purpose is to establish natural book titles, transliterations, philosophical vocabulary, quotation conventions, and established scholarly usage—not to replace the shared claim ledger with nine different factual narratives.
+
+Prefer:
+
+- university-press or academically annotated editions;
+- recognised national publishers of Chinese classics;
+- university and national-library catalogues;
+- scholarly dictionaries and encyclopedias;
+- existing reviewed terminology records in `docs/07-russian-localization-review.md`, `docs/08-bulgarian-localization-review.md`, and `docs/09-spanish-localization-review.md`.
+
+### Layer 5 — human review
+
+The final naturalness and terminology decision belongs to a qualified native-language reviewer. For philosophically sensitive passages, the ideal reviewer is both a native editor and familiar with Chinese philosophy or the relevant translation tradition.
+
+### Claim ledger
+
+Before a paragraph enters translation, record each non-trivial claim in a table or structured file:
+
+```text
+claim_id
+exact English claim
+claim type: primary-text / historical / interpretive / Yi Path reflection
+primary passage, if any
+two supporting scholarly sources for disputed or interpretive claims
+confidence and known disagreement
+approved wording and prohibited overstatement
+reviewer and review date
+```
+
+The English lesson is written from this ledger. All other languages translate the approved meaning and qualification, then use their own reputable editions to choose natural terminology. They do not independently translate a Google result or an AI answer.
+
+### Quote provenance rule
+
+Every direct quotation shown in Yi Path must record:
+
+- original work;
+- chapter, section, or passage location;
+- translator;
+- edition and year;
+- source language;
+- rights/licence status;
+- whether the displayed wording is a direct quotation, a close translation, or Yi Path’s paraphrase.
+
+Do not publish floating “ancient wisdom” quote cards with no traceable edition. When translations differ materially, either choose one named translation with a short note or paraphrase the shared idea and link to the source discussion.
+
 ## Voice standard
 
 The voice in every language should be:
@@ -140,7 +224,8 @@ Examples: Enter, Replay, Start, Pause, Resume, Exit, Next concept.
 
 Export every user-facing string for the feature:
 
-- `/learn` invitation;
+- I Ching and Dao navigation labels;
+- `/iching` hub entrances and nested navigation;
 - route title, introduction, and duration;
 - six chapters;
 - interaction controls and state announcements;
@@ -385,4 +470,3 @@ A locale is complete for “The Way of Change” only when:
 5. Final cross-locale visual sweep and terminology consistency audit.
 
 This order is for quality and layout discovery, not importance. The feature should be considered globally complete only after all nine rows meet the definition of done.
-
