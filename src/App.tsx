@@ -12,6 +12,8 @@ const HexagramPage = lazy(() => import('./pages/HexagramPage').then(({ HexagramP
 const SettingsPage = lazy(() => import('./pages/SettingsPage').then(({ SettingsPage: page }) => ({ default: page })))
 const JournalPage = lazy(() => import('./pages/JournalPage').then(({ JournalPage: page }) => ({ default: page })))
 const SupportPage = lazy(() => import('./pages/SupportPage').then(({ SupportPage: page }) => ({ default: page })))
+const DaoPage = lazy(() => import('./pages/DaoPage').then(({ DaoPage: page }) => ({ default: page })))
+const IChingPage = lazy(() => import('./pages/IChingPage').then(({ IChingPage: page }) => ({ default: page })))
 
 export function App() {
   return (
@@ -21,9 +23,13 @@ export function App() {
         <Route path="reading" element={<MethodPage />} />
         <Route path="cast/:method" element={<CastPage />} />
         <Route path="result" element={<ResultPage />} />
-        <Route path="start" element={<LearnPage />} />
-        <Route path="learn" element={<LearnPage />} />
-        <Route path="library" element={<LibraryPage />} />
+        <Route path="iching" element={<IChingPage />} />
+        <Route path="iching/guide" element={<LearnPage />} />
+        <Route path="iching/library" element={<LibraryPage />} />
+        <Route path="dao" element={<DaoPage />} />
+        <Route path="start" element={<Navigate to="/iching/guide" replace />} />
+        <Route path="learn" element={<Navigate to="/iching/guide" replace />} />
+        <Route path="library" element={<Navigate to="/iching/library" replace />} />
         <Route path="hexagrams/:number" element={<HexagramPage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="journal" element={<JournalPage />} />

@@ -15,6 +15,7 @@ type SoundContextValue = {
   playHistoryCue: (kind: 'bone' | 'stalk' | 'brush' | 'coin') => void
   previewCoinSound: () => Promise<boolean>
   setAmbientVolume: (volume: AmbientVolume) => Promise<boolean>
+  playPracticeCue: (kind: 'begin' | 'pause' | 'complete') => Promise<boolean>
 }
 
 const SoundContext = createContext<SoundContextValue | null>(null)
@@ -256,6 +257,30 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     },
     previewCoinSound: () => renderCoinToss(['heads', 'tails', 'heads'], true),
     setAmbientVolume,
+    playPracticeCue: async (kind) => {
+      const context = await ensureContext()
+      if (!context) return false
+      const now = context.currentTime + .02
+      const frequencies = kind === 'begin' ? [220, 330, 440] : kind === 'complete' ? [196, 293.66, 392] : [174.61]
+      frequencies.forEach((frequency, index) => {
+        const oscillator = context.createOscillator()
+        const gain = context.createGain()
+        const filter = context.createBiquadFilter()
+        const at = now + index * .09
+        oscillator.type = 'sine'
+        oscillator.frequency.value = frequency
+        filter.type = 'lowpass'
+        filter.frequency.value = 1300
+        gain.gain.setValueAtTime(.0001, at)
+        gain.gain.exponentialRampToValueAtTime(kind === 'pause' ? .035 : .05, at + .035)
+        gain.gain.exponentialRampToValueAtTime(.0001, at + 1.8)
+        oscillator.connect(filter).connect(gain).connect(context.destination)
+        oscillator.onended = () => { oscillator.disconnect(); filter.disconnect(); gain.disconnect() }
+        oscillator.start(at)
+        oscillator.stop(at + 1.85)
+      })
+      return true
+    },
   }), [ensureContext, renderCoinToss, setAmbientVolume])
 
   return <SoundContext.Provider value={value}>{children}</SoundContext.Provider>
