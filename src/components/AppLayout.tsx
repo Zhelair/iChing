@@ -3,6 +3,7 @@ import { Suspense, useEffect, useRef } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useI18n } from '../i18n/I18nContext'
 import { Atmosphere } from './Atmosphere'
+import { ReflectionCompanion } from './ReflectionCompanion'
 import { DAO_COPY } from '../data/daoContent'
 
 const navItems = [
@@ -24,7 +25,7 @@ export function AppLayout() {
     ? 'home'
     : pathname === '/iching/reading' || ritualMode
       ? 'ritual'
-        : pathname === '/result' || pathname === '/journal'
+        : pathname === '/result' || pathname.startsWith('/journal')
         ? 'reflection'
         : pathname.startsWith('/iching') || pathname === '/learn' || pathname === '/start' || pathname === '/library' || pathname.startsWith('/hexagrams/') || pathname.startsWith('/dao')
           ? 'study'
@@ -120,6 +121,8 @@ export function AppLayout() {
           <div key={pathname} className="route-view"><Outlet /></div>
         </Suspense>
       </main>
+
+      <ReflectionCompanion />
 
       {!ritualMode ? <nav className="mobile-navigation fixed inset-x-3 bottom-3 z-40 grid grid-cols-5 rounded-[1.35rem] border border-white/20 bg-[var(--obsidian)] p-1.5 text-white shadow-2xl lg:hidden" aria-label={t('nav.primaryLabel')}>
         {navItems.filter(({ desktopOnly }) => !desktopOnly).map(({ to, key, icon: Icon, end }) => (

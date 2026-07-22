@@ -290,6 +290,7 @@
     },
     "journal": {
       "yarrow": "Achillée",
+      "beads": "16 perles",
       "eyebrow": "Pratique privée · journal local",
       "title": "Une trace de vos rencontres avec le changement.",
       "body": "Revenez aux questions, affinez vos notes et remarquez les images récurrentes sans transformer la réflexion en score.",
@@ -400,6 +401,7 @@
         "digital": "Pièces numériques",
         "physical": "Pièces réelles",
         "yarrow": "Tiges d’achillée",
+        "beads": "16 perles colorées",
         "direct": "Saisie directe"
       },
       "values": {

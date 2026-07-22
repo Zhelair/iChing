@@ -4,11 +4,12 @@ import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
 import { useSound } from '../audio/SoundContext'
 import { HexagramFigure } from '../components/HexagramFigure'
 import { HEXAGRAMS } from '../data/hexagrams'
-import { castCoins, castYarrowProcedure, createCastLine, type YarrowProcedure } from '../domain/casting'
+import { BEAD_TOKENS, castCoins, castYarrowProcedure, createCastLine, drawBead, type BeadToken, type YarrowProcedure } from '../domain/casting'
 import { isBuiltInContentLocale } from '../domain/locales'
 import { createReading, linesFromKnownHexagram } from '../domain/reading'
 import type { CastLine, CoinSide, LineValue, ReadingMethod } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
+import { beadCopyFor, type BeadCopy } from '../i18n/featureCopy'
 import type { TranslationKey } from '../i18n/translations'
 import { getUiLocalePack } from '../i18n/uiLocalePacks'
 import { saveReading } from '../storage/db'
@@ -129,6 +130,48 @@ function YarrowWorkshop({ procedure, step, animatingStep, phase, ritualDuration,
   </div>
 }
 
+type BeadPhase = 'idle' | 'mixing' | 'selected' | 'returning'
+
+function BeadWorkshop({ draw, lastDraw, phase, lineNumber, onDraw, actionRef, copy: c, t }: { draw: BeadToken | null; lastDraw: BeadToken | null; phase: BeadPhase; lineNumber: number; onDraw: () => void; actionRef: RefObject<HTMLButtonElement | null>; copy: BeadCopy; t: Translator }) {
+  const visibleSelection = phase === 'selected' || phase === 'returning' ? draw : null
+  const displayed = visibleSelection ?? lastDraw
+  const phaseLabel = phase === 'mixing' ? c.mixing : phase === 'selected' ? c.selected : phase === 'returning' ? c.returning : ''
+
+  return <div className={`bead-workshop is-${phase}`} aria-busy={phase !== 'idle'}>
+    <div className="bead-vessel" aria-hidden="true">
+      <div className="bead-vessel__glow" />
+      <div className="bead-field">
+        {BEAD_TOKENS.map((token) => <i
+          key={token.id}
+          className={`bead-token bead-token--${token.tone} ${visibleSelection?.id === token.id ? 'is-selected' : ''} ${visibleSelection && visibleSelection.id !== token.id ? 'is-quiet' : ''}`}
+          style={{ '--bead-index': token.bucket, '--bead-column': token.bucket % 5, '--bead-row': Math.floor(token.bucket / 5) } as CSSProperties}
+        ><span>{token.value}</span></i>)}
+      </div>
+      <span className="bead-vessel__rim" />
+    </div>
+
+    <div className="bead-distribution" aria-label={c.methodBody}>
+      {([6, 9, 7, 8] as LineValue[]).map((value) => {
+        const token = BEAD_TOKENS.find((item) => item.value === value)!
+        const count = BEAD_TOKENS.filter((item) => item.value === value).length
+        return <div key={value} className={visibleSelection?.value === value ? 'is-current' : ''}>
+          <span className={`bead-swatch bead-swatch--${token.tone}`} aria-hidden="true" />
+          <strong>{count} × {value}</strong>
+          <small>{t(lineMeta[value].nameKey)} · {count}/16</small>
+        </div>
+      })}
+    </div>
+
+    {phase !== 'idle' ? <div className={`bead-ritual-status is-${phase}`} role="status" aria-live="polite" aria-atomic="true"><span aria-hidden="true" /><p>{phaseLabel}</p></div> : null}
+    {phase === 'idle' && displayed ? <div className={`bead-result ${displayed.value === 6 || displayed.value === 9 ? 'is-changing' : ''}`} role="status">
+      <span className={`bead-result__token bead-result__token--${displayed.tone}`} aria-hidden="true">{displayed.value}</span>
+      <div><p>{c.colors[displayed.tone]} · {displayed.value} · {t(lineMeta[displayed.value].nameKey)}</p><small>{t(lineMeta[displayed.value].effectKey)}</small></div>
+    </div> : null}
+    {phase === 'idle' && lastDraw ? <p className="bead-complete-set"><Check size={15} aria-hidden="true" /> {c.completeSet}</p> : null}
+    {lineNumber <= 6 ? <button ref={actionRef} type="button" className="button-primary ritual-next-action w-full" onClick={onDraw} disabled={phase !== 'idle'}>{phase !== 'idle' ? phaseLabel : lineNumber === 1 ? c.drawFirst : c.drawNext}</button> : null}
+  </div>
+}
+
 function Preparation({ question, t, onReady }: { question: string; t: Translator; onReady: () => void }) {
   return (
     <section className="surface preparation-card mt-8 overflow-hidden p-6 sm:p-9" aria-labelledby="preparation-title">
@@ -174,7 +217,7 @@ function RitualCue({ emphasizeThird, question, lineCount, t }: { emphasizeThird:
 
 export function CastPage() {
   const { method } = useParams()
-  if (!['digital', 'physical', 'yarrow', 'direct'].includes(method ?? '')) return <Navigate to="/iching/reading" replace />
+  if (!['digital', 'physical', 'yarrow', 'beads', 'direct'].includes(method ?? '')) return <Navigate to="/iching/reading" replace />
 
   return <CastFlow method={method as ReadingMethod} />
 }
@@ -184,6 +227,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
   const yarrow = isBuiltInContentLocale(preferences.locale)
     ? yarrowCopy[preferences.locale]
     : getUiLocalePack(preferences.locale).features.castYarrow
+  const beads = beadCopyFor(preferences.locale)
   const { playCoinToss, playHistoryCue } = useSound()
   const navigate = useNavigate()
   const [question] = useState(getDraftQuestion)
@@ -197,9 +241,13 @@ function CastFlow({ method }: { method: ReadingMethod }) {
   const [yarrowStep, setYarrowStep] = useState(0)
   const [yarrowAnimatingStep, setYarrowAnimatingStep] = useState<number | null>(null)
   const [yarrowPhase, setYarrowPhase] = useState<YarrowPhase>('idle')
+  const [beadDraw, setBeadDraw] = useState<BeadToken | null>(null)
+  const [lastBead, setLastBead] = useState<BeadToken | null>(null)
+  const [beadPhase, setBeadPhase] = useState<BeadPhase>('idle')
   const [autoFocusStep, setAutoFocusStep] = useState(0)
   const revealTimerRef = useRef<number | null>(null)
   const yarrowTimersRef = useRef<number[]>([])
+  const beadTimersRef = useRef<number[]>([])
   const castLockRef = useRef(false)
   const yarrowLockRef = useRef(false)
   const ritualCueRef = useRef<HTMLDivElement>(null)
@@ -209,12 +257,13 @@ function CastFlow({ method }: { method: ReadingMethod }) {
   useEffect(() => () => {
     if (revealTimerRef.current !== null) window.clearTimeout(revealTimerRef.current)
     yarrowTimersRef.current.forEach((timer) => window.clearTimeout(timer))
+    beadTimersRef.current.forEach((timer) => window.clearTimeout(timer))
   }, [])
 
   useEffect(() => {
     if (!autoFocusStep) return
 
-    const emphasizeThird = method === 'digital' && lines.length === 2
+    const emphasizeThird = (method === 'digital' || method === 'beads') && lines.length === 2
     const target = emphasizeThird
       ? ritualCueRef.current
       : lines.length === 6
@@ -235,6 +284,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
     digital: [t('cast.digital.title'), t('cast.digitalBodyRitual')],
     physical: [t('cast.physical.title'), t('cast.physical.body')],
     yarrow: [yarrow.title, yarrow.body],
+    beads: [beads.title, beads.body],
     direct: [t('cast.direct.title'), t('cast.direct.body')],
   } as const
 
@@ -302,6 +352,31 @@ function CastFlow({ method }: { method: ReadingMethod }) {
     ]
   }
 
+  function addBeadLine() {
+    if (castLockRef.current || beadPhase !== 'idle' || lines.length >= 6) return
+    castLockRef.current = true
+    const selected = drawBead()
+    const committed = createCastLine((lines.length + 1) as CastLine['position'], selected.value)
+    const times = preferences.reduceMotion ? [20, 40, 70] : [560, 1280, 1780]
+    setLastBead(null)
+    setBeadDraw(selected)
+    setBeadPhase('mixing')
+    playHistoryCue('coin')
+    beadTimersRef.current = [
+      window.setTimeout(() => setBeadPhase('selected'), times[0]),
+      window.setTimeout(() => setBeadPhase('returning'), times[1]),
+      window.setTimeout(() => {
+        setLines((current) => [...current, committed])
+        setLastBead(selected)
+        setBeadDraw(null)
+        setBeadPhase('idle')
+        castLockRef.current = false
+        beadTimersRef.current = []
+        setAutoFocusStep((current) => current + 1)
+      }, times[2]),
+    ]
+  }
+
   function toggleMoving(position: number) {
     setMovingPositions((current) => current.includes(position) ? current.filter((item) => item !== position) : [...current, position])
   }
@@ -316,10 +391,10 @@ function CastFlow({ method }: { method: ReadingMethod }) {
     : ''
 
   return (
-    <div className={`page-shell cast-page py-8 sm:py-14 ${method === 'digital' && lines.length === 2 ? 'cast-page--third-focus' : ''}`}>
+    <div className={`page-shell cast-page py-8 sm:py-14 ${(method === 'digital' || method === 'beads') && lines.length === 2 ? 'cast-page--third-focus' : ''}`}>
       <div className="reading-column">
         <Link to="/iching/reading" className="button-quiet -ml-3 mb-5"><ArrowLeft size={18} aria-hidden="true" /> {t('common.back')}</Link>
-        <p className="eyebrow">{method === 'digital' ? t('method.digital.title') : method === 'physical' ? t('method.physical.title') : method === 'yarrow' ? yarrow.eyebrow : t('method.direct.title')}</p>
+        <p className="eyebrow">{method === 'digital' ? t('method.digital.title') : method === 'physical' ? t('method.physical.title') : method === 'yarrow' ? yarrow.eyebrow : method === 'beads' ? beads.eyebrow : t('method.direct.title')}</p>
         <h1 className="mt-3 text-4xl font-medium leading-tight tracking-[-.03em]">{titles[method][0]}</h1>
         <p className="mt-3 max-w-2xl leading-7 text-[var(--ink-soft)]">{titles[method][1]}</p>
         {method === 'physical' ? <aside className="physical-coin-note mt-5"><CircleDot size={20} aria-hidden="true" /><p>{t('cast.physical.setAside')}</p></aside> : null}
@@ -328,10 +403,10 @@ function CastFlow({ method }: { method: ReadingMethod }) {
 
         {prepared && method !== 'direct' ? (
           <>
-            {lines.length < 6 ? <div ref={ritualCueRef} className="ritual-cue-anchor"><RitualCue emphasizeThird={method === 'digital' || method === 'physical'} question={question} lineCount={lines.length} t={t} /></div> : null}
+            {lines.length < 6 ? <div ref={ritualCueRef} className="ritual-cue-anchor"><RitualCue emphasizeThird={method === 'digital' || method === 'physical' || method === 'beads'} question={question} lineCount={lines.length} t={t} /></div> : null}
             <div className="mt-5 grid gap-4 sm:grid-cols-[1fr_1fr] sm:items-stretch sm:gap-5">
               <CastProgress lines={lines} t={t} />
-              <div className={`surface ritual-card ${pending ? 'is-casting' : ''}`} aria-busy={Boolean(pending)}>
+              <div className={`surface ritual-card ${pending || beadPhase !== 'idle' ? 'is-casting' : ''}`} aria-busy={Boolean(pending) || beadPhase !== 'idle'}>
                 <div>
                   <p className="text-xs font-extrabold uppercase tracking-[.16em] text-[var(--jade)]">{t('common.line')} {Math.min(lines.length + 1, 6)} {t('common.of')} 6</p>
                   <p className="mt-2 text-sm text-[var(--ink-soft)]">{lines.length ? `${lines.length} / 6` : '—'}</p>
@@ -354,6 +429,8 @@ function CastFlow({ method }: { method: ReadingMethod }) {
                   </>
                 ) : method === 'yarrow' ? (
                   <YarrowWorkshop procedure={yarrowProcedure} step={yarrowStep} animatingStep={yarrowAnimatingStep} phase={yarrowPhase} ritualDuration={yarrowTimings[2]} lineNumber={Math.max(1, lines.length + (yarrowStep === 3 ? 0 : 1))} onAdvance={advanceYarrow} actionRef={ritualActionRef} copy={yarrow} />
+                ) : method === 'beads' ? (
+                  <BeadWorkshop draw={beadDraw} lastDraw={lastBead} phase={beadPhase} lineNumber={lines.length + 1} onDraw={addBeadLine} actionRef={ritualActionRef} copy={beads} t={t} />
                 ) : (
                   <fieldset className="w-full">
                     <legend className="mb-4 text-sm font-semibold">{t('cast.chooseTotal')} {lines.length + 1}</legend>
@@ -397,10 +474,10 @@ function CastFlow({ method }: { method: ReadingMethod }) {
 
         {prepared ? (
           <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
-            {method !== 'direct' && lines.length > 0 ? <button type="button" className="button-quiet" onClick={() => { setLines((current) => current.slice(0, -1)); if (method === 'yarrow') { setYarrowProcedure(null); setYarrowStep(0) } }} disabled={Boolean(pending) || yarrowPhase !== 'idle'}><RotateCcw size={17} aria-hidden="true" /> {t('cast.undo')}</button> : <span />}
+            {method !== 'direct' && lines.length > 0 ? <button type="button" className="button-quiet" onClick={() => { setLines((current) => current.slice(0, -1)); if (method === 'yarrow') { setYarrowProcedure(null); setYarrowStep(0) } if (method === 'beads') setLastBead(null) }} disabled={Boolean(pending) || yarrowPhase !== 'idle' || beadPhase !== 'idle'}><RotateCcw size={17} aria-hidden="true" /> {t('cast.undo')}</button> : <span />}
             {method === 'direct' ? (
               <button type="button" className="button-primary" onClick={() => finish(linesFromKnownHexagram(knownId, movingPositions))} disabled={isFinishing}>{t('cast.complete')}</button>
-            ) : lines.length === 6 && !pending ? (
+            ) : lines.length === 6 && !pending && beadPhase === 'idle' ? (
               <button ref={completeActionRef} type="button" className="button-primary ritual-next-action" onClick={() => finish(lines)} disabled={isFinishing}>{t('cast.complete')}</button>
             ) : null}
           </div>

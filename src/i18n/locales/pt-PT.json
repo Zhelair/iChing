@@ -290,6 +290,7 @@
     },
     "journal": {
       "yarrow": "Milefólio",
+      "beads": "16 contas",
       "eyebrow": "Prática privada · diário local",
       "title": "Um registo de encontros com a mudança.",
       "body": "Regresse às perguntas, aperfeiçoe as suas notas e repare nas imagens recorrentes sem transformar a reflexão numa pontuação.",
@@ -400,6 +401,7 @@
         "digital": "Moedas digitais",
         "physical": "Moedas reais",
         "yarrow": "Varetas de milefólio",
+        "beads": "16 contas coloridas",
         "direct": "Introdução direta"
       },
       "values": {

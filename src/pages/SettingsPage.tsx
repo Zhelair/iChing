@@ -3,12 +3,15 @@ import { useEffect, useRef, useState, type ChangeEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { useSound } from '../audio/SoundContext'
 import { PageIntro } from '../components/PageIntro'
+import { CompanionSettings } from '../components/CompanionSettings'
+import { AiSettings } from '../components/AiSettings'
 import { isBuiltInContentLocale, LOCALE_NAMES, SUPPORTED_LOCALES } from '../domain/locales'
 import type { AmbientVolume, Locale, Theme } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 import { getUiLocalePack } from '../i18n/uiLocalePacks'
 import { clearAllLocalData, importReadings } from '../storage/db'
 import { createExport, downloadExport, MAX_EXPORT_FILE_BYTES, parseExport } from '../storage/export'
+import { useAi } from '../ai/AiContext'
 
 function Toggle({ checked, onChange, label, body }: { checked: boolean; onChange: (value: boolean) => void; label: string; body?: string }) {
   return (
@@ -76,6 +79,7 @@ const supportCopy: Partial<Record<Locale, SupportCopy>> = {
 export function SettingsPage() {
   const { preferences, setPreferences, updatePreference, setLocale, pendingLocale, localeError, t } = useI18n()
   const { previewCoinSound, setAmbientVolume } = useSound()
+  const ai = useAi()
   const [mode, setMode] = useState<'merge' | 'replace'>('merge')
   const [message, setMessage] = useState('')
   const [audioMessage, setAudioMessage] = useState('')
@@ -157,7 +161,9 @@ export function SettingsPage() {
     await clearAllLocalData()
     sessionStorage.removeItem('yi-path:current-reading:v1')
     sessionStorage.removeItem('yi-path:question:v1')
-    setPreferences({ locale: 'en', theme: 'bamboo-mist', sound: true, music: true, ambientVolume: 1, reduceMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches })
+    ai.lock()
+    ai.forgetEncrypted()
+    setPreferences({ locale: 'en', theme: 'bamboo-mist', sound: true, music: true, ambientVolume: 1, reduceMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches, aiEnabled: false, companionPet: 'cat', companionSize: 'normal', petSound: true, petMotion: true })
     setMessage(t('settings.cleared'))
     setClearOpen(false)
   }
@@ -234,6 +240,9 @@ export function SettingsPage() {
           <Toggle checked={preferences.reduceMotion} onChange={(value) => updatePreference('reduceMotion', value)} label={t('settings.motion')} body={t('settings.motionBody')} />
           {audioMessage ? <p className="mb-4 rounded-2xl bg-[var(--jade-light)] px-4 py-3 text-sm font-semibold text-[var(--jade)]" role="status">{audioMessage}</p> : null}
         </section>
+
+        <CompanionSettings />
+        <AiSettings />
 
         <section className="surface mt-5 p-5 sm:p-7" aria-labelledby="privacy-security-title">
           <div className="flex items-start gap-4">

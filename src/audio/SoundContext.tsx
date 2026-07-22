@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, type ReactNode } from 'react'
-import type { AmbientVolume, CoinSide } from '../domain/types'
+import type { AmbientVolume, CoinSide, CompanionPet } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 import {
   createMeditationGraph,
@@ -16,6 +16,7 @@ type SoundContextValue = {
   previewCoinSound: () => Promise<boolean>
   setAmbientVolume: (volume: AmbientVolume) => Promise<boolean>
   playPracticeCue: (kind: 'begin' | 'pause' | 'complete') => Promise<boolean>
+  playPetSound: (pet: CompanionPet, action: 0 | 1 | 2) => Promise<boolean>
 }
 
 const SoundContext = createContext<SoundContextValue | null>(null)
@@ -32,6 +33,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
   const contextRef = useRef<AudioContext | null>(null)
   const ambientRef = useRef<MeditationGraph | null>(null)
   const soundEnabledRef = useRef(preferences.sound)
+  const petSoundEnabledRef = useRef(preferences.petSound)
   const ambientWantedRef = useRef(preferences.ambientVolume > 0)
   const ambientVolumeRef = useRef<0.5 | 1>(preferences.ambientVolume || 0.5)
   const ambientOperationRef = useRef(0)
@@ -39,6 +41,10 @@ export function SoundProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     soundEnabledRef.current = preferences.sound
   }, [preferences.sound])
+
+  useEffect(() => {
+    petSoundEnabledRef.current = preferences.petSound
+  }, [preferences.petSound])
 
   const ensureContext = useCallback(async () => {
     try {
@@ -233,6 +239,63 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     return true
   }, [ensureContext])
 
+  const playPetSound = useCallback(async (pet: CompanionPet, action: 0 | 1 | 2) => {
+    if (!petSoundEnabledRef.current) return false
+    const context = await ensureContext()
+    if (!context) return false
+    const now = context.currentTime + .015
+
+    const tone = (frequency: number, endFrequency: number, at: number, duration: number, peak: number, type: OscillatorType = 'sine') => {
+      const oscillator = context.createOscillator()
+      const gain = context.createGain()
+      const filter = context.createBiquadFilter()
+      oscillator.type = type
+      oscillator.frequency.setValueAtTime(frequency, at)
+      oscillator.frequency.exponentialRampToValueAtTime(Math.max(30, endFrequency), at + duration)
+      filter.type = 'lowpass'
+      filter.frequency.value = pet === 'cat' ? 2300 : 1500
+      gain.gain.setValueAtTime(.0001, at)
+      gain.gain.exponentialRampToValueAtTime(peak, at + .025)
+      gain.gain.exponentialRampToValueAtTime(.0001, at + duration)
+      oscillator.connect(filter).connect(gain).connect(context.destination)
+      oscillator.onended = () => { oscillator.disconnect(); filter.disconnect(); gain.disconnect() }
+      oscillator.start(at)
+      oscillator.stop(at + duration + .02)
+    }
+
+    const breath = (at: number, duration: number, peak: number, frequency: number) => {
+      const source = context.createBufferSource()
+      const filter = context.createBiquadFilter()
+      const gain = context.createGain()
+      source.buffer = noiseBuffer(context, duration)
+      filter.type = 'bandpass'
+      filter.frequency.value = frequency
+      filter.Q.value = .7
+      gain.gain.setValueAtTime(.0001, at)
+      gain.gain.exponentialRampToValueAtTime(peak, at + .03)
+      gain.gain.exponentialRampToValueAtTime(.0001, at + duration)
+      source.connect(filter).connect(gain).connect(context.destination)
+      source.onended = () => { source.disconnect(); filter.disconnect(); gain.disconnect() }
+      source.start(at)
+      source.stop(at + duration)
+    }
+
+    if (pet === 'cat' && action === 0) {
+      for (let index = 0; index < 5; index += 1) tone(52, 58, now + index * .14, .18, .025, 'triangle')
+    } else if (pet === 'cat' && action === 1) {
+      tone(520, 920, now, .17, .07, 'sine'); tone(850, 610, now + .16, .22, .055, 'triangle')
+    } else if (pet === 'cat') {
+      breath(now, .34, .055, 3100)
+    } else if (action === 0) {
+      tone(190, 105, now, .18, .085, 'sawtooth'); tone(240, 135, now + .22, .15, .065, 'sawtooth')
+    } else if (action === 1) {
+      tone(360, 210, now, .13, .06, 'triangle'); tone(430, 250, now + .18, .12, .055, 'triangle'); breath(now + .38, .22, .025, 1500)
+    } else {
+      breath(now, .16, .028, 1300); breath(now + .22, .16, .028, 1300); tone(330, 190, now + .43, .18, .055, 'triangle')
+    }
+    return true
+  }, [ensureContext])
+
   const value = useMemo<SoundContextValue>(() => ({
     playCoinToss: (coins) => { void renderCoinToss(coins) },
     playHistoryCue: (kind) => {
@@ -281,7 +344,8 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       })
       return true
     },
-  }), [ensureContext, renderCoinToss, setAmbientVolume])
+    playPetSound,
+  }), [ensureContext, playPetSound, renderCoinToss, setAmbientVolume])
 
   return <SoundContext.Provider value={value}>{children}</SoundContext.Provider>
 }

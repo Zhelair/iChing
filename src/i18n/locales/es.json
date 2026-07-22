@@ -290,6 +290,7 @@
     },
     "journal": {
       "yarrow": "Milenrama",
+      "beads": "16 cuentas",
       "eyebrow": "Práctica privada · diario local",
       "title": "Un registro de encuentros con el cambio.",
       "body": "Vuelve a tus preguntas, afina tus notas y observa las imágenes recurrentes sin convertir la reflexión en una puntuación.",
@@ -400,6 +401,7 @@
         "digital": "Monedas digitales",
         "physical": "Monedas corrientes",
         "yarrow": "Tallos de milenrama",
+        "beads": "16 cuentas de colores",
         "direct": "Entrada manual"
       },
       "values": {

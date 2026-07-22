@@ -290,6 +290,7 @@
     },
     "journal": {
       "yarrow": "Krwawnik",
+      "beads": "16 koralików",
       "eyebrow": "Prywatna praktyka · lokalny dziennik",
       "title": "Zapis spotkań ze zmianą.",
       "body": "Wróć do pytań, dopracuj swoje notatki i zwróć uwagę na powtarzające się obrazy, nie zamieniając jednak refleksji w wynik.",
@@ -400,6 +401,7 @@
         "digital": "Monety cyfrowe",
         "physical": "Prawdziwe monety",
         "yarrow": "Łodygi krwawnika",
+        "beads": "16 kolorowych koralików",
         "direct": "Wprowadzenie bezpośrednie"
       },
       "values": {

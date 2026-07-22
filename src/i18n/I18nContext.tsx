@@ -14,6 +14,11 @@ const defaultPreferences: Preferences = {
   music: true,
   ambientVolume: 1,
   reduceMotion: typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  aiEnabled: false,
+  companionPet: 'cat',
+  companionSize: 'normal',
+  petSound: true,
+  petMotion: true,
 }
 
 function readPreferences(): Preferences {
@@ -31,6 +36,11 @@ function readPreferences(): Preferences {
       theme: parsed.theme === 'daylight' || parsed.theme === 'ink-night' || parsed.theme === 'bamboo-mist' ? parsed.theme : defaultPreferences.theme,
       sound: typeof parsed.sound === 'boolean' ? parsed.sound : defaultPreferences.sound,
       reduceMotion: typeof parsed.reduceMotion === 'boolean' ? parsed.reduceMotion : defaultPreferences.reduceMotion,
+      aiEnabled: typeof parsed.aiEnabled === 'boolean' ? parsed.aiEnabled : defaultPreferences.aiEnabled,
+      companionPet: parsed.companionPet === 'dog' ? 'dog' : 'cat',
+      companionSize: parsed.companionSize === 'large' ? 'large' : 'normal',
+      petSound: typeof parsed.petSound === 'boolean' ? parsed.petSound : defaultPreferences.petSound,
+      petMotion: typeof parsed.petMotion === 'boolean' ? parsed.petMotion : defaultPreferences.petMotion,
       ambientVolume,
       music: ambientVolume > 0,
     }

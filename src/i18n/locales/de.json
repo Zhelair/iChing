@@ -290,6 +290,7 @@
     },
     "journal": {
       "yarrow": "Schafgarbe",
+      "beads": "16 Perlen",
       "eyebrow": "Private Praxis · lokales Tagebuch",
       "title": "Eine Aufzeichnung Ihrer Begegnungen mit dem Wandel.",
       "body": "Kehren Sie zu Fragen zurück, verfeinern Sie Ihre Notizen und bemerken Sie wiederkehrende Bilder, ohne die Betrachtung in eine Wertung zu verwandeln.",
@@ -400,6 +401,7 @@
         "digital": "Digitale Münzen",
         "physical": "Echte Münzen",
         "yarrow": "Schafgarbenstängel",
+        "beads": "16 farbige Perlen",
         "direct": "Direkte Eingabe"
       },
       "values": {

@@ -1,10 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import { HEXAGRAMS, findHexagramByPattern } from '../data/hexagrams'
 import {
+  BEAD_TOKENS,
+  beadForBucket,
   castCoins,
   castYarrowProcedure,
   coinTotal,
   createCastLine,
+  drawBead,
   patternFromLines,
   polarityFor,
   transformedPolarityFor,
@@ -73,6 +76,46 @@ describe('yarrow-stalk procedure', () => {
     }
 
     expect(counts).toEqual({ 6: 1, 7: 5, 8: 7, 9: 3 })
+  })
+})
+
+describe('sixteen colored beads', () => {
+  it('maps every exact bucket to the 1:3:5:7 token groups', () => {
+    expect(BEAD_TOKENS).toHaveLength(16)
+    expect(Array.from({ length: 16 }, (_, bucket) => beadForBucket(bucket).value)).toEqual([
+      6,
+      9, 9, 9,
+      7, 7, 7, 7, 7,
+      8, 8, 8, 8, 8, 8, 8,
+    ])
+    expect(Array.from({ length: 16 }, (_, bucket) => beadForBucket(bucket).tone)).toEqual([
+      'plum',
+      'gold', 'gold', 'gold',
+      'forest', 'forest', 'forest', 'forest', 'forest',
+      'blue-jade', 'blue-jade', 'blue-jade', 'blue-jade', 'blue-jade', 'blue-jade', 'blue-jade',
+    ])
+  })
+
+  it('returns all four outcomes from deterministic unsigned words', () => {
+    expect(drawBead(0).value).toBe(6)
+    expect(drawBead(1).value).toBe(9)
+    expect(drawBead(4).value).toBe(7)
+    expect(drawBead(9).value).toBe(8)
+    expect(drawBead(0xffffffff).bucket).toBe(15)
+  })
+
+  it('builds bottom-up and transforms only the changing bead lines', () => {
+    const buckets = [1, 9, 4, 0, 8, 15]
+    const lines = buckets.map((bucket, index) =>
+      createCastLine((index + 1) as 1 | 2 | 3 | 4 | 5 | 6, beadForBucket(bucket).value),
+    )
+
+    expect(lines.map((line) => [line.position, line.value])).toEqual([
+      [1, 9], [2, 8], [3, 7], [4, 6], [5, 7], [6, 8],
+    ])
+    expect(patternFromLines(lines)).toEqual(['yang', 'yin', 'yang', 'yin', 'yang', 'yin'])
+    expect(patternFromLines(lines, true)).toEqual(['yin', 'yin', 'yang', 'yang', 'yang', 'yin'])
+    expect(lines.filter((line) => line.moving).map((line) => line.position)).toEqual([1, 4])
   })
 })
 

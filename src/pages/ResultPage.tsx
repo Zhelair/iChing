@@ -1,8 +1,10 @@
 import { ArrowRight, BookOpen, Check, ChevronRight } from 'lucide-react'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { HexagramFigure } from '../components/HexagramFigure'
 import { ReadingExportActions } from '../components/ReadingExportActions'
+import { AiReflectionPanel } from '../components/AiReflectionPanel'
+import { buildReadingPacket } from '../ai/sourcePackets'
 import { getHexagram } from '../data/hexagrams'
 import type { LineValue, Reading } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
@@ -35,10 +37,11 @@ function ReadingHexagram({ reading, type }: { reading: Reading; type: 'primary' 
 }
 
 export function ResultPage() {
-  const { editorialFor, t } = useI18n()
+  const { editorialFor, preferences, t } = useI18n()
   const [reading, setReading] = useState(getCurrentReading)
   const [note, setNote] = useState(reading?.note ?? '')
   const [saved, setSaved] = useState(false)
+  const aiPacket = useMemo(() => reading ? buildReadingPacket(reading, preferences.locale, (id) => editorialFor(getHexagram(id))) : null, [editorialFor, preferences.locale, reading])
 
   if (!reading) {
     return (
@@ -144,6 +147,8 @@ export function ResultPage() {
           </ul>
           <Link to={`/hexagrams/${primary.id}`} className="button-secondary mt-7"><BookOpen size={17} aria-hidden="true" /> {t('result.explore')}</Link>
         </section>
+
+        {aiPacket ? <AiReflectionPanel packet={aiPacket} /> : null}
 
         <section className={`result-journal surface p-6 sm:p-8 ${note.trim() ? 'has-note' : 'is-empty'}`}>
           <p className="eyebrow">{t('result.journal')}</p>
