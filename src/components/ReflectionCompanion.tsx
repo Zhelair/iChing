@@ -5,6 +5,7 @@ import { useSound } from '../audio/SoundContext'
 import { companionCopyFor } from '../i18n/companionCopy'
 import { aiCopyFor } from '../i18n/aiCopy'
 import { useI18n } from '../i18n/I18nContext'
+import { companionRoutineForPath, welcomeAnimation } from '../companion/behavior'
 import { CompanionPet, type CompanionAnimation } from './CompanionPet'
 
 function actionAnimation(pet: 'cat' | 'dog', action: 0 | 1 | 2): CompanionAnimation {
@@ -20,15 +21,28 @@ export function ReflectionCompanion() {
   const aiCopy = aiCopyFor(preferences.locale)
   const [open, setOpen] = useState(false)
   const [animation, setAnimation] = useState<CompanionAnimation>('idle')
+  const [animationRun, setAnimationRun] = useState(0)
   const resetTimer = useRef<number | null>(null)
-  const ritual = pathname.startsWith('/cast/') || pathname === '/iching/reading'
-  const hidden = !preferences.aiEnabled || pathname === '/settings'
+  const routine = companionRoutineForPath(pathname)
+  const ritual = routine.scene === 'ritual'
+  const hidden = !preferences.companionEnabled
   const motion = preferences.petMotion && !preferences.reduceMotion
 
   useEffect(() => {
     setOpen(false)
-    setAnimation(ritual ? 'sleep' : 'idle')
-  }, [pathname, ritual])
+    setAnimation(routine.restingPose)
+    setAnimationRun((current) => current + 1)
+    if (!motion || routine.welcomeDelayMs === null) return
+    const welcomeTimer = window.setTimeout(() => {
+      setAnimation(welcomeAnimation(preferences.companionPet))
+      setAnimationRun((current) => current + 1)
+      resetTimer.current = window.setTimeout(() => {
+        setAnimation(routine.restingPose)
+        setAnimationRun((current) => current + 1)
+      }, 2400)
+    }, routine.welcomeDelayMs)
+    return () => window.clearTimeout(welcomeTimer)
+  }, [motion, pathname, preferences.companionPet, routine.restingPose, routine.welcomeDelayMs])
 
   useEffect(() => () => {
     if (resetTimer.current) window.clearTimeout(resetTimer.current)
@@ -40,8 +54,12 @@ export function ReflectionCompanion() {
     if (resetTimer.current) window.clearTimeout(resetTimer.current)
     const next = actionAnimation(preferences.companionPet, action)
     setAnimation(motion ? next : 'idle')
+    setAnimationRun((current) => current + 1)
     void playPetSound(preferences.companionPet, action)
-    resetTimer.current = window.setTimeout(() => setAnimation('idle'), motion ? 2600 : 350)
+    resetTimer.current = window.setTimeout(() => {
+      setAnimation(routine.restingPose)
+      setAnimationRun((current) => current + 1)
+    }, motion ? 2600 : 350)
   }
 
   return (
@@ -53,7 +71,7 @@ export function ReflectionCompanion() {
             <button type="button" onClick={() => setOpen(false)} aria-label={copy.close}><X size={18} aria-hidden="true" /></button>
           </header>
           <div className="reflection-companion__panel-pet" aria-hidden="true">
-            <CompanionPet pet={preferences.companionPet} animation={animation} motion={motion} />
+            <CompanionPet key={`panel-${animation}-${animationRun}`} pet={preferences.companionPet} animation={animation} motion={motion} />
           </div>
           <div className="reflection-companion__actions">
             {copy.actions[preferences.companionPet].map((label, index) => (
@@ -61,8 +79,8 @@ export function ReflectionCompanion() {
             ))}
           </div>
           <nav className="reflection-companion__tools" aria-label={aiCopy.reflectionTitle}>
-            <Link to="/journal/patterns"><Sparkles size={14} aria-hidden="true" />{aiCopy.openPatterns}</Link>
-            <Link to="/settings#ai-key-settings">{aiCopy.openSettings}</Link>
+            {preferences.aiEnabled ? <Link to="/journal/patterns"><Sparkles size={14} aria-hidden="true" />{aiCopy.openPatterns}</Link> : null}
+            <Link to="/settings#ai-key-settings" onClick={() => setOpen(false)}>{aiCopy.openSettings}</Link>
           </nav>
           <p>{copy.noRequest}</p>
         </div>
@@ -75,7 +93,7 @@ export function ReflectionCompanion() {
         aria-expanded={open}
         aria-label={copy.open}
       >
-        <CompanionPet pet={preferences.companionPet} animation={ritual ? 'sleep' : animation} motion={motion && !ritual} />
+        <CompanionPet key={`trigger-${animation}-${animationRun}`} pet={preferences.companionPet} animation={ritual ? 'sleep' : animation} motion={motion && !ritual} />
         <span aria-hidden="true"><Sparkles size={13} /></span>
       </button>
     </aside>

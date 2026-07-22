@@ -96,6 +96,7 @@ export type Preferences = {
   ambientVolume: AmbientVolume
   reduceMotion: boolean
   aiEnabled: boolean
+  companionEnabled: boolean
   companionPet: CompanionPet
   companionSize: CompanionSize
   petSound: boolean

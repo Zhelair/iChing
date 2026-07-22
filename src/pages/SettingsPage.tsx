@@ -1,6 +1,6 @@
 import { ArrowRight, Check, Download, FileDown, HardDrive, HeartHandshake, LoaderCircle, ShieldCheck, Trash2, Upload, Volume2 } from 'lucide-react'
 import { useEffect, useRef, useState, type ChangeEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useSound } from '../audio/SoundContext'
 import { PageIntro } from '../components/PageIntro'
 import { CompanionSettings } from '../components/CompanionSettings'
@@ -77,12 +77,24 @@ const supportCopy: Partial<Record<Locale, SupportCopy>> = {
 }
 
 export function SettingsPage() {
+  const { hash } = useLocation()
   const { preferences, setPreferences, updatePreference, setLocale, pendingLocale, localeError, t } = useI18n()
   const { previewCoinSound, setAmbientVolume } = useSound()
   const ai = useAi()
   const [mode, setMode] = useState<'merge' | 'replace'>('merge')
   const [message, setMessage] = useState('')
   const [audioMessage, setAudioMessage] = useState('')
+
+  useEffect(() => {
+    if (!hash) return
+    const targetId = decodeURIComponent(hash.slice(1))
+    const frame = window.requestAnimationFrame(() => {
+      const target = document.getElementById(targetId)
+      target?.scrollIntoView({ behavior: preferences.reduceMotion ? 'auto' : 'smooth', block: 'start' })
+      target?.focus({ preventScroll: true })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [hash, preferences.reduceMotion])
   const [clearOpen, setClearOpen] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const clearTriggerRef = useRef<HTMLButtonElement>(null)
@@ -163,7 +175,7 @@ export function SettingsPage() {
     sessionStorage.removeItem('yi-path:question:v1')
     ai.lock()
     ai.forgetEncrypted()
-    setPreferences({ locale: 'en', theme: 'bamboo-mist', sound: true, music: true, ambientVolume: 1, reduceMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches, aiEnabled: false, companionPet: 'cat', companionSize: 'normal', petSound: true, petMotion: true })
+    setPreferences({ locale: 'en', theme: 'bamboo-mist', sound: true, music: true, ambientVolume: 1, reduceMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches, aiEnabled: false, companionEnabled: false, companionPet: 'cat', companionSize: 'normal', petSound: true, petMotion: true })
     setMessage(t('settings.cleared'))
     setClearOpen(false)
   }

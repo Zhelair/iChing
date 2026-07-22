@@ -177,6 +177,9 @@ export function parseExport(value: unknown): YiPathExport {
       theme: validTheme(backup.preferences.theme) ? backup.preferences.theme : 'daylight',
       ambientVolume: validAmbientVolume(backup.preferences.ambientVolume) ? backup.preferences.ambientVolume : backup.preferences.music ? 0.5 : 0,
       aiEnabled: typeof backup.preferences.aiEnabled === 'boolean' ? backup.preferences.aiEnabled : false,
+      companionEnabled: typeof backup.preferences.companionEnabled === 'boolean'
+        ? backup.preferences.companionEnabled
+        : typeof backup.preferences.aiEnabled === 'boolean' ? backup.preferences.aiEnabled : false,
       companionPet: backup.preferences.companionPet === 'dog' ? 'dog' : 'cat',
       companionSize: backup.preferences.companionSize === 'large' ? 'large' : 'normal',
       petSound: typeof backup.preferences.petSound === 'boolean' ? backup.preferences.petSound : true,
