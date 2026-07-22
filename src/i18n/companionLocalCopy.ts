@@ -9,8 +9,9 @@ type LocalCompanionCopy = {
   privacy: string
   privacyBody: string
   noRequest: string
-  routineTitle: string
-  routine: [string, string, string, string]
+  /** Legacy translated copy kept for export compatibility; no longer rendered. */
+  routineTitle?: string
+  routine?: [string, string, string, string]
   aiEnable: string
   aiEnableBody: string
 }
@@ -24,9 +25,7 @@ const en: LocalCompanionCopy = {
   privacy: 'A local companion, separate from AI',
   privacyBody: 'Pet motion, sounds, and route-aware routines run only in this browser. AI reflections are a separate, optional BYOK feature.',
   noRequest: 'Opening or playing with the companion never sends data. Pet sounds happen only after your direct interaction.',
-  routineTitle: 'Quiet local routine',
-  routine: ['Home · gentle greeting', 'Casting · sleeps quietly', 'Journal · rests beside you', 'Settings · stays on screen'],
-  aiEnable: 'Enable DeepSeek reflections',
+  aiEnable: 'Enable AI reflections',
   aiEnableBody: 'Optional BYOK layer. No background requests; each request needs your explicit preview and confirmation.',
 }
 
@@ -45,4 +44,3 @@ const packs: Record<Locale, LocalCompanionCopy> = {
 export function companionLocalCopyFor(locale: Locale) {
   return packs[locale]
 }
-

@@ -1,7 +1,7 @@
 import { useId } from 'react'
 import type { CompanionPet as CompanionPetKind } from '../domain/types'
 
-export type CompanionAnimation = 'idle' | 'sleep' | 'cat-purr' | 'cat-treat' | 'cat-paw' | 'dog-greet' | 'dog-fetch' | 'dog-belly'
+export type CompanionAnimation = 'idle' | 'sleep' | 'cat-purr' | 'cat-treat' | 'cat-paw' | 'cat-stretch' | 'dog-greet' | 'dog-fetch' | 'dog-belly' | 'dog-wiggle'
 
 type Props = {
   pet: CompanionPetKind
@@ -9,15 +9,16 @@ type Props = {
   motion?: boolean
   className?: string
   title?: string
+  variant?: 'default' | 'golden-lucky'
 }
 
-export function CompanionPet({ pet, animation = 'idle', motion = true, className = '', title }: Props) {
+export function CompanionPet({ pet, animation = 'idle', motion = true, className = '', title, variant = 'default' }: Props) {
   const rawId = useId().replaceAll(':', '')
   const label = title ?? (pet === 'cat' ? 'Tuxedo cat companion' : 'Labrador companion')
 
   return (
     <svg
-      className={`companion-pet companion-pet--${pet} companion-pet--${animation} ${motion ? 'has-motion' : 'is-still'} ${className}`}
+      className={`companion-pet companion-pet--${pet} companion-pet--${animation} companion-pet--${variant} ${motion ? 'has-motion' : 'is-still'} ${className}`}
       viewBox="0 0 240 240"
       role="img"
       aria-label={label}
@@ -57,22 +58,25 @@ export function CompanionPet({ pet, animation = 'idle', motion = true, className
       <ellipse className="companion-pet__glow" cx="120" cy="175" rx="92" ry="55" fill={`url(#${rawId}-glow)`} />
       <ellipse className="companion-pet__ground" cx="120" cy="211" rx="70" ry="12" fill="#10251d" opacity=".16" filter={`url(#${rawId}-soft)`} />
       {pet === 'cat'
-        ? <TuxedoCat idBase={rawId} />
+        ? <TuxedoCat idBase={rawId} golden={variant === 'golden-lucky'} />
         : <Labrador idBase={rawId} />}
     </svg>
   )
 }
 
-function TuxedoCat({ idBase }: { idBase: string }) {
+function TuxedoCat({ idBase, golden }: { idBase: string; golden: boolean }) {
+  const darkFur = golden ? `${idBase}-gold-fur` : `${idBase}-black-fur`
+  const lightFur = golden ? `${idBase}-gold-light` : `${idBase}-white-fur`
   return <g className="companion-pet__character companion-cat" filter={`url(#${idBase}-shadow)`}>
-    <path className="companion-cat__tail" d="M70 180c-37 8-45-26-27-43 10-9 25-8 32 2-16-3-25 8-21 18 4 12 18 12 30 7" fill="none" stroke={`url(#${idBase}-black-fur)`} strokeWidth="16" strokeLinecap="round" />
-    <ellipse className="companion-cat__body" cx="121" cy="158" rx="54" ry="60" fill={`url(#${idBase}-black-fur)`} />
-    <path d="M94 119c8 8 15 12 27 13 13-1 23-7 30-14l8 70H82z" fill={`url(#${idBase}-white-fur)`} opacity=".98" />
+    <path className="companion-cat__lucky-cushion" d="M48 211c16-15 128-15 145 0l-9 14H57Z" fill="#a9352f" stroke="#7a2524" strokeWidth="3" />
+    <path className="companion-cat__tail" d="M70 180c-37 8-45-26-27-43 10-9 25-8 32 2-16-3-25 8-21 18 4 12 18 12 30 7" fill="none" stroke={`url(#${darkFur})`} strokeWidth="16" strokeLinecap="round" />
+    <ellipse className="companion-cat__body" cx="121" cy="158" rx="54" ry="60" fill={`url(#${darkFur})`} />
+    <path d="M94 119c8 8 15 12 27 13 13-1 23-7 30-14l8 70H82z" fill={`url(#${lightFur})`} opacity=".98" />
     <g className="companion-cat__head">
-      <path d="M77 85 73 36l36 25c8-3 17-3 25 0l34-25-3 50c5 11 4 26-2 38-9 17-24 26-43 26s-35-9-44-26c-7-13-7-28 1-39Z" fill={`url(#${idBase}-black-fur)`} />
-      <path d="m80 48 22 17-20 11Z" fill="#b67a73" opacity=".66" />
-      <path d="m160 48-20 17 19 11Z" fill="#b67a73" opacity=".66" />
-      <path d="M92 91c4 4 10 6 16 5l12 16 12-16c7 1 13-1 17-5 5 16-4 42-29 42S87 107 92 91Z" fill={`url(#${idBase}-white-fur)`} />
+      <path d="M77 85 73 36l36 25c8-3 17-3 25 0l34-25-3 50c5 11 4 26-2 38-9 17-24 26-43 26s-35-9-44-26c-7-13-7-28 1-39Z" fill={`url(#${darkFur})`} />
+      <path d="m80 48 22 17-20 11Z" fill={golden ? '#d9573e' : '#b67a73'} opacity=".72" />
+      <path d="m160 48-20 17 19 11Z" fill={golden ? '#d9573e' : '#b67a73'} opacity=".72" />
+      <path d="M92 91c4 4 10 6 16 5l12 16 12-16c7 1 13-1 17-5 5 16-4 42-29 42S87 107 92 91Z" fill={`url(#${lightFur})`} />
       <g className="companion-pet__eyes">
         <ellipse cx="101" cy="88" rx="9" ry="11" fill="#c9c777" /><ellipse cx="139" cy="88" rx="9" ry="11" fill="#c9c777" />
         <ellipse cx="102" cy="89" rx="3" ry="7" fill="#14221d" /><ellipse cx="138" cy="89" rx="3" ry="7" fill="#14221d" />
@@ -84,11 +88,11 @@ function TuxedoCat({ idBase }: { idBase: string }) {
         <path d="M106 112 71 105M106 118l-38 4M134 112l35-7M134 118l38 4" />
       </g>
     </g>
-    <path className="companion-pet__collar" d="M90 132c19 9 42 9 61-1" fill="none" stroke="var(--brass)" strokeWidth="6" strokeLinecap="round" />
+    <path className="companion-pet__collar" d="M90 132c19 9 42 9 61-1" fill="none" stroke={golden ? '#a9362e' : 'var(--brass)'} strokeWidth="6" strokeLinecap="round" />
     <circle cx="121" cy="139" r="7" fill="var(--jade)" stroke="#f5e5af" strokeWidth="2" />
     <g className="companion-cat__paws">
-      <path d="M82 168c-3 22-4 40 1 46 5 7 23 5 28-2 3-5 1-22-2-38Z" fill={`url(#${idBase}-white-fur)`} />
-      <path className="companion-cat__paw-right" d="M132 173c-3 21-4 36 1 42 5 6 22 5 27-2 3-5 0-24-3-42Z" fill={`url(#${idBase}-white-fur)`} />
+      <path d="M82 168c-3 22-4 40 1 46 5 7 23 5 28-2 3-5 1-22-2-38Z" fill={`url(#${lightFur})`} />
+      <path className="companion-cat__paw-right" d="M132 173c-3 21-4 36 1 42 5 6 22 5 27-2 3-5 0-24-3-42Z" fill={`url(#${lightFur})`} />
       <path d="M86 208c6 3 14 3 21 0m29 1c6 3 14 3 20 0" fill="none" stroke="#aaa99f" strokeWidth="1.4" />
     </g>
     <g className="companion-cat__treat">
@@ -96,6 +100,10 @@ function TuxedoCat({ idBase }: { idBase: string }) {
       <circle cx="174" cy="171" r="2" fill="#f3d08b" /><circle cx="182" cy="175" r="2" fill="#f3d08b" />
     </g>
     <path className="companion-cat__purr" d="M58 112c-14 0-14 17 0 17 14 0 14 17 0 17" fill="none" stroke="var(--brass)" strokeWidth="3" strokeLinecap="round" />
+    <g className="companion-cat__lucky-charm">
+      <ellipse cx="112" cy="176" rx="24" ry="30" fill="#d9a53c" stroke="#8e5c21" strokeWidth="3" />
+      <path d="M100 171h24m-21 9h18m-13-18v29m9-29v29" fill="none" stroke="#fff0b4" strokeWidth="3" strokeLinecap="round" />
+    </g>
   </g>
 }
 

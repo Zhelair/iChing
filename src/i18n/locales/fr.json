@@ -360,7 +360,7 @@
       "eyebrow": "Local dès la conception",
       "title": "Confidentialité et sécurité",
       "intro": "Yi Path n’utilise ni compte, ni outil d’analyse, ni synchronisation dans le cloud. Les consultations et les notes du journal restent dans ce navigateur.",
-      "local": "Les consultations, questions et notes ne sont jamais envoyées au service de retour d’expérience. Seul l’avis que vous choisissez explicitement d’envoyer est transmis par Resend au moyen d’une clé API côté serveur.",
+      "local": "Vos lectures, questions, notes et historiques de pratique restent sur cet appareil. Resend ne reçoit que les informations nécessaires que vous saisissez et envoyez explicitement dans le formulaire de retour.",
       "access": "Les autres sites web ne peuvent pas lire ces données, mais une personne ayant accès à cet appareil ou une extension de navigateur disposant de droits étendus pourrait y parvenir.",
       "exports": "Les exportations JSON, PNG et PDF ne sont pas chiffrées. Conservez-les comme des documents privés ; effacer les données de l’application ne supprime pas les copies déjà exportées.",
       "largeFile": "Cette sauvegarde dépasse la limite d’importation de 5 Mo."

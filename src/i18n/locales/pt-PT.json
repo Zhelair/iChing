@@ -360,7 +360,7 @@
       "eyebrow": "Local desde a conceção",
       "title": "Privacidade e segurança",
       "intro": "O Yi Path não tem contas, análise de utilização ou sincronização na nuvem. As leituras e as notas do diário permanecem neste navegador.",
-      "local": "As leituras, perguntas e notas nunca são enviadas para o serviço de opinião. Apenas a opinião que enviar explicitamente é transmitida pelo Resend através de uma chave API no servidor.",
+      "local": "As tuas leituras, perguntas, notas e histórico de práticas ficam neste dispositivo. O Resend recebe apenas os dados necessários que introduzes e envias explicitamente no formulário de feedback.",
       "access": "Outros sites não conseguem ler estes dados, mas alguém com acesso a este dispositivo ou uma extensão de navegador com permissões amplas poderá consegui-lo.",
       "exports": "As exportações JSON, PNG e PDF não são encriptadas. Guarde-as como documentos privados; apagar os dados da aplicação não elimina as cópias já exportadas.",
       "largeFile": "Esta cópia de segurança excede o limite de importação de 5 MB."
