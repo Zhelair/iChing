@@ -113,7 +113,7 @@ export function LearnPage() {
         </aside>
       </section>
 
-      <div className="mt-8"><Link to="/reading" className="button-primary">{t('learn.begin')} <ArrowRight size={17} aria-hidden="true" /></Link></div>
+      <div className="mt-8"><Link to="/iching/reading" className="button-primary">{t('learn.begin')} <ArrowRight size={17} aria-hidden="true" /></Link></div>
 
       <HistoryJourney />
     </div>

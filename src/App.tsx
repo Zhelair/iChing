@@ -13,6 +13,9 @@ const SettingsPage = lazy(() => import('./pages/SettingsPage').then(({ SettingsP
 const JournalPage = lazy(() => import('./pages/JournalPage').then(({ JournalPage: page }) => ({ default: page })))
 const SupportPage = lazy(() => import('./pages/SupportPage').then(({ SupportPage: page }) => ({ default: page })))
 const DaoPage = lazy(() => import('./pages/DaoPage').then(({ DaoPage: page }) => ({ default: page })))
+const DaoStudyPage = lazy(() => import('./pages/DaoStudyPage').then(({ DaoStudyPage: page }) => ({ default: page })))
+const DaoPracticePage = lazy(() => import('./pages/DaoPracticePage').then(({ DaoPracticePage: page }) => ({ default: page })))
+const DaoLivingPage = lazy(() => import('./pages/DaoLivingPage').then(({ DaoLivingPage: page }) => ({ default: page })))
 const IChingPage = lazy(() => import('./pages/IChingPage').then(({ IChingPage: page }) => ({ default: page })))
 
 export function App() {
@@ -20,13 +23,17 @@ export function App() {
     <Routes>
       <Route element={<AppLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="reading" element={<MethodPage />} />
+        <Route path="iching/reading" element={<MethodPage />} />
+        <Route path="reading" element={<Navigate to="/iching/reading" replace />} />
         <Route path="cast/:method" element={<CastPage />} />
         <Route path="result" element={<ResultPage />} />
         <Route path="iching" element={<IChingPage />} />
         <Route path="iching/guide" element={<LearnPage />} />
         <Route path="iching/library" element={<LibraryPage />} />
         <Route path="dao" element={<DaoPage />} />
+        <Route path="dao/study" element={<DaoStudyPage />} />
+        <Route path="dao/practice" element={<DaoPracticePage />} />
+        <Route path="dao/living" element={<DaoLivingPage />} />
         <Route path="start" element={<Navigate to="/iching/guide" replace />} />
         <Route path="learn" element={<Navigate to="/iching/guide" replace />} />
         <Route path="library" element={<Navigate to="/iching/library" replace />} />

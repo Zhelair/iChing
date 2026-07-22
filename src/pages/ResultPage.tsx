@@ -45,7 +45,7 @@ export function ResultPage() {
       <div className="reading-column px-4 py-20 text-center">
         <h1 className="text-4xl">{t('result.empty.title')}</h1>
         <p className="mt-4 text-[var(--ink-soft)]">{t('result.empty.body')}</p>
-        <Link to="/reading" className="button-primary mt-8">{t('home.start')}</Link>
+        <Link to="/iching/reading" className="button-primary mt-8">{t('home.start')}</Link>
       </div>
     )
   }
@@ -164,7 +164,7 @@ export function ResultPage() {
           </div>
         </details>
 
-        <div className="flex justify-center pt-3"><Link to="/reading" className="button-primary">{t('result.newReading')} <ArrowRight size={17} aria-hidden="true" /></Link></div>
+        <div className="flex justify-center pt-3"><Link to="/iching/reading" className="button-primary">{t('result.newReading')} <ArrowRight size={17} aria-hidden="true" /></Link></div>
       </div>
     </div>
   )

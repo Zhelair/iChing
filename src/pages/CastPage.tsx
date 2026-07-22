@@ -174,7 +174,7 @@ function RitualCue({ emphasizeThird, question, lineCount, t }: { emphasizeThird:
 
 export function CastPage() {
   const { method } = useParams()
-  if (!['digital', 'physical', 'yarrow', 'direct'].includes(method ?? '')) return <Navigate to="/reading" replace />
+  if (!['digital', 'physical', 'yarrow', 'direct'].includes(method ?? '')) return <Navigate to="/iching/reading" replace />
 
   return <CastFlow method={method as ReadingMethod} />
 }
@@ -318,7 +318,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
   return (
     <div className={`page-shell cast-page py-8 sm:py-14 ${method === 'digital' && lines.length === 2 ? 'cast-page--third-focus' : ''}`}>
       <div className="reading-column">
-        <Link to="/reading" className="button-quiet -ml-3 mb-5"><ArrowLeft size={18} aria-hidden="true" /> {t('common.back')}</Link>
+        <Link to="/iching/reading" className="button-quiet -ml-3 mb-5"><ArrowLeft size={18} aria-hidden="true" /> {t('common.back')}</Link>
         <p className="eyebrow">{method === 'digital' ? t('method.digital.title') : method === 'physical' ? t('method.physical.title') : method === 'yarrow' ? yarrow.eyebrow : t('method.direct.title')}</p>
         <h1 className="mt-3 text-4xl font-medium leading-tight tracking-[-.03em]">{titles[method][0]}</h1>
         <p className="mt-3 max-w-2xl leading-7 text-[var(--ink-soft)]">{titles[method][1]}</p>
