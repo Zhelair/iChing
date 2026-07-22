@@ -1,6 +1,5 @@
 import { BookOpenText } from 'lucide-react'
 import { DaoNavigation } from '../components/DaoNavigation'
-import { DaoReader } from '../components/DaoReader'
 import { DaoRouteHeading } from '../components/DaoRouteHeading'
 import { DaoStudyRoadmap } from '../components/DaoStudyRoadmap'
 import { DAO_COPY } from '../data/daoContent'
@@ -19,7 +18,6 @@ export function DaoStudyPage() {
     <DaoRouteHeading icon={BookOpenText} eyebrow={copy.readerEyebrow} title={copy.study} body={copy.studyBody} shell={shell} />
     <div className="page-shell dao-sections">
       <DaoStudyRoadmap copy={learning} />
-      <DaoReader copy={copy} shell={shell} locale={preferences.locale} themeLabel={learning.themes} />
     </div>
   </div>
 }

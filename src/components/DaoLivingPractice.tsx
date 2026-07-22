@@ -1,22 +1,23 @@
-import { Check, ChevronLeft, ChevronRight, Sprout } from 'lucide-react'
+import { Check, ChevronLeft, ChevronRight, MessageCircle, Shield, Sprout } from 'lucide-react'
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
-import type { DaoCopy } from '../data/daoContent'
+import type { DaoLivingCopy } from '../data/daoLivingContent'
 import type { Locale } from '../domain/locales'
 import type { JournalEntry } from '../domain/types'
 import { saveJournalEntry } from '../storage/db'
 
-const fields = ['notice', 'allow', 'respond', 'reflect'] as const
-const hintKeys = { notice: 'noticeHint', allow: 'allowHint', respond: 'respondHint', reflect: 'reflectHint' } as const
+const emptyAnswers = () => ['', '', '', ''] as [string, string, string, string]
 
-export function DaoLivingPractice({ copy, locale }: { copy: DaoCopy; locale: Locale }) {
-  const [answers, setAnswers] = useState<Record<(typeof fields)[number], string>>({ notice: '', allow: '', respond: '', reflect: '' })
+export function DaoLivingPractice({ copy, locale }: { copy: DaoLivingCopy; locale: Locale }) {
+  const [contextId, setContextId] = useState(copy.contexts[0].id)
+  const [answersByContext, setAnswersByContext] = useState<Record<string, [string, string, string, string]>>({})
   const [activeIndex, setActiveIndex] = useState(0)
   const [saved, setSaved] = useState(false)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const previousIndexRef = useRef(activeIndex)
-  const field = fields[activeIndex]
-  const isLast = activeIndex === fields.length - 1
-  const hasContent = fields.some((item) => answers[item].trim())
+  const context = copy.contexts.find((item) => item.id === contextId) ?? copy.contexts[0]
+  const answers = answersByContext[context.id] ?? emptyAnswers()
+  const hasContent = answers.some((answer) => answer.trim())
+  const isLast = activeIndex === copy.steps.length - 1
 
   useEffect(() => {
     if (previousIndexRef.current === activeIndex) return
@@ -24,36 +25,42 @@ export function DaoLivingPractice({ copy, locale }: { copy: DaoCopy; locale: Loc
     textareaRef.current?.focus({ preventScroll: true })
   }, [activeIndex])
 
+  function selectContext(id: string) {
+    setContextId(id)
+    setActiveIndex(0)
+    setSaved(false)
+  }
+
+  function updateAnswer(value: string) {
+    setAnswersByContext((current) => {
+      const next = [...(current[context.id] ?? emptyAnswers())] as [string, string, string, string]
+      next[activeIndex] = value
+      return { ...current, [context.id]: next }
+    })
+    setSaved(false)
+  }
+
   async function save() {
     if (!hasContent) return
     const now = new Date().toISOString()
-    const body = fields.map((item) => `${copy[item]}\n${answers[item].trim()}`).filter((_, index) => answers[fields[index]].trim()).join('\n\n')
-    const entry: JournalEntry = { id: crypto.randomUUID(), schemaVersion: 1, createdAt: now, updatedAt: now, locale, kind: 'practice', title: copy.livingTitle, body, tags: ['dao', 'daily-practice'], sourceId: 'notice-allow-respond-reflect' }
+    const body = [`${copy.choose}: ${context.title}`, ...copy.steps.flatMap((step, index) => answers[index].trim() ? [`${step}\n${answers[index].trim()}`] : [])].join('\n\n')
+    const entry: JournalEntry = { id: crypto.randomUUID(), schemaVersion: 1, createdAt: now, updatedAt: now, locale, kind: 'practice', title: `${copy.title}: ${context.title}`, body, tags: ['dao', 'daily-practice', context.id], sourceId: `ordinary-life-lab-${context.id}` }
     await saveJournalEntry(entry)
     setSaved(true)
   }
 
-  return <section id="dao-living" className="surface dao-living scroll-mt-24" aria-labelledby="dao-living-title">
-    <div className="dao-living__intro"><span className="dao-section-icon"><Sprout size={22} /></span><p className="eyebrow mt-5">{copy.living}</p><h2 id="dao-living-title" className="mt-3 text-3xl sm:text-4xl">{copy.livingTitle}</h2><p className="mt-3 leading-7 text-[var(--ink-soft)]">{copy.livingBody}</p></div>
-    <div className="dao-living__journey">
-      <div className="dao-living__current" aria-hidden="true" style={{ '--living-progress': activeIndex / (fields.length - 1) } as CSSProperties}>
-        <span className="dao-living__current-line" />
-        {fields.map((item, index) => <i key={item} className={index === activeIndex ? 'is-current' : index < activeIndex || answers[item].trim() ? 'is-complete' : ''}>{index < activeIndex || answers[item].trim() ? <Check size={13} /> : index + 1}</i>)}
+  return <section id="dao-living" className="dao-living-lab scroll-mt-24" aria-labelledby="dao-living-title">
+    <div className="surface dao-living-lab__intro"><span className="dao-section-icon"><Sprout size={22} aria-hidden="true" /></span><div><p className="eyebrow">{copy.title}</p><h2 id="dao-living-title">{copy.choose}</h2></div></div>
+    <div className="dao-living-lab__contexts" role="tablist" aria-label={copy.choose}>{copy.contexts.map((item, index) => <button key={item.id} type="button" role="tab" aria-selected={item.id === context.id} className={item.id === context.id ? 'is-active' : ''} onClick={() => selectContext(item.id)}><span>{String(index + 1).padStart(2, '0')}</span><strong>{item.title}</strong></button>)}</div>
+    <article className="surface dao-living-lab__workspace">
+      <div className="dao-living-lab__context"><span className="dao-section-icon"><MessageCircle size={21} aria-hidden="true" /></span><div><p className="eyebrow">{copy.experiment}</p><h3>{context.title}</h3><p>{context.body}</p></div></div>
+      <aside className="dao-living-lab__safety"><Shield size={18} aria-hidden="true" /><p>{copy.safety}</p></aside>
+      <div className="dao-living-lab__journey">
+        <div className="dao-living__current" aria-hidden="true" style={{ '--living-progress': activeIndex / (copy.steps.length - 1) } as CSSProperties}><span className="dao-living__current-line" />{copy.steps.map((step, index) => <i key={step} className={index === activeIndex ? 'is-current' : index < activeIndex || answers[index].trim() ? 'is-complete' : ''}>{index < activeIndex || answers[index].trim() ? <Check size={13} /> : index + 1}</i>)}</div>
+        <div className="dao-living__steps" role="tablist" aria-label={copy.title}>{copy.steps.map((step, index) => <button key={step} type="button" role="tab" aria-selected={index === activeIndex} className={index === activeIndex ? 'is-active' : answers[index].trim() ? 'is-complete' : ''} onClick={() => setActiveIndex(index)}>{step}</button>)}</div>
+        <div className="dao-living__field" role="tabpanel"><label htmlFor={`dao-living-${context.id}-${activeIndex}`}>{copy.steps[activeIndex]}</label><textarea ref={textareaRef} id={`dao-living-${context.id}-${activeIndex}`} value={answers[activeIndex]} onChange={(event) => updateAnswer(event.target.value)} placeholder={context.prompts[activeIndex]} /></div>
+        <div className="dao-living__navigation">{activeIndex > 0 ? <button type="button" className="button-secondary" onClick={() => setActiveIndex((value) => value - 1)}><ChevronLeft size={17} />{copy.steps[activeIndex - 1]}</button> : <span />}{!isLast ? <button type="button" className="button-primary" disabled={!answers[activeIndex].trim()} onClick={() => setActiveIndex((value) => value + 1)}>{copy.steps[activeIndex + 1]}<ChevronRight size={17} /></button> : <button type="button" className="button-primary" disabled={!hasContent} onClick={() => void save()}>{saved ? <Check size={17} /> : null}{saved ? copy.saved : copy.save}</button>}</div>
       </div>
-      <div className="dao-living__steps" role="tablist" aria-label={copy.livingTitle}>
-        {fields.map((item, index) => <button key={item} type="button" role="tab" aria-selected={index === activeIndex} className={index === activeIndex ? 'is-active' : answers[item].trim() ? 'is-complete' : ''} onClick={() => setActiveIndex(index)}><span aria-hidden="true">{answers[item].trim() ? <Check size={14} /> : null}</span>{copy[item]}</button>)}
-      </div>
-      <div className="dao-living__field" role="tabpanel">
-        <label htmlFor={`dao-${field}`}>{copy[field]}</label>
-        <textarea ref={textareaRef} id={`dao-${field}`} value={answers[field]} onChange={(event) => { setAnswers((current) => ({ ...current, [field]: event.target.value })); setSaved(false) }} placeholder={copy[hintKeys[field]]} />
-      </div>
-      <div className="dao-living__navigation">
-        {activeIndex > 0 ? <button type="button" className="button-secondary" onClick={() => setActiveIndex((value) => value - 1)}><ChevronLeft size={17} />{copy[fields[activeIndex - 1]]}</button> : <span />}
-        {!isLast ? <button type="button" className="button-primary" disabled={!answers[field].trim()} onClick={() => setActiveIndex((value) => value + 1)}>{copy[fields[activeIndex + 1]]}<ChevronRight size={17} /></button> : <button type="button" className="button-primary" disabled={!hasContent} onClick={() => void save()}>{saved ? <Check size={17} /> : <NotebookPenIcon />}{saved ? copy.journalSaved : copy.saveLiving}</button>}
-      </div>
-      <p className="sr-only" role="status">{copy[field]}</p>
-    </div>
+    </article>
   </section>
 }
-
-function NotebookPenIcon() { return <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg> }

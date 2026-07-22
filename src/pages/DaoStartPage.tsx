@@ -1,23 +1,21 @@
-import { Sprout } from 'lucide-react'
-import { DaoLivingPractice } from '../components/DaoLivingPractice'
+import { Map } from 'lucide-react'
 import { DaoNavigation } from '../components/DaoNavigation'
+import { DaoOrientationJourney } from '../components/DaoOrientationJourney'
 import { DaoRouteHeading } from '../components/DaoRouteHeading'
 import { DAO_COPY } from '../data/daoContent'
-import { DAO_LIVING_COPY } from '../data/daoLivingContent'
+import { DAO_ORIENTATION_COPY } from '../data/daoOrientationContent'
 import { DAO_SHELL_COPY } from '../data/daoShellContent'
 import { useI18n } from '../i18n/I18nContext'
 
-export function DaoLivingPage() {
+export function DaoStartPage() {
   const { preferences } = useI18n()
   const copy = DAO_COPY[preferences.locale]
-  const living = DAO_LIVING_COPY[preferences.locale]
+  const orientation = DAO_ORIENTATION_COPY[preferences.locale]
   const shell = DAO_SHELL_COPY[preferences.locale]
 
   return <div className="dao-page dao-route-page">
     <DaoNavigation copy={copy} shell={shell} />
-    <DaoRouteHeading icon={Sprout} eyebrow={copy.eyebrow} title={copy.living} body={living.intro} shell={shell} />
-    <div className="page-shell dao-sections">
-      <DaoLivingPractice copy={living} locale={preferences.locale} />
-    </div>
+    <DaoRouteHeading icon={Map} eyebrow={orientation.eyebrow} title={orientation.title} body={orientation.intro} shell={shell} />
+    <div className="page-shell dao-sections"><DaoOrientationJourney copy={orientation} /></div>
   </div>
 }

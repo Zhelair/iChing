@@ -1,5 +1,4 @@
 import { BookOpenText, NotebookPen, Sprout, Wind } from 'lucide-react'
-import { Link } from 'react-router-dom'
 import { DaoHubCard } from '../components/DaoHubCard'
 import { DaoNavigation } from '../components/DaoNavigation'
 import { DaoPreview } from '../components/DaoPreview'
@@ -19,10 +18,6 @@ export function DaoPage() {
       <div className="dao-hero__copy">
         <h1>{copy.title}</h1>
         <p>{copy.intro}</p>
-        <div className="dao-hero__actions">
-          <Link className="button-primary" to="/dao/study"><BookOpenText size={18} aria-hidden="true" />{copy.study}</Link>
-          <Link className="button-secondary" to="/dao/practice"><Wind size={18} aria-hidden="true" />{copy.practice}</Link>
-        </div>
       </div>
       <div className="dao-hero__art"><DaoWaterArt /><span aria-hidden="true">道</span></div>
     </section>
