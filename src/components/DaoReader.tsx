@@ -9,7 +9,7 @@ import { getReadingProgress, getStudyNotes, saveJournalEntry, saveReadingProgres
 
 const WORK_ID = 'dao-water-introduction-v1'
 
-type DaoReaderProps = { copy: DaoCopy; locale: Locale }
+type DaoReaderProps = { copy: DaoCopy; locale: Locale; themeLabel: string }
 
 const PASSAGE_SOURCES: Record<string, string> = {
   water: 'Daodejing · 1',
@@ -19,7 +19,7 @@ const PASSAGE_SOURCES: Record<string, string> = {
 
 const PUBLIC_DOMAIN_TEXT = 'https://www.gutenberg.org/ebooks/216'
 
-export function DaoReader({ copy, shell, locale }: DaoReaderProps & { shell: DaoShellCopy }) {
+export function DaoReader({ copy, shell, locale, themeLabel }: DaoReaderProps & { shell: DaoShellCopy }) {
   const [passageId, setPassageId] = useState(copy.passages[0].id)
   const [body, setBody] = useState('')
   const [notes, setNotes] = useState<StudyNote[]>([])
@@ -74,8 +74,8 @@ export function DaoReader({ copy, shell, locale }: DaoReaderProps & { shell: Dao
 
   return (
     <section ref={readerSection} id="dao-study" className="dao-reader scroll-mt-24" aria-labelledby="dao-reader-title">
-      <aside className="dao-reader__toc surface" aria-label={copy.readerTitle}>
-        <p className="eyebrow">{copy.study}</p>
+      <aside className="dao-reader__toc surface" aria-label={themeLabel}>
+        <p className="eyebrow">{themeLabel}</p>
         <nav className="mt-4">
           {copy.passages.map((item, index) => (
             <button key={item.id} type="button" className={passage.id === item.id ? 'is-active' : ''} onClick={() => choosePassage(item.id)} aria-current={passage.id === item.id ? 'step' : undefined}>
@@ -85,14 +85,12 @@ export function DaoReader({ copy, shell, locale }: DaoReaderProps & { shell: Dao
         </nav>
       </aside>
 
-      <article className="dao-reader__page surface">
-        <p className="eyebrow">{copy.readerEyebrow}</p>
-        <h2 id="dao-reader-title" className="mt-3 text-3xl sm:text-5xl">{copy.readerTitle}</h2>
-        <p className="dao-reader__lead">{copy.readerIntro}</p>
+      <article className="dao-reader__page surface" aria-live="polite">
         <div className="dao-reader__passage" key={passage.id}>
           <span className="dao-reader__mark" aria-hidden="true"><ScrollText size={18} /></span>
-          <h3>{passage.title}</h3>
-          <p>{passage.body}</p>
+          <p className="eyebrow">{themeLabel} · {String(copy.passages.findIndex(({ id }) => id === passage.id) + 1).padStart(2, '0')}</p>
+          <h2 id="dao-reader-title">{passage.title}</h2>
+          <p className="dao-reader__lead">{passage.body}</p>
         </div>
         <dl className="dao-scope">
           <div><dt>{copy.scope}</dt><dd>{copy.scopeValue}</dd></div>

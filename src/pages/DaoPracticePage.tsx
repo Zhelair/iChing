@@ -1,25 +1,23 @@
-import { CircleDashed, Wind } from 'lucide-react'
-import { BreathPractice } from '../components/BreathPractice'
+import { Wind } from 'lucide-react'
 import { DaoNavigation } from '../components/DaoNavigation'
+import { DaoPracticeLibrary } from '../components/DaoPracticeLibrary'
 import { DaoRouteHeading } from '../components/DaoRouteHeading'
 import { DAO_COPY } from '../data/daoContent'
+import { DAO_LEARNING_COPY } from '../data/daoLearningContent'
 import { DAO_SHELL_COPY } from '../data/daoShellContent'
 import { useI18n } from '../i18n/I18nContext'
 
 export function DaoPracticePage() {
   const { preferences } = useI18n()
   const copy = DAO_COPY[preferences.locale]
+  const learning = DAO_LEARNING_COPY[preferences.locale]
   const shell = DAO_SHELL_COPY[preferences.locale]
 
   return <div className="dao-page dao-route-page">
     <DaoNavigation copy={copy} shell={shell} />
-    <DaoRouteHeading icon={Wind} eyebrow={copy.eyebrow} title={copy.practice} body={copy.practiceBody} shell={shell} />
-    <div className="page-shell dao-practice-provenance surface">
-      <span className="dao-section-icon"><CircleDashed size={20} aria-hidden="true" /></span>
-      <div><strong>{shell.modernLabel}</strong><p>{shell.modernBody}</p></div>
-    </div>
+    <DaoRouteHeading icon={Wind} eyebrow={copy.eyebrow} title={copy.practice} body={learning.practiceLibraryBody} shell={shell} />
     <div className="page-shell dao-sections">
-      <BreathPractice copy={copy} locale={preferences.locale} />
+      <DaoPracticeLibrary copy={copy} learning={learning} shell={shell} />
     </div>
   </div>
 }

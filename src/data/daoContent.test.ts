@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { SUPPORTED_LOCALES } from '../domain/locales'
 import { DAO_COPY } from './daoContent'
+import { DAO_LEARNING_COPY } from './daoLearningContent'
 import { DAO_SHELL_COPY } from './daoShellContent'
 
 describe('Dao localized content', () => {
@@ -28,6 +29,16 @@ describe('Dao localized content', () => {
     expect(Object.keys(DAO_SHELL_COPY).sort()).toEqual([...SUPPORTED_LOCALES].sort())
     for (const locale of SUPPORTED_LOCALES) {
       expect(Object.values(DAO_SHELL_COPY[locale]).every((value) => value.trim().length > 0)).toBe(true)
+    }
+  })
+
+  it('has a localized learning map and practice library for every locale', () => {
+    expect(Object.keys(DAO_LEARNING_COPY).sort()).toEqual([...SUPPORTED_LOCALES].sort())
+    for (const locale of SUPPORTED_LOCALES) {
+      const copy = DAO_LEARNING_COPY[locale]
+      expect(copy.orientationTopics).toHaveLength(6)
+      expect(copy.orientationTopics.every((topic) => topic.trim().length > 0)).toBe(true)
+      expect(Object.entries(copy).every(([, value]) => Array.isArray(value) || (typeof value === 'string' && value.trim().length > 0))).toBe(true)
     }
   })
 })
