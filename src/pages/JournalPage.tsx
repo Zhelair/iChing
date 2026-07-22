@@ -2,7 +2,6 @@ import { ArrowRight, CalendarDays, RotateCcw, Search, Tag, Trash2 } from 'lucide
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { HexagramFigure } from '../components/HexagramFigure'
-import { JournalTextEntryCard } from '../components/JournalTextEntryCard'
 import { JournalModeNav } from '../components/JournalModeNav'
 import { PageIntro } from '../components/PageIntro'
 import { ReadingExportActions } from '../components/ReadingExportActions'
@@ -10,10 +9,10 @@ import { getHexagram } from '../data/hexagrams'
 import { DAO_COPY } from '../data/daoContent'
 import { STUDY_NOTES_COPY } from '../data/studyNotesContent'
 import { isBuiltInContentLocale } from '../domain/locales'
-import type { JournalEntry, Reading, ReadingMethod } from '../domain/types'
+import type { Reading, ReadingMethod } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 import { getUiLocalePack } from '../i18n/uiLocalePacks'
-import { deleteJournalEntry, deleteReading, getAllJournalEntries, getAllReadings, saveJournalEntry, saveReading } from '../storage/db'
+import { deleteReading, getAllReadings, saveReading } from '../storage/db'
 import { setCurrentReading } from '../storage/session'
 
 const copy = {
@@ -43,7 +42,6 @@ export function JournalPage() {
     : getUiLocalePack(preferences.locale).features.journal
   const navigate = useNavigate()
   const [readings, setReadings] = useState<Reading[]>([])
-  const [journalEntries, setJournalEntries] = useState<JournalEntry[]>([])
   const [loaded, setLoaded] = useState(false)
   const [query, setQuery] = useState('')
   const [method, setMethod] = useState<'all' | ReadingMethod>('all')
@@ -57,7 +55,7 @@ export function JournalPage() {
   const keepEntryRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    void Promise.all([getAllReadings(), getAllJournalEntries()]).then(([items, entries]) => { setReadings(items); setJournalEntries(entries); setLoaded(true) })
+    void getAllReadings().then((items) => { setReadings(items); setLoaded(true) })
     return () => { if (undoTimer.current) window.clearTimeout(undoTimer.current) }
   }, [])
 
@@ -80,8 +78,6 @@ export function JournalPage() {
     const haystack = [reading.question, reading.note, reading.tags.join(' '), hexagram.pinyin, hexagram.chinese, editorialFor(hexagram).title, String(hexagram.id)].join(' ').toLocaleLowerCase(preferences.locale)
     return haystack.includes(query.trim().toLocaleLowerCase(preferences.locale))
   }), [editorialFor, method, preferences.locale, query, readings])
-  const personalEntries = useMemo(() => journalEntries.filter((entry) => entry.kind !== 'study'), [journalEntries])
-  const filteredEntries = useMemo(() => personalEntries.filter((entry) => [entry.title, entry.body, entry.tags.join(' ')].join(' ').toLocaleLowerCase(preferences.locale).includes(query.trim().toLocaleLowerCase(preferences.locale))), [personalEntries, preferences.locale, query])
   const daoCopy = DAO_COPY[preferences.locale]
   const studyNotesCopy = STUDY_NOTES_COPY[preferences.locale]
 
@@ -142,8 +138,7 @@ export function JournalPage() {
 
         <section aria-live="polite">
           {!loaded ? <div className="surface p-8">…</div> : <>
-          {filteredEntries.length ? <div className="journal-group"><h2 className="journal-month">{daoCopy.notebook} · {filteredEntries.length}</h2><div className="space-y-3">{filteredEntries.map((entry) => <JournalTextEntryCard key={entry.id} entry={entry} locale={preferences.locale} daoCopy={daoCopy} labels={{ save: c.save, saved: c.saved, remove: c.remove }} onSave={async (updated) => { await saveJournalEntry(updated); setJournalEntries((items) => items.map((item) => item.id === updated.id ? updated : item)) }} onDelete={async (id) => { await deleteJournalEntry(id); setJournalEntries((items) => items.filter((item) => item.id !== id)) }} />)}</div></div> : null}
-          {readings.length === 0 && personalEntries.length === 0 ? <div className="surface journal-empty p-8 sm:p-12"><CalendarDays size={34} /><h2 className="mt-5 text-3xl">{c.empty}</h2><p className="mt-3 text-[var(--ink-soft)]">{c.emptyBody}</p><div className="mt-7 flex flex-wrap gap-3"><Link to="/iching/reading" className="button-primary">{c.begin}<ArrowRight size={17} /></Link><Link to="/dao" className="button-secondary">{daoCopy.navDao}</Link></div></div> : filtered.length === 0 && filteredEntries.length === 0 ? <div className="surface p-8 text-[var(--ink-soft)]">{c.noResults}</div> : groups.map((group) => (
+          {readings.length === 0 ? <div className="surface journal-empty p-8 sm:p-12"><CalendarDays size={34} /><h2 className="mt-5 text-3xl">{c.empty}</h2><p className="mt-3 text-[var(--ink-soft)]">{c.emptyBody}</p><div className="mt-7 flex flex-wrap gap-3"><Link to="/iching/reading" className="button-primary">{c.begin}<ArrowRight size={17} /></Link><Link to="/dao" className="button-secondary">{daoCopy.navDao}</Link></div></div> : filtered.length === 0 ? <div className="surface p-8 text-[var(--ink-soft)]">{c.noResults}</div> : groups.map((group) => (
             <div key={group.label} className="journal-group"><h2 className="journal-month">{group.label}</h2>
               <div className="space-y-3">{group.readings.map((reading) => {
                 const hexagram = getHexagram(reading.primaryHexagramId)
@@ -181,6 +176,6 @@ export function JournalPage() {
   )
 
   function renderFilters() {
-    return <><label className="search-field"><Search size={17} aria-hidden="true" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={c.search} /></label><div className="journal-methods">{methodOptions.map((option) => <button key={option} type="button" className={method === option ? 'is-active' : ''} onClick={() => setMethod(option)}>{c[option]}</button>)}</div><p className="mt-4 text-sm text-[var(--ink-soft)]">{filtered.length} {c.readings} · {filteredEntries.length} {daoCopy.notebook.toLocaleLowerCase(preferences.locale)}</p></>
+    return <><label className="search-field"><Search size={17} aria-hidden="true" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={c.search} /></label><div className="journal-methods">{methodOptions.map((option) => <button key={option} type="button" className={method === option ? 'is-active' : ''} onClick={() => setMethod(option)}>{c[option]}</button>)}</div><p className="mt-4 text-sm text-[var(--ink-soft)]">{filtered.length} {c.readings}</p></>
   }
 }

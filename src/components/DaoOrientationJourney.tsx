@@ -6,13 +6,12 @@ import { useI18n } from '../i18n/I18nContext'
 
 function OrientationArt({ scene }: { scene: DaoOrientationScene }) {
   return <svg className={`dao-orientation-art is-${scene}`} viewBox="0 0 420 260" aria-hidden="true">
-    <circle className="dao-orientation-art__moon" cx="335" cy="54" r="31" />
-    {scene === 'paths' ? <><path d="M40 216C111 196 116 92 205 131C269 159 292 91 379 69" /><path d="M42 216C135 237 193 201 227 166C268 124 331 159 382 184" /><path d="M205 131c18 17 24 35 22 35" /></> : null}
-    {scene === 'vessel' ? <><path d="M117 91h186l-24 107H141Z" /><path d="M153 91V64h114v27M171 139c25-18 51 20 77 0" /><circle cx="210" cy="166" r="11" /></> : null}
-    {scene === 'names' ? <><path d="M76 67h126M76 103h181M76 139h94M76 175h223" /><path className="dao-orientation-art__soft" d="M226 46c-31 43 53 60 16 101c-22 25 22 43 78 54" /></> : null}
-    {scene === 'current' ? <><path d="M37 163c55-93 116 34 174-30c57-63 104 34 173-34" /><path className="dao-orientation-art__soft" d="M37 190c77-47 129 21 194-20c58-37 96 3 153-31" /><path d="M253 64v52h51" /></> : null}
-    {scene === 'voices' ? <><path d="M72 65h113v134H72zM235 65h113v134H235z" /><path d="M101 98h54m-54 28h62m-62 28h39M264 99c17-16 37 16 54 0m-54 37c17-16 37 16 54 0m-54 36c17-16 37 16 54 0" /></> : null}
-    {scene === 'temple' ? <><path d="M76 189h268M111 189V98h198v91M86 98h248L210 50Z" /><path d="M151 189v-51h38v51m42 0v-51h38v51" /><path className="dao-orientation-art__soft" d="M47 220c83-29 151 18 224-8c44-15 75-12 111-3" /></> : null}
+    {scene === 'paths' ? <><circle className="dao-orientation-art__moon" cx="78" cy="130" r="19" /><path d="M98 130h65c49 0 42-55 89-55h77" /><path d="M163 130c49 0 42 55 89 55h77" /><path className="dao-orientation-art__soft" d="M163 130h166" /><circle cx="344" cy="75" r="13" /><circle cx="344" cy="130" r="13" /><circle cx="344" cy="185" r="13" /></> : null}
+    {scene === 'vessel' ? <><circle className="dao-orientation-art__moon" cx="210" cy="45" r="18" /><path className="dao-orientation-art__soft" d="M210 64v47" /><path d="M118 104c22 0 27 23 46 23s26-23 46-23s27 23 46 23s26-23 46-23" /><path d="M119 104l20 103h142l20-103" /><path d="M157 159c25-20 40 19 65 0s40 19 65 0" /><circle cx="210" cy="188" r="10" /></> : null}
+    {scene === 'names' ? <><path className="dao-orientation-art__soft" d="M45 202c66-75 112 8 165-64c50-68 93-12 165-81" /><rect x="70" y="54" width="96" height="38" rx="9" /><rect x="184" y="103" width="111" height="38" rx="9" /><rect x="256" y="166" width="92" height="38" rx="9" /><path d="M118 92v35m121 14v35" /></> : null}
+    {scene === 'current' ? <><circle className="dao-orientation-art__moon" cx="151" cy="140" r="32" /><circle className="dao-orientation-art__moon" cx="278" cy="108" r="24" /><path d="M31 116c64-68 83 79 155 32c52-34 55-91 111-63c45 22 45 70 91 28" /><path className="dao-orientation-art__soft" d="M31 174c62-52 106 45 172 2c68-44 112 4 185-32" /></> : null}
+    {scene === 'voices' ? <><path d="M59 65h128v139H59zM233 65h128v139H233z" /><path d="M87 96h72m-72 29h86m-86 29h58M261 96c24-18 48 18 72 0m-72 36c24-18 48 18 72 0m-72 36c24-18 48 18 72 0" /><path className="dao-orientation-art__soft" d="M187 135c19-17 28-17 46 0" /></> : null}
+    {scene === 'temple' ? <><path d="M37 209h346" /><path d="M65 209v-60h74v60m-63-60l26-25l26 25M174 209V87h94v122m-78-122l31-36l31 36M304 209v-77h57v77m-48-77l19-22l20 22" /><circle className="dao-orientation-art__moon" cx="102" cy="180" r="8" /><circle className="dao-orientation-art__moon" cx="221" cy="163" r="8" /><circle className="dao-orientation-art__moon" cx="332" cy="176" r="8" /><path className="dao-orientation-art__soft" d="M45 229c80-26 138 18 212-5c48-15 87-8 120 1" /></> : null}
   </svg>
 }
 

@@ -70,7 +70,7 @@ export const DAO_COPY: Record<Locale, DaoCopy> = {
     study: 'Study', studyBody: 'Read short, sourced chapters with context and clear scope labels.', notebook: 'Notebook', notebookBody: 'Keep passage notes and longer journal entries without turning insight into a score.', practice: 'Practice', practiceBody: 'Use gentle, timed exercises with optional motion and sound.', living: 'Living the Way', livingBody: 'Bring attention to ordinary choices: notice, allow, respond, reflect.', beginStudy: 'Open the first chapter', beginPractice: 'Begin a settling breath',
     readerEyebrow: 'Start here · editorial introduction', readerTitle: 'Water does not hurry, yet it finds a way.', readerIntro: 'This chapter uses water as one doorway into Daoist thought. It is not a rule for every situation, and it is not a substitute for reading the texts themselves.',
     passages: [
-      { id: 'water', title: 'Begin with relationship', body: 'Dao is often translated as “the Way”, but it is better approached as a living pattern of relationship than as a fixed route. The early texts repeatedly question rigid names and forced certainty. Study begins by noticing what a definition reveals—and what it leaves out.' },
+      { id: 'water', title: 'Begin with relationship', body: 'Dao is often translated as “the Way”: not a fixed route, but a living pattern of relationship. Early texts test rigid names and certainty, asking what each definition reveals—and leaves out.' },
       { id: 'softness', title: 'Softness is not passivity', body: 'Water yields to the shape before it and still alters stone over time. In this image, softness means responsive strength: meeting conditions clearly, using less unnecessary force, and refusing the idea that domination is the only form of power.' },
       { id: 'daily', title: 'Return to the ordinary', body: 'A Daoist orientation is not one universal lifestyle. Traditions differ, and historical Daoism includes communities, ritual, cultivation, ethics, medicine, and contemplative disciplines. A modest daily beginning is simpler: notice strain, leave room, and choose the least coercive adequate response.' },
     ],
@@ -181,4 +181,3 @@ export const DAO_COPY: Record<Locale, DaoCopy> = {
     livingTitle: 'Spotkaj sytuację z mniejszym naciskiem', notice: 'Zauważ', noticeHint: 'Co naprawdę się dzieje, zanim to zinterpretujesz?', allow: 'Dopuść', allowHint: 'Jakie uczucie może być obecne bez natychmiastowej naprawy?', respond: 'Odpowiedz', respondHint: 'Jaka jest najmniej przymuszająca wystarczająca odpowiedź?', reflect: 'Przemyśl', reflectHint: 'Czego możesz się nauczyć po działaniu?', saveLiving: 'Zapisz jako refleksję w Dzienniku',
   },
 }
-

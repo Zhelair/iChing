@@ -827,3 +827,47 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
 @media (prefers-reduced-motion: reduce) { .dao-orientation-chapter.is-in-view .dao-orientation-art__soft,.dao-orientation-chapter__visual.is-awake .dao-orientation-chapter__pulse,.dao-open-attention .dao-attention-node { animation: none !important; }.dao-orientation-chapter__visual .dao-orientation-art path,.dao-orientation-chapter__visual .dao-orientation-art circle,.dao-open-attention__scene > svg circle { transition: none; } }
 [data-reduce-motion="true"] .dao-orientation-chapter.is-in-view .dao-orientation-art__soft,[data-reduce-motion="true"] .dao-orientation-chapter__visual.is-awake .dao-orientation-chapter__pulse,[data-reduce-motion="true"] .dao-open-attention .dao-attention-node { animation: none !important; }
 @media (max-width: 639px) { .journal-mode-nav { width: 100%; }.journal-mode-nav a { flex: 1; justify-content: center; }.study-note-page footer > * { width: 100%; }.study-note-page footer .reading-export-actions button { flex: 1; }.dao-open-attention::after { display: none; } }
+
+/* Reading, reflection, and study notes are separate destinations. */
+.practice-notes-layout { display: grid; align-items: start; gap: 1rem; }
+.practice-notes-rail { padding: 1rem; }
+@media (min-width: 900px) { .practice-notes-layout { grid-template-columns: 17rem minmax(0,1fr); }.practice-notes-rail { position: sticky; top: 6.5rem; } }
+
+/* Dao study uses one visible learning map across orientation, themes, and history. */
+.dao-study-navigation { display: flex; gap: .5rem; margin-top: clamp(1rem,2vw,1.5rem); overflow-x: auto; padding-bottom: .2rem; scrollbar-width: none; }
+.dao-study-navigation::-webkit-scrollbar { display: none; }
+.dao-study-navigation a { display: inline-flex; min-height: 2.9rem; flex: none; align-items: center; gap: .45rem; border: 1px solid var(--line); border-radius: 999px; background: color-mix(in srgb,var(--white) 46%,transparent); padding: .65rem .9rem; color: var(--ink-soft); font-size: .75rem; font-weight: 800; text-decoration: none; }
+.dao-study-navigation a.active { border-color: color-mix(in srgb,var(--jade) 55%,var(--line)); background: var(--jade-light); color: var(--jade); }
+
+/* Primary learning content is readable before any observer or animation runs. */
+.dao-orientation-chapter { opacity: 1; transform: none; }
+@media (min-width: 1024px) {
+  .dao-orientation__layout > aside { position: sticky; top: 6.5rem; max-height: calc(100dvh - 8rem); overflow-y: auto; }
+  .dao-orientation__layout > aside > div { position: static; max-height: none; overflow: visible; }
+}
+
+/* Themes are reading-first; note-taking opens a dedicated journal workspace. */
+.dao-reader__note-link { display: grid; max-width: 67ch; min-height: 4.25rem; grid-template-columns: auto minmax(0,1fr) auto; align-items: center; gap: .8rem; margin-top: 1.25rem; border: 1px solid color-mix(in srgb,var(--jade) 28%,var(--line)); border-radius: 1rem; background: color-mix(in srgb,var(--jade-light) 58%,transparent); padding: .8rem 1rem; color: var(--jade); text-decoration: none; }
+.dao-reader__note-link span { display: grid; gap: .15rem; }.dao-reader__note-link strong { font-size: .8rem; }.dao-reader__note-link small { color: var(--ink-soft); font-size: .7rem; }
+@media (min-width: 1180px) { .dao-reader { grid-template-columns: 14rem minmax(0,1fr); }.dao-reader__toc { position: sticky; top: 6.5rem; } }
+@media (max-width: 1179px) and (min-width: 760px) { .dao-reader { grid-template-columns: 13rem minmax(0,1fr); } }
+
+/* Quiet sitting is a self-paced reading sequence, deliberately unlike the breath timer. */
+.dao-quiet-sitting { display: grid; overflow: hidden; background: linear-gradient(145deg,color-mix(in srgb,var(--white) 70%,transparent),color-mix(in srgb,var(--brass) 8%,var(--jade-light))); }
+.dao-quiet-sitting__intro { display: grid; align-content: center; padding: clamp(1.4rem,5vw,3.5rem); }
+.dao-quiet-sitting__intro h2 { max-width: 13ch; margin-top: .55rem; font-size: clamp(2rem,4vw,3.4rem); line-height: 1.08; }
+.dao-quiet-sitting__intro > p:not(.eyebrow):not(.dao-safety) { max-width: 55ch; margin-top: 1rem; color: var(--ink-soft); line-height: 1.75; }
+.dao-quiet-sitting__guide { display: grid; align-content: center; gap: 1rem; border-top: 1px solid var(--line); background: color-mix(in srgb,var(--white) 28%,transparent); padding: clamp(1.2rem,4vw,2.4rem); }
+.dao-quiet-sitting__scene { position: relative; min-height: 15rem; overflow: hidden; border-radius: 5rem 5rem 1.2rem 1.2rem; background: radial-gradient(circle at 50% 65%,color-mix(in srgb,var(--jade-light) 80%,transparent),transparent 44%); }
+.dao-quiet-sitting__scene svg { width: 100%; height: 100%; fill: none; stroke: color-mix(in srgb,var(--jade) 46%,transparent); stroke-width: 2; stroke-linecap: round; }
+.dao-quiet-sitting__scene span { position: absolute; right: 1rem; bottom: .2rem; color: color-mix(in srgb,var(--jade) 16%,transparent); font-family: "Lora Variable",serif; font-size: 5rem; }
+.dao-quiet-sitting.is-guiding .dao-quiet-sitting__scene .is-layer-one { opacity: .5; transform: translateY(-8px); }.dao-quiet-sitting.is-guiding .dao-quiet-sitting__scene .is-layer-two { opacity: .25; transform: translateY(-14px); }.dao-quiet-sitting.is-guiding .dao-quiet-sitting__scene .is-layer-three { opacity: .1; transform: translateY(-20px); }
+.dao-quiet-sitting__scene path { transition: opacity 500ms ease,transform 500ms ease; }
+.dao-quiet-sitting__card { display: grid; gap: 1rem; border: 1px solid color-mix(in srgb,var(--jade) 22%,var(--line)); border-radius: 1.2rem; background: color-mix(in srgb,var(--white) 58%,transparent); padding: clamp(1rem,3vw,1.5rem); }
+.dao-quiet-sitting__card > p:not(.eyebrow) { color: var(--ink-soft); font-size: .84rem; line-height: 1.72; }.dao-quiet-sitting__card > button { width: fit-content; }
+.dao-quiet-sitting__card ol { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .4rem; padding: 0; list-style: none; }
+.dao-quiet-sitting__card li { display: grid; justify-items: center; gap: .35rem; color: var(--ink-soft); font-size: .62rem; font-weight: 800; text-align: center; }.dao-quiet-sitting__card li span { display: grid; width: 1.7rem; aspect-ratio: 1; place-items: center; border: 1px solid var(--line); border-radius: 50%; }.dao-quiet-sitting__card li.is-current { color: var(--jade); }.dao-quiet-sitting__card li.is-current span { border-color: var(--jade); background: var(--jade-light); }.dao-quiet-sitting__card li.is-complete span { background: var(--jade); color: var(--white); }
+.dao-quiet-sitting__card blockquote { min-height: 8rem; border-left: 2px solid var(--brass); padding: .3rem 0 .3rem 1rem; color: var(--ink); font-family: "Lora Variable",serif; font-size: clamp(1.15rem,2.3vw,1.55rem); line-height: 1.65; }
+.dao-quiet-sitting__reflection label { font-size: .76rem; font-weight: 850; }.dao-quiet-sitting__reflection textarea { min-height: 10rem; resize: vertical; }.dao-quiet-sitting__reflection > div { display: flex; flex-wrap: wrap; gap: .6rem; }
+@media (min-width: 900px) { .dao-quiet-sitting { grid-template-columns: minmax(17rem,.78fr) minmax(26rem,1.22fr); }.dao-quiet-sitting__guide { border-top: 0; border-left: 1px solid var(--line); } }
+@media (prefers-reduced-motion: reduce) { .dao-quiet-sitting__scene path { transition: none; } }

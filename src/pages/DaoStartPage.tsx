@@ -3,6 +3,7 @@ import { DaoNavigation } from '../components/DaoNavigation'
 import { DaoOrientationJourney } from '../components/DaoOrientationJourney'
 import { DaoHistoricalStudy } from '../components/DaoHistoricalStudy'
 import { DaoRouteHeading } from '../components/DaoRouteHeading'
+import { DaoStudyNavigation } from '../components/DaoStudyNavigation'
 import { DAO_COPY } from '../data/daoContent'
 import { DAO_ORIENTATION_COPY } from '../data/daoOrientationContent'
 import { DAO_LEARNING_COPY } from '../data/daoLearningContent'
@@ -19,6 +20,7 @@ export function DaoStartPage() {
   return <div className="dao-page dao-route-page">
     <DaoNavigation copy={copy} shell={shell} />
     <DaoRouteHeading icon={Map} eyebrow={orientation.eyebrow} title={orientation.title} body={orientation.intro} shell={shell} />
+    <DaoStudyNavigation copy={learning} />
     <div className="page-shell dao-sections"><DaoOrientationJourney copy={orientation} /><DaoHistoricalStudy copy={learning} /></div>
   </div>
 }
