@@ -24,7 +24,7 @@ export function DaoPracticeLibrary({ copy, learning, shell }: { copy: DaoCopy; l
           <p>{learning.settlingBody}</p>
           <strong>{learning.useNow}<ArrowRight size={16} aria-hidden="true" /></strong>
         </Link>
-        <Link to="/dao/living" className="dao-practice-card surface">
+        <Link to="/dao/practice/open-attention" className="dao-practice-card surface">
           <span className="dao-section-icon"><Feather size={22} aria-hidden="true" /></span>
           <span className="dao-provenance-chip"><CircleDashed size={14} aria-hidden="true" />{shell.modernLabel}</span>
           <h3>{learning.ordinaryPractice}</h3>
