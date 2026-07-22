@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { App } from './App'
+import { AiProvider } from './ai/AiContext'
 import { SoundProvider } from './audio/SoundContext'
 import { I18nProvider } from './i18n/I18nContext'
 import { shouldBeginAtHome } from './routing/entry'
@@ -26,9 +27,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
       <I18nProvider>
-        <SoundProvider>
-          <App />
-        </SoundProvider>
+        <AiProvider>
+          <SoundProvider>
+            <App />
+          </SoundProvider>
+        </AiProvider>
       </I18nProvider>
     </BrowserRouter>
   </React.StrictMode>,

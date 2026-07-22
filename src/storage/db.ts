@@ -1,5 +1,6 @@
 import { openDB, type DBSchema } from 'idb'
 import type { JournalEntry, PracticeSession, Reading, ReadingProgress, StudyNote, YiPathExport } from '../domain/types'
+import type { AiReflectionRecord } from '../ai/types'
 
 interface YiPathDb extends DBSchema {
   readings: {
@@ -27,10 +28,15 @@ interface YiPathDb extends DBSchema {
     value: PracticeSession
     indexes: { 'by-created': string; 'by-practice': string }
   }
+  aiReflections: {
+    key: string
+    value: AiReflectionRecord
+    indexes: { 'by-created': string; 'by-kind': string }
+  }
 }
 
 const DB_NAME = 'yi-path'
-const DB_VERSION = 2
+const DB_VERSION = 3
 
 const dbPromise = openDB<YiPathDb>(DB_NAME, DB_VERSION, {
   upgrade(db, oldVersion) {
@@ -50,6 +56,11 @@ const dbPromise = openDB<YiPathDb>(DB_NAME, DB_VERSION, {
       const sessions = db.createObjectStore('practiceSessions', { keyPath: 'id' })
       sessions.createIndex('by-created', 'createdAt')
       sessions.createIndex('by-practice', 'practiceId')
+    }
+    if (oldVersion < 3) {
+      const reflections = db.createObjectStore('aiReflections', { keyPath: 'id' })
+      reflections.createIndex('by-created', 'createdAt')
+      reflections.createIndex('by-kind', 'kind')
     }
   },
 })
@@ -129,15 +140,36 @@ export async function getPracticeSessions(practiceId?: string) {
   return sessions.reverse()
 }
 
+export async function saveAiReflection(reflection: AiReflectionRecord) {
+  return (await dbPromise).put('aiReflections', reflection)
+}
+
+export async function getAiReflections(kind?: AiReflectionRecord['kind']) {
+  const db = await dbPromise
+  const reflections = kind
+    ? await db.getAllFromIndex('aiReflections', 'by-kind', kind)
+    : await db.getAllFromIndex('aiReflections', 'by-created')
+  return reflections.reverse()
+}
+
+export async function deleteAiReflection(id: string) {
+  return (await dbPromise).delete('aiReflections', id)
+}
+
+export async function clearAiReflections() {
+  return (await dbPromise).clear('aiReflections')
+}
+
 export async function clearAllLocalData() {
   const db = await dbPromise
-  const transaction = db.transaction(['readings', 'studyNotes', 'journalEntries', 'readingProgress', 'practiceSessions'], 'readwrite')
+  const transaction = db.transaction(['readings', 'studyNotes', 'journalEntries', 'readingProgress', 'practiceSessions', 'aiReflections'], 'readwrite')
   await Promise.all([
     transaction.objectStore('readings').clear(),
     transaction.objectStore('studyNotes').clear(),
     transaction.objectStore('journalEntries').clear(),
     transaction.objectStore('readingProgress').clear(),
     transaction.objectStore('practiceSessions').clear(),
+    transaction.objectStore('aiReflections').clear(),
   ])
   await transaction.done
 }

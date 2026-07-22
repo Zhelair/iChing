@@ -5,12 +5,13 @@ Yi Path is a private, multilingual I Ching / Yijing reflection and learning web 
 The current MVP is a local-first Vite + React + TypeScript application with:
 
 - English, Bulgarian, Russian, German, Italian, French, Spanish, European Portuguese, and Polish interface copy.
-- Digital coin casting, physical-coin entry, and direct hexagram entry.
+- Digital coin casting, physical-coin entry, the animated 16-token method, yarrow-stalk practice, and direct hexagram entry.
 - Clear treatment of 6 and 9 as changing lines, while 7 and 8 remain stable.
 - A complete 64-hexagram study library and changing-line reflections.
 - An optional locally generated meditation soundscape and coin feedback.
 - IndexedDB readings and journal notes, plus JSON import/export.
-- No account, analytics, payment system, or browser-side API key.
+- No account, analytics, payment system, shared AI key, or background AI requests.
+- Optional BYOK-only DeepSeek reflections with exact request previews, session-only keys or passphrase-encrypted local saves, and an original cat/dog screen companion.
 - An optional, explicit feedback form relayed by a small Vercel Function through Resend; readings and journal data are never included.
 
 ## Local development
@@ -73,6 +74,7 @@ Use `vercel dev` rather than the plain Vite server when testing `/api/feedback` 
 - [Hexagram and content contract](docs/03-content-contract.md)
 - [Original coding-chat handoff](docs/04-coding-chat-handoff.md)
 - [Canonical review and methodology](docs/05-canonical-review-2026-07-19.md)
+- [BYOK AI reflection architecture and warning boundary](docs/13-ai-reflections-and-byok.md)
 
 ## Product guardrails
 
@@ -80,4 +82,4 @@ Use `vercel dev` rather than the plain Vite server when testing `/api/feedback` 
 2. A visitor can cast, read, journal, export, and erase data without an account.
 3. Virtual and physical casting produce the same transparent six-line record.
 4. The app uses reflection language, not promises, diagnoses, or financial, legal, or medical advice.
-5. AI, accounts, sync, subscriptions, and payments remain later server-side additions.
+5. Optional AI is BYOK-only and explicit: inspect the exact packet, then choose whether to send it directly to DeepSeek. Accounts, sync, subscriptions, shared keys, and payments remain later additions.

@@ -13,6 +13,7 @@ export type HistoryChapterCopy = {
 
 export type JournalCopy = {
   yarrow: string
+  beads: string
   eyebrow: string
   title: string
   body: string
@@ -92,7 +93,7 @@ export type ExportDocumentCopy = {
   note: string
   stored: string
   subject: string
-  methods: { digital: string; physical: string; yarrow: string; direct: string }
+  methods: { digital: string; physical: string; yarrow: string; beads: string; direct: string }
   values: { '6': string; '7': string; '8': string; '9': string }
 }
 

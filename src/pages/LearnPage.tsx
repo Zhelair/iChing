@@ -1,9 +1,11 @@
-import { ArrowRight, Coins, Layers3, MessageCircleQuestion, MoveRight, Sparkles } from 'lucide-react'
+import { ArrowRight, Coins, ExternalLink, Gem, Layers3, MessageCircleQuestion, MoveRight, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { PageIntro } from '../components/PageIntro'
 import { HistoryJourney } from '../components/HistoryJourney'
+import { BEAD_TOKENS } from '../domain/casting'
 import type { LineValue, Polarity } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
+import { beadCopyFor } from '../i18n/featureCopy'
 import type { TranslationKey } from '../i18n/translations'
 
 type LineKey = {
@@ -32,7 +34,8 @@ function LineGlyph({ polarity }: { polarity: Polarity }) {
 }
 
 export function LearnPage() {
-  const { t } = useI18n()
+  const { preferences, t } = useI18n()
+  const beads = beadCopyFor(preferences.locale)
   const lessons = [
     { title: t('learn.questions.title'), body: t('learn.questions.body'), icon: MessageCircleQuestion, index: '01' },
     { title: t('learn.coins.title'), body: t('learn.coins.body'), icon: Coins, index: '02' },
@@ -84,6 +87,38 @@ export function LearnPage() {
               <p className="mt-5 text-sm leading-6 text-[var(--ink-soft)]">{t(line.effectKey)}</p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="surface bead-guide mt-5 overflow-hidden p-6 sm:p-9" aria-labelledby="bead-guide-title">
+        <div className="grid gap-7 lg:grid-cols-[.88fr_1.12fr] lg:items-center">
+          <div>
+            <p className="eyebrow">{beads.guideEyebrow}</p>
+            <h2 id="bead-guide-title" className="mt-3 text-3xl sm:text-4xl">{beads.guideTitle}</h2>
+            <p className="mt-4 leading-7 text-[var(--ink-soft)]">{beads.guideBody}</p>
+          </div>
+          <div className="bead-guide__vessel" aria-hidden="true">
+            <Gem size={23} />
+            <div>{BEAD_TOKENS.map((token) => <span key={token.id} className={`bead-guide__token bead-guide__token--${token.tone}`}>{token.value}</span>)}</div>
+          </div>
+        </div>
+
+        <div className="bead-guide__probabilities mt-7" aria-label={beads.guideTitle}>
+          {([6, 9, 7, 8] as LineValue[]).map((value) => {
+            const count = BEAD_TOKENS.filter((token) => token.value === value).length
+            const token = BEAD_TOKENS.find((item) => item.value === value)!
+            const line = lineKeys.find((item) => item.value === value)!
+            return <article key={value}>
+              <span className={`bead-swatch bead-swatch--${token.tone}`} aria-hidden="true" />
+              <div><strong>{value} · {t(line.nameKey)}</strong><small>{count} {beads.tokensLabel.toLocaleLowerCase(preferences.locale)} · {count}/16 · {(count / 16 * 100).toLocaleString(preferences.locale, { maximumFractionDigits: 2 })}%</small></div>
+            </article>
+          })}
+        </div>
+
+        <div className="bead-guide__notes mt-7">
+          <p>{beads.returnNote}</p>
+          <p><strong>{beads.modernNote}</strong> {beads.source}</p>
+          <a href="https://www.scientificamerican.com/article/mathematical-games-1974-01/" target="_blank" rel="noreferrer">{beads.sourceLabel} · Scientific American, January 1974 <ExternalLink size={14} aria-hidden="true" /></a>
         </div>
       </section>
 

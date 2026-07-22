@@ -11,6 +11,8 @@
 | UI language, sound, music, reduced-motion preference | `localStorage` | Small preference values. |
 | Reading journal, notes, tags, layout order | IndexedDB | Durable structured local data. |
 | Hexagram content and casting rules | Versioned files in the repository | Public, deterministic product content. |
+| Optional AI key | Memory, or passphrase-encrypted `localStorage` after explicit opt-in | BYOK only; never included in export. |
+| AI reflections | IndexedDB | Local generation history with source IDs; never canonical content. |
 | AI entitlement, user identity, payments | None in Phase 0 | No backend yet. |
 
 Implement JSON export/import and `Clear all data` in Phase 0. Export must include an app/schema version, content version and casting record so it can be migrated later.
@@ -27,6 +29,7 @@ The optional feedback form is the only Phase 0 server interaction. It sends only
 - Changing 6 flips to yang and changing 9 flips to yin to produce the resulting hexagram.
 - Use `crypto.getRandomValues`; never `Math.random` for casts.
 - Unit-test all 64 primary patterns, all line flips and a fixed deterministic test path.
+- The 16-token method uses 16 equiprobable secure buckets with a `1:3:5:7` token grouping for values `6:9:7:8`; return the token before casting the next bottom-up line.
 
 ## Phase 1 — GitHub and Vercel
 
@@ -50,9 +53,13 @@ Suggested services:
 
 Do not silently migrate local journals to the cloud. Offer `Keep data only on this device` and `Sync encrypted readings` as explicit choices. The original local export remains available.
 
-## Phase 3 — Pro and AI Companion
+## Optional BYOK AI companion in the local release
 
-Use Stripe for subscriptions and a Vercel server route/function for checkout webhooks and AI calls. The browser must never hold a DeepSeek, OpenAI or other model-provider key.
+The local release may hold a visitor-provided DeepSeek key in memory, or an AES-GCM encrypted local envelope after explicit passphrase opt-in. The passphrase is never stored. Each browser-direct request requires an exact preview and explicit confirmation. See `docs/13-ai-reflections-and-byok.md` for the implemented boundary.
+
+## Phase 3 — possible hosted Pro and AI access
+
+If Yi Path later funds model usage, use Stripe for subscriptions and a server route/function for AI calls. The browser must never receive the owner-funded provider key. This hosted model is separate from the current visitor-controlled BYOK mode.
 
 Suggested data boundaries:
 

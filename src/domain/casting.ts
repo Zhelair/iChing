@@ -1,5 +1,45 @@
 import type { CastLine, CoinSide, LineValue, Polarity } from './types'
 
+export type BeadTone = 'plum' | 'gold' | 'forest' | 'blue-jade'
+
+export type BeadToken = {
+  id: number
+  bucket: number
+  value: LineValue
+  tone: BeadTone
+}
+
+const BEAD_GROUPS: ReadonlyArray<{ count: number; value: LineValue; tone: BeadTone }> = [
+  { count: 1, value: 6, tone: 'plum' },
+  { count: 3, value: 9, tone: 'gold' },
+  { count: 5, value: 7, tone: 'forest' },
+  { count: 7, value: 8, tone: 'blue-jade' },
+]
+
+/** Sixteen equal tokens: 1 old yin, 3 old yang, 5 young yang, 7 young yin. */
+export const BEAD_TOKENS: readonly BeadToken[] = BEAD_GROUPS.flatMap(({ count, value, tone }) =>
+  Array.from({ length: count }, () => ({ value, tone })),
+).map((token, bucket) => ({ ...token, id: bucket + 1, bucket }))
+
+export function beadForBucket(bucket: number): BeadToken {
+  if (!Number.isInteger(bucket) || bucket < 0 || bucket >= BEAD_TOKENS.length) {
+    throw new Error('A bead bucket must be an integer from 0 through 15.')
+  }
+  return BEAD_TOKENS[bucket]
+}
+
+/**
+ * Draws one of sixteen equal buckets. Because 16 divides 2^32 exactly, masking
+ * the low four bits of a secure Uint32 introduces no modulo bias.
+ */
+export function drawBead(randomWord?: number): BeadToken {
+  const word = randomWord ?? crypto.getRandomValues(new Uint32Array(1))[0]
+  if (!Number.isInteger(word) || word < 0 || word > 0xffffffff) {
+    throw new Error('A bead draw requires an unsigned 32-bit integer.')
+  }
+  return beadForBucket(word & 15)
+}
+
 export const COIN_VALUES: Record<CoinSide, 2 | 3> = {
   heads: 3,
   tails: 2,

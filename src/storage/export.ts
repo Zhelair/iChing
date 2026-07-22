@@ -52,7 +52,7 @@ function isHexagramId(value: unknown): value is number {
 }
 
 function isReadingMethod(value: unknown): value is ReadingMethod {
-  return value === 'digital' || value === 'physical' || value === 'yarrow' || value === 'direct'
+  return value === 'digital' || value === 'physical' || value === 'yarrow' || value === 'beads' || value === 'direct'
 }
 
 function hasConsistentHexagrams(reading: Partial<Reading>) {
@@ -176,6 +176,11 @@ export function parseExport(value: unknown): YiPathExport {
       ...(backup.preferences as Preferences),
       theme: validTheme(backup.preferences.theme) ? backup.preferences.theme : 'daylight',
       ambientVolume: validAmbientVolume(backup.preferences.ambientVolume) ? backup.preferences.ambientVolume : backup.preferences.music ? 0.5 : 0,
+      aiEnabled: typeof backup.preferences.aiEnabled === 'boolean' ? backup.preferences.aiEnabled : false,
+      companionPet: backup.preferences.companionPet === 'dog' ? 'dog' : 'cat',
+      companionSize: backup.preferences.companionSize === 'large' ? 'large' : 'normal',
+      petSound: typeof backup.preferences.petSound === 'boolean' ? backup.preferences.petSound : true,
+      petMotion: typeof backup.preferences.petMotion === 'boolean' ? backup.preferences.petMotion : true,
     },
   }
 }

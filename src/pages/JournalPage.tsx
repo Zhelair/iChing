@@ -1,4 +1,4 @@
-import { ArrowRight, CalendarDays, RotateCcw, Search, Tag, Trash2 } from 'lucide-react'
+import { ArrowRight, CalendarDays, RotateCcw, Search, Sparkles, Tag, Trash2 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { HexagramFigure } from '../components/HexagramFigure'
@@ -12,28 +12,32 @@ import { isBuiltInContentLocale } from '../domain/locales'
 import type { Reading, ReadingMethod } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 import { getUiLocalePack } from '../i18n/uiLocalePacks'
+import { aiCopyFor } from '../i18n/aiCopy'
 import { deleteReading, getAllReadings, saveReading } from '../storage/db'
 import { setCurrentReading } from '../storage/session'
 
 const copy = {
   en: {
     yarrow: 'Yarrow',
+    beads: '16 beads',
     eyebrow: 'Private practice · local journal', title: 'A record of encounters with change.', body: 'Return to questions, refine your notes, and notice recurring images without turning reflection into a score.',
     search: 'Search questions, notes, tags, or hexagrams', all: 'All methods', digital: 'Digital', physical: 'Physical', direct: 'Entered', readings: 'readings', recurring: 'Recurring images', seen: 'seen', empty: 'Your journal is quiet for now.', emptyBody: 'Complete a reading and it will appear here automatically.', begin: 'Begin a reading', noResults: 'No entries match these filters.', question: 'Question', untitled: 'Untitled reflection', note: 'Reflection', noteHint: 'What became clearer with time?', tags: 'Tags', tagsHint: 'work, family, timing', save: 'Save changes', saved: 'Saved locally', review: 'Review reading', remove: 'Remove entry', removeTitle: 'Remove this entry?', removeBody: 'It will disappear from this browser. You can still undo for a few seconds.', removeCancel: 'Keep entry', removeConfirm: 'Yes, remove it', undo: 'Entry removed.', undoAction: 'Undo', backups: 'JSON backup and restore stay in Settings.', settings: 'Open Settings', contents: 'Journal filters', changed: 'changing lines', stable: 'stable reading', thisMonth: 'This month',
   },
   bg: {
     yarrow: 'Бял равнец',
+    beads: '16 мъниста',
     eyebrow: 'Лична практика · локален дневник', title: 'История на срещите с промяната.', body: 'Връщайте се към въпросите, допълвайте бележките и забелязвайте повтарящи се образи, без да превръщате размисъла в оценка.',
     search: 'Търсене във въпроси, бележки, етикети и хексаграми', all: 'Всички методи', digital: 'Дигитални монети', physical: 'Обикновени монети', direct: 'Въведено ръчно', readings: 'прочита', recurring: 'Повтарящи се образи', seen: 'срещана', empty: 'Дневникът ви засега е тих.', emptyBody: 'Завършете прочит и той автоматично ще се появи тук.', begin: 'Започнете прочит', noResults: 'Няма записи с тези филтри.', question: 'Въпрос', untitled: 'Размисъл без заглавие', note: 'Размисъл', noteHint: 'Какво стана по-ясно с времето?', tags: 'Етикети', tagsHint: 'работа, семейство, време', save: 'Запази промените', saved: 'Запазено локално', review: 'Отвори прочита', remove: 'Премахни записа', removeTitle: 'Да премахнем ли този запис?', removeBody: 'Той ще изчезне от този браузър. Все още можете да го върнете за няколко секунди.', removeCancel: 'Запази записа', removeConfirm: 'Да, премахни го', undo: 'Записът е премахнат.', undoAction: 'Отмени', backups: 'Резервното копие JSON и възстановяването са в Настройки.', settings: 'Отвори Настройки', contents: 'Филтри на дневника', changed: 'променящи се линии', stable: 'стабилен прочит', thisMonth: 'Този месец',
   },
   ru: {
     yarrow: 'Тысячелистник',
+    beads: '16 бусин',
     eyebrow: 'Личная практика · локальный дневник', title: 'История встреч с переменами.', body: 'Возвращайтесь к вопросам, дополняйте заметки и замечайте повторяющиеся образы, не превращая размышление в оценку.',
     search: 'Поиск по вопросам, заметкам, тегам и гексаграммам', all: 'Все методы', digital: 'Цифровые монеты', physical: 'Обычные монеты', direct: 'Введено вручную', readings: 'чтений', recurring: 'Повторяющиеся образы', seen: 'встречалась', empty: 'Ваш дневник пока тих.', emptyBody: 'Завершите чтение, и оно автоматически появится здесь.', begin: 'Начать чтение', noResults: 'Нет записей с такими фильтрами.', question: 'Вопрос', untitled: 'Размышление без заголовка', note: 'Размышление', noteHint: 'Что со временем стало яснее?', tags: 'Теги', tagsHint: 'работа, семья, время', save: 'Сохранить изменения', saved: 'Сохранено локально', review: 'Открыть чтение', remove: 'Удалить запись', removeTitle: 'Удалить эту запись?', removeBody: 'Она исчезнет из этого браузера. В течение нескольких секунд её ещё можно будет вернуть.', removeCancel: 'Оставить запись', removeConfirm: 'Да, удалить', undo: 'Запись удалена.', undoAction: 'Отменить', backups: 'Резервная копия JSON и восстановление находятся в Настройках.', settings: 'Открыть Настройки', contents: 'Фильтры дневника', changed: 'изменяющихся линий', stable: 'стабильное чтение', thisMonth: 'Этот месяц',
   },
 } as const
 
-const methodOptions: Array<'all' | ReadingMethod> = ['all', 'digital', 'physical', 'yarrow', 'direct']
+const methodOptions: Array<'all' | ReadingMethod> = ['all', 'digital', 'physical', 'yarrow', 'beads', 'direct']
 
 export function JournalPage() {
   const { editorialFor, preferences } = useI18n()
@@ -80,6 +84,7 @@ export function JournalPage() {
   }), [editorialFor, method, preferences.locale, query, readings])
   const daoCopy = DAO_COPY[preferences.locale]
   const studyNotesCopy = STUDY_NOTES_COPY[preferences.locale]
+  const aiCopy = aiCopyFor(preferences.locale)
 
   const groups = useMemo(() => {
     const formatter = new Intl.DateTimeFormat(preferences.locale, { month: 'long', year: 'numeric' })
@@ -125,6 +130,7 @@ export function JournalPage() {
     <div className="page-shell py-10 sm:py-16">
       <PageIntro eyebrow={c.eyebrow} title={c.title} body={c.body} />
       <JournalModeNav copy={studyNotesCopy} />
+      {preferences.aiEnabled ? <Link to="/journal/patterns" className="journal-patterns-link surface"><span><Sparkles size={19} aria-hidden="true" /></span><strong>{aiCopy.openPatterns}</strong><ArrowRight size={17} aria-hidden="true" /></Link> : null}
       <details className="journal-mobile-filters surface mt-7 p-4 lg:hidden"><summary>{c.contents}</summary>{renderFilters()}</details>
       <div className="journal-layout mt-8">
         <aside className="journal-rail hidden lg:block">

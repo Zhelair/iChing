@@ -290,6 +290,7 @@
     },
     "journal": {
       "yarrow": "Achillea",
+      "beads": "16 perle",
       "eyebrow": "Pratica privata · diario locale",
       "title": "Una traccia degli incontri con il cambiamento.",
       "body": "Torna alle domande, affina le note e osserva le immagini ricorrenti senza trasformare la riflessione in un punteggio.",
@@ -400,6 +401,7 @@
         "digital": "Monete digitali",
         "physical": "Monete reali",
         "yarrow": "Steli di achillea",
+        "beads": "16 perle colorate",
         "direct": "Inserimento diretto"
       },
       "values": {

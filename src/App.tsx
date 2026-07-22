@@ -22,6 +22,7 @@ const DaoLivingPage = lazy(() => import('./pages/DaoLivingPage').then(({ DaoLivi
 const IChingPage = lazy(() => import('./pages/IChingPage').then(({ IChingPage: page }) => ({ default: page })))
 const StudyNotesPage = lazy(() => import('./pages/StudyNotesPage').then(({ StudyNotesPage: page }) => ({ default: page })))
 const PracticeNotesPage = lazy(() => import('./pages/PracticeNotesPage').then(({ PracticeNotesPage: page }) => ({ default: page })))
+const MonthlyPatternsPage = lazy(() => import('./pages/MonthlyPatternsPage').then(({ MonthlyPatternsPage: page }) => ({ default: page })))
 
 export function App() {
   return (
@@ -52,6 +53,7 @@ export function App() {
         <Route path="journal" element={<JournalPage />} />
         <Route path="journal/notes" element={<PracticeNotesPage />} />
         <Route path="journal/study" element={<StudyNotesPage />} />
+        <Route path="journal/patterns" element={<MonthlyPatternsPage />} />
         <Route path="support" element={<SupportPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>

@@ -21,7 +21,7 @@ function validBackup(): YiPathExport {
     schemaVersion: 1,
     contentVersion: 'test-content',
     exportedAt: '2026-07-19T12:00:00.000Z',
-    preferences: { locale: 'en', theme: 'daylight', sound: false, music: false, ambientVolume: 0, reduceMotion: false },
+    preferences: { locale: 'en', theme: 'daylight', sound: false, music: false, ambientVolume: 0, reduceMotion: false, aiEnabled: false, companionPet: 'cat', companionSize: 'normal', petSound: true, petMotion: true },
     readings: [{
       id: 'reading-1',
       schemaVersion: 1,

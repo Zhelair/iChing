@@ -5,9 +5,11 @@ export type { Locale } from './locales'
 export type CoinSide = 'heads' | 'tails'
 export type LineValue = 6 | 7 | 8 | 9
 export type Polarity = 'yin' | 'yang'
-export type ReadingMethod = 'digital' | 'physical' | 'yarrow' | 'direct'
+export type ReadingMethod = 'digital' | 'physical' | 'yarrow' | 'beads' | 'direct'
 export type Theme = 'daylight' | 'ink-night' | 'bamboo-mist'
 export type AmbientVolume = 0 | 0.5 | 1
+export type CompanionPet = 'cat' | 'dog'
+export type CompanionSize = 'normal' | 'large'
 
 export type CastLine = {
   position: 1 | 2 | 3 | 4 | 5 | 6
@@ -93,6 +95,11 @@ export type Preferences = {
   music: boolean
   ambientVolume: AmbientVolume
   reduceMotion: boolean
+  aiEnabled: boolean
+  companionPet: CompanionPet
+  companionSize: CompanionSize
+  petSound: boolean
+  petMotion: boolean
 }
 
 export type YiPathExport = {
