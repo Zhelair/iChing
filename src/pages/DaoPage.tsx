@@ -25,7 +25,7 @@ export function DaoPage() {
     <DaoNavigation copy={copy} shell={shell} />
 
     <section className="page-shell dao-hub" aria-label={copy.navDao}>
-      <DaoHubCard className="dao-hub-card--featured" to="/dao/study" icon={BookOpenText} title={copy.study} body={copy.studyBody} action={shell.open} />
+      <DaoHubCard className="dao-hub-card--featured" to="/dao/study/start" icon={BookOpenText} title={copy.study} body={copy.studyBody} action={shell.open} />
       <DaoHubCard to="/dao/practice" icon={Wind} title={copy.practice} body={copy.practiceBody} action={shell.open} />
       <DaoHubCard to="/dao/living" icon={Sprout} title={copy.living} body={copy.livingBody} action={shell.open} />
       <DaoHubCard to="/journal" icon={NotebookPen} title={copy.notebook} body={copy.notebookBody} action={copy.notebook} />

@@ -5,7 +5,7 @@ import type { DaoShellCopy } from '../data/daoShellContent'
 
 const ITEMS = [
   { to: '/dao', copyKey: 'overview', icon: Compass, end: true },
-  { to: '/dao/study', copyKey: 'study', icon: BookOpenText, end: false },
+  { to: '/dao/study/start', copyKey: 'study', icon: BookOpenText, end: false },
   { to: '/dao/practice', copyKey: 'practice', icon: Wind, end: false },
   { to: '/dao/living', copyKey: 'living', icon: Sprout, end: false },
 ] as const
