@@ -1,5 +1,6 @@
 import { ExternalLink } from 'lucide-react'
-import { useEffect, useRef, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useSound } from '../audio/SoundContext'
 import type { DaoOrientationCopy, DaoOrientationScene } from '../data/daoOrientationContent'
 import { useI18n } from '../i18n/I18nContext'
 
@@ -17,7 +18,10 @@ function OrientationArt({ scene }: { scene: DaoOrientationScene }) {
 
 export function DaoOrientationJourney({ copy }: { copy: DaoOrientationCopy }) {
   const { preferences } = useI18n()
+  const { playHistoryCue } = useSound()
   const rootRef = useRef<HTMLElement>(null)
+  const [activeId, setActiveId] = useState(copy.lessons[0]?.id ?? '')
+  const [awakeId, setAwakeId] = useState<string | null>(null)
 
   useEffect(() => {
     const chapters = rootRef.current?.querySelectorAll<HTMLElement>('.dao-orientation-chapter')
@@ -26,12 +30,15 @@ export function DaoOrientationJourney({ copy }: { copy: DaoOrientationCopy }) {
       chapters.forEach((chapter) => chapter.classList.add('is-in-view'))
       return
     }
-    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => entry.target.classList.toggle('is-in-view', entry.isIntersecting)), { threshold: .2, rootMargin: '-8% 0px -8%' })
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+      entry.target.classList.toggle('is-in-view', entry.isIntersecting)
+      if (entry.isIntersecting) setActiveId(entry.target.id.replace('dao-', ''))
+    }), { threshold: .32, rootMargin: '-12% 0px -42%' })
     chapters.forEach((chapter) => observer.observe(chapter))
     return () => observer.disconnect()
   }, [preferences.reduceMotion])
 
-  const links = <nav className="dao-orientation-toc" aria-label={copy.contents}>{copy.lessons.map((lesson, index) => <a key={lesson.id} href={`#dao-${lesson.id}`}><span>{String(index + 1).padStart(2, '0')}</span>{lesson.title}</a>)}</nav>
+  const links = <nav className="dao-orientation-toc" aria-label={copy.contents}>{copy.lessons.map((lesson, index) => <a key={lesson.id} href={`#dao-${lesson.id}`} className={activeId === lesson.id ? 'is-active' : ''} aria-current={activeId === lesson.id ? 'step' : undefined}><span>{String(index + 1).padStart(2, '0')}</span>{lesson.title}</a>)}</nav>
 
   return <section ref={rootRef} className="dao-orientation" aria-label={copy.contents}>
     <details className="surface dao-orientation__mobile-toc"><summary>{copy.contents}</summary>{links}</details>
@@ -39,10 +46,14 @@ export function DaoOrientationJourney({ copy }: { copy: DaoOrientationCopy }) {
       <aside><div className="surface"><p className="eyebrow">{copy.contents}</p>{links}</div></aside>
       <div className="dao-orientation__chapters">
         {copy.lessons.map((lesson, index) => <article key={lesson.id} id={`dao-${lesson.id}`} className="surface dao-orientation-chapter scroll-mt-28" style={{ '--chapter-index': index } as CSSProperties}>
-          <div className="dao-orientation-chapter__visual"><OrientationArt scene={lesson.scene} /></div>
+          <button type="button" className={`dao-orientation-chapter__visual${awakeId === lesson.id ? ' is-awake' : ''}`} aria-label={lesson.title} aria-pressed={awakeId === lesson.id} onClick={() => {
+            setAwakeId((current) => current === lesson.id ? null : lesson.id)
+            const cues = ['brush', 'coin', 'brush', 'stalk', 'brush', 'bone'] as const
+            playHistoryCue(cues[index])
+          }}><OrientationArt scene={lesson.scene} /><span className="dao-orientation-chapter__pulse" aria-hidden="true" /></button>
           <div className="dao-orientation-chapter__copy">
             <p className="eyebrow">{lesson.kicker}</p><h2>{lesson.title}</h2><p className="dao-orientation-chapter__body">{lesson.body}</p>
-            <div className="dao-orientation-chapter__notes"><aside><strong>{copy.keepDistinct}</strong><p>{lesson.distinction}</p></aside><aside><strong>{copy.consider}</strong><p>{lesson.reflection}</p></aside></div>
+            <details className="dao-orientation-chapter__details"><summary>{copy.keepDistinct} · {copy.consider}</summary><div className="dao-orientation-chapter__notes"><aside><strong>{copy.keepDistinct}</strong><p>{lesson.distinction}</p></aside><aside><strong>{copy.consider}</strong><p>{lesson.reflection}</p></aside></div></details>
             <a href={lesson.sourceUrl} target="_blank" rel="noreferrer"><span>{copy.sourceTrail}</span>{lesson.source}<ExternalLink size={14} aria-hidden="true" /></a>
           </div>
         </article>)}

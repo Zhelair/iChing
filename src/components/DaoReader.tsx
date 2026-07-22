@@ -4,8 +4,8 @@ import { createPortal } from 'react-dom'
 import type { DaoCopy } from '../data/daoContent'
 import type { DaoShellCopy } from '../data/daoShellContent'
 import type { Locale } from '../domain/locales'
-import type { JournalEntry, StudyNote } from '../domain/types'
-import { getReadingProgress, getStudyNotes, saveJournalEntry, saveReadingProgress, saveStudyNote } from '../storage/db'
+import type { StudyNote } from '../domain/types'
+import { getReadingProgress, getStudyNotes, saveReadingProgress, saveStudyNote } from '../storage/db'
 
 const WORK_ID = 'dao-water-introduction-v1'
 
@@ -65,8 +65,6 @@ export function DaoReader({ copy, shell, locale, themeLabel }: DaoReaderProps & 
       body: noteBody, tags: ['dao', 'study'],
     }
     await saveStudyNote(note)
-    const entry: JournalEntry = { id: crypto.randomUUID(), schemaVersion: 1, createdAt: now, updatedAt: now, locale, kind: 'study', title: passage.title, body: noteBody, tags: ['dao', 'study'], sourceId: `${WORK_ID}:${passage.id}` }
-    await saveJournalEntry(entry)
     setNotes((items) => [note, ...items])
     setBody('')
     setSaved(true)

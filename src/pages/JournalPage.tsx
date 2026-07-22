@@ -3,10 +3,12 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { HexagramFigure } from '../components/HexagramFigure'
 import { JournalTextEntryCard } from '../components/JournalTextEntryCard'
+import { JournalModeNav } from '../components/JournalModeNav'
 import { PageIntro } from '../components/PageIntro'
 import { ReadingExportActions } from '../components/ReadingExportActions'
 import { getHexagram } from '../data/hexagrams'
 import { DAO_COPY } from '../data/daoContent'
+import { STUDY_NOTES_COPY } from '../data/studyNotesContent'
 import { isBuiltInContentLocale } from '../domain/locales'
 import type { JournalEntry, Reading, ReadingMethod } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
@@ -78,8 +80,10 @@ export function JournalPage() {
     const haystack = [reading.question, reading.note, reading.tags.join(' '), hexagram.pinyin, hexagram.chinese, editorialFor(hexagram).title, String(hexagram.id)].join(' ').toLocaleLowerCase(preferences.locale)
     return haystack.includes(query.trim().toLocaleLowerCase(preferences.locale))
   }), [editorialFor, method, preferences.locale, query, readings])
-  const filteredEntries = useMemo(() => journalEntries.filter((entry) => [entry.title, entry.body, entry.tags.join(' ')].join(' ').toLocaleLowerCase(preferences.locale).includes(query.trim().toLocaleLowerCase(preferences.locale))), [journalEntries, preferences.locale, query])
+  const personalEntries = useMemo(() => journalEntries.filter((entry) => entry.kind !== 'study'), [journalEntries])
+  const filteredEntries = useMemo(() => personalEntries.filter((entry) => [entry.title, entry.body, entry.tags.join(' ')].join(' ').toLocaleLowerCase(preferences.locale).includes(query.trim().toLocaleLowerCase(preferences.locale))), [personalEntries, preferences.locale, query])
   const daoCopy = DAO_COPY[preferences.locale]
+  const studyNotesCopy = STUDY_NOTES_COPY[preferences.locale]
 
   const groups = useMemo(() => {
     const formatter = new Intl.DateTimeFormat(preferences.locale, { month: 'long', year: 'numeric' })
@@ -124,6 +128,7 @@ export function JournalPage() {
   return (
     <div className="page-shell py-10 sm:py-16">
       <PageIntro eyebrow={c.eyebrow} title={c.title} body={c.body} />
+      <JournalModeNav copy={studyNotesCopy} />
       <details className="journal-mobile-filters surface mt-7 p-4 lg:hidden"><summary>{c.contents}</summary>{renderFilters()}</details>
       <div className="journal-layout mt-8">
         <aside className="journal-rail hidden lg:block">
@@ -138,7 +143,7 @@ export function JournalPage() {
         <section aria-live="polite">
           {!loaded ? <div className="surface p-8">…</div> : <>
           {filteredEntries.length ? <div className="journal-group"><h2 className="journal-month">{daoCopy.notebook} · {filteredEntries.length}</h2><div className="space-y-3">{filteredEntries.map((entry) => <JournalTextEntryCard key={entry.id} entry={entry} locale={preferences.locale} daoCopy={daoCopy} labels={{ save: c.save, saved: c.saved, remove: c.remove }} onSave={async (updated) => { await saveJournalEntry(updated); setJournalEntries((items) => items.map((item) => item.id === updated.id ? updated : item)) }} onDelete={async (id) => { await deleteJournalEntry(id); setJournalEntries((items) => items.filter((item) => item.id !== id)) }} />)}</div></div> : null}
-          {readings.length === 0 && journalEntries.length === 0 ? <div className="surface journal-empty p-8 sm:p-12"><CalendarDays size={34} /><h2 className="mt-5 text-3xl">{c.empty}</h2><p className="mt-3 text-[var(--ink-soft)]">{c.emptyBody}</p><div className="mt-7 flex flex-wrap gap-3"><Link to="/iching/reading" className="button-primary">{c.begin}<ArrowRight size={17} /></Link><Link to="/dao" className="button-secondary">{daoCopy.navDao}</Link></div></div> : filtered.length === 0 && filteredEntries.length === 0 ? <div className="surface p-8 text-[var(--ink-soft)]">{c.noResults}</div> : groups.map((group) => (
+          {readings.length === 0 && personalEntries.length === 0 ? <div className="surface journal-empty p-8 sm:p-12"><CalendarDays size={34} /><h2 className="mt-5 text-3xl">{c.empty}</h2><p className="mt-3 text-[var(--ink-soft)]">{c.emptyBody}</p><div className="mt-7 flex flex-wrap gap-3"><Link to="/iching/reading" className="button-primary">{c.begin}<ArrowRight size={17} /></Link><Link to="/dao" className="button-secondary">{daoCopy.navDao}</Link></div></div> : filtered.length === 0 && filteredEntries.length === 0 ? <div className="surface p-8 text-[var(--ink-soft)]">{c.noResults}</div> : groups.map((group) => (
             <div key={group.label} className="journal-group"><h2 className="journal-month">{group.label}</h2>
               <div className="space-y-3">{group.readings.map((reading) => {
                 const hexagram = getHexagram(reading.primaryHexagramId)
