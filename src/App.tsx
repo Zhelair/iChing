@@ -15,6 +15,7 @@ const SupportPage = lazy(() => import('./pages/SupportPage').then(({ SupportPage
 const DaoPage = lazy(() => import('./pages/DaoPage').then(({ DaoPage: page }) => ({ default: page })))
 const DaoStudyPage = lazy(() => import('./pages/DaoStudyPage').then(({ DaoStudyPage: page }) => ({ default: page })))
 const DaoPracticePage = lazy(() => import('./pages/DaoPracticePage').then(({ DaoPracticePage: page }) => ({ default: page })))
+const DaoSettlingPage = lazy(() => import('./pages/DaoSettlingPage').then(({ DaoSettlingPage: page }) => ({ default: page })))
 const DaoLivingPage = lazy(() => import('./pages/DaoLivingPage').then(({ DaoLivingPage: page }) => ({ default: page })))
 const IChingPage = lazy(() => import('./pages/IChingPage').then(({ IChingPage: page }) => ({ default: page })))
 
@@ -33,6 +34,7 @@ export function App() {
         <Route path="dao" element={<DaoPage />} />
         <Route path="dao/study" element={<DaoStudyPage />} />
         <Route path="dao/practice" element={<DaoPracticePage />} />
+        <Route path="dao/practice/settling" element={<DaoSettlingPage />} />
         <Route path="dao/living" element={<DaoLivingPage />} />
         <Route path="start" element={<Navigate to="/iching/guide" replace />} />
         <Route path="learn" element={<Navigate to="/iching/guide" replace />} />
