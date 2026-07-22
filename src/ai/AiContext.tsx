@@ -1,14 +1,18 @@
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react'
 import { decryptApiKey, encryptApiKey, readEncryptedKey, removeEncryptedKey, storeEncryptedKey } from './keyVault'
-import type { DeepSeekModel } from './types'
+import { AI_PROVIDERS, DEFAULT_AI_MODELS } from './providers'
+import type { AiModel, AiProviderId } from './types'
 
-const MODEL_STORAGE = 'yi-path:deepseek-model:v1'
+const PROVIDER_STORAGE = 'yi-path:ai-provider:v1'
+const MODEL_STORAGE = 'yi-path:ai-models:v1'
 
 type AiContextValue = {
   apiKey: string | null
-  model: DeepSeekModel
+  provider: AiProviderId
+  model: AiModel
   hasEncryptedKey: boolean
-  setModel: (model: DeepSeekModel) => void
+  setProvider: (provider: AiProviderId) => void
+  setModel: (model: AiModel) => void
   useSessionKey: (apiKey: string) => void
   saveEncrypted: (apiKey: string, passphrase: string) => Promise<void>
   unlock: (passphrase: string) => Promise<void>
@@ -18,45 +22,75 @@ type AiContextValue = {
 
 const AiContext = createContext<AiContextValue | null>(null)
 
-function initialModel(): DeepSeekModel {
-  return localStorage.getItem(MODEL_STORAGE) === 'deepseek-v4-pro' ? 'deepseek-v4-pro' : 'deepseek-v4-flash'
+function initialProvider(): AiProviderId {
+  const saved = localStorage.getItem(PROVIDER_STORAGE)
+  return saved === 'openai' || saved === 'anthropic' ? saved : 'deepseek'
+}
+
+function initialModels(): Record<AiProviderId, AiModel> {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(MODEL_STORAGE) ?? '{}') as Partial<Record<AiProviderId, AiModel>>
+    return { ...DEFAULT_AI_MODELS, ...parsed }
+  } catch {
+    return { ...DEFAULT_AI_MODELS }
+  }
 }
 
 export function AiProvider({ children }: { children: ReactNode }) {
-  const [apiKey, setApiKey] = useState<string | null>(null)
-  const [model, setModelState] = useState<DeepSeekModel>(initialModel)
-  const [hasEncryptedKey, setHasEncryptedKey] = useState(() => Boolean(readEncryptedKey()))
+  const [provider, setProviderState] = useState<AiProviderId>(initialProvider)
+  const [apiKeys, setApiKeys] = useState<Partial<Record<AiProviderId, string>>>({})
+  const [models, setModels] = useState<Record<AiProviderId, AiModel>>(initialModels)
+  const [encryptedProviders, setEncryptedProviders] = useState<Record<AiProviderId, boolean>>(() => ({
+    deepseek: Boolean(readEncryptedKey('deepseek')),
+    openai: Boolean(readEncryptedKey('openai')),
+    anthropic: Boolean(readEncryptedKey('anthropic')),
+  }))
 
-  const setModel = useCallback((next: DeepSeekModel) => {
-    setModelState(next)
-    localStorage.setItem(MODEL_STORAGE, next)
+  const setProvider = useCallback((next: AiProviderId) => {
+    setProviderState(next)
+    localStorage.setItem(PROVIDER_STORAGE, next)
   }, [])
 
+  const setModel = useCallback((next: AiModel) => {
+    if (!AI_PROVIDERS[provider].models.some((option) => option.id === next)) return
+    setModels((current) => {
+      const updated = { ...current, [provider]: next }
+      localStorage.setItem(MODEL_STORAGE, JSON.stringify(updated))
+      return updated
+    })
+  }, [provider])
+
   const value = useMemo<AiContextValue>(() => ({
-    apiKey,
-    model,
-    hasEncryptedKey,
+    apiKey: apiKeys[provider] ?? null,
+    provider,
+    model: models[provider],
+    hasEncryptedKey: encryptedProviders[provider],
+    setProvider,
     setModel,
     useSessionKey: (next) => {
       const normalized = next.trim()
       if (normalized.length < 10) throw new Error('invalid-key')
-      setApiKey(normalized)
+      setApiKeys((current) => ({ ...current, [provider]: normalized }))
     },
     saveEncrypted: async (next, passphrase) => {
       const normalized = next.trim()
       const envelope = await encryptApiKey(normalized, passphrase)
-      storeEncryptedKey(envelope)
-      setHasEncryptedKey(true)
-      setApiKey(normalized)
+      storeEncryptedKey(envelope, provider)
+      setEncryptedProviders((current) => ({ ...current, [provider]: true }))
+      setApiKeys((current) => ({ ...current, [provider]: normalized }))
     },
     unlock: async (passphrase) => {
-      const envelope = readEncryptedKey()
+      const envelope = readEncryptedKey(provider)
       if (!envelope) throw new Error('missing-envelope')
-      setApiKey(await decryptApiKey(envelope, passphrase))
+      const key = await decryptApiKey(envelope, passphrase)
+      setApiKeys((current) => ({ ...current, [provider]: key }))
     },
-    lock: () => setApiKey(null),
-    forgetEncrypted: () => { removeEncryptedKey(); setHasEncryptedKey(false) },
-  }), [apiKey, hasEncryptedKey, model, setModel])
+    lock: () => setApiKeys((current) => { const updated = { ...current }; delete updated[provider]; return updated }),
+    forgetEncrypted: () => {
+      removeEncryptedKey(provider)
+      setEncryptedProviders((current) => ({ ...current, [provider]: false }))
+    },
+  }), [apiKeys, encryptedProviders, models, provider, setModel, setProvider])
 
   return <AiContext.Provider value={value}>{children}</AiContext.Provider>
 }

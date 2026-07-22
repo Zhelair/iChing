@@ -1,12 +1,18 @@
 import type { Locale, ReadingMethod } from '../domain/types'
 
+export type AiProviderId = 'deepseek' | 'openai' | 'anthropic'
+export type AiProviderName = 'DeepSeek' | 'OpenAI' | 'Anthropic'
 export type DeepSeekModel = 'deepseek-v4-flash' | 'deepseek-v4-pro'
+export type OpenAiModel = 'gpt-5-mini' | 'gpt-5.2'
+export type AnthropicModel = 'claude-haiku-4-5' | 'claude-sonnet-5'
+export type AiModel = DeepSeekModel | OpenAiModel | AnthropicModel
 export type ReflectionKind = 'reading' | 'monthly-pattern'
 
 export type AiRequestPreview = {
-  endpoint: 'https://api.deepseek.com/chat/completions'
-  provider: 'DeepSeek'
-  model: DeepSeekModel
+  endpoint: 'https://api.deepseek.com/chat/completions' | 'https://api.openai.com/v1/chat/completions' | 'https://api.anthropic.com/v1/messages'
+  providerId: AiProviderId
+  provider: AiProviderName
+  model: AiModel
   messages: Array<{ role: 'system' | 'user'; content: string }>
 }
 
@@ -47,8 +53,8 @@ export type AiReflectionRecord = {
   id: string
   schemaVersion: 1
   createdAt: string
-  provider: 'DeepSeek'
-  model: DeepSeekModel
+  provider: AiProviderName
+  model: AiModel
   kind: ReflectionKind
   locale: Locale
   sourceIds: string[]

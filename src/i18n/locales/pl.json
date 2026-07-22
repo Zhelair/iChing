@@ -360,7 +360,7 @@
       "eyebrow": "Lokalnie z założenia",
       "title": "Prywatność i bezpieczeństwo",
       "intro": "Yi Path nie ma kont, analityki ani synchronizacji z chmurą. Odczyty i notatki z dziennika pozostają w tej przeglądarce.",
-      "local": "Odczyty, pytania i notatki nigdy nie są wysyłane do usługi opinii. Przez Resend, z użyciem klucza API po stronie serwera, trafia wyłącznie opinia, którą samodzielnie prześlesz.",
+      "local": "Twoje odczyty, pytania, notatki i historia praktyk pozostają na tym urządzeniu. Resend otrzymuje tylko niezbędne dane, które jawnie wpiszesz i wyślesz w formularzu opinii.",
       "access": "Inne strony nie mogą odczytać tych danych, ale osoba mająca dostęp do urządzenia lub rozszerzenie przeglądarki o szerokich uprawnieniach może uzyskać do nich dostęp.",
       "exports": "Eksporty JSON, PNG i PDF nie są szyfrowane. Traktuj je jak prywatne dokumenty; wyczyszczenie aplikacji nie usuwa wcześniej wyeksportowanych kopii.",
       "largeFile": "Ta kopia zapasowa przekracza limit importu wynoszący 5 MB."

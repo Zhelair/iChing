@@ -1,10 +1,11 @@
 import { Bot, Check, ShieldCheck, Sparkles } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useSound } from '../audio/SoundContext'
 import type { CompanionPet as CompanionPetKind } from '../domain/types'
 import { companionCopyFor } from '../i18n/companionCopy'
 import { useI18n } from '../i18n/I18nContext'
-import { companionLocalCopyFor } from '../i18n/companionLocalCopy'
+import { petExperienceCopyFor } from '../i18n/petExperienceCopy'
 import { CompanionPet, type CompanionAnimation } from './CompanionPet'
 
 function animationFor(pet: CompanionPetKind, action: 0 | 1 | 2): CompanionAnimation {
@@ -25,7 +26,7 @@ export function CompanionSettings() {
   const { preferences, updatePreference } = useI18n()
   const { playPetSound } = useSound()
   const copy = companionCopyFor(preferences.locale)
-  const localCopy = companionLocalCopyFor(preferences.locale)
+  const experience = petExperienceCopyFor(preferences.locale)
   const [animation, setAnimation] = useState<CompanionAnimation>('idle')
   const [animationRun, setAnimationRun] = useState(0)
   const resetTimer = useRef<number | null>(null)
@@ -73,6 +74,7 @@ export function CompanionSettings() {
           <div className="companion-studio__actions">
             {copy.actions[preferences.companionPet].map((label, index) => <button key={label} type="button" disabled={!preferences.companionEnabled} onClick={() => interact(index as 0 | 1 | 2)}>{label}</button>)}
           </div>
+          {preferences.companionPet === 'cat' && preferences.companionEnabled ? <Link className="companion-studio__practice" to="/companion/golden-paw"><Sparkles size={15} aria-hidden="true" /><span><strong>{experience.practice}</strong><small>{experience.practiceBody}</small></span></Link> : null}
         </div>
 
         <div className="companion-studio__controls">
@@ -100,10 +102,6 @@ export function CompanionSettings() {
 
           <StudioToggle checked={preferences.petMotion} onChange={(value) => updatePreference('petMotion', value)} label={copy.motion} body={copy.motionBody} />
           <StudioToggle checked={preferences.petSound} onChange={(value) => updatePreference('petSound', value)} label={copy.sounds} body={copy.soundsBody} />
-          <div className="companion-studio__routine">
-            <strong>{localCopy.routineTitle}</strong>
-            <ul>{localCopy.routine.map((item) => <li key={item}>{item}</li>)}</ul>
-          </div>
         </div>
       </div>
 

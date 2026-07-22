@@ -360,7 +360,7 @@
       "eyebrow": "Von Grund auf lokal",
       "title": "Datenschutz & Sicherheit",
       "intro": "Yi Path verwendet weder Konten noch Analysen oder Cloud-Synchronisierung. Lesungen und Tagebuchnotizen bleiben in diesem Browser.",
-      "local": "Lesungen, Fragen und Notizen werden niemals an den Feedback-Dienst gesendet. Nur ausdrücklich von Ihnen abgesendetes Feedback wird über Resend mit einem serverseitigen API-Schlüssel übertragen.",
+      "local": "Ihre Lesungen, Fragen, Notizen und Übungsverläufe bleiben auf diesem Gerät. Resend erhält nur die nötigen Angaben, die Sie im Feedback-Formular ausdrücklich eingeben und absenden.",
       "access": "Andere Websites können diese Daten nicht lesen. Eine Person mit Zugriff auf dieses Gerät oder eine mächtige Browser-Erweiterung könnte jedoch darauf zugreifen.",
       "exports": "JSON-, PNG- und PDF-Exporte sind nicht verschlüsselt. Bewahren Sie sie wie private Dokumente auf; beim Löschen der App-Daten werden bereits exportierte Kopien nicht entfernt.",
       "largeFile": "Diese Sicherung überschreitet die Importgrenze von 5 MB."

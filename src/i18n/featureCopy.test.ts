@@ -3,6 +3,7 @@ import { SUPPORTED_LOCALES } from '../domain/locales'
 import { aiCopyFor, AI_COPY_STATUS } from './aiCopy'
 import { companionCopyFor, companionCopyStatus } from './companionCopy'
 import { beadCopyFor, beadCopyStatus } from './featureCopy'
+import { aiProviderCopyFor } from './aiProviderCopy'
 
 describe('new feature locale contracts', () => {
   it.each(SUPPORTED_LOCALES)('has complete bead, companion, and AI copy for %s', (locale) => {
@@ -18,10 +19,12 @@ describe('new feature locale contracts', () => {
     expect(AI_COPY_STATUS[locale]).toBe(locale === 'en' ? 'source-authored' : 'ai-assisted-ui-draft-needs-native-review')
   })
 
-  it('uses the correct product and provider names in the English BYOK warning', () => {
-    const copy = aiCopyFor('en')
-    expect(copy.warningProvider).toContain('Yi Path')
-    expect(copy.warningProvider).toContain('DeepSeek')
-    expect(copy.warningProvider).not.toContain('JobSensei')
+  it('uses the correct product and provider names in the English BYOK copy', () => {
+    const copy = aiProviderCopyFor('en')
+    expect(copy.body).toContain('Yi Path')
+    expect(copy.body).toContain('DeepSeek')
+    expect(copy.body).toContain('OpenAI')
+    expect(copy.body).toContain('Anthropic')
+    expect(JSON.stringify(copy)).not.toContain('JobSensei')
   })
 })

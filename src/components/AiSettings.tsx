@@ -1,21 +1,23 @@
 import { KeyRound, Lock, ShieldAlert, Trash2, Unlock } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { useAi } from '../ai/AiContext'
-import type { DeepSeekModel } from '../ai/types'
+import { AI_PROVIDERS } from '../ai/providers'
+import type { AiModel, AiProviderId } from '../ai/types'
 import { aiCopyFor } from '../i18n/aiCopy'
 import { useI18n } from '../i18n/I18nContext'
-import { companionLocalCopyFor } from '../i18n/companionLocalCopy'
+import { aiProviderCopyFor } from '../i18n/aiProviderCopy'
 
 export function AiSettings() {
   const { preferences, updatePreference } = useI18n()
   const ai = useAi()
   const copy = aiCopyFor(preferences.locale)
-  const localCopy = companionLocalCopyFor(preferences.locale)
+  const providerCopy = aiProviderCopyFor(preferences.locale)
   const [keyInput, setKeyInput] = useState('')
   const [passphrase, setPassphrase] = useState('')
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
+  const provider = AI_PROVIDERS[ai.provider]
 
   const handleError = (reason: unknown, unlocking = false) => {
     const code = reason instanceof Error ? reason.message : ''
@@ -42,16 +44,21 @@ export function AiSettings() {
   }
 
   return <section id="ai-key-settings" tabIndex={-1} className="surface ai-settings mt-5" aria-labelledby="ai-settings-title">
-    <header><span><KeyRound size={22} aria-hidden="true" /></span><div><p className="eyebrow">{copy.settingsEyebrow}</p><h2 id="ai-settings-title">{copy.settingsTitle}</h2><p>{copy.settingsBody}</p></div><strong>{copy.byokOnly}</strong></header>
+    <header><span><KeyRound size={22} aria-hidden="true" /></span><div><p className="eyebrow">{copy.settingsEyebrow}</p><h2 id="ai-settings-title">{providerCopy.title}</h2><p>{providerCopy.body}</p></div><strong>{copy.byokOnly}</strong></header>
     <label className="ai-settings__enabled">
-      <span><strong>{localCopy.aiEnable}</strong><small>{localCopy.aiEnableBody}</small></span>
+      <span><strong>{providerCopy.enable}</strong><small>{providerCopy.enableBody}</small></span>
       <input type="checkbox" role="switch" className="sr-only" checked={preferences.aiEnabled} onChange={(event) => updatePreference('aiEnabled', event.target.checked)} />
       <i className={preferences.aiEnabled ? 'is-on' : ''} aria-hidden="true"><span /></i>
     </label>
     <div className="ai-settings__layout">
       <form className="ai-settings__form" onSubmit={useSession}>
+        <fieldset className="ai-settings__providers">
+          <legend>{providerCopy.provider}</legend>
+          <small>{providerCopy.providerBody}</small>
+          <div>{(Object.keys(AI_PROVIDERS) as AiProviderId[]).map((id) => <button key={id} type="button" className={ai.provider === id ? 'is-selected' : ''} onClick={() => { ai.setProvider(id); setKeyInput(''); setPassphrase(''); setMessage(''); setError('') }}>{AI_PROVIDERS[id].name}</button>)}</div>
+        </fieldset>
         <p className={`ai-key-status ${ai.apiKey ? 'is-unlocked' : ''}`}>{ai.apiKey ? <Unlock size={17} /> : <Lock size={17} />}{ai.apiKey ? copy.unlocked : copy.locked}</p>
-        <label><span>{copy.keyLabel}</span><input className="field" type="password" autoComplete="off" value={keyInput} onChange={(event) => setKeyInput(event.target.value)} placeholder={copy.keyPlaceholder} /></label>
+        <label><span>{provider.name} {providerCopy.key}</span><input className="field" type="password" autoComplete="off" value={keyInput} onChange={(event) => setKeyInput(event.target.value)} placeholder={copy.keyPlaceholder} /></label>
         <label><span>{copy.passphraseLabel}</span><input className="field" type="password" autoComplete="new-password" value={passphrase} onChange={(event) => setPassphrase(event.target.value)} /><small>{copy.passphraseHint}</small></label>
         <div className="ai-settings__buttons">
           <button type="submit" className="button-primary" disabled={!keyInput || busy}>{copy.useSession}</button>
@@ -62,9 +69,9 @@ export function AiSettings() {
         </div>
         {message ? <p className="ai-settings__message" role="status">{message}</p> : null}
         {error ? <p className="ai-settings__error" role="alert">{error}</p> : null}
-        <label><span>{copy.model}</span><select className="field" value={ai.model} onChange={(event) => ai.setModel(event.target.value as DeepSeekModel)}><option value="deepseek-v4-flash">{copy.flash}</option><option value="deepseek-v4-pro">{copy.pro}</option></select></label>
+        <label><span>{copy.model}</span><select className="field" value={ai.model} onChange={(event) => ai.setModel(event.target.value as AiModel)}>{provider.models.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}</select></label>
       </form>
-      <aside className="ai-settings__warning"><ShieldAlert size={23} aria-hidden="true" /><div><h3>{copy.warningTitle}</h3><ul><li>{copy.warningSession}</li><li>{copy.warningLocal}</li><li>{copy.warningProvider}</li><li>{copy.warningData}</li><li>{copy.warningRisk}</li></ul></div></aside>
+      <aside className="ai-settings__warning"><ShieldAlert size={23} aria-hidden="true" /><div><h3>{providerCopy.warningTitle}</h3><ul>{providerCopy.warning.map((item) => <li key={item}>{item}</li>)}</ul></div></aside>
     </div>
   </section>
 }

@@ -360,7 +360,7 @@
       "eyebrow": "Locale per scelta progettuale",
       "title": "Privacy e sicurezza",
       "intro": "Yi Path non usa account, strumenti di analisi o sincronizzazione cloud. Le letture e le note del diario restano in questo browser.",
-      "local": "Letture, domande e note non vengono mai inviate al servizio di feedback. Solo il feedback che scegli esplicitamente di inviare passa attraverso Resend mediante una chiave API sul server.",
+      "local": "Letture, domande, note e cronologia delle pratiche restano su questo dispositivo. Resend riceve solo i dati necessari che inserisci e invii esplicitamente nel modulo Feedback.",
       "access": "Gli altri siti web non possono leggere questi dati, ma potrebbe riuscirci chi ha accesso al dispositivo o un’estensione del browser con ampi privilegi.",
       "exports": "Le esportazioni JSON, PNG e PDF non sono cifrate. Conservale come documenti privati; cancellare i dati dell’app non elimina le copie già esportate.",
       "largeFile": "Questa copia supera il limite di importazione di 5 MB."

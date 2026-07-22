@@ -1,4 +1,7 @@
-const ENCRYPTED_KEY_STORAGE = 'yi-path:deepseek-key:v1'
+import type { AiProviderId } from './types'
+
+const ENCRYPTED_KEY_STORAGE = 'yi-path:ai-keys:v2'
+const LEGACY_DEEPSEEK_STORAGE = 'yi-path:deepseek-key:v1'
 const ITERATIONS = 310_000
 
 export type EncryptedKeyEnvelope = {
@@ -64,19 +67,37 @@ export async function decryptApiKey(envelope: EncryptedKeyEnvelope, passphrase: 
   }
 }
 
-export function readEncryptedKey(): EncryptedKeyEnvelope | null {
+type EncryptedKeyRecord = Partial<Record<AiProviderId, EncryptedKeyEnvelope>>
+
+function readKeyRecord(): EncryptedKeyRecord {
   try {
-    const parsed = JSON.parse(localStorage.getItem(ENCRYPTED_KEY_STORAGE) ?? 'null') as EncryptedKeyEnvelope | null
-    return parsed?.version === 1 ? parsed : null
+    return JSON.parse(localStorage.getItem(ENCRYPTED_KEY_STORAGE) ?? '{}') as EncryptedKeyRecord
+  } catch {
+    return {}
+  }
+}
+
+export function readEncryptedKey(provider: AiProviderId = 'deepseek'): EncryptedKeyEnvelope | null {
+  const saved = readKeyRecord()[provider]
+  if (saved?.version === 1) return saved
+  if (provider !== 'deepseek') return null
+  try {
+    const legacy = JSON.parse(localStorage.getItem(LEGACY_DEEPSEEK_STORAGE) ?? 'null') as EncryptedKeyEnvelope | null
+    return legacy?.version === 1 ? legacy : null
   } catch {
     return null
   }
 }
 
-export function storeEncryptedKey(envelope: EncryptedKeyEnvelope) {
-  localStorage.setItem(ENCRYPTED_KEY_STORAGE, JSON.stringify(envelope))
+export function storeEncryptedKey(envelope: EncryptedKeyEnvelope, provider: AiProviderId = 'deepseek') {
+  localStorage.setItem(ENCRYPTED_KEY_STORAGE, JSON.stringify({ ...readKeyRecord(), [provider]: envelope }))
+  if (provider === 'deepseek') localStorage.removeItem(LEGACY_DEEPSEEK_STORAGE)
 }
 
-export function removeEncryptedKey() {
-  localStorage.removeItem(ENCRYPTED_KEY_STORAGE)
+export function removeEncryptedKey(provider: AiProviderId = 'deepseek') {
+  const record = readKeyRecord()
+  delete record[provider]
+  if (Object.keys(record).length) localStorage.setItem(ENCRYPTED_KEY_STORAGE, JSON.stringify(record))
+  else localStorage.removeItem(ENCRYPTED_KEY_STORAGE)
+  if (provider === 'deepseek') localStorage.removeItem(LEGACY_DEEPSEEK_STORAGE)
 }

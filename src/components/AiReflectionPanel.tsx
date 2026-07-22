@@ -2,9 +2,10 @@ import { Bot, Eye, LoaderCircle, Send, Settings, Square, Trash2 } from 'lucide-r
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAi } from '../ai/AiContext'
-import { buildRequestPreview, streamDeepSeek } from '../ai/deepseek'
+import { AI_PROVIDERS, buildRequestPreview, streamAiReflection } from '../ai/providers'
 import type { AiReflectionRecord, AiRequestPreview, AiSourcePacket } from '../ai/types'
 import { aiCopyFor } from '../i18n/aiCopy'
+import { aiProviderCopyFor } from '../i18n/aiProviderCopy'
 import { useI18n } from '../i18n/I18nContext'
 import { deleteAiReflection, getAiReflections, saveAiReflection } from '../storage/db'
 
@@ -12,6 +13,7 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
   const { preferences } = useI18n()
   const ai = useAi()
   const copy = aiCopyFor(preferences.locale)
+  const providerCopy = aiProviderCopyFor(preferences.locale)
   const [preview, setPreview] = useState<AiRequestPreview | null>(null)
   const [response, setResponse] = useState('')
   const [sending, setSending] = useState(false)
@@ -36,7 +38,7 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
   if (!preferences.aiEnabled) return null
 
   const prepare = () => {
-    setPreview(buildRequestPreview(packet, ai.model))
+    setPreview(buildRequestPreview(packet, ai.provider, ai.model))
     setError('')
   }
 
@@ -46,12 +48,12 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
     abortRef.current = controller
     setSending(true); setError(''); setResponse(''); setSaved(null)
     try {
-      const complete = await streamDeepSeek(ai.apiKey, preview, setResponse, controller.signal)
+      const complete = await streamAiReflection(ai.apiKey, preview, setResponse, controller.signal)
       const record: AiReflectionRecord = {
         id: crypto.randomUUID(),
         schemaVersion: 1,
         createdAt: new Date().toISOString(),
-        provider: 'DeepSeek',
+        provider: preview.provider,
         model: preview.model,
         kind: packet.kind === 'reading' ? 'reading' : 'monthly-pattern',
         locale: packet.locale,
@@ -64,7 +66,7 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
       await saveAiReflection(record)
       setSaved(record)
     } catch (reason) {
-      if (!(reason instanceof DOMException && reason.name === 'AbortError')) setError(copy.providerError)
+      if (!(reason instanceof DOMException && reason.name === 'AbortError')) setError(providerCopy.error)
     } finally {
       setSending(false); abortRef.current = null
     }
@@ -80,9 +82,9 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
     <header><span><Bot size={22} aria-hidden="true" /></span><div><p className="eyebrow">{copy.reflectionEyebrow}</p><h2 id={`ai-reflection-${packet.kind}`}>{copy.reflectionTitle}</h2><p>{copy.reflectionBody}</p></div></header>
     {!ai.apiKey ? <div className="ai-reflection__locked"><Settings size={20} aria-hidden="true" /><p>{copy.keyNeeded}</p><Link to="/settings#ai-key-settings" className="button-secondary">{copy.openSettings}</Link></div> : <>
       <div className="ai-reflection__prepare"><button type="button" className="button-secondary" onClick={prepare}><Eye size={17} aria-hidden="true" />{preview ? copy.newPreview : copy.prepare}</button><span>{ai.model}</span></div>
-      {preview ? <details className="ai-reflection__preview" open><summary>{copy.preview}</summary><p>{copy.previewBody}</p><pre>{JSON.stringify(preview, null, 2)}</pre><div><button type="button" className="button-primary" disabled={sending} onClick={() => void send()}>{sending ? <LoaderCircle className="animate-spin" size={17} /> : <Send size={17} />}{sending ? copy.streaming : copy.send}</button>{sending ? <button type="button" className="button-secondary" onClick={() => abortRef.current?.abort()}><Square size={15} />{copy.stop}</button> : null}</div></details> : null}
+      {preview ? <details className="ai-reflection__preview" open><summary>{copy.preview}</summary><p>{copy.previewBody}</p><pre>{JSON.stringify(preview, null, 2)}</pre><div><button type="button" className="button-primary" disabled={sending} onClick={() => void send()}>{sending ? <LoaderCircle className="animate-spin" size={17} /> : <Send size={17} />}{sending ? `${preview.provider} ${providerCopy.responding}` : `${providerCopy.send} ${preview.provider}`}</button>{sending ? <button type="button" className="button-secondary" onClick={() => abortRef.current?.abort()}><Square size={15} />{copy.stop}</button> : null}</div></details> : null}
     </>}
-    {response ? <article className="ai-reflection__response" aria-live="polite"><div><span>{saved ? copy.savedReflection : copy.streaming}</span>{saved ? <button type="button" onClick={() => void remove()}><Trash2 size={15} />{copy.deleteReflection}</button> : null}</div><p>{response}</p></article> : null}
+    {response ? <article className="ai-reflection__response" aria-live="polite"><div><span>{saved ? copy.savedReflection : `${AI_PROVIDERS[ai.provider].name} ${providerCopy.responding}`}</span>{saved ? <button type="button" onClick={() => void remove()}><Trash2 size={15} />{copy.deleteReflection}</button> : null}</div><p>{response}</p></article> : null}
     {error ? <p className="ai-reflection__error" role="alert">{error}</p> : null}
     <footer>{copy.reflectionDisclaimer}</footer>
   </section>
