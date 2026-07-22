@@ -9,7 +9,7 @@ const ITEMS = [
 ]
 
 export function DaoHistoricalStudy({ copy }: { copy: DaoLearningCopy }) {
-  return <section className="dao-study-extensions" aria-labelledby="dao-study-extensions-title">
+  return <section id="dao-historical-study" className="dao-study-extensions scroll-mt-28" aria-labelledby="dao-study-extensions-title">
     <div className="dao-study-extensions__heading">
       <span className="dao-section-icon"><BookOpenCheck size={22} aria-hidden="true" /></span>
       <div><p className="eyebrow">{copy.learnNotGuided}</p><h2 id="dao-study-extensions-title">{copy.historicalStudy}</h2><p>{copy.historicalStudyBody}</p></div>

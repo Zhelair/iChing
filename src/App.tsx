@@ -17,10 +17,11 @@ const DaoStartPage = lazy(() => import('./pages/DaoStartPage').then(({ DaoStartP
 const DaoThemesPage = lazy(() => import('./pages/DaoThemesPage').then(({ DaoThemesPage: page }) => ({ default: page })))
 const DaoPracticePage = lazy(() => import('./pages/DaoPracticePage').then(({ DaoPracticePage: page }) => ({ default: page })))
 const DaoSettlingPage = lazy(() => import('./pages/DaoSettlingPage').then(({ DaoSettlingPage: page }) => ({ default: page })))
-const DaoOpenAttentionPage = lazy(() => import('./pages/DaoOpenAttentionPage').then(({ DaoOpenAttentionPage: page }) => ({ default: page })))
+const DaoQuietSittingPage = lazy(() => import('./pages/DaoQuietSittingPage').then(({ DaoQuietSittingPage: page }) => ({ default: page })))
 const DaoLivingPage = lazy(() => import('./pages/DaoLivingPage').then(({ DaoLivingPage: page }) => ({ default: page })))
 const IChingPage = lazy(() => import('./pages/IChingPage').then(({ IChingPage: page }) => ({ default: page })))
 const StudyNotesPage = lazy(() => import('./pages/StudyNotesPage').then(({ StudyNotesPage: page }) => ({ default: page })))
+const PracticeNotesPage = lazy(() => import('./pages/PracticeNotesPage').then(({ PracticeNotesPage: page }) => ({ default: page })))
 
 export function App() {
   return (
@@ -40,7 +41,8 @@ export function App() {
         <Route path="dao/study/themes" element={<DaoThemesPage />} />
         <Route path="dao/practice" element={<DaoPracticePage />} />
         <Route path="dao/practice/settling" element={<DaoSettlingPage />} />
-        <Route path="dao/practice/open-attention" element={<DaoOpenAttentionPage />} />
+        <Route path="dao/practice/quiet-sitting" element={<DaoQuietSittingPage />} />
+        <Route path="dao/practice/open-attention" element={<Navigate to="/dao/practice/quiet-sitting" replace />} />
         <Route path="dao/living" element={<DaoLivingPage />} />
         <Route path="start" element={<Navigate to="/iching/guide" replace />} />
         <Route path="learn" element={<Navigate to="/iching/guide" replace />} />
@@ -48,6 +50,7 @@ export function App() {
         <Route path="hexagrams/:number" element={<HexagramPage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="journal" element={<JournalPage />} />
+        <Route path="journal/notes" element={<PracticeNotesPage />} />
         <Route path="journal/study" element={<StudyNotesPage />} />
         <Route path="support" element={<SupportPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />

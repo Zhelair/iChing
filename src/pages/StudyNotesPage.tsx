@@ -1,6 +1,6 @@
 import { ArrowLeft, BookOpenText, Search, Trash2 } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { JournalEntryExportActions } from '../components/JournalEntryExportActions'
 import { JournalModeNav } from '../components/JournalModeNav'
 import { PageIntro } from '../components/PageIntro'
@@ -17,12 +17,30 @@ export function StudyNotesPage() {
   const locale = preferences.locale
   const copy = STUDY_NOTES_COPY[locale]
   const dao = DAO_COPY[locale]
+  const [searchParams] = useSearchParams()
   const [notes, setNotes] = useState<StudyNote[]>([])
   const [loaded, setLoaded] = useState(false)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [query, setQuery] = useState('')
 
-  useEffect(() => { void getStudyNotes().then((items) => { setNotes(items); setSelectedId(items[0]?.id ?? null); setLoaded(true) }) }, [])
+  useEffect(() => {
+    void getStudyNotes().then((items) => {
+      const passageId = searchParams.get('passage')
+      const workId = searchParams.get('work') ?? DAO_WORK_ID
+      const passage = dao.passages.find(({ id }) => id === passageId)
+      const existing = passage ? items.find((note) => note.anchor.workId === workId && note.anchor.passageId === passage.id) : undefined
+      if (existing) {
+        setNotes(items); setSelectedId(existing.id)
+      } else if (passage) {
+        const now = new Date().toISOString()
+        const draft: StudyNote = { id: crypto.randomUUID(), schemaVersion: 1, createdAt: now, updatedAt: now, locale, anchor: { workId, passageId: passage.id, startOffset: 0, endOffset: passage.body.length, quote: passage.title }, body: '', tags: ['dao', 'study'] }
+        setNotes([draft, ...items]); setSelectedId(draft.id)
+      } else {
+        setNotes(items); setSelectedId(items[0]?.id ?? null)
+      }
+      setLoaded(true)
+    })
+  }, [dao.passages, locale, searchParams])
 
   const filtered = useMemo(() => notes.filter((note) => {
     const passage = dao.passages.find(({ id }) => id === note.anchor.passageId)
@@ -32,7 +50,7 @@ export function StudyNotesPage() {
 
   async function updateNote(note: StudyNote) {
     await saveStudyNote(note)
-    setNotes((items) => items.map((item) => item.id === note.id ? note : item))
+    setNotes((items) => items.some((item) => item.id === note.id) ? items.map((item) => item.id === note.id ? note : item) : [note, ...items])
   }
 
   async function removeNote(note: StudyNote) {
