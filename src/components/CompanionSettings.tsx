@@ -4,6 +4,7 @@ import { useSound } from '../audio/SoundContext'
 import type { CompanionPet as CompanionPetKind } from '../domain/types'
 import { companionCopyFor } from '../i18n/companionCopy'
 import { useI18n } from '../i18n/I18nContext'
+import { companionLocalCopyFor } from '../i18n/companionLocalCopy'
 import { CompanionPet, type CompanionAnimation } from './CompanionPet'
 
 function animationFor(pet: CompanionPetKind, action: 0 | 1 | 2): CompanionAnimation {
@@ -24,7 +25,9 @@ export function CompanionSettings() {
   const { preferences, updatePreference } = useI18n()
   const { playPetSound } = useSound()
   const copy = companionCopyFor(preferences.locale)
+  const localCopy = companionLocalCopyFor(preferences.locale)
   const [animation, setAnimation] = useState<CompanionAnimation>('idle')
+  const [animationRun, setAnimationRun] = useState(0)
   const resetTimer = useRef<number | null>(null)
   const motion = preferences.petMotion && !preferences.reduceMotion
 
@@ -35,6 +38,7 @@ export function CompanionSettings() {
   const interact = (action: 0 | 1 | 2) => {
     if (resetTimer.current) window.clearTimeout(resetTimer.current)
     setAnimation(motion ? animationFor(preferences.companionPet, action) : 'idle')
+    setAnimationRun((current) => current + 1)
     void playPetSound(preferences.companionPet, action)
     resetTimer.current = window.setTimeout(() => setAnimation('idle'), motion ? 2600 : 350)
   }
@@ -47,17 +51,18 @@ export function CompanionSettings() {
       </header>
 
       <StudioToggle
-        checked={preferences.aiEnabled}
-        onChange={(value) => updatePreference('aiEnabled', value)}
+        checked={preferences.companionEnabled}
+        onChange={(value) => updatePreference('companionEnabled', value)}
         label={copy.enable}
         body={copy.enableBody}
       />
 
-      <div className={`companion-studio__body ${preferences.aiEnabled ? '' : 'is-disabled'}`} aria-disabled={!preferences.aiEnabled}>
+      <div className={`companion-studio__body ${preferences.companionEnabled ? '' : 'is-disabled'}`} aria-disabled={!preferences.companionEnabled}>
         <div className="companion-studio__preview">
           <div className="companion-studio__stage">
             <span className="companion-studio__halo" aria-hidden="true" />
             <CompanionPet
+              key={`${preferences.companionPet}-${animation}-${animationRun}`}
               pet={preferences.companionPet}
               animation={animation}
               motion={motion}
@@ -66,12 +71,12 @@ export function CompanionSettings() {
           </div>
           <p><Sparkles size={14} aria-hidden="true" /> {copy.interact}</p>
           <div className="companion-studio__actions">
-            {copy.actions[preferences.companionPet].map((label, index) => <button key={label} type="button" disabled={!preferences.aiEnabled} onClick={() => interact(index as 0 | 1 | 2)}>{label}</button>)}
+            {copy.actions[preferences.companionPet].map((label, index) => <button key={label} type="button" disabled={!preferences.companionEnabled} onClick={() => interact(index as 0 | 1 | 2)}>{label}</button>)}
           </div>
         </div>
 
         <div className="companion-studio__controls">
-          <fieldset disabled={!preferences.aiEnabled}>
+          <fieldset disabled={!preferences.companionEnabled}>
             <legend>{copy.choose}</legend>
             <div className="companion-studio__pet-options">
               {(['cat', 'dog'] as const).map((pet) => <label key={pet} className={preferences.companionPet === pet ? 'is-selected' : ''}>
@@ -83,7 +88,7 @@ export function CompanionSettings() {
             </div>
           </fieldset>
 
-          <fieldset disabled={!preferences.aiEnabled}>
+          <fieldset disabled={!preferences.companionEnabled}>
             <legend>{copy.size}</legend>
             <div className="companion-studio__size-options">
               {(['normal', 'large'] as const).map((size) => <label key={size} className={preferences.companionSize === size ? 'is-selected' : ''}>
@@ -95,6 +100,10 @@ export function CompanionSettings() {
 
           <StudioToggle checked={preferences.petMotion} onChange={(value) => updatePreference('petMotion', value)} label={copy.motion} body={copy.motionBody} />
           <StudioToggle checked={preferences.petSound} onChange={(value) => updatePreference('petSound', value)} label={copy.sounds} body={copy.soundsBody} />
+          <div className="companion-studio__routine">
+            <strong>{localCopy.routineTitle}</strong>
+            <ul>{localCopy.routine.map((item) => <li key={item}>{item}</li>)}</ul>
+          </div>
         </div>
       </div>
 

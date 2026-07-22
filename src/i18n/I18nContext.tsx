@@ -15,6 +15,7 @@ const defaultPreferences: Preferences = {
   ambientVolume: 1,
   reduceMotion: typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   aiEnabled: false,
+  companionEnabled: false,
   companionPet: 'cat',
   companionSize: 'normal',
   petSound: true,
@@ -37,6 +38,11 @@ function readPreferences(): Preferences {
       sound: typeof parsed.sound === 'boolean' ? parsed.sound : defaultPreferences.sound,
       reduceMotion: typeof parsed.reduceMotion === 'boolean' ? parsed.reduceMotion : defaultPreferences.reduceMotion,
       aiEnabled: typeof parsed.aiEnabled === 'boolean' ? parsed.aiEnabled : defaultPreferences.aiEnabled,
+      // Earlier builds tied the pet to AI. Preserve that choice during the
+      // one-time migration, then let both features be controlled separately.
+      companionEnabled: typeof parsed.companionEnabled === 'boolean'
+        ? parsed.companionEnabled
+        : typeof parsed.aiEnabled === 'boolean' ? parsed.aiEnabled : defaultPreferences.companionEnabled,
       companionPet: parsed.companionPet === 'dog' ? 'dog' : 'cat',
       companionSize: parsed.companionSize === 'large' ? 'large' : 'normal',
       petSound: typeof parsed.petSound === 'boolean' ? parsed.petSound : defaultPreferences.petSound,

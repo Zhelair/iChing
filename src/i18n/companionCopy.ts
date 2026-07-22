@@ -1,5 +1,6 @@
 import type { Locale } from '../domain/locales'
 import { AI_ASSISTED_UI_DRAFT } from './featureCopy'
+import { companionLocalCopyFor } from './companionLocalCopy'
 
 export type CompanionCopy = {
   eyebrow: string
@@ -48,7 +49,18 @@ const packs: Record<Locale, { status: 'source-authored' | typeof AI_ASSISTED_UI_
 }
 
 export function companionCopyFor(locale: Locale) {
-  return packs[locale].copy
+  const local = companionLocalCopyFor(locale)
+  return {
+    ...packs[locale].copy,
+    eyebrow: local.eyebrow,
+    title: local.title,
+    body: local.body,
+    enable: local.enable,
+    enableBody: local.enableBody,
+    privacy: local.privacy,
+    privacyBody: local.privacyBody,
+    noRequest: local.noRequest,
+  }
 }
 
 export function companionCopyStatus(locale: Locale) {

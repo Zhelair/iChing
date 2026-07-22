@@ -4,11 +4,13 @@ import { useAi } from '../ai/AiContext'
 import type { DeepSeekModel } from '../ai/types'
 import { aiCopyFor } from '../i18n/aiCopy'
 import { useI18n } from '../i18n/I18nContext'
+import { companionLocalCopyFor } from '../i18n/companionLocalCopy'
 
 export function AiSettings() {
-  const { preferences } = useI18n()
+  const { preferences, updatePreference } = useI18n()
   const ai = useAi()
   const copy = aiCopyFor(preferences.locale)
+  const localCopy = companionLocalCopyFor(preferences.locale)
   const [keyInput, setKeyInput] = useState('')
   const [passphrase, setPassphrase] = useState('')
   const [message, setMessage] = useState('')
@@ -39,10 +41,13 @@ export function AiSettings() {
     try { await ai.unlock(passphrase); setPassphrase(''); setMessage(copy.unlocked) } catch (reason) { handleError(reason, true) } finally { setBusy(false) }
   }
 
-  if (!preferences.aiEnabled) return null
-
-  return <section id="ai-key-settings" className="surface ai-settings mt-5" aria-labelledby="ai-settings-title">
+  return <section id="ai-key-settings" tabIndex={-1} className="surface ai-settings mt-5" aria-labelledby="ai-settings-title">
     <header><span><KeyRound size={22} aria-hidden="true" /></span><div><p className="eyebrow">{copy.settingsEyebrow}</p><h2 id="ai-settings-title">{copy.settingsTitle}</h2><p>{copy.settingsBody}</p></div><strong>{copy.byokOnly}</strong></header>
+    <label className="ai-settings__enabled">
+      <span><strong>{localCopy.aiEnable}</strong><small>{localCopy.aiEnableBody}</small></span>
+      <input type="checkbox" role="switch" className="sr-only" checked={preferences.aiEnabled} onChange={(event) => updatePreference('aiEnabled', event.target.checked)} />
+      <i className={preferences.aiEnabled ? 'is-on' : ''} aria-hidden="true"><span /></i>
+    </label>
     <div className="ai-settings__layout">
       <form className="ai-settings__form" onSubmit={useSession}>
         <p className={`ai-key-status ${ai.apiKey ? 'is-unlocked' : ''}`}>{ai.apiKey ? <Unlock size={17} /> : <Lock size={17} />}{ai.apiKey ? copy.unlocked : copy.locked}</p>
