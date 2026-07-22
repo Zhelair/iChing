@@ -1,32 +1,39 @@
-import { Feather, Wind } from 'lucide-react'
-import { BreathPractice } from '../components/BreathPractice'
-import { DaoLivingPractice } from '../components/DaoLivingPractice'
-import { DaoReader } from '../components/DaoReader'
+import { BookOpenText, NotebookPen, Sprout, Wind } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { DaoHubCard } from '../components/DaoHubCard'
+import { DaoNavigation } from '../components/DaoNavigation'
+import { DaoPreview } from '../components/DaoPreview'
 import { DaoWaterArt } from '../components/DaoWaterArt'
 import { DAO_COPY } from '../data/daoContent'
+import { DAO_SHELL_COPY } from '../data/daoShellContent'
 import { useI18n } from '../i18n/I18nContext'
 
 export function DaoPage() {
   const { preferences } = useI18n()
   const copy = DAO_COPY[preferences.locale]
+  const shell = DAO_SHELL_COPY[preferences.locale]
 
   return <div className="dao-page">
+    <DaoPreview shell={shell} />
     <section className="page-shell dao-hero">
       <div className="dao-hero__copy">
         <h1>{copy.title}</h1>
         <p>{copy.intro}</p>
         <div className="dao-hero__actions">
-          <a className="button-primary" href="#dao-study"><Feather size={18} />{copy.beginStudy}</a>
-          <a className="button-secondary" href="#dao-practice"><Wind size={18} />{copy.beginPractice}</a>
+          <Link className="button-primary" to="/dao/study"><BookOpenText size={18} aria-hidden="true" />{copy.study}</Link>
+          <Link className="button-secondary" to="/dao/practice"><Wind size={18} aria-hidden="true" />{copy.practice}</Link>
         </div>
       </div>
       <div className="dao-hero__art"><DaoWaterArt /><span aria-hidden="true">道</span></div>
     </section>
 
-    <div className="page-shell dao-sections">
-      <DaoReader copy={copy} locale={preferences.locale} />
-      <BreathPractice copy={copy} locale={preferences.locale} />
-      <DaoLivingPractice copy={copy} locale={preferences.locale} />
-    </div>
+    <DaoNavigation copy={copy} shell={shell} />
+
+    <section className="page-shell dao-hub" aria-label={copy.navDao}>
+      <DaoHubCard className="dao-hub-card--featured" to="/dao/study" icon={BookOpenText} title={copy.study} body={copy.studyBody} action={shell.open} />
+      <DaoHubCard to="/dao/practice" icon={Wind} title={copy.practice} body={copy.practiceBody} action={shell.open} />
+      <DaoHubCard to="/dao/living" icon={Sprout} title={copy.living} body={copy.livingBody} action={shell.open} />
+      <DaoHubCard to="/journal" icon={NotebookPen} title={copy.notebook} body={copy.notebookBody} action={copy.notebook} />
+    </section>
   </div>
 }

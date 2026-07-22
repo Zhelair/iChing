@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { SUPPORTED_LOCALES } from '../domain/locales'
 import { DAO_COPY } from './daoContent'
+import { DAO_SHELL_COPY } from './daoShellContent'
 
 describe('Dao localized content', () => {
   it('has a complete, non-empty pack for every supported locale', () => {
@@ -20,6 +21,13 @@ describe('Dao localized content', () => {
     for (const locale of SUPPORTED_LOCALES) {
       expect(DAO_COPY[locale].navIChing.length).toBeLessThanOrEqual(8)
       expect(DAO_COPY[locale].navDao.length).toBeLessThanOrEqual(4)
+    }
+  })
+
+  it('has complete localized navigation, status, source, and provenance copy', () => {
+    expect(Object.keys(DAO_SHELL_COPY).sort()).toEqual([...SUPPORTED_LOCALES].sort())
+    for (const locale of SUPPORTED_LOCALES) {
+      expect(Object.values(DAO_SHELL_COPY[locale]).every((value) => value.trim().length > 0)).toBe(true)
     }
   })
 })

@@ -45,7 +45,7 @@ export function HomePage() {
           <h1 className="home-title max-w-3xl font-medium leading-[.94] tracking-[-.052em]">{t('home.title')}</h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--ink-soft)]">{t('home.body')}</p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link to="/reading" className="button-primary">
+            <Link to="/iching/reading" className="button-primary">
               {t('home.start')} <ArrowRight size={18} aria-hidden="true" />
             </Link>
             <Link to="/start" className="button-secondary">

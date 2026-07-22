@@ -1,4 +1,4 @@
-import { BookOpen, BookOpenText, Compass, HeartHandshake, NotebookPen, Settings } from 'lucide-react'
+import { BookOpen, Compass, HeartHandshake, House, NotebookPen, Settings } from 'lucide-react'
 import { Suspense, useEffect, useRef } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useI18n } from '../i18n/I18nContext'
@@ -6,7 +6,7 @@ import { Atmosphere } from './Atmosphere'
 import { DAO_COPY } from '../data/daoContent'
 
 const navItems = [
-  { to: '/reading', key: 'nav.read', icon: BookOpenText, end: false, desktopOnly: false },
+  { to: '/', key: 'nav.home', icon: House, end: true, desktopOnly: false },
   { to: '/journal', key: 'nav.journal', icon: NotebookPen, end: false, desktopOnly: false },
   { to: '/iching', key: 'iching', icon: BookOpen, end: false, desktopOnly: false },
   { to: '/dao', key: 'dao', icon: Compass, end: false, desktopOnly: false },
@@ -22,7 +22,7 @@ export function AppLayout() {
   const ritualMode = pathname.startsWith('/cast/')
   const scene = pathname === '/'
     ? 'home'
-    : pathname === '/reading' || ritualMode
+    : pathname === '/iching/reading' || ritualMode
       ? 'ritual'
         : pathname === '/result' || pathname === '/journal'
         ? 'reflection'

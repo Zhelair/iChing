@@ -1,7 +1,8 @@
-import { BookmarkPlus, Check, ChevronRight, ScrollText, X } from 'lucide-react'
+import { BookmarkPlus, Check, ChevronRight, ExternalLink, ScrollText, X } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { DaoCopy } from '../data/daoContent'
+import type { DaoShellCopy } from '../data/daoShellContent'
 import type { Locale } from '../domain/locales'
 import type { JournalEntry, StudyNote } from '../domain/types'
 import { getReadingProgress, getStudyNotes, saveJournalEntry, saveReadingProgress, saveStudyNote } from '../storage/db'
@@ -10,7 +11,15 @@ const WORK_ID = 'dao-water-introduction-v1'
 
 type DaoReaderProps = { copy: DaoCopy; locale: Locale }
 
-export function DaoReader({ copy, locale }: DaoReaderProps) {
+const PASSAGE_SOURCES: Record<string, string> = {
+  water: 'Daodejing · 1',
+  softness: 'Daodejing · 8, 22, 78',
+  daily: 'Daodejing · 37',
+}
+
+const PUBLIC_DOMAIN_TEXT = 'https://www.gutenberg.org/ebooks/216'
+
+export function DaoReader({ copy, shell, locale }: DaoReaderProps & { shell: DaoShellCopy }) {
   const [passageId, setPassageId] = useState(copy.passages[0].id)
   const [body, setBody] = useState('')
   const [notes, setNotes] = useState<StudyNote[]>([])
@@ -87,7 +96,11 @@ export function DaoReader({ copy, locale }: DaoReaderProps) {
         </div>
         <dl className="dao-scope">
           <div><dt>{copy.scope}</dt><dd>{copy.scopeValue}</dd></div>
-          <div><dt>{copy.sourceHeading}</dt><dd>{copy.sourceBody}</dd></div>
+          <div><dt>{copy.sourceHeading}</dt><dd className="dao-source-trail">
+            <strong>{PASSAGE_SOURCES[passage.id] ?? 'Daodejing'}</strong>
+            <a href={PUBLIC_DOMAIN_TEXT} target="_blank" rel="noreferrer">{shell.sourceLink}<ExternalLink size={13} aria-hidden="true" /></a>
+            <small>{shell.sourceNote}</small>
+          </dd></div>
         </dl>
       </article>
 
