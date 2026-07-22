@@ -1,0 +1,18 @@
+import type { Locale } from '../domain/locales'
+
+const en = { settings: 'Settings', settingsBody: 'Language, atmosphere, sound, privacy, and local data', companion: 'Pet & AI', companionBody: 'Companion studio and optional BYOK reflections', language: 'Language', atmosphere: 'Atmosphere', sound: 'Coins & sound', privacy: 'Privacy & lock', data: 'Data', pet: 'Pet', ai: 'AI reflections' }
+export type SettingsSectionsCopy = typeof en
+const translated = (overrides: Partial<SettingsSectionsCopy>): SettingsSectionsCopy => ({ ...en, ...overrides })
+const packs: Record<Locale, SettingsSectionsCopy> = {
+  en,
+  bg: translated({ settings: 'Настройки', settingsBody: 'Език, атмосфера, звук, поверителност и локални данни', companion: 'Любимец & AI', companionBody: 'Студио за спътника и незадължителни BYOK размисли', language: 'Език', atmosphere: 'Атмосфера', sound: 'Монети & звук', privacy: 'Поверителност & ключалка', data: 'Данни', pet: 'Любимец', ai: 'AI размисли' }),
+  ru: translated({ settings: 'Настройки', settingsBody: 'Язык, атмосфера, звук, конфиденциальность и локальные данные', companion: 'Питомец и ИИ', companionBody: 'Студия спутника и необязательные BYOK-размышления', language: 'Язык', atmosphere: 'Атмосфера', sound: 'Монеты и звук', privacy: 'Защита и замок', data: 'Данные', pet: 'Питомец', ai: 'ИИ-размышления' }),
+  de: translated({ settings: 'Einstellungen', settingsBody: 'Sprache, Atmosphäre, Ton, Datenschutz und lokale Daten', companion: 'Tier & KI', companionBody: 'Begleiterstudio und optionale BYOK-Reflexionen', language: 'Sprache', atmosphere: 'Atmosphäre', sound: 'Münzen & Ton', privacy: 'Datenschutz & Sperre', data: 'Daten', pet: 'Tier', ai: 'KI-Reflexionen' }),
+  it: translated({ settings: 'Impostazioni', settingsBody: 'Lingua, atmosfera, suono, privacy e dati locali', companion: 'Pet & IA', companionBody: 'Studio del compagno e riflessioni BYOK facoltative', language: 'Lingua', atmosphere: 'Atmosfera', sound: 'Monete & suono', privacy: 'Privacy & blocco', data: 'Dati', pet: 'Pet', ai: 'Riflessioni IA' }),
+  fr: translated({ settings: 'Réglages', settingsBody: 'Langue, atmosphère, son, confidentialité et données locales', companion: 'Animal & IA', companionBody: 'Studio du compagnon et réflexions BYOK facultatives', language: 'Langue', atmosphere: 'Atmosphère', sound: 'Pièces & son', privacy: 'Confidentialité & verrou', data: 'Données', pet: 'Animal', ai: 'Réflexions IA' }),
+  es: translated({ settings: 'Ajustes', settingsBody: 'Idioma, atmósfera, sonido, privacidad y datos locales', companion: 'Mascota e IA', companionBody: 'Estudio del compañero y reflexiones BYOK opcionales', language: 'Idioma', atmosphere: 'Atmósfera', sound: 'Monedas y sonido', privacy: 'Privacidad y bloqueo', data: 'Datos', pet: 'Mascota', ai: 'Reflexiones IA' }),
+  'pt-PT': translated({ settings: 'Definições', settingsBody: 'Idioma, atmosfera, som, privacidade e dados locais', companion: 'Animal & IA', companionBody: 'Estúdio do companheiro e reflexões BYOK opcionais', language: 'Idioma', atmosphere: 'Atmosfera', sound: 'Moedas & som', privacy: 'Privacidade & bloqueio', data: 'Dados', pet: 'Animal', ai: 'Reflexões IA' }),
+  pl: translated({ settings: 'Ustawienia', settingsBody: 'Język, atmosfera, dźwięk, prywatność i dane lokalne', companion: 'Zwierzak i AI', companionBody: 'Studio towarzysza i opcjonalne refleksje BYOK', language: 'Język', atmosphere: 'Atmosfera', sound: 'Monety i dźwięk', privacy: 'Prywatność i blokada', data: 'Dane', pet: 'Zwierzak', ai: 'Refleksje AI' }),
+}
+export function settingsSectionsCopyFor(locale: Locale) { return packs[locale] }
+

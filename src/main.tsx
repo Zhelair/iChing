@@ -5,6 +5,7 @@ import { App } from './App'
 import { AiProvider } from './ai/AiContext'
 import { SoundProvider } from './audio/SoundContext'
 import { I18nProvider } from './i18n/I18nContext'
+import { NotebookLockProvider } from './security/NotebookLockContext'
 import { shouldBeginAtHome } from './routing/entry'
 import './index.css'
 
@@ -27,11 +28,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
       <I18nProvider>
-        <AiProvider>
-          <SoundProvider>
-            <App />
-          </SoundProvider>
-        </AiProvider>
+        <NotebookLockProvider>
+          <AiProvider>
+            <SoundProvider>
+              <App />
+            </SoundProvider>
+          </AiProvider>
+        </NotebookLockProvider>
       </I18nProvider>
     </BrowserRouter>
   </React.StrictMode>,
