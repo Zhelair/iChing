@@ -1,10 +1,11 @@
-import { ArrowRight, Check, Download, FileDown, HardDrive, HeartHandshake, LoaderCircle, ShieldCheck, Trash2, Upload, Volume2 } from 'lucide-react'
+import { ArrowRight, Bot, Check, Download, FileDown, HardDrive, HeartHandshake, KeyRound, LoaderCircle, Palette, Settings2, ShieldCheck, Trash2, Upload, Volume2 } from 'lucide-react'
 import { useEffect, useRef, useState, type ChangeEvent } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSound } from '../audio/SoundContext'
 import { PageIntro } from '../components/PageIntro'
 import { CompanionSettings } from '../components/CompanionSettings'
 import { AiSettings } from '../components/AiSettings'
+import { NotebookLockSettings } from '../components/NotebookLockSettings'
 import { isBuiltInContentLocale, LOCALE_NAMES, SUPPORTED_LOCALES } from '../domain/locales'
 import type { AmbientVolume, Locale, Theme } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
@@ -12,6 +13,8 @@ import { getUiLocalePack } from '../i18n/uiLocalePacks'
 import { clearAllLocalData, importReadings } from '../storage/db'
 import { createExport, downloadExport, MAX_EXPORT_FILE_BYTES, parseExport } from '../storage/export'
 import { useAi } from '../ai/AiContext'
+import { useNotebookLock } from '../security/NotebookLockContext'
+import { settingsSectionsCopyFor } from '../i18n/settingsSectionsCopy'
 
 function Toggle({ checked, onChange, label, body }: { checked: boolean; onChange: (value: boolean) => void; label: string; body?: string }) {
   return (
@@ -78,9 +81,17 @@ const supportCopy: Partial<Record<Locale, SupportCopy>> = {
 
 export function SettingsPage() {
   const { hash } = useLocation()
+  const navigate = useNavigate()
   const { preferences, setPreferences, updatePreference, setLocale, pendingLocale, localeError, t } = useI18n()
   const { previewCoinSound, setAmbientVolume } = useSound()
   const ai = useAi()
+  const notebook = useNotebookLock()
+  const sections = settingsSectionsCopyFor(preferences.locale)
+  const [activeSpace, setActiveSpace] = useState<'settings' | 'companion'>(() => hash === '#ai-key-settings' || hash === '#companion-settings' ? 'companion' : 'settings')
+  const chooseSpace = (space: 'settings' | 'companion') => {
+    if (hash) navigate('/settings', { replace: true })
+    setActiveSpace(space)
+  }
   const [mode, setMode] = useState<'merge' | 'replace'>('merge')
   const [message, setMessage] = useState('')
   const [audioMessage, setAudioMessage] = useState('')
@@ -88,13 +99,15 @@ export function SettingsPage() {
   useEffect(() => {
     if (!hash) return
     const targetId = decodeURIComponent(hash.slice(1))
+    const requiredSpace = targetId === 'ai-key-settings' || targetId === 'companion-settings' ? 'companion' : 'settings'
+    if (activeSpace !== requiredSpace) { setActiveSpace(requiredSpace); return }
     const frame = window.requestAnimationFrame(() => {
       const target = document.getElementById(targetId)
       target?.scrollIntoView({ behavior: preferences.reduceMotion ? 'auto' : 'smooth', block: 'start' })
       target?.focus({ preventScroll: true })
     })
     return () => window.cancelAnimationFrame(frame)
-  }, [hash, preferences.reduceMotion])
+  }, [activeSpace, hash, preferences.reduceMotion])
   const [clearOpen, setClearOpen] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const clearTriggerRef = useRef<HTMLButtonElement>(null)
@@ -175,6 +188,7 @@ export function SettingsPage() {
     sessionStorage.removeItem('yi-path:question:v1')
     ai.lock()
     ai.forgetEncrypted()
+    await notebook.erase()
     setPreferences({ locale: 'en', theme: 'bamboo-mist', sound: true, music: true, ambientVolume: 1, reduceMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches, aiEnabled: false, companionEnabled: false, companionPet: 'cat', companionSize: 'normal', petSound: true, petMotion: true })
     setMessage(t('settings.cleared'))
     setClearOpen(false)
@@ -185,7 +199,21 @@ export function SettingsPage() {
       <div className="reading-column">
         <PageIntro eyebrow={t('settings.eyebrow')} title={t('settings.title')} />
 
-        <section className="surface mt-8 p-5 sm:p-7">
+        <div className="settings-space-switcher" role="tablist" aria-label={t('settings.title')}>
+          <button id="settings-space-tab" type="button" role="tab" aria-controls="settings-space-panel" aria-selected={activeSpace === 'settings'} className={activeSpace === 'settings' ? 'is-active' : ''} onClick={() => chooseSpace('settings')}>
+            <Settings2 size={20} aria-hidden="true" /><span><strong>{sections.settings}</strong><small>{sections.settingsBody}</small></span>
+          </button>
+          <button id="companion-space-tab" type="button" role="tab" aria-controls="companion-space-panel" aria-selected={activeSpace === 'companion'} className={activeSpace === 'companion' ? 'is-active' : ''} onClick={() => chooseSpace('companion')}>
+            <Bot size={20} aria-hidden="true" /><span><strong>{sections.companion}</strong><small>{sections.companionBody}</small></span>
+          </button>
+        </div>
+
+        {activeSpace === 'settings' ? <div id="settings-space-panel" role="tabpanel" aria-labelledby="settings-space-tab">
+        <nav className="settings-section-pills" aria-label={sections.settings}>
+          <a href="#settings-language">{sections.language}</a><a href="#settings-atmosphere"><Palette size={15} aria-hidden="true" />{sections.atmosphere}</a><a href="#settings-sound"><Volume2 size={15} aria-hidden="true" />{sections.sound}</a><a href="#settings-privacy"><ShieldCheck size={15} aria-hidden="true" />{sections.privacy}</a><a href="#settings-data">{sections.data}</a>
+        </nav>
+
+        <section id="settings-language" className="surface settings-anchor mt-5 p-5 sm:p-7">
           <fieldset className="min-w-0" aria-busy={pendingLocale !== null}>
             <legend className="font-editorial text-2xl">{t('settings.language')}</legend>
             <div className="language-grid mt-5">
@@ -219,7 +247,7 @@ export function SettingsPage() {
           </fieldset>
         </section>
 
-        <section className="surface mt-5 p-5 sm:p-7">
+        <section id="settings-atmosphere" className="surface settings-anchor mt-5 p-5 sm:p-7">
           <h2 className="text-2xl">{t('settings.appearance')}</h2>
           <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">{t('settings.appearanceBody')}</p>
           <div className="mt-5 grid gap-3 sm:grid-cols-3" role="group" aria-label={t('settings.appearance')}>
@@ -232,7 +260,7 @@ export function SettingsPage() {
           </div>
         </section>
 
-        <section className="surface mt-5 px-5 py-2 sm:px-7">
+        <section id="settings-sound" className="surface settings-anchor mt-5 px-5 py-2 sm:px-7">
           <Toggle checked={preferences.sound} onChange={async (value) => {
             if (!value) {
               updatePreference('sound', false)
@@ -253,10 +281,7 @@ export function SettingsPage() {
           {audioMessage ? <p className="mb-4 rounded-2xl bg-[var(--jade-light)] px-4 py-3 text-sm font-semibold text-[var(--jade)]" role="status">{audioMessage}</p> : null}
         </section>
 
-        <CompanionSettings />
-        <AiSettings />
-
-        <section className="surface mt-5 p-5 sm:p-7" aria-labelledby="privacy-security-title">
+        <section id="settings-privacy" className="surface settings-anchor mt-5 p-5 sm:p-7" aria-labelledby="privacy-security-title">
           <div className="flex items-start gap-4">
             <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-[var(--jade-light)] text-[var(--jade)]"><ShieldCheck size={22} aria-hidden="true" /></span>
             <div><p className="eyebrow">{privacy.eyebrow}</p><h2 id="privacy-security-title" className="mt-2 text-2xl">{privacy.title}</h2></div>
@@ -269,7 +294,9 @@ export function SettingsPage() {
           </div>
         </section>
 
-        <section className="surface mt-5 p-5 sm:p-7">
+        <NotebookLockSettings />
+
+        <section id="settings-data" className="surface settings-anchor mt-5 p-5 sm:p-7">
           <h2 className="text-2xl">{t('settings.data')}</h2>
           <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">{t('settings.dataBody')}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -297,6 +324,13 @@ export function SettingsPage() {
           <span className="min-w-0 flex-1"><span className="block font-editorial text-xl text-[var(--ink)]">{support.title}</span><span className="mt-1 block text-xs leading-5 text-[var(--ink-soft)]">{support.body}</span></span>
           <span className="hidden items-center gap-1 text-xs font-bold text-[var(--jade)] sm:flex">{support.action} <ArrowRight className="transition-transform group-hover:translate-x-1" size={16} aria-hidden="true" /></span>
         </Link>
+        </div> : <div id="companion-space-panel" role="tabpanel" aria-labelledby="companion-space-tab">
+          <nav className="settings-section-pills" aria-label={sections.companion}>
+            <a href="#companion-settings"><Bot size={15} aria-hidden="true" />{sections.pet}</a><a href="#ai-key-settings"><KeyRound size={15} aria-hidden="true" />{sections.ai}</a>
+          </nav>
+          <div id="companion-settings" className="settings-anchor"><CompanionSettings /></div>
+          <AiSettings />
+        </div>}
       </div>
 
       {clearOpen ? (

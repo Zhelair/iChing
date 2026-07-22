@@ -63,7 +63,7 @@ export function ReflectionCompanion() {
   }
 
   return (
-    <aside className={`reflection-companion reflection-companion--${preferences.companionSize} ${ritual ? 'is-ritual' : ''}`} aria-label={copy.title}>
+    <aside className={`reflection-companion reflection-companion--${preferences.companionSize} ${ritual ? 'is-ritual' : ''} ${routine.scene === 'settings' ? 'is-settings' : ''}`} aria-label={copy.title}>
       {open ? (
         <div className="reflection-companion__panel" role="dialog" aria-modal="false" aria-label={copy.interact}>
           <header>
