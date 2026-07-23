@@ -39,14 +39,14 @@ export const DEFAULT_AI_MODELS: Record<AiProviderId, AiModel> = {
 
 const LENGTH_RULES: Record<AiResponseLength, string> = {
   short: 'Write exactly three complete sentences: one grounded observation, one careful reflection, and one open question.',
-  medium: 'Write exactly two short paragraphs. Keep each paragraph to two or three sentences, and end the second paragraph with one open question.',
-  long: 'Write three or four short paragraphs maximum. Develop the reading carefully, and end the final paragraph with one open question.',
+  medium: 'Write 3–5 short paragraphs. Each paragraph should have one clear purpose: observation, interpretation, practice, or question. End with one open question.',
+  long: 'Write 6–9 short paragraphs. Keep them focused and readable, moving from source-grounded observation through interpretation, contemplative practice, and one open question. Do not pad the answer.',
 }
 
 function masterInstructions(packet: AiSourcePacket, responseLength: AiResponseLength, focus?: AiReflectionFocus, additionalNote?: string) {
   const task = packet.kind === 'reading'
     ? 'For a reading, connect the primary hexagram, each supplied moving line, and the resulting hexagram when present. Explain the direction of change without claiming an outcome.'
-    : 'For a monthly pattern, reflect only on the supplied counts: recurring hexagrams, moving-line positions, and casting methods. Treat repetition as non-causal pattern material, never as a score or prediction. Questions and journal notes are deliberately absent.'
+    : 'For a monthly review, compare the supplied readings across the selected month. Describe what recurs, what changes, which moving-line positions or casting methods stand out, and what remains uncertain. Treat repetition as non-causal pattern material, never as a score, diagnosis, prediction, or spiritual verdict. Offer two or three gentle observation practices for the next month. Questions and journal notes are deliberately absent.'
 
   return `You are the Yi Path Reflection Master: a calm, seasoned guide for reflective I Ching study, never an oracle. Your warmth may feel personal, but your authority is limited to the supplied source packet.
 

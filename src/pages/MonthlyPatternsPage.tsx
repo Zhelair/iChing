@@ -26,7 +26,7 @@ export function MonthlyPatternsPage() {
   useEffect(() => {
     let active = true
     void getAllReadings().then((items) => { if (active) setReadings(items) })
-    void getAiReflections('monthly-pattern').then((items) => { if (active) setHistory(items) })
+    void getAiReflections('monthly-pattern').then((items) => { if (active) setHistory(items.slice(0, 5)) })
     return () => { active = false }
   }, [])
   const [year, monthNumber] = month.split('-').map(Number)
@@ -34,7 +34,7 @@ export function MonthlyPatternsPage() {
   const to = useMemo(() => new Date(year, monthNumber, 1, 0, 0, 0, -1), [monthNumber, year])
   const packet = useMemo(() => buildMonthlyPacket(readings, preferences.locale, from, to, (id) => editorialFor(getHexagram(id)).title), [editorialFor, from, preferences.locale, readings, to])
 
-  const clearHistory = async () => { await clearAiReflections(); setHistory([]) }
+  const clearHistory = async () => { if (!window.confirm('Delete the five saved monthly AI reflections?')) return; await clearAiReflections(); setHistory([]) }
 
   return <div className="page-shell py-10 sm:py-16">
     <div className="reading-column">

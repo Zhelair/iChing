@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { decryptApiKeyForDevice, encryptApiKeyForDevice, isDeviceEncryptedKey, readEncryptedKey, removeEncryptedKey, storeEncryptedKey } from './keyVault'
 import { AI_PROVIDERS, DEFAULT_AI_MODELS } from './providers'
 import type { AiModel, AiProviderId } from './types'
@@ -45,6 +45,16 @@ export function AiProvider({ children }: { children: ReactNode }) {
     openai: Boolean(readEncryptedKey('openai')),
     anthropic: Boolean(readEncryptedKey('anthropic')),
   }))
+
+  useEffect(() => {
+    let active = true
+    const envelope = readEncryptedKey(provider)
+    if (!envelope || !isDeviceEncryptedKey(envelope)) return () => { active = false }
+    void decryptApiKeyForDevice(envelope, provider).then((key) => {
+      if (active) setApiKeys((current) => ({ ...current, [provider]: key }))
+    }).catch(() => undefined)
+    return () => { active = false }
+  }, [provider])
 
   const setProvider = useCallback((next: AiProviderId) => {
     setProviderState(next)
