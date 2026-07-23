@@ -86,7 +86,7 @@ export function buildRequestPreview(packet: AiSourcePacket, providerId: AiProvid
   }
 }
 
-type OpenAiChunk = { choices?: Array<{ delta?: { content?: string } }> }
+type OpenAiChunk = { choices?: Array<{ delta?: { content?: string }; message?: { content?: string } }> }
 type AnthropicChunk = { type?: string; delta?: { type?: string; text?: string } }
 
 async function consumeSse(response: Response, preview: AiRequestPreview, onText: (text: string) => void) {
@@ -108,7 +108,7 @@ async function consumeSse(response: Response, preview: AiRequestPreview, onText:
         const parsed = JSON.parse(data) as OpenAiChunk & AnthropicChunk
         const delta = preview.providerId === 'anthropic'
           ? (parsed.type === 'content_block_delta' && parsed.delta?.type === 'text_delta' ? parsed.delta.text : undefined)
-          : parsed.choices?.[0]?.delta?.content
+          : parsed.choices?.[0]?.delta?.content ?? parsed.choices?.[0]?.message?.content
         if (delta) { complete += delta; onText(complete) }
       } catch {
         // Ignore malformed provider events without logging user content.
@@ -123,7 +123,7 @@ async function consumeSse(response: Response, preview: AiRequestPreview, onText:
         const parsed = JSON.parse(data) as OpenAiChunk & AnthropicChunk
         const delta = preview.providerId === 'anthropic'
           ? (parsed.type === 'content_block_delta' && parsed.delta?.type === 'text_delta' ? parsed.delta.text : undefined)
-          : parsed.choices?.[0]?.delta?.content
+          : parsed.choices?.[0]?.delta?.content ?? parsed.choices?.[0]?.message?.content
         if (delta) { complete += delta; onText(complete) }
       } catch {
         // Ignore a malformed final provider event without logging user content.
@@ -156,7 +156,16 @@ export async function streamAiReflection(apiKey: string, preview: AiRequestPrevi
       }
     : preview.providerId === 'openai'
       ? { model: preview.model, messages: preview.messages, stream: true, max_completion_tokens: maxTokens }
-      : { model: preview.model, messages: preview.messages, stream: true, temperature: 0.35, max_tokens: maxTokens }
+      : {
+          model: preview.model,
+          messages: preview.messages,
+          stream: true,
+          temperature: 0.35,
+          max_tokens: maxTokens,
+          // DeepSeek V4 enables thinking by default. The UI intentionally
+          // stores only the answer text, so request the answer channel directly.
+          ...(preview.providerId === 'deepseek' ? { thinking: { type: 'disabled' as const } } : {}),
+        }
   let response: Response
   try {
     response = await fetch(preview.endpoint, { method: 'POST', headers, body: JSON.stringify(body), signal })
