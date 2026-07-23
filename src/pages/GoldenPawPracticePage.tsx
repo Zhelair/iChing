@@ -8,7 +8,9 @@ import { useI18n } from '../i18n/I18nContext'
 import { petExperienceCopyFor } from '../i18n/petExperienceCopy'
 import { savePracticeSession } from '../storage/db'
 
-const DURATION = 31
+// Thirty-five keeps the pause brief while 3 + 5 = 8 gives this playful,
+// non-canonical companion practice an auspicious visual rhythm.
+const DURATION = 35
 
 export function GoldenPawPracticePage() {
   const navigate = useNavigate()
@@ -16,14 +18,12 @@ export function GoldenPawPracticePage() {
   const copy = petExperienceCopyFor(preferences.locale)
   const [remaining, setRemaining] = useState(DURATION)
   const [phase, setPhase] = useState<'ready' | 'running' | 'paused' | 'complete'>('ready')
-  const [animationRun, setAnimationRun] = useState(0)
   const sessionId = useRef(crypto.randomUUID())
 
   useEffect(() => {
     if (phase !== 'running') return
     const timer = window.setInterval(() => {
       setRemaining((current) => Math.max(0, current - 1))
-      setAnimationRun((current) => current + 1)
     }, 1000)
     return () => window.clearInterval(timer)
   }, [phase])
@@ -32,7 +32,7 @@ export function GoldenPawPracticePage() {
     if (remaining !== 0 || phase !== 'running') return
     setPhase('complete')
     recordCompanionMoment('paw-complete')
-    const session: PracticeSession = { id: sessionId.current, schemaVersion: 1, createdAt: new Date().toISOString(), practiceId: 'companion-golden-paw-v1', durationSeconds: DURATION, completed: true }
+    const session: PracticeSession = { id: sessionId.current, schemaVersion: 1, createdAt: new Date().toISOString(), practiceId: 'companion-golden-paw-v2', durationSeconds: DURATION, completed: true }
     void savePracticeSession(session)
   }, [phase, remaining])
 
@@ -61,7 +61,7 @@ export function GoldenPawPracticePage() {
       </header>
       <div className="golden-paw-practice__stage">
         <span className="golden-paw-practice__orbit" aria-hidden="true"><i /></span>
-        <CompanionPet key={animationRun} pet="cat" variant="golden-lucky" animation={phase === 'running' ? 'cat-paw' : phase === 'complete' ? 'cat-purr' : 'idle'} motion={preferences.petMotion && !preferences.reduceMotion} />
+        <CompanionPet pet="cat" variant="golden-lucky" animation={phase === 'running' ? 'cat-paw' : phase === 'complete' ? 'cat-purr' : 'idle'} motion={preferences.petMotion && !preferences.reduceMotion} />
         <span className="golden-paw-practice__count" aria-live="polite"><strong>{remaining}</strong><small>{copy.seconds}</small></span>
       </div>
       <div className="golden-paw-practice__controls">

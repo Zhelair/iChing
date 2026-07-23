@@ -95,6 +95,13 @@ function TuxedoCat({ idBase, golden }: { idBase: string; golden: boolean }) {
       <path className="companion-cat__paw-right" d="M132 173c-3 21-4 36 1 42 5 6 22 5 27-2 3-5 0-24-3-42Z" fill={`url(#${lightFur})`} />
       <path d="M86 208c6 3 14 3 21 0m29 1c6 3 14 3 20 0" fill="none" stroke="#aaa99f" strokeWidth="1.4" />
     </g>
+    <g className="companion-cat__lucky-arm">
+      <path className="companion-cat__lucky-upper-arm" d="M145 175c1-21 5-42 12-57 4-8 17-5 18 4 1 16-2 37-7 57Z" fill={`url(#${lightFur})`} />
+      <g className="companion-cat__lucky-forepaw">
+        <path d="M155 123c-2-15-1-33 2-48 2-10 15-12 20-3 5 8 1 21-1 28-1 8 0 17 1 25-5 7-16 7-22-2Z" fill={`url(#${lightFur})`} />
+        <path d="M159 79c4 2 9 2 14-1m-16 10c5 2 11 2 17-1" fill="none" stroke="#a86c35" strokeWidth="1.4" strokeLinecap="round" opacity=".65" />
+      </g>
+    </g>
     <g className="companion-cat__treat">
       <path d="M168 166c8-8 21-2 20 8-1 11-16 14-25 7Z" fill="#ba7540" stroke="#74452c" strokeWidth="2" />
       <circle cx="174" cy="171" r="2" fill="#f3d08b" /><circle cx="182" cy="175" r="2" fill="#f3d08b" />

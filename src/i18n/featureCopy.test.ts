@@ -4,16 +4,22 @@ import { aiCopyFor, AI_COPY_STATUS } from './aiCopy'
 import { companionCopyFor, companionCopyStatus } from './companionCopy'
 import { beadCopyFor, beadCopyStatus } from './featureCopy'
 import { aiProviderCopyFor } from './aiProviderCopy'
+import { aiReflectionExperienceCopyFor } from './aiReflectionExperienceCopy'
+import { petExperienceCopyFor } from './petExperienceCopy'
 
 describe('new feature locale contracts', () => {
   it.each(SUPPORTED_LOCALES)('has complete bead, companion, and AI copy for %s', (locale) => {
     const bead = beadCopyFor(locale)
     const companion = companionCopyFor(locale)
     const ai = aiCopyFor(locale)
+    const aiExperience = aiReflectionExperienceCopyFor(locale)
+    const petExperience = petExperienceCopyFor(locale)
     expect(Object.values(bead).flatMap((value) => Array.isArray(value) ? value : [value]).every(Boolean)).toBe(true)
     expect(companion.actions.cat).toHaveLength(3)
     expect(companion.actions.dog).toHaveLength(3)
     expect(Object.values(ai).every(Boolean)).toBe(true)
+    expect(Object.values(aiExperience).every(Boolean)).toBe(true)
+    expect(Object.values(petExperience).every(Boolean)).toBe(true)
     expect(beadCopyStatus(locale)).toBe(locale === 'en' ? 'source-authored' : 'ai-assisted-ui-draft-needs-native-review')
     expect(companionCopyStatus(locale)).toBe(locale === 'en' ? 'source-authored' : 'ai-assisted-ui-draft-needs-native-review')
     expect(AI_COPY_STATUS[locale]).toBe(locale === 'en' ? 'source-authored' : 'ai-assisted-ui-draft-needs-native-review')

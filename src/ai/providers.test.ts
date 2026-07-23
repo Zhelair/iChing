@@ -16,13 +16,25 @@ describe('multi-provider BYOK previews', () => {
     ['anthropic', 'claude-haiku-4-5', 'https://api.anthropic.com/v1/messages', 'Anthropic'],
   ] as const)('builds an exact %s preview', (providerId, model, endpoint, provider) => {
     const preview = buildRequestPreview(packet, providerId, model)
-    expect(preview).toMatchObject({ providerId, provider, endpoint, model })
+    expect(preview).toMatchObject({ providerId, provider, endpoint, model, responseLength: 'medium' })
     expect(JSON.parse(preview.messages[1].content)).toEqual(packet)
+    expect(preview.messages[0].content).toContain('Yi Path Reflection Master')
   })
 
   it('keeps every provider model choice scoped to its provider', () => {
     expect(AI_PROVIDERS.deepseek.models.map(({ id }) => id)).toEqual(['deepseek-v4-flash', 'deepseek-v4-pro'])
     expect(AI_PROVIDERS.openai.models.map(({ id }) => id)).toEqual(['gpt-5-mini', 'gpt-5.2'])
     expect(AI_PROVIDERS.anthropic.models.map(({ id }) => id)).toEqual(['claude-haiku-4-5', 'claude-sonnet-5'])
+  })
+
+  it.each([
+    ['short', 'exactly three complete sentences'],
+    ['medium', 'exactly two short paragraphs'],
+    ['long', 'three or four short paragraphs maximum'],
+  ] as const)('gives the Master a strict %s response contract', (length, instruction) => {
+    const preview = buildRequestPreview(packet, 'deepseek', 'deepseek-v4-flash', length)
+    expect(preview.responseLength).toBe(length)
+    expect(preview.messages[0].content).toContain(instruction)
+    expect(preview.messages[0].content).toContain('plain prose only')
   })
 })
