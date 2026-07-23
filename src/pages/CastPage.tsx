@@ -358,7 +358,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
     castLockRef.current = true
     const selected = drawBead()
     const committed = createCastLine((lines.length + 1) as CastLine['position'], selected.value)
-    const times = yarrowPhaseTimings(yarrow, preferences.reduceMotion)
+    const times: [number, number, number] = preferences.reduceMotion ? [20, 40, 70] : [2400, 5200, 7600]
     setLastBead(null)
     setBeadDraw(selected)
     setBeadPhase('mixing')
@@ -384,7 +384,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
 
   const knownLines = linesFromKnownHexagram(knownId, movingPositions)
   const yarrowTimings = yarrowPhaseTimings(yarrow, preferences.reduceMotion)
-  const beadTimings = yarrowTimings
+  const beadTimings: [number, number, number] = preferences.reduceMotion ? [20, 40, 70] : [2400, 5200, 7600]
   const displayedLine = pending ?? lines.at(-1)
   const lastSettledLine = pending ? null : lines.at(-1)
   const coinSummary = lastSettledLine?.coins?.map((side) => t(side === 'heads' ? 'cast.heads' : 'cast.tails')).join(', ')

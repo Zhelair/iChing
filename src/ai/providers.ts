@@ -1,4 +1,4 @@
-import type { AiModel, AiProviderId, AiProviderName, AiRequestPreview, AiResponseLength, AiSourcePacket } from './types'
+import type { AiModel, AiProviderId, AiProviderName, AiReflectionFocus, AiRequestPreview, AiResponseLength, AiSourcePacket } from './types'
 
 export const AI_PROVIDERS: Record<AiProviderId, {
   name: AiProviderName
@@ -43,7 +43,7 @@ const LENGTH_RULES: Record<AiResponseLength, string> = {
   long: 'Write three or four short paragraphs maximum. Develop the reading carefully, and end the final paragraph with one open question.',
 }
 
-function masterInstructions(packet: AiSourcePacket, responseLength: AiResponseLength) {
+function masterInstructions(packet: AiSourcePacket, responseLength: AiResponseLength, focus?: AiReflectionFocus, additionalNote?: string) {
   const task = packet.kind === 'reading'
     ? 'For a reading, connect the primary hexagram, each supplied moving line, and the resulting hexagram when present. Explain the direction of change without claiming an outcome.'
     : 'For a monthly pattern, reflect only on the supplied counts: recurring hexagrams, moving-line positions, and casting methods. Treat repetition as non-causal pattern material, never as a score or prediction. Questions and journal notes are deliberately absent.'
@@ -56,6 +56,8 @@ Task instructions:
 3. Name the relevant hexagram numbers and moving-line positions naturally. Use sourceIds to keep every observation traceable.
 4. Clearly distinguish what the packet shows from what you infer. Prefer possibilities and questions over declarations.
 5. Offer one coherent thread that helps the reader meet change with honesty, proportion, and practical attention.
+${focus ? `6. Give extra attention to the requested layer: ${focus}.` : ''}
+${additionalNote ? `7. The reader added this optional note. Treat it as a request for emphasis, not as a new source: ${additionalNote}` : ''}
 
 Boundaries:
 - Do not predict events, claim supernatural certainty, diagnose, or give legal, medical, financial, or crisis advice.
@@ -69,7 +71,7 @@ Voice and format:
 - ${LENGTH_RULES[responseLength]}`
 }
 
-export function buildRequestPreview(packet: AiSourcePacket, providerId: AiProviderId, model: AiModel, responseLength: AiResponseLength = 'medium'): AiRequestPreview {
+export function buildRequestPreview(packet: AiSourcePacket, providerId: AiProviderId, model: AiModel, responseLength: AiResponseLength = 'medium', options?: { focus?: AiReflectionFocus; additionalNote?: string }): AiRequestPreview {
   const provider = AI_PROVIDERS[providerId]
   return {
     endpoint: provider.endpoint,
@@ -78,8 +80,8 @@ export function buildRequestPreview(packet: AiSourcePacket, providerId: AiProvid
     model,
     responseLength,
     messages: [
-      { role: 'system', content: masterInstructions(packet, responseLength) },
-      { role: 'user', content: JSON.stringify(packet, null, 2) },
+      { role: 'system', content: masterInstructions(packet, responseLength, options?.focus, options?.additionalNote) },
+      { role: 'user', content: JSON.stringify(options?.focus || options?.additionalNote ? { sourcePacket: packet, requestedLayer: options.focus, additionalNote: options.additionalNote } : packet, null, 2) },
     ],
   }
 }

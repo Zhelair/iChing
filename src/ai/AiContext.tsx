@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react'
-import { decryptApiKey, encryptApiKey, readEncryptedKey, removeEncryptedKey, storeEncryptedKey } from './keyVault'
+import { decryptApiKeyForDevice, encryptApiKeyForDevice, isDeviceEncryptedKey, readEncryptedKey, removeEncryptedKey, storeEncryptedKey } from './keyVault'
 import { AI_PROVIDERS, DEFAULT_AI_MODELS } from './providers'
 import type { AiModel, AiProviderId } from './types'
 
@@ -14,8 +14,8 @@ type AiContextValue = {
   setProvider: (provider: AiProviderId) => void
   setModel: (model: AiModel) => void
   useSessionKey: (apiKey: string) => void
-  saveEncrypted: (apiKey: string, passphrase: string) => Promise<void>
-  unlock: (passphrase: string) => Promise<void>
+  saveEncrypted: (apiKey: string) => Promise<void>
+  unlock: () => Promise<void>
   lock: () => void
   forgetEncrypted: () => void
 }
@@ -72,22 +72,23 @@ export function AiProvider({ children }: { children: ReactNode }) {
       if (normalized.length < 10) throw new Error('invalid-key')
       setApiKeys((current) => ({ ...current, [provider]: normalized }))
     },
-    saveEncrypted: async (next, passphrase) => {
+    saveEncrypted: async (next) => {
       const normalized = next.trim()
-      const envelope = await encryptApiKey(normalized, passphrase)
+      const envelope = await encryptApiKeyForDevice(normalized, provider)
       storeEncryptedKey(envelope, provider)
       setEncryptedProviders((current) => ({ ...current, [provider]: true }))
       setApiKeys((current) => ({ ...current, [provider]: normalized }))
     },
-    unlock: async (passphrase) => {
+    unlock: async () => {
       const envelope = readEncryptedKey(provider)
       if (!envelope) throw new Error('missing-envelope')
-      const key = await decryptApiKey(envelope, passphrase)
+      if (!isDeviceEncryptedKey(envelope)) throw new Error('legacy-passphrase-envelope')
+      const key = await decryptApiKeyForDevice(envelope, provider)
       setApiKeys((current) => ({ ...current, [provider]: key }))
     },
     lock: () => setApiKeys((current) => { const updated = { ...current }; delete updated[provider]; return updated }),
     forgetEncrypted: () => {
-      removeEncryptedKey(provider)
+      void removeEncryptedKey(provider)
       setEncryptedProviders((current) => ({ ...current, [provider]: false }))
     },
   }), [apiKeys, encryptedProviders, models, provider, setModel, setProvider])
