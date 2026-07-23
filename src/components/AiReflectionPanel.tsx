@@ -75,7 +75,12 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
       setSaved(record)
       setPreview(null)
     } catch (reason) {
-      if (!(reason instanceof DOMException && reason.name === 'AbortError')) setError(providerCopy.error)
+      if (!(reason instanceof DOMException && reason.name === 'AbortError')) {
+        const detail = reason instanceof Error ? reason.message : ''
+        setError(detail === 'provider-network'
+          ? `${providerCopy.error} Check your connection or browser privacy settings.`
+          : detail.startsWith('provider-') ? `${providerCopy.error} ${detail.replace(/^provider-\d+:?\s*/, '')}` : providerCopy.error)
+      }
     } finally {
       setSending(false); abortRef.current = null
     }
