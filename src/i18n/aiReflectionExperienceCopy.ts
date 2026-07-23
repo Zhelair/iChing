@@ -1,17 +1,18 @@
 import type { Locale } from '../domain/locales'
 
 const en = {
-  master: 'Yi Path Reflection Master',
+  master: 'Another layer of reflection',
   optional: 'Optional AI reflection',
   panelBody: 'A source-bounded second view. Nothing is sent until you review the summary and press Send.',
-  masterBody: 'A calm study voice grounded only in the reading packet—not an oracle or authoritative translation.',
+  masterBody: 'A calm additional study layer grounded only in the reading packet—not an oracle or authoritative translation.',
   length: 'Response length',
+  focus: 'What should this layer emphasize?', focusSituation: 'The situation', focusLines: 'Changing lines', focusPractice: 'A practical next step', focusMonthly: 'Monthly review', noteLabel: 'Optional note for this request', noteHint: 'Add a short note (maximum 53 words).', noteCount: 'words',
   short: 'Short', shortHint: '3 sentences',
   medium: 'Medium', mediumHint: '2 short paragraphs',
   long: 'Long', longHint: '3–4 short paragraphs',
   review: 'Review request',
   reviewAgain: 'Review again',
-  ready: 'Ready to ask the Master',
+  ready: 'Ready to request another layer',
   notSent: 'Nothing has been sent. Confirm the essentials below before sending.',
   shared: 'Shared with the selected provider',
   readingPacket: 'This reading packet',

@@ -8,6 +8,7 @@ export type AnthropicModel = 'claude-haiku-4-5' | 'claude-sonnet-5'
 export type AiModel = DeepSeekModel | OpenAiModel | AnthropicModel
 export type ReflectionKind = 'reading' | 'monthly-pattern'
 export type AiResponseLength = 'short' | 'medium' | 'long'
+export type AiReflectionFocus = 'situation' | 'changing-lines' | 'practical-step' | 'monthly-review'
 
 export type AiRequestPreview = {
   endpoint: 'https://api.deepseek.com/chat/completions' | 'https://api.openai.com/v1/chat/completions' | 'https://api.anthropic.com/v1/messages'

@@ -69,7 +69,7 @@ function TuxedoCat({ idBase, golden }: { idBase: string; golden: boolean }) {
   const lightFur = golden ? `${idBase}-gold-light` : `${idBase}-white-fur`
   return <g className="companion-pet__character companion-cat" filter={`url(#${idBase}-shadow)`}>
     <path className="companion-cat__lucky-cushion" d="M48 211c16-15 128-15 145 0l-9 14H57Z" fill="#a9352f" stroke="#7a2524" strokeWidth="3" />
-    <path className="companion-cat__tail" d="M70 180c-37 8-45-26-27-43 10-9 25-8 32 2-16-3-25 8-21 18 4 12 18 12 30 7" fill="none" stroke={`url(#${darkFur})`} strokeWidth="16" strokeLinecap="round" />
+    <path className="companion-cat__tail" d="M74 181c-31 9-53-8-49-31 3-18 19-29 35-25 15 4 22 18 16 31-4 9-14 14-24 10" fill="none" stroke={`url(#${darkFur})`} strokeWidth="16" strokeLinecap="round" />
     <ellipse className="companion-cat__body" cx="121" cy="158" rx="54" ry="60" fill={`url(#${darkFur})`} />
     <path d="M94 119c8 8 15 12 27 13 13-1 23-7 30-14l8 70H82z" fill={`url(#${lightFur})`} opacity=".98" />
     <g className="companion-cat__head">
@@ -89,7 +89,6 @@ function TuxedoCat({ idBase, golden }: { idBase: string; golden: boolean }) {
       </g>
     </g>
     <path className="companion-pet__collar" d="M90 132c19 9 42 9 61-1" fill="none" stroke={golden ? '#a9362e' : 'var(--brass)'} strokeWidth="6" strokeLinecap="round" />
-    <circle cx="121" cy="139" r="7" fill="var(--jade)" stroke="#f5e5af" strokeWidth="2" />
     <g className="companion-cat__paws">
       <path d="M82 168c-3 22-4 40 1 46 5 7 23 5 28-2 3-5 1-22-2-38Z" fill={`url(#${lightFur})`} />
       <path className="companion-cat__paw-right" d="M132 173c-3 21-4 36 1 42 5 6 22 5 27-2 3-5 0-24-3-42Z" fill={`url(#${lightFur})`} />
@@ -105,11 +104,6 @@ function TuxedoCat({ idBase, golden }: { idBase: string; golden: boolean }) {
     <g className="companion-cat__treat">
       <path d="M168 166c8-8 21-2 20 8-1 11-16 14-25 7Z" fill="#ba7540" stroke="#74452c" strokeWidth="2" />
       <circle cx="174" cy="171" r="2" fill="#f3d08b" /><circle cx="182" cy="175" r="2" fill="#f3d08b" />
-    </g>
-    <path className="companion-cat__purr" d="M58 112c-14 0-14 17 0 17 14 0 14 17 0 17" fill="none" stroke="var(--brass)" strokeWidth="3" strokeLinecap="round" />
-    <g className="companion-cat__lucky-charm">
-      <ellipse cx="112" cy="176" rx="24" ry="30" fill="#d9a53c" stroke="#8e5c21" strokeWidth="3" />
-      <path d="M100 171h24m-21 9h18m-13-18v29m9-29v29" fill="none" stroke="#fff0b4" strokeWidth="3" strokeLinecap="round" />
     </g>
   </g>
 }
@@ -135,7 +129,6 @@ function Labrador({ idBase }: { idBase: string }) {
       <path className="companion-dog__tongue" d="M112 120h16v10c0 10-16 10-16 0Z" fill="#dc817a" stroke="#8f514f" strokeWidth="1.5" />
     </g>
     <path className="companion-pet__collar" d="M88 131c20 11 44 11 65 0" fill="none" stroke="var(--jade)" strokeWidth="7" strokeLinecap="round" />
-    <path d="m120 136 8 6-8 10-8-10Z" fill="var(--brass)" stroke="#f8e7b0" strokeWidth="2" />
     <g className="companion-dog__paws">
       <path d="M75 170c-1 20 2 39 9 44 7 5 25 2 27-7l-5-36Z" fill={`url(#${idBase}-gold-light)`} />
       <path d="M134 171c-4 22-4 36 2 42 6 5 23 3 26-5 2-6-3-27-7-40Z" fill={`url(#${idBase}-gold-light)`} />
@@ -145,6 +138,5 @@ function Labrador({ idBase }: { idBase: string }) {
       <path d="M49 176 189 149" fill="none" stroke="#86562f" strokeWidth="8" strokeLinecap="round" />
       <path d="m57 175-10-9m132-15 9-12" fill="none" stroke="#86562f" strokeWidth="5" strokeLinecap="round" />
     </g>
-    <path className="companion-dog__heart" d="M176 74c9-12 28 2 11 18l-11 10-11-10c-17-16 2-30 11-18Z" fill="var(--brass)" />
   </g>
 }

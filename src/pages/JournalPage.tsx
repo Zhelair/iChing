@@ -13,7 +13,8 @@ import type { Reading, ReadingMethod } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 import { getUiLocalePack } from '../i18n/uiLocalePacks'
 import { aiCopyFor } from '../i18n/aiCopy'
-import { deleteReading, getAllReadings, saveReading } from '../storage/db'
+import type { AiReflectionRecord } from '../ai/types'
+import { deleteReading, getAiReflections, getAllReadings, saveReading } from '../storage/db'
 import { setCurrentReading } from '../storage/session'
 
 const copy = {
@@ -46,6 +47,7 @@ export function JournalPage() {
     : getUiLocalePack(preferences.locale).features.journal
   const navigate = useNavigate()
   const [readings, setReadings] = useState<Reading[]>([])
+  const [latestMonthlyReflection, setLatestMonthlyReflection] = useState<AiReflectionRecord | null>(null)
   const [loaded, setLoaded] = useState(false)
   const [query, setQuery] = useState('')
   const [method, setMethod] = useState<'all' | ReadingMethod>('all')
@@ -60,6 +62,7 @@ export function JournalPage() {
 
   useEffect(() => {
     void getAllReadings().then((items) => { setReadings(items); setLoaded(true) })
+    void getAiReflections('monthly-pattern').then((items) => setLatestMonthlyReflection(items[0] ?? null))
     return () => { if (undoTimer.current) window.clearTimeout(undoTimer.current) }
   }, [])
 
@@ -131,6 +134,11 @@ export function JournalPage() {
       <PageIntro eyebrow={c.eyebrow} title={c.title} body={c.body} />
       <JournalModeNav copy={studyNotesCopy} />
       {preferences.aiEnabled ? <Link to="/journal/patterns" className="journal-patterns-link surface"><span><Sparkles size={19} aria-hidden="true" /></span><strong>{aiCopy.openPatterns}</strong><ArrowRight size={17} aria-hidden="true" /></Link> : null}
+      {latestMonthlyReflection ? <Link to="/journal/patterns" className="surface journal-monthly-reflection" aria-label={aiCopy.openPatterns}>
+        <span className="eyebrow">{aiCopy.history}</span>
+        <strong>{new Intl.DateTimeFormat(preferences.locale, { dateStyle: 'medium' }).format(new Date(latestMonthlyReflection.createdAt))}</strong>
+        <p>{latestMonthlyReflection.response}</p>
+      </Link> : null}
       <details className="journal-mobile-filters surface mt-7 p-4 lg:hidden"><summary>{c.contents}</summary>{renderFilters()}</details>
       <div className="journal-layout mt-8">
         <aside className="journal-rail hidden lg:block">

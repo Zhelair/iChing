@@ -1,4 +1,5 @@
 import type { AiProviderId } from './types'
+import { openDB, type DBSchema } from 'idb'
 
 const ENCRYPTED_KEY_STORAGE = 'yi-path:ai-keys:v2'
 const LEGACY_DEEPSEEK_STORAGE = 'yi-path:deepseek-key:v1'
@@ -13,6 +14,22 @@ export type EncryptedKeyEnvelope = {
   iv: string
   ciphertext: string
 }
+
+export type DeviceEncryptedKeyEnvelope = {
+  version: 2
+  algorithm: 'AES-GCM'
+  protection: 'device-key'
+  iv: string
+  ciphertext: string
+}
+
+interface AiDeviceKeyDb extends DBSchema {
+  keys: { key: AiProviderId; value: CryptoKey }
+}
+
+const deviceKeyDb = openDB<AiDeviceKeyDb>('yi-path-ai-device-keys', 1, {
+  upgrade(db) { db.createObjectStore('keys') },
+})
 
 function bytesToBase64(bytes: Uint8Array) {
   let binary = ''
@@ -67,7 +84,43 @@ export async function decryptApiKey(envelope: EncryptedKeyEnvelope, passphrase: 
   }
 }
 
-type EncryptedKeyRecord = Partial<Record<AiProviderId, EncryptedKeyEnvelope>>
+async function deviceKey(provider: AiProviderId) {
+  const db = await deviceKeyDb
+  const existing = await db.get('keys', provider)
+  if (existing) return existing
+  const created = await crypto.subtle.generateKey({ name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt'])
+  await db.put('keys', created, provider)
+  return created
+}
+
+export async function encryptApiKeyForDevice(apiKey: string, provider: AiProviderId): Promise<DeviceEncryptedKeyEnvelope> {
+  if (apiKey.trim().length < 10) throw new Error('invalid-key')
+  const iv = crypto.getRandomValues(new Uint8Array(12))
+  const key = await deviceKey(provider)
+  const ciphertext = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, new TextEncoder().encode(apiKey.trim()))
+  return { version: 2, algorithm: 'AES-GCM', protection: 'device-key', iv: bytesToBase64(iv), ciphertext: bytesToBase64(new Uint8Array(ciphertext)) }
+}
+
+export async function decryptApiKeyForDevice(envelope: DeviceEncryptedKeyEnvelope, provider: AiProviderId) {
+  if (envelope.version !== 2 || envelope.algorithm !== 'AES-GCM' || envelope.protection !== 'device-key') throw new Error('unsupported-envelope')
+  const key = await deviceKey(provider)
+  try {
+    const plaintext = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: base64ToBytes(envelope.iv) }, key, base64ToBytes(envelope.ciphertext))
+    return new TextDecoder().decode(plaintext)
+  } catch {
+    throw new Error('device-key-unavailable')
+  }
+}
+
+export function isDeviceEncryptedKey(envelope: EncryptedKeyEnvelope | DeviceEncryptedKeyEnvelope | null): envelope is DeviceEncryptedKeyEnvelope {
+  return envelope?.version === 2 && envelope.algorithm === 'AES-GCM' && envelope.protection === 'device-key'
+}
+
+export async function removeDeviceKey(provider: AiProviderId) {
+  await (await deviceKeyDb).delete('keys', provider)
+}
+
+type EncryptedKeyRecord = Partial<Record<AiProviderId, EncryptedKeyEnvelope | DeviceEncryptedKeyEnvelope>>
 
 function readKeyRecord(): EncryptedKeyRecord {
   try {
@@ -77,9 +130,9 @@ function readKeyRecord(): EncryptedKeyRecord {
   }
 }
 
-export function readEncryptedKey(provider: AiProviderId = 'deepseek'): EncryptedKeyEnvelope | null {
+export function readEncryptedKey(provider: AiProviderId = 'deepseek'): EncryptedKeyEnvelope | DeviceEncryptedKeyEnvelope | null {
   const saved = readKeyRecord()[provider]
-  if (saved?.version === 1) return saved
+  if (saved?.version === 1 || saved?.version === 2) return saved as EncryptedKeyEnvelope | DeviceEncryptedKeyEnvelope
   if (provider !== 'deepseek') return null
   try {
     const legacy = JSON.parse(localStorage.getItem(LEGACY_DEEPSEEK_STORAGE) ?? 'null') as EncryptedKeyEnvelope | null
@@ -89,15 +142,16 @@ export function readEncryptedKey(provider: AiProviderId = 'deepseek'): Encrypted
   }
 }
 
-export function storeEncryptedKey(envelope: EncryptedKeyEnvelope, provider: AiProviderId = 'deepseek') {
+export function storeEncryptedKey(envelope: EncryptedKeyEnvelope | DeviceEncryptedKeyEnvelope, provider: AiProviderId = 'deepseek') {
   localStorage.setItem(ENCRYPTED_KEY_STORAGE, JSON.stringify({ ...readKeyRecord(), [provider]: envelope }))
   if (provider === 'deepseek') localStorage.removeItem(LEGACY_DEEPSEEK_STORAGE)
 }
 
-export function removeEncryptedKey(provider: AiProviderId = 'deepseek') {
+export async function removeEncryptedKey(provider: AiProviderId = 'deepseek') {
   const record = readKeyRecord()
   delete record[provider]
   if (Object.keys(record).length) localStorage.setItem(ENCRYPTED_KEY_STORAGE, JSON.stringify(record))
   else localStorage.removeItem(ENCRYPTED_KEY_STORAGE)
   if (provider === 'deepseek') localStorage.removeItem(LEGACY_DEEPSEEK_STORAGE)
+  await removeDeviceKey(provider)
 }

@@ -924,7 +924,7 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
 .companion-pet__ground { transform-origin: center; }
 .companion-pet__eyes { transform-box: fill-box; transform-origin: center; }
 .companion-pet__collar { filter: drop-shadow(0 2px 2px color-mix(in srgb,var(--jade) 25%,transparent)); }
-.companion-cat__treat,.companion-cat__purr,.companion-cat__lucky-cushion,.companion-cat__lucky-charm,.companion-dog__stick,.companion-dog__heart { opacity: 0; }
+.companion-cat__treat,.companion-cat__lucky-cushion,.companion-cat__lucky-charm,.companion-dog__stick { opacity: 0; }
 .companion-pet--golden-lucky .companion-cat__lucky-cushion,.companion-pet--golden-lucky .companion-cat__lucky-charm { opacity: 1; }
 .companion-pet--golden-lucky .companion-cat__lucky-charm { filter: drop-shadow(0 5px 8px color-mix(in srgb,var(--brass) 30%,transparent)); }
 .companion-dog__tongue { transform-box: fill-box; transform-origin: top center; }
@@ -937,7 +937,6 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
 .companion-pet--sleep .companion-pet__eyes { transform: scaleY(.12); }
 .companion-pet--sleep .companion-dog__tongue { transform: scaleY(0); }
 .companion-pet--cat-purr .companion-pet__character { animation: companion-nuzzle 1.1s ease-in-out 2; }
-.companion-pet--cat-purr .companion-cat__purr { animation: companion-symbol 1.15s ease-out 2; }
 .companion-pet--cat-treat .companion-cat__treat { animation: companion-treat 2.3s ease-in-out both; transform-box: fill-box; transform-origin: center; }
 .companion-pet--cat-treat .companion-cat__head { animation: companion-cat-treat-head 2.3s ease-in-out; transform-box: fill-box; transform-origin: bottom center; }
 .companion-pet--cat-paw .companion-cat__paw-right { animation: companion-paw 1.5s cubic-bezier(.2,.8,.3,1) 1; transform-box: fill-box; transform-origin: top center; }
@@ -951,7 +950,6 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
 .companion-pet--cat-stretch .companion-cat__tail { animation: companion-cat-tail .48s ease-in-out 5; transform-box: fill-box; transform-origin: right center; }
 .companion-pet--dog-greet .companion-dog__tail { animation: companion-dog-tail .22s ease-in-out 8; transform-box: fill-box; transform-origin: left bottom; }
 .companion-pet--dog-greet .companion-dog__head { animation: companion-dog-greet .75s ease-in-out 2; transform-box: fill-box; transform-origin: bottom center; }
-.companion-pet--dog-greet .companion-dog__heart { animation: companion-heart 1.5s ease-out both; transform-box: fill-box; transform-origin: center; }
 .companion-pet--dog-fetch .companion-pet__character { animation: companion-fetch 2.5s cubic-bezier(.45,0,.2,1); }
 .companion-pet--dog-fetch .companion-dog__stick { animation: companion-stick 2.5s ease-in-out; }
 .companion-pet--dog-belly .companion-pet__character { animation: companion-belly 2.5s cubic-bezier(.2,.8,.25,1); }
@@ -966,15 +964,13 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
 @keyframes companion-pant { 0%,100% { transform: scaleY(.82); } 50% { transform: scaleY(1.12); } }
 @keyframes companion-sleep { 0%,100% { transform: translateY(4px) scale(1,.98); } 50% { transform: translateY(5px) scale(1.015,.965); } }
 @keyframes companion-nuzzle { 0%,100% { transform: rotate(0) translateX(0); } 45% { transform: rotate(-5deg) translateX(-4px); } 72% { transform: rotate(3deg) translateX(2px); } }
-@keyframes companion-symbol { 0% { opacity: 0; transform: translateX(5px); } 35% { opacity: 1; } 100% { opacity: 0; transform: translateX(-4px); } }
 @keyframes companion-treat { 0%,12% { opacity: 0; transform: translate(20px,8px) scale(.6); } 30%,72% { opacity: 1; transform: translate(0) scale(1); } 88%,100% { opacity: 0; transform: translate(-32px,-20px) scale(.3); } }
 @keyframes companion-cat-treat-head { 0%,100% { transform: rotate(0); } 28% { transform: rotate(8deg) translate(5px,4px); } 72% { transform: rotate(9deg) translate(7px,7px); } }
 @keyframes companion-paw { 0%,100% { transform: rotate(0) translate(0); } 25% { transform: rotate(-36deg) translate(-5px,-20px); } 40% { transform: rotate(42deg) translate(14px,-31px); } 55% { transform: rotate(-10deg) translate(0,-8px); } }
-@keyframes companion-lucky-beckon { 0%,12%,100% { transform: rotate(-5deg); } 45%,62% { transform: translate(-1px,2px) rotate(19deg) scaleY(.98); } 78% { transform: rotate(3deg); } }
+@keyframes companion-lucky-beckon { 0%,14%,100% { transform: rotate(-4deg); } 38% { transform: translate(-1px,1px) rotate(15deg) scaleY(.99); } 56% { transform: translate(0,2px) rotate(22deg) scaleY(.98); } 76% { transform: rotate(2deg); } }
 @keyframes companion-whiskers { 50% { transform: scaleX(1.12); } }
 @keyframes companion-cat-stretch { 0%,100% { transform: translate(0) scale(1); } 28% { transform: translate(-8px,8px) scale(1.12,.84) rotate(-3deg); } 55% { transform: translate(5px,-4px) scale(.96,1.08) rotate(3deg); } 78% { transform: translate(0,-7px) scale(1.03); } }
 @keyframes companion-dog-greet { 0%,100% { transform: rotate(0); } 35% { transform: rotate(-7deg); } 70% { transform: rotate(7deg); } }
-@keyframes companion-heart { 0% { opacity: 0; transform: translateY(8px) scale(.5); } 35% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-32px) scale(1.2); } }
 @keyframes companion-fetch { 0%,100% { transform: translateX(0) scale(1); } 25% { transform: translateX(45px) scale(.85); opacity: .85; } 42% { transform: translateX(88px) scale(.55); opacity: .25; } 52% { transform: translateX(-80px) scale(.55); opacity: .2; } 82% { transform: translateX(-8px) scale(1.03); opacity: 1; } }
 @keyframes companion-stick { 0%,25% { opacity: 0; transform: rotate(-12deg) translate(30px,-15px); } 48%,88% { opacity: 1; transform: rotate(0) translate(0); } 100% { opacity: 0; } }
 @keyframes companion-belly { 0%,100% { transform: rotate(0) translate(0); } 35%,70% { transform: rotate(-74deg) translate(-12px,15px) scale(.98); } 82% { transform: rotate(-65deg) translate(-9px,12px); } }
@@ -983,7 +979,7 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
 .reflection-companion { position: fixed; right: max(1rem,env(safe-area-inset-right)); bottom: 1rem; z-index: 35; width: 7.25rem; pointer-events: none; }
 .reflection-companion--large { width: 14.5rem; }
 .reflection-companion__trigger { position: relative; display: block; width: 100%; border: 0; background: transparent; padding: 0; filter: drop-shadow(0 12px 16px rgba(17,34,27,.16)); cursor: pointer; pointer-events: auto; }
-.reflection-companion__trigger > span { position: absolute; right: 14%; bottom: 17%; display: grid; width: 1.65rem; aspect-ratio: 1; place-items: center; border: 1px solid color-mix(in srgb,var(--brass) 54%,transparent); border-radius: 50%; background: color-mix(in srgb,var(--paper) 90%,transparent); color: var(--jade); box-shadow: 0 4px 14px rgba(17,34,27,.15); }
+.reflection-companion__trigger > span { display: none; }
 .reflection-companion__trigger:focus-visible { border-radius: 2rem; outline: 3px solid color-mix(in srgb,var(--jade) 56%,transparent); outline-offset: 3px; }
 .reflection-companion__panel { position: absolute; right: 0; bottom: calc(100% + .55rem); width: min(20rem,calc(100vw - 2rem)); border: 1px solid color-mix(in srgb,var(--jade) 25%,var(--line)); border-radius: 1.3rem; background: color-mix(in srgb,var(--paper) 94%,transparent); padding: 1rem; box-shadow: 0 24px 60px rgba(18,38,29,.22); backdrop-filter: blur(18px); pointer-events: auto; }
 .reflection-companion__panel header { display: flex; align-items: center; justify-content: space-between; gap: .7rem; }
@@ -1041,12 +1037,12 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
 
 @media (min-width: 760px) { .companion-studio__body { grid-template-columns: minmax(18rem,.9fr) minmax(20rem,1.1fr); }.companion-studio__preview { border-right: 1px solid var(--line); } }
 @media (max-width: 1023px) {
-  .reflection-companion { right: max(.75rem,env(safe-area-inset-right)); bottom: calc(5.7rem + env(safe-area-inset-bottom)); width: 4rem; z-index: 42; }
-  .reflection-companion--large { width: 8rem; }
+  .reflection-companion { right: max(.75rem,env(safe-area-inset-right)); bottom: calc(5.7rem + env(safe-area-inset-bottom)); width: 5.5rem; z-index: 42; }
+  .reflection-companion--large { width: 11rem; }
   .reflection-companion.is-ritual { bottom: max(.65rem,env(safe-area-inset-bottom)); width: 3.6rem; }
-  .reflection-companion.is-settings { right: max(.35rem,env(safe-area-inset-right)); width: 3.15rem; }
-  .reflection-companion.is-settings.reflection-companion--large { width: 5.6rem; }
-  .reflection-companion__trigger > span { width: 1.25rem; }
+  .reflection-companion.is-settings { right: max(.35rem,env(safe-area-inset-right)); width: 5rem; }
+  .reflection-companion.is-settings.reflection-companion--large { width: 10rem; }
+  .reflection-companion__trigger > span { display: none; }
   .reflection-companion__panel { position: fixed; right: .65rem; bottom: calc(5.65rem + env(safe-area-inset-bottom)); left: .65rem; width: auto; max-height: min(34rem,calc(100dvh - 7rem)); overflow-y: auto; border-radius: 1.5rem; padding: 1rem 1rem 1.2rem; }
   .reflection-companion.is-ritual .reflection-companion__panel { bottom: max(.65rem,env(safe-area-inset-bottom)); }
   .reflection-companion__panel-pet { width: 7.4rem; }
@@ -1078,6 +1074,25 @@ html[data-theme="ink-night"] .home-companion { border-color: rgba(172,205,182,.1
 @keyframes golden-paw-mist { from { transform: translateX(-4%) scale(.96); } to { transform: translateX(8%) scale(1.08); } }
 @media (max-width: 520px) { .golden-paw-practice { padding-top: 5.6rem; }.golden-paw-practice__stage { width: min(96vw,23rem); }.golden-paw-practice h1 { font-size: clamp(2.2rem,13vw,3.5rem); }.golden-paw-practice header > p:last-child { font-size: .82rem; } }
 @media (prefers-reduced-motion: reduce) { .golden-paw-practice__mist i { animation: none; } }
+
+.journal-monthly-reflection { display: block; margin-top: .8rem; padding: 1rem 1.15rem; color: var(--ink); text-decoration: none; }
+.journal-monthly-reflection > strong { display: block; margin-top: .3rem; color: var(--jade); font-size: .75rem; }
+.journal-monthly-reflection > p { display: -webkit-box; overflow: hidden; margin-top: .55rem; color: var(--ink-soft); font-size: .78rem; line-height: 1.6; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+.ai-reflection.is-sending > header > span { animation: ai-reflection-pulse 1.1s ease-in-out infinite; }
+.ai-reflection.is-sending .ai-reflection__confirmation { border-color: var(--jade); box-shadow: 0 0 0 .2rem color-mix(in srgb,var(--jade) 12%,transparent); }
+@keyframes ai-reflection-pulse { 50% { transform: scale(1.08); box-shadow: 0 0 0 .55rem color-mix(in srgb,var(--jade) 15%,transparent); } }
+.ai-reflection__focus legend,.ai-reflection__note > span { color: var(--ink); font-size: .72rem; font-weight: 850; }
+.ai-reflection__focus > div { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .55rem; }
+.ai-reflection__focus button { min-height: 2.4rem; border: 1px solid var(--line); border-radius: 999px; background: color-mix(in srgb,var(--white) 30%,transparent); padding: .45rem .7rem; color: var(--ink-soft); font-size: .64rem; font-weight: 780; cursor: pointer; }
+.ai-reflection__focus button.is-selected { border-color: var(--jade); background: var(--jade-light); color: var(--jade); }
+.ai-reflection__note { display: grid; gap: .35rem; }
+.ai-reflection__note textarea { min-height: 4.2rem; resize: vertical; border: 1px solid var(--line); border-radius: .8rem; background: color-mix(in srgb,var(--white) 32%,transparent); padding: .65rem .75rem; color: var(--ink); font: inherit; font-size: .72rem; line-height: 1.5; }
+.ai-reflection__note small { color: var(--ink-soft); font-size: .6rem; }
+.ai-reflection__prepare > span { display: inline-flex; align-items: center; gap: .35rem; }
+.ai-reflection__prepare > span i { width: .45rem; height: .45rem; border-radius: 50%; background: var(--ink-soft); }
+.ai-reflection__prepare > span.is-connected { color: var(--jade); }
+.ai-reflection__prepare > span.is-connected i { background: var(--jade); box-shadow: 0 0 0 .25rem color-mix(in srgb,var(--jade) 16%,transparent); animation: ai-connection-pulse 1s ease-in-out infinite; }
+@keyframes ai-connection-pulse { 50% { transform: scale(.7); opacity: .55; } }
 [data-reduce-motion="true"] .golden-paw-practice__mist i { animation: none; }
 
 /* BYOK reflection is visibly separate from received and editorial material. */

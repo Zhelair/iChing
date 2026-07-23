@@ -13,7 +13,6 @@ export function AiSettings() {
   const copy = aiCopyFor(preferences.locale)
   const providerCopy = aiProviderCopyFor(preferences.locale)
   const [keyInput, setKeyInput] = useState('')
-  const [passphrase, setPassphrase] = useState('')
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
@@ -21,7 +20,7 @@ export function AiSettings() {
 
   const handleError = (reason: unknown, unlocking = false) => {
     const code = reason instanceof Error ? reason.message : ''
-    setError(unlocking ? copy.errorUnlock : code === 'weak-passphrase' ? copy.errorPassphrase : copy.errorKey)
+    setError(unlocking ? code === 'legacy-passphrase-envelope' ? copy.errorLegacy : copy.errorUnlock : copy.errorKey)
   }
 
   const useSession = (event: FormEvent) => {
@@ -33,14 +32,14 @@ export function AiSettings() {
     setBusy(true); setError(''); setMessage('')
     try {
       const key = keyInput || ai.apiKey || ''
-      await ai.saveEncrypted(key, passphrase)
-      setKeyInput(''); setPassphrase(''); setMessage(copy.saved)
+      await ai.saveEncrypted(key)
+      setKeyInput(''); setMessage(copy.saved)
     } catch (reason) { handleError(reason) } finally { setBusy(false) }
   }
 
   const unlock = async () => {
     setBusy(true); setError(''); setMessage('')
-    try { await ai.unlock(passphrase); setPassphrase(''); setMessage(copy.unlocked) } catch (reason) { handleError(reason, true) } finally { setBusy(false) }
+    try { await ai.unlock(); setMessage(copy.unlocked) } catch (reason) { handleError(reason, true) } finally { setBusy(false) }
   }
 
   return <section id="ai-key-settings" tabIndex={-1} className="surface ai-settings mt-5" aria-labelledby="ai-settings-title">
@@ -55,15 +54,14 @@ export function AiSettings() {
         <fieldset className="ai-settings__providers">
           <legend>{providerCopy.provider}</legend>
           <small>{providerCopy.providerBody}</small>
-          <div>{(Object.keys(AI_PROVIDERS) as AiProviderId[]).map((id) => <button key={id} type="button" className={ai.provider === id ? 'is-selected' : ''} onClick={() => { ai.setProvider(id); setKeyInput(''); setPassphrase(''); setMessage(''); setError('') }}>{AI_PROVIDERS[id].name}</button>)}</div>
+          <div>{(Object.keys(AI_PROVIDERS) as AiProviderId[]).map((id) => <button key={id} type="button" className={ai.provider === id ? 'is-selected' : ''} onClick={() => { ai.setProvider(id); setKeyInput(''); setMessage(''); setError('') }}>{AI_PROVIDERS[id].name}</button>)}</div>
         </fieldset>
         <p className={`ai-key-status ${ai.apiKey ? 'is-unlocked' : ''}`}>{ai.apiKey ? <Unlock size={17} /> : <Lock size={17} />}{ai.apiKey ? copy.unlocked : copy.locked}</p>
         <label><span>{provider.name} {providerCopy.key}</span><input className="field" type="password" autoComplete="off" value={keyInput} onChange={(event) => setKeyInput(event.target.value)} placeholder={copy.keyPlaceholder} /></label>
-        <label><span>{copy.passphraseLabel}</span><input className="field" type="password" autoComplete="new-password" value={passphrase} onChange={(event) => setPassphrase(event.target.value)} /><small>{copy.passphraseHint}</small></label>
         <div className="ai-settings__buttons">
           <button type="submit" className="button-primary" disabled={!keyInput || busy}>{copy.useSession}</button>
-          <button type="button" className="button-secondary" disabled={(!keyInput && !ai.apiKey) || !passphrase || busy} onClick={() => void save()}>{copy.saveEncrypted}</button>
-          {ai.hasEncryptedKey && !ai.apiKey ? <button type="button" className="button-secondary" disabled={!passphrase || busy} onClick={() => void unlock()}><Unlock size={16} />{copy.unlock}</button> : null}
+          <button type="button" className="button-secondary" disabled={(!keyInput && !ai.apiKey) || busy} onClick={() => void save()}>{copy.saveEncrypted}</button>
+          {ai.hasEncryptedKey && !ai.apiKey ? <button type="button" className="button-secondary" disabled={busy} onClick={() => void unlock()}><Unlock size={16} />{copy.unlock}</button> : null}
           {ai.apiKey ? <button type="button" className="button-text" onClick={() => { ai.lock(); setMessage('') }}><Lock size={16} />{copy.lock}</button> : null}
           {ai.hasEncryptedKey ? <button type="button" className="button-text danger-action" onClick={() => ai.forgetEncrypted()}><Trash2 size={16} />{copy.forget}</button> : null}
         </div>

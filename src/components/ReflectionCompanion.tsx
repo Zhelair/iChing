@@ -54,7 +54,7 @@ export function ReflectionCompanion() {
     const sleepTimer = window.setTimeout(() => {
       setAnimation('sleep')
       setAnimationRun((current) => current + 1)
-    }, 31_000)
+    }, 35_000)
     return () => window.clearTimeout(sleepTimer)
   }, [motion, pathname, readingPage])
 
@@ -147,7 +147,6 @@ export function ReflectionCompanion() {
         aria-label={copy.open}
       >
         <CompanionPet key={`trigger-${animation}-${animationRun}`} pet={preferences.companionPet} animation={ritual ? 'sleep' : animation} motion={motion && !ritual} />
-        <span aria-hidden="true"><Sparkles size={13} /></span>
       </button>
     </aside>
   )
