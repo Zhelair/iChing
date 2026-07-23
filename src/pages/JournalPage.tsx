@@ -133,7 +133,7 @@ export function JournalPage() {
     <div className="page-shell py-10 sm:py-16">
       <PageIntro eyebrow={c.eyebrow} title={c.title} body={c.body} />
       <JournalModeNav copy={studyNotesCopy} />
-      {preferences.aiEnabled ? <Link to="/journal/patterns" className="journal-patterns-link surface"><span><Sparkles size={19} aria-hidden="true" /></span><strong>{aiCopy.openPatterns}</strong><ArrowRight size={17} aria-hidden="true" /></Link> : null}
+      {preferences.aiEnabled ? <><Link to="/journal/patterns" className="journal-patterns-link surface"><span><Sparkles size={19} aria-hidden="true" /></span><strong>{aiCopy.openPatterns}</strong><ArrowRight size={17} aria-hidden="true" /></Link><Link to="/journal/reflections" className="journal-patterns-link surface"><span><Sparkles size={19} aria-hidden="true" /></span><strong>Open saved AI reflections</strong><ArrowRight size={17} aria-hidden="true" /></Link></> : null}
       {latestMonthlyReflection ? <Link to="/journal/patterns" className="surface journal-monthly-reflection" aria-label={aiCopy.openPatterns}>
         <span className="eyebrow">{aiCopy.history}</span>
         <strong>{new Intl.DateTimeFormat(preferences.locale, { dateStyle: 'medium' }).format(new Date(latestMonthlyReflection.createdAt))}</strong>

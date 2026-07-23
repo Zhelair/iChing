@@ -15,8 +15,13 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
   const ai = useAi()
   const copy = aiCopyFor(preferences.locale)
   const providerCopy = aiProviderCopyFor(preferences.locale)
-  const masterCopy = aiReflectionExperienceCopyFor(preferences.locale)
-  const [preview, setPreview] = useState<AiRequestPreview | null>(null)
+  let preview: AiRequestPreview | null = null
+  const masterCopyBase = { ...aiReflectionExperienceCopyFor(preferences.locale) }
+  masterCopyBase.shortHint = packet.kind === 'monthly-pattern' ? '1-3 short paragraphs' : masterCopyBase.shortHint
+  masterCopyBase.reviewAgain = 'Refresh preview'
+  const masterCopy = { ...masterCopyBase, shortHint: packet.kind === 'monthly-pattern' ? '1–3 short paragraphs' : masterCopyBase.shortHint, reviewAgain: packet.kind === 'monthly-pattern' || preview ? 'Refresh preview' : masterCopyBase.reviewAgain }
+  const [previewState, setPreview] = useState<AiRequestPreview | null>(null)
+  preview = previewState
   const [responseLength, setResponseLength] = useState<AiResponseLength>('medium')
   const [focus, setFocus] = useState<AiReflectionFocus>(packet.kind === 'reading' ? 'situation' : 'monthly-review')
   const [additionalNote, setAdditionalNote] = useState('')
