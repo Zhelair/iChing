@@ -15,7 +15,6 @@ type AiContextValue = {
   setModel: (model: AiModel) => void
   useSessionKey: (apiKey: string) => void
   saveEncrypted: (apiKey: string) => Promise<void>
-  unlock: () => Promise<void>
   lock: () => void
   forgetEncrypted: () => void
 }
@@ -88,13 +87,6 @@ export function AiProvider({ children }: { children: ReactNode }) {
       storeEncryptedKey(envelope, provider)
       setEncryptedProviders((current) => ({ ...current, [provider]: true }))
       setApiKeys((current) => ({ ...current, [provider]: normalized }))
-    },
-    unlock: async () => {
-      const envelope = readEncryptedKey(provider)
-      if (!envelope) throw new Error('missing-envelope')
-      if (!isDeviceEncryptedKey(envelope)) throw new Error('legacy-passphrase-envelope')
-      const key = await decryptApiKeyForDevice(envelope, provider)
-      setApiKeys((current) => ({ ...current, [provider]: key }))
     },
     lock: () => setApiKeys((current) => { const updated = { ...current }; delete updated[provider]; return updated }),
     forgetEncrypted: () => {

@@ -157,7 +157,20 @@ export async function streamAiReflection(apiKey: string, preview: AiRequestPrevi
     : preview.providerId === 'openai'
       ? { model: preview.model, messages: preview.messages, stream: true, max_completion_tokens: maxTokens }
       : { model: preview.model, messages: preview.messages, stream: true, temperature: 0.35, max_tokens: maxTokens }
-  const response = await fetch(preview.endpoint, { method: 'POST', headers, body: JSON.stringify(body), signal })
-  if (!response.ok) throw new Error(`provider-${response.status}`)
+  let response: Response
+  try {
+    response = await fetch(preview.endpoint, { method: 'POST', headers, body: JSON.stringify(body), signal })
+  } catch (reason) {
+    if (reason instanceof DOMException && reason.name === 'AbortError') throw reason
+    throw new Error('provider-network')
+  }
+  if (!response.ok) {
+    let detail = ''
+    try {
+      const payload = await response.json() as { error?: { message?: string }; message?: string }
+      detail = payload.error?.message || payload.message || ''
+    } catch { /* Some gateways return an empty or non-JSON error body. */ }
+    throw new Error(`provider-${response.status}${detail ? `: ${detail.slice(0, 180)}` : ''}`)
+  }
   return consumeSse(response, preview, onText)
 }
