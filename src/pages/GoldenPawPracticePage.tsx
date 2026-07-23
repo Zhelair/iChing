@@ -2,7 +2,7 @@ import { ArrowLeft, Pause, Play, RotateCcw, Sparkles } from 'lucide-react'
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { recordCompanionMoment } from '../companion/life'
-import { CompanionPet } from '../components/CompanionPet'
+import { GoldenLuckyCat } from '../components/GoldenLuckyCat'
 import type { PracticeSession } from '../domain/types'
 import { useI18n } from '../i18n/I18nContext'
 import { petExperienceCopyFor } from '../i18n/petExperienceCopy'
@@ -61,7 +61,7 @@ export function GoldenPawPracticePage() {
       </header>
       <div className="golden-paw-practice__stage">
         <span className="golden-paw-practice__orbit" aria-hidden="true"><i /></span>
-        <CompanionPet pet="cat" variant="golden-lucky" animation={phase === 'running' ? 'cat-paw' : phase === 'complete' ? 'cat-purr' : 'idle'} motion={preferences.petMotion && !preferences.reduceMotion} />
+        <GoldenLuckyCat phase={phase} motion={preferences.petMotion && !preferences.reduceMotion} />
         <span className="golden-paw-practice__count" aria-live="polite"><strong>{remaining}</strong><small>{copy.seconds}</small></span>
       </div>
       <div className="golden-paw-practice__controls">

@@ -1,5 +1,5 @@
 import { KeyRound, Lock, ShieldAlert, Trash2, Unlock } from 'lucide-react'
-import { useState, type FormEvent } from 'react'
+import { useState } from 'react'
 import { useAi } from '../ai/AiContext'
 import { AI_PROVIDERS } from '../ai/providers'
 import type { AiModel, AiProviderId } from '../ai/types'
@@ -21,11 +21,6 @@ export function AiSettings() {
   const handleError = (reason: unknown, unlocking = false) => {
     const code = reason instanceof Error ? reason.message : ''
     setError(unlocking ? code === 'legacy-passphrase-envelope' ? copy.errorLegacy : copy.errorUnlock : copy.errorKey)
-  }
-
-  const useSession = (event: FormEvent) => {
-    event.preventDefault(); setError(''); setMessage('')
-    try { ai.useSessionKey(keyInput); setKeyInput(''); setMessage(copy.unlocked) } catch (reason) { handleError(reason) }
   }
 
   const save = async () => {
@@ -60,7 +55,6 @@ export function AiSettings() {
         <label><span>{provider.name} {providerCopy.key}</span><input className="field" type="password" autoComplete="off" value={keyInput} onChange={(event) => setKeyInput(event.target.value)} placeholder={copy.keyPlaceholder} /></label>
         <div className="ai-settings__buttons">
           <button type="submit" className="button-primary" disabled={!keyInput || busy}>Save and use on this device</button>
-          {keyInput ? <button type="button" className="button-secondary" disabled={busy} onClick={(event) => useSession(event)}>Use for this tab only</button> : null}
           {ai.hasEncryptedKey && !ai.apiKey ? <button type="button" className="button-secondary" disabled={busy} onClick={() => void unlock()}><Unlock size={16} />{copy.unlock}</button> : null}
           {ai.apiKey ? <button type="button" className="button-text" onClick={() => { ai.lock(); setMessage('') }}><Lock size={16} />{copy.lock}</button> : null}
           {ai.hasEncryptedKey ? <button type="button" className="button-text danger-action" onClick={() => ai.forgetEncrypted()}><Trash2 size={16} />{copy.forget}</button> : null}

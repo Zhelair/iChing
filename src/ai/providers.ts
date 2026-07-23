@@ -116,6 +116,20 @@ async function consumeSse(response: Response, preview: AiRequestPreview, onText:
     }
     if (done) break
   }
+  if (buffer.startsWith('data:')) {
+    const data = buffer.slice(5).trim()
+    if (data && data !== '[DONE]') {
+      try {
+        const parsed = JSON.parse(data) as OpenAiChunk & AnthropicChunk
+        const delta = preview.providerId === 'anthropic'
+          ? (parsed.type === 'content_block_delta' && parsed.delta?.type === 'text_delta' ? parsed.delta.text : undefined)
+          : parsed.choices?.[0]?.delta?.content
+        if (delta) { complete += delta; onText(complete) }
+      } catch {
+        // Ignore a malformed final provider event without logging user content.
+      }
+    }
+  }
   if (!complete.trim()) throw new Error('provider-empty')
   return complete.trim()
 }
