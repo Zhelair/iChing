@@ -70,6 +70,7 @@ function TuxedoCat({ idBase, golden }: { idBase: string; golden: boolean }) {
   return <g className="companion-pet__character companion-cat" filter={`url(#${idBase}-shadow)`}>
     <path className="companion-cat__lucky-cushion" d="M48 211c16-15 128-15 145 0l-9 14H57Z" fill="#a9352f" stroke="#7a2524" strokeWidth="3" />
     <path className="companion-cat__tail" d="M74 181c-31 9-53-8-49-31 3-18 19-29 35-25 15 4 22 18 16 31-4 9-14 14-24 10" fill="none" stroke={`url(#${darkFur})`} strokeWidth="16" strokeLinecap="round" />
+    <path className="companion-cat__tail-highlight" d="M62 174c-12 3-24-3-27-13-3-9 1-18 9-23" fill="none" stroke={`url(#${lightFur})`} strokeWidth="3.2" strokeLinecap="round" opacity=".58" />
     <ellipse className="companion-cat__body" cx="121" cy="158" rx="54" ry="60" fill={`url(#${darkFur})`} />
     <path d="M94 119c8 8 15 12 27 13 13-1 23-7 30-14l8 70H82z" fill={`url(#${lightFur})`} opacity=".98" />
     <g className="companion-cat__head">

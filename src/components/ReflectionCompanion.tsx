@@ -6,7 +6,7 @@ import { companionCopyFor } from '../i18n/companionCopy'
 import { aiCopyFor } from '../i18n/aiCopy'
 import { useI18n } from '../i18n/I18nContext'
 import { companionRoutineForPath, welcomeAnimation } from '../companion/behavior'
-import { readCompanionLife, recordCompanionMoment } from '../companion/life'
+import { recordCompanionMoment } from '../companion/life'
 import { petExperienceCopyFor } from '../i18n/petExperienceCopy'
 import { CompanionPet, type CompanionAnimation } from './CompanionPet'
 
@@ -25,7 +25,6 @@ export function ReflectionCompanion() {
   const [open, setOpen] = useState(false)
   const [animation, setAnimation] = useState<CompanionAnimation>('idle')
   const [animationRun, setAnimationRun] = useState(0)
-  const [moments, setMoments] = useState(() => readCompanionLife().interactions)
   const resetTimer = useRef<number | null>(null)
   const routine = companionRoutineForPath(pathname)
   const ritual = routine.scene === 'ritual'
@@ -80,7 +79,7 @@ export function ReflectionCompanion() {
   const runAction = (action: 0 | 1 | 2) => {
     if (resetTimer.current) window.clearTimeout(resetTimer.current)
     const next = actionAnimation(preferences.companionPet, action)
-    setMoments(recordCompanionMoment('interaction').interactions)
+    recordCompanionMoment('interaction')
     setAnimation(motion ? next : 'idle')
     setAnimationRun((current) => current + 1)
     void playPetSound(preferences.companionPet, action)
@@ -92,7 +91,6 @@ export function ReflectionCompanion() {
 
   const togglePanel = () => {
     const life = recordCompanionMoment('interaction')
-    setMoments(life.interactions)
     if (!open && motion && life.interactions % 3 === 0) {
       setAnimation(preferences.companionPet === 'cat' ? 'cat-stretch' : 'dog-wiggle')
       setAnimationRun((current) => current + 1)
@@ -122,6 +120,12 @@ export function ReflectionCompanion() {
             ))}
           </div>
           {preferences.companionPet === 'cat' ? <Link className="reflection-companion__practice" to="/companion/golden-paw" onClick={() => setOpen(false)}><Sparkles size={15} aria-hidden="true" /><span><strong>{experience.practice}</strong><small>{experience.practiceBody}</small></span></Link> : null}
+          <section className="reflection-companion__pet-controls" aria-label={copy.choose}>
+            <strong>{copy.choose}</strong>
+            <div>{(['cat', 'dog'] as const).map((pet) => <button key={pet} type="button" className={preferences.companionPet === pet ? 'is-selected' : ''} aria-pressed={preferences.companionPet === pet} onClick={() => { updatePreference('companionPet', pet); setAnimation('idle'); setAnimationRun((current) => current + 1) }}>{pet === 'cat' ? copy.cat : copy.dog}</button>)}</div>
+            <strong>{copy.size}</strong>
+            <div>{(['normal', 'large'] as const).map((size) => <button key={size} type="button" className={preferences.companionSize === size ? 'is-selected' : ''} aria-pressed={preferences.companionSize === size} onClick={() => updatePreference('companionSize', size)}>{size === 'normal' ? copy.normal : copy.large}</button>)}</div>
+          </section>
           <section className="reflection-companion__quick-settings" aria-label={experience.quickSettings}>
             <strong>{experience.quickSettings}</strong>
             <div>
@@ -134,8 +138,6 @@ export function ReflectionCompanion() {
             {preferences.aiEnabled ? <Link to="/journal/patterns"><Sparkles size={14} aria-hidden="true" />{aiCopy.openPatterns}</Link> : null}
             <Link to="/settings#ai-key-settings" onClick={() => setOpen(false)}>{aiCopy.openSettings}</Link>
           </nav>
-          <p>{copy.noRequest}</p>
-          <small className="reflection-companion__moments">{moments} {experience.moments}</small>
         </div>
       ) : null}
 

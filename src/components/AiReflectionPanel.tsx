@@ -83,6 +83,7 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
 
   const remove = async () => {
     if (!saved) return
+    if (!window.confirm('Delete this saved AI reflection?')) return
     await deleteAiReflection(saved.id)
     setSaved(null); setResponse('')
   }
@@ -97,7 +98,7 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
     setAdditionalNote(words.length <= 53 ? value : words.slice(0, 53).join(' '))
   }
   const lengthLabel = (length: AiResponseLength) => masterCopy[length]
-  const lengthHint = (length: AiResponseLength) => length === 'short' ? masterCopy.shortHint : length === 'medium' ? masterCopy.mediumHint : masterCopy.longHint
+  const lengthHint = (length: AiResponseLength) => length === 'short' ? masterCopy.shortHint : length === 'medium' ? '3–5 short paragraphs' : '6–9 short paragraphs'
   const sharedItems = packet.kind === 'reading'
     ? [masterCopy.readingPacket, `${packet.movingLines.length} ${masterCopy.movingLines}`, packet.question ? masterCopy.questionIncluded : masterCopy.questionExcluded]
     : [`${packet.readingCount} ${masterCopy.readings}`, masterCopy.privateExcluded]
@@ -114,7 +115,7 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
       </div>
       {preview ? <section className="ai-reflection__confirmation" aria-labelledby={`ai-confirm-${packet.kind}`}><header><ShieldCheck size={20} aria-hidden="true" /><div><h3 id={`ai-confirm-${packet.kind}`}>{masterCopy.ready}</h3><p>{masterCopy.notSent}</p></div></header><div><span>{masterCopy.shared}</span><ul>{sharedItems.map((item) => <li key={item}>{item}</li>)}<li>{lengthLabel(preview.responseLength)} · {lengthHint(preview.responseLength)}</li></ul></div><footer><button type="button" className="button-primary" disabled={sending} onClick={() => void send()}>{sending ? <LoaderCircle className="animate-spin" size={17} aria-hidden="true" /> : <Send size={17} aria-hidden="true" />}{sending ? `${preview.provider} ${providerCopy.responding}` : `${providerCopy.send} ${preview.provider}`}</button>{sending ? <button type="button" className="button-secondary" onClick={() => abortRef.current?.abort()}><Square size={15} aria-hidden="true" />{copy.stop}</button> : null}</footer></section> : null}
     </>}
-    {response ? <article className="ai-reflection__response" aria-live="polite"><div><span>{saved ? copy.savedReflection : `${AI_PROVIDERS[ai.provider].name} ${providerCopy.responding}`}</span>{saved ? <button type="button" onClick={() => void remove()}><Trash2 size={15} />{copy.deleteReflection}</button> : null}</div><p>{response}</p></article> : null}
+    {response ? <article className="ai-reflection__response" aria-live="polite"><div><span>{saved ? `${copy.savedReflection} · ${new Intl.DateTimeFormat(preferences.locale, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(saved.createdAt))}` : `${AI_PROVIDERS[ai.provider].name} ${providerCopy.responding}`}</span>{saved ? <button type="button" onClick={() => void remove()}><Trash2 size={15} />{copy.deleteReflection}</button> : null}</div><p>{response}</p></article> : null}
     {error ? <p className="ai-reflection__error" role="alert">{error}</p> : null}
     <footer>{masterCopy.disclaimer}</footer>
   </section>
