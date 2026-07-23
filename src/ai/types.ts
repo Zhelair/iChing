@@ -7,12 +7,14 @@ export type OpenAiModel = 'gpt-5-mini' | 'gpt-5.2'
 export type AnthropicModel = 'claude-haiku-4-5' | 'claude-sonnet-5'
 export type AiModel = DeepSeekModel | OpenAiModel | AnthropicModel
 export type ReflectionKind = 'reading' | 'monthly-pattern'
+export type AiResponseLength = 'short' | 'medium' | 'long'
 
 export type AiRequestPreview = {
   endpoint: 'https://api.deepseek.com/chat/completions' | 'https://api.openai.com/v1/chat/completions' | 'https://api.anthropic.com/v1/messages'
   providerId: AiProviderId
   provider: AiProviderName
   model: AiModel
+  responseLength: AiResponseLength
   messages: Array<{ role: 'system' | 'user'; content: string }>
 }
 
@@ -55,6 +57,7 @@ export type AiReflectionRecord = {
   createdAt: string
   provider: AiProviderName
   model: AiModel
+  responseLength?: AiResponseLength
   kind: ReflectionKind
   locale: Locale
   sourceIds: string[]

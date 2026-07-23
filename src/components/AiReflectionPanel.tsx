@@ -1,11 +1,12 @@
-import { Bot, Eye, LoaderCircle, Send, Settings, Square, Trash2 } from 'lucide-react'
+import { Bot, Check, LoaderCircle, Send, Settings, ShieldCheck, Sparkles, Square, Trash2 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAi } from '../ai/AiContext'
 import { AI_PROVIDERS, buildRequestPreview, streamAiReflection } from '../ai/providers'
-import type { AiReflectionRecord, AiRequestPreview, AiSourcePacket } from '../ai/types'
+import type { AiReflectionRecord, AiRequestPreview, AiResponseLength, AiSourcePacket } from '../ai/types'
 import { aiCopyFor } from '../i18n/aiCopy'
 import { aiProviderCopyFor } from '../i18n/aiProviderCopy'
+import { aiReflectionExperienceCopyFor } from '../i18n/aiReflectionExperienceCopy'
 import { useI18n } from '../i18n/I18nContext'
 import { deleteAiReflection, getAiReflections, saveAiReflection } from '../storage/db'
 
@@ -14,7 +15,9 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
   const ai = useAi()
   const copy = aiCopyFor(preferences.locale)
   const providerCopy = aiProviderCopyFor(preferences.locale)
+  const masterCopy = aiReflectionExperienceCopyFor(preferences.locale)
   const [preview, setPreview] = useState<AiRequestPreview | null>(null)
+  const [responseLength, setResponseLength] = useState<AiResponseLength>('medium')
   const [response, setResponse] = useState('')
   const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
@@ -35,10 +38,12 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
     return () => { active = false; abortRef.current?.abort() }
   }, [packet.kind, packetKey])
 
+  useEffect(() => { setPreview(null) }, [ai.model, ai.provider, responseLength])
+
   if (!preferences.aiEnabled) return null
 
   const prepare = () => {
-    setPreview(buildRequestPreview(packet, ai.provider, ai.model))
+    setPreview(buildRequestPreview(packet, ai.provider, ai.model, responseLength))
     setError('')
   }
 
@@ -55,6 +60,7 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
         createdAt: new Date().toISOString(),
         provider: preview.provider,
         model: preview.model,
+        responseLength: preview.responseLength,
         kind: packet.kind === 'reading' ? 'reading' : 'monthly-pattern',
         locale: packet.locale,
         sourceIds: packet.sourceIds,
@@ -78,14 +84,25 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
     setSaved(null); setResponse('')
   }
 
+  const lengths: AiResponseLength[] = ['short', 'medium', 'long']
+  const lengthLabel = (length: AiResponseLength) => masterCopy[length]
+  const lengthHint = (length: AiResponseLength) => length === 'short' ? masterCopy.shortHint : length === 'medium' ? masterCopy.mediumHint : masterCopy.longHint
+  const sharedItems = packet.kind === 'reading'
+    ? [masterCopy.readingPacket, `${packet.movingLines.length} ${masterCopy.movingLines}`, packet.question ? masterCopy.questionIncluded : masterCopy.questionExcluded]
+    : [`${packet.readingCount} ${masterCopy.readings}`, masterCopy.privateExcluded]
+
   return <section className="surface ai-reflection" aria-labelledby={`ai-reflection-${packet.kind}`}>
-    <header><span><Bot size={22} aria-hidden="true" /></span><div><p className="eyebrow">{copy.reflectionEyebrow}</p><h2 id={`ai-reflection-${packet.kind}`}>{copy.reflectionTitle}</h2><p>{copy.reflectionBody}</p></div></header>
+    <header><span><Bot size={22} aria-hidden="true" /></span><div><p className="eyebrow">{masterCopy.optional}</p><h2 id={`ai-reflection-${packet.kind}`}>{copy.reflectionTitle}</h2><p>{masterCopy.panelBody}</p></div></header>
     {!ai.apiKey ? <div className="ai-reflection__locked"><Settings size={20} aria-hidden="true" /><p>{copy.keyNeeded}</p><Link to="/settings#ai-key-settings" className="button-secondary">{copy.openSettings}</Link></div> : <>
-      <div className="ai-reflection__prepare"><button type="button" className="button-secondary" onClick={prepare}><Eye size={17} aria-hidden="true" />{preview ? copy.newPreview : copy.prepare}</button><span>{ai.model}</span></div>
-      {preview ? <details className="ai-reflection__preview" open><summary>{copy.preview}</summary><p>{copy.previewBody}</p><pre>{JSON.stringify(preview, null, 2)}</pre><div><button type="button" className="button-primary" disabled={sending} onClick={() => void send()}>{sending ? <LoaderCircle className="animate-spin" size={17} /> : <Send size={17} />}{sending ? `${preview.provider} ${providerCopy.responding}` : `${providerCopy.send} ${preview.provider}`}</button>{sending ? <button type="button" className="button-secondary" onClick={() => abortRef.current?.abort()}><Square size={15} />{copy.stop}</button> : null}</div></details> : null}
+      <div className="ai-reflection__composer">
+        <div className="ai-reflection__master"><span><Sparkles size={18} aria-hidden="true" /></span><div><strong>{masterCopy.master}</strong><p>{masterCopy.masterBody}</p></div></div>
+        <fieldset className="ai-reflection__length"><legend>{masterCopy.length}</legend><div>{lengths.map((length) => <button type="button" key={length} className={responseLength === length ? 'is-selected' : ''} aria-pressed={responseLength === length} onClick={() => setResponseLength(length)}><span>{lengthLabel(length)}</span><small>{lengthHint(length)}</small></button>)}</div></fieldset>
+        <div className="ai-reflection__prepare"><button type="button" className="button-secondary" onClick={prepare}><Check size={17} aria-hidden="true" />{preview ? masterCopy.reviewAgain : masterCopy.review}</button><span>{AI_PROVIDERS[ai.provider].name} · {ai.model}</span></div>
+      </div>
+      {preview ? <section className="ai-reflection__confirmation" aria-labelledby={`ai-confirm-${packet.kind}`}><header><ShieldCheck size={20} aria-hidden="true" /><div><h3 id={`ai-confirm-${packet.kind}`}>{masterCopy.ready}</h3><p>{masterCopy.notSent}</p></div></header><div><span>{masterCopy.shared}</span><ul>{sharedItems.map((item) => <li key={item}>{item}</li>)}<li>{lengthLabel(preview.responseLength)} · {lengthHint(preview.responseLength)}</li></ul></div><footer><button type="button" className="button-primary" disabled={sending} onClick={() => void send()}>{sending ? <LoaderCircle className="animate-spin" size={17} aria-hidden="true" /> : <Send size={17} aria-hidden="true" />}{sending ? `${preview.provider} ${providerCopy.responding}` : `${providerCopy.send} ${preview.provider}`}</button>{sending ? <button type="button" className="button-secondary" onClick={() => abortRef.current?.abort()}><Square size={15} aria-hidden="true" />{copy.stop}</button> : null}</footer></section> : null}
     </>}
     {response ? <article className="ai-reflection__response" aria-live="polite"><div><span>{saved ? copy.savedReflection : `${AI_PROVIDERS[ai.provider].name} ${providerCopy.responding}`}</span>{saved ? <button type="button" onClick={() => void remove()}><Trash2 size={15} />{copy.deleteReflection}</button> : null}</div><p>{response}</p></article> : null}
     {error ? <p className="ai-reflection__error" role="alert">{error}</p> : null}
-    <footer>{copy.reflectionDisclaimer}</footer>
+    <footer>{masterCopy.disclaimer}</footer>
   </section>
 }

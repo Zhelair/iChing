@@ -132,12 +132,13 @@ function YarrowWorkshop({ procedure, step, animatingStep, phase, ritualDuration,
 
 type BeadPhase = 'idle' | 'mixing' | 'selected' | 'returning'
 
-function BeadWorkshop({ draw, lastDraw, phase, lineNumber, onDraw, actionRef, copy: c, t }: { draw: BeadToken | null; lastDraw: BeadToken | null; phase: BeadPhase; lineNumber: number; onDraw: () => void; actionRef: RefObject<HTMLButtonElement | null>; copy: BeadCopy; t: Translator }) {
+function BeadWorkshop({ draw, lastDraw, phase, timings, lineNumber, onDraw, actionRef, copy: c, t }: { draw: BeadToken | null; lastDraw: BeadToken | null; phase: BeadPhase; timings: [number, number, number]; lineNumber: number; onDraw: () => void; actionRef: RefObject<HTMLButtonElement | null>; copy: BeadCopy; t: Translator }) {
   const visibleSelection = phase === 'selected' || phase === 'returning' ? draw : null
   const displayed = visibleSelection ?? lastDraw
   const phaseLabel = phase === 'mixing' ? c.mixing : phase === 'selected' ? c.selected : phase === 'returning' ? c.returning : ''
+  const phaseDurations = [timings[0], timings[1] - timings[0], timings[2] - timings[1]]
 
-  return <div className={`bead-workshop is-${phase}`} aria-busy={phase !== 'idle'}>
+  return <div className={`bead-workshop is-${phase}`} aria-busy={phase !== 'idle'} style={{ '--bead-mix-duration': `${phaseDurations[0]}ms`, '--bead-select-duration': `${phaseDurations[1]}ms`, '--bead-return-duration': `${phaseDurations[2]}ms` } as CSSProperties}>
     <div className="bead-vessel" aria-hidden="true">
       <div className="bead-vessel__glow" />
       <div className="bead-field">
@@ -357,7 +358,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
     castLockRef.current = true
     const selected = drawBead()
     const committed = createCastLine((lines.length + 1) as CastLine['position'], selected.value)
-    const times = preferences.reduceMotion ? [20, 40, 70] : [560, 1280, 1780]
+    const times = yarrowPhaseTimings(yarrow, preferences.reduceMotion)
     setLastBead(null)
     setBeadDraw(selected)
     setBeadPhase('mixing')
@@ -383,6 +384,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
 
   const knownLines = linesFromKnownHexagram(knownId, movingPositions)
   const yarrowTimings = yarrowPhaseTimings(yarrow, preferences.reduceMotion)
+  const beadTimings = yarrowTimings
   const displayedLine = pending ?? lines.at(-1)
   const lastSettledLine = pending ? null : lines.at(-1)
   const coinSummary = lastSettledLine?.coins?.map((side) => t(side === 'heads' ? 'cast.heads' : 'cast.tails')).join(', ')
@@ -430,7 +432,7 @@ function CastFlow({ method }: { method: ReadingMethod }) {
                 ) : method === 'yarrow' ? (
                   <YarrowWorkshop procedure={yarrowProcedure} step={yarrowStep} animatingStep={yarrowAnimatingStep} phase={yarrowPhase} ritualDuration={yarrowTimings[2]} lineNumber={Math.max(1, lines.length + (yarrowStep === 3 ? 0 : 1))} onAdvance={advanceYarrow} actionRef={ritualActionRef} copy={yarrow} />
                 ) : method === 'beads' ? (
-                  <BeadWorkshop draw={beadDraw} lastDraw={lastBead} phase={beadPhase} lineNumber={lines.length + 1} onDraw={addBeadLine} actionRef={ritualActionRef} copy={beads} t={t} />
+                  <BeadWorkshop draw={beadDraw} lastDraw={lastBead} phase={beadPhase} timings={beadTimings} lineNumber={lines.length + 1} onDraw={addBeadLine} actionRef={ritualActionRef} copy={beads} t={t} />
                 ) : (
                   <fieldset className="w-full">
                     <legend className="mb-4 text-sm font-semibold">{t('cast.chooseTotal')} {lines.length + 1}</legend>
