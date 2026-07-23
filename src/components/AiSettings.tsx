@@ -46,6 +46,7 @@ export function AiSettings() {
           <small>{providerCopy.providerBody}</small>
           <div>{(Object.keys(AI_PROVIDERS) as AiProviderId[]).map((id) => <button key={id} type="button" className={ai.provider === id ? 'is-selected' : ''} onClick={() => { ai.setProvider(id); setKeyInput(''); setMessage(''); setError('') }}>{AI_PROVIDERS[id].name}</button>)}</div>
         </fieldset>
+        <p className={`ai-connection-status ${ai.apiKey ? 'is-connected' : ''}`} role="status"><i aria-hidden="true" />{ai.apiKey ? 'Connected' : 'AI not connected'}</p>
         <label><span>{provider.name} {providerCopy.key}</span><input className="field" type="password" autoComplete="off" value={keyInput} onChange={(event) => setKeyInput(event.target.value)} placeholder={copy.keyPlaceholder} /></label>
         <div className="ai-settings__buttons">
           <button type="submit" className="button-primary" disabled={!keyInput || busy}>{busy ? 'Connecting…' : 'Connect and save on this device'}</button>

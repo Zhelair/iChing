@@ -50,6 +50,7 @@ export function MonthlyPatternsPage() {
         <footer><Sparkles size={16} aria-hidden="true" />{copy.journalExcluded}</footer>
       </section>
       {packet.readingCount ? <div className="mt-5"><AiReflectionPanel packet={packet} /></div> : null}
+      <Link to="/journal/reflections" className="journal-patterns-link surface"><span><Sparkles size={19} aria-hidden="true" /></span><strong>Open saved AI reflections</strong></Link>
       <section className="surface ai-history mt-5"><header><h2>{copy.history}</h2>{history.length ? <button type="button" className="button-text danger-action" onClick={() => void clearHistory()}><Trash2 size={15} />{copy.clearHistory}</button> : null}</header>{history.length ? <div>{history.map((item) => <article key={item.id}><span>{new Intl.DateTimeFormat(preferences.locale, { dateStyle: 'medium' }).format(new Date(item.createdAt))} · {item.model}</span><p>{item.response}</p></article>)}</div> : <p>{copy.noHistory}</p>}</section>
     </div>
   </div>

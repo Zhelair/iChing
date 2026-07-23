@@ -44,6 +44,9 @@ const LENGTH_RULES: Record<AiResponseLength, string> = {
 }
 
 function masterInstructions(packet: AiSourcePacket, responseLength: AiResponseLength, focus?: AiReflectionFocus, additionalNote?: string) {
+  const lengthRule = packet.kind === 'monthly-pattern' && responseLength === 'short'
+    ? 'Write 1–3 short paragraphs. Cover the clearest recurring pattern and one gentle question.'
+    : LENGTH_RULES[responseLength]
   const task = packet.kind === 'reading'
     ? 'For a reading, connect the primary hexagram, each supplied moving line, and the resulting hexagram when present. Explain the direction of change without claiming an outcome.'
     : 'For a monthly review, compare the supplied readings across the selected month. Describe what recurs, what changes, which moving-line positions or casting methods stand out, and what remains uncertain. Treat repetition as non-causal pattern material, never as a score, diagnosis, prediction, or spiritual verdict. Offer two or three gentle observation practices for the next month. Questions and journal notes are deliberately absent.'
@@ -68,7 +71,7 @@ Voice and format:
 - Respond in locale ${packet.locale}.
 - Use calm, clear, humane language with no flattery or theatrical mysticism.
 - Return plain prose only: no Markdown symbols, headings, lists, or source-code formatting.
-- ${LENGTH_RULES[responseLength]}`
+- ${lengthRule}`
 }
 
 export function buildRequestPreview(packet: AiSourcePacket, providerId: AiProviderId, model: AiModel, responseLength: AiResponseLength = 'medium', options?: { focus?: AiReflectionFocus; additionalNote?: string }): AiRequestPreview {

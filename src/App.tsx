@@ -24,6 +24,7 @@ const IChingPage = lazy(() => import('./pages/IChingPage').then(({ IChingPage: p
 const StudyNotesPage = lazy(() => import('./pages/StudyNotesPage').then(({ StudyNotesPage: page }) => ({ default: page })))
 const PracticeNotesPage = lazy(() => import('./pages/PracticeNotesPage').then(({ PracticeNotesPage: page }) => ({ default: page })))
 const MonthlyPatternsPage = lazy(() => import('./pages/MonthlyPatternsPage').then(({ MonthlyPatternsPage: page }) => ({ default: page })))
+const AiReflectionsPage = lazy(() => import('./pages/AiReflectionsPage').then(({ AiReflectionsPage: page }) => ({ default: page })))
 
 export function App() {
   return (
@@ -56,6 +57,8 @@ export function App() {
         <Route path="journal/notes" element={<PracticeNotesPage />} />
         <Route path="journal/study" element={<StudyNotesPage />} />
         <Route path="journal/patterns" element={<MonthlyPatternsPage />} />
+        <Route path="journal/reflections" element={<AiReflectionsPage />} />
+        <Route path="journal/reflections/:id" element={<AiReflectionsPage />} />
         <Route path="support" element={<SupportPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
