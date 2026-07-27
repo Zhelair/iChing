@@ -9,6 +9,7 @@ import { aiProviderCopyFor } from '../i18n/aiProviderCopy'
 import { aiReflectionExperienceCopyFor } from '../i18n/aiReflectionExperienceCopy'
 import { useI18n } from '../i18n/I18nContext'
 import { deleteAiReflection, getAiReflections, saveAiReflection } from '../storage/db'
+import { CopyReflectionButton } from './CopyReflectionButton'
 
 export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
   const { preferences } = useI18n()
@@ -125,7 +126,7 @@ export function AiReflectionPanel({ packet }: { packet: AiSourcePacket }) {
       </div>
       {preview ? <section className="ai-reflection__confirmation" aria-labelledby={`ai-confirm-${packet.kind}`}><header><ShieldCheck size={20} aria-hidden="true" /><div><h3 id={`ai-confirm-${packet.kind}`}>{masterCopy.ready}</h3><p>{masterCopy.notSent}</p></div></header><div><span>{masterCopy.shared}</span><ul>{sharedItems.map((item) => <li key={item}>{item}</li>)}<li>{lengthLabel(preview.responseLength)} · {lengthHint(preview.responseLength)}</li></ul></div><footer><button type="button" className="button-primary" disabled={sending} onClick={() => void send()}>{sending ? <LoaderCircle className="animate-spin" size={17} aria-hidden="true" /> : <Send size={17} aria-hidden="true" />}{sending ? `${preview.provider} ${providerCopy.responding}` : `${providerCopy.send} ${preview.provider}`}</button>{sending ? <button type="button" className="button-secondary" onClick={() => abortRef.current?.abort()}><Square size={15} aria-hidden="true" />{copy.stop}</button> : null}</footer></section> : null}
     </>}
-    {response ? <article className="ai-reflection__response" aria-live="polite"><div><span>{saved ? `${copy.savedReflection} · ${new Intl.DateTimeFormat(preferences.locale, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(saved.createdAt))}` : `${AI_PROVIDERS[ai.provider].name} ${providerCopy.responding}`}</span>{saved ? <button type="button" onClick={() => void remove()}><Trash2 size={15} />{copy.deleteReflection}</button> : null}</div><details open={sending}><summary>{sending ? 'Preparing reflection…' : 'Open reflection'}</summary><p>{response}</p></details></article> : null}
+    {response ? <article className="ai-reflection__response" aria-live="polite"><div><span>{saved ? `${copy.savedReflection} · ${new Intl.DateTimeFormat(preferences.locale, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(saved.createdAt))}` : `${AI_PROVIDERS[ai.provider].name} ${providerCopy.responding}`}</span><aside><CopyReflectionButton text={response} />{saved ? <button type="button" onClick={() => void remove()}><Trash2 size={15} />{copy.deleteReflection}</button> : null}</aside></div><details open={sending}><summary>{sending ? 'Preparing reflection…' : 'Open reflection'}</summary><p>{response}</p></details></article> : null}
     {error ? <p className="ai-reflection__error" role="alert">{error}</p> : null}
     <footer>{masterCopy.disclaimer}</footer>
   </section>
