@@ -1,15 +1,14 @@
-import { ArrowLeft, CalendarRange, Sparkles, Trash2 } from 'lucide-react'
+import { ArrowLeft, CalendarRange, Sparkles } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { buildMonthlyPacket } from '../ai/sourcePackets'
-import type { AiReflectionRecord } from '../ai/types'
 import { AiReflectionPanel } from '../components/AiReflectionPanel'
 import { PageIntro } from '../components/PageIntro'
 import { getHexagram } from '../data/hexagrams'
 import type { Reading } from '../domain/types'
 import { aiCopyFor } from '../i18n/aiCopy'
 import { useI18n } from '../i18n/I18nContext'
-import { clearAiReflections, getAiReflections, getAllReadings } from '../storage/db'
+import { getAllReadings } from '../storage/db'
 
 function currentMonth() {
   const now = new Date()
@@ -21,20 +20,17 @@ export function MonthlyPatternsPage() {
   const copy = aiCopyFor(preferences.locale)
   const [month, setMonth] = useState(currentMonth)
   const [readings, setReadings] = useState<Reading[]>([])
-  const [history, setHistory] = useState<AiReflectionRecord[]>([])
 
   useEffect(() => {
     let active = true
     void getAllReadings().then((items) => { if (active) setReadings(items) })
-    void getAiReflections('monthly-pattern').then((items) => { if (active) setHistory(items.slice(0, 5)) })
     return () => { active = false }
   }, [])
+
   const [year, monthNumber] = month.split('-').map(Number)
   const from = useMemo(() => new Date(year, monthNumber - 1, 1), [monthNumber, year])
   const to = useMemo(() => new Date(year, monthNumber, 1, 0, 0, 0, -1), [monthNumber, year])
   const packet = useMemo(() => buildMonthlyPacket(readings, preferences.locale, from, to, (id) => editorialFor(getHexagram(id)).title), [editorialFor, from, preferences.locale, readings, to])
-
-  const clearHistory = async () => { if (!window.confirm('Delete the five saved monthly AI reflections?')) return; await clearAiReflections(); setHistory([]) }
 
   return <div className="page-shell py-10 sm:py-16">
     <div className="reading-column">
@@ -50,8 +46,6 @@ export function MonthlyPatternsPage() {
         <footer><Sparkles size={16} aria-hidden="true" />{copy.journalExcluded}</footer>
       </section>
       {packet.readingCount ? <div className="mt-5"><AiReflectionPanel packet={packet} /></div> : null}
-      <Link to="/journal/reflections" className="journal-patterns-link surface"><span><Sparkles size={19} aria-hidden="true" /></span><strong>Open saved AI reflections</strong></Link>
-      <section className="surface ai-history mt-5"><header><h2>{copy.history}</h2>{history.length ? <button type="button" className="button-text danger-action" onClick={() => void clearHistory()}><Trash2 size={15} />{copy.clearHistory}</button> : null}</header>{history.length ? <div>{history.map((item) => <article key={item.id}><span>{new Intl.DateTimeFormat(preferences.locale, { dateStyle: 'medium' }).format(new Date(item.createdAt))} · {item.model}</span><p>{item.response}</p></article>)}</div> : <p>{copy.noHistory}</p>}</section>
     </div>
   </div>
 }

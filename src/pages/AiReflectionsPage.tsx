@@ -15,7 +15,7 @@ export function AiReflectionsPage() {
   const [items, setItems] = useState<AiReflectionRecord[]>([])
   const [deleteTarget, setDeleteTarget] = useState<AiReflectionRecord | 'all' | null>(null)
 
-  useEffect(() => { void getAiReflections().then(setItems) }, [])
+  useEffect(() => { void getAiReflections('reading').then(setItems) }, [])
 
   const selected = useMemo(() => id ? items.find((item) => item.id === id) ?? null : null, [id, items])
   const formatDate = (value: string) => new Intl.DateTimeFormat(preferences.locale, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value))
@@ -40,7 +40,7 @@ export function AiReflectionsPage() {
         {items.length ? <div className="ai-reflections-page__toolbar"><span>{items.length} saved reflection{items.length === 1 ? '' : 's'}</span><button type="button" className="button-text danger-action" onClick={() => setDeleteTarget('all')}><Trash2 size={15} />{copy.clearHistory}</button></div> : null}
         {items.length ? <div className="ai-reflections-page__list">{items.map((item) => <article className="surface" key={item.id}>
           <div><span className="eyebrow">{item.kind === 'monthly-pattern' ? 'Monthly pattern' : 'Reading reflection'} · {formatDate(item.createdAt)}</span><strong>{item.provider} · {item.model}</strong></div>
-          <p>{item.response}</p>
+          <p className="ai-reflections-page__preview">{item.response}</p>
           <footer><Link to={`/journal/reflections/${item.id}`} className="button-secondary"><ExternalLink size={15} />Open reflection</Link><button type="button" className="button-text danger-action" onClick={() => setDeleteTarget(item)}><Trash2 size={15} />Delete reflection</button></footer>
         </article>)}</div> : <section className="surface ai-reflections-page__empty"><Sparkles size={30} /><h2>No saved AI reflections yet.</h2><p>When you save a reflection, it will appear here.</p><Link to="/journal" className="button-secondary">Back to journal</Link></section>}
       </>}

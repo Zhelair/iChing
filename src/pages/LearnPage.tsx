@@ -51,6 +51,20 @@ export function LearnPage() {
     <div className="page-shell py-10 sm:py-16">
       <PageIntro eyebrow={t('learn.pathEyebrow')} title={t('learn.title')} body={t('learn.body')} />
 
+      <nav className="guide-section-nav mt-8" aria-label="Guide sections">
+        <a href="#daily-practice">How to use a daily reading</a><a href="#history">Illustrated history</a>
+      </nav>
+
+      <section id="daily-practice" className="surface daily-practice-guide mt-5 scroll-mt-28 p-6 sm:p-9" aria-labelledby="daily-practice-title">
+        <p className="eyebrow">A considered practice</p>
+        <h2 id="daily-practice-title" className="mt-3 text-3xl sm:text-4xl">Use a reading when there is a real question.</h2>
+        <div className="daily-practice-guide__body mt-5">
+          <p>The I Ching is not a daily fortune service or a substitute for practical advice. Return to it when a situation has ripened enough to meet with honesty, and let ordinary action, conversation, and trusted expertise remain part of your life.</p>
+          <p>Before casting, pause. Hold one open question, gather the coins slowly, and notice the feeling of the process rather than trying to force a particular answer. A reading can be revisited over time; repeated casting on the same question often makes the signal harder to hear.</p>
+          <p>Take the result as a reflective image, not a verdict. Keep what helps you see more clearly, leave what does not, and never treat it as medical, legal, financial, safety, or crisis guidance.</p>
+        </div>
+      </section>
+
       <div className="mt-10 grid gap-4 lg:grid-cols-3">
         {lessons.map(({ title, body, icon: Icon, index }) => (
           <article key={index} className="surface lesson-card flex min-h-72 flex-col p-6 sm:p-7">
@@ -150,7 +164,7 @@ export function LearnPage() {
 
       <div className="mt-8"><Link to="/iching/reading" className="button-primary">{t('learn.begin')} <ArrowRight size={17} aria-hidden="true" /></Link></div>
 
-      <HistoryJourney />
+      <div id="history" className="scroll-mt-28"><HistoryJourney /></div>
     </div>
   )
 }

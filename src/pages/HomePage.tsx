@@ -68,7 +68,7 @@ export function HomePage() {
 
         <div ref={objectRef} className="home-object mx-auto w-full max-w-[31rem]" onPointerMove={moveObject} onPointerLeave={resetObject}>
           <span className="home-object__shadow" aria-hidden="true" />
-          <div className="surface home-object__card flex min-h-[31rem] flex-col items-center justify-between overflow-hidden p-8 text-center sm:p-10">
+          <Link to={`/hexagrams/${primary.id}`} aria-label={`Explore Hexagram ${primary.id}: ${editorialFor(primary).title}`} className="surface home-object__card flex min-h-[31rem] flex-col items-center justify-between overflow-hidden p-8 text-center sm:p-10">
             <span className="home-object__light" aria-hidden="true" />
             <div className="home-object__meta flex w-full items-center justify-between text-xs font-bold uppercase tracking-[.16em] text-[var(--ink-soft)]">
               <span>{String(primary.id).padStart(2, '0')}</span><span>{primary.chinese}</span>
@@ -78,7 +78,7 @@ export function HomePage() {
               <p className="font-editorial text-3xl">{editorialFor(primary).title}</p>
               <p className="mx-auto mt-4 max-w-xs text-sm leading-6 text-[var(--ink-soft)]">{t('home.promise')}</p>
             </div>
-          </div>
+          </Link>
           <div className="home-companions" aria-label={t('home.companions')}>
             {companions.map((hexagram, index) => (
               <Link key={hexagram.id} to={`/hexagrams/${hexagram.id}`} aria-label={`${hexagram.id}. ${editorialFor(hexagram).title}`} className="home-companion" style={{ '--companion-delay': `${160 + index * 90}ms` } as CSSProperties}>
