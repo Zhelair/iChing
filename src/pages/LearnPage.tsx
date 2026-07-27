@@ -151,7 +151,7 @@ export function LearnPage() {
         </aside>
       </section>
 
-      <div className="mt-8"><Link to="/iching/reading" className="button-primary">{t('learn.begin')} <ArrowRight size={17} aria-hidden="true" /></Link></div>
+      <div className="mt-8 flex flex-wrap gap-3"><Link to="/iching/reading" className="button-primary">{t('learn.begin')} <ArrowRight size={17} aria-hidden="true" /></Link><Link to="/iching/practice" className="button-secondary">How to use daily <ArrowRight size={17} aria-hidden="true" /></Link></div>
 
     </div>
   )

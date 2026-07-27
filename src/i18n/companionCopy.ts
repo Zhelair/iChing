@@ -52,6 +52,7 @@ export function companionCopyFor(locale: Locale) {
   const local = companionLocalCopyFor(locale)
   return {
     ...packs[locale].copy,
+    ...(locale === 'ru' ? { cat: 'Биколорный кот' } : {}),
     eyebrow: local.eyebrow,
     title: local.title,
     body: local.body,
