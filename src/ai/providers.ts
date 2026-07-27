@@ -38,7 +38,7 @@ export const DEFAULT_AI_MODELS: Record<AiProviderId, AiModel> = {
 }
 
 const LENGTH_RULES: Record<AiResponseLength, string> = {
-  short: 'Write 3–5 complete, concise sentences in one short paragraph. Include one grounded observation, one careful reflection, and one open question.',
+  short: 'Write EXACTLY 3, 4, or 5 sentences in one paragraph. Count sentence-ending punctuation before responding. Each sentence must be concise (maximum 24 words). Do not use semicolons, lists, headings, or a second paragraph.',
   medium: 'Write exactly 2–3 short paragraphs, each 2–4 sentences. Move from observation to interpretation and a practical attention point. End with one open question.',
   long: 'Write exactly 3–5 short paragraphs, each 2–4 sentences. Move from source-grounded observation through interpretation and contemplative practice, ending with one open question. Do not pad the answer.',
 }
@@ -54,7 +54,7 @@ function masterInstructions(packet: AiSourcePacket, responseLength: AiResponseLe
 Task instructions:
 1. Use only the supplied Chinese text, Yi Path editorial, counts, and identifiers. Never invent a quotation, line text, source, or personal fact.
 2. ${task}
-3. Name the relevant hexagram numbers and moving-line positions naturally. Use sourceIds to keep every observation traceable.
+3. Name the relevant hexagram numbers and moving-line positions naturally. Never reproduce source IDs, content versions, bracketed metadata, or any machine-readable identifier from the packet.
 4. Clearly distinguish what the packet shows from what you infer. Prefer possibilities and questions over declarations.
 5. Offer one coherent thread that helps the reader meet change with honesty, proportion, and practical attention.
 ${focus ? `6. Give extra attention to the requested layer: ${focus}.` : ''}
@@ -68,7 +68,7 @@ Boundaries:
 Voice and format:
 - Respond in locale ${packet.locale}.
 - Use calm, clear, humane language with no flattery or theatrical mysticism.
-- Return plain prose only. Use blank lines between paragraphs; do not use Markdown, headings, bullets, preamble, sign-off, or quotations.
+- Return plain prose only. Use blank lines between paragraphs; do not use Markdown, headings, bullets, preamble, sign-off, quotations, source IDs, or bracketed metadata.
 - Place the one open question in the final sentence. For a monthly review, weave two or three gentle practices into the final paragraph rather than adding a list.
 - ${lengthRule}`
 }
@@ -133,7 +133,10 @@ async function consumeSse(response: Response, preview: AiRequestPreview, onText:
     }
   }
   if (!complete.trim()) throw new Error('provider-empty')
-  return complete.trim()
+  const answer = complete.trim()
+  if (preview.responseLength !== 'short') return answer
+  const sentences = answer.match(/[^.!?]+[.!?]+(?:\s|$)/g) ?? []
+  return sentences.length > 5 ? sentences.slice(0, 5).join('').trim() : answer
 }
 
 export async function streamAiReflection(apiKey: string, preview: AiRequestPreview, onText: (text: string) => void, signal?: AbortSignal) {
