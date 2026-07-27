@@ -9,7 +9,7 @@ import { getUiLocalePack } from '../i18n/uiLocalePacks'
 const copy = {
   en: { image: 'Save image', pdf: 'Download PDF', saved: 'Image saved', imageWorking: 'Creating image…', imageError: 'Image unavailable', pdfWorking: 'Creating PDF…', pdfSaved: 'PDF downloaded', pdfError: 'PDF unavailable' },
   bg: { image: 'Запази изображение', pdf: 'Изтегли PDF', saved: 'Изображението е запазено', imageWorking: 'Създаване на изображение…', imageError: 'Изображението не е достъпно', pdfWorking: 'Създаване на PDF…', pdfSaved: 'PDF е изтеглен', pdfError: 'PDF не е достъпен' },
-  ru: { image: 'Сохранить изображение', pdf: 'Скачать PDF', saved: 'Изображение сохранено', imageWorking: 'Создание изображения…', imageError: 'Изображение недоступно', pdfWorking: 'Создание PDF…', pdfSaved: 'PDF скачан', pdfError: 'PDF недоступен' },
+  ru: { image: 'Скачать изображение', pdf: 'Скачать PDF', saved: 'Изображение сохранено', imageWorking: 'Создание изображения…', imageError: 'Изображение недоступно', pdfWorking: 'Создание PDF…', pdfSaved: 'PDF скачан', pdfError: 'PDF недоступен' },
 } as const
 
 export function getExportActionCopy(locale: ReturnType<typeof useI18n>['preferences']['locale']) {
