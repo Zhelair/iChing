@@ -11,13 +11,13 @@ const steps = [
 
 export function DailyPracticePage() {
   return <div className="page-shell py-10 sm:py-16">
-    <div className="reading-column daily-practice-page">
+    <div className="daily-practice-page">
       <Link to="/iching" className="button-text"><ArrowLeft size={17} />Back to I Ching</Link>
-      <PageIntro eyebrow="A considered practice" title="Make room before you ask." body="A small illustrated orientation for meeting the coins with attention rather than urgency." />
+      <PageIntro eyebrow="A considered practice" title="Make room before you ask." body="A daily ritual for bringing one honest question into focus." />
 
       <section className="surface daily-practice-hero mt-8" aria-label="Three matching coins make one line">
-        <div className="daily-practice-hero__coins" aria-hidden="true">{[0, 1, 2].map((coin) => <span key={coin} className={`stotinka stotinka--${coin}`}><i>1</i><small>СТОТИНКА</small><b>БЪЛГАРИЯ</b></span>)}</div>
-        <div><p className="eyebrow">Three coins make one line</p><h2>Let the small ritual slow the mind.</h2><p>Use any three matching coins, including Bulgarian 1-stotinka coins. The coin values do not matter—the shared faces do. Heads count 3 and tails count 2 in this method.</p></div>
+        <div className="daily-practice-hero__coins" aria-hidden="true">{[0, 1, 2].map((coin) => <span key={coin} className={`stotinka stotinka--${coin}`}>{Array.from({ length: 12 }, (_, star) => <em key={star} style={{ transform: `rotate(${star * 30}deg) translateY(-3.05rem)` }}>✦</em>)}<i>1</i><small>СТОТИНКА</small><b>2000</b></span>)}</div>
+        <div><p className="eyebrow">Three coins make one line</p><h2>Let the small ritual slow the mind.</h2><p>Use three matching coins. The coin values do not matter—the shared faces do. Heads count 3 and tails count 2 in this method.</p></div>
       </section>
 
       <section className="daily-practice-steps mt-5" aria-label="How to use a reading">
