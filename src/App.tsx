@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { AppLayout } from './components/AppLayout'
 import { HomePage } from './pages/HomePage'
 import { GoldenPawPracticePage } from './pages/GoldenPawPracticePage'
+import { KimiGoldenPawLabPage } from './pages/KimiGoldenPawLabPage'
 
 const MethodPage = lazy(() => import('./pages/MethodPage').then(({ MethodPage: page }) => ({ default: page })))
 const CastPage = lazy(() => import('./pages/CastPage').then(({ CastPage: page }) => ({ default: page })))
@@ -31,6 +32,7 @@ export function App() {
   return (
     <Routes>
       <Route path="companion/golden-paw" element={<GoldenPawPracticePage />} />
+      <Route path="companion/golden-paw-kimi-lab" element={<KimiGoldenPawLabPage />} />
       <Route element={<AppLayout />}>
         <Route index element={<HomePage />} />
         <Route path="iching/reading" element={<MethodPage />} />
