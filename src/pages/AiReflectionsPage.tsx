@@ -6,6 +6,7 @@ import { PageIntro } from '../components/PageIntro'
 import { aiCopyFor } from '../i18n/aiCopy'
 import { useI18n } from '../i18n/I18nContext'
 import { clearAiReflections, deleteAiReflection, getAiReflections } from '../storage/db'
+import { CopyReflectionButton } from '../components/CopyReflectionButton'
 
 export function AiReflectionsPage() {
   const { preferences } = useI18n()
@@ -33,7 +34,7 @@ export function AiReflectionsPage() {
       <Link to={selected ? '/journal/reflections' : '/journal'} className="button-text"><ArrowLeft size={17} />{selected ? 'All saved reflections' : copy.backJournal}</Link>
       <PageIntro eyebrow="Private AI journal" title={selected ? 'Saved AI reflection' : copy.history} body="Open, revisit, or remove each reflection separately. These reflections stay on this device." />
       {selected ? <article className="surface ai-reflections-page__detail">
-        <header><span><Sparkles size={17} aria-hidden="true" />{selected.kind === 'monthly-pattern' ? 'Monthly pattern' : 'Reading reflection'}</span><button type="button" className="button-text danger-action" onClick={() => setDeleteTarget(selected)}><Trash2 size={15} />Delete reflection</button></header>
+        <header><span><Sparkles size={17} aria-hidden="true" />{selected.kind === 'monthly-pattern' ? 'Monthly pattern' : 'Reading reflection'}</span><div className="flex flex-wrap gap-2"><CopyReflectionButton text={selected.response} /><button type="button" className="button-text danger-action" onClick={() => setDeleteTarget(selected)}><Trash2 size={15} />Delete reflection</button></div></header>
         <p className="ai-reflections-page__meta">{formatDate(selected.createdAt)} · {selected.provider} · {selected.model}</p>
         <p>{selected.response}</p>
       </article> : <>
@@ -41,7 +42,7 @@ export function AiReflectionsPage() {
         {items.length ? <div className="ai-reflections-page__list">{items.map((item) => <article className="surface" key={item.id}>
           <div><span className="eyebrow">{item.kind === 'monthly-pattern' ? 'Monthly pattern' : 'Reading reflection'} · {formatDate(item.createdAt)}</span><strong>{item.provider} · {item.model}</strong></div>
           <p className="ai-reflections-page__preview">{item.response}</p>
-          <footer><Link to={`/journal/reflections/${item.id}`} className="button-secondary"><ExternalLink size={15} />Open reflection</Link><button type="button" className="button-text danger-action" onClick={() => setDeleteTarget(item)}><Trash2 size={15} />Delete reflection</button></footer>
+          <footer><Link to={`/journal/reflections/${item.id}`} className="button-secondary"><ExternalLink size={15} />Open reflection</Link><div className="flex flex-wrap gap-2"><CopyReflectionButton text={item.response} /><button type="button" className="button-text danger-action" onClick={() => setDeleteTarget(item)}><Trash2 size={15} />Delete reflection</button></div></footer>
         </article>)}</div> : <section className="surface ai-reflections-page__empty"><Sparkles size={30} /><h2>No saved AI reflections yet.</h2><p>When you save a reflection, it will appear here.</p><Link to="/journal" className="button-secondary">Back to journal</Link></section>}
       </>}
       {deleteTarget ? <div className="ai-reflections-page__dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.currentTarget === event.target) setDeleteTarget(null) }}><section className="surface ai-reflections-page__dialog" role="dialog" aria-modal="true" aria-labelledby="delete-ai-title"><Trash2 size={22} /><h2 id="delete-ai-title">Delete {deleteTarget === 'all' ? 'all saved reflections' : 'this reflection'}?</h2><p>This cannot be undone from the app.</p><footer><button type="button" className="button-secondary" onClick={() => setDeleteTarget(null)}>Keep reflection</button><button type="button" className="button-primary danger-action" onClick={() => void remove()}>Delete</button></footer></section></div> : null}

@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, Coins, Library, Sparkles } from 'lucide-react'
+import { ArrowRight, BookOpen, Library, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { PageIntro } from '../components/PageIntro'
 import { DAO_COPY } from '../data/daoContent'
@@ -12,8 +12,6 @@ export function IChingPage() {
     <div className="iching-hub mt-8 sm:mt-10">
       <Link to="/iching/reading" className="surface iching-hub__card iching-hub__card--accent"><span><Sparkles size={24} /></span><h2>{t('method.title')}</h2><p>{t('method.body')}</p><strong>{t('home.start')} <ArrowRight size={16} /></strong></Link>
       <Link to="/iching/guide" className="surface iching-hub__card"><span><BookOpen size={24} /></span><h2>{t('learn.title')}</h2><p>{t('learn.body')}</p><strong>{t('learn.begin')} <ArrowRight size={16} /></strong></Link>
-      <Link to="/iching/practice" className="surface iching-hub__card"><span><Coins size={24} /></span><h2>How to use a reading</h2><p>Settle the question, cast three coins, and keep the result in proportion.</p><strong>Enter the practice <ArrowRight size={16} /></strong></Link>
-      <Link to="/iching/history" className="surface iching-hub__card"><span><BookOpen size={24} /></span><h2>Illustrated history</h2><p>Follow the long journey of the Book of Changes through image and source.</p><strong>Explore history <ArrowRight size={16} /></strong></Link>
       <Link to="/iching/library" className="surface iching-hub__card"><span><Library size={24} /></span><h2>{t('library.title')}</h2><p>{t('library.body')}</p><strong>{t('library.open')} <ArrowRight size={16} /></strong></Link>
     </div>
   </div>

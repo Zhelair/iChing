@@ -48,10 +48,10 @@ export function LearnPage() {
 
   return (
     <div className="page-shell py-10 sm:py-16">
-      <PageIntro eyebrow={t('learn.pathEyebrow')} title={t('learn.title')} body={t('learn.body')} />
+      <PageIntro eyebrow="Learn the method" title="Casting methods" body="Understand the three-coin method, the lines it creates, and how a reading is built from the ground up." />
 
       <nav className="guide-section-nav mt-8" aria-label="I Ching learning sections">
-        <Link to="/iching/practice">How to use a daily reading</Link><Link to="/iching/history">Illustrated history</Link>
+        <Link to="/iching/practice">How to use daily</Link>
       </nav>
 
       <div className="mt-10 grid gap-4 lg:grid-cols-3">
