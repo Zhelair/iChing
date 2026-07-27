@@ -8,6 +8,8 @@ const MethodPage = lazy(() => import('./pages/MethodPage').then(({ MethodPage: p
 const CastPage = lazy(() => import('./pages/CastPage').then(({ CastPage: page }) => ({ default: page })))
 const ResultPage = lazy(() => import('./pages/ResultPage').then(({ ResultPage: page }) => ({ default: page })))
 const LearnPage = lazy(() => import('./pages/LearnPage').then(({ LearnPage: page }) => ({ default: page })))
+const DailyPracticePage = lazy(() => import('./pages/DailyPracticePage').then(({ DailyPracticePage: page }) => ({ default: page })))
+const HistoryPage = lazy(() => import('./pages/HistoryPage').then(({ HistoryPage: page }) => ({ default: page })))
 const LibraryPage = lazy(() => import('./pages/LibraryPage').then(({ LibraryPage: page }) => ({ default: page })))
 const HexagramPage = lazy(() => import('./pages/HexagramPage').then(({ HexagramPage: page }) => ({ default: page })))
 const SettingsPage = lazy(() => import('./pages/SettingsPage').then(({ SettingsPage: page }) => ({ default: page })))
@@ -38,6 +40,8 @@ export function App() {
         <Route path="result" element={<ResultPage />} />
         <Route path="iching" element={<IChingPage />} />
         <Route path="iching/guide" element={<LearnPage />} />
+        <Route path="iching/practice" element={<DailyPracticePage />} />
+        <Route path="iching/history" element={<HistoryPage />} />
         <Route path="iching/library" element={<LibraryPage />} />
         <Route path="dao" element={<DaoPage />} />
         <Route path="dao/study" element={<Navigate to="/dao/study/start" replace />} />
