@@ -38,15 +38,13 @@ export const DEFAULT_AI_MODELS: Record<AiProviderId, AiModel> = {
 }
 
 const LENGTH_RULES: Record<AiResponseLength, string> = {
-  short: 'Write exactly three complete sentences: one grounded observation, one careful reflection, and one open question.',
-  medium: 'Write 3–5 short paragraphs. Each paragraph should have one clear purpose: observation, interpretation, practice, or question. End with one open question.',
-  long: 'Write 6–9 short paragraphs. Keep them focused and readable, moving from source-grounded observation through interpretation, contemplative practice, and one open question. Do not pad the answer.',
+  short: 'Write 3–5 complete, concise sentences in one short paragraph. Include one grounded observation, one careful reflection, and one open question.',
+  medium: 'Write exactly 2–3 short paragraphs, each 2–4 sentences. Move from observation to interpretation and a practical attention point. End with one open question.',
+  long: 'Write exactly 3–5 short paragraphs, each 2–4 sentences. Move from source-grounded observation through interpretation and contemplative practice, ending with one open question. Do not pad the answer.',
 }
 
 function masterInstructions(packet: AiSourcePacket, responseLength: AiResponseLength, focus?: AiReflectionFocus, additionalNote?: string) {
-  const lengthRule = packet.kind === 'monthly-pattern' && responseLength === 'short'
-    ? 'Write 1–3 short paragraphs. Cover the clearest recurring pattern and one gentle question.'
-    : LENGTH_RULES[responseLength]
+  const lengthRule = LENGTH_RULES[responseLength]
   const task = packet.kind === 'reading'
     ? 'For a reading, connect the primary hexagram, each supplied moving line, and the resulting hexagram when present. Explain the direction of change without claiming an outcome.'
     : 'For a monthly review, compare the supplied readings across the selected month. Describe what recurs, what changes, which moving-line positions or casting methods stand out, and what remains uncertain. Treat repetition as non-causal pattern material, never as a score, diagnosis, prediction, or spiritual verdict. Offer two or three gentle observation practices for the next month. Questions and journal notes are deliberately absent.'
@@ -70,7 +68,8 @@ Boundaries:
 Voice and format:
 - Respond in locale ${packet.locale}.
 - Use calm, clear, humane language with no flattery or theatrical mysticism.
-- Return plain prose only: no Markdown symbols, headings, lists, or source-code formatting.
+- Return plain prose only. Use blank lines between paragraphs; do not use Markdown, headings, bullets, preamble, sign-off, or quotations.
+- Place the one open question in the final sentence. For a monthly review, weave two or three gentle practices into the final paragraph rather than adding a list.
 - ${lengthRule}`
 }
 
@@ -139,7 +138,7 @@ async function consumeSse(response: Response, preview: AiRequestPreview, onText:
 
 export async function streamAiReflection(apiKey: string, preview: AiRequestPreview, onText: (text: string) => void, signal?: AbortSignal) {
   const anthropic = preview.providerId === 'anthropic'
-  const maxTokens = preview.responseLength === 'short' ? 320 : preview.responseLength === 'medium' ? 720 : 1250
+  const maxTokens = preview.responseLength === 'short' ? 420 : preview.responseLength === 'medium' ? 700 : 1050
   const headers: Record<string, string> = anthropic
     ? {
         'Content-Type': 'application/json',
