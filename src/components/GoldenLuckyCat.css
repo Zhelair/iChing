@@ -1,0 +1,31 @@
+.golden-lucky-cat {
+  display: grid;
+  width: min(100%, 22rem);
+  margin-inline: auto;
+  place-items: end center;
+  filter: drop-shadow(0 1.35rem 1.75rem color-mix(in srgb, var(--brass) 18%, transparent));
+}
+
+.golden-lucky-cat img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-origin: 72% 32%;
+  will-change: transform;
+}
+
+.golden-lucky-cat--beckoning img {
+  animation: golden-lucky-cat-settle 2.8s ease-in-out infinite;
+}
+
+@keyframes golden-lucky-cat-settle {
+  0%, 100% { transform: translateY(0) rotate(-0.35deg); }
+  48% { transform: translateY(-0.18rem) rotate(0.45deg); }
+  60% { transform: translateY(-0.08rem) rotate(0.18deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .golden-lucky-cat--beckoning img { animation: none; }
+}
+
+[data-reduce-motion="true"] .golden-lucky-cat--beckoning img { animation: none; }
