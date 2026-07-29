@@ -1,31 +1,38 @@
 .golden-lucky-cat {
-  display: grid;
+  position: relative;
   width: min(100%, 22rem);
   margin-inline: auto;
-  place-items: end center;
   filter: drop-shadow(0 1.35rem 1.75rem color-mix(in srgb, var(--brass) 18%, transparent));
 }
 
-.golden-lucky-cat img {
+.golden-lucky-cat__base {
   display: block;
   width: 100%;
   height: auto;
-  transform-origin: 72% 32%;
+}
+
+.golden-lucky-cat__arm {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: auto;
+  clip-path: polygon(66% 52%, 68% 40%, 70% 26%, 72% 19%, 86% 17%, 89% 26%, 88% 40%, 84% 50%);
+  transform-origin: 77% 47%;
   will-change: transform;
+  pointer-events: none;
 }
 
-.golden-lucky-cat--beckoning img {
-  animation: golden-lucky-cat-settle 2.8s ease-in-out infinite;
+.golden-lucky-cat--beckoning .golden-lucky-cat__arm {
+  animation: golden-lucky-cat-beckon 2.6s ease-in-out infinite;
 }
 
-@keyframes golden-lucky-cat-settle {
-  0%, 100% { transform: translateY(0) rotate(-0.35deg); }
-  48% { transform: translateY(-0.18rem) rotate(0.45deg); }
-  60% { transform: translateY(-0.08rem) rotate(0.18deg); }
+@keyframes golden-lucky-cat-beckon {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(3deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .golden-lucky-cat--beckoning img { animation: none; }
+  .golden-lucky-cat--beckoning .golden-lucky-cat__arm { animation: none; }
 }
 
-[data-reduce-motion="true"] .golden-lucky-cat--beckoning img { animation: none; }
+[data-reduce-motion="true"] .golden-lucky-cat--beckoning .golden-lucky-cat__arm { animation: none; }
